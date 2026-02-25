@@ -1,5 +1,5 @@
 langchain==0.1.0
-langchain-community==0.0.10
+langchain-community==0.3.27
 chromadb==0.4.22
 openai==1.7.0
 streamlit==1.30.0
