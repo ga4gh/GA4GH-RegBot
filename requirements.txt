@@ -3,7 +3,7 @@ langchain-community==0.0.10
 chromadb==0.4.22
 openai==1.7.0
 streamlit==1.30.0
-pypdf==3.17.4
+pypdf==6.7.3
 python-dotenv==1.0.0
 tiktoken==0.5.2
 sentence-transformers==2.2.2
