@@ -19,3 +19,6 @@ Phase 1: Ingest GA4GH "Framework for Responsible Sharing" policy documents.
 Phase 2: Build RAG pipeline for clause extraction.
 
 Phase 3: Develop Streamlit frontend for user uploads.
+
+Planning
+See `PLAN.md` for the draft GSoC 2026 implementation scope, deliverables, and timeline.
