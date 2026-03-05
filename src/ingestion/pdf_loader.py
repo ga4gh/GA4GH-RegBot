@@ -11,7 +11,7 @@ from config import (
     CATEGORIES,
     SUBCATEGORIES,
 )
-# what abotu removing r"([A-Z][A-Z\s]{3,})\n" this match since it may not always represen a proper heading right
+
 def detect_section(text: str) -> str:
     patterns = [
         r"(Section\s+[IVXLC\d]+[\.\d]*[^\n]*)",
