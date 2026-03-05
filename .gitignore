@@ -1,0 +1,8 @@
+.idea/
+.venv/
+__pycache__/
+chroma_db/
+*.pyc
+*.iml
+src/embeddings/__pycache__/
+src/ingestion/__pycache__/
