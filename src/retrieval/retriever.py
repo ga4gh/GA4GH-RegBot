@@ -27,12 +27,15 @@ class RetrievalResult:
 
     def format_citation(self) -> str:
         """Format this result as a human-readable citation string."""
-        source = self.metadata.get("source", "Unknown")
+        display = self.metadata.get("display_name") or self.metadata.get("source", "Unknown")
+        section = self.metadata.get("section")
         page = self.metadata.get("page")
         chunk = self.metadata.get("chunk_index", "?")
 
-        citation = f"[Source: {source}"
-        if page is not None:
+        citation = f"[{display}"
+        if section:
+            citation += f", {section}"
+        elif page is not None:
             citation += f", Page {page}"
         citation += f", Chunk {chunk}]"
         return citation

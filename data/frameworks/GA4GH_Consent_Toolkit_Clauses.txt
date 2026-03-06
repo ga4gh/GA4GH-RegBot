@@ -1,0 +1,244 @@
+GA4GH Consent Toolkit - Consent Clauses Reference
+Sources:
+  - Consent Clauses for Genomic Research (2020)
+  - Consent Toolkit: Rare Disease
+  - Familial Consent Clauses (v1.0)
+  - Pediatric Consent to Genetic Research (v1.0)
+  - Consent Clauses for Large Scale Initiatives (v1.0)
+  - Consent Toolkit: Clinical Genomic (v6.0)
+
+============================================================================
+
+SECTION 1: GENERAL CONSENT CLAUSES FOR GENOMIC RESEARCH
+---------------------------------------------------------
+
+1.1 Purpose of Data Collection
+
+"We would like to collect and analyze your [genomic/genetic] data as part
+of this research study. Your data may be used to better understand the
+[specific condition/disease] and to advance scientific knowledge about
+human health."
+
+1.2 Data Storage and Security
+
+"Your data will be stored in a secure, access-controlled database.
+We use encryption and other technical safeguards to protect your
+information. Data will be stored for [specified period] or until it
+is no longer needed for research purposes."
+
+1.3 Data Sharing
+
+"Your de-identified data may be shared with other qualified researchers
+for future studies. Shared data will be subject to strict data use
+agreements that prohibit attempts to re-identify participants."
+
+1.4 Return of Results
+
+"If the analysis of your data reveals findings that are clinically
+significant and actionable, you will be offered the opportunity to
+learn about these findings through genetic counseling."
+
+1.5 Withdrawal
+
+"You may withdraw your consent at any time. If you withdraw, we will
+stop using your data for new research, but data already included in
+completed analyses cannot be removed."
+
+============================================================================
+
+SECTION 2: RARE DISEASE RESEARCH CLAUSES
+------------------------------------------
+
+2.1 Matchmaking and Data Sharing
+
+"Because rare diseases affect small numbers of people, it is often
+necessary to share your data with researchers around the world to
+find other individuals with similar genetic variants. This process,
+called 'matchmaking,' helps researchers understand the relationship
+between genetic changes and disease."
+
+2.2 Familial Participation
+
+"Rare disease research may benefit from analyzing data from your
+family members. If your family members consent, their data may be
+analyzed alongside yours to help identify the genetic basis of the
+condition."
+
+2.3 Audiovisual Data
+
+"Some rare diseases have distinctive physical features. With your
+separate, specific consent, photographs or videos may be collected
+and shared with other researchers through controlled-access databases.
+You may decline audiovisual data collection while still participating
+in other aspects of the study."
+
+2.4 Recontact
+
+"Researchers may wish to contact you in the future for additional
+information or to invite you to participate in further studies. You
+may indicate whether you are willing to be recontacted."
+
+2.5 International Data Sharing
+
+"Due to the rarity of the condition, your data may need to be shared
+with researchers in other countries. International sharing will be
+governed by data use agreements that ensure your privacy is protected."
+
+============================================================================
+
+SECTION 3: FAMILIAL CONSENT CLAUSES
+--------------------------------------
+
+3.1 Purpose
+
+"Genetic information is inherently familial. Analysis of your genomic
+data may reveal information about your biological relatives. This
+section explains how familial implications are handled."
+
+3.2 Duty to Inform Family Members
+
+"If research reveals genetic findings that may have significant health
+implications for your family members, you may be encouraged to share
+this information with them. Genetic counseling will be available to
+help you make these decisions."
+
+3.3 Family Member Data Collection
+
+"With appropriate consent, data from your biological relatives may be
+collected and analyzed alongside yours to improve the accuracy of
+genetic analysis. Each family member will be consented individually."
+
+3.4 Family De-identification
+
+"When sharing family data for research, additional de-identification
+measures will be applied to protect familial relationships. However,
+due to the nature of genetic data and known family structures,
+complete de-identification cannot be guaranteed."
+
+3.5 Cascade Testing
+
+"If a clinically actionable genetic variant is identified in your data,
+cascade genetic testing may be recommended for at-risk family members.
+You will be provided with information and resources to support this
+process."
+
+============================================================================
+
+SECTION 4: PEDIATRIC CONSENT CLAUSES
+---------------------------------------
+
+4.1 Parental/Guardian Consent
+
+"As the parent or legal guardian of the child participant, you are
+providing consent on their behalf. Your child's assent (agreement)
+will also be sought if they are old enough to understand the research."
+
+4.2 Assent from Minors
+
+"For children aged [7-17], we will explain the research in
+age-appropriate language and ask for their agreement (assent) to
+participate. The child may decline even if the parent has consented."
+
+4.3 Re-consent at Age of Majority
+
+"When the child participant reaches the age of majority [18 years],
+they will be offered the opportunity to provide their own informed
+consent for continued participation in the study and ongoing use of
+their data."
+
+4.4 Return of Results for Minors
+
+"Clinically actionable findings will be communicated to the parent or
+legal guardian. For genetic findings that have implications for the
+child's future health (including adult-onset conditions), guidelines
+for reporting will be followed, and genetic counseling will be made
+available."
+
+4.5 Best Interests Standard
+
+"All decisions regarding the child's participation will be guided by
+the best interests of the child, taking into account the potential
+benefits and risks of the research."
+
+============================================================================
+
+SECTION 5: LARGE SCALE INITIATIVE CLAUSES
+--------------------------------------------
+
+5.1 Consortium Data Sharing
+
+"This research is part of a large-scale initiative involving multiple
+institutions and countries. Your data will be shared with consortium
+members through a centralized, access-controlled data repository."
+
+5.2 Governance Structure
+
+"The consortium has an established governance structure including a
+Data Access Committee (DAC) that reviews and approves all data access
+requests. The DAC includes scientific experts, ethicists, and
+participant representatives."
+
+5.3 Publication and Attribution
+
+"Results arising from consortium research will be published in
+scientific journals. Individual participants will not be identifiable
+in any publication. The consortium's publication policy ensures
+appropriate attribution and credit."
+
+5.4 Long-Term Data Stewardship
+
+"Data collected as part of this initiative will be maintained in a
+secure repository for [specified period]. A data stewardship plan
+ensures that data remains accessible for approved research purposes
+even after the initial project concludes."
+
+5.5 Benefit Sharing
+
+"The consortium is committed to ensuring that the benefits of this
+research are shared broadly. Research findings will be made available
+to the scientific community, and efforts will be made to ensure that
+participating communities benefit from the research outcomes."
+
+============================================================================
+
+SECTION 6: CLINICAL GENOMIC CONSENT CLAUSES
+----------------------------------------------
+
+6.1 Clinical vs. Research Use
+
+"Your genomic data is being generated as part of your clinical care.
+With your consent, this data may also be used for research purposes.
+You may consent to clinical testing without consenting to research
+use of your data."
+
+6.2 Diagnostic Results
+
+"Results that are relevant to your clinical diagnosis and management
+will be reported to your treating physician and included in your
+medical record."
+
+6.3 Incidental Findings
+
+"Genomic analysis may reveal findings unrelated to the primary reason
+for testing. Our policy on reporting incidental findings is [describe
+institutional policy]. You may indicate whether you wish to receive
+such findings."
+
+6.4 Variant Classification Updates
+
+"Our understanding of genetic variants evolves over time. Variants
+initially classified as uncertain may later be reclassified as
+causing disease or as benign. You may indicate whether you wish
+to be recontacted if reclassification occurs."
+
+6.5 Data in Electronic Health Records
+
+"With your consent, relevant genomic information may be included in
+your electronic health record. This information may be accessed by
+authorized healthcare providers involved in your care."
+
+============================================================================
+
+NOTE: This document is a structured reference compiled from official
+GA4GH Consent Toolkit documents. For the official documents, visit:
+https://www.ga4gh.org/product/consent-policy/ (Consent Toolkit section)

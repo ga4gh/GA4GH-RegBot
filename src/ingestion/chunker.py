@@ -12,7 +12,7 @@ from typing import List
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from src.config import CHUNK_OVERLAP, CHUNK_SIZE
-from src.ingestion.loader import Document
+from src.ingestion.loader import Document, _detect_section_heading
 
 
 def chunk_documents(
@@ -22,8 +22,8 @@ def chunk_documents(
 ) -> List[Document]:
     """Split documents into smaller chunks with overlap.
 
-    Each chunk inherits the metadata from its parent document, with an
-    added ``chunk_index`` field for traceability.
+    Each chunk inherits the metadata from its parent document, with
+    added ``chunk_index`` and ``section`` fields for traceability.
 
     Args:
         documents: List of Documents to split.
@@ -47,6 +47,10 @@ def chunk_documents(
 
         for idx, chunk_text in enumerate(text_chunks):
             chunk_metadata = {**doc.metadata, "chunk_index": idx}
+            # Detect the section heading within this chunk
+            section = _detect_section_heading(chunk_text)
+            if section:
+                chunk_metadata["section"] = section
             chunked_docs.append(Document(text=chunk_text, metadata=chunk_metadata))
 
     return chunked_docs

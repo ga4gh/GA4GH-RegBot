@@ -13,7 +13,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from src.ingestion.loader import load_document
+from src.ingestion.loader import load_document, load_all_frameworks
 from src.ingestion.chunker import chunk_documents
 from src.ingestion.embedder import embed_and_store
 from src.retrieval.retriever import Retriever
@@ -36,6 +36,37 @@ def cmd_ingest(file_path: str) -> None:
     print("   Generating embeddings and storing in ChromaDB...")
     count = embed_and_store(chunks)
     print(f"\n[OK] Successfully ingested {count} chunks from '{path.name}'")
+
+
+def cmd_ingest_all() -> None:
+    """Ingest all documents from the data/frameworks/ directory."""
+    print("\n[*] Loading all GA4GH framework documents...")
+
+    # Step 1: Load all
+    documents = load_all_frameworks()
+    if not documents:
+        print("[!] No documents found in data/frameworks/. Run scripts/download_documents.py first.")
+        return
+    print(f"   Loaded {len(documents)} document section(s)")
+
+    # Show per-source summary
+    sources = {}
+    for doc in documents:
+        name = doc.metadata.get("display_name", doc.metadata.get("source", "?"))
+        sources[name] = sources.get(name, 0) + 1
+    print(f"\n   Documents found ({len(sources)}):")
+    for name, count in sources.items():
+        print(f"     - {name} ({count} section(s))")
+
+    # Step 2: Chunk
+    chunks = chunk_documents(documents)
+    print(f"\n   Split into {len(chunks)} total chunks")
+
+    # Step 3: Embed & Store
+    print("   Generating embeddings and storing in ChromaDB...")
+    stored = embed_and_store(chunks)
+    print(f"\n[OK] Successfully ingested {stored} chunks from {len(sources)} documents")
+
 
 
 def cmd_query(query_text: str, top_k: int = 5) -> None:
@@ -93,6 +124,12 @@ def main() -> None:
         "-k", "--top-k", type=int, default=5, help="Number of results (default: 5)"
     )
 
+    # ingest-all command
+    subparsers.add_parser(
+        "ingest-all",
+        help="Ingest all documents from data/frameworks/",
+    )
+
     # status command
     subparsers.add_parser("status", help="Show vector store status")
 
@@ -100,6 +137,8 @@ def main() -> None:
 
     if args.command == "ingest":
         cmd_ingest(args.file)
+    elif args.command == "ingest-all":
+        cmd_ingest_all()
     elif args.command == "query":
         cmd_query(args.question, top_k=args.top_k)
     elif args.command == "status":
