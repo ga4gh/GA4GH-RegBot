@@ -105,3 +105,33 @@ class Retriever:
     def get_collection_count(self) -> int:
         """Return the number of documents in the collection."""
         return self.collection.count()
+
+    def get_collection_stats(self) -> dict:
+        """Return collection statistics including documents and categories.
+
+        Returns:
+            Dict with 'count', 'documents' (unique display names),
+            and 'categories' (unique category values).
+        """
+        count = self.collection.count()
+        if count == 0:
+            return {"count": 0, "documents": [], "categories": []}
+
+        # Fetch all metadata from the collection
+        all_data = self.collection.get(include=["metadatas"])
+        metadatas = all_data.get("metadatas", [])
+
+        documents = sorted({
+            m.get("display_name", m.get("source", "Unknown"))
+            for m in metadatas if m
+        })
+        categories = sorted({
+            m.get("category", "unknown")
+            for m in metadatas if m
+        })
+
+        return {
+            "count": count,
+            "documents": documents,
+            "categories": categories,
+        }

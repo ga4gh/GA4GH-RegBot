@@ -34,7 +34,7 @@ DEFAULT_TOP_K = int(os.getenv("DEFAULT_TOP_K", "5"))
 # Maps filename patterns to category and subcategory for enriched metadata.
 # The loader uses this to automatically tag chunks with the right category.
 DOCUMENT_REGISTRY = {
-    "ga4gh_framework_excerpt": {
+    "Framework_Responsible_Sharing": {
         "category": "framework",
         "subcategory": "responsible_sharing",
         "display_name": "Framework for Responsible Sharing of Genomic Data",
@@ -43,6 +43,11 @@ DOCUMENT_REGISTRY = {
         "category": "duo_mapping",
         "subcategory": "data_use_codes",
         "display_name": "Data Use Ontology (DUO) Reference",
+    },
+    "Machine_Readable_Consent": {
+        "category": "duo_mapping",
+        "subcategory": "consent_to_duo_mapping",
+        "display_name": "Machine Readable Consent Guidance (MRCG)",
     },
     "Consent_Policy": {
         "category": "consent_requirements",

@@ -98,10 +98,19 @@ def cmd_status() -> None:
     """Show the current state of the vector store."""
     try:
         retriever = Retriever()
-        count = retriever.get_collection_count()
+        stats = retriever.get_collection_stats()
+        count = stats["count"]
+        documents = stats["documents"]
+        categories = stats["categories"]
+
         print("\n[i] Collection status:")
-        print(f"   Documents stored: {count}")
-        print(f"   Collection is ready for queries.")
+        print(f"   Total chunks : {count}")
+        print(f"   Documents    : {len(documents)}")
+        print(f"   Categories   : {', '.join(categories)}")
+        print(f"\n   Documents indexed:")
+        for doc_name in documents:
+            print(f"     - {doc_name}")
+        print(f"\n   Collection is ready for queries.")
     except ValueError as e:
         print(f"\n[!] {e}")
 
