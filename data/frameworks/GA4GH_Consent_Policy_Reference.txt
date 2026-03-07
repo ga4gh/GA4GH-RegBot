@@ -1,0 +1,182 @@
+GA4GH Consent Policy (POL 002) - v2.0 Reference Summary
+Source: https://www.ga4gh.org/product/consent-policy/
+
+============================================================================
+
+SECTION 1: PURPOSE AND SCOPE
+------------------------------
+
+1.1 Purpose
+
+The GA4GH Consent Policy provides guidelines for the international sharing
+of genomic and related health data. It aims to respect autonomous
+decision-making while promoting responsible data sharing globally.
+
+1.2 Scope
+
+This policy encompasses data that have been consented to by data donors
+or their legal representatives, or approved for use by competent
+authorities in compliance with national and international laws, general
+ethical principles, and best practices that respect restrictions on
+downstream uses.
+
+1.3 Applicability
+
+The policy applies to all organizations and individuals involved in
+collecting, storing, sharing, or using genomic and health-related data,
+including researchers, institutions, data access committees, and
+industry partners.
+
+============================================================================
+
+SECTION 2: FOUNDATIONAL PRINCIPLES
+------------------------------------
+
+2.1 Open Communication
+
+Consent is an open, communicative, and ideally continuing relationship
+between data donors and data users. It should not be viewed as a
+one-time transaction.
+
+2.2 Data Sharing Intention
+
+There is an intention to share data across clinical or research groups,
+or jurisdictions and national borders, with appropriate approvals in
+place.
+
+2.3 Transparency
+
+Plans for data sharing should be transparent, understandable, and
+accessible to data donors and the public.
+
+2.4 Right to Withdraw
+
+Data donors have a right to not participate in international data
+sharing or, if participating, are able to withdraw, with the
+understanding that it may not be possible to retrieve or destroy data
+once shared.
+
+2.5 Regulatory Compliance
+
+Data users and data producers will abide by applicable regulations and
+ethical norms when seeking and conducting international data sharing.
+
+============================================================================
+
+SECTION 3: CONSENT REQUIREMENTS
+---------------------------------
+
+3.1 Informed Consent
+
+Consent should be appropriately informed, meaning data donors should
+understand:
+  (a) What data will be collected about them.
+  (b) How the data will be stored and protected.
+  (c) Who may access the data and for what purposes.
+  (d) Whether data will be shared internationally.
+  (e) The potential risks and benefits of data sharing.
+  (f) Their rights regarding access, correction, and deletion.
+
+3.2 Types of Consent
+
+  (a) Specific Consent: Data may only be used for the specific research
+      study described in the consent form.
+  (b) Broad Consent: Data may be used for a range of future research
+      purposes, subject to ethics oversight.
+  (c) Dynamic Consent: An ongoing process where data donors can update
+      their preferences over time through digital platforms.
+  (d) Tiered Consent: Data donors may choose different levels of data
+      sharing (e.g., disease-specific only, health research broadly).
+
+3.3 Consent Form Elements
+
+All consent forms for genomic data sharing should include:
+  (a) Description of the research project and its goals.
+  (b) Types of data and samples to be collected.
+  (c) How data will be stored, secured, and for how long.
+  (d) Plans for data sharing and with whom.
+  (e) Procedures for return of results (including incidental findings).
+  (f) Risks and benefits of participation.
+  (g) Voluntary nature of participation and withdrawal procedures.
+  (h) Contact information for questions and concerns.
+  (i) Statement about data protection and privacy safeguards.
+
+3.4 Special Populations
+
+  (a) Pediatric Research: Consent from parents/guardians is required,
+      with assent from minors where appropriate. Re-consent should be
+      sought when minors reach the age of majority.
+  (b) Vulnerable Populations: Additional safeguards should be in place
+      for individuals who may be unable to give fully informed consent.
+  (c) Community Consent: Where research involves identifiable
+      communities, community-level engagement and consent should be
+      sought in addition to individual consent.
+
+============================================================================
+
+SECTION 4: DATA SHARING PROVISIONS
+------------------------------------
+
+4.1 Cross-Border Sharing
+
+When data is shared across national borders:
+  (a) Compliance with data protection laws of both origin and destination
+      jurisdictions must be ensured.
+  (b) Data transfer agreements must be in place.
+  (c) Equivalent levels of data protection must be maintained.
+  (d) Data donors should be informed of international sharing.
+
+4.2 Data Access Governance
+
+  (a) Data Access Committees (DACs) should evaluate requests based on
+      scientific merit and ethical considerations.
+  (b) Access decisions should be made in a timely manner.
+  (c) Reasons for denying access should be documented and communicated.
+  (d) Appeals processes should be available.
+
+4.3 Secondary Use
+
+  (a) Secondary use of data should be consistent with the scope of the
+      original consent.
+  (b) Where broad consent was obtained, ethics review should oversee
+      secondary uses.
+  (c) Data donors should be informed of significant new uses where
+      practicable.
+
+============================================================================
+
+SECTION 5: DATA DONOR RIGHTS
+-------------------------------
+
+5.1 Right to Access
+
+Data donors have the right to access their own data and understand
+how it has been used.
+
+5.2 Right to Withdraw
+
+Data donors may withdraw consent at any time. Organizations should
+have processes in place for handling withdrawals, including:
+  (a) Ceasing further use of the data.
+  (b) Removing data from future distributions.
+  (c) Acknowledging that data already in analyses may not be removable.
+
+5.3 Right to Return of Results
+
+Where individual-level results are generated from research:
+  (a) Clinically actionable findings should be offered back to
+      data donors with appropriate genetic counseling.
+  (b) The consent form should specify the policy on return of results.
+  (c) Data donors should have the option to decline receiving results.
+
+5.4 Right to Privacy
+
+  (a) Data should be de-identified to the extent possible.
+  (b) Re-identification should be prohibited by data use agreements.
+  (c) Data donors should be informed of any re-identification risks.
+
+============================================================================
+
+NOTE: This document is a structured reference summary compiled from the
+official GA4GH Consent Policy (POL 002 v2.0). For the official document,
+visit: https://www.ga4gh.org/product/consent-policy/

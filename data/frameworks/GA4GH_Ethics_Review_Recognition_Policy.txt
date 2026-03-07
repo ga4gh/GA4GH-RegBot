@@ -1,0 +1,91 @@
+GA4GH Ethics Review Recognition Policy - Reference Summary
+Source: https://www.ga4gh.org/product/ethics-review-recognition-policy/
+
+============================================================================
+
+SECTION 1: PURPOSE
+-------------------
+
+1.1 Overview
+
+The Ethics Review Recognition Policy offers a framework of essential
+elements to improve mutual recognition among Research Ethics Committees
+(RECs), aiming to reduce the duplication of ethics reviews, particularly
+in multi-jurisdictional research involving genomic and health-related data.
+
+1.2 Problem Statement
+
+Multi-site and international genomic research projects often require
+separate ethics reviews in each jurisdiction, leading to:
+  (a) Significant delays in research commencement.
+  (b) Duplicated effort by ethics committees.
+  (c) Inconsistent review outcomes.
+  (d) Increased administrative burden for researchers.
+
+1.3 Goal
+
+Promote mutual recognition of ethics reviews to streamline the approval
+process while maintaining rigorous ethical standards.
+
+============================================================================
+
+SECTION 2: CORE ELEMENTS FOR MUTUAL RECOGNITION
+--------------------------------------------------
+
+2.1 Competence and Independence
+
+Research Ethics Committees seeking mutual recognition should demonstrate:
+  (a) Appropriate composition (scientific, ethical, legal, community expertise).
+  (b) Independence from the research being reviewed.
+  (c) Adequate training and continuing education for members.
+  (d) Transparent operating procedures.
+
+2.2 Scope of Review
+
+Ethics reviews for genomic data sharing should address:
+  (a) Scientific validity of the research.
+  (b) Adequacy of informed consent procedures.
+  (c) Assessment of risks and benefits.
+  (d) Privacy and data protection measures.
+  (e) Plans for return of results.
+  (f) Community engagement and benefit sharing.
+  (g) Data sharing and access governance.
+
+2.3 Procedural Standards
+
+  (a) Reviews should be completed in a timely manner.
+  (b) Decision criteria should be transparent.
+  (c) Appeals processes should be available.
+  (d) Records of review decisions should be maintained.
+
+============================================================================
+
+SECTION 3: IMPLEMENTATION GUIDANCE
+-------------------------------------
+
+3.1 Reciprocal Recognition Agreements
+
+Institutions should establish bilateral or multilateral agreements for
+recognizing each other's ethics reviews, specifying:
+  (a) Minimum standards for review.
+  (b) Categories of research eligible for recognition.
+  (c) Conditions for local review requirements.
+  (d) Communication and reporting mechanisms.
+
+3.2 National vs. International Recognition
+
+  (a) National recognition frameworks should be developed first.
+  (b) International recognition should build on national frameworks.
+  (c) Cultural and legal differences should be respected.
+
+3.3 Ongoing Monitoring
+
+  (a) Regular assessment of recognized committees' performance.
+  (b) Feedback mechanisms for researchers and participants.
+  (c) Periodic renewal of recognition agreements.
+
+============================================================================
+
+NOTE: This document is a structured reference compiled from the GA4GH
+Ethics Review Recognition Policy. For the official document, visit:
+https://www.ga4gh.org/product/ethics-review-recognition-policy/

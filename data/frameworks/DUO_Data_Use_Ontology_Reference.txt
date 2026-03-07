@@ -1,0 +1,241 @@
+GA4GH Data Use Ontology (DUO) - Reference Document
+Source: https://github.com/EBISPOT/DUO
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+============================================================================
+
+SECTION 1: OVERVIEW
+--------------------
+
+1.1 What is DUO?
+
+The GA4GH Data Use Ontology (DUO) allows datasets to be semantically tagged
+with restrictions about their usage, making them discoverable automatically
+based on the authorization level of users, or intended usage. DUO provides a
+standard, machine-readable system for annotating datasets with information
+about consent-based data use conditions.
+
+DUO is used in production by the European Genome-phenome Archive (EGA) at
+EMBL-EBI as well as the Broad Institute for the Data Use Oversight System
+(DUOS). It is registered with the OBO Foundry and distributed under a
+Creative Commons Attribution 4.0 International License.
+
+1.2 Why DUO Exists
+
+Human subjects datasets often have restrictions such as "only available for
+cancer use" or "only available for the study of pediatric diseases," based on
+the original participant consent, which must be respected when sharing and
+studying these datasets.
+
+A current challenge in sharing such datasets for further research is that
+unique language is used in each informed consent form to describe the
+secondary use conditions. The lack of a standard universal system to
+categorize these conditions makes it difficult for data access committees
+(DACs) and researchers to interpret the conditions in a consistent,
+structured way.
+
+============================================================================
+
+SECTION 2: DATA USE PERMISSION CODES
+--------------------------------------
+
+The following DUO codes define the primary permissions for data use:
+
+2.1 DUO:0000042 - General Research Use (GRU)
+    Use is permitted for any research purpose. This is the broadest
+    consent category. Data may be used for health, medical, biomedical
+    purposes and other biological research, including population-level
+    research.
+
+2.2 DUO:0000006 - Health or Medical or Biomedical Research (HMB)
+    Use is permitted for health, medical, or biomedical research purposes.
+    More restrictive than GRU but covers most clinical and translational
+    research.
+
+2.3 DUO:0000007 - Disease-Specific Research (DS)
+    Use is limited to research on a specific disease or group of diseases.
+    The specific disease must be indicated using an appropriate ontology
+    term (e.g., MONDO, DOID).
+
+2.4 DUO:0000004 - No Restriction (NRES)
+    No restrictions on data use. The data can be used for any purpose
+    without limitation.
+
+2.5 DUO:0000011 - Population Origins or Ancestry Research Only (POA)
+    Use is limited to research concerning population origins or ancestry.
+
+============================================================================
+
+SECTION 3: DATA USE MODIFIER CODES
+------------------------------------
+
+Modifiers can be combined with permission codes to further restrict usage:
+
+3.1 DUO:0000012 - Research-Specific Restrictions (RS)
+    Use is limited to studies of a certain research type.
+
+3.2 DUO:0000015 - No General Methods Research (NMGR)
+    Use includes methods development research only if it is incidental to
+    the primary research purpose and target. Data cannot be used solely
+    for methods research.
+
+3.3 DUO:0000016 - Genetic Studies Only (GSO)
+    Use is limited to genetic studies only. Data cannot be used for
+    non-genetic research.
+
+3.4 DUO:0000018 - Not for Profit, Non-Commercial Use Only (NPU)
+    Use is limited to not-for-profit organizations and is not permitted
+    for commercial or for-profit purposes.
+
+3.5 DUO:0000045 - Not for Profit Organisation Use Only (NPNCU)
+    Use is limited to non-profit and non-commercial research institutions.
+
+3.6 DUO:0000019 - Publication Required (PUB)
+    Requestor agrees to make results of studies using the data available
+    to the larger scientific community through publication.
+
+3.7 DUO:0000020 - Collaboration Required (COL)
+    Requestor must agree to collaborate with the data generators or
+    stewards. The precise terms of collaboration must be documented.
+
+3.8 DUO:0000021 - Ethics Approval Required (IRB)
+    Requestor must provide documentation of local IRB/Ethics approval
+    before data access is granted or before research commences.
+
+3.9 DUO:0000022 - Geographical Restriction (GS)
+    Use is limited to within a specific geographic area. The specific
+    region must be documented.
+
+3.10 DUO:0000024 - Publication Moratorium (MOR)
+     Requestor agrees not to publish results of the research until a
+     specific date or for a specified period.
+
+3.11 DUO:0000025 - Time Limit on Use (TS)
+     Use is approved for a specific duration. After the time period,
+     requestor is expected to either destroy the data, or seek new
+     approval for continued use.
+
+3.12 DUO:0000026 - User-Specific Restriction (US)
+     Use is limited to use by approved users. Data access must be
+     individually reviewed and approved.
+
+3.13 DUO:0000027 - Project-Specific Restriction (PS)
+     Use is limited to use within an approved project. Each new project
+     using the data requires separate approval.
+
+3.14 DUO:0000028 - Institution-Specific Restriction (IS)
+     Use is limited to use by approved institutions. Only specified
+     organizations may access the data.
+
+3.15 DUO:0000029 - Return to Database/Resource (RTN)
+     Requestor must return derived/enriched data to a specified database
+     or resource.
+
+3.16 DUO:0000043 - Clinical Care Use (CC)
+     Data may be used for clinical care purposes, including diagnosis
+     and treatment decisions.
+
+3.17 DUO:0000044 - Population Research (POP)
+     Data may be used for population-level research studies.
+
+3.18 DUO:0000046 - Non-Commercial Use Only (NCU)
+     Data is restricted to non-commercial use only.
+
+============================================================================
+
+SECTION 4: HOW DUO MATCHING WORKS
+-----------------------------------
+
+4.1 Research Purpose Matching
+
+When a researcher submits a data access request, the system matches their
+research purpose against the data use restrictions tagged on datasets:
+
+  (a) A query for datasets consented for cancer research WILL NOT retrieve
+      datasets consented for lung cancer specifically, because lung cancer
+      is a subtype and the consent limits use to lung cancer only.
+
+  (b) A query for datasets consented for lung cancer research WILL retrieve
+      datasets consented for cancer broadly, as lung cancer is a subtype
+      of cancer in the disease hierarchy.
+
+4.2 Example Workflow
+
+  Step 1: A researcher describes their research purpose (e.g., "study of
+          melanoma by a non-profit institution").
+
+  Step 2: The system translates this into DUO codes:
+          - DUO:0000007 (Disease-Specific: Melanoma)
+          - DUO:0000045 (Non-profit Organisation Use Only)
+
+  Step 3: The matching algorithm finds all datasets whose DUO restrictions
+          are compatible with these codes (including parent terms in the
+          ontology hierarchy).
+
+  Step 4: Compatible datasets are returned to the researcher for access
+          request submission.
+
+============================================================================
+
+SECTION 5: DUO AND GDPR
+-------------------------
+
+5.1 Can DUO Handle GDPR Compliance?
+
+DUO is designed primarily to encode conditions of use from the consent given
+by research participants. It is NOT a GDPR compliance tool. However, DUO
+supports the principle of purpose limitation under GDPR by clearly encoding
+what the data can and cannot be used for.
+
+5.2 Relationship with Data Protection Law
+
+DUO terms are based on consent codes, not legal requirements. However, they
+complement legal frameworks by:
+  (a) Making data use conditions machine-readable and unambiguous.
+  (b) Supporting automated compliance checking against consent terms.
+  (c) Facilitating cross-border data sharing by providing a common vocabulary.
+
+============================================================================
+
+SECTION 6: MACHINE READABLE CONSENT GUIDANCE (MRCG)
+------------------------------------------------------
+
+6.1 Purpose
+
+The Machine Readable Consent Guidance (MRCG) explains how to create consent
+forms that map directly to DUO codes. This allows institutions to automate
+and expedite aspects of the data access process.
+
+6.2 Benefits
+
+  (a) Supports automation of consent collection and tracking.
+  (b) Supports automation of the data access process.
+  (c) Provides consent clause summaries and descriptions for each DUO code.
+  (d) Eliminates the need for manual interpretation of consent language.
+
+6.3 How MRCG Maps to DUO
+
+Each MRCG consent clause corresponds to one or more DUO codes:
+
+  Example Clause: "Data may be used for any type of health, medical, or
+  biomedical research."
+  -> Maps to: DUO:0000006 (Health or Medical or Biomedical Research)
+
+  Example Clause: "Data use is limited to non-profit research institutions."
+  -> Maps to: DUO:0000045 (Not for Profit Organisation Use Only)
+
+  Example Clause: "Research results must be made publicly available."
+  -> Maps to: DUO:0000019 (Publication Required)
+
+6.4 Target Users
+
+Data generators, data access committees, and data protection authorities
+should use MRCG when designing new consent forms to ensure compatibility
+with the DUO system.
+
+============================================================================
+
+NOTE: This document is a structured reference compiled from the official
+EBISPOT/DUO GitHub repository (https://github.com/EBISPOT/DUO) and GA4GH
+MRCG documentation. For the machine-readable ontology (OWL format), visit:
+http://purl.obolibrary.org/obo/duo.owl

@@ -1,0 +1,220 @@
+GA4GH Data Privacy and Security Policy (POL 001) - v2.0 Reference Summary
+Source: https://www.ga4gh.org/product/data-privacy-and-security-policy/
+
+============================================================================
+
+SECTION 1: PURPOSE AND SCOPE
+------------------------------
+
+1.1 Purpose
+
+The Data Privacy and Security Policy provides principled and practical
+guidance for sharing genomic and health-related data in a way that
+protects and promotes the confidentiality, integrity, and availability
+of data and services, and the privacy of individuals, families, and
+communities whose data are shared.
+
+1.2 Background
+
+Developments in biomedical research require a robust, proportionate,
+and flexible privacy and security policy, backed by meaningful
+monitoring and enforcement mechanisms, to ensure appropriate privacy
+protection.
+
+1.3 Scope
+
+This policy covers all genomic and health-related data that is
+collected, stored, shared, or processed for research purposes,
+including data in cloud environments and federated analysis systems.
+
+============================================================================
+
+SECTION 2: PRIVACY PRINCIPLES
+-------------------------------
+
+2.1 Purpose Limitation
+
+Data should only be collected and processed for specified, explicit,
+and legitimate purposes. Further processing should be compatible with
+the original purpose.
+
+2.2 Data Minimization
+
+Only data that is adequate, relevant, and limited to what is necessary
+for the purposes of processing should be collected and retained.
+
+2.3 Accuracy
+
+Data should be accurate and, where necessary, kept up to date.
+Reasonable steps should be taken to ensure that inaccurate data is
+erased or rectified without delay.
+
+2.4 Storage Limitation
+
+Data should be kept in a form that permits identification of data
+subjects for no longer than is necessary for the purposes of
+processing.
+
+2.5 Confidentiality and Integrity
+
+Data should be processed in a manner that ensures appropriate security,
+including protection against unauthorized or unlawful processing, and
+against accidental loss, destruction, or damage.
+
+2.6 Accountability
+
+Data controllers and processors should be accountable for and able to
+demonstrate compliance with these data privacy principles.
+
+2.7 Transparency
+
+Individuals should be informed about how their data is being collected,
+used, stored, and shared. Privacy notices should be clear, concise,
+and easily accessible.
+
+============================================================================
+
+SECTION 3: PRIVACY PROCEDURES
+-------------------------------
+
+The policy recommends thirteen areas to consider when developing data
+privacy procedures:
+
+3.1 Privacy Governance
+
+Establish a privacy governance structure including a designated privacy
+officer and a cross-functional privacy committee.
+
+3.2 Privacy Impact Assessments
+
+Conduct Privacy Impact Assessments (PIAs) before initiating new data
+processing activities or making significant changes to existing ones.
+
+3.3 Data Classification
+
+Classify data according to sensitivity levels and apply appropriate
+protections accordingly. Genomic data should typically be classified
+at a high sensitivity level.
+
+3.4 Consent Management
+
+Implement systems for recording, tracking, and managing consent
+preferences, including support for consent withdrawal.
+
+3.5 De-identification
+
+Apply de-identification techniques proportional to the risk of
+re-identification. Recognize that genomic data is inherently identifying
+and may require additional safeguards beyond standard de-identification.
+
+3.6 Data Sharing Agreements
+
+Ensure appropriate data sharing agreements are in place before releasing
+data, specifying:
+  (a) Permitted uses.
+  (b) Security requirements.
+  (c) Breach notification procedures.
+  (d) Data destruction requirements.
+  (e) Audit rights.
+
+3.7 Cross-Border Data Transfers
+
+When transferring data across national borders:
+  (a) Assess the adequacy of data protection in the destination jurisdiction.
+  (b) Use appropriate transfer mechanisms (e.g., standard contractual clauses).
+  (c) Document the legal basis for the transfer.
+
+3.8 Individual Rights
+
+Implement procedures to respond to individual rights requests, including
+access, rectification, erasure, and data portability.
+
+3.9 Breach Management
+
+Establish breach detection, investigation, and notification procedures.
+Maintain a breach register and report breaches to authorities and
+affected individuals as required by law.
+
+3.10 Training and Awareness
+
+Provide regular privacy and security training to all personnel who
+handle genomic and health-related data.
+
+3.11 Audit and Compliance Monitoring
+
+Conduct regular audits to assess compliance with privacy policies and
+applicable regulations.
+
+3.12 Third-Party Management
+
+Assess and monitor the privacy and security practices of third parties
+who process data on behalf of the organization.
+
+3.13 Data Retention and Destruction
+
+Establish data retention schedules and secure data destruction
+procedures. Retain data only as long as necessary for the specified
+purposes.
+
+============================================================================
+
+SECTION 4: SECURITY REQUIREMENTS
+----------------------------------
+
+The policy recommends three areas to consider when developing secure
+data sharing environments:
+
+4.1 Administrative Safeguards
+
+  (a) Security policies and procedures.
+  (b) Risk management programs.
+  (c) Workforce security (background checks, access authorization).
+  (d) Security incident procedures.
+  (e) Contingency planning (backup, disaster recovery).
+  (f) Security awareness training.
+
+4.2 Physical Safeguards
+
+  (a) Facility access controls.
+  (b) Workstation use and security policies.
+  (c) Device and media controls.
+  (d) Secure disposal of hardware and media.
+
+4.3 Technical Safeguards
+
+  (a) Access controls and user authentication.
+  (b) Encryption of data at rest and in transit.
+  (c) Audit controls and logging.
+  (d) Integrity controls to prevent unauthorized alteration.
+  (e) Transmission security (secure protocols, VPNs).
+  (f) Network security (firewalls, intrusion detection).
+
+============================================================================
+
+SECTION 5: CLOUD AND FEDERATED ANALYSIS
+-----------------------------------------
+
+5.1 Cloud Environments
+
+Organizations using cloud services for genomic data must:
+  (a) Assess the cloud provider's security certifications.
+  (b) Ensure data residency requirements are met.
+  (c) Implement encryption for data at rest and in transit.
+  (d) Maintain access controls and audit trails.
+  (e) Ensure contractual protections are in place.
+
+5.2 Federated Analysis
+
+When using federated analysis approaches:
+  (a) Data remains at the source institution.
+  (b) Only queries and aggregate results are transmitted.
+  (c) Privacy-preserving techniques (differential privacy, secure
+      multi-party computation) should be considered.
+  (d) Governance frameworks should address federated scenarios.
+
+============================================================================
+
+NOTE: This document is a structured reference summary compiled from the
+official GA4GH Data Privacy and Security Policy (POL 001 v2.0). For the
+official document, visit:
+https://www.ga4gh.org/product/data-privacy-and-security-policy/
