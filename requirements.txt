@@ -12,3 +12,5 @@ huggingface-hub==0.20.3
 numpy==1.26.4
 packaging==23.2
 rank-bm25==0.2.2
+langchain-openai==0.0.5
+langchain-core==0.1.52

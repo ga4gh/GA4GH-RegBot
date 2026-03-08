@@ -1,3 +1,7 @@
+# tests/test_retriever.py — GA4GH RegBot
+# Tests for hybrid retrieval pipeline (semantic + BM25)
+# Requires chroma_db/ to exist — run python ingest.py first
+
 import pytest
 from src.retrieval.retriever import load_retriever, retrieve
 from config import CHECK_QUERIES
