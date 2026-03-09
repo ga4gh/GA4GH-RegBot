@@ -1,21 +1,40 @@
-GA4GH-RegBot: Compliance Assistant
-Status: Proposal Stage for GSoC 2026
+\# GA4GH-RegBot: Compliance Assistant
 
-Overview
-RegBot is an LLM-powered tool designed to help researchers map their consent forms against GA4GH regulatory frameworks. It uses RAG (Retrieval-Augmented Generation) to flag compliance gaps automatically.
 
-Architecture (Planned)
-Core: Python
 
-LLM Framework: LangChain / LlamaIndex
+\*\*Status:\*\* Proposal Stage for GSoC 2026
 
-Vector Store: ChromaDB / FAISS
 
-UI: Streamlit
 
-Roadmap
-Phase 1: Ingest GA4GH "Framework for Responsible Sharing" policy documents.
+GA4GH-RegBot is an LLM-powered tool designed to help researchers map their consent forms against GA4GH regulatory frameworks. It uses RAG (Retrieval-Augmented Generation) to flag compliance gaps automatically.
 
-Phase 2: Build RAG pipeline for clause extraction.
 
-Phase 3: Develop Streamlit frontend for user uploads.
+
+\## Quick Start (5 minutes)
+
+
+
+```bash
+
+git clone https://github.com/ga4gh/GA4GH-RegBot.git
+
+cd GA4GH-RegBot
+
+python -m venv venv
+
+venv\\Scripts\\activate  # Windows
+
+source venv/bin/activate  # Mac/Linux
+
+pip install -r requirements.txt
+
+copy .env.example .env  # Windows
+
+cp .env.example .env  # Mac/Linux
+
+\# Edit .env with your OpenAI API key
+
+python src/main.py
+
+
+

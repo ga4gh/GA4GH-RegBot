@@ -1,9 +1,29 @@
+# LangChain: LLM orchestration and RAG framework
 langchain==0.1.0
+
+# LangChain community integrations
 langchain-community==0.0.10
+
+# ChromaDB: Vector database for semantic search
 chromadb==0.4.22
+
+# OpenAI: LLM provider
 openai==1.7.0
+
+# Streamlit: Web UI framework (for Phase 3)
 streamlit==1.30.0
-pypdf==3.17.4
+
+# Python-dotenv: Environment variable management
 python-dotenv==1.0.0
+
+# Tiktoken: Token counting for LLM
 tiktoken==0.5.2
+
+# Sentence-Transformers: Embedding models
 sentence-transformers==2.2.2
+
+# PyPDF: PDF document processing
+PyPDF==3.17.1
+
+# Pydantic: Data validation
+pydantic==2.5.0
