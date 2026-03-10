@@ -1,0 +1,55 @@
+﻿name: Auto-format and Fix Issues
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    name: Auto-fix formatting
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Run pre-commit with auto-fix
+        id: pre-commit
+        continue-on-error: true
+        run: pre-commit run --all-files
+
+      - name: Commit auto-fixes if changes made
+        if: steps.pre-commit.outcome == 'failure'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --exit-code > /dev/null; then
+            echo "No changes to commit"
+          else
+            git add -A
+            git commit -m "chore: auto-fix code quality issues [skip ci]"
+            git push
+          fi
+
+      - name: Comment on PR with fixes
+        if: steps.pre-commit.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✨ Auto-fixes applied! Black formatting, imports sorted, and lint issues fixed. Please review and pull the changes.'
+            })

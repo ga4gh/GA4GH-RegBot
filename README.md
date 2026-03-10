@@ -13,6 +13,26 @@ Vector Store: ChromaDB / FAISS
 
 UI: Streamlit
 
+## Code Quality
+
+This project uses automated tools to maintain code quality:
+
+- **Black** - Code formatting
+- **Ruff** - Linting and PEP 8 compliance
+- **isort** - Import organization
+- **mypy** - Type checking
+
+### Running Code Quality Checks
+
+```bash
+# Automatic (via pre-commit hooks)
+pre-commit install
+git commit ...
+
+# Manual
+pre-commit run --all-files
+
+
 Roadmap
 Phase 1: Ingest GA4GH "Framework for Responsible Sharing" policy documents.
 

@@ -1,0 +1,17 @@
+﻿FRAMEWORK FOR RESPONSIBLE SHARING OF GENOMIC DATA - SAMPLE EXCERPT
+
+Section 1: Study Type Classification
+- Clinical Genomic Study
+- Population Genomic Study
+- Complex Disease Study
+- Rare Disease Study
+
+Section 2: Eligibility Criteria
+- All studies must have ethics board approval
+- Study must comply with GA4GH standards
+- Data controller must sign Data Sharing Agreement
+
+Section 3: Access Management
+- Access granted only to authorized researchers
+- Multi-factor authentication required for access
+- Regular audit of data access logs (quarterly minimum)
