@@ -3,7 +3,21 @@ from config import CHROMA_PATH
 
 
 def build_vectorstore(chunks: list, embedder) -> Chroma:
-    """Embed all chunks and store in ChromaDB. Returns the vectorstore."""
+    """
+    Embed all document chunks and persist them to a local ChromaDB instance.
+
+    Takes the full list of chunks produced by ingest_all_pdfs, each carrying filename,
+    source, category, subcategory, section, and page metadata, generates vectors
+    using the provided embedder, and stores everything in ChromaDB at CHROMA_PATH.
+    Run once after ingestion - not called during compliance checking.
+
+    Args:
+        chunks: List of LangChain Document objects with metadata attached.
+        embedder: HuggingFaceEmbeddings instance from load_embedder().
+
+    Returns:
+        Persisted Chroma vectorstore instance.
+    """
     print(f"Embedding {len(chunks)} chunks and storing in ChromaDB...")
 
     vectorstore = Chroma.from_documents(
@@ -17,7 +31,20 @@ def build_vectorstore(chunks: list, embedder) -> Chroma:
     return vectorstore
 
 def load_vectorstore(embedder) -> Chroma:
-    """Load an existing ChromaDB from disk. Used by retriever.py."""
+    """
+    Load an existing ChromaDB vectorstore from disk.
+
+    Reads the persisted vectorstore at CHROMA_PATH without re-embedding.
+    Called by retriever.py at query time to initialise the semantic search
+    component of the EnsembleRetriever.
+
+    Args:
+        embedder: HuggingFaceEmbeddings instance from load_embedder().
+                  Must match the model used when the vectorstore was built.
+
+    Returns:
+        Chroma vectorstore instance ready for similarity search.
+    """
     return Chroma(
         persist_directory=CHROMA_PATH,
         embedding_function=embedder,

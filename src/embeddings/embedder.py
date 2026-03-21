@@ -3,7 +3,14 @@ from config import EMBEDDING_MODEL
 
 # Load and return the embedding model used for both indexing and search.
 def load_embedder() -> HuggingFaceEmbeddings:
-    """Initialize and return the embedding model."""
+    """
+    Load and return the embedding model specified in config.
+
+    The same instance must be passed to both build_vectorstore and load_vectorstore.
+
+    Returns:
+        HuggingFaceEmbeddings instance ready for use.
+    """
     print(f"Loading embedding model: {EMBEDDING_MODEL}")
     return HuggingFaceEmbeddings(
         model_name    = EMBEDDING_MODEL,
