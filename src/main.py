@@ -6,11 +6,12 @@ from typing import List, Optional
 # from langchain.chat_models import ChatOpenAI
 # from langchain.document_loaders import PyPDFLoader
 
+
 class RegBot:
     """
     Main class for the GA4GH Compliance Assistant.
     """
-    
+
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
         self.vector_db = None
@@ -44,8 +45,9 @@ class RegBot:
         return {
             "status": "Non-Compliant",
             "missing_elements": ["Data Use Limitation", "Cloud Storage Provision"],
-            "suggested_fix": "Add specific clause regarding secondary use of data."
+            "suggested_fix": "Add specific clause regarding secondary use of data.",
         }
+
 
 if __name__ == "__main__":
     # Entry point for testing the pipeline

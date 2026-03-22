@@ -1,0 +1,16 @@
+﻿GA4GH CONSENT POLICY - SAMPLE EXCERPT (POL 002 v2.0)
+
+Section 1: Consent Requirements
+- Individuals must provide written or electronic informed consent
+- Consent must clearly specify purposes of research
+- Consent must identify data controller and processor roles
+
+Section 2: Data Usage Limitations
+- Data should only be used for specified research purposes
+- Secondary use requires explicit re-consent unless pre-authorized
+- Data cannot be used for non-research commercial purposes
+
+Section 3: Withdrawal of Consent
+- Participants have the right to withdraw consent at any time
+- Upon withdrawal, no further data processing is permitted
+- Previously processed data cannot be retrieved (right to be forgotten applies where applicable)

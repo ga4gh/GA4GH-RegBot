@@ -1,0 +1,16 @@
+﻿GA4GH DATA PRIVACY AND SECURITY POLICY - SAMPLE EXCERPT (POL 001 v2.0)
+
+Section 1: Data Minimization
+- Only collect data necessary for the specified research purpose
+- Avoid collecting sensitive information (e.g., names, addresses) when identifiers are sufficient
+- Implement data anonymization/pseudonymization techniques
+
+Section 2: Security Standards
+- Implement encryption for data at rest and in transit (AES-256 or equivalent)
+- Use TLS 1.2 or higher for network communication
+- Maintain access logs and implement role-based access control (RBAC)
+
+Section 3: Data Retention
+- Retain data only for the period necessary to achieve research goals
+- Define clear retention schedules
+- Secure deletion of data when retention period expires
