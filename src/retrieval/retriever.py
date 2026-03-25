@@ -5,7 +5,26 @@ from src.ingestion.vector_store import load_vectorstore
 
 
 def load_retriever(semantic_k: int = 6, bm25_k: int = 6) -> EnsembleRetriever:
-    """Build and return hybrid EnsembleRetriever. Call once at startup."""
+    """
+    Build and return the hybrid EnsembleRetriever combining semantic and BM25 search.
+
+    Loads the ChromaDB vectorstore and builds two retrievers over the same chunks:
+    a semantic retriever using cosine similarity, and a BM25 retriever built from
+    the same chunks already in ChromaDB without reloading any PDFs. Results from
+    both are merged using Reciprocal Rank Fusion with equal 50/50 weighting.
+
+    This hybrid approach is necessary for legal compliance use cases where pure
+    semantic search fails to match exact legal terms like 'withdrawal', 'opt-out',
+    and 'de-identification'.
+
+    Args:
+        semantic_k: Number of candidates for the semantic retriever. Defaults to 6.
+        bm25_k:     Number of candidates for the BM25 retriever. Defaults to 6.
+
+    Returns:
+        EnsembleRetriever instance ready for compliance checking.
+    """
+
     embedder    = load_embedder()
     vectorstore = load_vectorstore(embedder)
 
@@ -34,7 +53,25 @@ def retrieve(
     subcategory: str = None,
     k:           int = 4,
 ) -> list:
-    """Run hybrid search for one compliance check. Returns top k chunks."""
+    """
+    Run hybrid search for a single compliance check and return the top k chunks.
+
+    Runs the EnsembleRetriever against the query, then filters results by
+    category and subcategory if provided. Category scopes retrieval to a document
+    group (e.g. 'foundational_principles'). Subcategory scopes to a study type context
+    (e.g. 'pediatric', 'familial'). Filtering happens post-retrieval on the
+    merged ranked results.
+
+    Args:
+        retriever:   EnsembleRetriever instance from load_retriever().
+        query:       Pre-written CHECK_QUERY string from config.py.
+        category:    Optional metadata filter for document category.
+        subcategory: Optional metadata filter for study type subcategory.
+        k:           Maximum number of chunks to return. Defaults to 4.
+
+    Returns:
+        List of up to k LangChain Document objects with metadata attached.
+    """
     results = retriever.get_relevant_documents(query)
 
     if category:
