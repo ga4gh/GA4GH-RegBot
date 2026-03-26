@@ -1,21 +1,65 @@
-GA4GH-RegBot: Compliance Assistant
-Status: Proposal Stage for GSoC 2026
 
-Overview
-RegBot is an LLM-powered tool designed to help researchers map their consent forms against GA4GH regulatory frameworks. It uses RAG (Retrieval-Augmented Generation) to flag compliance gaps automatically.
 
-Architecture (Planned)
-Core: Python
+run with this command:-
 
-LLM Framework: LangChain / LlamaIndex
+pip install -r requirements.txt
 
-Vector Store: ChromaDB / FAISS
+python main.py
 
-UI: Streamlit
 
-Roadmap
-Phase 1: Ingest GA4GH "Framework for Responsible Sharing" policy documents.
+## System Architecture
 
-Phase 2: Build RAG pipeline for clause extraction.
+```mermaid
+flowchart TD
 
-Phase 3: Develop Streamlit frontend for user uploads.
+A[GA4GH Framework PDF] --> B[PDF Loader]
+B --> C[Structural Parser]
+
+C --> D[Clause Extraction]
+
+D --> E[Metadata Model]
+
+E --> F[Document Name]
+E --> G[Section]
+E --> H[Subsection]
+E --> I[Clause Text]
+E --> J[Page Number]
+
+E --> K[LangChain Documents]
+
+K --> L[Embedding Model]
+
+L --> M[Vector Database ChromaDB]
+
+subgraph Research_Document_Analysis
+    N[Research Document Upload] --> O[Document Loader]
+    O --> P[Chunking]
+    P --> Q[Chunk Embeddings]
+end
+
+Q --> R[Semantic Similarity Matching]
+
+M --> R
+
+R --> S[Clause Matching Engine]
+
+S --> T[Compliance Gap Detection]
+
+T --> U[Present Clauses]
+T --> V[Missing Clauses]
+
+V --> W[LLM Explanation Layer]
+
+W --> X[Explain Why Clause Is Missing]
+
+U --> Y[Compliance Report]
+X --> Y
+V --> Y
+
+Y --> Z[Final Output]
+
+Z --> Z1[Compliance Score]
+Z --> Z2[Missing Requirements]
+Z --> Z3[Exact GA4GH Clause Citation]
+Z --> Z4[Recommended Remediation]
+```
