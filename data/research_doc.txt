@@ -1,0 +1,112 @@
+#
+DATA USE LETTER
+Project Title: Genomic Basis of Rare Pediatric Neurodevelopmental Disorders: A Cross-National Study
+Principal Investigator: Dr. Amara Nwosu, MD, PhD
+Institution: Leiden University Medical Center, Department of Human Genetic
+Collaborating Institutions: Children's Hospital of Nairobi, University of São Paulo Medical School
+Date: February 2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. PROJECT OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This project seeks to identify novel pathogenic variants underlying rare, undiagnosed
+neurodevelopmental disorders (NDDs) in pediatric patients across three countries:
+the Netherlands, Kenya, and Brazil. We will analyze whole-exome sequencing (WES) data
+from approximately 800 trios (proband + biological parents).
+
+The cross-national scope is specifically designed to capture the genetic diversity of
+NDD presentations across different ancestral backgrounds. All three sites have confirmed
+local ethics board approval and national data governance compliance.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. DATA REQUESTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Whole-exome sequencing data (trio format where possible)
+- Clinical phenotype data: developmental milestones, neurological assessments, MRI findings
+- Family history data (three-generation pedigrees)
+- No commercial or population-level phenotypic data is requested
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. CONSENT FRAMEWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All participants (or their legal guardians in the case of minor patients) provided
+informed consent using standardized consent forms reviewed and approved by each site's
+IRB/ethics committee:
+
+- Netherlands: LUMC Ethics Committee, Protocol #LUMC-NDD-2025-019
+- Kenya: Nairobi Hospital Ethics & Research Committee, Protocol #NHERC/2025/044
+- Brazil: Comitê de Ética em Pesquisa - USP, Protocol #CEP-HU-USP-2025-0217
+
+Consent explicitly covers:
+  (a) international data sharing for non-commercial research purposes
+  (b) future secondary use for related rare disease research
+  (c) possibility of re-contact in case of actionable incidental findings
+  (d) storage of samples and data for up to 15 years
+
+Participants were informed about their right to withdraw consent at any time.
+A mechanism for withdrawal has been implemented at each site.
+
+Participants were NOT consented for use of their data in commercial product development,
+insurance underwriting, or law enforcement.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. DATA GOVERNANCE AND SECURITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This project follows the GA4GH Framework for Responsible Sharing of Genomic and
+Health-Related Data. Data transfers comply with GDPR (EU), Kenya Data Protection
+Act 2019, and Brazil's LGPD.
+
+All genomic data is pseudonymized at source. A decryption key is held only by the
+local site coordinator and is never transferred internationally. Only pseudonymized
+data crosses borders.
+
+Data is stored on the ELIXIR federated cloud infrastructure and access is governed
+via the GA4GH Passport/Visa system. Role-based access controls are enforced, and
+access logs are audited quarterly.
+
+A Data Management Plan (DMP) has been submitted to our funder (EU Horizon Europe,
+Grant #HE-2025-RD-4471) and is available upon request.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. INCIDENTAL FINDINGS POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Clinically actionable incidental findings (as defined by the ACMG SF v3.2 list) will
+be reported back to participants via their local clinical site. Participants were
+informed of this policy during the consent process and had the option to opt out
+of receiving incidental finding reports.
+
+Non-actionable variants of uncertain significance will not be reported back unless
+specifically requested by the participant's clinical team.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. BENEFIT SHARING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Recognizing the contribution of participants in Kenya and Brazil, we commit to:
+- Publishing findings in open-access journals
+- Providing capacity-building training to local bioinformatics staff at partner sites
+- Ensuring co-authorship for local site investigators on all primary publications
+- Contributing variant data to the Global Alliance for Genomics and Health (GA4GH)
+  variant databases for the benefit of the broader research community
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. DATA SHARING PLAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Summary statistics and variant annotations will be deposited into ClinVar and the
+European Genome-phenome Archive (EGA) under controlled access upon publication.
+Individual-level data will remain under controlled access and require a formal
+data access request to the Data Access Committee (DAC).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. SIGNATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Principal Investigator: Dr. Amara Nwosu
+Institutional Officer (LUMC): Prof. H. van der Berg, Dean of Research
+Date: February 20, 2026
