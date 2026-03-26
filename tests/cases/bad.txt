@@ -1,0 +1,32 @@
+DATA USE LETTER
+
+Project Title: Genetic Study of Pediatric Disorders
+Principal Investigator: Dr. X
+Institution: Unknown Institute
+Date: 2026
+
+1. PROJECT OVERVIEW
+
+This project aims to study genetic data from children with neurological conditions.
+Data will be collected from multiple sources and analyzed to identify patterns.
+
+2. DATA
+
+We will use genomic and clinical data from patients.
+Some family history information may also be included.
+
+3. CONSENT
+
+Participants have agreed to participate in the study.
+
+4. DATA HANDLING
+
+Data will be stored on internal systems and used for analysis by the research team.
+
+5. SHARING
+
+Some results may be shared with other researchers if needed.
+
+6. OTHER
+
+Further details will be determined during the course of the project.
