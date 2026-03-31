@@ -1,5 +1,7 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_openai import ChatOpenAI
+from pypdf import PdfReader
+import os
 
 from config import (
     CHECK_QUERIES,
@@ -29,30 +31,46 @@ CHECK_SUBCATEGORY = {
 }
 
 
-def extract_text(file_path: str) -> str:
+def extract_text(file_path_or_bytes, filename: str = "") -> str:
     """
-    Extract raw text from an uploaded consent form.
+    Extract raw text from a consent form.
 
-    Supports PDF and TXT formats. For PDFs, loads page by page via
-    PyPDFLoader and joins all page content into a single string.
+    Accepts either a file path string (CLI usage) or a BytesIO object
+    (Streamlit usage). For PDFs, uses PyPDFLoader for file paths and
+    PdfReader for BytesIO objects. For TXT, reads directly from path
+    or decodes bytes.
 
     Args:
-        file_path: Path to the uploaded consent form file.
+        file_path_or_bytes: File path string or BytesIO object.
+        filename: Original filename, used to detect file type
+                  when a BytesIO object is passed.
 
     Returns:
         Full text content of the consent form as a single string.
 
     Raises:
-        ValueError: If the file type is not PDF or TXT.
+        ValueError: If the file type cannot be determined or is unsupported.
     """
-    if file_path.endswith(".pdf"):
-        loader = PyPDFLoader(file_path)
-        pages  = loader.load()
-        return " ".join([page.page_content for page in pages])
-    if file_path.endswith(".txt"):
-        with open(file_path, "r", encoding="utf-8") as f:
-            return f.read()
-    raise ValueError(f"Unsupported file type: {file_path}. Only PDF and TXT are supported.")
+    if isinstance(file_path_or_bytes, str):
+        file_path = file_path_or_bytes
+        if file_path.endswith(".pdf"):
+            loader = PyPDFLoader(file_path)
+            pages  = loader.load()
+            return " ".join([page.page_content for page in pages])
+        if file_path.endswith(".txt"):
+            with open(file_path, "r", encoding="utf-8") as f:
+                return f.read()
+        raise ValueError(f"Unsupported file type: {file_path}. Only PDF and TXT are supported.")
+
+    else:
+        name = filename.lower()
+        if name.endswith(".pdf"):
+            reader = PdfReader(file_path_or_bytes)
+            return " ".join([page.extract_text() or "" for page in reader.pages])
+        if name.endswith(".txt"):
+            return file_path_or_bytes.read().decode("utf-8")
+        raise ValueError(f"Unsupported file type: {filename}. Only PDF and TXT are supported.")
+
 
 def detect_study_type(consent_text: str) -> list:
     """
@@ -168,11 +186,11 @@ def _parse_response(response_text: str) -> list:
     return verdicts
 
 
-def run_compliance_check(file_path: str, retriever, llm: ChatOpenAI) -> list:
+def run_compliance_check(consent_text: str, retriever, llm=None) -> list:
     """
     Run the full compliance check pipeline on an uploaded consent form.
 
-    Extracts text from the form, detects study types, builds the check queue,
+    Accepts pre-extracted consent form text, detects study types, builds the check queue,
     retrieves relevant GA4GH chunks for each check, and passes everything to
     the LLM in a single call. The single LLM call design sends the consent form
     once regardless of check count, minimizing token usage.
@@ -185,7 +203,7 @@ def run_compliance_check(file_path: str, retriever, llm: ChatOpenAI) -> list:
     Returns:
         List of verdict dicts, each with keys: check, verdict, reason, citation.
     """
-    consent_text   = extract_text(file_path)
+
     detected_types = detect_study_type(consent_text)
     check_queue    = build_check_queue(detected_types)
 
@@ -194,9 +212,9 @@ def run_compliance_check(file_path: str, retriever, llm: ChatOpenAI) -> list:
 
     all_checks_formatted = []
     for check in check_queue:
-        query       = CHECK_QUERIES[check]
+        query = CHECK_QUERIES[check]
         subcategory = CHECK_SUBCATEGORY.get(check, None)
-        chunks      = retrieve(retriever, query, subcategory=subcategory)
+        chunks = retrieve(retriever, query, subcategory=subcategory)
         all_checks_formatted.append(_format_chunks(check, chunks))
 
     all_checks_with_chunks = "\n\n" + "="*60 + "\n\n".join(all_checks_formatted)
@@ -205,5 +223,14 @@ def run_compliance_check(file_path: str, retriever, llm: ChatOpenAI) -> list:
         consent_form_text=consent_text,
     )
 
-    response = llm.invoke(prompt)
-    return _parse_response(response.content)
+    backend = os.environ.get("LLM_BACKEND", "openai")
+
+    if backend == "gemini":
+        import google.generativeai as genai
+        genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+        model = genai.GenerativeModel("models/gemini-2.5-flash")
+        response = model.generate_content(prompt)
+        return _parse_response(response.text)
+    else:
+        response = llm.invoke(prompt)
+        return _parse_response(response.content)
