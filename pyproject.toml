@@ -1,0 +1,32 @@
+[project]
+name = "ga4gh-regbot"
+version = "0.0.0"
+requires-python = ">=3.10,<3.14"
+readme = "README.md"
+description = "GA4GH-RegBot compliance assistant (MVP)"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# sys.path bootstrap must run before project imports
+"src/main.py" = ["E402"]
+"src/streamlit_app.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = true
+disallow_untyped_defs = false
+no_implicit_optional = true
+explicit_package_bases = true

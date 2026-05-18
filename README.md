@@ -5,7 +5,6 @@ Overview
 RegBot is an LLM-powered tool designed to help researchers map their consent forms against GA4GH regulatory frameworks. It uses RAG (Retrieval-Augmented Generation) to flag compliance gaps automatically.
 
 What works today
-
 - **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest (chunk ids, page hints, source metadata).
 - **Hybrid retrieval**: embedding search + **BM25**, merged with reciprocal rank fusion.
 - **Compliance pass**: JSON-mode LLM via **[Ollama](https://ollama.com) by default** (e.g. `llama3`, configurable with `REGBOT_OLLAMA_MODEL`). Set `REGBOT_LLM_PROVIDER=openai` and `OPENAI_API_KEY` to use OpenAI instead. If no LLM is reachable (or on API failure), a **keyword heuristic fallback** still returns grounded chunk ids.
@@ -15,7 +14,6 @@ What works today
 - **PDF eval harness:** `eval` subcommand ingests a real GA4GH PDF and prints retrieval hits for built-in or custom queries (for manual review / building a gold set later).
 
 Quickstart (Development)
-
 - Prerequisites: **Python 3.10–3.12** (CI uses 3.11). Python 3.14 is not supported yet for the full stack (native wheels for parts of the ML/Chroma toolchain often lag).
 - Create a virtual environment and install dependencies:
 
@@ -87,7 +85,6 @@ python -m unittest discover -s tests -p "test*.py" -v
 ```
 
 Environment Variables
-
 - `REGBOT_LLM_PROVIDER`: **`ollama` (default)** — local LLM via Ollama’s OpenAI-compatible HTTP API (no OpenAI key). Set to **`openai`** to use OpenAI’s hosted API instead.
 - `OPENAI_API_KEY`: Required only when `REGBOT_LLM_PROVIDER=openai`. Model: `REGBOT_LLM_MODEL` (default `gpt-4o-mini`).
 - `REGBOT_OLLAMA_MODEL`: Tag known to Ollama (default `llama3`). Examples: `llama3`, `mistral`, `mistral:latest`.
@@ -102,7 +99,6 @@ Environment Variables
 - `REGBOT_OPENAI_MAX_RETRIES`: Retries for the **OpenAI Python client** (used for both OpenAI API and Ollama’s compatible endpoint; default `3`).
 
 Architecture (implemented vs planned)
-
 - **Core:** Python 3, package under `src/regbot/` (ingest, hybrid retrieval, compliance, optional local embedding download helpers).
 - **Embeddings:** `sentence-transformers` + Hugging Face Hub (minimal file set; ONNX-heavy artifacts skipped where possible).
 - **Vector store:** Chroma persistent files under `REGBOT_STORE/chroma` plus `manifest.json` for BM25 text.
@@ -112,13 +108,11 @@ Architecture (implemented vs planned)
 - **Optional / roadmap:** LangChain or LlamaIndex adapters on top of the same stores (not required by the current code); richer offline evaluation (Ragas, human labels); structured per-recommendation evidence (e.g. quotes).
 
 Next steps (suggested priorities)
-
 1. **Real GA4GH corpus**: ingest official PDFs, tune chunk size/overlap and hybrid fusion weights using `eval` + a small **gold query → chunk_id** list (manual or semi-automated).
 2. **Richer evidence:** optional quoted spans, stricter refusal when retrieved excerpts are insufficient (grounding and token-overlap checks are already in place for the LLM path).
 3. **Contributor experience**: **Done in-repo:** separate **Lint** workflow (Ruff check + format check), `CONTRIBUTING.md`, `.pre-commit-config.yaml`, `pyproject.toml`, `requirements-dev.txt`. **Still open:** optional CI `mypy`, broader type hints, Black-only rules if the team wants them.
 4. **Operational hardening**: **Done in-repo:** Chroma telemetry off by default (`REGBOT_CHROMA_ANONYMIZED_TELEMETRY`), client `max_retries` (`REGBOT_OPENAI_MAX_RETRIES`), clear `ValueError` when a PDF yields no extractable text. **Next:** optional request timeouts, observability hooks.
 
 Contributing
-
 - See **`CONTRIBUTING.md`** for venv setup, **Ruff** lint/format, optional **pre-commit**, and tests.
 - Open PRs against the upstream repo; keep changes scoped and tested (`python -m unittest discover -s tests -p "test*.py" -v`). Do not commit `.env`, API keys, or local `data/regbot_store/`.

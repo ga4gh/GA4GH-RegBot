@@ -1,0 +1,33 @@
+Study consent and data use agreement — SYNTHETIC EXAMPLE (not a real legal document)
+
+Title: Example Regional Biobank — Cardiometabolic Genomics Cohort (fictional)
+
+1. Purpose
+You are invited to take part in a research study led by Example University School of Medicine and affiliated hospitals. The study aims to understand genetic and environmental contributors to cardiometabolic disease. If you agree, we will collect biological samples (blood or saliva, as described at your visit), extract DNA, and generate genomic and related laboratory data.
+
+2. What we will do with your data
+Genomic data may be combined with health information from your medical records (diagnoses, medications, and routine labs) using coded identifiers. Analysts within the study team will use these data to test scientific hypotheses described in the study protocol. We may also use aggregated or summary statistics that do not identify individuals in scientific publications.
+
+3. Sharing beyond the core study team
+De-identified genomic and phenotypic datasets may be shared with approved researchers at other academic institutions for research that is consistent with this study’s scientific aims. We do not sell your personal information. Commercial partners may receive only aggregated results unless you separately agree to a specific collaboration described in an addendum.
+
+4. International data flows
+Some analysis may occur on servers located in the United States and the European Union. Where data cross borders, we apply contractual safeguards and access controls that align with our institutional policies. Detailed country-by-country transfer mechanisms are available upon request from the study office.
+
+5. Secondary use and future research
+We may seek permission to use leftover samples or data for future research that is not yet fully specified, provided it falls within broad categories approved by our research ethics committee and is compatible with the scope you authorize below. You may decline future-use options without affecting your medical care.
+
+6. Recontact
+We may contact you again if we need updated health information or if we discover findings that might be important for your health and are clinically actionable, where such return of results is offered and you have opted in.
+
+7. Withdrawal
+You may withdraw from the study at any time. If you withdraw, we will stop collecting new information. We will not be able to retrieve data that have already been shared with external researchers in de-identified form, because we cannot track those copies; we will stop new sharing where feasible.
+
+8. Identifiers and re-identification risk
+Your name and direct identifiers will be stored separately from research datasets. Research datasets will be coded. Absolute anonymity cannot be guaranteed for genomic data; we describe residual re-identification risks in the full participant information sheet.
+
+9. Cloud and IT systems
+Some processing and storage may use certified cloud services operated under agreements that require security measures and breach notification procedures. A list of subprocessors is maintained by the sponsor and updated periodically.
+
+10. Contact
+Questions may be directed to the study coordinator at the address in your participant packet.

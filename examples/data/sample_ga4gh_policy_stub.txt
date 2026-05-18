@@ -1,0 +1,10 @@
+GA4GH-style policy excerpt (synthetic, for demos only)
+
+Section A — Responsible sharing
+Researchers must document the purpose of the study, the categories of genomic data involved, and the geographic scope of sharing. Data use should be limited to the purposes described in the informed consent or data use agreement.
+
+Section B — Transparency and participant rights
+Participants should be informed about secondary uses, recontact policies, and withdrawal of consent. Where data are shared broadly, the consent should describe any international transfers and the safeguards applied (including access controls and re-identification risk management).
+
+Section C — Security
+Appropriate technical and organizational measures must protect data at rest and in transit. Cloud processing is allowed only when explicitly covered by the consent and compatible with applicable obligations.

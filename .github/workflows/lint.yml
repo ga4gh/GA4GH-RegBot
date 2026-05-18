@@ -1,0 +1,32 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Ruff
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff==0.8.4
+
+      - name: Ruff check
+        run: ruff check src tests
+
+      - name: Ruff format (check only)
+        run: ruff format --check src tests
+
+      - name: Mypy (package src.regbot)
+        run: |
+          pip install mypy==1.13.0
+          python -m mypy -p src.regbot
