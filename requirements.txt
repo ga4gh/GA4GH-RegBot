@@ -5,7 +5,7 @@ pydantic-settings>=2.0.0,<3.0.0
 openai==1.7.0
 httpx>=0.25.0,<0.28.0
 streamlit==1.30.0
-pypdf==3.17.4
+pypdf==6.10.2
 python-dotenv==1.0.0
 tiktoken==0.5.2; python_version < "3.14"
 sentence-transformers==2.2.2
