@@ -1,8 +1,12 @@
-GA4GH-RegBot: Compliance Assistant
-Status: **MVP available** — ingest, hybrid retrieval, **local-first LLM** (Ollama / Llama 3 by default) or optional OpenAI, programmatic citation checks, CLI, Streamlit, and a small PDF eval harness. Ongoing work: real-corpus evaluation, stricter evidence objects, and contributor tooling.
+### Google Summer of Code – Global Alliance for Genomics and Health ###
 
 Overview
-RegBot is an LLM-powered tool designed to help researchers map their consent forms against GA4GH regulatory frameworks. It uses RAG (Retrieval-Augmented Generation) to flag compliance gaps automatically.
+RegBot is a Global Alliance for Genomics and Health [Regulatory and Ethics Work Stream (REWS)](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/) open-source tool for compliance assistant in cross-border genomic data sharing. It complements the Alliance’s Regulatory & Ethics Toolkit by retrieving GA4GH and related policy provisions against researcher-supplied consent / data-use text and returning citation-grounded JSON for DPO, IRB, and DAC review—not compliance rulings or legal advice.
+
+Documentation
+- **`docs/DESIGN.md`** — architecture, data model, evaluation plan (GSoC design doc)
+- **`docs/corpus_manifest.yaml`** — planned regulatory corpus inventory (placeholder; documents added as they are mentor-approved)
+- **`examples/DEMO.md`** — local end-to-end demo
 
 What works today
 - **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest (chunk ids, page hints, source metadata).
@@ -58,9 +62,7 @@ python -m streamlit run src/streamlit_app.py
 python examples/run_demo.py
 ```
 
-More detail: **`examples/DEMO.md`**.
-
-Evaluate retrieval on a **real** GA4GH PDF (resets the store by default if you pass `--reset`):
+Evaluate retrieval on a **real** GA4GH PDF (use `--reset` when reloading the same corpus):
 
 ```bash
 python -m src.main eval --pdf path/to/ga4gh_policy.pdf --reset --top-k 8
@@ -107,12 +109,3 @@ Architecture (implemented vs planned)
 - **UI:** Streamlit (`src/streamlit_app.py`).
 - **Optional / roadmap:** LangChain or LlamaIndex adapters on top of the same stores (not required by the current code); richer offline evaluation (Ragas, human labels); structured per-recommendation evidence (e.g. quotes).
 
-Next steps (suggested priorities)
-1. **Real GA4GH corpus**: ingest official PDFs, tune chunk size/overlap and hybrid fusion weights using `eval` + a small **gold query → chunk_id** list (manual or semi-automated).
-2. **Richer evidence:** optional quoted spans, stricter refusal when retrieved excerpts are insufficient (grounding and token-overlap checks are already in place for the LLM path).
-3. **Contributor experience**: **Done in-repo:** separate **Lint** workflow (Ruff check + format check), `CONTRIBUTING.md`, `.pre-commit-config.yaml`, `pyproject.toml`, `requirements-dev.txt`. **Still open:** optional CI `mypy`, broader type hints, Black-only rules if the team wants them.
-4. **Operational hardening**: **Done in-repo:** Chroma telemetry off by default (`REGBOT_CHROMA_ANONYMIZED_TELEMETRY`), client `max_retries` (`REGBOT_OPENAI_MAX_RETRIES`), clear `ValueError` when a PDF yields no extractable text. **Next:** optional request timeouts, observability hooks.
-
-Contributing
-- See **`CONTRIBUTING.md`** for venv setup, **Ruff** lint/format, optional **pre-commit**, and tests.
-- Open PRs against the upstream repo; keep changes scoped and tested (`python -m unittest discover -s tests -p "test*.py" -v`). Do not commit `.env`, API keys, or local `data/regbot_store/`.
