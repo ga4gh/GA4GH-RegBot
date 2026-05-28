@@ -1,0 +1,23 @@
+# RegBot regulatory corpus inventory (placeholder — GSoC 2026 Phase 1)
+#
+# Lists documents approved for ingest. Do not commit PDFs here; record URLs,
+# licenses, and local paths used during ingest. See docs/DESIGN.md §3.1 and §5.1.
+#
+# jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL (see DESIGN.md)
+#
+# Example document entry:
+#   - document_id: ga4gh-frs
+#     title: "GA4GH Framework for Responsible Sharing"
+#     tier: P0
+#     jurisdiction: [GA4GH, INTL]
+#     framework: GA4GH
+#     source_url: https://www.ga4gh.org/...
+#     license: null
+#     ingest_path: null
+#     ingested_at: null
+#     notes: "Primary framework document"
+
+version: "0.1"
+updated: null
+
+documents: []
