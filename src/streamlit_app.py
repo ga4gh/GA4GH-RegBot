@@ -67,7 +67,9 @@ def _jurisdiction_multiselect(
     selected_labels = st.multiselect(
         label,
         options=labels,
-        default=[_JURISDICTION_UI_OPTIONS.get(c, c) for c in default if c in _JURISDICTION_UI_OPTIONS],
+        default=[
+            _JURISDICTION_UI_OPTIONS.get(c, c) for c in default if c in _JURISDICTION_UI_OPTIONS
+        ],
         help=help_text,
         key=key,
     )
@@ -85,9 +87,7 @@ def _render_chunk_cards(chunks: List[Dict[str, Any]], *, empty_hint: str) -> Non
         tag_str = ", ".join(tags) if tags else "—"
         title = f"`{ch.get('id', '')}` · {meta.get('source', '?')} p.{meta.get('page', '?')} · **{tag_str}**"
         with st.expander(title):
-            st.caption(
-                f"Category: {meta.get('category', '—')} · Jurisdiction: {tag_str}"
-            )
+            st.caption(f"Category: {meta.get('category', '—')} · Jurisdiction: {tag_str}")
             st.text((ch.get("text") or "")[:2000])
 
 
@@ -246,8 +246,7 @@ with tab_chat:
     )
     if st.session_state.get("last_jurisdictions"):
         st.caption(
-            "Last analysis jurisdictions: "
-            + ", ".join(st.session_state["last_jurisdictions"])
+            "Last analysis jurisdictions: " + ", ".join(st.session_state["last_jurisdictions"])
         )
     if not st.session_state.get("last_chunks"):
         st.info("Run **Analyze** on **Check consent** first to load chunks into this session.")
