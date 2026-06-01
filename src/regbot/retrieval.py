@@ -14,6 +14,7 @@ from src.regbot.config import (
 from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.ingestion import read_manifest
+from src.regbot.jurisdiction import jurisdiction_matches, jurisdictions_in_manifest
 from src.regbot.text_utils import tokenize
 
 
@@ -68,12 +69,18 @@ class HybridRetriever:
         self._ensure_loaded()
         return self._collection is not None and bool(self._by_id)
 
+    def list_jurisdictions(self) -> List[str]:
+        """Jurisdiction codes present in the store manifest."""
+        self._ensure_loaded()
+        return jurisdictions_in_manifest(list(self._by_id.values()))
+
     def retrieve(
         self,
         query: str,
         *,
         top_k: int = 8,
         category: Optional[str] = None,
+        jurisdiction: Optional[List[str]] = None,
         semantic_candidates: int = 24,
         bm25_candidates: int = 24,
     ) -> List[Dict[str, Any]]:
@@ -82,10 +89,12 @@ class HybridRetriever:
             return []
 
         def passes_filter(cid: str) -> bool:
-            if not category:
-                return True
             meta = self._by_id.get(cid, {}).get("metadata") or {}
-            return str(meta.get("category", "")).lower() == category.lower()
+            if category and str(meta.get("category", "")).lower() != category.lower():
+                return False
+            if jurisdiction and not jurisdiction_matches(meta, jurisdiction):
+                return False
+            return True
 
         q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
         sem = self._collection.query(

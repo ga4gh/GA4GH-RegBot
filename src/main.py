@@ -17,6 +17,7 @@ from src.regbot.compliance import analyze_compliance
 from src.regbot.config import DEFAULT_COLLECTION
 from src.regbot.eval_queries import DEFAULT_EVAL_QUERIES
 from src.regbot.ingestion import ingest_policy_file
+from src.regbot.jurisdiction import parse_jurisdiction_filter
 from src.regbot.retrieval import HybridRetriever
 from src.regbot.study_type import detect_study_type
 
@@ -64,6 +65,7 @@ class RegBot:
         *,
         reset: bool = False,
         category: Optional[str] = None,
+        jurisdiction: Optional[str] = None,
     ) -> bool:
         try:
             n = ingest_policy_file(
@@ -71,6 +73,7 @@ class RegBot:
                 self.store_dir,
                 collection_name=self.collection_name,
                 category=category,
+                jurisdiction=jurisdiction,
                 reset=reset,
             )
             return n >= 0
@@ -78,23 +81,36 @@ class RegBot:
             print(f"Ingest failed: {exc}", file=sys.stderr)
             return False
 
+    def list_store_jurisdictions(self) -> List[str]:
+        r = self._retriever_instance()
+        if not r.is_ready():
+            return []
+        return r.list_jurisdictions()
+
     def retrieve_relevant_clauses(
         self,
         user_query: str,
         *,
         top_k: int = 8,
         category: Optional[str] = None,
+        jurisdiction: Optional[List[str]] = None,
     ) -> List[Dict[str, Any]]:
         r = self._retriever_instance()
         if not r.is_ready():
             return []
-        return r.retrieve(user_query, top_k=top_k, category=category)
+        return r.retrieve(
+            user_query,
+            top_k=top_k,
+            category=category,
+            jurisdiction=jurisdiction,
+        )
 
     def compliance_report_and_chunks(
         self,
         user_consent_form: str,
         *,
         category: Optional[str] = None,
+        jurisdiction: Optional[List[str]] = None,
         top_k: int = 8,
     ) -> tuple[dict, List[Dict[str, Any]]]:
         """Same retrieval + compliance as check_compliance; also returns retrieved chunks."""
@@ -103,6 +119,7 @@ class RegBot:
             user_consent_form,
             top_k=top_k,
             category=category,
+            jurisdiction=jurisdiction,
         )
         report = analyze_compliance(
             user_consent_form,
@@ -117,11 +134,13 @@ class RegBot:
         user_consent_form: str,
         *,
         category: Optional[str] = None,
+        jurisdiction: Optional[List[str]] = None,
         top_k: int = 8,
     ) -> dict:
         report, _ = self.compliance_report_and_chunks(
             user_consent_form,
             category=category,
+            jurisdiction=jurisdiction,
             top_k=top_k,
         )
         return report
@@ -133,6 +152,7 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
         args.path,
         reset=args.reset,
         category=args.category,
+        jurisdiction=args.jurisdiction,
     )
     return 0 if ok else 1
 
@@ -141,7 +161,13 @@ def _cmd_check(args: argparse.Namespace) -> int:
     with open(args.consent, encoding="utf-8", errors="replace") as f:
         text = f.read()
     bot = RegBot(store_dir=args.store)
-    report = bot.check_compliance(text, category=args.category, top_k=args.top_k)
+    jurisdiction = parse_jurisdiction_filter(args.jurisdiction)
+    report = bot.check_compliance(
+        text,
+        category=args.category,
+        jurisdiction=jurisdiction,
+        top_k=args.top_k,
+    )
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0
 
@@ -225,6 +251,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional metadata category label (defaults to file stem).",
     )
+    pi.add_argument(
+        "--jurisdiction",
+        default=None,
+        help="Jurisdiction code for chunks (SG, CN, JP, GA4GH, …; see docs/DESIGN.md).",
+    )
     pi.set_defaults(func=_cmd_ingest)
 
     pc = sub.add_parser("check", help="Run compliance check against ingested policies.")
@@ -233,6 +264,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--category",
         default=None,
         help="If set, only retrieve chunks with this category metadata.",
+    )
+    pc.add_argument(
+        "--jurisdiction",
+        action="append",
+        default=None,
+        metavar="CODE",
+        help="Repeatable: scope retrieval to jurisdiction(s), e.g. --jurisdiction SG --jurisdiction GA4GH.",
     )
     pc.add_argument("--top-k", type=int, default=8, dest="top_k")
     pc.set_defaults(func=_cmd_check)

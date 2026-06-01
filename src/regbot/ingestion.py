@@ -15,6 +15,7 @@ from src.regbot.config import (
     chromadb_settings,
 )
 from src.regbot.embeddings import load_sentence_transformer
+from src.regbot.jurisdiction import normalize_jurisdiction
 from src.regbot.text_utils import chunk_text
 
 
@@ -76,6 +77,7 @@ def ingest_policy_file(
     collection_name: str = DEFAULT_COLLECTION,
     embedding_model_name: str = DEFAULT_EMBEDDING_MODEL,
     category: Optional[str] = None,
+    jurisdiction: Optional[str] = None,
     reset: bool = False,
 ) -> int:
     """
@@ -102,6 +104,9 @@ def ingest_policy_file(
     existing = read_manifest(store_dir) if not reset else []
     source_tag = _stable_source_id(file_path)
     base_category = category or os.path.splitext(os.path.basename(file_path))[0]
+    jurisdiction_tag = (
+        normalize_jurisdiction(jurisdiction) if jurisdiction and str(jurisdiction).strip() else None
+    )
 
     new_records: List[Dict[str, Any]] = []
     ext = os.path.splitext(file_path)[1].lower()
@@ -111,16 +116,19 @@ def ingest_policy_file(
         for piece in chunk_text(page_text):
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
+            meta: Dict[str, Any] = {
+                "source": os.path.basename(file_path),
+                "source_path": os.path.abspath(file_path),
+                "page": int(page_num),
+                "category": base_category,
+            }
+            if jurisdiction_tag:
+                meta["jurisdiction"] = jurisdiction_tag
             new_records.append(
                 {
                     "id": cid,
                     "text": piece,
-                    "metadata": {
-                        "source": os.path.basename(file_path),
-                        "source_path": os.path.abspath(file_path),
-                        "page": int(page_num),
-                        "category": base_category,
-                    },
+                    "metadata": meta,
                 }
             )
 
