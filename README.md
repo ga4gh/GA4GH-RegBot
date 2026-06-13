@@ -44,6 +44,14 @@ python -m pip install -r requirements.txt
 python -m src.main ingest --path path/to/policy.pdf --reset
 ```
 
+- Batch ingest from the corpus inventory (downloads go under `data/corpus/`; see `docs/corpus_manifest.yaml`):
+
+```bash
+python -m src.main ingest-manifest --dry-run
+python -m src.main ingest-manifest --reset
+python -m src.main ingest-manifest --tier P0 --reset
+```
+
 - Check a consent / data-use text file:
 
 ```bash

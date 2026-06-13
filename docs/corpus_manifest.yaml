@@ -1,23 +1,139 @@
-# RegBot regulatory corpus inventory (placeholder — GSoC 2026 Phase 1)
+# RegBot regulatory corpus inventory (GSoC 2026 Phase 1)
 #
-# Lists documents approved for ingest. Do not commit PDFs here; record URLs,
-# licenses, and local paths used during ingest. See docs/DESIGN.md §3.1 and §5.1.
+# Lists documents approved for ingest. Do not commit PDFs under data/corpus/;
+# record URLs, licenses, and local paths used during ingest.
+# See docs/DESIGN.md §3.1 and §5.1.
 #
-# jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL (see DESIGN.md)
+# Batch ingest:
+#   python -m src.main ingest-manifest --manifest docs/corpus_manifest.yaml
 #
-# Example document entry:
-#   - document_id: ga4gh-frs
-#     title: "GA4GH Framework for Responsible Sharing"
-#     tier: P0
-#     jurisdiction: [GA4GH, INTL]
-#     framework: GA4GH
-#     source_url: https://www.ga4gh.org/...
-#     license: null
-#     ingest_path: null
-#     ingested_at: null
-#     notes: "Primary framework document"
+# jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL
 
-version: "0.1"
-updated: null
-
-documents: []
+version: '0.1'
+updated: '2026-06-13T14:23:51+00:00'
+documents:
+- document_id: ga4gh-frs
+  title: Framework for Responsible Sharing of Genomic and Health-Related Data
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/framework/
+  license: null
+  ingest_path: data/corpus/P0/ga4gh-frs-en.pdf
+  ingested_at: null
+  notes: Download English PDF from GA4GH framework page; confirm license with mentor.
+- document_id: ga4gh-frs-v1
+  title: Framework for Responsible Sharing (document v1.0)
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/framework-for-responsible-sharing-of-genomic-and-health-related-data-sharing-v1/
+  license: null
+  ingest_path: data/corpus/P0/ga4gh-frs-v1.pdf
+  ingested_at: null
+  notes: Optional if distinct from ga4gh-frs; mentor to confirm which edition to keep.
+- document_id: rews-regulatory-ethics-toolkit
+  title: REWS Regulatory and Ethics Toolkit (selected guidance)
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: REWS
+  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  license: null
+  ingest_path: null
+  ingested_at: null
+  notes: Add ingest_path per mentor-approved REWS PDF(s) under data/corpus/P0/.
+- document_id: gdpr-consent-brief
+  title: GDPR / consent-code brief (redistributable excerpt)
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P1/gdpr-consent-brief.pdf
+  ingested_at: null
+  notes: Mentor-provided or license-permitted brief only; not full GDPR unless approved.
+- document_id: rews-regional-jurisdiction-overview
+  title: REWS Regional Jurisdiction overview (SG, CN, TW, KR, JP, HK)
+  tier: P2
+  jurisdiction:
+  - INTL
+  framework: REWS
+  source_url: null
+  license: null
+  ingest_path: Regbot Regional Jurisdiction.pdf
+  ingested_at: '2026-06-13T14:23:51+00:00'
+  notes: Index of biobanks and legal bases; supplement with per-region law excerpts
+    below.
+- document_id: sg-law-excerpt
+  title: Singapore — PDPA / HBRA excerpt
+  tier: P2
+  jurisdiction:
+  - SG
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/SG/pdpa-hbra-excerpt.txt
+  ingested_at: null
+  notes: Text-native excerpt; see Regional Jurisdiction PDF legal basis column.
+- document_id: cn-law-excerpt
+  title: Mainland China — HGR / PIPL excerpt
+  tier: P2
+  jurisdiction:
+  - CN
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/CN/hgr-pipl-excerpt.txt
+  ingested_at: null
+  notes: Mentor-approved excerpt only.
+- document_id: tw-law-excerpt
+  title: Taiwan — Human Biobank Management Act / PDPA excerpt
+  tier: P2
+  jurisdiction:
+  - TW
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/TW/biobank-pdpa-excerpt.txt
+  ingested_at: null
+  notes: Mentor-approved excerpt only.
+- document_id: kr-law-excerpt
+  title: South Korea — Bioethics and Safety Act / PIPA excerpt
+  tier: P2
+  jurisdiction:
+  - KR
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/KR/bioethics-pipa-excerpt.txt
+  ingested_at: null
+  notes: Mentor-approved excerpt only.
+- document_id: jp-law-excerpt
+  title: Japan — medical research ethics / APPI excerpt
+  tier: P2
+  jurisdiction:
+  - JP
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/JP/ethics-appi-excerpt.txt
+  ingested_at: null
+  notes: Mentor-approved excerpt only.
+- document_id: hk-law-excerpt
+  title: Hong Kong — PDPO / cross-border transfer excerpt
+  tier: P2
+  jurisdiction:
+  - HK
+  framework: national
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/HK/pdpo-excerpt.txt
+  ingested_at: null
+  notes: Mentor-approved excerpt only.

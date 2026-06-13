@@ -78,6 +78,8 @@ def ingest_policy_file(
     embedding_model_name: str = DEFAULT_EMBEDDING_MODEL,
     category: Optional[str] = None,
     jurisdiction: Optional[str] = None,
+    document_id: Optional[str] = None,
+    framework: Optional[str] = None,
     reset: bool = False,
 ) -> int:
     """
@@ -124,6 +126,10 @@ def ingest_policy_file(
             }
             if jurisdiction_tag:
                 meta["jurisdiction"] = jurisdiction_tag
+            if document_id and str(document_id).strip():
+                meta["document_id"] = str(document_id).strip()
+            if framework and str(framework).strip():
+                meta["framework"] = str(framework).strip()
             new_records.append(
                 {
                     "id": cid,
