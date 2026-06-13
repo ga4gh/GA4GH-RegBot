@@ -28,5 +28,5 @@ jobs:
 
       - name: Mypy (package src.regbot)
         run: |
-          pip install mypy==1.13.0
+          pip install mypy==1.13.0 types-PyYAML>=6.0.12
           python -m mypy -p src.regbot

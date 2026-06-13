@@ -3,3 +3,4 @@
 ruff==0.8.4
 pre-commit==3.6.0
 mypy==1.13.0
+types-PyYAML>=6.0.12

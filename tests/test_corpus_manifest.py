@@ -8,7 +8,6 @@ import unittest
 from unittest.mock import patch
 
 import yaml
-
 from src.regbot.corpus_manifest import (
     ingest_from_corpus_manifest,
     load_corpus_manifest,
