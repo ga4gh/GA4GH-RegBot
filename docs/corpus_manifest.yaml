@@ -1,23 +1,173 @@
-# RegBot regulatory corpus inventory (placeholder — GSoC 2026 Phase 1)
+# RegBot regulatory corpus inventory (GSoC 2026 Phase 1)
 #
-# Lists documents approved for ingest. Do not commit PDFs here; record URLs,
-# licenses, and local paths used during ingest. See docs/DESIGN.md §3.1 and §5.1.
+# Lists documents approved for ingest. Do not commit PDFs under data/corpus/;
+# record URLs, licenses, and local paths used during ingest.
+# See docs/DESIGN.md §3.1 and §5.1.
 #
-# jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL (see DESIGN.md)
+# Batch ingest:
+#   python -m src.main ingest-manifest --manifest docs/corpus_manifest.yaml
 #
-# Example document entry:
-#   - document_id: ga4gh-frs
-#     title: "GA4GH Framework for Responsible Sharing"
-#     tier: P0
-#     jurisdiction: [GA4GH, INTL]
-#     framework: GA4GH
-#     source_url: https://www.ga4gh.org/...
-#     license: null
-#     ingest_path: null
-#     ingested_at: null
-#     notes: "Primary framework document"
+# jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL
 
-version: "0.1"
-updated: null
-
-documents: []
+version: '0.1'
+updated: '2026-06-13T15:23:26+00:00'
+documents:
+- document_id: ga4gh-frs
+  title: Framework for Responsible Sharing of Genomic and Health-Related Data
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/framework/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-frs-en.pdf
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: FRS v3 September 2019 English PDF.
+- document_id: ga4gh-consent-policy
+  title: GA4GH Consent Policy v2.0
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-consent-policy.pdf
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: POL 002 / v2.0 September 2019; read with FRS and P1 MRCG brief.
+- document_id: rews-regulatory-ethics-toolkit
+  title: REWS Regulatory and Ethics Toolkit (selected guidance)
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: REWS
+  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  license: null
+  ingest_path: null
+  ingested_at: null
+  notes: Add ingest_path per mentor-approved REWS PDF(s) under data/corpus/P0/.
+- document_id: gdpr-genomic-research-primer
+  title: GA4GH GDPR Forum — ten key GDPR areas for genomic data sharing (primer)
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-genomic-research-primer.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Territorial scope, consent, Art 9, transfers, secondary use, DPIA overview.
+- document_id: gdpr-consent-broad-genomic-research
+  title: GA4GH GDPR Brief — broad consent for genomic research under GDPR
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-consent-broad-genomic-research.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Art 6/9 consent specificity; Recital 33 broad research consent.
+- document_id: gdpr-dpia-genomic-research
+  title: GA4GH GDPR Brief — DPIA and large-scale genomic health research
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-dpia-genomic-research.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Article 35 DPIA triggers for genomic programmes.
+- document_id: ga4gh-mrcg-consent-duo-brief
+  title: GA4GH MRCG / DUO — machine-readable consent and consent codes brief
+  tier: P1
+  jurisdiction:
+  - GA4GH
+  - EU
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/product/machine-readable-consent-guidance/
+  license: GA4GH product documentation (public)
+  ingest_path: data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Consent-code / DUO mapping for DAC review; complements P0 Consent Policy.
+- document_id: rews-regional-jurisdiction-overview
+  title: REWS Regional Jurisdiction overview (SG, CN, TW, KR, JP, HK)
+  tier: P2
+  jurisdiction:
+  - INTL
+  framework: REWS
+  source_url: null
+  license: null
+  ingest_path: data/corpus/P2/rews-regional-jurisdiction-overview.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: REWS regional index; biobanks and legal bases for SG/CN/TW/KR/JP/HK.
+- document_id: sg-law-excerpt
+  title: Singapore — PDPA / HBRA excerpt
+  tier: P2
+  jurisdiction:
+  - SG
+  framework: national
+  source_url: https://sso.agc.gov.sg/Act/PDPA2012
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/SG/pdpa-hbra-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Text-native excerpt; see Regional Jurisdiction PDF legal basis column.
+- document_id: cn-law-excerpt
+  title: Mainland China — HGR / PIPL excerpt
+  tier: P2
+  jurisdiction:
+  - CN
+  framework: national
+  source_url: http://www.gov.cn/
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/CN/hgr-pipl-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Mentor-approved excerpt only.
+- document_id: tw-law-excerpt
+  title: Taiwan — Human Biobank Management Act / PDPA excerpt
+  tier: P2
+  jurisdiction:
+  - TW
+  framework: national
+  source_url: https://law.moj.gov.tw/
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/TW/biobank-pdpa-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Mentor-approved excerpt only.
+- document_id: kr-law-excerpt
+  title: South Korea — Bioethics and Safety Act / PIPA excerpt
+  tier: P2
+  jurisdiction:
+  - KR
+  framework: national
+  source_url: https://elaw.klri.re.kr/
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/KR/bioethics-pipa-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Mentor-approved excerpt only.
+- document_id: jp-law-excerpt
+  title: Japan — medical research ethics / APPI excerpt
+  tier: P2
+  jurisdiction:
+  - JP
+  framework: national
+  source_url: https://www.mhlw.go.jp/
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/JP/ethics-appi-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Mentor-approved excerpt only.
+- document_id: hk-law-excerpt
+  title: Hong Kong — PDPO / cross-border transfer excerpt
+  tier: P2
+  jurisdiction:
+  - HK
+  framework: national
+  source_url: https://www.pcpd.org.hk/
+  license: Public statute excerpt summary (RegBot); not legal advice
+  ingest_path: data/corpus/P2/HK/pdpo-excerpt.txt
+  ingested_at: '2026-06-13T15:23:26+00:00'
+  notes: Mentor-approved excerpt only.

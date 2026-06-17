@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 
 from src.regbot.compliance import analyze_compliance
 from src.regbot.config import DEFAULT_COLLECTION
+from src.regbot.corpus_manifest import ingest_from_corpus_manifest
 from src.regbot.eval_queries import DEFAULT_EVAL_QUERIES
 from src.regbot.ingestion import ingest_policy_file
 from src.regbot.jurisdiction import parse_jurisdiction_filter
@@ -66,6 +67,8 @@ class RegBot:
         reset: bool = False,
         category: Optional[str] = None,
         jurisdiction: Optional[str] = None,
+        document_id: Optional[str] = None,
+        framework: Optional[str] = None,
     ) -> bool:
         try:
             n = ingest_policy_file(
@@ -74,12 +77,36 @@ class RegBot:
                 collection_name=self.collection_name,
                 category=category,
                 jurisdiction=jurisdiction,
+                document_id=document_id,
+                framework=framework,
                 reset=reset,
             )
             return n >= 0
         except Exception as exc:  # noqa: BLE001 — surface failure to CLI/UI
             print(f"Ingest failed: {exc}", file=sys.stderr)
             return False
+
+    def ingest_from_manifest(
+        self,
+        manifest_path: str,
+        *,
+        reset: bool = False,
+        skip_ingested: bool = True,
+        tier: Optional[str] = None,
+        dry_run: bool = False,
+    ) -> Dict[str, Any]:
+        kwargs: Dict[str, Any] = {
+            "manifest_path": manifest_path,
+            "store_dir": self.store_dir,
+            "collection_name": self.collection_name,
+            "reset": reset,
+            "skip_ingested": skip_ingested,
+            "tier": tier,
+            "dry_run": dry_run,
+        }
+        if self.embedding_model:
+            kwargs["embedding_model_name"] = self.embedding_model
+        return ingest_from_corpus_manifest(**kwargs)
 
     def list_store_jurisdictions(self) -> List[str]:
         r = self._retriever_instance()
@@ -155,6 +182,21 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
         jurisdiction=args.jurisdiction,
     )
     return 0 if ok else 1
+
+
+def _cmd_ingest_manifest(args: argparse.Namespace) -> int:
+    bot = RegBot(store_dir=args.store)
+    summary = bot.ingest_from_manifest(
+        args.manifest,
+        reset=args.reset,
+        skip_ingested=not args.force,
+        tier=args.tier,
+        dry_run=args.dry_run,
+    )
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    if summary.get("errors"):
+        return 1
+    return 0
 
 
 def _cmd_check(args: argparse.Namespace) -> int:
@@ -257,6 +299,38 @@ def build_parser() -> argparse.ArgumentParser:
         help="Jurisdiction code for chunks (SG, CN, JP, GA4GH, …; see docs/DESIGN.md).",
     )
     pi.set_defaults(func=_cmd_ingest)
+
+    pim = sub.add_parser(
+        "ingest-manifest",
+        help="Batch ingest documents from docs/corpus_manifest.yaml.",
+    )
+    pim.add_argument(
+        "--manifest",
+        default="docs/corpus_manifest.yaml",
+        help="Path to corpus inventory YAML (default: docs/corpus_manifest.yaml).",
+    )
+    pim.add_argument(
+        "--reset",
+        action="store_true",
+        help="Clear the store before the first document in this batch.",
+    )
+    pim.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-ingest entries even when ingested_at is already set.",
+    )
+    pim.add_argument(
+        "--tier",
+        default=None,
+        choices=["P0", "P1", "P2"],
+        help="Only ingest documents with this tier.",
+    )
+    pim.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="List manifest entries that would be ingested without writing to the store.",
+    )
+    pim.set_defaults(func=_cmd_ingest_manifest)
 
     pc = sub.add_parser("check", help="Run compliance check against ingested policies.")
     pc.add_argument("--consent", required=True, help="Path to consent / data-use text file.")
