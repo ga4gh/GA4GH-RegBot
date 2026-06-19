@@ -1,6 +1,6 @@
 # RegBot regulatory corpus inventory (GSoC 2026 Phase 1)
 #
-# Lists documents approved for ingest. Do not commit PDFs under data/corpus/;
+# Lists documents approved for ingest. Source files live under data/corpus/;
 # record URLs, licenses, and local paths used during ingest.
 # See docs/DESIGN.md §3.1 and §5.1.
 #
@@ -44,10 +44,34 @@ documents:
   - INTL
   framework: REWS
   source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
-  license: null
-  ingest_path: null
+  license: GA4GH public toolkit materials (not legal advice)
+  ingest_path: data/corpus/P0/rews-regulatory-ethics-toolkit.txt
   ingested_at: null
-  notes: Add ingest_path per mentor-approved REWS PDF(s) under data/corpus/P0/.
+  notes: Toolkit overview; pair with FRS and Consent Policy PDFs.
+- document_id: ga4gh-privacy-security-policy
+  title: GA4GH Privacy and Security Policy — brief
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/privacy-and-security-policy/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-privacy-security-policy-brief.txt
+  ingested_at: null
+  notes: Privacy-by-design and security expectations for shared genomic data.
+- document_id: ga4gh-data-access-committee
+  title: GA4GH Data Access Committee and responsible access — brief
+  tier: P0
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  license: GA4GH public guidance (not legal advice)
+  ingest_path: data/corpus/P0/ga4gh-data-access-committee-brief.txt
+  ingested_at: null
+  notes: DAC review, DUO alignment, cross-border access checks.
 - document_id: gdpr-genomic-research-primer
   title: GA4GH GDPR Forum — ten key GDPR areas for genomic data sharing (primer)
   tier: P1
@@ -94,6 +118,74 @@ documents:
   ingest_path: data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt
   ingested_at: '2026-06-13T15:23:26+00:00'
   notes: Consent-code / DUO mapping for DAC review; complements P0 Consent Policy.
+- document_id: ga4gh-duo-data-use-ontology
+  title: GA4GH Data Use Ontology (DUO) — brief
+  tier: P1
+  jurisdiction:
+  - GA4GH
+  - EU
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/product/data-use-ontology/
+  license: GA4GH product documentation (public)
+  ingest_path: data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt
+  ingested_at: null
+  notes: Permission/restriction terms for automated access matching.
+- document_id: gdpr-international-transfers
+  title: GA4GH GDPR Brief — international transfers of genomic data
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-international-transfers-of-genomic-and-health-related-data/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-international-transfers-genomic-research.txt
+  ingested_at: null
+  notes: GDPR Chapter V, SCCs, adequacy, cloud transfers.
+- document_id: gdpr-secondary-use
+  title: GA4GH GDPR Brief — secondary use and further processing for research
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-secondary-use-and-further-processing-of-genomic-and-health-related-data-for-scientific-research/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-secondary-use-further-processing.txt
+  ingested_at: null
+  notes: Article 5(1)(b) research exception; compatibility with original purpose.
+- document_id: gdpr-genetic-data-special-category
+  title: GA4GH GDPR Brief — genetic data as special category (Art 9)
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-genetic-and-biometric-data/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-genetic-data-special-category.txt
+  ingested_at: null
+  notes: Article 4(13), Article 9 bases and safeguards for genomic data.
+- document_id: gdpr-withdrawal-consent
+  title: GA4GH GDPR Brief — withdrawal of consent in genomic research
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-withdrawal-of-consent/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-withdrawal-consent-research.txt
+  ingested_at: null
+  notes: Article 7(3); biobank withdrawal and shared repository limits.
+- document_id: gdpr-legal-basis-without-consent
+  title: GA4GH GDPR Brief — legal bases for research without consent
+  tier: P1
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-legal-bases-for-processing-genomic-and-health-related-data-for-scientific-research/
+  license: GA4GH GDPR Brief (public; not legal advice)
+  ingest_path: data/corpus/P1/gdpr-legal-basis-research-without-consent.txt
+  ingested_at: null
+  notes: Article 9(2)(j), national research exemptions, Article 89 safeguards.
 - document_id: rews-regional-jurisdiction-overview
   title: REWS Regional Jurisdiction overview (SG, CN, TW, KR, JP, HK)
   tier: P2

@@ -1,0 +1,32 @@
+Singapore — PDPA and HBRA excerpts for genomic and health research
+Source: PDPA 2012 (https://sso.agc.gov.sg/Act/PDPA2012); HBRA 2015 (https://sso.agc.gov.sg/Act/HBRA2015)
+Tier: P2 | Jurisdiction: SG | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt; verify against current statutes and PDPC/HBRA guidance. Not legal advice.
+
+Personal Data Protection Act 2012 (PDPA) — key themes for research data
+
+Organisations must collect, use, and disclose personal data only for purposes a reasonable person would consider appropriate, with consent or another permitted basis. Personal data includes data that can identify an individual, alone or with other information.
+
+Consent: must be informed and voluntary. Organisations should tell individuals the purposes of collection, use, and disclosure, including any likely cross-border transfer. Withdrawal of consent should be facilitated where applicable.
+
+Transfer limitation obligation: organisations must not transfer personal data outside Singapore unless the receiving country or territory ensures a comparable standard of protection, or the individual has given consent after being informed of risks, or other PDPA exceptions apply. Contractual clauses and binding corporate rules are common safeguards for international research collaborations.
+
+Protection obligation and retention: reasonable security arrangements; retain personal data only as long as necessary for legal or business purposes.
+
+Human Biomedical Research Act (HBRA) — human biomedical research oversight
+
+Regulates conduct of human biomedical research in Singapore. Research involving human subjects, biological material, or personal information derived from such research may require ethics committee review and compliance with HBRA regulations.
+
+Research institutions and investigators must obtain appropriate consent for collection and use of human biological material and associated data. Secondary use and sharing for research may require ethics approval and alignment with original consent scope.
+
+Health Information Bill (HIB) — emerging framework
+
+Singapore is developing unified health information governance. Researchers sharing genomic or clinical data across healthcare and research settings should monitor HIB requirements for data sharing, custodianship, and national health information exchange.
+
+RegBot review prompts for Singapore-origin genomic data
+
+- Was PDPA consent (or deemed/other basis) obtained for collection, use, disclosure, and overseas transfer?
+- Does HBRA ethics approval cover proposed secondary use or international sharing?
+- Are transfer safeguards documented (DPA, SCC-equivalent, participant notification)?
+- Is re-identification risk from genomic data addressed in security and access controls?

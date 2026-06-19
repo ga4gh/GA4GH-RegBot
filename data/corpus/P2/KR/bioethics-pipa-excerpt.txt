@@ -1,0 +1,34 @@
+South Korea — Bioethics and Safety Act and PIPA excerpts
+Source: Bioethics and Safety Act; Personal Information Protection Act — https://elaw.klri.re.kr/
+Tier: P2 | Jurisdiction: KR | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt. Not legal advice.
+
+Bioethics and Safety Act — human subject research and genetic data
+
+Regulates human subject research, embryo/fetal research limits, and handling of human-derived materials including genetic information. Research protocols typically require institutional review board (IRB) approval.
+
+Collection and use of human tissues, genetic information, and personal data for research must align with informed consent and IRB conditions. Broad or future-use consent is permitted subject to IRB oversight and statutory requirements.
+
+Provision of human-derived materials or genetic information to third parties, including foreign institutions, generally requires consent scope covering such transfer, IRB approval, and compliance with export/security rules where applicable.
+
+National programmes (NBK, CODA, K-BDS, BIKO) operate under ministry oversight with standardised access agreements for domestic and international researchers.
+
+Personal Information Protection Act (PIPA) — cross-border transfer
+
+Personal information controllers must obtain data subject consent for cross-border transfer unless an exception applies, and inform subjects of recipient, purpose, items transferred, and retention period.
+
+Sensitive information (including health and potentially genetic data) requires separate consent for collection and use unless another basis exists. Pseudonymisation and technical safeguards are expected for large-scale genomic databases.
+
+Data Protection Commission (PIPC) guidance emphasises accountability, impact assessment for high-risk processing, and documented contracts with overseas processors.
+
+Framework Act on AI (2025/2026) — emerging relevance
+
+High-risk AI using health or biometric data may face additional transparency and risk-management duties; genomic analysis pipelines should be reviewed for alignment with AI governance rules.
+
+RegBot review prompts for Korea-origin genomic data
+
+- Valid IRB approval and consent for proposed sharing or foreign access?
+- PIPA cross-border consent and disclosure to participants completed?
+- For NBK/CODA access, do DAC conditions match researcher DUL and consent scope?
+- Any biosafety or export control issues for physical samples vs data-only transfer?

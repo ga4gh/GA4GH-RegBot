@@ -1,0 +1,32 @@
+Mainland China — Human Genetic Resources, PIPL, and Data Security Law excerpts
+Source: HGR Regulation (国务院令); PIPL; DSL — official Chinese legal databases
+Tier: P2 | Jurisdiction: CN | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt for cross-border genomic sharing review. Confirm with qualified counsel and current PRC rules. Not legal advice.
+
+Human Genetic Resources (HGR) Regulation — international cooperation and export
+
+Human genetic resources include human genetic resource materials (organs, tissues, cells containing human genome or genes) and human genetic resource information (data from materials).
+
+Foreign organisations or individuals, or PRC entities established or controlled by them, generally must not collect or preserve PRC human genetic resources within China, or supply PRC HGR abroad, without approval from relevant authorities.
+
+International scientific research cooperation involving HGR typically requires: (1) approval/filing with science and health authorities; (2) cooperation agreement with a PRC partner institution; (3) ethics review; (4) informed consent from donors; (5) plans for benefit sharing and data security.
+
+Export or open provision of HGR information to foreign parties may require security review and compliance with cross-border data transfer rules. Clinical studies, biobank sharing, and cloud analysis on overseas servers trigger HGR and cybersecurity assessments.
+
+Personal Information Protection Law (PIPL) — sensitive personal information
+
+Genomic data, health data, and biometric data are often classified as sensitive personal information. Processing requires specific purpose, necessity, and strict protection measures; separate consent may be required unless another lawful basis applies.
+
+Cross-border transfer of personal information: requires one of — (a) security assessment organised by CAC; (b) personal information protection certification; (c) standard contract with overseas recipient; (d) other mechanisms prescribed by law. Critical information infrastructure operators and large-scale processors face heightened obligations.
+
+Data Security Law (DSL)
+
+Establishes classified protection for data by importance and national security impact. Important data and core data in life sciences sectors may face localisation, security assessment, and export controls. Research platforms combining genomic and clinical datasets should document data classification and governance.
+
+RegBot review prompts for China-origin or China-accessible genomic data
+
+- Is HGR administrative approval/filing in place for collection, cooperation, or outbound sharing?
+- Does consent cover international partners and specified uses?
+- Which PIPL cross-border transfer mechanism applies?
+- Are DSL/Cybersecurity Law security assessments required before cloud or foreign analysis?

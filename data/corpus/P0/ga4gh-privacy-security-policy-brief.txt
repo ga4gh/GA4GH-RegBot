@@ -1,0 +1,40 @@
+GA4GH Privacy and Security Policy — brief for genomic data sharing review
+Source: https://www.ga4gh.org/document/privacy-and-security-policy/
+License: GA4GH document terms (public)
+Tier: P0 | Jurisdiction: GA4GH, INTL | Framework: GA4GH
+
+DISCLAIMER: RegBot navigation excerpt. Align operational controls with institutional security policies and applicable law.
+
+Policy purpose
+
+The GA4GH Privacy and Security Policy sets expectations for organisations that generate, hold, or share genomic and health-related data within the GA4GH ecosystem. It complements the Framework for Responsible Sharing (FRS) by specifying privacy-by-design and security practices for federated and cloud-based research infrastructure.
+
+Core privacy principles (summary)
+
+- Lawful basis and transparency: processing must have a defined legal or ethical basis; data subjects or participants should receive clear information about collection, use, and sharing.
+- Purpose limitation: data use should stay within purposes described at collection or approved by governance (ethics committee, DAC).
+- Data minimisation: collect and retain only what is necessary for authorised research.
+- Accuracy and quality: genomic pipelines should maintain data integrity and documented provenance.
+- Storage limitation: retention schedules and secure deletion when no longer required.
+- Accountability: designated roles for privacy, security, and access decisions.
+
+Security expectations (summary)
+
+- Access control: role-based access, authentication, and logging for sensitive genomic datasets.
+- Encryption: protection in transit and at rest appropriate to sensitivity and threat model.
+- Incident response: procedures for breach detection, notification, and remediation per applicable law.
+- Third-party processors: due diligence and contracts (DPA/MTA/DUA) for cloud, sequencing vendors, and international collaborators.
+- Re-identification risk: treat genomic data as potentially identifiable even when pseudonymised; apply controlled-access models.
+
+Link to cross-border sharing
+
+International transfers should combine GA4GH security baselines with jurisdiction-specific rules (GDPR Chapter V, PDPA transfer limitation, PIPL cross-border mechanisms, APPI foreign transfer consent, etc.). Security alone does not substitute for legal transfer basis.
+
+RegBot review prompts
+
+- Does the protocol describe access controls and encryption for genomic data at each processing location?
+- Are cloud regions and subprocessors listed for participant notification / consent alignment?
+- Is there a documented incident-response path spanning international partners?
+- Do MTA/DUA terms require GA4GH-aligned security or accreditation (e.g. ISO 27001, GA4GH standards)?
+
+Related: FRS (P0), Consent Policy (P0), REWS Toolkit overview (P0).

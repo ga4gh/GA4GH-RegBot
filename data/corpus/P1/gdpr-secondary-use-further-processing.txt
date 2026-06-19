@@ -1,0 +1,41 @@
+GA4GH GDPR Forum Policy Brief — Secondary use and further processing of genomic data for research under the GDPR
+Source: https://www.ga4gh.org/news_item/gdpr-brief-secondary-use-and-further-processing-of-genomic-and-health-related-data-for-scientific-research/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+
+Summary
+
+Biobanks and genomic repositories often seek to use data collected for one study in new research projects ("secondary use" or "further processing"). The GDPR permits further processing for scientific research in many cases, but purpose limitation and transparency requirements apply.
+
+Purpose limitation and research exception (Article 5(1)(b))
+
+Personal data must be collected for specified, explicit, and legitimate purposes and not further processed in a manner incompatible with those purposes. Further processing for scientific research purposes shall not be considered incompatible with the initial purpose, subject to appropriate safeguards.
+
+Implications for genomic research
+
+- Original consent may authorise broad "genomic and health-related research" with ethics oversight, supporting secondary projects within that scope.
+- Uses outside original scope (e.g. commercial product development if not consented, new population, identifiable linkage with unrelated datasets) may require new legal basis or consent.
+- Pseudonymisation and access controls are expected safeguards for secondary research databases.
+
+Lawful bases for secondary research (Articles 6 and 9)
+
+- Consent (Articles 6(1)(a) and 9(2)(a)) — including broad consent per Recital 33.
+- Scientific research (Article 9(2)(j)) — processing necessary for scientific research per Union or Member State law, with proportionate safeguards.
+- Public interest in public health (Article 9(2)(i)) — where applicable under national law.
+
+Ethics committee role
+
+WP29/EDPB guidance emphasises that ethics review provides ongoing oversight for unspecified future research, complementing GDPR accountability. Secondary use proposals should document compatibility with original purpose, consent scope, and minimisation.
+
+RegBot review prompts
+
+- Does consent or ethics approval cover the new research question and data linkage proposed?
+- Is further processing still within "scientific research" and original purpose, or a new purpose requiring new basis?
+- Are safeguards (pseudonymisation, DAC access, publication rules) documented for secondary database use?
+- If combining cohorts cross-border, is compatibility assessed for each source consent?
+
+Relevant provisions: Article 5(1)(b), Recital 33, Article 6, Article 9(2)(j), Article 89(1) (research safeguards).
+
+Related: gdpr-consent-broad-genomic-research.txt, ga4gh-mrcg-consent-duo-brief.txt.

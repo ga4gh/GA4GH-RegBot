@@ -1,0 +1,45 @@
+REWS Regional Jurisdiction Overview — East Asia biobanks and legal bases
+Source: GA4GH REWS regional scope (RegBot Phase 1 corpus index)
+Tier: P2 | Jurisdiction: INTL | Framework: REWS
+
+DISCLAIMER: Index for RegBot retrieval only; not legal advice. Pair with per-region excerpt files.
+
+Singapore (SG)
+National programmes: National Precision Medicine (SG10K, PRECISE SG100K, SG INSIGHT).
+Legal basis: Personal Data Protection Act 2012 (PDPA); Human Biomedical Research Act (HBRA); Health Information Bill (HIB).
+See: data/corpus/P2/SG/pdpa-hbra-excerpt.txt
+
+Mainland China (CN)
+Programmes: China Kadoorie Biobank, China National GeneBank, NGDC, precision medicine initiatives.
+Legal basis: Human Genetic Resources Regulation; PIPL; Data Security Law; HGR Management Measures.
+See: data/corpus/P2/CN/hgr-pipl-excerpt.txt
+
+Taiwan (TW)
+Programmes: Taiwan Biobank, Taiwan Precision Medicine Initiative (TPMI), NBCT.
+Legal basis: Human Biobank Management Act; Personal Data Protection Act (PDPA).
+See: data/corpus/P2/TW/biobank-pdpa-excerpt.txt
+
+South Korea (KR)
+Programmes: National Biobank of Korea, KOBIC/K-BDS, BIKO, K-gNBS.
+Legal basis: Bioethics and Safety Act; Personal Information Protection Act (PIPA); AI Framework Act (2025/26).
+See: data/corpus/P2/KR/bioethics-pipa-excerpt.txt
+
+Japan (JP)
+Programmes: Biobank Japan, Tohoku Megabank, NCBN, Genomic Medicine Japan (GeMJ).
+Legal basis: Ethical Guidelines for Medical and Health Research Involving Human Subjects; APPI; Act on Promotion of Genomic Medicine (2023).
+See: data/corpus/P2/JP/ethics-appi-excerpt.txt
+
+Hong Kong (HK)
+Programmes: Hong Kong Genome Project.
+Legal basis: Personal Data (Privacy) Ordinance (PDPO); cross-border transfer Section 33 (not yet in force); PCPD model clauses.
+See: data/corpus/P2/HK/pdpo-excerpt.txt
+
+Cross-border review checklist: identify source jurisdiction, consent scope, transfer mechanism, ethics/IRB pathway, and whether genetic/health data triggers special-category rules in destination country.
+
+Related RegBot corpus (by tier)
+
+P0 — GA4GH framework: ga4gh-frs-en.pdf, ga4gh-consent-policy.pdf, rews-regulatory-ethics-toolkit.txt, ga4gh-privacy-security-policy-brief.txt, ga4gh-data-access-committee-brief.txt
+
+P1 — GDPR and consent codes: gdpr-genomic-research-primer.txt, gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt, gdpr-international-transfers-genomic-research.txt, gdpr-secondary-use-further-processing.txt, gdpr-genetic-data-special-category.txt, gdpr-withdrawal-consent-research.txt, gdpr-legal-basis-research-without-consent.txt, ga4gh-mrcg-consent-duo-brief.txt, ga4gh-duo-data-use-ontology-brief.txt
+
+P2 — This index plus per-region excerpts under SG/, CN/, TW/, KR/, JP/, HK/

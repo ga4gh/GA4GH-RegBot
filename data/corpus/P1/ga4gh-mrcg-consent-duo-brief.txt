@@ -1,0 +1,33 @@
+GA4GH Machine Readable Consent Guidance (MRCG) — Brief for Consent Codes and Data Use Ontology (DUO)
+Source: https://www.ga4gh.org/product/machine-readable-consent-guidance/
+License: GA4GH product documentation (public)
+Tier: P1 | Jurisdiction: GA4GH, EU, INTL | Framework: GA4GH
+
+DISCLAIMER: Summary for RegBot corpus ingest. Align consent language with institutional ethics review and applicable law (including GDPR where relevant).
+
+Purpose
+
+The Machine Readable Consent Guidance (MRCG), co-developed by GA4GH DURI and REWS Work Streams, explains how to draft consent forms that map to the Data Use Ontology (DUO). Machine-readable consent supports automated, consistent data access decisions while respecting participant authorisations.
+
+Why consent codes matter for cross-border sharing
+
+When genomic datasets move across institutions and borders, Data Access Committees (DACs) must verify that a researcher's intended use aligns with participant consent. Ambiguous consent language increases review burden and transfer risk. DUO provides standard codes specifying permitted uses (e.g. general research use, disease-specific, commercial use restrictions, geographic limits).
+
+MRCG three-part structure
+
+1. Short consent clause — summary description of data use terms in plain language for participants.
+2. Detailed explanation — expands the meaning of each data use term.
+3. Optional appendix — maps consent language to DUO codes for machine-readable attachment to datasets.
+
+Link to GDPR and broad consent
+
+GA4GH GDPR Briefs note that human-readable consent using standard language on data sharing and linkage is a prerequisite for translating consent into machine-readable form. Broad consent for genomic research may be GDPR-permissible when supplemented with clear categories of uses, safeguards, and recipient types — MRCG/DUO operationalises those categories for access control.
+
+Practical checks for consent / DUL review
+
+- Does the consent clause specify whether international sharing is permitted?
+- Are secondary/future uses described at an appropriate level of generality with ethics oversight?
+- Can each restriction (commercial use, publication moratorium, geographic limit) be mapped to a DUO term?
+- Are withdrawal and recontact procedures stated?
+
+Related GA4GH products: Consent Policy (P0), Consent Toolkit clauses, DUO (DURI Work Stream).

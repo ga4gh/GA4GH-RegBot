@@ -1,0 +1,34 @@
+Japan — research ethics guidelines, APPI, and Genomic Medicine Act excerpts
+Source: MHLW ethical guidelines; APPI; Act on Promotion of Genomic Medicine (2023)
+Tier: P2 | Jurisdiction: JP | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt. Not legal advice.
+
+Ethical Guidelines for Medical and Health Research Involving Human Subjects
+
+Joint MEXT/MHLW/METI guidelines govern ethical conduct of medical and health research. Genomic research involving human samples or identifiable data requires review by an certified research ethics committee (REC/IRB).
+
+Informed consent must explain purpose, methods, risks, and whether samples/data may be stored for future research or shared with third parties domestically or abroad. Broad consent for unspecified future research is permitted under conditions including ethics oversight and public benefit.
+
+Opt-out and information provision models apply in limited circumstances for archival data; cross-border sharing generally expects explicit consent or legal authorisation documented in ethics review.
+
+Act on the Protection of Personal Information (APPI) — cross-border transfer
+
+Personal information handlers must specify purpose of use and obtain consent where required. Personal data requiring consideration (including health information) needs heightened care.
+
+Transfer of personal data to third parties in foreign countries requires: (1) consent after informing data subject of foreign privacy system and safeguards; or (2) recipient in country with equivalent protection; or (3) standard contractual clauses approved by PPC; or (4) binding corporate rules, among other mechanisms.
+
+Anonymised or pseudonymised genomic datasets may still be personal information if re-identification is possible; cloud analysis outside Japan triggers transfer rules.
+
+Act on Promotion of Genomic Medicine (2023)
+
+Establishes national framework for safe genomic medicine and research infrastructure (including GeMJ platform). Emphasises secure data linkage, quality-controlled sharing for research and clinical application, and coordination across designated medical institutions.
+
+Major biobanks: Biobank Japan, Tohoku Megabank, NCBN — access via material/data transfer agreements and ethics approval.
+
+RegBot review prompts for Japan-origin genomic data
+
+- REC approval covers international collaboration and cloud jurisdiction?
+- APPI transfer mechanism documented (consent disclosure, SCC, adequacy)?
+- If using broad/future-use consent, are ethics conditions and public information duties met?
+- GeMJ or hospital MTA/DUA limits compatible with researcher protocol?

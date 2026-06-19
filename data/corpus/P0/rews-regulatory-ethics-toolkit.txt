@@ -1,0 +1,49 @@
+GA4GH Regulatory and Ethics Work Stream (REWS) — Regulatory & Ethics Toolkit overview
+Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+License: GA4GH public toolkit materials (not legal advice)
+Tier: P0 | Jurisdiction: GA4GH, INTL | Framework: REWS
+
+DISCLAIMER: RegBot navigation summary of REWS toolkit scope. Does not replace mentor, DPO, IRB, or DAC review.
+
+Purpose of the Regulatory & Ethics Toolkit
+
+The GA4GH Regulatory and Ethics Work Stream (REWS) develops practical guidance for responsible genomic and health-related data sharing across borders. The Regulatory & Ethics Toolkit helps researchers, biobanks, Data Access Committees (DACs), and institutions align study consent, data-use language, and governance with international norms and jurisdiction-specific requirements.
+
+Toolkit components relevant to RegBot navigation
+
+1. Framework for Responsible Sharing (FRS) — foundational principles: respect for persons, privacy, data quality, transparency, accountability, and security. See P0 ga4gh-frs-en.pdf.
+
+2. Consent Policy and Consent Toolkit — standard clauses for collection, use, sharing, withdrawal, and recontact. See P0 ga4gh-consent-policy.pdf and P1 MRCG/DUO brief.
+
+3. Machine Readable Consent Guidance (MRCG) and Data Use Ontology (DUO) — map human-readable consent to machine-readable access codes for DAC review.
+
+4. GDPR Forum Policy Briefs — EU-focused primers on consent, DPIA, transfers, and research processing (P1 corpus).
+
+5. Regional Jurisdiction resources — East Asia legal basis index and per-country excerpts (P2 corpus: SG, CN, TW, KR, JP, HK).
+
+How REWS guidance supports cross-border genomic sharing review
+
+Researchers preparing international collaborations should:
+- Identify source jurisdiction(s) for samples and data (see P2 regional excerpts).
+- Compare consent / data-use language against GA4GH Consent Policy themes (purpose, sharing, secondary use, withdrawal, recontact).
+- Check whether proposed use fits participant authorisation and DUO codes where datasets are coded.
+- Document transfer mechanisms (contractual, adequacy, consent-based) for each destination country.
+- Route ambiguous cases to institutional ethics review and, where applicable, DPO or DAC.
+
+REWS relationship to institutional governance
+
+REWS materials inform but do not replace:
+- Institutional Review Boards / Research Ethics Committees
+- Data Protection Officers and privacy impact assessments
+- Data Access Committees and material/data transfer agreements
+- National competent authorities (HGR approval in China, HBRA in Singapore, etc.)
+
+RegBot review prompts (REWS-aligned)
+
+- Does the study protocol cite applicable GA4GH framework principles (FRS pillars)?
+- Is consent language consistent with GA4GH Consent Policy on international sharing and future research?
+- Are DUO/consent-code restrictions respected for the requested data use?
+- For multi-jurisdiction flows, has each leg (export, import, cloud processing) been mapped to a legal basis?
+- Is there an escalation path when retrieval confidence is low (human review, not automated compliance)?
+
+Related corpus paths: data/corpus/P0/ga4gh-frs-en.pdf, ga4gh-consent-policy.pdf; data/corpus/P1/*; data/corpus/P2/rews-regional-jurisdiction-overview.txt

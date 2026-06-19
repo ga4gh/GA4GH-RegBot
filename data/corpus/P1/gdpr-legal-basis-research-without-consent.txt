@@ -1,0 +1,40 @@
+GA4GH GDPR Forum Policy Brief — Legal bases for processing genomic research data without consent under the GDPR
+Source: https://www.ga4gh.org/news_item/gdpr-brief-legal-bases-for-processing-genomic-and-health-related-data-for-scientific-research/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. National implementing law varies; not legal advice.
+
+Summary
+
+While consent is widely used in genomic research, the GDPR permits other Article 6 and Article 9 bases in defined circumstances. Member States may provide specific research exemptions under Article 89 and national health/research law.
+
+Article 6 bases (non-special-category processing)
+
+(e) Public task — public authority or task in public interest.
+(f) Legitimate interests — rarely sole basis for large-scale genomic databases; requires balancing test and usually not for special category without Article 9 basis.
+
+Article 9 bases without consent (selected)
+
+(j) Scientific research — processing necessary for scientific or historical research or statistical purposes in accordance with Article 89(1), based on Union or Member State law, proportionate to aim, with respect for essence of right to data protection.
+(i) Public interest in public health — for threats or ensuring high standards of health care/medicinal products, per Member State law.
+(h) Health or social care — processing by or under responsibility of professional subject to professional secrecy.
+
+National research exemptions
+
+Many EU Member States adopt legislation allowing biobank and registry processing for research with ethics approval, transparency duties, and opt-out instead of opt-in for certain archival health data. Applicability depends on local law — RegBot flags for human review when consent is absent.
+
+Safeguards under Article 89(1)
+
+Pseudonymisation where possible; technical and organisational measures; data minimisation; ethics review; proportionality; conditions for international transfers still apply under Chapter V.
+
+RegBot review prompts
+
+- If consent is not relied upon, which Article 6 and Article 9 bases apply and under what national law?
+- Is ethics approval documented as substitute or complement to consent?
+- Are Article 89 safeguards (pseudonymisation, access control) described?
+- Does absence of consent affect international transfer options?
+
+Relevant provisions: Articles 6, 9(2)(i)(j), Article 89, Recital 159.
+
+Related: gdpr-consent-broad-genomic-research.txt, gdpr-secondary-use-further-processing.txt.

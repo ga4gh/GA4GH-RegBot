@@ -1,0 +1,43 @@
+GA4GH GDPR Forum Policy Brief — International transfers of genomic and health-related data under the GDPR
+Source: https://www.ga4gh.org/news_item/gdpr-brief-international-transfers-of-genomic-and-health-related-data/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Verify current EDPB guidance and Schrems II requirements.
+
+Summary
+
+Genomic research is inherently international. EU-based controllers and processors frequently transfer personal data (including genetic and health data) to collaborators, cloud providers, and repositories outside the European Economic Area (EEA). Chapter V of the GDPR governs such transfers.
+
+When transfers are restricted
+
+Article 44: any transfer of personal data to a third country or international organisation may take place only if the conditions of Chapter V are complied with — adequacy decision, appropriate safeguards, or derogations.
+
+Special category data (Article 9): genetic and health data require an Article 9 lawful basis in addition to transfer compliance. Consent, substantial public interest with Member State law, or scientific research with safeguards are common research contexts.
+
+Transfer mechanisms used in genomic research
+
+1. Adequacy decisions — Commission finds third country ensures adequate protection (e.g. certain territories; list evolves).
+
+2. Standard Contractual Clauses (SCCs) — EU Commission-approved clauses between exporter and importer; post-Schrems II requires Transfer Impact Assessment (TIA) documenting supplementary measures if local law may impede protection.
+
+3. Binding Corporate Rules (BCRs) — for multinational research institutions with internal transfers.
+
+4. Explicit consent — Article 49(1)(a) derogation: data subject explicitly consents after being informed of transfer risks; generally not preferred as primary basis for systematic research transfers but may apply in limited cases.
+
+5. Public interest / research derogations — Article 49(1)(d) or (g) in non-repetitive transfers; Member State law may authorise transfers for important public interest or legal claims.
+
+Cloud and sequencing vendors
+
+Genomic pipelines often use US or global cloud regions. Controllers must identify subprocessors, document SCCs or other mechanisms, and assess whether foreign surveillance laws require encryption, pseudonymisation, or EU-only processing as supplementary measures.
+
+RegBot review prompts
+
+- Is the destination country identified and covered by adequacy, SCCs, or another Chapter V tool?
+- Has a Transfer Impact Assessment been completed for US or non-adequate destinations?
+- Does participant consent / ethics approval describe international sharing and recipient categories?
+- Are onward transfers (subprocessors, federated analysis) covered in DPA/MTA chain?
+
+Relevant provisions: Articles 44–49, Recital 112, EDPB Recommendations 01/2020 on supplementary measures.
+
+Related: gdpr-genomic-research-primer.txt, regional P2 transfer excerpts.
