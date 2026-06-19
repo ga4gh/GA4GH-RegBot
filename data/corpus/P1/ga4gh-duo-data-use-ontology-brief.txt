@@ -1,0 +1,45 @@
+GA4GH Data Use Ontology (DUO) — brief for access control and consent mapping
+Source: https://www.ga4gh.org/product/data-use-ontology/ ; DUO documentation (DURI Work Stream)
+License: GA4GH product documentation (public)
+Tier: P1 | Jurisdiction: GA4GH, EU, INTL | Framework: GA4GH
+
+DISCLAIMER: Summary for RegBot corpus. Pair with MRCG brief and institutional DAC procedures.
+
+What is DUO?
+
+The Data Use Ontology (DUO) is a standardised vocabulary of terms describing permissions and restrictions on human-subjects data. It enables automated matching between researcher requests and dataset consent limitations, supporting responsible sharing at scale.
+
+Permission terms (examples)
+
+- GRU (General Research Use) — research use unrelated to specific disease or population.
+- HMB (Health/Medical/Biomedical Research) — research on health, medical care, or biomedical topics.
+- DS (Disease-specific) — modifier requiring research on specified disease (e.g. DS:MONDO:0005148 for type 2 diabetes).
+
+Restriction terms (examples)
+
+- NPU (No commercial use) — prohibits use primarily intended for commercial advantage.
+- NCU (No copyright restriction) — publication moratorium or copyright limits may apply per dataset policy.
+- GSO (Geographic location) — research limited to specific countries or regions.
+- IRB (Ethics approval required) — applicant must demonstrate ethics committee approval.
+- PUB (Publication required) — results must be published or made available.
+- COL (Collaboration required) — collaboration with data generator required.
+
+How DUO links to consent and GDPR
+
+Human-readable consent forms should express the same permissions/restrictions that are encoded as DUO tags on datasets (see MRCG). DACs verify applicant proposals against DUO. Under GDPR, DUO supports transparency and purpose limitation by documenting authorised use categories.
+
+Cross-border workflow
+
+1. Dataset deposited with DUO tags reflecting participant consent.
+2. Researcher submits access request with proposed use.
+3. DAC checks DUO compatibility, ethics approval, and transfer compliance.
+4. Approved access recorded; violations trigger audit or revocation.
+
+RegBot review prompts
+
+- Are DUO tags attached or inferable from consent / DUL language?
+- Does proposed use violate NPU, GSO, or disease-specific modifiers?
+- Is IRB/ethics approval required by DUO and satisfied?
+- For federated analysis across countries, do geographic restrictions (GSO) block any processing location?
+
+Related: ga4gh-mrcg-consent-duo-brief.txt, ga4gh-data-access-committee-brief.txt (P0).

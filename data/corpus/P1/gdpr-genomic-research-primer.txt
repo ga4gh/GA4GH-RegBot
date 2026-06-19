@@ -1,0 +1,33 @@
+GA4GH GDPR Forum — Primer: Ten Key GDPR Areas for International Genomic and Health-Related Data Sharing
+Source: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/
+License: GA4GH GDPR Brief (public; not legal advice — see disclaimer on source page)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: This text is excerpted for RegBot corpus ingest from GA4GH public GDPR Briefs. It does not constitute legal advice.
+
+The General Data Protection Regulation (GDPR) took full legal effect across the European Union on 25 May 2018. It has significant implications for international health research involving the collection, use, and cross-border sharing of personal data, including genomics research.
+
+The GA4GH Health Data Sharing, Privacy, and Regulatory Forum (formerly GDPR Forum) published an introductory primer highlighting ten key areas of the GDPR that affect international health research and genomic data sharing:
+
+1. Territorial scope — When GDPR applies to processing activities, including research conducted outside the EU that targets or monitors individuals in the EU.
+
+2. Transparency and accountability — Controllers must provide clear information to data subjects and demonstrate compliance with GDPR principles.
+
+3. Data protection by design and by default — Technical and organisational measures must integrate privacy protections from the outset of processing systems.
+
+4. Data protection impact assessments (DPIAs) — Required before processing likely to result in high risk to rights and freedoms; large-scale genomic health research typically triggers DPIA obligations.
+
+5. Data Protection Officers (DPOs) — Certain controllers and processors must designate a DPO with expert knowledge of data protection law and practices.
+
+6. Consent — Must be freely given, specific, informed, and unambiguous. Special rules apply when consent is the legal basis for processing genomic and health-related data (special categories under Article 9).
+
+7. Processing special categories of personal data — Genetic data, biometric data, and data concerning health require an Article 9 lawful basis in addition to an Article 6 basis. Consent is one permitted basis; Member State law may authorise processing for scientific research subject to safeguards.
+
+8. Data subject rights and research derogations — Rights include access, rectification, erasure, restriction, portability, and objection. Research contexts may qualify for limited derogations where rights would seriously impair research objectives, subject to conditions and safeguards.
+
+9. Secondary use and further processing — Further processing for scientific research may be compatible with the original purpose if appropriate safeguards exist. Broad consent for research may be permissible under Recital 33 when subject to ethical standards and oversight.
+
+10. International data transfer — Transfer of personal data outside the EU/EEA requires an adequacy decision, appropriate safeguards (e.g. Standard Contractual Clauses), or a derogation. Cross-border genomic data sharing must address transfer mechanisms explicitly.
+
+Official GDPR text: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679
+More GA4GH GDPR Briefs: https://www.ga4gh.org/product/gdpr-international-health-data-sharing-forum/

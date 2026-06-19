@@ -1,0 +1,41 @@
+GA4GH GDPR Forum Policy Brief — Is "consent for genomic and health-related research" specific enough under the GDPR?
+Source: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/
+Author: Edward Dove (University of Edinburgh) | Date: 2 Dec 2019
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+
+Summary
+
+There is emerging consensus in the genomic research community that "broad consent" is ethically and legally permissible, subject to external and ongoing oversight (e.g. ethics committee approval and monitoring). Broad consent means a participant explicitly consents to use of their data and/or samples for a defined range of future research projects.
+
+GDPR consent definition (Article 4(11))
+
+Consent is "any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her."
+
+Articles 6(1)(a) and 9(2)(a) require consent for one or more specific (Art 6) or specified (Art 9) purposes. At first glance this might suggest broad consent such as "consent for genomic and health-related research" is insufficient.
+
+Arguments supporting broad consent under GDPR
+
+- Recital 33 permits consent to certain areas of scientific research when subject to generally accepted ethical standards and ethics committee assessment.
+- Under purpose limitation (Article 5(1)(b)), further processing for scientific research is for "specified, explicit and legitimate purposes."
+- "Scientific research" and especially "genomic and health-related research" may constitute a well-defined purpose without listing every future sub-study.
+- Article 29 Working Party (WP29) guidance: purposes that cannot be fully specified at the outset may be described at a more general level (Recital 33 exception), though a well-described purpose must still appear in consent.
+
+Explicit consent and future controllers
+
+Article 9 requires explicit consent for special category data. Explicitness relates to evidencing consent, not necessarily narrowing scope. A participant may agree to a research project describing a broad methodology with safeguards for unknown future applications.
+
+Recital 42 requires the data subject to be aware at least of the identity of the controller. For unknown future recipients, naming categories of controllers and processors may suffice where individual researchers cannot yet be identified.
+
+Conclusion for reviewers
+
+A reasonable interpretation is that "consent for genomic and health-related research" likely is specific enough under the GDPR, provided broad consent is supplemented by:
+- categories of data-processing methods;
+- safeguards mitigating risks of those methods;
+- categories of potential data recipients (controllers/processors).
+
+Relevant GDPR provisions: Recital 33, Recital 42, Article 4(11), Article 5(1)(b), Article 6(1)(a), Article 9(2)(a).
+
+Further reading cited in original brief: WP29 Guidelines on consent (WP259); Council of Europe Recommendation CM/Rec(2019)2 on health-related data.

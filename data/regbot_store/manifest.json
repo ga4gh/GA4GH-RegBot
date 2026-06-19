@@ -1,0 +1,1187 @@
+{
+  "chunks": [
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p1_c0",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \n  POL 002 / v 2.0:  September 2019\n \n \nGlobal Alliance for Genomics and Health:\n \n \nConsent Policy\n \nPreamble\n \nThis Policy aims to guide the sharing of genomic and health-related data in a way that supports\n \nthe autonomous decision-making of data subjects while promoting the common good of\n \ninternational data sharing, allowing everyone to share in the benefits of scientific progress and its\n \napplications as is their right. It builds on the GA4GH \n​\nFramework for Responsible Sharing of\n \nGenomic and Health-Related Data\n​\n (“\n​\nFramework\n​\n”), and should be read in combination with\n \nother GA4GH Policies.\n \n \n \nI.\nContext\n \n \n1.\nBackground\n​\n. Informed consent is a bedrock principle underlying the ethical conduct of\n \nclinical practice and health research involving humans. Seeking data subjects’ consent to\n \ninternational data sharing shows respect for their abi",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 1,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p1_c1",
+      "text": "f\n \nclinical practice and health research involving humans. Seeking data subjects’ consent to\n \ninternational data sharing shows respect for their ability to make their own decisions, and\n \nupholds the trust essential for the effective practice of medicine and research. Consent, in any\n \nform it takes, will only be valid if freely given by a capable data subject (or the legal\n \nrepresentative) who has had enough time, materials, and support to make an informed\n \ndecision. Data may be accessed and re-used long after consent has been given, yet it may not\n \nbe possible to fully specify the scope of data sharing at the time of that consent. Also, if the\n \nconsent requested is too specific, or presented too vaguely, it may be difficult to share data in\n \na way that respects the data subject’s expectations. Like the \n​\nFramework\n​\n, this policy\n \naddresses both sharing of prospective (not yet",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 1,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p1_c2",
+      "text": " data in\n \na way that respects the data subject’s expectations. Like the \n​\nFramework\n​\n, this policy\n \naddresses both sharing of prospective (not yet collected) data, as well as retrospective\n \n(already collected) data. It promotes the sharing of data in a manner consistent with the data\n \nsubjects’ consent, authorization by competent authorities, and/or lawful bases, so as to\n \ncomply with applicable laws and general ethical principles.\n \n \n2.\nPurpose. \n​\nThis policy describes how to maximize the responsible and respectful international\n \ndata sharing through the design of consents for prospective data collection and through the\n \nassessment of existing consents for retrospective data sharing.\n \n \n3.\nPrinciples\n​\n.\n \n \nThis Policy is founded on the following basic principles:\n \ni.\nConsent is an open, communicative, and continuing relationship.\n \n1",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 1,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p2_c3",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \nii.\nThe processes for taking consent and any ongoing communications between\n \nresearchers and data subjects should be straight-forward, easy to use, and accessible\n \nto all.\n \niii.\nThe consent process should be situated within and overseen by appropriate\n \ngovernance mechanisms.\n \niv.\nTo the extent possible, the consent process should clearly describe to data subjects\n \nany plans to share data across research groups, institutions, sectors (e.g., research,\n \nclinical, and commercial), and borders, and any associated limitations or conditions.\n \niii.\nBest practices and technologies should be adopted to ensure commitments made to\n \ndata subjects concerning data sharing are captured, tracked, and communicated\n \nacross data sharing networks.\n \n \n3.\nDefinitions\n​\n.\n \n \nThe following definitions are intended to align with the \n​\nFramework\n​\n and other GA4GH policies.\n \nT",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 2,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p2_c4",
+      "text": "ta sharing networks.\n \n \n3.\nDefinitions\n​\n.\n \n \nThe following definitions are intended to align with the \n​\nFramework\n​\n and other GA4GH policies.\n \nThey are not intended as a substitute for definitions found in relevant laws or regulations.\n \n“\n​\nanonymized data\n​\n” means data that are rendered anonymous in such a way that the data subject\n \nis not or is no longer identifiable.\n \n \n“\n​\ncontrolled access\n​\n” means a data access model whereby qualified researchers apply for data\n \naccess and their research plans are reviewed, often by a committee. Also known as managed or\n \nrestricted access.\n \n \n“\n​\ndata subject\n​\n” means the individual whose data have been processed, i.e., collected, generated,\n \nheld, used, or shared.\n \n \n“\n​\npseudonymized data\n​\n” means data which have been processed in such a manner (e.g. by\n \nassigning one or more random codes) that the data can no longer be attribu",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 2,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p2_c5",
+      "text": "d data\n​\n” means data which have been processed in such a manner (e.g. by\n \nassigning one or more random codes) that the data can no longer be attributed to a specific data\n \nsubject without the use of additional information, provided that such additional information is\n \nkept separately and is subject to technical and organizational measures to ensure that the data are\n \nnot attributed to an identified or identifiable natural person. Also known as coded data.\n \n \n“\n​\nregistered access\n​\n” means a data access model whereby qualified researchers apply for data\n \naccess to one dataset or multiple datasets at once by providing details of their identity for\n \nauthentication and agreeing to terms and conditions of data use during the registration process.\n \n \nII.\nConsent Best Practices\n \n2",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 2,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p3_c6",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \n \nThese Best Practices are founded on the Core Elements of the \n​\nFramework\n​\n and should be\n \ninterpreted in a proportionate manner that acknowledges different levels of risk for different data\n \ntypes, data sharing contexts, and cultures.\n \nTransparency\n \n•\nConsent materials and discussions should clearly indicate if data may be shared, for\n \nexample, outside of institutions, across borders, for long-term deposition in repositories,\n \nor for commercial purposes, where applicable.\n \n•\nIt should be clear what forms data will take, the sources from which the data have been\n \nor will be derived, and with whom and for what purposes data will be shared.\n \n•\nConsent materials and discussions should make it clear that while every reasonable\n \neffort will be made to protect privacy, a risk of re-identifying individuals from their data\n \nremains, especially if the data su",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 3,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p3_c7",
+      "text": "e every reasonable\n \neffort will be made to protect privacy, a risk of re-identifying individuals from their data\n \nremains, especially if the data subjects have already made their data available in other\n \nforms, such as public platforms (e.g., genealogy websites).\n \n•\nIndividuals should be given the option to opt-out of data sharing plans without affecting\n \ntheir care or participation in research. However, if this is not possible due to the nature\n \nand goals of the activity, this should be made clear.\n \n•\nWhere it may be impractical or impossible to retrieve or destroy data once shared, this\n \nshould also be specified.\n \n•\nOnce shared, details on how data have been shared and with whom should be made\n \navailable to data subjects, as well as any general research results. This information\n \nshould also be shared with the public to the greatest extent possible, in order to highlight\n \nt",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 3,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p3_c8",
+      "text": "l as any general research results. This information\n \nshould also be shared with the public to the greatest extent possible, in order to highlight\n \nthe benefits of data sharing to advance health research.\n \n•\nBest practice guidance and available tools should be used in the development of consent\n \nmaterials to support data subject understanding.\n \nAccountability\n \n•\nThe consent process, in any form it takes, should be properly documented and subject to\n \nquality control measures, addressing versioning of consent, the mapping of data subjects\n \nto respective versions, options chosen or withdrawn, and the communication tools used\n \nto ensure data are shared as agreed.\n \n \n•\nData sharing plans and consent materials should be regularly reviewed, updated, and\n \nmade available, according to applicable regulations and policies.\n \n3",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 3,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p4_c9",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \n•\nEasy to use and accessible procedures and instructions should be in place for researchers\n \nand data subjects to contact each other with updates, questions regarding data sharing,\n \nwithdrawal, complaints, or inquiries about policies and practices relating to the sharing\n \nof genomic and health-related data.\n \n \n•\nData sharing plans and consent materials should anticipate if a data subjects’ legal status\n \nmight change (e.g., when a minor reaches majority or when a data subject loses capacity\n \nor passes away) to ensure the future availability of data while respecting data subjects’\n \nchoices.\n \n•\nConsent requirements should not unnecessarily exclude individuals with diminished\n \ncapacity, or individuals who are deceased, from participating in data sharing as long as\n \nappropriate protections are in place (e.g., oversight, representation).\n \n \n•\nConsent material",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 4,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p4_c10",
+      "text": "ceased, from participating in data sharing as long as\n \nappropriate protections are in place (e.g., oversight, representation).\n \n \n•\nConsent materials and discussions should be adapted to support the appropriate\n \ninvolvement of individuals with diminished capacity in decision-making.\n \nPrivacy, Data Protection, and Confidentiality\n \n•\nConsent materials and discussions should specify what categories of data will be shared\n \n(e.g., DNA analyses, health record data), the processes used to de-identify those data\n \n(e.g., rendering data pseudonymized or anonymized), and the governance and security\n \nprovisions in place to protect those data (e.g., controlled access, registered access, secure\n \ncomputing environments).\n \n \n•\nIf applicable, consent materials and discussions should mention if data may be shared\n \nwith parties in countries where there is an increased privacy risk and provide in",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 4,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p4_c11",
+      "text": "ent materials and discussions should mention if data may be shared\n \nwith parties in countries where there is an increased privacy risk and provide information\n \non any potential implications or safety measures being taken.\n \n•\nConsent materials and discussions should acknowledge that data sharing may have\n \nimplications for family members.\n \nIII.\nRetrospective Data Sharing\n \n•\nPrior to retrospective data sharing or a substantial change to data sharing plans, the\n \nfollowing review process should be conducted:\n \n \n•\nThe existing consent materials and associated policy documents should be assessed\n \nto determine if (broader) data sharing was foreseen.\n \n•\nIf (broader) data sharing was not foreseen, data subjects should where possible and\n \npractical be given an opportunity to re-consent to (broader) data sharing, or they\n \nshould be notified and given an opportunity to opt-out.\n \n \n4",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 4,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p5_c12",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \n•\nIf re-consent or notification with opt-out are not possible or practical, it may still be\n \nappropriate to share a limited, anonymized version of the data, or to seek\n \nauthorization from a competent authority (e.g., consent waiver).\n \n \n•\nRegardless, careful consideration should be given to whether or not (broader) data\n \nsharing is justifiable based on the potential risks and benefits.\n \n \n•\nData sharing consortia or repositories should provide tools and guidance to allow\n \ncontributors to assess if their consent materials cover the desired level of data sharing.\n \nThey should also request attestations or demonstrations from contributors that data\n \nsharing is permitted.\n \nIV.\nImplementation Mechanisms and Amendments\n \n \n1.\nOrganizations and bodies supporting this Policy should take all reasonable and appropriate\n \nmeasures, whether of a regulatory, contractua",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 5,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p5_c13",
+      "text": "ents\n \n \n1.\nOrganizations and bodies supporting this Policy should take all reasonable and appropriate\n \nmeasures, whether of a regulatory, contractual, administrative or other character, to give\n \neffect to this Policy and promote its implementation, monitoring, and enforcement.\n \nProcedures and policies should be transparent and accessible. Attention should be paid to the\n \ninterrelation of this Policy with other GA4GH Policies (e.g., Data Privacy and Security\n \nPolicy, Accountability Policy).\n \n \n2.\nAny persons, organizations or bodies supporting this Policy may propose one or more\n \namendments to the present Policy by communicating the amendments to the GA4GH’s\n \nRegulatory and Ethics Work Stream (REWS). The REWS shall publicly circulate such\n \namendments for comments and possible inclusion in this Policy.\n \n \n3.\nThe REWS, in collaboration with biomedical, patient advocacy, and ethic",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 5,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p5_c14",
+      "text": "e such\n \namendments for comments and possible inclusion in this Policy.\n \n \n3.\nThe REWS, in collaboration with biomedical, patient advocacy, and ethical and policy\n \norganizations and committees, will routinely review its provisions, be aware of advances in\n \nbasic research and technology, and ethical and legal developments, and attempt to ensure that\n \nthis Policy is fit for purpose.\n \n \nV.\nAcknowledgements\n \n \nThis Policy was developed by the Regulatory and Ethics Work Stream of the GA4GH, and is the\n \nresult of the collaborative work, comments, and input of many individual and organizational\n \ncontributors.\n \n \n5",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 5,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p6_c15",
+      "text": "​\nC\nONSENT\n P\nOLICY\n \n \nPolicy Revision History\n \n \nPolicy Number/Version\n \nDate Effective\n \nSummary of Revisions\n \nPOL 002 / v 2.0\n \nSeptember 2019\n \nGlobal revision\n \nPOL 002 / v. 1.0\n \nJune 2015\n \nOriginal document\n \n \n \n6",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 6,
+        "category": "ga4gh-consent-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p1_c0",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n1   \n \nVersion: 3 September 2019  Framework for Responsible Sharing of Genomic and Health-­­Related Data Preamble The sharing of genomic and health-related data for biomedical research is of key importance in ensuring continued progress in our understanding of human health and wellbeing. The challenges raised by international, collaborative research require a principled but nevertheless practical Framework that brings together regulators, funders, patient groups, information technologists, industry, publishers, and research consortia to share principles about data exchange. Such a Framework will facilitate responsible research conduct. This Framework is developed under the auspices of the Global Alliance for Genomics and Health. Its mission is to accelerate progress in human health by helping to establish a common Fr",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 1,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p1_c1",
+      "text": "the auspices of the Global Alliance for Genomics and Health. Its mission is to accelerate progress in human health by helping to establish a common Framework of harmonized approaches to enable effective and responsible sharing of genomic and clinical data and to catalyze data sharing projects that drive and demonstrate the value of data sharing. This Framework provides guidance for the responsible sharing of human genomic and health-related data, including personal health data and other types of data that may have predictive power in relation to health. In particular, it highlights, and is guided by, Article 27 of the 1948 Universal Declaration of Human Rights. Article 27 guarantees the rights of every individual in the world “to share in scientific advancement and its benefits” (including to freely engage in responsible scientific inquiry), and at the same time “to the protection of the",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 1,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p1_c2",
+      "text": "cientific advancement and its benefits” (including to freely engage in responsible scientific inquiry), and at the same time “to the protection of the moral and material interests resulting from any scientific…production of which [a person] is the author.” (As set out in Appendix 1, many other international conventions and national laws, regulations, codes and policies also guide responsible data sharing behavior). This Framework is guided by the human rights of privacy, non-discrimination and procedural fairness. At the same time, it considers all human rights principles relevant, complementary and interrelated, founded as they are on respect for human dignity. Since science proceeds only with the broad support of society, respect for all persons is a primary driver underlying all other derived principles. In particular, this Framework establishes a set of foundational principles for re",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 1,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p1_c3",
+      "text": "persons is a primary driver underlying all other derived principles. In particular, this Framework establishes a set of foundational principles for responsible research conduct and oversight of research data systems in the realm of genomic and health-related data sharing. It interprets the right of all people to share in the benefits of scientific progress and its applications as being the duty of data producers and users to engage in responsible scientific inquiry and to access and share genomic and health-related data across the translation continuum, from basic research through practical applications. It recognizes the rights of data producers and users to be recognized for their contributions to research, balanced by the rights of those who donate their data. In addition to being founded on the right of all citizens in all countries to the benefits of the advancements of science, and",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 1,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p1_c4",
+      "text": " who donate their data. In addition to being founded on the right of all citizens in all countries to the benefits of the advancements of science, and on the right of attribution of scientists, it also reinforces the right of scientific freedom. The value of this Framework is that it: offers political and legal dimensions that reach beyond the moral appeals of bioethics and provides a more robust governance framework for genomic and health- related data sharing; speaks to groups and institutions, not just individuals; stresses the progressive",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 1,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p2_c5",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n2   \n \nrealization of duties; and urges action by governments, industry, funders, publishers, and researchers to create an international environment for responsibly sharing data. This Framework will be elaborated by subsequent Policies (Appendix 2) on particular issues such as ethical governance, consent, privacy and security. The Framework and its subsequent Policies should be used in projects around the world (whether Global Alliance “inspired” or not) such that they become the tools that approval entities, recognized by different jurisdictions, will turn or refer to for guidance. Recognizing diversity of legal and ethical approaches and being responsive to emerging issues, both this Framework and its Policies are intended to provide leadership in this domain for wider discussion.   I. Purpose and Interpretation  1",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 2,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p2_c6",
+      "text": "ssues, both this Framework and its Policies are intended to provide leadership in this domain for wider discussion.   I. Purpose and Interpretation  1. Purpose. The purpose of this Framework is to provide a principled and practical framework for the responsible sharing of genomic and health-related data. Its primary goals are to: i. Protect and promote the welfare, rights, and interests of individuals from around the world in genomic and health-related data sharing, particularly those who contribute their data for biomedical research; ii. Complement laws and regulations on privacy and personal data protection, as well as policies and codes of conduct for the ethical governance of research; iii. Foster responsible data sharing and oversight of research data systems;  iv. Establish a framework for greater international data sharing, collaboration and good governance; v. Serve as a dynamic ",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 2,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p2_c7",
+      "text": "of research data systems;  iv. Establish a framework for greater international data sharing, collaboration and good governance; v. Serve as a dynamic instrument that can respond to future developments in the science, technology, and practices of genomic and health-related data sharing; vi. Serve as a tool for the evaluation of responsible research by research ethics committees and data access committees; and vii. Provide overarching principles to be respected in developing legally-binding tools such as data access agreements. 2. Interpretation. Without ascribing legal meaning, this Framework should be interpreted in good faith and is to be understood as a whole. The Foundational Principles and Core Elements are to be understood as complementary and interrelated, as appropriate and relevant in different contexts, countries and cultures. This Framework will be supported by Policies for gui",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 2,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p2_c8",
+      "text": "tary and interrelated, as appropriate and relevant in different contexts, countries and cultures. This Framework will be supported by Policies for guidance in particular issues such as, but not limited to, ethical governance, privacy and security, and consent. For the purposes of this Framework, “data sharing” includes data transfer or data exchange between data users, or where data are made available to secondary researchers, either openly or under specified access conditions.",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 2,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p3_c9",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n3   \n \nFoundational Principles for Responsible Sharing of \nGenomic and Health -Related Data  \n• Respect Individuals, Families and  Communities  \n• Advance Research and Scientific  Knowledge  \n• Promote Health, Wellbeing and the Fair Distribution of  Benefits  \n• Foster Trust, Integrity and  Reciprocity   II. Application  This Framework is intended for all entities or individuals providing, storing, accessing, managing or otherwise using genomic and health-related data, including data donors, users, and producers. This includes, but is not limited to, researchers, research participants and patient communities, publishers, research funding agencies, data protection authorities, hospitals, research ethics committees, industry, ministries of health, and public health organizations.   III. Foundational Principles  The Fou",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 3,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p3_c10",
+      "text": "ities, hospitals, research ethics committees, industry, ministries of health, and public health organizations.   III. Foundational Principles  The Foundational Principles of this Framework guide the responsible sharing of genomic and health- related data. They also facilitate compliance with the obligations and norms set by international and national law and policies.   \n  IV. Core Elements of Responsible Data Sharing  It is good practice for those involved in genomic and health-related data sharing to have core elements of responsible data sharing in place. The following Core Elements of the Framework aid in the interpretation of the Foundational Principles to individuals and organizations involved in the sharing of genomic and health-related data. The Core Elements should be interpreted in a proportionate manner that acknowledges different levels of risk and community cultural practice",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 3,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p3_c11",
+      "text": "ted data. The Core Elements should be interpreted in a proportionate manner that acknowledges different levels of risk and community cultural practices. This Framework applies to use of data that have been consented to by donors (or their legal representatives) and/or approved for use by competent bodies or institutions in compliance with national and international laws, general ethical principles, and best practice standards that respect restrictions on downstream uses. Endorsement of the Framework does not preclude the development of particular guidance via Policies for specific populations (e.g. children) or issues (e.g. ethical governance, privacy and security, and consent).",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 3,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p4_c12",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n4   \n \n  Core Elements of Responsible Data Sharing € Transparency  • Develop clearly defined and accessible information on the purposes, processes, procedures and governance frameworks for data sharing. Such information should be presented in a way that is understandable and accessible in both digital and non-digital formats.  • Provide clear information on the purpose, collection, use and exchange of genomic and health-related data, including, but not limited to: data transfer to third parties; international transfer of data; terms of access; duration of data storage; identifiability of individuals and data and limits to anonymity or confidentiality of data; communication of results to individuals and/or groups; oversight of downstream uses of data; commercial involvement; proprietary claims; and processes of withdr",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 4,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p4_c13",
+      "text": "ion of results to individuals and/or groups; oversight of downstream uses of data; commercial involvement; proprietary claims; and processes of withdrawal from data sharing.  • Implement procedures for fairly determining requests for data access and/or exchange.  € Accountability • Put in place systems for data sharing that respect this Framework. • Track the chain of data access and/or exchange to its source. • Develop processes to identify and manage conflicts of interest. • Implement mechanisms for handling complaints related to data misuse; for identifying, reporting and managing breaches; and for instituting appropriate sanctions.  € Engagement • Develop mechanisms to enable citizens to make meaningful contributions to biomedical research and to partake in deliberation on how these contributions can be respected.  • Facilitate deliberation about the wider societal implications of ge",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 4,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p4_c14",
+      "text": "rch and to partake in deliberation on how these contributions can be respected.  • Facilitate deliberation about the wider societal implications of genomic and health-related data sharing among all stakeholders, especially citizens.  € Data Quality and Security • Store and process the data collected, used and transferred in a way that is accurate, verifiable, unbiased, proportionate, and current, so as to enhance their interoperability and replicability and also preserve their long-term searchability and integrity.  • Ensure feedback mechanisms on the utility, quality, security, and accuracy of data, and their annotations, with a view to improving quality and interoperability and appropriate re-use by others.",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 4,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p5_c15",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n5   \n \n • Establish proportionate data security measures that mitigate the risk of unauthorized access, data loss and misuse.  • Understand the issues related to lawful requests for data based on law enforcement, public health, or national security concerns.  € Privacy, Data Protection and Confidentiality • Comply with applicable privacy and data protection regulations at every stage of data sharing, and be in a position to provide assurances to citizens that confidentiality and privacy are appropriately protected when data are collected, stored, processed, and exchanged. Privacy and data protection safeguards should be proportionate to the nature and use of the data, whether identifiable, coded or anonymized.  • Forego any attempt to re-identify anonymized data unless where expressly authorized by law.  € Risk-Benef",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 5,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p5_c16",
+      "text": "hether identifiable, coded or anonymized.  • Forego any attempt to re-identify anonymized data unless where expressly authorized by law.  € Risk-Benefit Analysis • Consider the realistic harms and benefits of data sharing on and with individuals, families and communities, including opportunity costs associated with both sharing and not sharing data. Potential realistic benefits may include development of new scientific knowledge and applications, enhanced efficiency, reproducibility and safety of research projects or processes, and more informed decisions about health care. Potential realistic harms may include invasions of privacy or breach of confidentiality and invalid conclusions about research projects.  • Conduct data sharing with a view towards minimizing harms and maximizing benefits to not just those who contribute their data, but also to society and health care systems as a who",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 5,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p5_c17",
+      "text": "iew towards minimizing harms and maximizing benefits to not just those who contribute their data, but also to society and health care systems as a whole, particularly where data pertains to disadvantaged people. Benefits arising from data sharing may not be uniformly distributed throughout communities around the world and may depend on the usability of data within a specified context, national priorities, as well as a specific community’s concern about health and interpretation of wellbeing.  • Undertake a proportionate assessment of the benefits and risks of harm in data sharing, which is periodically monitored according to the reasonable foreseeability of such harms and benefits. Such an assessment may also incorporate mechanisms that track subsequent harms, should they materialize, so as to help inform future policy.  € Recognition and Attribution • Design systems of data sharing with",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 5,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p5_c18",
+      "text": "ck subsequent harms, should they materialize, so as to help inform future policy.  € Recognition and Attribution • Design systems of data sharing with a view towards recognition and attribution that are meaningful and appropriate to the medium or discipline concerned and which provide due credit and acknowledgement of all who contributed to the results.  • Extend recognition and attribution both to primary purposes and, as appropriate, to secondary or downstream uses and applications. All parties should act in good faith to ensure that any connections to original sources of data are maintained where appropriate, to",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 5,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p6_c19",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n6   \n \nthe extent permissible by law.  € Sustainability • Ensure, where appropriate, the sustainability of the data generated for future use, through both archiving and using appropriate identification and retrieval systems, and through critical appraisal of the mechanisms and systems used for sharing genomic and health- related data.  € Education and Training • Dedicate education and training resources so as to advance data sharing and data management and to constantly improve data quality and integrity. Education and training resources should also be dedicated to: fostering and maintaining good records about the effects and impact of data sharing; raising awareness about national health priorities and distribution of health services; building capacity and data sharing infrastructure in countries; and, working towar",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 6,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p6_c20",
+      "text": "out national health priorities and distribution of health services; building capacity and data sharing infrastructure in countries; and, working towards the building of an evidence base about the advantages and potential limitations of data sharing.  € Accessibility and Dissemination • Make reasonable efforts to maximize the accessibility of data for research through lawful and proportionate data sharing.  • Promote collaborative partnerships and data sharing that can generate maximum benefit, along with the harmonization of deposit, management and access procedures and use as a means to promote accessibility.  • Seek to make data and research results widely available, including through publication and digital dissemination, whether positive, negative or inconclusive, depending on the nature and use of the data. Dissemination of data and research results should be conducted in a way that",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 6,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p6_c21",
+      "text": "e, negative or inconclusive, depending on the nature and use of the data. Dissemination of data and research results should be conducted in a way that both promotes scientific collaboration, reproducibility and broad access to data, and yet minimizes obstacles to data sharing while minimizing harms and maximizing benefits to individuals, families and communities.   V. Implementation Mechanisms and Amendments  1. This Framework should be adopted by organizations and bodies involved in genomic and health- related data sharing. Organizations and bodies adhering to this Framework should take all reasonable and appropriate measures, whether of a regulatory, contractual, administrative or other character, to give effect to the Foundational Principles and Core Elements set out in this Framework in accordance with the international law of human rights and should, by means of all reasonable and a",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 6,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p6_c22",
+      "text": "ples and Core Elements set out in this Framework in accordance with the international law of human rights and should, by means of all reasonable and appropriate measures, promote their implementation. 2. Any persons, organizations or bodies adhering to this Framework may propose one or more amendments to the present Framework by communicating the amendments to the Regulatory and",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 6,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p7_c23",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n7   \n \nEthics Working Group of the Global Alliance for Genomics and Health (the “REWG”). The REWG shall publicly circulate such amendments for comments and possible inclusion in this Framework. 3. The REWG, in collaboration with biomedical, patient advocacy, and ethical and policy organizations and committees, will track the adoption of this Framework and its application through subsequent Policies. It will also routinely review its provisions, be aware of advances in basic research and technology, and ethical and legal developments, and attempt to ensure that this Framework is fit for purpose.   VI. Acknowledgements  This Framework for Responsible Sharing of Genomic and Health-Related Data is the result of the work of many people and committees. Developed under the auspices of the Global Alliance for Genomics and He",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 7,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p7_c24",
+      "text": "d Health-Related Data is the result of the work of many people and committees. Developed under the auspices of the Global Alliance for Genomics and Health, the Framework was initially formulated by an international committee (Regulatory and Ethics Working Group) representing a wide spectrum of the bioethics, genomics, and clinical communities. Collaborative input was provided from individuals as well as biomedical, patient advocacy, and ethical, policy and legal organizations, committees, and projects from all regions of the world. These include, but are not limited to: • Biobank Standardisation and Harmonisation for Research Excellence project (BioSHaRE); • Centre for Law and Genetics (University of Tasmania); • Centre of Genomics and Policy (McGill University); • ELSI 2.0; • H3Africa; • Health Research Authority (UK); • HeLEX (University of Oxford); • Human Variome Project (HVP); • INS",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 7,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p7_c25",
+      "text": "cy (McGill University); • ELSI 2.0; • H3Africa; • Health Research Authority (UK); • HeLEX (University of Oxford); • Human Variome Project (HVP); • INSERM; • International Cancer Genome Consortium (ICGC); • International Rare Disease Research Consortium (IRDiRC); • International Society for Biological and Environmental Repositories (ISBER); • Personal Genome Project (USA); • PErsonalised Risk Stratification for Prevention and Early deteCTIon of breast cancer project (PERSPECTIVE); • PHG Foundation (UK); • Public Population Project in Genomics and Society-International Policy interoperability and data Access Clearinghouse (P3G-IPAC); and • other Global Alliance for Genomics and Health Working Groups and Task Teams.",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 7,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p8_c26",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n8   \n \n Appendix 1  Foundational Human Rights Instruments  * Universal Declaration of Human Rights (UN 1948) (Article 27) * International Covenant on Economic, Social and Cultural Rights (UN 1966) (Article 15)  Ethical and Legal Codes and Policies Guiding Data Sharing Behavior  • Constitution of the World Health Organization (WHO 1946) • Bermuda Principles on Human Genome Sequencing (1996) • Universal Declaration on the Human Genome and Human Rights (UNESCO 1997) • Convention on Human Rights and Biomedicine (Council of Europe 1997) • Statement on DNA Sampling: Control and Access (HUGO 1998) • Statement on Human Genomic Databases (HUGO Ethics Committee 2002) • Declaration of Ethical Considerations regarding Health Databases (WMA 2002) • International Ethical Guidelines for Biomedical Research Involving Human Subjects ",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 8,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p8_c27",
+      "text": "n of Ethical Considerations regarding Health Databases (WMA 2002) • International Ethical Guidelines for Biomedical Research Involving Human Subjects (CIOMS, WHO 2002) • Budapest Open Access Initiative (2002) • Sharing Data from Large-scale Biological Research Projects: A System of Tripartite Responsibility (Fort Lauderdale Statement, 2003) • International Declaration on Human Genetic Data (UNESCO, IBC 2003) • European Society of Human Genetics: Data Storage and DNA Banking for Biomedical Research (ESHG 2003) • Universal Declaration on Bioethics and Human Rights (UNESCO 2005) • Additional Protocol to the Convention on Human Rights and Biomedicine, concerning Biomedical Research (Council of Europe 2005) • Recommendation Rec (2006) 4 of the Committee of Ministers to Member States on Research on Biological Materials of Human Origin (Council of Europe 2006) • OECD Principles and Guidelines f",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 8,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p8_c28",
+      "text": "ommittee of Ministers to Member States on Research on Biological Materials of Human Origin (Council of Europe 2006) • OECD Principles and Guidelines for Access to Research Data from Public Funding (OECD 2007) • International Ethical Guidelines for Epidemiological Studies (CIOMS, WHO 2008) • Recommendations from the 2008 International Summit on Proteomics Data Release and Sharing Policy (Amsterdam Principles, 2008) • Guidelines for Human Biobanks and Genetic Research Databases (OECD 2008, 2009) • Toronto Statement on Prepublication Data Sharing (2009) • Joint Statement by Funders of Health Research (2011) • 2012 Best Practices for Repositories: Collection, Storage, Retrieval and Distribution of Biological Material for Research (ISBER 2012) • Responsible Conduct in the Global Research Enterprise: A Policy Report (InterAcademy Council 2012) • Declaration of Helsinki (WMA 2013) • Guidelines ",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 8,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p8_c29",
+      "text": " Responsible Conduct in the Global Research Enterprise: A Policy Report (InterAcademy Council 2012) • Declaration of Helsinki (WMA 2013) • Guidelines governing the Protection of Privacy and Transborder Flows of Personal Data (OECD 2013)",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 8,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p9_c30",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n9   \n \nAppendix 2",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 9,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-frs-en.pdf_38a1b43f34a3_p10_c31",
+      "text": "Framework for Responsible Sharing of Genomic and Health -Related Data  \n10   \n \nDeliverable Revision History Deliverable  \nNumber/Version  Date Effective  Summary of Revisions  v1.0 September 14 2014  First version of the document  v1.0  September 3 2019 Version 1.0 reaffirmed by GA4GH Steering Committee",
+      "metadata": {
+        "source": "ga4gh-frs-en.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-frs-en.pdf",
+        "page": 10,
+        "category": "ga4gh-frs",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-frs",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-mrcg-consent-duo-brief.txt_d22ee05a46ec_p0_c0",
+      "text": "GA4GH Machine Readable Consent Guidance (MRCG) — Brief for Consent Codes and Data Use Ontology (DUO)\nSource: https://www.ga4gh.org/product/machine-readable-consent-guidance/\nLicense: GA4GH product documentation (public)\nTier: P1 | Jurisdiction: GA4GH, EU, INTL | Framework: GA4GH\n\nDISCLAIMER: Summary for RegBot corpus ingest. Align consent language with institutional ethics review and applicable law (including GDPR where relevant).\n\nPurpose\n\nThe Machine Readable Consent Guidance (MRCG), co-developed by GA4GH DURI and REWS Work Streams, explains how to draft consent forms that map to the Data Use Ontology (DUO). Machine-readable consent supports automated, consistent data access decisions while respecting participant authorisations.\n\nWhy consent codes matter for cross-border sharing\n\nWhen genomic datasets move across institutions and borders, Data Access Committees (DACs) must verify that ",
+      "metadata": {
+        "source": "ga4gh-mrcg-consent-duo-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt",
+        "page": 0,
+        "category": "ga4gh-mrcg-consent-duo-brief",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-mrcg-consent-duo-brief",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-mrcg-consent-duo-brief.txt_d22ee05a46ec_p0_c1",
+      "text": "ent codes matter for cross-border sharing\n\nWhen genomic datasets move across institutions and borders, Data Access Committees (DACs) must verify that a researcher's intended use aligns with participant consent. Ambiguous consent language increases review burden and transfer risk. DUO provides standard codes specifying permitted uses (e.g. general research use, disease-specific, commercial use restrictions, geographic limits).\n\nMRCG three-part structure\n\n1. Short consent clause — summary description of data use terms in plain language for participants.\n2. Detailed explanation — expands the meaning of each data use term.\n3. Optional appendix — maps consent language to DUO codes for machine-readable attachment to datasets.\n\nLink to GDPR and broad consent\n\nGA4GH GDPR Briefs note that human-readable consent using standard language on data sharing and linkage is a prerequisite for translating ",
+      "metadata": {
+        "source": "ga4gh-mrcg-consent-duo-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt",
+        "page": 0,
+        "category": "ga4gh-mrcg-consent-duo-brief",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-mrcg-consent-duo-brief",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "ga4gh-mrcg-consent-duo-brief.txt_d22ee05a46ec_p0_c2",
+      "text": "oad consent\n\nGA4GH GDPR Briefs note that human-readable consent using standard language on data sharing and linkage is a prerequisite for translating consent into machine-readable form. Broad consent for genomic research may be GDPR-permissible when supplemented with clear categories of uses, safeguards, and recipient types — MRCG/DUO operationalises those categories for access control.\n\nPractical checks for consent / DUL review\n\n- Does the consent clause specify whether international sharing is permitted?\n- Are secondary/future uses described at an appropriate level of generality with ethics oversight?\n- Can each restriction (commercial use, publication moratorium, geographic limit) be mapped to a DUO term?\n- Are withdrawal and recontact procedures stated?\n\nRelated GA4GH products: Consent Policy (P0), Consent Toolkit clauses, DUO (DURI Work Stream).",
+      "metadata": {
+        "source": "ga4gh-mrcg-consent-duo-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt",
+        "page": 0,
+        "category": "ga4gh-mrcg-consent-duo-brief",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-mrcg-consent-duo-brief",
+        "framework": "GA4GH"
+      }
+    },
+    {
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Is \"consent for genomic and health-related research\" specific enough under the GDPR?\nSource: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/\nAuthor: Edward Dove (University of Edinburgh) | Date: 2 Dec 2019\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.\n\nSummary\n\nThere is emerging consensus in the genomic research community that \"broad consent\" is ethically and legally permissible, subject to external and ongoing oversight (e.g. ethics committee approval and monitoring). Broad consent means a participant explicitly consents to use of their data and/or samples for a defined range of future research projects.\n\nGDPR consent definition (A",
+      "metadata": {
+        "source": "gdpr-consent-broad-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-consent-broad-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-consent-broad-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c1",
+      "text": "ans a participant explicitly consents to use of their data and/or samples for a defined range of future research projects.\n\nGDPR consent definition (Article 4(11))\n\nConsent is \"any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her.\"\n\nArticles 6(1)(a) and 9(2)(a) require consent for one or more specific (Art 6) or specified (Art 9) purposes. At first glance this might suggest broad consent such as \"consent for genomic and health-related research\" is insufficient.\n\nArguments supporting broad consent under GDPR\n\n- Recital 33 permits consent to certain areas of scientific research when subject to generally accepted ethical standards and ethics committee assessment.\n- Under purpose limitation (Article 5(1)(b))",
+      "metadata": {
+        "source": "gdpr-consent-broad-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-consent-broad-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-consent-broad-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c2",
+      "text": "scientific research when subject to generally accepted ethical standards and ethics committee assessment.\n- Under purpose limitation (Article 5(1)(b)), further processing for scientific research is for \"specified, explicit and legitimate purposes.\"\n- \"Scientific research\" and especially \"genomic and health-related research\" may constitute a well-defined purpose without listing every future sub-study.\n- Article 29 Working Party (WP29) guidance: purposes that cannot be fully specified at the outset may be described at a more general level (Recital 33 exception), though a well-described purpose must still appear in consent.\n\nExplicit consent and future controllers\n\nArticle 9 requires explicit consent for special category data. Explicitness relates to evidencing consent, not necessarily narrowing scope. A participant may agree to a research project describing a broad methodology with safegua",
+      "metadata": {
+        "source": "gdpr-consent-broad-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-consent-broad-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-consent-broad-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c3",
+      "text": "ates to evidencing consent, not necessarily narrowing scope. A participant may agree to a research project describing a broad methodology with safeguards for unknown future applications.\n\nRecital 42 requires the data subject to be aware at least of the identity of the controller. For unknown future recipients, naming categories of controllers and processors may suffice where individual researchers cannot yet be identified.\n\nConclusion for reviewers\n\nA reasonable interpretation is that \"consent for genomic and health-related research\" likely is specific enough under the GDPR, provided broad consent is supplemented by:\n- categories of data-processing methods;\n- safeguards mitigating risks of those methods;\n- categories of potential data recipients (controllers/processors).\n\nRelevant GDPR provisions: Recital 33, Recital 42, Article 4(11), Article 5(1)(b), Article 6(1)(a), Article 9(2)(a).\n\n",
+      "metadata": {
+        "source": "gdpr-consent-broad-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-consent-broad-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-consent-broad-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c4",
+      "text": "ients (controllers/processors).\n\nRelevant GDPR provisions: Recital 33, Recital 42, Article 4(11), Article 5(1)(b), Article 6(1)(a), Article 9(2)(a).\n\nFurther reading cited in original brief: WP29 Guidelines on consent (WP259); Council of Europe Recommendation CM/Rec(2019)2 on health-related data.",
+      "metadata": {
+        "source": "gdpr-consent-broad-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-consent-broad-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-consent-broad-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Data Protection Impact Assessment (DPIA) and Genomic Health Research\nSource: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.\n\nArticle 35 of the GDPR requires data controllers to perform a Data Protection Impact Assessment (DPIA) before processing personal data when processing \"is likely to result in a high risk to the rights and freedoms of natural persons.\"\n\nApplicability to genomic research\n\nLarge-scale genomic health research involving personal data will typically require a DPIA. High-risk indicators relevant to genomics include:\n- systematic and extensive evaluation of personal aspects (including genetic data);\n- large-scale pro",
+      "metadata": {
+        "source": "gdpr-dpia-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-dpia-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-dpia-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c1",
+      "text": "gh-risk indicators relevant to genomics include:\n- systematic and extensive evaluation of personal aspects (including genetic data);\n- large-scale processing of special categories of data (genetic, biometric, health);\n- matching or combining datasets in ways that affect data subjects;\n- processing that may lead to exclusion or discrimination.\n\nScope of one DPIA\n\nNot every individual processing activity requires a separate DPIA. A single assessment may address a set of similar processing operations presenting similar high risks. For large-scale genomic programmes, sector-wide or programme-level DPIAs may be appropriate where operations share comparable risk profiles.\n\nTiming and structure\n\nDPIAs should be performed as early as possible and updated continually as processing evolves. The GDPR allows flexibility in structure to fit existing institutional practices. Templates exist (e.g. UK I",
+      "metadata": {
+        "source": "gdpr-dpia-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-dpia-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-dpia-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c2",
+      "text": "pdated continually as processing evolves. The GDPR allows flexibility in structure to fit existing institutional practices. Templates exist (e.g. UK ICO, French CNIL), but genomic research should incorporate research-specific considerations such as:\n- re-identification risk from genomic data;\n- familial and population implications;\n- international transfer pathways;\n- secondary use and data linkage plans;\n- governance by research ethics committees and data access committees.\n\nRelationship to other GDPR obligations\n\nDPIAs complement data protection by design/default (Article 25), records of processing (Article 30), and consultation with supervisory authorities where residual high risk remains (Article 36).\n\nReviewers (DPO, IRB, DAC) should verify that a DPIA exists or is planned before cross-border sharing of identifiable or re-identifiable genomic datasets from EU/EEA subjects.\n\nRelevant",
+      "metadata": {
+        "source": "gdpr-dpia-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-dpia-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-dpia-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c3",
+      "text": "erify that a DPIA exists or is planned before cross-border sharing of identifiable or re-identifiable genomic datasets from EU/EEA subjects.\n\nRelevant GDPR provisions: Article 35, Article 36, Recitals 84, 90, 91.",
+      "metadata": {
+        "source": "gdpr-dpia-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-dpia-genomic-research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-dpia-genomic-research",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c0",
+      "text": "GA4GH GDPR Forum — Primer: Ten Key GDPR Areas for International Genomic and Health-Related Data Sharing\nSource: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/\nLicense: GA4GH GDPR Brief (public; not legal advice — see disclaimer on source page)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: This text is excerpted for RegBot corpus ingest from GA4GH public GDPR Briefs. It does not constitute legal advice.\n\nThe General Data Protection Regulation (GDPR) took full legal effect across the European Union on 25 May 2018. It has significant implications for international health research involving the collection, use, and cross-border sharing of personal data, including genomics research.\n\nThe GA4GH Health Data Sharing, Privacy, and Regulatory Forum (formerly GDPR Forum) published an introductory primer highlighting ten key areas",
+      "metadata": {
+        "source": "gdpr-genomic-research-primer.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
+        "page": 0,
+        "category": "gdpr-genomic-research-primer",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genomic-research-primer",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c1",
+      "text": "earch.\n\nThe GA4GH Health Data Sharing, Privacy, and Regulatory Forum (formerly GDPR Forum) published an introductory primer highlighting ten key areas of the GDPR that affect international health research and genomic data sharing:\n\n1. Territorial scope — When GDPR applies to processing activities, including research conducted outside the EU that targets or monitors individuals in the EU.\n\n2. Transparency and accountability — Controllers must provide clear information to data subjects and demonstrate compliance with GDPR principles.\n\n3. Data protection by design and by default — Technical and organisational measures must integrate privacy protections from the outset of processing systems.\n\n4. Data protection impact assessments (DPIAs) — Required before processing likely to result in high risk to rights and freedoms; large-scale genomic health research typically triggers DPIA obligations.\n",
+      "metadata": {
+        "source": "gdpr-genomic-research-primer.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
+        "page": 0,
+        "category": "gdpr-genomic-research-primer",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genomic-research-primer",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c2",
+      "text": "ired before processing likely to result in high risk to rights and freedoms; large-scale genomic health research typically triggers DPIA obligations.\n\n5. Data Protection Officers (DPOs) — Certain controllers and processors must designate a DPO with expert knowledge of data protection law and practices.\n\n6. Consent — Must be freely given, specific, informed, and unambiguous. Special rules apply when consent is the legal basis for processing genomic and health-related data (special categories under Article 9).\n\n7. Processing special categories of personal data — Genetic data, biometric data, and data concerning health require an Article 9 lawful basis in addition to an Article 6 basis. Consent is one permitted basis; Member State law may authorise processing for scientific research subject to safeguards.\n\n8. Data subject rights and research derogations — Rights include access, rectificatio",
+      "metadata": {
+        "source": "gdpr-genomic-research-primer.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
+        "page": 0,
+        "category": "gdpr-genomic-research-primer",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genomic-research-primer",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c3",
+      "text": "orise processing for scientific research subject to safeguards.\n\n8. Data subject rights and research derogations — Rights include access, rectification, erasure, restriction, portability, and objection. Research contexts may qualify for limited derogations where rights would seriously impair research objectives, subject to conditions and safeguards.\n\n9. Secondary use and further processing — Further processing for scientific research may be compatible with the original purpose if appropriate safeguards exist. Broad consent for research may be permissible under Recital 33 when subject to ethical standards and oversight.\n\n10. International data transfer — Transfer of personal data outside the EU/EEA requires an adequacy decision, appropriate safeguards (e.g. Standard Contractual Clauses), or a derogation. Cross-border genomic data sharing must address transfer mechanisms explicitly.\n\nOffic",
+      "metadata": {
+        "source": "gdpr-genomic-research-primer.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
+        "page": 0,
+        "category": "gdpr-genomic-research-primer",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genomic-research-primer",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c4",
+      "text": "safeguards (e.g. Standard Contractual Clauses), or a derogation. Cross-border genomic data sharing must address transfer mechanisms explicitly.\n\nOfficial GDPR text: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679\nMore GA4GH GDPR Briefs: https://www.ga4gh.org/product/gdpr-international-health-data-sharing-forum/",
+      "metadata": {
+        "source": "gdpr-genomic-research-primer.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
+        "page": 0,
+        "category": "gdpr-genomic-research-primer",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genomic-research-primer",
+        "framework": "GDPR"
+      }
+    },
+    {
+      "id": "hgr-pipl-excerpt.txt_8687b6c0e966_p0_c0",
+      "text": "Mainland China — Human Genetic Resources, PIPL, and Data Security Law excerpts\nSource: HGR Regulation (国务院令); PIPL; DSL — official Chinese legal databases\nTier: P2 | Jurisdiction: CN | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt for cross-border genomic sharing review. Confirm with qualified counsel and current PRC rules. Not legal advice.\n\nHuman Genetic Resources (HGR) Regulation — international cooperation and export\n\nHuman genetic resources include human genetic resource materials (organs, tissues, cells containing human genome or genes) and human genetic resource information (data from materials).\n\nForeign organisations or individuals, or PRC entities established or controlled by them, generally must not collect or preserve PRC human genetic resources within China, or supply PRC HGR abroad, without approval from relevant authorities.\n\nInternational scientific research ",
+      "metadata": {
+        "source": "hgr-pipl-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
+        "page": 0,
+        "category": "cn-law-excerpt",
+        "jurisdiction": "CN",
+        "document_id": "cn-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "hgr-pipl-excerpt.txt_8687b6c0e966_p0_c1",
+      "text": "ve PRC human genetic resources within China, or supply PRC HGR abroad, without approval from relevant authorities.\n\nInternational scientific research cooperation involving HGR typically requires: (1) approval/filing with science and health authorities; (2) cooperation agreement with a PRC partner institution; (3) ethics review; (4) informed consent from donors; (5) plans for benefit sharing and data security.\n\nExport or open provision of HGR information to foreign parties may require security review and compliance with cross-border data transfer rules. Clinical studies, biobank sharing, and cloud analysis on overseas servers trigger HGR and cybersecurity assessments.\n\nPersonal Information Protection Law (PIPL) — sensitive personal information\n\nGenomic data, health data, and biometric data are often classified as sensitive personal information. Processing requires specific purpose, necess",
+      "metadata": {
+        "source": "hgr-pipl-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
+        "page": 0,
+        "category": "cn-law-excerpt",
+        "jurisdiction": "CN",
+        "document_id": "cn-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "hgr-pipl-excerpt.txt_8687b6c0e966_p0_c2",
+      "text": "on\n\nGenomic data, health data, and biometric data are often classified as sensitive personal information. Processing requires specific purpose, necessity, and strict protection measures; separate consent may be required unless another lawful basis applies.\n\nCross-border transfer of personal information: requires one of — (a) security assessment organised by CAC; (b) personal information protection certification; (c) standard contract with overseas recipient; (d) other mechanisms prescribed by law. Critical information infrastructure operators and large-scale processors face heightened obligations.\n\nData Security Law (DSL)\n\nEstablishes classified protection for data by importance and national security impact. Important data and core data in life sciences sectors may face localisation, security assessment, and export controls. Research platforms combining genomic and clinical datasets shou",
+      "metadata": {
+        "source": "hgr-pipl-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
+        "page": 0,
+        "category": "cn-law-excerpt",
+        "jurisdiction": "CN",
+        "document_id": "cn-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "hgr-pipl-excerpt.txt_8687b6c0e966_p0_c3",
+      "text": "life sciences sectors may face localisation, security assessment, and export controls. Research platforms combining genomic and clinical datasets should document data classification and governance.\n\nRegBot review prompts for China-origin or China-accessible genomic data\n\n- Is HGR administrative approval/filing in place for collection, cooperation, or outbound sharing?\n- Does consent cover international partners and specified uses?\n- Which PIPL cross-border transfer mechanism applies?\n- Are DSL/Cybersecurity Law security assessments required before cloud or foreign analysis?",
+      "metadata": {
+        "source": "hgr-pipl-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
+        "page": 0,
+        "category": "cn-law-excerpt",
+        "jurisdiction": "CN",
+        "document_id": "cn-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpo-excerpt.txt_2b40aa25aca6_p0_c0",
+      "text": "Hong Kong — PDPO and cross-border personal data transfer excerpts\nSource: Personal Data (Privacy) Ordinance (Cap. 486); PCPD guidance — https://www.pcpd.org.hk/\nTier: P2 | Jurisdiction: HK | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt. Section 33 not yet in force as of common PCPD guidance; verify current status. Not legal advice.\n\nPersonal Data (Privacy) Ordinance (PDPO) — data protection principles\n\nData Protection Principle 1 (Purpose and manner of collection): personal data must be collected for lawful purpose directly related to a function or activity, and data subjects informed of purpose and classes of transferees.\n\nData Protection Principle 3 (Use): personal data must not be used for new purpose without prescribed consent unless permitted exception applies.\n\nData Protection Principle 4 (Security): practicable steps to protect personal data against unauthorised or a",
+      "metadata": {
+        "source": "pdpo-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
+        "page": 0,
+        "category": "hk-law-excerpt",
+        "jurisdiction": "HK",
+        "document_id": "hk-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpo-excerpt.txt_2b40aa25aca6_p0_c1",
+      "text": "sent unless permitted exception applies.\n\nData Protection Principle 4 (Security): practicable steps to protect personal data against unauthorised or accidental access, processing, erasure, or other use.\n\nSensitive data in genomic research: health and genetic information require clear consent and purpose limitation. Hong Kong Genome Project and hospital research programmes typically use ethics committee review and participant information sheets specifying sharing scope.\n\nSection 33 — cross-border transfer (transfer limitation)\n\nPDPO Section 33 would prohibit transfer of personal data outside Hong Kong unless the destination jurisdiction is specified by the Commissioner as having adequate protection, or specified safeguards exist, or the data subject has consented in writing to the transfer.\n\nSection 33 has not been brought into force; PCPD nonetheless recommends voluntary adoption of tran",
+      "metadata": {
+        "source": "pdpo-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
+        "page": 0,
+        "category": "hk-law-excerpt",
+        "jurisdiction": "HK",
+        "document_id": "hk-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpo-excerpt.txt_2b40aa25aca6_p0_c2",
+      "text": " subject has consented in writing to the transfer.\n\nSection 33 has not been brought into force; PCPD nonetheless recommends voluntary adoption of transfer safeguards via model contractual clauses and due diligence for overseas processors (including cloud genomic analysis platforms).\n\nPCPD Practical Guidance — model clauses and due diligence\n\nRecommended approach before offshore transfer: assess recipient jurisdiction; execute PCPD-recommended model clauses; conduct due diligence on recipient security practices; document purpose and retention; notify data subjects where appropriate.\n\nMainland China transfers may involve both PDPO (HK) and PIPL (PRC) requirements when data flows between HK and mainland entities.\n\nRegBot review prompts for Hong Kong-origin genomic data\n\n- Consent and PICS (personal information collection statement) cover overseas research partners and cloud regions?\n- If re",
+      "metadata": {
+        "source": "pdpo-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
+        "page": 0,
+        "category": "hk-law-excerpt",
+        "jurisdiction": "HK",
+        "document_id": "hk-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpo-excerpt.txt_2b40aa25aca6_p0_c3",
+      "text": "g Kong-origin genomic data\n\n- Consent and PICS (personal information collection statement) cover overseas research partners and cloud regions?\n- If relying on voluntary s.33 safeguards, are model clauses and due diligence files complete?\n- Dual compliance if data flows HK ↔ mainland or HK ↔ EU/US?\n- Ethics committee approval for secondary use and linkage with EMR/genomic records?",
+      "metadata": {
+        "source": "pdpo-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
+        "page": 0,
+        "category": "hk-law-excerpt",
+        "jurisdiction": "HK",
+        "document_id": "hk-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "ethics-appi-excerpt.txt_2d98e86b95f6_p0_c0",
+      "text": "Japan — research ethics guidelines, APPI, and Genomic Medicine Act excerpts\nSource: MHLW ethical guidelines; APPI; Act on Promotion of Genomic Medicine (2023)\nTier: P2 | Jurisdiction: JP | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt. Not legal advice.\n\nEthical Guidelines for Medical and Health Research Involving Human Subjects\n\nJoint MEXT/MHLW/METI guidelines govern ethical conduct of medical and health research. Genomic research involving human samples or identifiable data requires review by an certified research ethics committee (REC/IRB).\n\nInformed consent must explain purpose, methods, risks, and whether samples/data may be stored for future research or shared with third parties domestically or abroad. Broad consent for unspecified future research is permitted under conditions including ethics oversight and public benefit.\n\nOpt-out and information provision models appl",
+      "metadata": {
+        "source": "ethics-appi-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
+        "page": 0,
+        "category": "jp-law-excerpt",
+        "jurisdiction": "JP",
+        "document_id": "jp-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "ethics-appi-excerpt.txt_2d98e86b95f6_p0_c1",
+      "text": "nspecified future research is permitted under conditions including ethics oversight and public benefit.\n\nOpt-out and information provision models apply in limited circumstances for archival data; cross-border sharing generally expects explicit consent or legal authorisation documented in ethics review.\n\nAct on the Protection of Personal Information (APPI) — cross-border transfer\n\nPersonal information handlers must specify purpose of use and obtain consent where required. Personal data requiring consideration (including health information) needs heightened care.\n\nTransfer of personal data to third parties in foreign countries requires: (1) consent after informing data subject of foreign privacy system and safeguards; or (2) recipient in country with equivalent protection; or (3) standard contractual clauses approved by PPC; or (4) binding corporate rules, among other mechanisms.\n\nAnonymis",
+      "metadata": {
+        "source": "ethics-appi-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
+        "page": 0,
+        "category": "jp-law-excerpt",
+        "jurisdiction": "JP",
+        "document_id": "jp-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "ethics-appi-excerpt.txt_2d98e86b95f6_p0_c2",
+      "text": "try with equivalent protection; or (3) standard contractual clauses approved by PPC; or (4) binding corporate rules, among other mechanisms.\n\nAnonymised or pseudonymised genomic datasets may still be personal information if re-identification is possible; cloud analysis outside Japan triggers transfer rules.\n\nAct on Promotion of Genomic Medicine (2023)\n\nEstablishes national framework for safe genomic medicine and research infrastructure (including GeMJ platform). Emphasises secure data linkage, quality-controlled sharing for research and clinical application, and coordination across designated medical institutions.\n\nMajor biobanks: Biobank Japan, Tohoku Megabank, NCBN — access via material/data transfer agreements and ethics approval.\n\nRegBot review prompts for Japan-origin genomic data\n\n- REC approval covers international collaboration and cloud jurisdiction?\n- APPI transfer mechanism do",
+      "metadata": {
+        "source": "ethics-appi-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
+        "page": 0,
+        "category": "jp-law-excerpt",
+        "jurisdiction": "JP",
+        "document_id": "jp-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "ethics-appi-excerpt.txt_2d98e86b95f6_p0_c3",
+      "text": "t review prompts for Japan-origin genomic data\n\n- REC approval covers international collaboration and cloud jurisdiction?\n- APPI transfer mechanism documented (consent disclosure, SCC, adequacy)?\n- If using broad/future-use consent, are ethics conditions and public information duties met?\n- GeMJ or hospital MTA/DUA limits compatible with researcher protocol?",
+      "metadata": {
+        "source": "ethics-appi-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
+        "page": 0,
+        "category": "jp-law-excerpt",
+        "jurisdiction": "JP",
+        "document_id": "jp-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "bioethics-pipa-excerpt.txt_b358347e039c_p0_c0",
+      "text": "South Korea — Bioethics and Safety Act and PIPA excerpts\nSource: Bioethics and Safety Act; Personal Information Protection Act — https://elaw.klri.re.kr/\nTier: P2 | Jurisdiction: KR | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt. Not legal advice.\n\nBioethics and Safety Act — human subject research and genetic data\n\nRegulates human subject research, embryo/fetal research limits, and handling of human-derived materials including genetic information. Research protocols typically require institutional review board (IRB) approval.\n\nCollection and use of human tissues, genetic information, and personal data for research must align with informed consent and IRB conditions. Broad or future-use consent is permitted subject to IRB oversight and statutory requirements.\n\nProvision of human-derived materials or genetic information to third parties, including foreign institutions, genera",
+      "metadata": {
+        "source": "bioethics-pipa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
+        "page": 0,
+        "category": "kr-law-excerpt",
+        "jurisdiction": "KR",
+        "document_id": "kr-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "bioethics-pipa-excerpt.txt_b358347e039c_p0_c1",
+      "text": "ight and statutory requirements.\n\nProvision of human-derived materials or genetic information to third parties, including foreign institutions, generally requires consent scope covering such transfer, IRB approval, and compliance with export/security rules where applicable.\n\nNational programmes (NBK, CODA, K-BDS, BIKO) operate under ministry oversight with standardised access agreements for domestic and international researchers.\n\nPersonal Information Protection Act (PIPA) — cross-border transfer\n\nPersonal information controllers must obtain data subject consent for cross-border transfer unless an exception applies, and inform subjects of recipient, purpose, items transferred, and retention period.\n\nSensitive information (including health and potentially genetic data) requires separate consent for collection and use unless another basis exists. Pseudonymisation and technical safeguards a",
+      "metadata": {
+        "source": "bioethics-pipa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
+        "page": 0,
+        "category": "kr-law-excerpt",
+        "jurisdiction": "KR",
+        "document_id": "kr-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "bioethics-pipa-excerpt.txt_b358347e039c_p0_c2",
+      "text": "nd potentially genetic data) requires separate consent for collection and use unless another basis exists. Pseudonymisation and technical safeguards are expected for large-scale genomic databases.\n\nData Protection Commission (PIPC) guidance emphasises accountability, impact assessment for high-risk processing, and documented contracts with overseas processors.\n\nFramework Act on AI (2025/2026) — emerging relevance\n\nHigh-risk AI using health or biometric data may face additional transparency and risk-management duties; genomic analysis pipelines should be reviewed for alignment with AI governance rules.\n\nRegBot review prompts for Korea-origin genomic data\n\n- Valid IRB approval and consent for proposed sharing or foreign access?\n- PIPA cross-border consent and disclosure to participants completed?\n- For NBK/CODA access, do DAC conditions match researcher DUL and consent scope?\n- Any biosafe",
+      "metadata": {
+        "source": "bioethics-pipa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
+        "page": 0,
+        "category": "kr-law-excerpt",
+        "jurisdiction": "KR",
+        "document_id": "kr-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "bioethics-pipa-excerpt.txt_b358347e039c_p0_c3",
+      "text": "order consent and disclosure to participants completed?\n- For NBK/CODA access, do DAC conditions match researcher DUL and consent scope?\n- Any biosafety or export control issues for physical samples vs data-only transfer?",
+      "metadata": {
+        "source": "bioethics-pipa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
+        "page": 0,
+        "category": "kr-law-excerpt",
+        "jurisdiction": "KR",
+        "document_id": "kr-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "rews-regional-jurisdiction-overview.txt_6b2c6a8f5cb7_p0_c0",
+      "text": "REWS Regional Jurisdiction Overview — East Asia biobanks and legal bases\nSource: GA4GH REWS regional scope (RegBot Phase 1 corpus index)\nTier: P2 | Jurisdiction: INTL | Framework: REWS\n\nDISCLAIMER: Index for RegBot retrieval only; not legal advice. Pair with per-region excerpt files.\n\nSingapore (SG)\nNational programmes: National Precision Medicine (SG10K, PRECISE SG100K, SG INSIGHT).\nLegal basis: Personal Data Protection Act 2012 (PDPA); Human Biomedical Research Act (HBRA); Health Information Bill (HIB).\nSee: data/corpus/P2/SG/pdpa-hbra-excerpt.txt\n\nMainland China (CN)\nProgrammes: China Kadoorie Biobank, China National GeneBank, NGDC, precision medicine initiatives.\nLegal basis: Human Genetic Resources Regulation; PIPL; Data Security Law; HGR Management Measures.\nSee: data/corpus/P2/CN/hgr-pipl-excerpt.txt\n\nTaiwan (TW)\nProgrammes: Taiwan Biobank, Taiwan Precision Medicine Initiative (TP",
+      "metadata": {
+        "source": "rews-regional-jurisdiction-overview.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/rews-regional-jurisdiction-overview.txt",
+        "page": 0,
+        "category": "rews-regional-jurisdiction-overview",
+        "jurisdiction": "INTL",
+        "document_id": "rews-regional-jurisdiction-overview",
+        "framework": "REWS"
+      }
+    },
+    {
+      "id": "rews-regional-jurisdiction-overview.txt_6b2c6a8f5cb7_p0_c1",
+      "text": "HGR Management Measures.\nSee: data/corpus/P2/CN/hgr-pipl-excerpt.txt\n\nTaiwan (TW)\nProgrammes: Taiwan Biobank, Taiwan Precision Medicine Initiative (TPMI), NBCT.\nLegal basis: Human Biobank Management Act; Personal Data Protection Act (PDPA).\nSee: data/corpus/P2/TW/biobank-pdpa-excerpt.txt\n\nSouth Korea (KR)\nProgrammes: National Biobank of Korea, KOBIC/K-BDS, BIKO, K-gNBS.\nLegal basis: Bioethics and Safety Act; Personal Information Protection Act (PIPA); AI Framework Act (2025/26).\nSee: data/corpus/P2/KR/bioethics-pipa-excerpt.txt\n\nJapan (JP)\nProgrammes: Biobank Japan, Tohoku Megabank, NCBN, Genomic Medicine Japan (GeMJ).\nLegal basis: Ethical Guidelines for Medical and Health Research Involving Human Subjects; APPI; Act on Promotion of Genomic Medicine (2023).\nSee: data/corpus/P2/JP/ethics-appi-excerpt.txt\n\nHong Kong (HK)\nProgrammes: Hong Kong Genome Project.\nLegal basis: Personal Data (Pri",
+      "metadata": {
+        "source": "rews-regional-jurisdiction-overview.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/rews-regional-jurisdiction-overview.txt",
+        "page": 0,
+        "category": "rews-regional-jurisdiction-overview",
+        "jurisdiction": "INTL",
+        "document_id": "rews-regional-jurisdiction-overview",
+        "framework": "REWS"
+      }
+    },
+    {
+      "id": "rews-regional-jurisdiction-overview.txt_6b2c6a8f5cb7_p0_c2",
+      "text": " Medicine (2023).\nSee: data/corpus/P2/JP/ethics-appi-excerpt.txt\n\nHong Kong (HK)\nProgrammes: Hong Kong Genome Project.\nLegal basis: Personal Data (Privacy) Ordinance (PDPO); cross-border transfer Section 33 (not yet in force); PCPD model clauses.\nSee: data/corpus/P2/HK/pdpo-excerpt.txt\n\nCross-border review checklist: identify source jurisdiction, consent scope, transfer mechanism, ethics/IRB pathway, and whether genetic/health data triggers special-category rules in destination country.",
+      "metadata": {
+        "source": "rews-regional-jurisdiction-overview.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/rews-regional-jurisdiction-overview.txt",
+        "page": 0,
+        "category": "rews-regional-jurisdiction-overview",
+        "jurisdiction": "INTL",
+        "document_id": "rews-regional-jurisdiction-overview",
+        "framework": "REWS"
+      }
+    },
+    {
+      "id": "pdpa-hbra-excerpt.txt_66bad962d60f_p0_c0",
+      "text": "Singapore — PDPA and HBRA excerpts for genomic and health research\nSource: PDPA 2012 (https://sso.agc.gov.sg/Act/PDPA2012); HBRA 2015 (https://sso.agc.gov.sg/Act/HBRA2015)\nTier: P2 | Jurisdiction: SG | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt; verify against current statutes and PDPC/HBRA guidance. Not legal advice.\n\nPersonal Data Protection Act 2012 (PDPA) — key themes for research data\n\nOrganisations must collect, use, and disclose personal data only for purposes a reasonable person would consider appropriate, with consent or another permitted basis. Personal data includes data that can identify an individual, alone or with other information.\n\nConsent: must be informed and voluntary. Organisations should tell individuals the purposes of collection, use, and disclosure, including any likely cross-border transfer. Withdrawal of consent should be facilitated where applic",
+      "metadata": {
+        "source": "pdpa-hbra-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
+        "page": 0,
+        "category": "sg-law-excerpt",
+        "jurisdiction": "SG",
+        "document_id": "sg-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpa-hbra-excerpt.txt_66bad962d60f_p0_c1",
+      "text": " the purposes of collection, use, and disclosure, including any likely cross-border transfer. Withdrawal of consent should be facilitated where applicable.\n\nTransfer limitation obligation: organisations must not transfer personal data outside Singapore unless the receiving country or territory ensures a comparable standard of protection, or the individual has given consent after being informed of risks, or other PDPA exceptions apply. Contractual clauses and binding corporate rules are common safeguards for international research collaborations.\n\nProtection obligation and retention: reasonable security arrangements; retain personal data only as long as necessary for legal or business purposes.\n\nHuman Biomedical Research Act (HBRA) — human biomedical research oversight\n\nRegulates conduct of human biomedical research in Singapore. Research involving human subjects, biological material, or ",
+      "metadata": {
+        "source": "pdpa-hbra-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
+        "page": 0,
+        "category": "sg-law-excerpt",
+        "jurisdiction": "SG",
+        "document_id": "sg-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpa-hbra-excerpt.txt_66bad962d60f_p0_c2",
+      "text": "iomedical research oversight\n\nRegulates conduct of human biomedical research in Singapore. Research involving human subjects, biological material, or personal information derived from such research may require ethics committee review and compliance with HBRA regulations.\n\nResearch institutions and investigators must obtain appropriate consent for collection and use of human biological material and associated data. Secondary use and sharing for research may require ethics approval and alignment with original consent scope.\n\nHealth Information Bill (HIB) — emerging framework\n\nSingapore is developing unified health information governance. Researchers sharing genomic or clinical data across healthcare and research settings should monitor HIB requirements for data sharing, custodianship, and national health information exchange.\n\nRegBot review prompts for Singapore-origin genomic data\n\n- Was ",
+      "metadata": {
+        "source": "pdpa-hbra-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
+        "page": 0,
+        "category": "sg-law-excerpt",
+        "jurisdiction": "SG",
+        "document_id": "sg-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "pdpa-hbra-excerpt.txt_66bad962d60f_p0_c3",
+      "text": "quirements for data sharing, custodianship, and national health information exchange.\n\nRegBot review prompts for Singapore-origin genomic data\n\n- Was PDPA consent (or deemed/other basis) obtained for collection, use, disclosure, and overseas transfer?\n- Does HBRA ethics approval cover proposed secondary use or international sharing?\n- Are transfer safeguards documented (DPA, SCC-equivalent, participant notification)?\n- Is re-identification risk from genomic data addressed in security and access controls?",
+      "metadata": {
+        "source": "pdpa-hbra-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
+        "page": 0,
+        "category": "sg-law-excerpt",
+        "jurisdiction": "SG",
+        "document_id": "sg-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "biobank-pdpa-excerpt.txt_3b856f128ecc_p0_c0",
+      "text": "Taiwan — Human Biobank Management Act and PDPA excerpts\nSource: Human Biobank Management Act; Personal Data Protection Act — https://law.moj.gov.tw/\nTier: P2 | Jurisdiction: TW | Framework: national\n\nDISCLAIMER: RegBot navigation excerpt. Not legal advice.\n\nHuman Biobank Management Act — biobank establishment and use\n\nGoverns establishment, management, and use of human biobanks and protection of participants. A biobank must obtain approval and register with competent authority before operation.\n\nInformed consent is required for collection of biological specimens and related personal data. Consent should specify purposes, types of use, duration, and whether data may be used for other research or provided to third parties.\n\nParticipants may withdraw consent; biobanks must establish procedures for withdrawal and handling of retained materials and data subject to legal retention limits.\n\nUse",
+      "metadata": {
+        "source": "biobank-pdpa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/TW/biobank-pdpa-excerpt.txt",
+        "page": 0,
+        "category": "tw-law-excerpt",
+        "jurisdiction": "TW",
+        "document_id": "tw-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "biobank-pdpa-excerpt.txt_3b856f128ecc_p0_c1",
+      "text": "ithdraw consent; biobanks must establish procedures for withdrawal and handling of retained materials and data subject to legal retention limits.\n\nUse of biobank data and specimens for research requires review by an ethics committee. Transfer to domestic or foreign researchers may require additional consent, ethics approval, and contractual safeguards depending on scope.\n\nPersonal Data Protection Act (PDPA) — cross-border transfer\n\nPersonal data processors must implement appropriate security measures. When a non-government agency transfers personal data internationally, it must ensure the recipient country has adequate protection, or obtain consent from the data subject after providing necessary information, unless an exception applies.\n\nSensitive personal information (including medical and genetic data in practice) warrants heightened notice and security. Secondary use beyond original c",
+      "metadata": {
+        "source": "biobank-pdpa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/TW/biobank-pdpa-excerpt.txt",
+        "page": 0,
+        "category": "tw-law-excerpt",
+        "jurisdiction": "TW",
+        "document_id": "tw-law-excerpt",
+        "framework": "national"
+      }
+    },
+    {
+      "id": "biobank-pdpa-excerpt.txt_3b856f128ecc_p0_c2",
+      "text": "nsitive personal information (including medical and genetic data in practice) warrants heightened notice and security. Secondary use beyond original collection purpose may require new consent or legal basis.\n\nMajor programmes: Taiwan Biobank, TPMI, NBCT — harmonisation through shared standards for cross-biobank linkage.\n\nRegBot review prompts for Taiwan-origin genomic data\n\n- Is the providing entity a registered biobank or study with valid ethics approval?\n- Does consent cover proposed secondary use, linkage with EMR, or foreign collaborator access?\n- For cross-border transfer, which PDPA Article 21 mechanism applies (adequacy, consent, contract)?\n- Are participant withdrawal and return-of-results policies documented?",
+      "metadata": {
+        "source": "biobank-pdpa-excerpt.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/TW/biobank-pdpa-excerpt.txt",
+        "page": 0,
+        "category": "tw-law-excerpt",
+        "jurisdiction": "TW",
+        "document_id": "tw-law-excerpt",
+        "framework": "national"
+      }
+    }
+  ]
+}

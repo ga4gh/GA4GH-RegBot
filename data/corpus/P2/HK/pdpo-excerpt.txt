@@ -1,0 +1,34 @@
+Hong Kong — PDPO and cross-border personal data transfer excerpts
+Source: Personal Data (Privacy) Ordinance (Cap. 486); PCPD guidance — https://www.pcpd.org.hk/
+Tier: P2 | Jurisdiction: HK | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt. Section 33 not yet in force as of common PCPD guidance; verify current status. Not legal advice.
+
+Personal Data (Privacy) Ordinance (PDPO) — data protection principles
+
+Data Protection Principle 1 (Purpose and manner of collection): personal data must be collected for lawful purpose directly related to a function or activity, and data subjects informed of purpose and classes of transferees.
+
+Data Protection Principle 3 (Use): personal data must not be used for new purpose without prescribed consent unless permitted exception applies.
+
+Data Protection Principle 4 (Security): practicable steps to protect personal data against unauthorised or accidental access, processing, erasure, or other use.
+
+Sensitive data in genomic research: health and genetic information require clear consent and purpose limitation. Hong Kong Genome Project and hospital research programmes typically use ethics committee review and participant information sheets specifying sharing scope.
+
+Section 33 — cross-border transfer (transfer limitation)
+
+PDPO Section 33 would prohibit transfer of personal data outside Hong Kong unless the destination jurisdiction is specified by the Commissioner as having adequate protection, or specified safeguards exist, or the data subject has consented in writing to the transfer.
+
+Section 33 has not been brought into force; PCPD nonetheless recommends voluntary adoption of transfer safeguards via model contractual clauses and due diligence for overseas processors (including cloud genomic analysis platforms).
+
+PCPD Practical Guidance — model clauses and due diligence
+
+Recommended approach before offshore transfer: assess recipient jurisdiction; execute PCPD-recommended model clauses; conduct due diligence on recipient security practices; document purpose and retention; notify data subjects where appropriate.
+
+Mainland China transfers may involve both PDPO (HK) and PIPL (PRC) requirements when data flows between HK and mainland entities.
+
+RegBot review prompts for Hong Kong-origin genomic data
+
+- Consent and PICS (personal information collection statement) cover overseas research partners and cloud regions?
+- If relying on voluntary s.33 safeguards, are model clauses and due diligence files complete?
+- Dual compliance if data flows HK ↔ mainland or HK ↔ EU/US?
+- Ethics committee approval for secondary use and linkage with EMR/genomic records?

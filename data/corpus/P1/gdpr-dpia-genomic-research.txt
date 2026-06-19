@@ -1,0 +1,37 @@
+GA4GH GDPR Forum Policy Brief — Data Protection Impact Assessment (DPIA) and Genomic Health Research
+Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+
+Article 35 of the GDPR requires data controllers to perform a Data Protection Impact Assessment (DPIA) before processing personal data when processing "is likely to result in a high risk to the rights and freedoms of natural persons."
+
+Applicability to genomic research
+
+Large-scale genomic health research involving personal data will typically require a DPIA. High-risk indicators relevant to genomics include:
+- systematic and extensive evaluation of personal aspects (including genetic data);
+- large-scale processing of special categories of data (genetic, biometric, health);
+- matching or combining datasets in ways that affect data subjects;
+- processing that may lead to exclusion or discrimination.
+
+Scope of one DPIA
+
+Not every individual processing activity requires a separate DPIA. A single assessment may address a set of similar processing operations presenting similar high risks. For large-scale genomic programmes, sector-wide or programme-level DPIAs may be appropriate where operations share comparable risk profiles.
+
+Timing and structure
+
+DPIAs should be performed as early as possible and updated continually as processing evolves. The GDPR allows flexibility in structure to fit existing institutional practices. Templates exist (e.g. UK ICO, French CNIL), but genomic research should incorporate research-specific considerations such as:
+- re-identification risk from genomic data;
+- familial and population implications;
+- international transfer pathways;
+- secondary use and data linkage plans;
+- governance by research ethics committees and data access committees.
+
+Relationship to other GDPR obligations
+
+DPIAs complement data protection by design/default (Article 25), records of processing (Article 30), and consultation with supervisory authorities where residual high risk remains (Article 36).
+
+Reviewers (DPO, IRB, DAC) should verify that a DPIA exists or is planned before cross-border sharing of identifiable or re-identifiable genomic datasets from EU/EEA subjects.
+
+Relevant GDPR provisions: Article 35, Article 36, Recitals 84, 90, 91.

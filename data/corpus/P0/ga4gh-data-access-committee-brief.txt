@@ -1,0 +1,45 @@
+GA4GH Data Access Committee (DAC) and responsible access — brief for reviewers
+Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/ ; GA4GH DAC/Recommendations
+License: GA4GH public guidance (not legal advice)
+Tier: P0 | Jurisdiction: GA4GH, INTL | Framework: GA4GH
+
+DISCLAIMER: RegBot navigation summary. Institutional DAC procedures may differ.
+
+Role of Data Access Committees
+
+Data Access Committees (DACs) review requests to access controlled genomic and health datasets. They verify that the proposed research:
+- Falls within participant consent and data-use limitations
+- Has appropriate ethics approval where required
+- Protects privacy and security of data subjects
+- Serves legitimate scientific purposes with minimised re-identification risk
+
+DAC review typically considers: research proposal summary, Data Use Ontology (DUO) permissions, institutional affiliation, publication plans, commercial use restrictions, and geographic limits.
+
+GA4GH access principles
+
+- Consent-aligned: access granted only for uses participants authorised (human-readable consent + DUO codes where available).
+- Non-discriminatory: criteria applied consistently across applicants.
+- Transparent: documented decisions and appeal pathways where institutions provide them.
+- Time-bound: access may expire; ongoing use may require renewal or amendment.
+- Attribution: researchers expected to acknowledge data sources and comply with publication embargoes if specified.
+
+Data Use Ontology (DUO) in access decisions
+
+DUO terms encode permissions and restrictions (e.g. general research use (GRU), health/medical/biomedical research (HMB), no commercial use (NPU), geographic restrictions). DACs match applicant intent to DUO tags attached to datasets. Mismatches require consent amendment, ethics review, or denial.
+
+Cross-border access considerations
+
+When applicants are in a different country from the data custodian:
+- Confirm export/import compliance (HGR, PDPA, PIPL, GDPR transfers, etc.)
+- Verify recipient institution security and subprocessor locations
+- Check whether cloud analysis jurisdictions were disclosed to participants
+- Ensure MTA/DUA covers international collaborators and downstream sharing
+
+RegBot review prompts for consent / DUL vs DAC workflow
+
+- Can each proposed use be mapped to a DUO code or consent clause?
+- Does the application disclose all countries where analysis will occur?
+- Are commercial, moratorium, or disease-specific restrictions reflected in the DUL?
+- If access is for linkage or AI/secondary analysis, is broad/future-use consent plus ethics oversight documented?
+
+Related: MRCG/DUO brief (P1), Consent Policy (P0), regional transfer excerpts (P2).

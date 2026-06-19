@@ -6,10 +6,3 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 
-# Local vector store + manifests
-data/regbot_store/
-
-# Downloaded corpus PDFs / excerpts (inventory in docs/corpus_manifest.yaml)
-data/corpus/**
-!data/corpus/**/.gitkeep
-

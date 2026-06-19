@@ -1,0 +1,43 @@
+GA4GH GDPR Forum Policy Brief — Genetic and biometric data as "special category" personal data under the GDPR
+Source: https://www.ga4gh.org/news_item/gdpr-brief-genetic-and-biometric-data/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+
+Summary
+
+Article 9(1) GDPR prohibits processing of special categories of personal data — including genetic data and biometric data for unique identification — unless a condition in Article 9(2) applies. Nearly all genomic research involves special category data.
+
+Definition of genetic data (Article 4(13))
+
+"Personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question."
+
+Whole-genome, exome, SNP arrays, RNA-seq linked to individuals, and derived variant calls typically qualify. Aggregated statistics without individual-level data may fall outside Article 9 if truly non-identifiable.
+
+Article 9(2) conditions common in research
+
+(a) Explicit consent for specified purposes.
+(b) Employment, social security law — rarely applicable to research biobanks.
+(h) Health or social care — processing by health professionals subject to confidentiality.
+(i) Public interest in public health — Member State law dependent.
+(j) Scientific or historical research or statistical purposes — with safeguards under Article 89(1).
+
+Explicit consent under Article 9
+
+Consent must be explicit (clear affirmative action) for special category data. Broad genomic research consent may satisfy explicitness when wording clearly covers genetic analysis and sharing, supplemented by ethics oversight per GA4GH GDPR Briefs on broad consent.
+
+Safeguards (Article 89(1))
+
+Appropriate technical and organisational measures including pseudonymisation; data minimisation; respect for data protection by design; ethics review; limited access.
+
+RegBot review prompts
+
+- Is Article 9 lawful basis identified (consent, research exemption, public health)?
+- Is consent "explicit" for genetic analysis, storage, and international sharing?
+- Are pseudonymisation and access controls documented as Article 89 safeguards?
+- Does the study distinguish special category genomic data from de-identified aggregate outputs?
+
+Relevant provisions: Article 4(13), Article 4(14) (biometric), Article 9, Article 89(1), Recital 34, Recital 53.
+
+Related: gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt.

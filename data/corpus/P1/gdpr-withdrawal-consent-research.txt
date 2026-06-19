@@ -1,0 +1,38 @@
+GA4GH GDPR Forum Policy Brief — Withdrawal of consent in genomic and health-related research under the GDPR
+Source: https://www.ga4gh.org/news_item/gdpr-brief-withdrawal-of-consent/
+License: GA4GH GDPR Brief (public; not legal advice)
+Tier: P1 | Jurisdiction: EU | Framework: GDPR
+
+DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+
+Summary
+
+Article 7(3) GDPR: data subjects may withdraw consent at any time. Withdrawal must be as easy as giving consent. Withdrawal does not affect lawfulness of processing before withdrawal, but future processing based on consent must stop.
+
+Withdrawal in long-running biobanks and cohorts
+
+Genomic studies often store samples and data for decades. Participants may withdraw from:
+- Future contact or new studies
+- Further use of identifiable data
+- Retention of biological samples
+
+What can continue after withdrawal
+
+- Data already shared with third parties under valid consent may be difficult to recall; consent forms should explain limits of withdrawal for irreversible actions (published results, anonymised aggregates, data already in international repositories).
+- Processing based on another lawful basis (e.g. legal obligation to retain audit records) may continue for specified records.
+- Ethics committees may define proportionate withdrawal procedures (destroy samples, suppress data, flag "no further use").
+
+Relationship to research integrity
+
+Withdrawal rights must be balanced with scientific validity (e.g. cannot remove participant from already-completed analysis) and collaborator obligations. GA4GH Consent Policy recommends clear participant information on withdrawal effects on shared datasets.
+
+RegBot review prompts
+
+- Does consent explain how to withdraw and what happens to samples, data, and already-shared copies?
+- Are downstream DUA/MTA terms compatible with custodian withdrawal procedures?
+- For international repositories, is there a documented process to flag withdrawn participants?
+- Does the protocol distinguish withdrawal from opt-out of recontact or return of results?
+
+Relevant provisions: Article 7(3), Article 13(2)(c), Article 17 (erasure interaction), Recital 42.
+
+Related: P0 ga4gh-consent-policy.pdf, gdpr-consent-broad-genomic-research.txt.

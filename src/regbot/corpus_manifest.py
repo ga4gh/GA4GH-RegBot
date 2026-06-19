@@ -16,7 +16,7 @@ _TIER_ORDER = {"P0": 0, "P1": 1, "P2": 2}
 _CORPUS_MANIFEST_HEADER = """\
 # RegBot regulatory corpus inventory (GSoC 2026 Phase 1)
 #
-# Lists documents approved for ingest. Do not commit PDFs under data/corpus/;
+# Lists documents approved for ingest. Source files live under data/corpus/;
 # record URLs, licenses, and local paths used during ingest.
 # See docs/DESIGN.md §3.1 and §5.1.
 #

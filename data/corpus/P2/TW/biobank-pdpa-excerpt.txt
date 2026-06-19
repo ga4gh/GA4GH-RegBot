@@ -1,0 +1,30 @@
+Taiwan — Human Biobank Management Act and PDPA excerpts
+Source: Human Biobank Management Act; Personal Data Protection Act — https://law.moj.gov.tw/
+Tier: P2 | Jurisdiction: TW | Framework: national
+
+DISCLAIMER: RegBot navigation excerpt. Not legal advice.
+
+Human Biobank Management Act — biobank establishment and use
+
+Governs establishment, management, and use of human biobanks and protection of participants. A biobank must obtain approval and register with competent authority before operation.
+
+Informed consent is required for collection of biological specimens and related personal data. Consent should specify purposes, types of use, duration, and whether data may be used for other research or provided to third parties.
+
+Participants may withdraw consent; biobanks must establish procedures for withdrawal and handling of retained materials and data subject to legal retention limits.
+
+Use of biobank data and specimens for research requires review by an ethics committee. Transfer to domestic or foreign researchers may require additional consent, ethics approval, and contractual safeguards depending on scope.
+
+Personal Data Protection Act (PDPA) — cross-border transfer
+
+Personal data processors must implement appropriate security measures. When a non-government agency transfers personal data internationally, it must ensure the recipient country has adequate protection, or obtain consent from the data subject after providing necessary information, unless an exception applies.
+
+Sensitive personal information (including medical and genetic data in practice) warrants heightened notice and security. Secondary use beyond original collection purpose may require new consent or legal basis.
+
+Major programmes: Taiwan Biobank, TPMI, NBCT — harmonisation through shared standards for cross-biobank linkage.
+
+RegBot review prompts for Taiwan-origin genomic data
+
+- Is the providing entity a registered biobank or study with valid ethics approval?
+- Does consent cover proposed secondary use, linkage with EMR, or foreign collaborator access?
+- For cross-border transfer, which PDPA Article 21 mechanism applies (adequacy, consent, contract)?
+- Are participant withdrawal and return-of-results policies documented?
