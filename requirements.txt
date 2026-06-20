@@ -6,7 +6,7 @@ openai==1.7.0
 httpx>=0.25.0,<0.28.0
 streamlit==1.30.0
 pypdf==3.17.4
-python-dotenv==1.0.0
+python-dotenv==1.2.2
 tiktoken==0.5.2; python_version < "3.14"
 sentence-transformers==2.2.2
 transformers==4.36.2
