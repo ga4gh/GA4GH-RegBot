@@ -31,7 +31,7 @@ documents:
   - GA4GH
   - INTL
   framework: GA4GH
-  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  source_url: https://www.ga4gh.org/document/consent-policy-v2/
   license: GA4GH document terms
   ingest_path: data/corpus/P0/ga4gh-consent-policy.pdf
   ingested_at: '2026-06-13T15:23:26+00:00'
@@ -67,7 +67,7 @@ documents:
   - GA4GH
   - INTL
   framework: GA4GH
-  source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
+  source_url: null
   license: GA4GH public guidance (not legal advice)
   ingest_path: data/corpus/P0/ga4gh-data-access-committee-brief.txt
   ingested_at: null
@@ -126,7 +126,7 @@ documents:
   - EU
   - INTL
   framework: GA4GH
-  source_url: https://www.ga4gh.org/product/data-use-ontology/
+  source_url: https://www.ga4gh.org/product/data-use-ontology-duo/
   license: GA4GH product documentation (public)
   ingest_path: data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt
   ingested_at: null
@@ -137,7 +137,7 @@ documents:
   jurisdiction:
   - EU
   framework: GDPR
-  source_url: https://www.ga4gh.org/news_item/gdpr-brief-international-transfers-of-genomic-and-health-related-data/
+  source_url: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-international-transfers-genomic-research.txt
   ingested_at: null
@@ -148,7 +148,7 @@ documents:
   jurisdiction:
   - EU
   framework: GDPR
-  source_url: https://www.ga4gh.org/news_item/gdpr-brief-secondary-use-and-further-processing-of-genomic-and-health-related-data-for-scientific-research/
+  source_url: https://www.ga4gh.org/news_item/finding-a-route-out-of-the-impasse/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-secondary-use-further-processing.txt
   ingested_at: null
@@ -159,7 +159,7 @@ documents:
   jurisdiction:
   - EU
   framework: GDPR
-  source_url: https://www.ga4gh.org/news_item/gdpr-brief-genetic-and-biometric-data/
+  source_url: https://www.ga4gh.org/news_item/what-specific-protections-apply-to-health-related-genetic-or-biometric-data/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-genetic-data-special-category.txt
   ingested_at: null
@@ -170,7 +170,7 @@ documents:
   jurisdiction:
   - EU
   framework: GDPR
-  source_url: https://www.ga4gh.org/news_item/gdpr-brief-withdrawal-of-consent/
+  source_url: https://www.ga4gh.org/news_item/gdpr-brief-withdrawing-consent-to-data-processing-under-the-gdpr/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-withdrawal-consent-research.txt
   ingested_at: null
@@ -181,7 +181,7 @@ documents:
   jurisdiction:
   - EU
   framework: GDPR
-  source_url: https://www.ga4gh.org/news_item/gdpr-brief-legal-bases-for-processing-genomic-and-health-related-data-for-scientific-research/
+  source_url: null
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-legal-basis-research-without-consent.txt
   ingested_at: null

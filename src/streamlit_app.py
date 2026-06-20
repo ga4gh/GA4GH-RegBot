@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 
 from src.main import RegBot
 from src.regbot.compliance import chat_followup_policy_qa
+from src.regbot.corpus_manifest import load_corpus_manifest
 from src.regbot.ingestion import read_manifest
 from src.regbot.jurisdiction import (
     JURISDICTION_CODES,
@@ -30,6 +31,86 @@ st.set_page_config(page_title="GA4GH-RegBot", layout="wide")
 load_dotenv()
 
 _JURISDICTION_UI_OPTIONS = {code: label for code, label in jurisdiction_options_for_ui()}
+_CORPUS_MANIFEST_PATH = str(_ROOT / "docs" / "corpus_manifest.yaml")
+_TIER_LABELS = {
+    "P0": "P0 — GA4GH / REWS framework",
+    "P1": "P1 — GDPR & consent-code briefs",
+    "P2": "P2 — Regional law excerpts",
+}
+
+
+def _corpus_documents(manifest_path: str = _CORPUS_MANIFEST_PATH) -> List[Dict[str, Any]]:
+    try:
+        data = load_corpus_manifest(manifest_path)
+        return list(data.get("documents") or [])
+    except Exception:
+        return []
+
+
+def _corpus_source_urls(docs: Optional[List[Dict[str, Any]]] = None) -> Dict[str, str]:
+    docs = docs if docs is not None else _corpus_documents()
+    out: Dict[str, str] = {}
+    for doc in docs:
+        doc_id = str(doc.get("document_id") or "").strip()
+        url = doc.get("source_url")
+        if doc_id and url and str(url).strip():
+            out[doc_id] = str(url).strip()
+    return out
+
+
+def _render_corpus_document_row(doc: Dict[str, Any], *, key_prefix: str) -> None:
+    doc_id = str(doc.get("document_id") or "")
+    title = str(doc.get("title") or doc_id or "Untitled")
+    tier = str(doc.get("tier") or "—")
+    juris = ", ".join(str(j) for j in (doc.get("jurisdiction") or []))
+    ingested = "yes" if doc.get("ingested_at") else "not yet"
+    col_info, col_link = st.columns([5, 2])
+    with col_info:
+        st.markdown(f"**{title}**")
+        st.caption(f"`{doc_id}` · {tier} · {juris} · ingested: {ingested}")
+    with col_link:
+        url = doc.get("source_url")
+        if url and str(url).strip():
+            st.link_button(
+                "Open source",
+                str(url).strip(),
+                use_container_width=True,
+            )
+        else:
+            st.caption("No public URL")
+
+
+def _render_corpus_inventory(
+    docs: List[Dict[str, Any]],
+    *,
+    key_prefix: str,
+    region_filter: Optional[str] = None,
+) -> None:
+    if not docs:
+        st.warning("No corpus entries found in `docs/corpus_manifest.yaml`.")
+        return
+    filtered = docs
+    if region_filter:
+        want = region_filter.upper()
+        filtered = [
+            d for d in docs if want in {str(j).upper() for j in (d.get("jurisdiction") or [])}
+        ]
+    if region_filter and not filtered:
+        st.info(f"No manifest documents tagged `{region_filter}`.")
+        return
+    by_tier: Dict[str, List[Dict[str, Any]]] = {"P0": [], "P1": [], "P2": []}
+    for doc in filtered:
+        tier = str(doc.get("tier") or "P2").upper()
+        by_tier.setdefault(tier, []).append(doc)
+    for tier in ("P0", "P1", "P2"):
+        tier_docs = by_tier.get(tier) or []
+        if not tier_docs:
+            continue
+        label = _TIER_LABELS.get(tier, tier)
+        st.markdown(f"#### {label}")
+        for doc in tier_docs:
+            _render_corpus_document_row(doc, key_prefix=f"{key_prefix}_{tier}")
+        st.divider()
 
 
 def _bot(store_dir: str) -> RegBot:
@@ -77,17 +158,33 @@ def _jurisdiction_multiselect(
     return [label_to_code[lab] for lab in selected_labels if lab in label_to_code]
 
 
-def _render_chunk_cards(chunks: List[Dict[str, Any]], *, empty_hint: str) -> None:
+def _render_chunk_cards(
+    chunks: List[Dict[str, Any]],
+    *,
+    empty_hint: str,
+    source_urls: Optional[Dict[str, str]] = None,
+) -> None:
     if not chunks:
         st.warning(empty_hint)
         return
+    urls = source_urls or {}
     for ch in chunks:
         meta = ch.get("metadata") or {}
         tags = sorted(chunk_jurisdiction_tags(meta))
         tag_str = ", ".join(tags) if tags else "—"
         title = f"`{ch.get('id', '')}` · {meta.get('source', '?')} p.{meta.get('page', '?')} · **{tag_str}**"
         with st.expander(title):
-            st.caption(f"Category: {meta.get('category', '—')} · Jurisdiction: {tag_str}")
+            doc_id = str(meta.get("document_id") or meta.get("category") or "")
+            source_url = urls.get(doc_id)
+            cap = f"Category: {meta.get('category', '—')} · Jurisdiction: {tag_str}"
+            if doc_id:
+                cap += f" · document_id: `{doc_id}`"
+            st.caption(cap)
+            if source_url:
+                st.link_button(
+                    "Open original source page",
+                    source_url,
+                )
             st.text((ch.get("text") or "")[:2000])
 
 
@@ -96,6 +193,9 @@ st.caption(
     "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, "
     "and draft a citation-oriented compliance note. Not legal advice."
 )
+
+_corpus_docs = _corpus_documents()
+_corpus_urls = _corpus_source_urls(_corpus_docs)
 
 with st.sidebar:
     store_dir = st.text_input(
@@ -114,14 +214,15 @@ with st.sidebar:
             "No jurisdiction tags in the store yet. When ingesting policy, pick a region "
             "(SG, CN, JP, …) so retrieval can be scoped."
         )
+    st.caption(f"**{len(_corpus_docs)}** documents in corpus manifest — see **Corpus** tab.")
     st.markdown(
         "**Default:** local [Ollama](https://ollama.com) (`REGBOT_OLLAMA_MODEL`, e.g. `llama3`). "
         "For OpenAI instead, set `REGBOT_LLM_PROVIDER=openai` and `OPENAI_API_KEY`. "
         "If the LLM is unreachable, a heuristic fallback runs."
     )
 
-tab_ingest, tab_browse, tab_check, tab_chat = st.tabs(
-    ["Ingest policy", "Browse by region", "Check consent", "Ask follow-up"]
+tab_ingest, tab_corpus, tab_browse, tab_check, tab_chat = st.tabs(
+    ["Ingest policy", "Corpus", "Browse by region", "Check consent", "Ask follow-up"]
 )
 
 with tab_ingest:
@@ -163,6 +264,24 @@ with tab_ingest:
             except OSError:
                 pass
 
+with tab_corpus:
+    st.markdown(
+        "Regulatory corpus inventory from `docs/corpus_manifest.yaml`. "
+        "Use **Open source** to view the original GA4GH page, GDPR brief, or statute reference."
+    )
+    corpus_region = st.selectbox(
+        "Filter by jurisdiction",
+        options=["All"] + list(JURISDICTION_CODES),
+        format_func=lambda c: "All jurisdictions" if c == "All" else jurisdiction_option_label(c),
+        key="corpus_region_filter",
+    )
+    region_arg = None if corpus_region == "All" else corpus_region
+    _render_corpus_inventory(
+        _corpus_docs,
+        key_prefix="corpus_tab",
+        region_filter=region_arg,
+    )
+
 with tab_browse:
     st.markdown(
         "View ingested policy chunks **by jurisdiction** without running a compliance check. "
@@ -189,6 +308,7 @@ with tab_browse:
                 f"No chunks tagged `{region}` in this store. "
                 "Ingest a document with that jurisdiction, or try another region."
             ),
+            source_urls=_corpus_urls,
         )
 
 with tab_check:
@@ -237,6 +357,7 @@ with tab_check:
                     "No chunks matched this query and jurisdiction filter. "
                     "Try clearing the jurisdiction filter or ingest policy for that region."
                 ),
+                source_urls=_corpus_urls,
             )
 
 with tab_chat:
