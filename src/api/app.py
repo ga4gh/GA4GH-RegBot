@@ -20,9 +20,9 @@ from src.api.schemas import (
     CheckRequest,
     CheckResponse,
     ChunkOut,
+    ChunksResponse,
     CorpusDocument,
     CorpusResponse,
-    ChunksResponse,
     IngestResponse,
     JurisdictionOption,
     StoreMetaResponse,
@@ -35,7 +35,6 @@ from src.regbot.jurisdiction import (
     JURISDICTION_CODES,
     chunk_jurisdiction_tags,
     jurisdiction_matches,
-    jurisdiction_option_label,
     jurisdiction_options_for_ui,
     parse_jurisdiction_filter,
 )
@@ -104,8 +103,7 @@ def health() -> Dict[str, str]:
 @app.get("/api/meta/jurisdictions", response_model=List[JurisdictionOption])
 def list_jurisdictions() -> List[JurisdictionOption]:
     return [
-        JurisdictionOption(code=code, label=label)
-        for code, label in jurisdiction_options_for_ui()
+        JurisdictionOption(code=code, label=label) for code, label in jurisdiction_options_for_ui()
     ]
 
 
@@ -131,11 +129,7 @@ def get_corpus(
     docs = _corpus_documents()
     if region and region.upper() != "ALL":
         want = region.upper()
-        docs = [
-            d
-            for d in docs
-            if want in {str(j).upper() for j in (d.get("jurisdiction") or [])}
-        ]
+        docs = [d for d in docs if want in {str(j).upper() for j in (d.get("jurisdiction") or [])}]
     out: List[CorpusDocument] = []
     for doc in docs:
         out.append(
