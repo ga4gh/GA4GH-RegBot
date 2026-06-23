@@ -12,7 +12,8 @@ What works today
 - **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest (chunk ids, page hints, source metadata).
 - **Hybrid retrieval**: embedding search + **BM25**, merged with reciprocal rank fusion.
 - **Compliance pass**: JSON-mode LLM via **[Ollama](https://ollama.com) by default** (e.g. `llama3`, configurable with `REGBOT_OLLAMA_MODEL`). Set `REGBOT_LLM_PROVIDER=openai` and `OPENAI_API_KEY` to use OpenAI instead. If no LLM is reachable (or on API failure), a **keyword heuristic fallback** still returns grounded chunk ids.
-- **Streamlit UI** for upload + paste flows (`src/streamlit_app.py`).
+- **Web UI** (recommended): FastAPI + Next.js in `frontend/` — see **Run the web UI** below.
+- **Streamlit UI** (legacy): upload + paste flows (`src/streamlit_app.py`).
 - **CLI**: `python -m src.main …` (see below).
 - **Citation grounding (programmatic):** Each `recommendations[]` item must be `{ "text": "...", "evidence_chunk_ids": ["..."] }` with ids taken **only** from retrieved chunks; optional `citations[]` must also respect the same allow-list. Failed checks trigger **automatic rewrite requests** with the allow-list; optional **token-overlap** filtering on the LLM path (`REGBOT_MIN_TOKEN_OVERLAP`).
 - **PDF eval harness:** `eval` subcommand ingests a real GA4GH PDF and prints retrieval hits for built-in or custom queries (for manual review / building a gold set later).
@@ -58,7 +59,19 @@ python -m src.main ingest-manifest --tier P0 --reset
 python -m src.main check --consent path/to/consent.txt
 ```
 
-- Run the Streamlit UI from the repo root:
+- Run the **web UI** (FastAPI + Next.js) from the repo root:
+
+```bash
+# Terminal 1 — API (repo root, venv active)
+uvicorn src.api.app:app --reload --port 8000
+
+# Terminal 2 — frontend
+cd frontend && npm install && npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). The Next.js dev server proxies `/api/*` to the API on port 8000.
+
+- Run the legacy **Streamlit** UI:
 
 ```bash
 python -m streamlit run src/streamlit_app.py

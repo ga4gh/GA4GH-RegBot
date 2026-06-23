@@ -18,6 +18,7 @@ ignore = ["E501"]
 # sys.path bootstrap must run before project imports
 "src/main.py" = ["E402"]
 "src/streamlit_app.py" = ["E402"]
+"src/api/app.py" = ["E402"]
 
 [tool.ruff.format]
 quote-style = "double"
