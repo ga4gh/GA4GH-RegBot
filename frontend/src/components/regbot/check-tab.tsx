@@ -217,7 +217,7 @@ export function CheckTab({
             </>
           ) : (
             <div className="border-border/60 bg-muted/20 text-muted-foreground flex min-h-[320px] items-center justify-center rounded-xl border border-dashed p-8 text-center text-sm">
-              Run Analyze to generate a compliance report from retrieved policy context.
+              Run Analyze to generate a regulatory navigation report from retrieved policy context.
             </div>
           )}
         </div>

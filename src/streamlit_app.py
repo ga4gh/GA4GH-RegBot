@@ -191,7 +191,7 @@ def _render_chunk_cards(
 st.title("GA4GH-RegBot")
 st.caption(
     "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, "
-    "and draft a citation-oriented compliance note. Not legal advice."
+    "and draft a citation-oriented regulatory navigation note. Not legal advice."
 )
 
 _corpus_docs = _corpus_documents()
@@ -222,7 +222,7 @@ with st.sidebar:
     )
 
 tab_ingest, tab_corpus, tab_browse, tab_check, tab_chat = st.tabs(
-    ["Ingest policy", "Corpus", "Browse by region", "Check consent", "Ask follow-up"]
+    ["Ingest policy", "Corpus", "Browse by region", "Check consent", "Ask a question"]
 )
 
 with tab_ingest:
@@ -284,7 +284,7 @@ with tab_corpus:
 
 with tab_browse:
     st.markdown(
-        "View ingested policy chunks **by jurisdiction** without running a compliance check. "
+        "View ingested policy chunks **by jurisdiction** without running a navigation check. "
         "Useful to see what is in the corpus for Singapore, Japan, GA4GH framework docs, etc."
     )
     browse_region = st.selectbox(
@@ -362,36 +362,57 @@ with tab_check:
 
 with tab_chat:
     st.caption(
-        "Uses the **same retrieved policy chunks** as your last **Analyze** on the Check consent tab. "
-        "Exploratory Q&A only — not programmatically grounded like the JSON report. Not legal advice."
+        "Type a regulatory question in natural language. RegBot retrieves relevant policy "
+        "excerpts and answers with chunk citations. Not legal advice."
     )
-    if st.session_state.get("last_jurisdictions"):
+    chat_jurisdictions = _jurisdiction_multiselect(
+        "chat_jurisdiction",
+        label="Scope to jurisdiction(s)",
+        help_text=(
+            "Leave empty to search all ingested policy. Select one or more regions "
+            "(e.g. SG + GA4GH) to narrow hybrid retrieval."
+        ),
+        default=st.session_state.get("last_jurisdictions") or [],
+    )
+    if st.session_state.get("last_consent"):
         st.caption(
-            "Last analysis jurisdictions: " + ", ".join(st.session_state["last_jurisdictions"])
+            "Optional consent context from your last **Analyze** is included when available."
         )
-    if not st.session_state.get("last_chunks"):
-        st.info("Run **Analyze** on **Check consent** first to load chunks into this session.")
-    else:
-        for msg in st.session_state.get("chat_messages") or []:
-            with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
-        with st.form("followup_form", clear_on_submit=True):
-            prompt = st.text_input(
-                "Question about the retrieved policy context",
-                placeholder="Type a question and click Send…",
-                label_visibility="collapsed",
+    if "chat_messages" not in st.session_state:
+        st.session_state["chat_messages"] = []
+    for msg in st.session_state.get("chat_messages") or []:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+    with st.form("followup_form", clear_on_submit=True):
+        prompt = st.text_input(
+            "Regulatory question",
+            placeholder="e.g. What does GA4GH require for international data sharing?",
+            label_visibility="collapsed",
+        )
+        send = st.form_submit_button("Send")
+    if send and prompt.strip():
+        st.session_state.setdefault("chat_messages", []).append(
+            {"role": "user", "content": prompt.strip()}
+        )
+        bot = _bot(store_dir)
+        jur_filter = parse_jurisdiction_filter(chat_jurisdictions)
+        chunks = bot.retrieve_relevant_clauses(
+            prompt.strip(),
+            top_k=8,
+            jurisdiction=jur_filter,
+        )
+        if not chunks:
+            scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
+            reply = (
+                f"No policy chunks matched (scope: {scope}). "
+                "Ingest the corpus or try another jurisdiction."
             )
-            send = st.form_submit_button("Send")
-        if send and prompt.strip():
-            st.session_state.setdefault("chat_messages", []).append(
-                {"role": "user", "content": prompt.strip()}
-            )
-            bot = _bot(store_dir)
+        else:
             reply = chat_followup_policy_qa(
-                st.session_state["last_chunks"],
+                chunks,
                 st.session_state.get("last_consent") or "",
                 st.session_state["chat_messages"],
                 api_key=bot.api_key,
             )
-            st.session_state["chat_messages"].append({"role": "assistant", "content": reply})
-            st.rerun()
+        st.session_state["chat_messages"].append({"role": "assistant", "content": reply})
+        st.rerun()

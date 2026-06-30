@@ -3,7 +3,7 @@ name = "ga4gh-regbot"
 version = "0.0.0"
 requires-python = ">=3.10,<3.14"
 readme = "README.md"
-description = "GA4GH-RegBot compliance assistant (MVP)"
+description = "GA4GH-RegBot regulatory navigation assistant (MVP)"
 
 [tool.ruff]
 target-version = "py310"

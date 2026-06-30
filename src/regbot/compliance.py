@@ -163,7 +163,7 @@ def analyze_compliance(
                 {
                     "text": (
                         "Ingest at least one GA4GH policy document into the local store "
-                        "before checking compliance."
+                        "before running a navigation check."
                     ),
                     "evidence_chunk_ids": [],
                 }
@@ -206,7 +206,7 @@ def analyze_compliance(
         client = OpenAI(api_key=api_key, max_retries=OPENAI_MAX_RETRIES)
 
     system = (
-        "You are a research compliance assistant for genomic data sharing. "
+        "You are a research regulatory navigation assistant for genomic data sharing. "
         "You must only use the POLICY EXCERPTS block as evidence. "
         "If the excerpts do not contain enough information, say so explicitly. "
         "Return JSON only, no markdown. "
@@ -377,12 +377,15 @@ def chat_followup_policy_qa(
     model: Optional[str] = None,
 ) -> str:
     """
-    Multi-turn Q&A using only retrieved chunks as policy evidence (same headers as compliance).
+    Multi-turn Q&A using only retrieved chunks as policy evidence (same headers as navigation report).
     ``messages`` are prior turns: {"role": "user"|"assistant", "content": "..."}.
     Does not replace programmatic JSON grounding; for exploratory follow-up only. Not legal advice.
     """
     if not chunks:
-        return "No policy chunks available. Run **Analyze** on the Check consent tab first."
+        return (
+            "No policy chunks available. Ingest the corpus or narrow your jurisdiction filter, "
+            "then try again."
+        )
 
     provider = llm_provider()
     use_ollama = provider == "ollama"
@@ -406,12 +409,12 @@ def chat_followup_policy_qa(
     evidence = _format_evidence(chunks)
     study_guess = detect_study_type(consent_text)
     system = (
-        "You are a research compliance assistant for genomic data sharing. Not legal advice.\n\n"
+        "You are a research regulatory navigation assistant for genomic data sharing. Not legal advice.\n\n"
         "Two kinds of sources:\n"
         "(1) GA4GH/policy requirements: use ONLY the POLICY EXCERPTS below. "
         "Cite chunk_id from [chunk_id=...] headers when you reference policy text.\n"
         "(2) The participant consent / data-use text: use CONSENT_OR_DATA_USE_TEXT below. "
-        "For **study type** as used in the compliance JSON report, use this exact pipeline label "
+        "For **study type** as used in the navigation JSON report, use this exact pipeline label "
         "(keyword heuristic, same as field `study_type` in Check consent):\n"
         f"STUDY_TYPE_GUESS: {study_guess}\n"
         "If the user asks what the study type is, answer with STUDY_TYPE_GUESS and say it matches "

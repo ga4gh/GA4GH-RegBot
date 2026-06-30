@@ -25,7 +25,7 @@ from src.regbot.study_type import detect_study_type
 
 class RegBot:
     """
-    GA4GH-oriented compliance assistant: ingest policy text, retrieve hybrid context,
+    GA4GH-oriented regulatory navigation assistant: ingest policy text, retrieve hybrid context,
     then analyze consent / data-use language with optional LLM JSON output
     (OpenAI API or local Ollama: Llama 3, Mistral, etc.).
     """

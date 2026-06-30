@@ -72,13 +72,18 @@ class ChatMessage(BaseModel):
 
 class ChatRequest(BaseModel):
     messages: List[ChatMessage]
-    chunks: List[Dict[str, Any]]
+    chunks: List[Dict[str, Any]] = Field(default_factory=list)
     consent_text: str = ""
     store_dir: Optional[str] = None
+    jurisdictions: List[str] = Field(default_factory=list)
+    top_k: int = Field(default=8, ge=3, le=16)
+    category: Optional[str] = None
 
 
 class ChatResponse(BaseModel):
     reply: str
+    chunks: List[ChunkOut] = Field(default_factory=list)
+    scope: str = ""
 
 
 class StoreMetaResponse(BaseModel):
