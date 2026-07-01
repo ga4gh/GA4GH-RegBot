@@ -66,7 +66,8 @@ class TestRegBotPipeline(unittest.TestCase):
             self.assertIn("id", hits[0])
             with open(consent, encoding="utf-8") as f:
                 report = bot.check_compliance(f.read(), top_k=6)
-            self.assertIn("status", report)
+            self.assertIn("coverage", report)
+            self.assertNotIn("status", report)
             self.assertIn("citations", report)
             self.assertIsInstance(report["recommendations"], list)
             self.assertGreater(len(report["recommendations"]), 0)

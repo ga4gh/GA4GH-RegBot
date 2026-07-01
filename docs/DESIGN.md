@@ -153,14 +153,14 @@ Initial corpus tagging aligns with East Asia / cross-border sharing priorities d
 
 ### 3.2 Compliance / navigation report (JSON)
 
-Output is a **navigation aid**, not a compliance certificate.
+Output is a **navigation aid**, not a compliance certificate. The `coverage` field describes topic completeness for human review—not a compliance ruling.
 
 **Current shape** (see README for env-driven behaviour):
 
 ```json
 {
   "study_type": "genomic_research",
-  "status": "Partially Compliant",
+  "coverage": "partial",
   "missing_elements": ["..."],
   "recommendations": [
     {
