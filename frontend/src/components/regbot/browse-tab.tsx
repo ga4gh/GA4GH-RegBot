@@ -53,7 +53,7 @@ export function BrowseTab({ storeDir, jurisdictions, sourceUrls }: BrowseTabProp
       <div>
         <h2 className="text-lg font-semibold tracking-tight">Browse by region</h2>
         <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-          View ingested policy chunks by jurisdiction without running a compliance check.
+          View ingested policy chunks by jurisdiction without running a navigation check.
         </p>
       </div>
 

@@ -51,6 +51,7 @@ function Recommendations({ items }: { items: unknown }) {
 
 export function ReportView({ report }: ReportViewProps) {
   const studyType = report.study_type;
+  const coverage = report.coverage;
   const summary = report.summary ?? report.overall_assessment;
   const findings = report.findings ?? report.issues;
   const recommendations = report.recommendations;
@@ -60,6 +61,9 @@ export function ReportView({ report }: ReportViewProps) {
       <div className="flex flex-wrap items-center gap-2">
         {studyType ? (
           <Badge className="bg-primary/90">{asString(studyType)}</Badge>
+        ) : null}
+        {coverage ? (
+          <Badge variant="secondary">coverage: {asString(coverage)}</Badge>
         ) : null}
         {report.grounding_strict != null ? (
           <Badge variant="secondary">

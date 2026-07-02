@@ -30,6 +30,34 @@ from src.regbot.grounding import (
 )
 from src.regbot.study_type import detect_study_type
 
+# Navigation report: coverage describes topic completeness, not a compliance verdict.
+_COVERAGE_VALUES = frozenset({"complete", "partial", "incomplete", "unknown"})
+_LEGACY_STATUS_TO_COVERAGE = {
+    "compliant": "complete",
+    "partially compliant": "partial",
+    "non-compliant": "incomplete",
+    "non compliant": "incomplete",
+    "unknown": "unknown",
+}
+
+
+def normalize_coverage(raw: Optional[str]) -> str:
+    """Map LLM or legacy status strings to coverage vocabulary."""
+    if not raw:
+        return "unknown"
+    key = str(raw).strip().lower()
+    if key in _COVERAGE_VALUES:
+        return key
+    return _LEGACY_STATUS_TO_COVERAGE.get(key, "unknown")
+
+
+def coverage_from_missing_count(missing_count: int, total_topics: int) -> str:
+    if total_topics <= 0 or missing_count <= 0:
+        return "complete"
+    if missing_count <= max(1, total_topics // 2):
+        return "partial"
+    return "incomplete"
+
 
 def _format_evidence(chunks: List[Dict[str, Any]], max_chars: int = 12000) -> str:
     parts: List[str] = []
@@ -69,7 +97,7 @@ def _fallback_report(
         "pseudonym",
     ]
     missing = [k for k in keywords if k not in consent_l]
-    status = "Partially Compliant" if len(missing) <= 3 else "Non-Compliant"
+    coverage = coverage_from_missing_count(len(missing), len(keywords))
     ids_pool = [str(c["id"]) for c in chunks if c.get("id")]
     texts = [
         "Add explicit language on permitted secondary uses and any restrictions.",
@@ -92,7 +120,7 @@ def _fallback_report(
 
     out: Dict[str, Any] = {
         "study_type": study_type,
-        "status": status,
+        "coverage": coverage,
         "missing_elements": missing,
         "recommendations": recommendations,
         "citations": citations,
@@ -157,13 +185,13 @@ def analyze_compliance(
     if not chunks:
         empty: Dict[str, Any] = {
             "study_type": study_type,
-            "status": "Unknown",
+            "coverage": "unknown",
             "missing_elements": [],
             "recommendations": [
                 {
                     "text": (
                         "Ingest at least one GA4GH policy document into the local store "
-                        "before checking compliance."
+                        "before running a navigation check."
                     ),
                     "evidence_chunk_ids": [],
                 }
@@ -206,7 +234,9 @@ def analyze_compliance(
         client = OpenAI(api_key=api_key, max_retries=OPENAI_MAX_RETRIES)
 
     system = (
-        "You are a research compliance assistant for genomic data sharing. "
+        "You are a research regulatory navigation assistant for genomic data sharing. "
+        "You surface policy provisions for human reviewers (DPO, IRB, DAC); "
+        "do not issue compliance rulings or legal conclusions. "
         "You must only use the POLICY EXCERPTS block as evidence. "
         "If the excerpts do not contain enough information, say so explicitly. "
         "Return JSON only, no markdown. "
@@ -225,8 +255,10 @@ def analyze_compliance(
         f"POLICY EXCERPTS:\n{evidence}\n\n"
         f"CONSENT_OR_DATA_USE_TEXT:\n{consent_text.strip()}\n\n"
         "Return a JSON object with keys: "
-        "study_type (string), status (one of: Compliant, Partially Compliant, Non-Compliant, Unknown), "
-        "missing_elements (array of strings), "
+        "study_type (string), "
+        "coverage (one of: complete, partial, incomplete, unknown — how fully the consent "
+        "addresses themes in the retrieved policy excerpts; not a compliance verdict), "
+        "missing_elements (array of strings — policy themes not clearly addressed in the consent), "
         "recommendations (array of objects, each with text and evidence_chunk_ids), "
         "citations (optional array of objects with chunk_id, reason), "
         "notes (optional string)."
@@ -283,9 +315,12 @@ def analyze_compliance(
             m = re.search(r"\{[\s\S]*\}", raw)
             data = json.loads(m.group(0)) if m else {}
 
+        raw_coverage = data.get("coverage")
+        if raw_coverage is None:
+            raw_coverage = data.get("status")
         out = {
             "study_type": str(data.get("study_type", study_type)),
-            "status": str(data.get("status", "Unknown")),
+            "coverage": normalize_coverage(str(raw_coverage) if raw_coverage is not None else None),
             "missing_elements": list(data.get("missing_elements") or []),
             "recommendations": normalize_recommendations(data.get("recommendations")),
             "citations": list(data.get("citations") or []),
@@ -377,12 +412,15 @@ def chat_followup_policy_qa(
     model: Optional[str] = None,
 ) -> str:
     """
-    Multi-turn Q&A using only retrieved chunks as policy evidence (same headers as compliance).
+    Multi-turn Q&A using only retrieved chunks as policy evidence (same headers as navigation report).
     ``messages`` are prior turns: {"role": "user"|"assistant", "content": "..."}.
     Does not replace programmatic JSON grounding; for exploratory follow-up only. Not legal advice.
     """
     if not chunks:
-        return "No policy chunks available. Run **Analyze** on the Check consent tab first."
+        return (
+            "No policy chunks available. Ingest the corpus or narrow your jurisdiction filter, "
+            "then try again."
+        )
 
     provider = llm_provider()
     use_ollama = provider == "ollama"
@@ -406,12 +444,12 @@ def chat_followup_policy_qa(
     evidence = _format_evidence(chunks)
     study_guess = detect_study_type(consent_text)
     system = (
-        "You are a research compliance assistant for genomic data sharing. Not legal advice.\n\n"
+        "You are a research regulatory navigation assistant for genomic data sharing. Not legal advice.\n\n"
         "Two kinds of sources:\n"
         "(1) GA4GH/policy requirements: use ONLY the POLICY EXCERPTS below. "
         "Cite chunk_id from [chunk_id=...] headers when you reference policy text.\n"
         "(2) The participant consent / data-use text: use CONSENT_OR_DATA_USE_TEXT below. "
-        "For **study type** as used in the compliance JSON report, use this exact pipeline label "
+        "For **study type** as used in the navigation JSON report, use this exact pipeline label "
         "(keyword heuristic, same as field `study_type` in Check consent):\n"
         f"STUDY_TYPE_GUESS: {study_guess}\n"
         "If the user asks what the study type is, answer with STUDY_TYPE_GUESS and say it matches "

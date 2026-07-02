@@ -2,6 +2,7 @@ import tempfile
 import unittest
 
 from src.main import RegBot
+from src.regbot.compliance import normalize_coverage
 
 
 class TestRegBotSmoke(unittest.TestCase):
@@ -13,11 +14,17 @@ class TestRegBotSmoke(unittest.TestCase):
         bot = RegBot(store_dir=tempfile.mkdtemp())
         self.assertEqual(bot.retrieve_relevant_clauses("anything"), [])
 
+    def test_normalize_coverage_maps_legacy_status(self) -> None:
+        self.assertEqual(normalize_coverage("Non-Compliant"), "incomplete")
+        self.assertEqual(normalize_coverage("partial"), "partial")
+        self.assertEqual(normalize_coverage("Compliant"), "complete")
+
     def test_check_without_store(self) -> None:
         bot = RegBot(store_dir=tempfile.mkdtemp())
         report = bot.check_compliance("short consent text about genomics and sharing")
         self.assertIsInstance(report, dict)
-        self.assertIn("status", report)
+        self.assertIn("coverage", report)
+        self.assertNotIn("status", report)
         self.assertIn("grounding", report)
 
 

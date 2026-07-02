@@ -51,7 +51,7 @@ _LLM_HINT = (
 
 app = FastAPI(
     title="GA4GH-RegBot API",
-    description="REST API for policy ingest, retrieval, and compliance checks.",
+    description="REST API for policy ingest, retrieval, and regulatory navigation checks.",
     version="0.1.0",
 )
 
@@ -241,19 +241,55 @@ def check_consent(body: CheckRequest) -> CheckResponse:
 
 @app.post("/api/chat", response_model=ChatResponse)
 def chat_followup(body: ChatRequest) -> ChatResponse:
-    if not body.chunks:
-        return ChatResponse(
-            reply="No policy chunks available. Run Analyze on the Check consent tab first."
-        )
+    if not body.messages:
+        return ChatResponse(reply="Please enter a question.")
+
+    user_query = ""
+    for m in reversed(body.messages):
+        if m.role == "user" and m.content.strip():
+            user_query = m.content.strip()
+            break
+    if not user_query:
+        return ChatResponse(reply="Please enter a question.")
+
     bot = _bot(body.store_dir)
+    jur_filter = parse_jurisdiction_filter(body.jurisdictions)
+    chunks: List[Dict[str, Any]] = list(body.chunks) if body.chunks else []
+    if not chunks:
+        try:
+            chunks = bot.retrieve_relevant_clauses(
+                user_query,
+                top_k=body.top_k,
+                category=body.category.strip() if body.category else None,
+                jurisdiction=jur_filter,
+            )
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+    if not chunks:
+        scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
+        return ChatResponse(
+            reply=(
+                "No policy chunks matched your question and jurisdiction filter. "
+                "Ingest the corpus (or try another jurisdiction)."
+            ),
+            scope=scope,
+        )
+
     messages = [{"role": m.role, "content": m.content} for m in body.messages]
     try:
         reply = chat_followup_policy_qa(
-            body.chunks,
+            chunks,
             body.consent_text,
             messages,
             api_key=bot.api_key,
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
-    return ChatResponse(reply=reply)
+
+    scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
+    return ChatResponse(
+        reply=reply,
+        chunks=[_chunk_out(c) for c in chunks],
+        scope=scope,
+    )

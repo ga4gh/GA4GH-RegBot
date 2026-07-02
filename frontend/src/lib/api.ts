@@ -131,11 +131,14 @@ export function checkConsent(body: {
 
 export function chatFollowup(body: {
   messages: ChatMessage[];
-  chunks: Chunk[];
-  consent_text: string;
+  chunks?: Chunk[];
+  consent_text?: string;
   store_dir?: string;
+  jurisdictions?: string[];
+  top_k?: number;
+  category?: string;
 }) {
-  return request<{ reply: string }>("/api/chat", {
+  return request<{ reply: string; chunks?: Chunk[]; scope?: string }>("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

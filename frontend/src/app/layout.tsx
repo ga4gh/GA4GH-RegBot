@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GA4GH-RegBot",
   description:
-    "Ingest GA4GH-style policy excerpts, retrieve hybrid context, and draft citation-oriented compliance notes.",
+    "Ingest GA4GH-style policy excerpts, retrieve hybrid context, and draft citation-oriented regulatory navigation notes.",
 };
 
 export default function RootLayout({

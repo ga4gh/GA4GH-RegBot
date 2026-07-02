@@ -16,7 +16,6 @@ import {
   getJurisdictions,
   getStoreMeta,
   type ChatMessage,
-  type Chunk,
 } from "@/lib/api";
 
 const DEFAULT_STORE = "./data/regbot_store";
@@ -31,7 +30,6 @@ export function RegBotApp() {
   const [llmHint, setLlmHint] = useState("");
   const [refreshing, setRefreshing] = useState(false);
 
-  const [lastChunks, setLastChunks] = useState<Chunk[]>([]);
   const [lastConsent, setLastConsent] = useState("");
   const [lastJurisdictions, setLastJurisdictions] = useState<string[]>([]);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -74,9 +72,7 @@ export function RegBotApp() {
     (payload: {
       consentText: string;
       jurisdictions: string[];
-      chunks: Chunk[];
     }) => {
-      setLastChunks(payload.chunks);
       setLastConsent(payload.consentText);
       setLastJurisdictions(payload.jurisdictions);
       setChatMessages([]);
@@ -86,7 +82,7 @@ export function RegBotApp() {
 
   const headerSubtitle = useMemo(
     () =>
-      "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, and draft a citation-oriented compliance note.",
+      "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, and draft a citation-oriented regulatory navigation note.",
     [],
   );
 
@@ -133,7 +129,7 @@ export function RegBotApp() {
               <TabsTrigger value="corpus">Corpus</TabsTrigger>
               <TabsTrigger value="browse">Browse by region</TabsTrigger>
               <TabsTrigger value="check">Check consent</TabsTrigger>
-              <TabsTrigger value="chat">Ask follow-up</TabsTrigger>
+              <TabsTrigger value="chat">Ask a question</TabsTrigger>
             </TabsList>
 
             <TabsContent value="ingest">
@@ -165,11 +161,12 @@ export function RegBotApp() {
             <TabsContent value="chat">
               <ChatTab
                 storeDir={storeDir}
-                chunks={lastChunks}
+                jurisdictions={jurisdictions}
                 consentText={lastConsent}
                 lastJurisdictions={lastJurisdictions}
                 messages={chatMessages}
                 onMessagesChange={setChatMessages}
+                sourceUrls={sourceUrls}
               />
             </TabsContent>
           </Tabs>

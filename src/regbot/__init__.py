@@ -1,4 +1,4 @@
-"""GA4GH RegBot: ingestion, hybrid retrieval, and compliance helpers (default LLM: local Ollama)."""
+"""GA4GH RegBot: ingestion, hybrid retrieval, and regulatory navigation helpers (default LLM: local Ollama)."""
 
 from src.regbot.config import DEFAULT_COLLECTION, DEFAULT_EMBEDDING_MODEL, MIN_TOKEN_OVERLAP
 from src.regbot.types import ChunkRecord, GroundingAudit, RecommendationItem

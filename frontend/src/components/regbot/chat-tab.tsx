@@ -5,36 +5,63 @@ import { Loader2, MessageSquare, Send } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { chatFollowup, type ChatMessage, type Chunk } from "@/lib/api";
+import { ChunkCard } from "@/components/regbot/chunk-card";
+import {
+  chatFollowup,
+  type ChatMessage,
+  type Chunk,
+  type JurisdictionOption,
+} from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 type ChatTabProps = {
   storeDir: string;
-  chunks: Chunk[];
+  jurisdictions: JurisdictionOption[];
   consentText: string;
   lastJurisdictions: string[];
   messages: ChatMessage[];
   onMessagesChange: (messages: ChatMessage[]) => void;
+  sourceUrls: Record<string, string>;
 };
 
 export function ChatTab({
   storeDir,
-  chunks,
+  jurisdictions,
   consentText,
   lastJurisdictions,
   messages,
   onMessagesChange,
+  sourceUrls,
 }: ChatTabProps) {
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedJurisdictions, setSelectedJurisdictions] = useState<string[]>(
+    lastJurisdictions,
+  );
+  const [lastChunks, setLastChunks] = useState<Chunk[]>([]);
+  const [lastScope, setLastScope] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (lastJurisdictions.length > 0) {
+      setSelectedJurisdictions(lastJurisdictions);
+    }
+  }, [lastJurisdictions]);
+
+  useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages, loading, lastChunks]);
+
+  const toggleJurisdiction = (code: string) => {
+    setSelectedJurisdictions((prev) =>
+      prev.includes(code) ? prev.filter((c) => c !== code) : [...prev, code],
+    );
+  };
 
   const onSend = useCallback(async () => {
     const text = prompt.trim();
@@ -47,11 +74,13 @@ export function ChatTab({
     try {
       const res = await chatFollowup({
         messages: nextMessages,
-        chunks: chunks as Chunk[],
         consent_text: consentText,
         store_dir: storeDir || undefined,
+        jurisdictions: selectedJurisdictions,
       });
       onMessagesChange([...nextMessages, { role: "assistant", content: res.reply }]);
+      setLastChunks(res.chunks ?? []);
+      setLastScope(res.scope ?? "");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Chat failed");
       onMessagesChange(messages);
@@ -64,83 +93,87 @@ export function ChatTab({
     loading,
     messages,
     onMessagesChange,
-    chunks,
     consentText,
     storeDir,
+    selectedJurisdictions,
   ]);
 
-  if (chunks.length === 0) {
-    return (
-      <div className="space-y-4">
-        <div>
-          <h2 className="text-lg font-semibold tracking-tight">Ask follow-up</h2>
-          <p className="text-muted-foreground mt-1 text-sm">
-            Exploratory Q&A on retrieved policy context. Not legal advice.
-          </p>
-        </div>
-        <Alert>
-          <AlertDescription>
-            Run <strong>Analyze</strong> on the Check consent tab first to load chunks into
-            this session.
-          </AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex h-[min(70vh,640px)] flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div>
-        <h2 className="text-lg font-semibold tracking-tight">Ask follow-up</h2>
+        <h2 className="text-lg font-semibold tracking-tight">Ask a question</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          Uses the same retrieved policy chunks as your last Analyze. Exploratory only — not
-          programmatically grounded like the JSON report.
+          Type a regulatory question in natural language. RegBot retrieves relevant policy
+          excerpts and answers with chunk citations. Not legal advice.
         </p>
-        {lastJurisdictions.length > 0 ? (
+        {consentText.trim() ? (
           <p className="text-muted-foreground mt-1 text-xs">
-            Last analysis jurisdictions: {lastJurisdictions.join(", ")}
+            Optional consent context from your last Analyze is included.
           </p>
         ) : null}
       </div>
 
-      <ScrollArea className="border-border/80 bg-muted/10 min-h-0 flex-1 rounded-xl border">
-        <div className="space-y-4 p-4">
-          {messages.length === 0 ? (
-            <div className="text-muted-foreground flex flex-col items-center justify-center gap-2 py-16 text-center text-sm">
-              <MessageSquare className="size-8 opacity-40" />
-              Ask a question about the retrieved policy context.
-            </div>
-          ) : (
-            messages.map((msg, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "flex",
-                  msg.role === "user" ? "justify-end" : "justify-start",
-                )}
-              >
+      <div className="space-y-2">
+        <Label className="text-sm">Scope to jurisdiction(s)</Label>
+        <div className="flex flex-wrap gap-3">
+          {jurisdictions.map((j) => (
+            <label
+              key={j.code}
+              className="border-border/80 bg-card/50 flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm"
+            >
+              <Checkbox
+                checked={selectedJurisdictions.includes(j.code)}
+                onCheckedChange={() => toggleJurisdiction(j.code)}
+              />
+              <span>{j.label}</span>
+            </label>
+          ))}
+        </div>
+        <p className="text-muted-foreground text-xs">
+          Leave all unchecked to search all ingested policy.
+        </p>
+      </div>
+
+      <div className="border-border/80 bg-muted/10 flex h-[min(50vh,480px)] flex-col rounded-xl border">
+        <ScrollArea className="min-h-0 flex-1">
+          <div className="space-y-4 p-4">
+            {messages.length === 0 ? (
+              <div className="text-muted-foreground flex flex-col items-center justify-center gap-2 py-16 text-center text-sm">
+                <MessageSquare className="size-8 opacity-40" />
+                e.g. What does GA4GH require for international data sharing?
+              </div>
+            ) : (
+              messages.map((msg, i) => (
                 <div
+                  key={i}
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm",
-                    msg.role === "user"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-card border-border/80 border",
+                    "flex",
+                    msg.role === "user" ? "justify-end" : "justify-start",
                   )}
                 >
-                  <p className="whitespace-pre-wrap">{msg.content}</p>
+                  <div
+                    className={cn(
+                      "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm",
+                      msg.role === "user"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-card border-border/80 border",
+                    )}
+                  >
+                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                  </div>
                 </div>
+              ))
+            )}
+            {loading ? (
+              <div className="text-muted-foreground flex items-center gap-2 text-sm">
+                <Loader2 className="size-4 animate-spin" />
+                Retrieving policy context and drafting answer…
               </div>
-            ))
-          )}
-          {loading ? (
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <Loader2 className="size-4 animate-spin" />
-              Thinking…
-            </div>
-          ) : null}
-          <div ref={bottomRef} />
-        </div>
-      </ScrollArea>
+            ) : null}
+            <div ref={bottomRef} />
+          </div>
+        </ScrollArea>
+      </div>
 
       {error ? (
         <Alert variant="destructive">
@@ -158,7 +191,7 @@ export function ChatTab({
         <Input
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Question about the retrieved policy context…"
+          placeholder="Ask a regulatory question…"
           disabled={loading}
           className="flex-1"
         />
@@ -167,6 +200,20 @@ export function ChatTab({
           Send
         </Button>
       </form>
+
+      {lastChunks.length > 0 ? (
+        <details className="border-border/80 rounded-xl border p-4">
+          <summary className="cursor-pointer text-sm font-medium">
+            Retrieved policy excerpts
+            {lastScope ? ` · ${lastScope}` : ""} · {lastChunks.length} chunk(s)
+          </summary>
+          <div className="mt-3 grid gap-3">
+            {lastChunks.map((ch) => (
+              <ChunkCard key={ch.id} chunk={ch} sourceUrls={sourceUrls} />
+            ))}
+          </div>
+        </details>
+      ) : null}
     </div>
   );
 }
