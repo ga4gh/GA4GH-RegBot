@@ -320,9 +320,7 @@ def analyze_compliance(
             raw_coverage = data.get("status")
         out = {
             "study_type": str(data.get("study_type", study_type)),
-            "coverage": normalize_coverage(
-                str(raw_coverage) if raw_coverage is not None else None
-            ),
+            "coverage": normalize_coverage(str(raw_coverage) if raw_coverage is not None else None),
             "missing_elements": list(data.get("missing_elements") or []),
             "recommendations": normalize_recommendations(data.get("recommendations")),
             "citations": list(data.get("citations") or []),
