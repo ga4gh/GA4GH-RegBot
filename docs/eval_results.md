@@ -85,25 +85,14 @@ extra chunk is more text a DPO/IRB reviewer has to read.
 
 ---
 
-## 3. Adopted configuration — per query
+## 3. Adopted configuration
 
-`sem=12, bm25=48, top_k=8` on the full 22-document corpus, gold v0.2.
-Macro: **recall@8 = 0.855, precision@8 = 0.479, MRR@8 = 0.840**.
+`sem=12, bm25=48, top_k=8`, exact dense ranking, on the full 22-document corpus, gold v0.2.
 
-| Query | Filter | Gold | R@8 | MRR@8 |
-|-------|--------|------|-----|-------|
-| q01-withdrawal-ga4gh | — | 6 | 0.67 | 1.00 |
-| q02-withdrawal-tw-biobank | TW | 2 | 1.00 | 1.00 |
-| q03-transfer-safeguards-gdpr | — | 6 | 0.67 | 0.33 |
-| q04-cn-hgr-approval | CN | 2 | 1.00 | 1.00 |
-| q05-hk-section-33 | HK | 2 | 1.00 | 1.00 |
-| q06-jp-transfer-mechanisms | JP | 2 | 1.00 | 1.00 |
-| q07-kr-separate-consent | KR | 2 | 1.00 | 0.50 |
-| q08-sg-transfer-limitation | SG | 1 | 1.00 | 1.00 |
-| q09-dpia-trigger | — | 4 | 1.00 | 1.00 |
-| q10-broad-consent-validity | — | 7 | 0.43 | 1.00 |
-| q11-reidentification | — | 4 | 0.50 | 0.25 |
-| q12-duo-consent-codes | — | 3 | 1.00 | 1.00 |
+**recall@8 = 0.876, precision@8 = 0.490, MRR@8 = 0.840, recall@5 = 0.723.**
+
+Reproducible bit-for-bit: three consecutive runs of `python -m src.main benchmark` return
+identical figures. That was not true before §5.
 
 ### Reading the results
 
@@ -127,6 +116,52 @@ chunks, where the top-8 locks onto one facet. MRR stays high (0.840) because the
 hit is usually correct — the system is good at finding *a* relevant clause and weaker at
 finding *all* of them. For output that feeds a DPO/IRB checklist, complete topic coverage
 matters more than the top hit, so this is the priority for further work.
+
+---
+
+## 3b. Two ranking heuristics, measured and rejected
+
+An earlier draft of this document recommended **per-document diversification** (cap chunks
+per document in the fused list) as the targeted fix for the multi-chunk gap. Inspecting the
+actual rankings **refuted that recommendation before it was implemented**, and the
+correction is worth recording.
+
+For q10, the top three results are already all from the correct gold document, and the
+fourth gold chunk *of that same document* sits at rank 13. Capping per document would push
+it further down. The retriever was not under-diversifying — if anything the opposite.
+
+Both the rejected idea and its inverse were then measured against the deterministic
+baseline:
+
+| Config | R@3 | R@5 | R@8 | MRR@8 | P@8 |
+|--------|-----|-----|-----|-------|-----|
+| **exact RRF (adopted)** | 0.689 | 0.723 | **0.876** | 0.840 | 0.490 |
+| sibling boost α=0.05 | 0.716 | 0.779 | 0.848 | 0.861 | 0.479 |
+| sibling boost α=0.10 | 0.689 | **0.834** | 0.848 | **0.861** | 0.479 |
+| sibling boost α=0.25 | 0.702 | 0.779 | 0.820 | 0.850 | 0.458 |
+| diversify cap=2/doc | 0.510 | 0.531 | 0.683 | 0.840 | 0.490 |
+| diversify cap=3/doc | 0.689 | 0.723 | 0.876 | 0.840 | 0.524 |
+
+"Sibling boost" adds `α ×` the summed RRF score of a chunk's parent document, on the theory
+that if several chunks of a document rank highly, its other chunks are likely relevant too.
+
+**Neither was adopted:**
+
+- **Diversification is harmful.** `cap=2` costs 19 points of recall@8 (0.876 → 0.683).
+  `cap=3` and `cap=4` are recall-neutral. The original recommendation was wrong.
+- **`cap=3`'s precision gain (0.490 → 0.524) is largely an artefact of our own metric.**
+  Capping can return fewer than 8 results, and precision@k divides by results returned
+  (§1). Finding the same gold in a shorter list mechanically raises precision. That is not
+  a real quality improvement.
+- **Sibling boost is a trade, not a win.** α=0.10 buys 11 points of recall@5 and 2 points of
+  MRR, and pays 2.8 points of recall@8. Defensible if you optimise for what a reviewer sees
+  first — but it is a genuine trade-off, not a free gain.
+
+With 12 self-labelled queries, a 2–3 point difference is roughly one chunk moving in one
+query. Tuning a ranking heuristic against that would be fitting noise. The measured gain
+this phase came from **fixing non-determinism** (§5) — a principled correctness fix — not
+from a ranking heuristic. Sibling boost is worth revisiting once the gold set is
+mentor-reviewed and larger; the experiment script is reproducible from this table.
 
 ---
 
@@ -163,7 +198,70 @@ item before the CI gate is switched on.
 
 ---
 
-## 5. Threats to validity
+## 5. The benchmark was not reproducible (and the fix)
+
+Running `python -m src.main benchmark` three times with no changes produced **three
+different scores**:
+
+```
+R@5=0.7024  R@8=0.8552  MRR@8=0.8333
+R@5=0.7093  R@8=0.8413  MRR@8=0.8361
+R@5=0.7024  R@8=0.8552  MRR@8=0.8333
+```
+
+A ±1.4-point swing in recall@8 makes the §2 sweep hard to trust — the winning
+configuration there beat the baseline by 4.2 points, only about three times the noise — and
+it makes `--min-recall` unusable as a CI gate, since a gate that fails at random is worse
+than none.
+
+**Diagnosis.** Narrowed by elimination:
+
+| Suspect | Result |
+|---------|--------|
+| Embedding model output | Stable — identical SHA across processes |
+| BM25 scoring | Stable |
+| Chroma dense query *within* one process | Stable across 5 repeats |
+| Chroma dense query *across* processes | **Unstable** |
+
+Only one of twelve queries (q09) was affected, and only at rank 8 — ranks 1–7 were
+identical. The culprit was pool membership, not ordering: Chroma's **HNSW index is
+approximate**, and the same query embedding returned different *tail* neighbours across
+process starts. One chunk drifting in or out at position 12 of the dense pool changed the
+fused top-8.
+
+**Fix.** Two changes:
+
+1. **Exact cosine ranking.** `HybridRetriever` loads all stored embeddings once and ranks
+   by exact dot product instead of querying the ANN index. This costs nothing
+   architecturally — the retriever already holds every chunk's full text in memory for
+   BM25, so memory was already proportional to corpus size. At 128 chunks × 384 dims it is
+   a few hundred kilobytes. Chroma remains the persistence layer. If embeddings cannot be
+   loaded, the code falls back to the ANN query rather than failing.
+2. **Deterministic tie-breaks.** Both dense ranking and RRF now sort by `(-score, chunk_id)`.
+   Without it, equal scores order by dict insertion, so the ranking depended on upstream
+   pool order rather than on relevance.
+
+**Result — determinism and a genuine quality gain:**
+
+| | R@5 | R@8 | MRR@8 | P@8 | Reproducible |
+|---|-----|-----|-------|-----|--------------|
+| ANN (before) | 0.702–0.709 | 0.841–0.855 | 0.833–0.836 | 0.479 | ❌ |
+| Exact (after) | 0.723 | **0.876** | 0.840 | **0.490** | ✅ |
+
+Recall@8 improved by ~2–3.5 points *because the approximate index had been silently
+dropping true nearest neighbours*. The accuracy gain was a side effect; reproducibility was
+the goal.
+
+Pinned by `tests/test_retrieval.py`, which stubs the embedding matrix so CI needs no model
+download.
+
+**All §2 numbers predate this fix** and carry roughly ±1.4 points of noise. The §2 ranking
+of configurations is probably still right — the lexical-weighted config won on both metrics
+and by more than the noise band — but it should be re-run before being quoted as settled.
+
+---
+
+## 6. Threats to validity
 
 Stated plainly, because the numbers look better than the evidence supports:
 
@@ -186,16 +284,24 @@ Stated plainly, because the numbers look better than the evidence supports:
    Given the failure mode is recall spread across chunks rather than mis-ranking, a
    cross-encoder would likely not fix q10/q11 — it reorders a candidate list that is
    already missing the gold chunks.
+6. **The §2 sweep predates the determinism fix** (§5) and carries ±1.4 points of noise.
+   Its conclusions are probably safe but are not settled until re-run.
 
-## 6. Next steps
+## 7. Next steps
 
 - [ ] Mentor review of the gold set — the blocking item.
+- [ ] Re-run the §2 candidate-pool sweep on the now-deterministic retriever.
 - [ ] Expand to ~30 queries, weighted toward unfiltered multi-chunk topics.
-- [ ] Address the multi-chunk recall gap: per-document result diversification (cap chunks
-      per document in the fused list) is a more targeted fix than a re-ranker.
+- [ ] Revisit sibling boost (§3b) once the gold set is larger and reviewed — it looks
+      promising for recall@5 but is not separable from noise at n=12.
 - [ ] Replace contributor summaries with primary statutory text where licensing permits;
       re-run and expect recall to *drop*. Treat that as the honest baseline. Use
       `content_type` to measure the primary-vs-summary split explicitly.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).
 - [ ] Wire `benchmark --min-recall` into CI as a regression gate once the gold set is
-      approved (currently passes at 0.85).
+      approved. Now viable: the benchmark is reproducible (§5), so the gate will not flake.
+      Currently passes at 0.85.
+- [ ] Reconsider `precision@k`'s denominator. Dividing by results returned (§1) is right
+      for jurisdiction-filtered queries but rewards configurations that return fewer
+      results, as §3b showed. Reporting `returned` alongside is a partial mitigation;
+      reporting both denominators would be better.

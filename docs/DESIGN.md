@@ -82,9 +82,19 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 |-------|--------|--------|
 | Runtime | Python 3.10–3.12 (CI: 3.11) | See README for venv / deps |
 | Embeddings | `all-MiniLM-L6-v2` (configurable) | HF download on first ingest |
-| Vector store | Chroma (local persistent) | Telemetry off by default |
+| Vector store | Chroma (local persistent) | Persistence only — see below |
+| Dense search | Exact cosine over in-memory embeddings | Chroma's HNSW is approximate and was not reproducible across processes |
 | Lexical | BM25 over manifest | Rare legal terms (“pseudonymisation”, etc.) |
-| Fusion | RRF | No score calibration across dense vs sparse |
+| Fusion | RRF, tie-broken on chunk id | No score calibration across dense vs sparse |
+
+**Why exact dense search.** Chroma's HNSW index returned different tail neighbours across
+process starts for the same query embedding, jittering the candidate pool and moving
+benchmark scores between identical runs. `HybridRetriever` therefore loads all embeddings
+once and ranks by exact dot product. This does not change the scaling story: the retriever
+already holds every chunk's full text in memory for BM25, so memory was already
+proportional to corpus size. Chroma remains the persistence layer, and the ANN query
+remains as a fallback if embeddings cannot be loaded. See
+[`eval_results.md` §5](eval_results.md).
 | LLM | Ollama (default) / OpenAI | OpenAI-compatible client for both |
 | UI | Streamlit | Phase 4: evidence display + export polish |
 
@@ -99,6 +109,8 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 | Chunk size / overlap | `text_utils.chunk_text` | Unchanged (900 / 150); overlap widens anchor resolution |
 | `category` / `jurisdiction` filter | ingest metadata | Filtered queries reach recall 1.00 |
 | Re-ranker | — | **Not adopted** — failure mode is missing candidates, not mis-ranking |
+| Per-document diversification | — | **Measured and rejected** — costs up to 19 points of recall@8 |
+| Document sibling boost | — | **Deferred** — trades recall@8 for recall@5; not separable from noise at n=12 |
 
 Measured results and the reasoning behind each choice: [`eval_results.md`](eval_results.md).
 Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`.

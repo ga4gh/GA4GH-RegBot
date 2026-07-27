@@ -13,5 +13,7 @@ def reciprocal_rank_fusion(
     for ids in ranked_id_lists:
         for rank, cid in enumerate(ids):
             scores[cid] += 1.0 / (k + rank + 1)
-    ordered = sorted(scores.keys(), key=lambda x: scores[x], reverse=True)
+    # Tie-break on chunk id: without it, equal-scoring chunks order by dict insertion,
+    # which makes the fused ranking depend on upstream pool ordering rather than score.
+    ordered = sorted(scores.keys(), key=lambda x: (-scores[x], x))
     return ordered[:top_n]
