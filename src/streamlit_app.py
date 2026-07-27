@@ -39,6 +39,106 @@ _TIER_LABELS = {
 }
 
 
+_REVIEW_REASON_LABELS = {
+    "weak_retrieval": "Not enough policy context was retrieved",
+    "low_overlap": "Recommendations were not sufficiently supported by the cited text",
+    "grounding_failed": "Citation grounding checks did not pass",
+}
+
+
+def _render_evidence_entry(entry: Dict[str, Any]) -> None:
+    """One Phase 3 evidence item: quote, provenance, and governance pointer."""
+    if entry.get("resolved") is False:
+        st.error(
+            f"Cited chunk `{entry.get('chunk_id')}` was not in the retrieved evidence set — "
+            "treat this citation as ungrounded."
+        )
+        return
+
+    bits: List[str] = []
+    if entry.get("source"):
+        bits.append(f"**{entry['source']}**")
+    page = entry.get("page")
+    if isinstance(page, int) and page > 0:
+        bits.append(f"p.{page}")
+    jurisdiction = entry.get("jurisdiction")
+    if jurisdiction:
+        codes = jurisdiction if isinstance(jurisdiction, list) else [jurisdiction]
+        bits.append(" ".join(f"`{c}`" for c in codes))
+    if entry.get("section"):
+        bits.append(f"§ *{entry['section']}*")
+    if entry.get("framework"):
+        bits.append(f"`{entry['framework']}`")
+    if bits:
+        st.caption(" · ".join(bits))
+
+    if entry.get("quote"):
+        st.markdown(f"> {entry['quote']}")
+    if entry.get("relevance"):
+        st.caption(entry["relevance"])
+    if entry.get("governance_hint"):
+        st.caption(f"Usually reviewed by: {entry['governance_hint']}")
+    if entry.get("chunk_id"):
+        st.caption(f"`{entry['chunk_id']}`")
+
+
+def _render_report(report: Dict[str, Any]) -> None:
+    """Structured view of a navigation report; mirrors the Next.js ReportView."""
+    if report.get("needs_human_review") is True:
+        reason = str(report.get("review_reason") or "")
+        st.warning(
+            "**Escalate to human review** — "
+            + _REVIEW_REASON_LABELS.get(reason, "This report needs human review.")
+            + (f"\n\n{report['review_details']}" if report.get("review_details") else "")
+            + "\n\nRegBot surfaces information for DPO / IRB / DAC review and does not "
+            "issue compliance decisions."
+        )
+
+    grounding = report.get("grounding") or {}
+    badges = [
+        f"study type: `{report.get('study_type', '—')}`",
+        f"coverage: `{report.get('coverage', '—')}`",
+    ]
+    if isinstance(grounding.get("ok"), bool):
+        badges.append(f"grounding: `{'passed' if grounding['ok'] else 'failed'}`")
+    if report.get("model"):
+        badges.append(f"model: `{report['model']}`")
+    st.caption(" · ".join(badges))
+
+    recommendations = report.get("recommendations") or []
+    if recommendations:
+        st.markdown("#### Recommendations")
+    for i, rec in enumerate(recommendations, start=1):
+        with st.container(border=True):
+            st.markdown(f"**{i}.** {rec.get('text', '')}")
+            evidence = rec.get("evidence") or []
+            if evidence:
+                for entry in evidence:
+                    _render_evidence_entry(entry)
+            elif rec.get("evidence_chunk_ids"):
+                st.caption(" ".join(f"`{c}`" for c in rec["evidence_chunk_ids"]))
+            else:
+                st.caption("No cited evidence — this recommendation is ungrounded.")
+
+    missing = report.get("missing_elements") or []
+    if missing:
+        st.markdown("#### Topics not clearly addressed in the submitted text")
+        for item in missing:
+            st.markdown(f"- {item}")
+
+    issues = grounding.get("issues") or []
+    if issues:
+        st.markdown("#### Grounding issues")
+        for issue in issues:
+            st.markdown(f"- {issue}")
+
+    if report.get("notes"):
+        st.caption(str(report["notes"]))
+
+    with st.expander("Raw JSON report"):
+        st.json(report)
+
+
 def _corpus_documents(manifest_path: str = _CORPUS_MANIFEST_PATH) -> List[Dict[str, Any]]:
     try:
         data = load_corpus_manifest(manifest_path)
@@ -343,7 +443,7 @@ with tab_check:
         scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
         st.subheader("Report")
         st.caption(f"Retrieval scope: **{scope}** · {len(chunks)} chunk(s) used")
-        st.json(report)
+        _render_report(report)
         st.download_button(
             "Download JSON",
             data=json.dumps(report, indent=2, ensure_ascii=False),

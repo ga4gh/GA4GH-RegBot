@@ -16,7 +16,7 @@ from src.regbot.config import (
 )
 from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.jurisdiction import normalize_jurisdiction
-from src.regbot.text_utils import chunk_text
+from src.regbot.text_utils import chunk_spans, detect_headings, section_for_offset
 
 
 def _stable_source_id(path: str) -> str:
@@ -116,7 +116,8 @@ def ingest_policy_file(
     pages = load_document_pages(file_path)
     chunk_idx = 0
     for page_text, page_num in pages:
-        for piece in chunk_text(page_text):
+        headings = detect_headings(page_text)
+        for piece, offset in chunk_spans(page_text):
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
             meta: Dict[str, Any] = {
@@ -125,6 +126,11 @@ def ingest_policy_file(
                 "page": int(page_num),
                 "category": base_category,
             }
+            # Absent when the source has no detectable heading structure (e.g. PDF text
+            # extraction flattens layout). Omitted rather than guessed.
+            section = section_for_offset(headings, offset)
+            if section:
+                meta["section"] = section
             if jurisdiction_tag:
                 meta["jurisdiction"] = jurisdiction_tag
             if document_id and str(document_id).strip():

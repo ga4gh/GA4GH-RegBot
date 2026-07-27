@@ -202,6 +202,8 @@ def build_evidence(
         }
         if meta.get("document_id"):
             entry["document_id"] = meta["document_id"]
+        if meta.get("section"):
+            entry["section"] = meta["section"]
         tags = sorted(chunk_jurisdiction_tags(meta))
         if tags:
             entry["jurisdiction"] = tags[0] if len(tags) == 1 else tags

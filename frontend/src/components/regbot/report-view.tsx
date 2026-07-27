@@ -17,6 +17,7 @@ type EvidenceEntry = {
   source?: string;
   page?: number;
   document_id?: string;
+  section?: string;
   jurisdiction?: string | string[];
   framework?: string;
   quote?: string;
@@ -84,6 +85,7 @@ function EvidenceCard({ entry }: { entry: EvidenceEntry }) {
         {typeof entry.page === "number" && entry.page > 0 ? (
           <span>p.{entry.page}</span>
         ) : null}
+        {entry.section ? <span className="italic">§ {entry.section}</span> : null}
         {jurisdictions.map((code) => (
           <Badge key={code} variant="secondary" className="text-[10px]">
             {code}

@@ -152,7 +152,7 @@ which is set from the corpus manifest):
 | `framework` | ✅ implemented | e.g. `GA4GH`, `REWS`, `GDPR`, `national` |
 | `content_type` | ✅ implemented | `primary` (source regulatory text) or `summary` (contributor paraphrase) |
 | `source`, `page`, `category` | ✅ implemented | As before |
-| `section` | ❌ **not implemented** | Heading / clause id from PDF structure — needs a structure-aware parser; `pypdf` text extraction does not preserve headings |
+| `section` | ⚠️ partial (42% of chunks) | Heading the chunk starts under; populated for line-structured sources, omitted for layout-flattened PDFs (see below) |
 | `ingested_at` | ⚠️ manifest only | Recorded per document in `corpus_manifest.yaml`, not copied onto chunks |
 
 **`content_type` and why it exists.** Only `ga4gh-frs` and `ga4gh-consent-policy` are
@@ -160,6 +160,26 @@ primary source documents. The other 20 corpus entries are ~300–450-word contri
 paraphrases. A citation to a paraphrase is **not** a citation to the underlying clause, so
 the distinction must be machine-readable rather than left to a disclaimer inside the text.
 Replacing summaries with primary text where licensing permits is the top corpus priority.
+
+**`section` and why coverage is partial.** `text_utils.detect_headings` finds headings as
+short standalone lines between blank lines, rejecting `Key: value` front matter, list
+items, multi-sentence prose, unbalanced parentheses, and lines ending on a continuation
+word. Chunks inherit the nearest heading at or before their start offset.
+
+Coverage is 54/128 chunks (42%), and **all of it comes from the `.txt` corpus; PDF chunks
+get no `section` at all.** `pypdf` emits one line per *visual* line, so heading, subheading
+and body text land on a single line while ordinary wrapped prose sits between blank lines —
+the exact shape a standalone-line rule mistakes for headings. A first implementation
+without that guard produced labels like *"the autonomous decision-making of data subjects
+while promoting the common good of"*: mid-sentence fragments presented to a reviewer as the
+clause's section. `is_hard_wrapped` now detects fixed-width layout (most long lines ending
+mid-clause) and suppresses detection entirely for those pages.
+
+The trade is deliberate: **42% coverage with clean labels over 50% with fragments.** A
+wrong `section` on a cited clause actively misleads a DPO/IRB reviewer, while a missing one
+merely offers less help. Raising PDF coverage needs a layout-aware extractor (`PyMuPDF`
+font-size heuristics, or `pdfplumber` word positions) — a worthwhile follow-up, not a
+regex fix.
 
 #### Jurisdiction vocabulary (REWS regional scope)
 
