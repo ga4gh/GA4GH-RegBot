@@ -136,6 +136,12 @@ def ingest_from_corpus_manifest(
         else:
             framework = None
 
+        content_type = doc.get("content_type")
+        if isinstance(content_type, str):
+            content_type = content_type.strip().lower() or None
+        else:
+            content_type = None
+
         row: Dict[str, Any] = {
             "document_id": doc_id,
             "ingest_path": resolved,
@@ -166,6 +172,7 @@ def ingest_from_corpus_manifest(
                 "jurisdiction": jurisdiction,
                 "document_id": doc_id or None,
                 "framework": framework,
+                "content_type": content_type,
                 "reset": use_reset,
             }
             if embedding_model_name:

@@ -14,6 +14,20 @@ CHROMA_SUBDIR = "chroma"
 MANIFEST_NAME = "manifest.json"
 
 
+def _pos_int_env(name: str, default: int) -> int:
+    try:
+        return max(1, int(os.getenv(name, str(default))))
+    except ValueError:
+        return default
+
+
+# Candidate pool sizes feeding reciprocal rank fusion. Defaults are the Phase 2 tuned
+# values (see docs/eval_results.md): weighting the lexical pool higher than the dense pool
+# improves recall on legal text, where rare statutory terms carry most of the signal.
+SEMANTIC_CANDIDATES = _pos_int_env("REGBOT_SEMANTIC_CANDIDATES", 12)
+BM25_CANDIDATES = _pos_int_env("REGBOT_BM25_CANDIDATES", 48)
+
+
 def llm_provider() -> str:
     """ollama (default): local Llama / Mistral via Ollama. Set REGBOT_LLM_PROVIDER=openai for OpenAI API."""
     v = os.getenv("REGBOT_LLM_PROVIDER", "ollama").strip().lower()

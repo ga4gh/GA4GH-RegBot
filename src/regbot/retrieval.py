@@ -6,9 +6,11 @@ from typing import Any, Dict, List, Optional
 from rank_bm25 import BM25Okapi
 
 from src.regbot.config import (
+    BM25_CANDIDATES,
     CHROMA_SUBDIR,
     DEFAULT_COLLECTION,
     DEFAULT_EMBEDDING_MODEL,
+    SEMANTIC_CANDIDATES,
     chromadb_settings,
 )
 from src.regbot.embeddings import load_sentence_transformer
@@ -81,9 +83,13 @@ class HybridRetriever:
         top_k: int = 8,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
-        semantic_candidates: int = 24,
-        bm25_candidates: int = 24,
+        semantic_candidates: Optional[int] = None,
+        bm25_candidates: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
+        semantic_candidates = (
+            SEMANTIC_CANDIDATES if semantic_candidates is None else int(semantic_candidates)
+        )
+        bm25_candidates = BM25_CANDIDATES if bm25_candidates is None else int(bm25_candidates)
         self._ensure_loaded()
         if not query.strip() or self._collection is None or not self._by_id:
             return []

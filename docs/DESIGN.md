@@ -69,8 +69,11 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 | `src/regbot/fusion.py` | Reciprocal rank fusion |
 | `src/regbot/compliance.py` | LLM JSON report, retries, offline fallback, follow-up Q&A |
 | `src/regbot/grounding.py` | Allow-list audit, token overlap, normalization |
+| `src/regbot/evidence.py` | Phase 3: `evidence[]` enrichment, quote selection, human-review escalation |
+| `src/regbot/evaluation.py` | Phase 2: gold-set anchors, Recall@k / Precision@k / MRR |
 | `src/regbot/study_type.py` | Lightweight routing hints (trial, biobank, cohort, genomic) |
-| `src/main.py` | `RegBot` façade; CLI (`ingest`, `check`, `status`, `eval`) |
+| `src/main.py` | `RegBot` façade; CLI (`ingest`, `ingest-manifest`, `check`, `status`, `eval`, `benchmark`) |
+| `src/api/app.py` | FastAPI layer for the Next.js UI |
 | `src/streamlit_app.py` | Upload, analyse, export, exploratory chat on last retrieval |
 
 ### 2.3 Technology stack
@@ -89,13 +92,16 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 
 ### 2.4 Retrieval parameters (tuning surface)
 
-| Parameter | Location | Phase 2 tuning |
-|-----------|----------|----------------|
-| `top_k` | CLI / UI | Trade recall vs noise on gold queries |
-| Semantic / BM25 pool | `retrieval.py` | Balance lexical vs semantic retrieval |
-| Chunk size / overlap | `text_utils.chunk_text` | Jurisdiction-specific PDF structure |
-| `category` / `jurisdiction` filter | ingest metadata | Cross-border queries scoped to relevant law |
-| Re-ranker | — | Add only if retrieval quality improves on the gold set |
+| Parameter | Location | Phase 2 outcome |
+|-----------|----------|-----------------|
+| `top_k` | CLI / UI | **8** — recall saturates at 12 while precision decays monotonically |
+| Semantic / BM25 pool | `config.py` | **12 / 48** — lexical weighting won on both recall and precision |
+| Chunk size / overlap | `text_utils.chunk_text` | Unchanged (900 / 150); overlap widens anchor resolution |
+| `category` / `jurisdiction` filter | ingest metadata | Filtered queries reach recall 1.00 |
+| Re-ranker | — | **Not adopted** — failure mode is missing candidates, not mis-ranking |
+
+Measured results and the reasoning behind each choice: [`eval_results.md`](eval_results.md).
+Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`.
 
 ---
 
@@ -105,7 +111,8 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 
 Each ingested unit is addressable for retrieval, BM25, and citation verification.
 
-**Implemented today:**
+**Implemented today** (all 128 chunks carry every field below except `content_type`,
+which is set from the corpus manifest):
 
 ```json
 {
@@ -115,21 +122,32 @@ Each ingested unit is addressable for retrieval, BM25, and citation verification
     "source": "<filename>",
     "source_path": "<absolute path>",
     "page": 0,
-    "category": "<stem or ingest label>"
+    "category": "<stem or ingest label>",
+    "document_id": "ga4gh-frs",
+    "jurisdiction": "GA4GH",
+    "framework": "GA4GH",
+    "content_type": "primary"
   }
 }
 ```
 
-**Phase 1 target schema** (mentor-agreed; populate when extractable):
+**Phase 1 schema status:**
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `document_id` | yes | Stable corpus id, e.g. `ga4gh-frs`, `gdpr-art9-brief` |
-| `jurisdiction` | yes* | Governance scope for filtering (*`GA4GH` / `EU` for framework docs) |
-| `section` | optional | Heading or clause id from PDF structure |
-| `framework` | optional | e.g. `GA4GH`, `REWS`, `GDPR`, `national` |
-| `ingested_at` | yes | ISO 8601 timestamp |
-| `source`, `page`, `category` | yes | As today |
+| Field | Status | Description |
+|-------|--------|-------------|
+| `document_id` | ✅ implemented | Stable corpus id, e.g. `ga4gh-frs`, `gdpr-dpia-genomic-research` |
+| `jurisdiction` | ✅ implemented | Governance scope for filtering (`GA4GH` / `EU` for framework docs) |
+| `framework` | ✅ implemented | e.g. `GA4GH`, `REWS`, `GDPR`, `national` |
+| `content_type` | ✅ implemented | `primary` (source regulatory text) or `summary` (contributor paraphrase) |
+| `source`, `page`, `category` | ✅ implemented | As before |
+| `section` | ❌ **not implemented** | Heading / clause id from PDF structure — needs a structure-aware parser; `pypdf` text extraction does not preserve headings |
+| `ingested_at` | ⚠️ manifest only | Recorded per document in `corpus_manifest.yaml`, not copied onto chunks |
+
+**`content_type` and why it exists.** Only `ga4gh-frs` and `ga4gh-consent-policy` are
+primary source documents. The other 20 corpus entries are ~300–450-word contributor-written
+paraphrases. A citation to a paraphrase is **not** a citation to the underlying clause, so
+the distinction must be machine-readable rather than left to a disclaimer inside the text.
+Replacing summaries with primary text where licensing permits is the top corpus priority.
 
 #### Jurisdiction vocabulary (REWS regional scope)
 
@@ -184,27 +202,45 @@ Output is a **navigation aid**, not a compliance certificate. The `coverage` fie
 }
 ```
 
-**Phase 3 extensions**—nested under each recommendation as `evidence[]`:
+**Phase 3 extensions — implemented** ([`evidence.py`](../src/regbot/evidence.py)), nested
+under each recommendation as `evidence[]`:
 
 | Field | Purpose |
 |-------|---------|
-| `chunk_id` | Same allow-list as today |
+| `chunk_id` | Same allow-list as before |
+| `resolved` | `false` when a cited id is not in the retrieved set — the entry is kept, not dropped, so `evidence[]` never silently disagrees with `evidence_chunk_ids` |
 | `source`, `page` | From chunk metadata |
-| `quote` | Short verbatim span from chunk text |
-| `relevance` | Why this clause matters for the uploaded study text |
+| `document_id`, `framework` | From chunk metadata |
+| `quote` | Short **verbatim** span selected from chunk text by token overlap — never model-generated |
+| `relevance` | **Mechanical** statement of the lexical link ("Shares terminology: …") |
 | `jurisdiction` | Copied from chunk metadata for reviewer orientation |
-| `governance_hint` | Optional pointer to institutional role (DPO, IRB, DAC)—**informational only** |
+| `governance_hint` | Pointer to the body that normally reviews this scope (DPO, IRB, DAC) — **informational only** |
 
-**Report-level flags (Phase 3):**
+Two constraints follow directly from the grounding contract (§3.3):
+
+- **`quote` is verbatim.** A paraphrased quote would be a new ungrounded assertion sitting
+  inside the block whose whole purpose is traceability.
+- **`relevance` is mechanical, not interpretive.** An LLM-authored rationale ("this clause
+  matters because…") is exactly the kind of unverifiable claim the allow-list exists to
+  prevent. Stating the lexical link lets a reviewer judge relevance themselves.
+
+**Report-level flags (implemented):**
 
 ```json
 {
   "needs_human_review": true,
-  "review_reason": "weak_retrieval | low_overlap | grounding_failed"
+  "review_reason": "weak_retrieval",
+  "review_reasons": ["weak_retrieval", "grounding_failed"],
+  "review_details": "Retrieval returned 0 chunk(s); there is not enough policy context…"
 }
 ```
 
-Set when retrieval is empty, overlap drops all recommendations, or grounding fails after retries.
+Set when retrieval is empty (`weak_retrieval`), grounding fails after retries
+(`grounding_failed`), or the overlap filter drops every recommendation (`low_overlap`).
+When several fire, `review_reason` reports the one that explains the others
+(weak retrieval → grounding failure → low overlap); `review_reasons` keeps the full set.
+The offline keyword fallback marks overlap as `skipped`, which is deliberately **not** a
+review trigger — it means the filter did not run, not that support was weak.
 
 ### 3.3 Grounding contract (invariants)
 
@@ -228,7 +264,16 @@ These rules are **code-enforced** on the LLM path:
 
 ### 4.2 Retrieval benchmark (Phase 2)
 
-**Gold set:** Mentor-reviewed `(query, expected_chunk_ids[], optional jurisdiction)` pairs from the real corpus. Start from `examples/eval/queries_ga4gh.txt` and extend with jurisdiction-relevant probes as the corpus grows.
+**Gold set:** [`examples/eval/gold_ga4gh.yaml`](../examples/eval/gold_ga4gh.yaml) — 12
+queries with `(query, relevant[], optional jurisdiction)`. **Drafted, not yet
+mentor-reviewed.**
+
+Labels are **anchors** (`document_id` + `contains` phrase), not literal `chunk_id`s: chunk
+ids embed a hash of the absolute ingest path, so an id recorded on one machine never
+resolves on another. Anchors resolve against the live manifest at benchmark time, which
+keeps the gold set portable across re-ingests and contributors. An anchor matching nothing
+is reported as `unresolved_anchors`; a query whose anchors all fail is **skipped rather
+than scored**, so a stale gold set fails loudly instead of inflating recall.
 
 **Metrics:**
 
@@ -240,10 +285,19 @@ These rules are **code-enforced** on the LLM path:
 
 **Procedure**
 
-1. Ingest corpus with agreed metadata (`ingest --reset` per benchmark run).
-2. Use and extend the `eval` harness to compare retrieval output against the gold set.
-3. Tune chunking, fusion, `top_k`, and optional re-ranker; document baseline vs improved runs for mentor review.
-4. Keep a small frozen subset in CI (mocked embeddings); run the full benchmark manually or on a schedule.
+1. Ingest the corpus: `python -m src.main ingest-manifest --reset`.
+2. Score retrieval: `python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml`.
+3. Tune via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES` / `top_k`; record runs
+   in [`eval_results.md`](eval_results.md).
+4. `--min-recall` exits non-zero below a threshold, so the benchmark can gate CI once the
+   gold set is approved. Metric logic is unit-tested with a stub retriever
+   (`tests/test_evaluation.py`), so CI needs no embedding model.
+
+**Re-review the gold set on every corpus change.** Growing the corpus from 13 to 22
+documents silently invalidated v0.1: newly ingested briefs were topically relevant to
+existing queries, retrieval ranked them first, and the stale gold set scored those correct
+hits as misses — a labelling artefact that looked like a code regression. See
+[`eval_results.md` §4](eval_results.md).
 
 ### 4.3 Report quality (Phase 3)
 
@@ -270,6 +324,11 @@ Excluded from public repo: private DUL templates; scanned PDFs without OCR (inge
 
 ### 5.2 Security & ops
 
-- No secrets or `data/regbot_store/` in git; local-first processing unless operator opts into cloud LLM.
-- UI and exports carry **not legal advice** disclaimer.
+- No secrets in git. Local-first processing unless the operator opts into a cloud LLM.
+- **Vector store:** `data/regbot_store/chroma/` is git-ignored — it is regenerable binary
+  that rewrites wholesale on every ingest (~3.7 MB of churn per run).
+  `data/regbot_store/manifest.json` **is** tracked: it is text, diffable, and serves as
+  both the BM25 corpus and the citation-audit record. Rebuild vectors with
+  `python -m src.main ingest-manifest --reset`.
+- UI and exports carry a **not legal advice** disclaimer.
 - Chroma telemetry off by default.

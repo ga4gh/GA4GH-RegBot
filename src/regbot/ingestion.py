@@ -80,6 +80,7 @@ def ingest_policy_file(
     jurisdiction: Optional[str] = None,
     document_id: Optional[str] = None,
     framework: Optional[str] = None,
+    content_type: Optional[str] = None,
     reset: bool = False,
 ) -> int:
     """
@@ -130,6 +131,11 @@ def ingest_policy_file(
                 meta["document_id"] = str(document_id).strip()
             if framework and str(framework).strip():
                 meta["framework"] = str(framework).strip()
+            # Provenance: 'primary' = source regulatory text, 'summary' = contributor-written
+            # paraphrase. Citations to a summary are not citations to the underlying clause,
+            # so reviewers must be able to tell the two apart.
+            if content_type and str(content_type).strip():
+                meta["content_type"] = str(content_type).strip().lower()
             new_records.append(
                 {
                     "id": cid,

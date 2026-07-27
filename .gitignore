@@ -9,3 +9,7 @@ __pycache__/
 node_modules/
 frontend/.next/
 frontend/out/
+
+# Vector store is regenerable from data/corpus/ via `ingest-manifest --reset`.
+# manifest.json stays tracked: it is text, diffable, and the BM25 + citation-audit record.
+data/regbot_store/chroma/
