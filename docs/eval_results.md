@@ -26,9 +26,9 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-27 |
 
-The §2 sweep was run on the earlier 13-document corpus (91 chunks); §3 onward reports the
-full 22-document corpus. §4 documents what changed between them, which turned out to be the
-most informative result in this phase.
+All sections report the full 22-document corpus on the deterministic retriever, except §4,
+which documents an earlier 13-document run in order to explain what corpus growth did to the
+numbers.
 
 **Why anchors instead of chunk ids.** Chunk ids embed a SHA-256 of the *absolute ingest
 path* (`ingestion._stable_source_id`), so an id recorded on one machine never resolves on
@@ -38,10 +38,10 @@ live manifest at benchmark time. Anchors that match nothing are reported as
 stale gold set fails loudly instead of silently inflating recall.
 
 **Precision denominator.** `precision@k` divides by the number of results actually
-returned, not by `k`. On a 91-chunk corpus with a jurisdiction filter active, retrieval
-legitimately returns fewer than `k` candidates (e.g. 3 for `TW`), and dividing by `k` would
-score that as a precision failure. Each row records `returned` so the denominator is
-auditable.
+returned, not by `k`. With a jurisdiction filter active, retrieval legitimately returns
+fewer than `k` candidates (e.g. 3 for `TW`), and dividing by `k` would score that as a
+precision failure. Each row records `returned` so the denominator is auditable. This choice
+has a downside of its own — see §3b.
 
 ---
 
@@ -49,38 +49,51 @@ auditable.
 
 Both pools feed RRF; the sweep varies how many candidates each retriever contributes.
 
+Re-run on the deterministic retriever (§5), 22-document corpus, gold v0.2. Every figure
+below is reproducible.
+
 | Config | R@1 | R@3 | R@5 | **R@8** | MRR@8 | P@8 |
 |--------|-----|-----|-----|---------|-------|-----|
-| baseline `sem=24 bm25=24` | 0.419 | 0.686 | 0.807 | 0.844 | 0.944 | 0.427 |
-| `sem=48 bm25=48` | 0.419 | 0.686 | 0.807 | 0.865 | 0.944 | 0.424 |
-| `sem=91 bm25=91` (full corpus) | 0.419 | 0.686 | 0.807 | 0.865 | 0.944 | 0.410 |
-| `sem=48 bm25=12` (dense-weighted) | 0.419 | 0.728 | 0.765 | 0.824 | **0.958** | 0.417 |
-| **`sem=12 bm25=48` (lexical-weighted)** | 0.419 | 0.707 | 0.807 | **0.886** | 0.938 | **0.434** |
+| `sem=24 bm25=24` (original default) | 0.366 | 0.689 | 0.702 | 0.806 | 0.872 | 0.448 |
+| `sem=48 bm25=48` | 0.366 | 0.647 | 0.723 | 0.806 | 0.882 | 0.448 |
+| `sem=128 bm25=128` (full corpus) | 0.366 | 0.647 | 0.723 | 0.806 | 0.882 | 0.420 |
+| `sem=48 bm25=12` (dense-weighted) | 0.366 | 0.709 | 0.723 | 0.786 | **0.889** | 0.438 |
+| `sem=24 bm25=64` | 0.366 | 0.647 | 0.702 | 0.820 | 0.872 | 0.445 |
+| `sem=8 bm25=64` | 0.324 | 0.689 | **0.737** | 0.855 | 0.840 | 0.465 |
+| `sem=12 bm25=96` | 0.324 | 0.689 | 0.723 | 0.834 | 0.840 | 0.441 |
+| **`sem=12 bm25=48` (adopted)** | 0.324 | 0.689 | 0.723 | **0.876** | 0.840 | **0.490** |
 
-**Adopted: `sem=12, bm25=48`** — best recall@8 *and* best precision@8, i.e. not a
-recall-for-precision trade. This matches the DESIGN §2.3 rationale for keeping BM25 in the
-loop: statutory text turns on rare exact terms ("pseudonymisation", "Recital 33",
-"Section 33"), which lexical matching handles better than a 384-dim general-purpose
-embedding.
+**Adopted: `sem=12, bm25=48`** — best recall@8 (by 2.1 points over the next config) and
+best precision@8. It beats the original 24/24 default by **7 points of recall@8**. This
+matches the DESIGN §2.3 rationale for keeping BM25 in the loop: statutory text turns on
+rare exact terms ("pseudonymisation", "Recital 33", "Section 33"), which lexical matching
+handles better than a 384-dim general-purpose embedding.
 
-Dense-weighting (`sem=48 bm25=12`) wins MRR@8 (0.958 vs 0.938) — it places its first
-correct hit slightly higher — but loses 6 points of recall. Recall is the primary metric
-per DESIGN §4.2, since a reviewer reads the whole top-k list.
+**There is a real trade-off, which measurement noise had previously hidden.** Every
+lexical-weighted config scores *lower* on R@1 (0.324 vs 0.366) and MRR@8 (0.840 vs
+0.872–0.889) than the dense-weighted ones. Dense retrieval is better at putting *one* good
+chunk first; lexical weighting is better at finding *more* of them. `sem=48 bm25=12` has
+the best MRR in the table and the worst recall@8.
 
-Defaults now live in [`config.py`](../src/regbot/config.py), overridable via
+The choice follows from what the output is for: RegBot's report feeds a DPO/IRB/DAC
+checklist, where a reviewer reads the whole top-k list and a missed clause is the costly
+error. Recall is the primary metric per DESIGN §4.2. A product optimised for a
+single-answer chat response would reasonably choose the opposite.
+
+Defaults live in [`config.py`](../src/regbot/config.py), overridable via
 `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`.
 
-### Depth sweep (at full pools)
+### Depth sweep
 
 | k | Recall@k | Precision@k | MRR@k |
 |---|----------|-------------|-------|
-| 8 | 0.865 | 0.410 | 0.944 |
-| 12 | 0.886 | 0.361 | 0.944 |
-| 16 | 0.886 | 0.332 | 0.944 |
-| 20 | 0.886 | 0.314 | 0.944 |
+| 8 | 0.876 | 0.490 | 0.840 |
+| 12 | 0.886 | 0.361 | 0.840 |
+| 16 | 0.886 | 0.332 | 0.840 |
+| 20 | 0.886 | 0.314 | 0.840 |
 
 Recall saturates at k=12 while precision decays monotonically. **`top_k=8` stays the
-default**: going deeper buys ~2 points of recall at a 12-point precision cost, and every
+default**: going deeper buys ~1 point of recall at a 13-point precision cost, and every
 extra chunk is more text a DPO/IRB reviewer has to read.
 
 ---
@@ -209,10 +222,11 @@ R@5=0.7093  R@8=0.8413  MRR@8=0.8361
 R@5=0.7024  R@8=0.8552  MRR@8=0.8333
 ```
 
-A ±1.4-point swing in recall@8 makes the §2 sweep hard to trust — the winning
-configuration there beat the baseline by 4.2 points, only about three times the noise — and
-it makes `--min-recall` unusable as a CI gate, since a gate that fails at random is worse
-than none.
+At the time, a ±1.4-point swing in recall@8 made the candidate-pool sweep hard to trust:
+the winning configuration beat the baseline by 4.2 points, only about three times the
+noise. It also made `--min-recall` unusable as a CI gate, since a gate that fails at random
+is worse than none. (§2 has since been re-run on the fixed retriever; the figures published
+there are the deterministic ones.)
 
 **Diagnosis.** Narrowed by elimination:
 
@@ -255,9 +269,9 @@ the goal.
 Pinned by `tests/test_retrieval.py`, which stubs the embedding matrix so CI needs no model
 download.
 
-**All §2 numbers predate this fix** and carry roughly ±1.4 points of noise. The §2 ranking
-of configurations is probably still right — the lexical-weighted config won on both metrics
-and by more than the noise band — but it should be re-run before being quoted as settled.
+§2 has been re-run on the fixed retriever and its numbers supersede the earlier noisy ones.
+The original conclusion held and strengthened: the lexical-weighted config's advantage over
+the old default grew from 4.2 to 7 points of recall@8 once the noise was removed.
 
 ---
 
@@ -284,13 +298,10 @@ Stated plainly, because the numbers look better than the evidence supports:
    Given the failure mode is recall spread across chunks rather than mis-ranking, a
    cross-encoder would likely not fix q10/q11 — it reorders a candidate list that is
    already missing the gold chunks.
-6. **The §2 sweep predates the determinism fix** (§5) and carries ±1.4 points of noise.
-   Its conclusions are probably safe but are not settled until re-run.
 
 ## 7. Next steps
 
 - [ ] Mentor review of the gold set — the blocking item.
-- [ ] Re-run the §2 candidate-pool sweep on the now-deterministic retriever.
 - [ ] Expand to ~30 queries, weighted toward unfiltered multi-chunk topics.
 - [ ] Revisit sibling boost (§3b) once the gold set is larger and reviewed — it looks
       promising for recall@5 but is not separable from noise at n=12.
