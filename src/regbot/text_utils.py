@@ -68,6 +68,68 @@ _CONTINUATION_WORDS = frozenset(
 
 MAX_HEADING_CHARS = 90
 
+# Page furniture from scraped HTML. These look like headings and are not provisions, so
+# they pollute `section` and, through it, the provision keys the benchmark scores against
+# (a GA4GH brief was contributing "News — 2 Sep 2019" as a citable section).
+_FURNITURE = frozenset(
+    {
+        "news",
+        "blog",
+        "events",
+        "share",
+        "share this",
+        "further reading",
+        "references",
+        "reference",
+        "related",
+        "related news",
+        "related posts",
+        "read more",
+        "contact",
+        "contact us",
+        "acknowledgements",
+        "acknowledgments",
+        "about",
+        "about us",
+        "authors",
+        "author",
+        "citation",
+        "download",
+        "downloads",
+        "resources",
+        "our products",
+        "publications",
+        "newsletter",
+        "subscribe",
+    }
+)
+
+# "2 Sep 2019", "September 2019", "2019-09-02" — a date is never a provision.
+_DATE_LIKE = re.compile(
+    r"^\d{1,2}\s+[A-Za-z]{3,9}\.?\s+\d{4}$"
+    r"|^[A-Za-z]{3,9}\.?\s+\d{1,2},?\s+\d{4}$"
+    r"|^[A-Za-z]{3,9}\.?\s+\d{4}$"
+    r"|^\d{4}[-/]\d{1,2}[-/]\d{1,2}$"
+)
+
+
+def _is_page_furniture(line: str) -> bool:
+    """True for scraped-page headings that carry no regulatory content."""
+    bare = line.strip().strip(":").strip()
+    if bare.lower() in _FURNITURE:
+        return True
+    if _DATE_LIKE.match(bare):
+        return True
+    # "News — 2 Sep 2019": furniture label joined to a date.
+    for sep in ("—", "–", "-", "|", ":"):
+        if sep in bare:
+            head, _, tail = bare.partition(sep)
+            if head.strip().lower() in _FURNITURE and (
+                _DATE_LIKE.match(tail.strip()) or not tail.strip()
+            ):
+                return True
+    return False
+
 
 def tokenize(text: str) -> List[str]:
     return re.findall(r"[a-z0-9]+", text.lower())
@@ -266,6 +328,8 @@ def _looks_like_heading(line: str) -> bool:
     if not (1 <= len(words) <= 14):
         return False
     if words[-1].lower() in _CONTINUATION_WORDS:
+        return False
+    if _is_page_furniture(line):
         return False
     return True
 

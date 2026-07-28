@@ -107,6 +107,30 @@ class TestHeadingDetection(unittest.TestCase):
         self.assertEqual(detect_headings("   \n\n  "), [])
 
 
+class TestPageFurniture(unittest.TestCase):
+    """Scraped-page headings that are not provisions must not become sections."""
+
+    def _headings(self, label: str):
+        doc = f"Intro paragraph here.\n\n{label}\n\nMore body text follows here.\n"
+        return [h for _, h in detect_headings(doc)]
+
+    def test_rejects_furniture_labels(self) -> None:
+        for bad in ("News", "Further Reading", "References", "Share this", "Our products"):
+            self.assertNotIn(bad, self._headings(bad), f"accepted furniture: {bad!r}")
+
+    def test_rejects_bare_dates(self) -> None:
+        for bad in ("2 Sep 2019", "September 2019", "Sep 2, 2019", "2019-09-02"):
+            self.assertNotIn(bad, self._headings(bad), f"accepted date: {bad!r}")
+
+    def test_rejects_furniture_joined_to_a_date(self) -> None:
+        # The exact shape that polluted the GA4GH brief provisions.
+        self.assertNotIn("News — 2 Sep 2019", self._headings("News — 2 Sep 2019"))
+
+    def test_keeps_real_provisions(self) -> None:
+        for good in ("Article 35", "Timing and structure", "Scope of one DPIA"):
+            self.assertIn(good, self._headings(good), f"rejected real heading: {good!r}")
+
+
 class TestSectionForOffset(unittest.TestCase):
     def test_returns_nearest_preceding_heading(self) -> None:
         headings = [(10, "First"), (100, "Second"), (200, "Third")]

@@ -226,13 +226,28 @@
     },
     {
       "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p6_c16",
-      "text": "Policy Revision History\n \n \nPolicy Number/VersionDate Effective\n \nSummary of Revisions\n \nPOL 002 / v 2.0\n \nSeptember 2019\n \nGlobal revision\n \nPOL 002 / v. 1.0\n \nJune 2015\n \nOriginal document\n \n \n \n6",
+      "text": "Policy Revision History\n \n \nPolicy Number/VersionDate Effective\n \nSummary of Revisions\n \nPOL 002 / v 2.0\n \nSeptember 2019\n \n",
       "metadata": {
         "source": "ga4gh-consent-policy.pdf",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
         "page": 6,
         "category": "ga4gh-consent-policy",
-        "section": "Policy Revision History — Policy Number/Version; Date Effective — Summary of Revisions; POL 002 / v 2.0 — September 2019; Global revision — POL 002 / v. 1.0; June 2015 — Original document",
+        "section": "Policy Revision History — Policy Number/Version; Date Effective — Summary of Revisions; POL 002 / v 2.0",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-consent-policy",
+        "framework": "GA4GH",
+        "content_type": "primary"
+      }
+    },
+    {
+      "id": "ga4gh-consent-policy.pdf_471cb2b119ae_p6_c17",
+      "text": "Global revision\n \nPOL 002 / v. 1.0\n \nJune 2015Original document\n \n \n \n6",
+      "metadata": {
+        "source": "ga4gh-consent-policy.pdf",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-consent-policy.pdf",
+        "page": 6,
+        "category": "ga4gh-consent-policy",
+        "section": "Global revision — POL 002 / v. 1.0; Original document",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
         "framework": "GA4GH",
@@ -1998,7 +2013,7 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c0",
-      "text": "Source: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/ (retrieved 2026-07-28)",
+      "text": "Source: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/ (retrieved 2026-07-28)\n\nNews\n\n2 Dec 2019\n\nPolicy Brief: is “consent for genomic and health-related research” specific enough to constitute a valid consent under the GDPR?\n\nThere has been an emerging consensus in the genomic research community that “broad consent” is an ethically and legally permissible form of consent. For example, the Council of Europe’s recent recommendations on protection of health-related data expressly permit broad consent for scientific research.\n\nBroad consent means that a research participant explicitly consents to have their data and/or samples used for a certain range of future research projects, subject to external and ongoing oversight (such as ethics committee approval and monitoring). Despite the",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
@@ -2012,13 +2027,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c1",
-      "text": "News\n\n2 Dec 2019\n\nPolicy Brief: is “consent for genomic and health-related research” specific enough to constitute a valid consent under the GDPR?\n\nThere has been an emerging consensus in the genomic research community that “broad consent” is an ethically and legally permissible form of consent. For example, the Council of Europe’s recent recommendations on protection of health-related data expressly permit broad consent for scientific research.\n\nBroad consent means that a research participant explicitly consents to have their data and/or samples used for a certain range of future research projects, subject to external and ongoing oversight (such as ethics committee approval and monitoring). Despite the emerging consensus on its acceptability, the way in which it may be permissibly implemented under the GDPR is less clear.\n\nIn the GDPR, consent is defined as “any freely given, specific, ",
+      "text": "a certain range of future research projects, subject to external and ongoing oversight (such as ethics committee approval and monitoring). Despite the emerging consensus on its acceptability, the way in which it may be permissibly implemented under the GDPR is less clear.\n\nIn the GDPR, consent is defined as “any freely given, specific, informed and unambiguous indication of the data subject’s wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her”. The qualifiers “specific” and “informed” are important in the genomic and health-related research context. Articles 6(1)(a) and 9(2)(a) speak to the data subject’s consent to the processing of non-special category and special category (e.g. genomic and health-related) data, respectively. They state that the data subject’s consent must be for one ",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2027,13 +2041,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c2",
-      "text": "ty, the way in which it may be permissibly implemented under the GDPR is less clear.\n\nIn the GDPR, consent is defined as “any freely given, specific, informed and unambiguous indication of the data subject’s wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her”. The qualifiers “specific” and “informed” are important in the genomic and health-related research context. Articles 6(1)(a) and 9(2)(a) speak to the data subject’s consent to the processing of non-special category and special category (e.g. genomic and health-related) data, respectively. They state that the data subject’s consent must be for one or more specific (Art 6) or specified (Art 9) purposes. These provisions, at first glance, might suggest that a broad consent such as “consent for genomic and health-related research” is n",
+      "text": "pecial category and special category (e.g. genomic and health-related) data, respectively. They state that the data subject’s consent must be for one or more specific (Art 6) or specified (Art 9) purposes. These provisions, at first glance, might suggest that a broad consent such as “consent for genomic and health-related research” is not sufficiently specific to serve as a valid legal basis for the processing of personal data.\n\nHowever, and as discussed in a previous Brief, Recital 33 suggests that the GDPR permits broad consent for scientific research, when such consent is subject to generally accepted ethical standards and, presumably, assessment by an ethics committee. Moreover, under the principle of purpose limitation, further processing for scientific research purposes is qualified as being for “specified, explicit and legitimate purposes”. Thus, under the GDPR, “scientific resear",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2042,13 +2055,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c3",
-      "text": "(Art 9) purposes. These provisions, at first glance, might suggest that a broad consent such as “consent for genomic and health-related research” is not sufficiently specific to serve as a valid legal basis for the processing of personal data.\n\nHowever, and as discussed in a previous Brief, Recital 33 suggests that the GDPR permits broad consent for scientific research, when such consent is subject to generally accepted ethical standards and, presumably, assessment by an ethics committee. Moreover, under the principle of purpose limitation, further processing for scientific research purposes is qualified as being for “specified, explicit and legitimate purposes”. Thus, under the GDPR, “scientific research”, and even more so, “genomic and health-related research”, appear to be a well-defined purpose per se, with no need for further specification.\n\nTo this end, the Article 29 Working Party",
+      "text": "ing for scientific research purposes is qualified as being for “specified, explicit and legitimate purposes”. Thus, under the GDPR, “scientific research”, and even more so, “genomic and health-related research”, appear to be a well-defined purpose per se, with no need for further specification.\n\nTo this end, the Article 29 Working Party recently has opined that the GDPR’s “Recital 33 does not disapply the obligations with regard to the requirement of specific consent” and that a “well-described purpose” must be included in the consent to comply with the GDPR. They also state: “For the cases where purposes for data processing within a scientific research project cannot be specified at the outset, Recital 33 allows as an exception that the purpose may be described at a more general level” (emphasis added).\n\nWe note that the requirement for “explicit” consent (for special category data proc",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2057,13 +2069,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c4",
-      "text": "alth-related research”, appear to be a well-defined purpose per se, with no need for further specification.\n\nTo this end, the Article 29 Working Party recently has opined that the GDPR’s “Recital 33 does not disapply the obligations with regard to the requirement of specific consent” and that a “well-described purpose” must be included in the consent to comply with the GDPR. They also state: “For the cases where purposes for data processing within a scientific research project cannot be specified at the outset, Recital 33 allows as an exception that the purpose may be described at a more general level” (emphasis added).\n\nWe note that the requirement for “explicit” consent (for special category data processing) and a “well-defined purpose” relates to the procedural aspect of consent rather than its permissible scope. That is, the requirement of explicitness goes to the data controller’s n",
+      "text": "rpose may be described at a more general level” (emphasis added).\n\nWe note that the requirement for “explicit” consent (for special category data processing) and a “well-defined purpose” relates to the procedural aspect of consent rather than its permissible scope. That is, the requirement of explicitness goes to the data controller’s need to evidence the consent. A research participant could thus explicitly agree to participate in a research project that details well a broad data-processing methodology, which includes safeguards to mitigate potential harms caused by the application of that method in as yet unknown, future research projects. We also note the importance of Recital 42: for consent to be informed, the data subject should be aware at least of the identity of the controller. This obligation sits alongside (and complicates) the broad consent possibility, at least where new, fu",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2072,13 +2083,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c5",
-      "text": "elates to the procedural aspect of consent rather than its permissible scope. That is, the requirement of explicitness goes to the data controller’s need to evidence the consent. A research participant could thus explicitly agree to participate in a research project that details well a broad data-processing methodology, which includes safeguards to mitigate potential harms caused by the application of that method in as yet unknown, future research projects. We also note the importance of Recital 42: for consent to be informed, the data subject should be aware at least of the identity of the controller. This obligation sits alongside (and complicates) the broad consent possibility, at least where new, future controllers will be involved. It is arguable, though, that only the original controller needs to be identified during the consent process. For subsequent as yet unknown data recipient",
+      "text": "are at least of the identity of the controller. This obligation sits alongside (and complicates) the broad consent possibility, at least where new, future controllers will be involved. It is arguable, though, that only the original controller needs to be identified during the consent process. For subsequent as yet unknown data recipients (i.e. researchers), it may be sufficient to mention categories of recipients (controllers and processors) where the exact recipient cannot be named already.\n\nIn summary, a reasonable interpretation is that “consent for genomic and health-related research” likely is specific enough to constitute a valid consent under the GDPR. However, a broad consent should be supplemented by additional efforts on the part of data controllers, such as the specification of categories of data-processing methods, safeguards to mitigate the risks of these methods, and catego",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2087,13 +2097,12 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c6",
-      "text": "is arguable, though, that only the original controller needs to be identified during the consent process. For subsequent as yet unknown data recipients (i.e. researchers), it may be sufficient to mention categories of recipients (controllers and processors) where the exact recipient cannot be named already.\n\nIn summary, a reasonable interpretation is that “consent for genomic and health-related research” likely is specific enough to constitute a valid consent under the GDPR. However, a broad consent should be supplemented by additional efforts on the part of data controllers, such as the specification of categories of data-processing methods, safeguards to mitigate the risks of these methods, and categories of potential data recipients.",
+      "text": "of data controllers, such as the specification of categories of data-processing methods, safeguards to mitigate the risks of these methods, and categories of potential data recipients.\n\nFurther Reading\n\n- Article 29 Working Party, “Guidelines on consent under Regulation 2016/679” (WP259 rev.01) (As last revised and adopted on 10 April 2018). Available here.\n\n- Council of Europe, “Recommendation CM/Rec(2019)2 of the Committee of Ministers to member States on the protection of health-related data”. Available here.\n\n- Mark Phillips, “GDPR Brief: When can I rely on broad consent for research?” (April 2019). Available here.",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
-        "section": "News — 2 Dec 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
         "framework": "GDPR",
@@ -2102,21 +2111,6 @@
     },
     {
       "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c7",
-      "text": "Further Reading\n\n- Article 29 Working Party, “Guidelines on consent under Regulation 2016/679” (WP259 rev.01) (As last revised and adopted on 10 April 2018). Available here.\n\n- Council of Europe, “Recommendation CM/Rec(2019)2 of the Committee of Ministers to member States on the protection of health-related data”. Available here.\n\n- Mark Phillips, “GDPR Brief: When can I rely on broad consent for research?” (April 2019). Available here.",
-      "metadata": {
-        "source": "gdpr-consent-broad-genomic-research.txt",
-        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
-        "page": 0,
-        "category": "gdpr-consent-broad-genomic-research",
-        "section": "Further Reading",
-        "jurisdiction": "EU",
-        "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR",
-        "content_type": "primary"
-      }
-    },
-    {
-      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c8",
       "text": "Relevant GDPR Provisions\n\n- Recital 33 – Consent to certain areas of scientific research\n\n- Recital 42 – Burden of proof and requirements for consent\n\n- Article 4(11) – Definitions\n\n- Article 5(1)(b) – Principles relating to processing of personal data\n\n- Article 6(1)(a) – Lawfulness of processing\n\n- Article 9(2)(a) – Processing of special categories of personal data\n\nEdward Dove is a Lecturer in Law at the University of Edinburgh.\n\nSee all previous briefs.\n\nPlease note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
@@ -2131,7 +2125,7 @@
       }
     },
     {
-      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c9",
+      "id": "gdpr-consent-broad-genomic-research.txt_2f5d603f8a88_p0_c8",
       "text": "Regulatory & Ethics Work Stream (REWS)\n\nLatest News",
       "metadata": {
         "source": "gdpr-consent-broad-genomic-research.txt",
@@ -2147,7 +2141,7 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c0",
-      "text": "Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/ (retrieved 2026-07-28)",
+      "text": "Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/ (retrieved 2026-07-28)\n\nNews\n\n2 Sep 2019\n\nPolicy Brief: the Data Protection Impact Assessment and genomic health research\n\nArticle 35 of the GDPR requires that data controllers perform a Data Protection Impact Assessment (DPIA) before processing personal data if the processing “is likely to result in a high risk to the rights and freedoms of natural persons.”\n\nExamples of situations requiring a DPIA include the “processing on a large scale of sensitive data, such as health data, genetic data, and data revealing racial or ethnic origin,” “storage for archiving purpose of pseudonymised personal sensitive data concerning vulnerable data subjects of research projects or clinical trials” and “matching or combining” multiple datasets concerning the same data subject (reference)",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
@@ -2161,13 +2155,12 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c1",
-      "text": "News\n\n2 Sep 2019\n\nPolicy Brief: the Data Protection Impact Assessment and genomic health research\n\nArticle 35 of the GDPR requires that data controllers perform a Data Protection Impact Assessment (DPIA) before processing personal data if the processing “is likely to result in a high risk to the rights and freedoms of natural persons.”\n\nExamples of situations requiring a DPIA include the “processing on a large scale of sensitive data, such as health data, genetic data, and data revealing racial or ethnic origin,” “storage for archiving purpose of pseudonymised personal sensitive data concerning vulnerable data subjects of research projects or clinical trials” and “matching or combining” multiple datasets concerning the same data subject (reference).\n\nIn all likelihood then, controllers subject to the GDPR undertaking large-scale genomic health research will need to conduct a DPIA. This d",
+      "text": "able data subjects of research projects or clinical trials” and “matching or combining” multiple datasets concerning the same data subject (reference).\n\nIn all likelihood then, controllers subject to the GDPR undertaking large-scale genomic health research will need to conduct a DPIA. This does not mean that each and every processing activity or project requires its own separate DPIA. A single assessment may address a set of similar processing operations that present similar high risks. Specifically relevant for large-scale genomic health research projects, there are circumstances under which it may be reasonable and economical for the subject of a DPIA to be broader than a single project, for example where several controllers plan to introduce a common application or processing environment across an industry sector or segment.\n\nAs to the substance of the DPIA: the DPIA is a tool for man",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
-        "section": "News — 2 Sep 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
         "framework": "GDPR",
@@ -2176,13 +2169,12 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c2",
-      "text": "ference).\n\nIn all likelihood then, controllers subject to the GDPR undertaking large-scale genomic health research will need to conduct a DPIA. This does not mean that each and every processing activity or project requires its own separate DPIA. A single assessment may address a set of similar processing operations that present similar high risks. Specifically relevant for large-scale genomic health research projects, there are circumstances under which it may be reasonable and economical for the subject of a DPIA to be broader than a single project, for example where several controllers plan to introduce a common application or processing environment across an industry sector or segment.\n\nAs to the substance of the DPIA: the DPIA is a tool for managing risks to the rights of the data subjects, and thus must take their perspective. The DPIA must detail the intended processing and its pur",
+      "text": "duce a common application or processing environment across an industry sector or segment.\n\nAs to the substance of the DPIA: the DPIA is a tool for managing risks to the rights of the data subjects, and thus must take their perspective. The DPIA must detail the intended processing and its purposes, the necessity and proportionality of said processing relative to its purposes, risks incurred, and proposed risk-mitigation measures.\n\nAs to the DPIA process, if the controller has a Data Protection Officer (DPO), the DPO should be consulted in performing the DPIA. If the DPIA reveals data subjects are exposed to a high risk absent risk-mitigation measures, the supervisory authorities must be consulted. It is advisable to consult either the intended data subjects prior to processing, or if their identities are yet unknown, to consult the public or research the views of the intended class of dat",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
-        "section": "News — 2 Sep 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
         "framework": "GDPR",
@@ -2191,13 +2183,12 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c3",
-      "text": " for managing risks to the rights of the data subjects, and thus must take their perspective. The DPIA must detail the intended processing and its purposes, the necessity and proportionality of said processing relative to its purposes, risks incurred, and proposed risk-mitigation measures.\n\nAs to the DPIA process, if the controller has a Data Protection Officer (DPO), the DPO should be consulted in performing the DPIA. If the DPIA reveals data subjects are exposed to a high risk absent risk-mitigation measures, the supervisory authorities must be consulted. It is advisable to consult either the intended data subjects prior to processing, or if their identities are yet unknown, to consult the public or research the views of the intended class of data subject. Processors, internal stakeholders and independent experts should also be consulted.\n\nAs to structure, the GDPR provides data contro",
+      "text": "ed data subjects prior to processing, or if their identities are yet unknown, to consult the public or research the views of the intended class of data subject. Processors, internal stakeholders and independent experts should also be consulted.\n\nAs to structure, the GDPR provides data controllers with flexibility to determine the precise structure and form of the DPIA in order to allow for this to fit with existing working practices. Official and unofficial DPIA templates exist, such as the UK Information Commissioner’s Office (ICO) general DPIA template and the French CNIL template. However, it is advisable to take genomic research specific considerations into account. A DPIA should be performed as early as possible and continually updated.\n\nThe results of a DPIA do not have to be published; it is nevertheless recommended that a summary be published, leaving out any proprietary and secu",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
-        "section": "News — 2 Sep 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
         "framework": "GDPR",
@@ -2206,13 +2197,12 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c4",
-      "text": "s of data subject. Processors, internal stakeholders and independent experts should also be consulted.\n\nAs to structure, the GDPR provides data controllers with flexibility to determine the precise structure and form of the DPIA in order to allow for this to fit with existing working practices. Official and unofficial DPIA templates exist, such as the UK Information Commissioner’s Office (ICO) general DPIA template and the French CNIL template. However, it is advisable to take genomic research specific considerations into account. A DPIA should be performed as early as possible and continually updated.\n\nThe results of a DPIA do not have to be published; it is nevertheless recommended that a summary be published, leaving out any proprietary and security sensitive data.\n\nWhile a DPIA can be burdensome, performing one is not just a matter of compliance, but may also serve to demonstrate acc",
+      "text": ".\n\nThe results of a DPIA do not have to be published; it is nevertheless recommended that a summary be published, leaving out any proprietary and security sensitive data.\n\nWhile a DPIA can be burdensome, performing one is not just a matter of compliance, but may also serve to demonstrate accountability and transparency and foster trust with funders, collaborators, ethics committees, participants and the public in the genomic health research enterprise.\n\nFurther Reading\n\n- Information Commissioner’s Office “Accountability and Governance: Data Protection Impact Assessments”\n\n- Article 29 Working Party “Guidelines on Data Protection Impact Assessment (DPIA) and Determining Whether Processing ‘Is likely to result in a high risk’ for the purposes of Regulation 2016/679” (2017).\n\n- Chassang G. (2017). The impact of the EU general data protection regulation on scientific research. E-Cancer Medi",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
-        "section": "News — 2 Sep 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
         "framework": "GDPR",
@@ -2221,13 +2211,12 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c5",
-      "text": "and security sensitive data.\n\nWhile a DPIA can be burdensome, performing one is not just a matter of compliance, but may also serve to demonstrate accountability and transparency and foster trust with funders, collaborators, ethics committees, participants and the public in the genomic health research enterprise.",
+      "text": "s of Regulation 2016/679” (2017).\n\n- Chassang G. (2017). The impact of the EU general data protection regulation on scientific research. E-Cancer Medical Science, 11, 709. doi:10.3332/ecancer.2017.709.",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
-        "section": "News — 2 Sep 2019",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
         "framework": "GDPR",
@@ -2236,21 +2225,6 @@
     },
     {
       "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c6",
-      "text": "Further Reading\n\n- Information Commissioner’s Office “Accountability and Governance: Data Protection Impact Assessments”\n\n- Article 29 Working Party “Guidelines on Data Protection Impact Assessment (DPIA) and Determining Whether Processing ‘Is likely to result in a high risk’ for the purposes of Regulation 2016/679” (2017).\n\n- Chassang G. (2017). The impact of the EU general data protection regulation on scientific research. E-Cancer Medical Science, 11, 709. doi:10.3332/ecancer.2017.709.",
-      "metadata": {
-        "source": "gdpr-dpia-genomic-research.txt",
-        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
-        "page": 0,
-        "category": "gdpr-dpia-genomic-research",
-        "section": "Further Reading",
-        "jurisdiction": "EU",
-        "document_id": "gdpr-dpia-genomic-research",
-        "framework": "GDPR",
-        "content_type": "primary"
-      }
-    },
-    {
-      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c7",
       "text": "Relevant Legislative Provisions\n\n- Article 35 – Data Protection Impact Assessment\n\n- Article 36 – Prior Consultation\n\n- Recital 90 – Data Protection Impact Assessment\n\n- Recital 91 – Necessity of a Data Protection Impact Assessment\n\n- Recital 92 – Broader Data Protection Impact Assessment\n\n- Recital 94 – Consultation of the Supervisory Authority\n\nAlexander Bernier is a Research Assistant at McGill University’s Centre of Genomics and Policy. Jasper Bovenberg is an attorney and is the founder and Director of Legal Pathways Institute for Health and Bio-Law.\n\nSee all previous briefs.\n\nPlease note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
@@ -2265,7 +2239,7 @@
       }
     },
     {
-      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c8",
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c7",
       "text": " current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
@@ -2280,7 +2254,7 @@
       }
     },
     {
-      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c9",
+      "id": "gdpr-dpia-genomic-research.txt_cc4a395caaaf_p0_c8",
       "text": "Regulatory & Ethics Work Stream (REWS)\n\nLatest News",
       "metadata": {
         "source": "gdpr-dpia-genomic-research.txt",
@@ -10149,13 +10123,12 @@
     },
     {
       "id": "gdpr-genomic-research-primer.txt_c07363312cd7_p0_c0",
-      "text": "Source: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/ (retrieved 2026-07-28)News\n\n7 Sep 2018\n\n",
+      "text": "Source: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/ (retrieved 2026-07-28)\n\nNews\n\n7 Sep 2018",
       "metadata": {
         "source": "gdpr-genomic-research-primer.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genomic-research-primer.txt",
         "page": 0,
         "category": "gdpr-genomic-research-primer",
-        "section": "News — 7 Sep 2018",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
         "framework": "GDPR",
@@ -10239,7 +10212,7 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c0",
-      "text": "Source: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/ (retrieved 2026-07-28)",
+      "text": "Source: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/ (retrieved 2026-07-28)\n\nNews\n\n6 May 2019\n\nPolicy Brief: how can researchers approach international data transfers under the GDPR?\n\nData controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers.\n\nData controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
@@ -10253,13 +10226,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c1",
-      "text": "News\n\n6 May 2019\n\nPolicy Brief: how can researchers approach international data transfers under the GDPR?\n\nData controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers.\n\nData controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers. There are four avenues for lawful international data transfers under the",
+      "text": "rsonal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers. There are four avenues for lawful international data transfers under the GDPR:\n\n- an adequacy decision (Article 45);\n\n- appropriate safeguards (Articles 46 and 47);\n\n- specific derogations (Article 49); and\n\n- exceptions for one-off or infrequent transfers (second subparagraph of Article 49(1)).\n\nWe only focus on avenues that may be most suitable in the genomic research context. A controller must satisfy a two-stage permissibility test before an international transfer may proceed: first, a controller must have a lawful basis for processing personal data; second, the international transfer must adhere to at least one of the lawful avenues listed above. No matter the avenue, a ",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10268,13 +10240,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c2",
-      "text": "t be mindful of the GDPR’s strict provisions on international data transfers. There are four avenues for lawful international data transfers under the GDPR:\n\n- an adequacy decision (Article 45);\n\n- appropriate safeguards (Articles 46 and 47);\n\n- specific derogations (Article 49); and\n\n- exceptions for one-off or infrequent transfers (second subparagraph of Article 49(1)).\n\nWe only focus on avenues that may be most suitable in the genomic research context. A controller must satisfy a two-stage permissibility test before an international transfer may proceed: first, a controller must have a lawful basis for processing personal data; second, the international transfer must adhere to at least one of the lawful avenues listed above. No matter the avenue, a controller must inform data subjects, when a privacy notice is provided, that the controller intends to transfer these personal data inter",
+      "text": " processing personal data; second, the international transfer must adhere to at least one of the lawful avenues listed above. No matter the avenue, a controller must inform data subjects, when a privacy notice is provided, that the controller intends to transfer these personal data internationally, and must specify the legal basis upon which the transfer will be made.\n\nThe best scenario is where data can be transferred internationally to a recipient country whose relevant legal framework has been assessed by the European Commission as having an “adequate level of protection.” However, to date, the Commission has recognized as adequate only a small handful of countries.\n\nIn the absence of an adequacy decision, data can still be transferred internationally if the data controller or processor has appropriate safeguards, and that enforceable data subject rights and effective legal remedies a",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10283,13 +10254,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c3",
-      "text": "e avenue, a controller must inform data subjects, when a privacy notice is provided, that the controller intends to transfer these personal data internationally, and must specify the legal basis upon which the transfer will be made.\n\nThe best scenario is where data can be transferred internationally to a recipient country whose relevant legal framework has been assessed by the European Commission as having an “adequate level of protection.” However, to date, the Commission has recognized as adequate only a small handful of countries.\n\nIn the absence of an adequacy decision, data can still be transferred internationally if the data controller or processor has appropriate safeguards, and that enforceable data subject rights and effective legal remedies are available. Adequate safeguards may be provided for by, inter alia, contractual clauses between the sender and recipient that are author",
+      "text": "nternationally if the data controller or processor has appropriate safeguards, and that enforceable data subject rights and effective legal remedies are available. Adequate safeguards may be provided for by, inter alia, contractual clauses between the sender and recipient that are authorized by the competent data protection authority. However, these clauses may be difficult to negotiate or receive authorization.\n\nAdequate safeguards also may be provided for by European Commission-approved standard contractual clauses; this may be a suitable option for investigators transferring data to their sponsors, though a less suitable option for transfers to public authorities out of concerns regarding compliance with, among other things, indemnification and jurisdiction clauses. These clauses do not require additional European Commission authorization and cannot be negotiated. The constraints are ",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10298,13 +10268,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c4",
-      "text": "l remedies are available. Adequate safeguards may be provided for by, inter alia, contractual clauses between the sender and recipient that are authorized by the competent data protection authority. However, these clauses may be difficult to negotiate or receive authorization.\n\nAdequate safeguards also may be provided for by European Commission-approved standard contractual clauses; this may be a suitable option for investigators transferring data to their sponsors, though a less suitable option for transfers to public authorities out of concerns regarding compliance with, among other things, indemnification and jurisdiction clauses. These clauses do not require additional European Commission authorization and cannot be negotiated. The constraints are that they can only be used where there is an EU/EEA-based controller-exporter, so cannot be used by EU/EEA-based data processors (e.g. con",
+      "text": "ion and jurisdiction clauses. These clauses do not require additional European Commission authorization and cannot be negotiated. The constraints are that they can only be used where there is an EU/EEA-based controller-exporter, so cannot be used by EU/EEA-based data processors (e.g. contract research organizations).\n\nCodes of conduct constitute another possible safeguard. However, to date, the European Data Protection Board (EDPB) has not approved any code following the process laid down in Article 40.\n\nAnother avenue is derogations for specific situations, although the EDPB has made clear that these derogations are exemptions to the general rule and must be interpreted restrictively. One possible derogation is obtaining explicit consent from the data subject to the proposed international transfer. However, explicit consent is not always feasible in large-scale genomic research projects",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10313,13 +10282,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c5",
-      "text": "traints are that they can only be used where there is an EU/EEA-based controller-exporter, so cannot be used by EU/EEA-based data processors (e.g. contract research organizations).\n\nCodes of conduct constitute another possible safeguard. However, to date, the European Data Protection Board (EDPB) has not approved any code following the process laid down in Article 40.\n\nAnother avenue is derogations for specific situations, although the EDPB has made clear that these derogations are exemptions to the general rule and must be interpreted restrictively. One possible derogation is obtaining explicit consent from the data subject to the proposed international transfer. However, explicit consent is not always feasible in large-scale genomic research projects. Among other issues, consent will only be valid after data controllers have informed the data subject of the possible risks of such trans",
+      "text": "rom the data subject to the proposed international transfer. However, explicit consent is not always feasible in large-scale genomic research projects. Among other issues, consent will only be valid after data controllers have informed the data subject of the possible risks of such transfers for the data subject due to the absence of an adequacy decision and appropriate safeguards. Also, consent must be revocable; therefore, data controllers must be able not to transfer the data if consent is revoked.\n\nFinally, where a transfer cannot be based on an adequacy decision or appropriate safeguards, and none of the specific derogations referred to in Article 49 are applicable, a non-repetitive transfer, concerning only a limited number of data subjects, may take place, subject to a number of conditions. The GDPR specifically mentions that: “For scientific […] research purposes […], the legitim",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10328,13 +10296,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c6",
-      "text": "rch projects. Among other issues, consent will only be valid after data controllers have informed the data subject of the possible risks of such transfers for the data subject due to the absence of an adequacy decision and appropriate safeguards. Also, consent must be revocable; therefore, data controllers must be able not to transfer the data if consent is revoked.\n\nFinally, where a transfer cannot be based on an adequacy decision or appropriate safeguards, and none of the specific derogations referred to in Article 49 are applicable, a non-repetitive transfer, concerning only a limited number of data subjects, may take place, subject to a number of conditions. The GDPR specifically mentions that: “For scientific […] research purposes […], the legitimate expectations of society for an increase of knowledge should be taken into consideration” in permitting transfers in this scenario. Thi",
+      "text": "bjects, may take place, subject to a number of conditions. The GDPR specifically mentions that: “For scientific […] research purposes […], the legitimate expectations of society for an increase of knowledge should be taken into consideration” in permitting transfers in this scenario. This avenue requires data controllers to inform the relevant data protection authority of the transfer and provide additional information to individuals on the international data transfer; it also requires them to make a thorough assessment of all the circumstances surrounding the data transfer and provide suitable safeguards with regard to the protection of personal data.\n\nEuropean Union or Member State law may set express limits to the transfer of specific categories of personal data to a third country or an international organization unless an adequacy decision applies to it. Data controllers should check",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10343,13 +10310,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c7",
-      "text": " the legitimate expectations of society for an increase of knowledge should be taken into consideration” in permitting transfers in this scenario. This avenue requires data controllers to inform the relevant data protection authority of the transfer and provide additional information to individuals on the international data transfer; it also requires them to make a thorough assessment of all the circumstances surrounding the data transfer and provide suitable safeguards with regard to the protection of personal data.\n\nEuropean Union or Member State law may set express limits to the transfer of specific categories of personal data to a third country or an international organization unless an adequacy decision applies to it. Data controllers should check this point before finalizing transfer arrangements.\n\n- Mark Phillips, “International data-sharing norms: from the OECD to the General Dat",
+      "text": "tegories of personal data to a third country or an international organization unless an adequacy decision applies to it. Data controllers should check this point before finalizing transfer arrangements.\n\n- Mark Phillips, “International data-sharing norms: from the OECD to the General Data Protection Regulation (GDPR)” (2018) Human Genetics 575. Available here.\n\n- Information Commissioner’s Office (ICO), “International Transfers.” Available here.\n\n- European Commission, “International dimension of data protection.” Available here.\n\n- European Data Protection Board, “Guidelines 2/2018 on derogations of Article 49 under Regulation 2016/679.” Available here.\n\n- Recital 101 – General principles for international data transfers\n\n- Recital 113 – Transfers qualified as not repetitive and that only concern a limited number of data subjects\n\n- Article 44 – General principle for international data ",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10358,13 +10324,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c8",
-      "text": "should check this point before finalizing transfer arrangements.\n\n- Mark Phillips, “International data-sharing norms: from the OECD to the General Data Protection Regulation (GDPR)” (2018) Human Genetics 575. Available here.\n\n- Information Commissioner’s Office (ICO), “International Transfers.” Available here.\n\n- European Commission, “International dimension of data protection.” Available here.\n\n- European Data Protection Board, “Guidelines 2/2018 on derogations of Article 49 under Regulation 2016/679.” Available here.\n\n- Recital 101 – General principles for international data transfers\n\n- Recital 113 – Transfers qualified as not repetitive and that only concern a limited number of data subjects\n\n- Article 44 – General principle for international data transfers\n\n- Article 45 – Transfers on the basis of an adequacy decision\n\n- Article 46 – Transfers subject to appropriate safeguards\n\n- Ar",
+      "text": "ransfers qualified as not repetitive and that only concern a limited number of data subjects\n\n- Article 44 – General principle for international data transfers\n\n- Article 45 – Transfers on the basis of an adequacy decision\n\n- Article 46 – Transfers subject to appropriate safeguards\n\n- Article 49 – Derogations for specific situations\n\nEdward Dove is a Lecturer in Law at the University of Edinburgh. Robert Eiss is a senior adviser at the Fogarty International Center of the US National Institutes of Health. Jennifer Stoddart was Privacy Commissioner of Canada from 2003 to 2013.\n\nSee all previous briefs.\n\nPlease note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute ",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10373,13 +10338,12 @@
     },
     {
       "id": "gdpr-international-transfers.txt_285e2a83e5c0_p0_c9",
-      "text": "tional data transfers\n\n- Article 45 – Transfers on the basis of an adequacy decision\n\n- Article 46 – Transfers subject to appropriate safeguards\n\n- Article 49 – Derogations for specific situations\n\nEdward Dove is a Lecturer in Law at the University of Edinburgh. Robert Eiss is a senior adviser at the Fogarty International Center of the US National Institutes of Health. Jennifer Stoddart was Privacy Commissioner of Canada from 2003 to 2013.\n\nSee all previous briefs.\n\nPlease note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.",
+      "text": "Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.",
       "metadata": {
         "source": "gdpr-international-transfers.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers.txt",
         "page": 0,
         "category": "gdpr-international-transfers",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-international-transfers",
         "framework": "GDPR",
@@ -10403,7 +10367,7 @@
     },
     {
       "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c0",
-      "text": "Source: https://www.ga4gh.org/news_item/finding-a-route-out-of-the-impasse/ (retrieved 2026-07-28)",
+      "text": "Source: https://www.ga4gh.org/news_item/finding-a-route-out-of-the-impasse/ (retrieved 2026-07-28)\n\nNews\n\n17 May 2021\n\nPolicy Brief: finding a route out of the impasse? Ordering the secondary processing of already gathered data in a code of conduct\n\nMulti-dataset, secondary processing of already gathered data is crucial for genomic and health research. However, data protection practice creates barriers to this work. Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.\n\nMulti-dataset, secondary (further) processing of already gathered data (“secondary processing”) is crucial for genomic and health research. However, data protection practice creates barriers to this work. This note suggests a way of thinking about this in practice, and conceptual steps that an Article 40 Code of Conduct (a Code) (at least) needs ",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use.txt",
@@ -10417,13 +10381,12 @@
     },
     {
       "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c1",
-      "text": "News\n\n17 May 2021\n\nPolicy Brief: finding a route out of the impasse? Ordering the secondary processing of already gathered data in a code of conduct\n\nMulti-dataset, secondary processing of already gathered data is crucial for genomic and health research. However, data protection practice creates barriers to this work. Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.\n\nMulti-dataset, secondary (further) processing of already gathered data (“secondary processing”) is crucial for genomic and health research. However, data protection practice creates barriers to this work. This note suggests a way of thinking about this in practice, and conceptual steps that an Article 40 Code of Conduct (a Code) (at least) needs to resolve to remove the barriers. (See also Dove, 2019) Two parallel lines require solution: issues",
+      "text": " work. This note suggests a way of thinking about this in practice, and conceptual steps that an Article 40 Code of Conduct (a Code) (at least) needs to resolve to remove the barriers. (See also Dove, 2019) Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use.txt",
         "page": 0,
         "category": "gdpr-secondary-use",
-        "section": "News",
         "jurisdiction": "EU",
         "document_id": "gdpr-secondary-use",
         "framework": "GDPR",
@@ -10432,21 +10395,6 @@
     },
     {
       "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c2",
-      "text": "icle 40 Code of Conduct (a Code) (at least) needs to resolve to remove the barriers. (See also Dove, 2019) Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.",
-      "metadata": {
-        "source": "gdpr-secondary-use.txt",
-        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use.txt",
-        "page": 0,
-        "category": "gdpr-secondary-use",
-        "section": "News",
-        "jurisdiction": "EU",
-        "document_id": "gdpr-secondary-use",
-        "framework": "GDPR",
-        "content_type": "primary"
-      }
-    },
-    {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c3",
       "text": "Line 1: “Legal basis”, “processing” and “purpose” in secondary processing\n\nThis line is clarified by understanding three key steps in secondary processing:\n\n- Is the proposed secondary processing actually just part of the primary processing?\n\n- If not, is the proposed secondary processing compatible with the primary processing?\n\n- If not, the proposed secondary processing would have to be a new primary processing. Is this possible?",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10461,7 +10409,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c4",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c3",
       "text": "Step 1: Is this new processing just part of the primary processing?\n\nSecondary processing combines (often already gathered) datasets. These must be processed under at least one legal basis under Article 6 (and, for special data, Article 9), and for a disclosed purpose or purposes. The first question is: is the new unforeseen processing actually within the terms of the primary processing? So, in practice, much depends on how information and terms given to data subjects were drafted; the new, unforeseen processing could be squarely within the already described purposes and legal basis. A Code could provide best practice.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10476,7 +10424,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c5",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c4",
       "text": "Step 2: Is it ‘compatible’ processing?\n\nIf the primary processing legal basis and purpose(s) do not specifically cover the secondary processing, is the secondary processing and purpose “compatible” with the original processing and purpose? Under the GDPR: 1) compatibility includes processing or purpose (Article 5.1.b); and, 2) there is a (rebuttable) presumption that processing for research purposes is compatible with other purposes (Recital 50) (and research is understood to include applied research, see Recital 159). Therefore, unless the proposed research is de facto incompatible with the original purpose, research processing should be compatible. Article 6(4) indicates considerations to take into account in assessing compatibility. The Code should further clarify these considerations.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10491,7 +10439,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c6",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c5",
       "text": "Step 3: When steps 1 and 2 fail, is it a new processing?\n\nThis is the most difficult step. “Purpose limitation” is strong: “and not further processed” (Article 5.1.b) seems conclusive that if Steps 1 and 2 (above) fail, secondary processing is not possible. However, Recital 50 gives exceptions: “Where the data subject has given consent or the processing is based on Union or Member State law which constitutes a necessary and proportionate measure in a democratic society to safeguard, in particular, important objectives of general public interest, the controller should be allowed to further process the personal data irrespective of the compatibility of the purposes.” Article 23.1.e operationalises this (requiring Union or Member State Law). And this is where a Code (through Union Law) must seek a harmonising position that data sharing in genomics and health research fall within these excep",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10506,7 +10454,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c7",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c6",
       "text": "nd this is where a Code (through Union Law) must seek a harmonising position that data sharing in genomics and health research fall within these exceptions.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10521,7 +10469,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c8",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c7",
       "text": "Line 2: Around Information Requirements\n\nInformation Provision cannot destroy data sharing\n\nData subjects must be informed of processing of data relating to them. Where it is gathered directly, Article 13 applies: data subjects must be informed. Where data are gathered indirectly, Article 14 applies: data subjects must be informed unless it is impossible to do so or would require a disproportionate effort. If data in secondary processing situations have been gathered directly from the data subject; under Article 13.3 those data subjects must be informed of any secondary processing (regardless of impossibility or proportionality).\n\nArticle 13.3 is potentially devastating. “Where the controller intends to further process the personal data for a purpose other than that for which the personal data were collected, the controller shall provide the data subject prior to that further processing ",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10536,7 +10484,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c9",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c8",
       "text": " a purpose other than that for which the personal data were collected, the controller shall provide the data subject prior to that further processing with information on that other purpose and with any relevant further information as referred to in paragraph 2.” The effect of this is potentially that only situations where the data subjects can be informed directly of the processing can proceed; this seems close to insisting on a legal basis of informed consent. However, secondary processing is allowed for compatible purposes where any of the Article 6 (and 9) legal bases are used; Article 23.1.e and Recital 50 allow a lifting of the purpose limitation in the public interest. Is this really overruled by the effect of Article 13.3? A Code must address this inconsistency.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10551,8 +10499,8 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c10",
-      "text": "Conclusion\n\nSecondary processing of already-gathered data is essential to realise the publicly desired goods of genomic and health research. A Code must be created to resolve the difficulties indicated here, and to re-negotiate an EU-wide harmonisation for data sharing in this sector.",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c9",
+      "text": "Conclusion\n\nSecondary processing of already-gathered data is essential to realise the publicly desired goods of genomic and health research. A Code must be created to resolve the difficulties indicated here, and to re-negotiate an EU-wide harmonisation for data sharing in this sector.\n\nFurther reading\n\n- Edward S. Dove (5 August 2019) “GDPR Brief: Codes of Conduct under the GDPR: A Useful but Challenging Tool to Enable Responsible International Data Sharing” https://www.ga4gh.org/news_item/gdpr-brief-codes-of-conduct-under-the-gdpr-a-useful-but-challenging-tool-to-enable-responsible-international-data-sharing/",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use.txt",
@@ -10566,22 +10514,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c11",
-      "text": "Further reading\n\n- Edward S. Dove (5 August 2019) “GDPR Brief: Codes of Conduct under the GDPR: A Useful but Challenging Tool to Enable Responsible International Data Sharing” https://www.ga4gh.org/news_item/gdpr-brief-codes-of-conduct-under-the-gdpr-a-useful-but-challenging-tool-to-enable-responsible-international-data-sharing/",
-      "metadata": {
-        "source": "gdpr-secondary-use.txt",
-        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use.txt",
-        "page": 0,
-        "category": "gdpr-secondary-use",
-        "section": "Further reading",
-        "jurisdiction": "EU",
-        "document_id": "gdpr-secondary-use",
-        "framework": "GDPR",
-        "content_type": "primary"
-      }
-    },
-    {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c12",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c10",
       "text": "Relevant GDPR Provisions\n\n- Code of Conduct: Article 40 et seq.\n\n- Legal Basis (and informed consent): Articles 6 and 9; Recitals 33 and 171.\n\n- Compatible Purposes and Processing: Articles 5(1)(b) and 6(4); Recital 50. (See also 95/46/EC Article 6(1)(b))\n\n- Information Requirements: Articles 13 and 14.\n\nDavid Townend is Professor of Health and Life Sciences Jurisprudence at CAPHRI (Care And Public Health Research Institute) at Maastricht University.\n\nBirgit Wouters is Scientific Researcher at Maastricht University Institute of Data Science.\n\nNina Stahl is a Researcher at the Faculty of Health, Medicine and Life Sciences at Maastricht University.\n\nSee all previous briefs.\n\nPlease note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications ",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10596,7 +10529,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c13",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c11",
       "text": " upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.",
       "metadata": {
         "source": "gdpr-secondary-use.txt",
@@ -10611,7 +10544,7 @@
       }
     },
     {
-      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c14",
+      "id": "gdpr-secondary-use.txt_f71d57352e46_p0_c12",
       "text": "Regulatory & Ethics Work Stream (REWS)\n\nLatest News",
       "metadata": {
         "source": "gdpr-secondary-use.txt",

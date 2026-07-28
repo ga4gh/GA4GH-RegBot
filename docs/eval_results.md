@@ -26,7 +26,7 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: provision-level recall@8 = 0.715, chunk-level 0.638, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.729, chunk-level 0.628, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -353,8 +353,8 @@ the score.
 
 | Metric | @1 | @3 | @5 | @8 |
 |--------|----|----|----|----|
-| chunk-level recall | 0.449 | 0.552 | 0.626 | 0.638 |
-| **provision-level recall** | 0.549 | 0.611 | 0.653 | **0.715** |
+| chunk-level recall | 0.468 | 0.565 | 0.607 | 0.628 |
+| **provision-level recall** | 0.569 | 0.639 | 0.660 | **0.729** |
 
 Provision recall is 8 points higher because retrieval often surfaces *a* fragment of the
 right rule while missing its siblings — which is a success, not a failure. Two queries show
@@ -365,12 +365,18 @@ the divergence clearly:
 - **q10-broad-consent-validity** moves the other way (0.57 → 0.33): its gold spans three
   distinct sections and only one was reached. Chunk recall was flattering it.
 
-**A data-quality problem this exposed.** q09's gold provisions include
-`gdpr-dpia-genomic-research § Further Reading` and `§ News — 2 Sep 2019`. Those are page
-furniture from the scraped GA4GH brief, not provisions — the heading detector treats the
-page's `<h2>` navigation as sections. It inflates the provision count for the fetched HTML
-documents (not for the GDPR or Taiwan statutes, which are clean). Worth filtering at fetch
-time; recorded rather than quietly tolerated.
+**A data-quality problem this exposed, and fixed.** The first run put
+`gdpr-dpia-genomic-research § Further Reading` and `§ News — 2 Sep 2019` in q09's gold
+provisions. Those are page furniture from the scraped GA4GH brief, not provisions — the
+heading detector was treating the page's navigation `<h2>`s as sections, inflating the
+provision count for every fetched HTML document (the GDPR and Taiwan statutes were clean).
+
+`_is_page_furniture` now rejects a small set of navigation labels and anything date-shaped,
+including the `News — 2 Sep 2019` pattern of a furniture label joined to a date. Provision
+recall@8 rose from 0.715 to **0.729** once the phantom provisions stopped counting against
+it. The filter is deliberately a short explicit list rather than a general classifier: it
+must never reject a real heading, so `Article 35` and `Timing and structure` are pinned by
+tests alongside the rejections.
 
 **Both metrics stay reported.** Chunk recall still measures how much supporting text a
 reviewer receives; provision recall measures whether the rule was found at all. The second
@@ -477,8 +483,9 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [x] ~~Provision-level recall~~ — done, §4d.
 - [ ] q02 remains the clearest ceiling: Human Biobank Management Act Art. 8 ranks 14th of
       207 even with the jurisdiction filter active. Neither fusion nor chunking moved it.
-- [ ] Filter page furniture ("Further Reading", news dates) out of headings when fetching
-      HTML sources — it pollutes `section` and therefore provision keys (§4d).
+- [x] ~~Filter page furniture out of headings~~ — done, §4d.
+- [ ] Move the corpus fetchers into the repo so the primary-source corpus is reproducible
+      from a clean checkout; they currently live outside it.
 - [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
       table of contents; the operative text needs a different entry point.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).
