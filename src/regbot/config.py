@@ -68,6 +68,12 @@ def _nonneg_int_env(name: str, default: int) -> int:
 # Retries for transient errors on the OpenAI Python client (OpenAI API or Ollama-compatible URL).
 OPENAI_MAX_RETRIES = _nonneg_int_env("REGBOT_OPENAI_MAX_RETRIES", 3)
 
+# Chunks admitted per provision (document + section). A reviewer working through a
+# checklist wants the list of distinct applicable provisions, not three fragments of one
+# article; returning a second fragment costs a slot a different rule could have used.
+# 0 disables the cap. See docs/eval_results.md §4g.
+MAX_CHUNKS_PER_PROVISION = _nonneg_int_env("REGBOT_MAX_CHUNKS_PER_PROVISION", 2)
+
 
 def chromadb_settings() -> Any:
     """Chroma PersistentClient settings. Telemetry defaults off unless REGBOT_CHROMA_ANONYMIZED_TELEMETRY=1."""

@@ -153,6 +153,7 @@ Environment Variables
 - `REGBOT_MIN_TOKEN_OVERLAP`: On the LLM path, minimum **token recall** between each recommendation and cited chunk texts (default `0.06`). Set to `0` to disable dropping low-overlap rows.
 - `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`: Candidate pool sizes feeding reciprocal rank fusion (defaults `12` / `48`). Lexical weighting was measured to beat balanced pools — see `docs/eval_results.md` §2.
 - `REGBOT_FUSION`: `max` (default) takes each chunk's best channel; `sum` restores classic additive RRF. See `docs/eval_results.md` §4c.
+- `REGBOT_MAX_CHUNKS_PER_PROVISION`: How many chunks of one provision (document + section) may occupy the result list (default `2`; `0` disables). A reviewer wants distinct applicable rules, not repeated fragments of one — see `docs/eval_results.md` §4g.
 - `REGBOT_CHROMA_ANONYMIZED_TELEMETRY`: Set to `1` to enable Chroma client telemetry; default is off (`0`).
 - `REGBOT_OPENAI_MAX_RETRIES`: Retries for the **OpenAI Python client** (used for both OpenAI API and Ollama’s compatible endpoint; default `3`).
 

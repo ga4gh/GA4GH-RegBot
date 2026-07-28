@@ -26,7 +26,7 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: provision-level recall@8 = 0.812, chunk-level 0.739, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.854, chunk-level 0.725, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -437,6 +437,54 @@ already on disk; all 13 targets currently pass.
 
 ---
 
+## 4g. Multi-provision recall — a slot-allocation problem
+
+After §4e, the four remaining weak queries all shared a shape: gold spanning several
+provisions, with top-8 reaching one or two. Locating every missing provision in the full
+ranking settled what kind of problem it was:
+
+| Query | Missing provisions, by rank |
+|-------|-----------------------------|
+| q03 | Art. 44 at **34**, Art. 46 at **49**, recitals at **11** |
+| q01 | FRS at **9**, GDPR Art. 7 at **14** |
+| q10 | recitals at **29** |
+| q11 | Consent Policy at **20** |
+
+**Nothing was un-retrieved.** Every missing provision was in the ranking, just past the
+cut. So this is not a matching failure, and not a ranking failure either — the ordering is
+broadly right. It is a *slot allocation* problem: eight slots, and some were spent on a
+second or third fragment of a provision already represented.
+
+Two responses were measured:
+
+| | provision@5 | provision@8 | chunk@8 | P@8 |
+|---|---|---|---|---|
+| baseline | 0.743 | 0.812 | 0.739 | 0.200 |
+| deeper `top_k=12` | — | 0.854 | 0.801 | 0.186 |
+| deeper `top_k=20` | — | 0.917 | 0.915 | 0.167 |
+| **cap 2 fragments per provision** | 0.743 | **0.854** | 0.725 | 0.200 |
+| cap 1 fragment per provision | **0.812** | 0.854 | 0.662 | 0.177 |
+
+**Adopted: at most two chunks per provision.** It reaches the same provision recall as
+showing 50% more results, at unchanged precision and with chunk recall essentially flat.
+The justification is the product one: a reviewer working through a checklist wants the list
+of distinct applicable rules, and a second fragment of an article already on the list costs
+a slot a different rule could have used.
+
+Note this is *not* the per-document diversification measured and rejected in §3b. That
+capped by document and pushed away same-document gold; this caps by **provision**, which
+only exists as a concept since §4d. Same instinct, different granularity, opposite result —
+worth stating plainly, because the earlier rejection would otherwise look inconsistent.
+
+`cap=1` is better still at k=5 (0.812) and is available via
+`REGBOT_MAX_CHUNKS_PER_PROVISION=1`; it was not made default because dropping chunk recall
+to 0.662 leaves a reviewer with less of each rule's text.
+
+All four weak queries improved or held: q01 0.50 → 0.75, q03 0.25 → 0.50, q10 and q11
+unchanged at 0.50. **Eight of twelve queries now reach 1.00 provision recall.**
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -537,8 +585,11 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [x] ~~q02 ceiling~~ — solved in §4e; it was a tokenizer problem (0.00 → 1.00).
 - [x] ~~Filter page furniture out of headings~~ — done, §4d.
 - [x] ~~Move the corpus fetchers into the repo~~ — done, §4f (`tools/fetch_corpus.py`).
-- [ ] Remaining weak queries are all multi-provision: q03 (0.25), q01/q10/q11 (0.50). Gold
-      spans several sections and top-8 reaches one or two. This is the next ceiling.
+- [x] ~~Multi-provision recall~~ — partly addressed in §4g (0.812 → 0.854).
+- [ ] q03, q10, q11 still sit at 0.50: their remaining provisions rank 20-49, too deep for
+      slot reallocation to reach. These need better ranking, not better allocation — a
+      cross-encoder re-ranker over the fused pool is now worth the experiment §3b deferred,
+      because the candidates *are* present.
 - [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
       table of contents; the operative text needs a different entry point.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).

@@ -10,6 +10,7 @@ from src.regbot.config import (
     CHROMA_SUBDIR,
     DEFAULT_COLLECTION,
     DEFAULT_EMBEDDING_MODEL,
+    MAX_CHUNKS_PER_PROVISION,
     SEMANTIC_CANDIDATES,
     chromadb_settings,
 )
@@ -18,6 +19,7 @@ from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.ingestion import read_manifest
 from src.regbot.jurisdiction import jurisdiction_matches, jurisdictions_in_manifest
 from src.regbot.text_utils import tokenize
+from src.regbot.types import provision_keys
 
 
 class HybridRetriever:
@@ -213,6 +215,7 @@ class HybridRetriever:
         framework: Optional[List[str]] = None,
         semantic_candidates: Optional[int] = None,
         bm25_candidates: Optional[int] = None,
+        max_per_provision: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
         semantic_candidates = (
             SEMANTIC_CANDIDATES if semantic_candidates is None else int(semantic_candidates)
@@ -246,13 +249,21 @@ class HybridRetriever:
                 if len(bm25_ids) >= bm25_candidates:
                     break
 
-        fused = reciprocal_rank_fusion([sem_ids, bm25_ids], top_n=max(top_k * 3, top_k))
+        cap = MAX_CHUNKS_PER_PROVISION if max_per_provision is None else int(max_per_provision)
+        headroom = 6 if cap > 0 else 3
+        fused = reciprocal_rank_fusion([sem_ids, bm25_ids], top_n=max(top_k * headroom, top_k))
 
         out: List[Dict[str, Any]] = []
+        used: Dict[str, int] = {}
         for cid in fused:
             if cid not in self._by_id:
                 continue
             rec = self._by_id[cid]
+            keys = provision_keys(rec) if cap > 0 else set()
+            if cap > 0 and any(used.get(k, 0) >= cap for k in keys):
+                continue
+            for k in keys:
+                used[k] = used.get(k, 0) + 1
             out.append(
                 {
                     "id": rec["id"],

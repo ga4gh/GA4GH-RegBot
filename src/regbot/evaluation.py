@@ -24,6 +24,8 @@ from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Set,
 
 import yaml
 
+from src.regbot.types import provision_keys
+
 DEFAULT_KS: Tuple[int, ...] = (1, 3, 5, 8)
 
 # Signature of a retrieval callable: (query, top_k, jurisdiction) -> chunk records.
@@ -111,31 +113,6 @@ def resolve_anchors(
 
 def _round(value: float) -> float:
     return round(float(value), 4)
-
-
-def provision_keys(chunk: Dict[str, Any]) -> Set[str]:
-    """
-    Identify the *provision(s)* a chunk belongs to — the rule, not the fragment.
-
-    Chunk-level recall is unstable under re-chunking: the gold set is defined by which
-    chunks contain an anchor phrase, so changing the chunker changes the gold set itself
-    and the numbers stop being comparable across schemes (see docs/eval_results.md §4c).
-    A provision key is chunking-independent, and it is what a reviewer actually asks:
-    *was the rule found?*, not *was fragment 3 of the rule found?*
-
-    Keyed on ``document_id`` plus ``section`` where the source is line-structured, falling
-    back to page and then to the document alone. A chunk straddling two sections belongs
-    to both.
-    """
-    meta = chunk.get("metadata") or {}
-    doc = str(meta.get("document_id") or meta.get("source") or "?")
-    section = str(meta.get("section") or "").strip()
-    if section:
-        return {f"{doc} § {part.strip()}" for part in section.split(";") if part.strip()}
-    page = meta.get("page")
-    if page not in (None, "", 0):
-        return {f"{doc} p{page}"}
-    return {doc}
 
 
 def score_provisions(
