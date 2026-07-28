@@ -22,6 +22,7 @@ from src.regbot.config import (
     llm_provider,
     ollama_openai_base_url,
 )
+from src.regbot.evidence import apply_phase3_enrichment
 from src.regbot.grounding import (
     allowed_chunk_ids,
     audit_report_grounding,
@@ -143,7 +144,7 @@ def _fallback_report(
         "reason": "Keyword fallback does not apply REGBOT_MIN_TOKEN_OVERLAP filtering.",
     }
     out["grounding_attempts"] = 1
-    return out
+    return apply_phase3_enrichment(out, chunks)
 
 
 def _fallback_after_api_error(
@@ -207,7 +208,7 @@ def analyze_compliance(
             },
             "grounding_attempts": 0,
         }
-        return empty
+        return apply_phase3_enrichment(empty, chunks)
 
     provider = llm_provider()
     use_ollama = provider == "ollama"
@@ -345,7 +346,7 @@ def analyze_compliance(
                     "treat recommendations as ungrounded."
                 )
                 out["notes"] = (out.get("notes") or "") + note
-                return out
+                return apply_phase3_enrichment(out, chunks)
             suffix = (
                 "\n\nGROUNDING_FIX_REQUIRED:\n"
                 + "\n".join(f"- {issue}" for issue in audit["issues"])
@@ -385,7 +386,7 @@ def analyze_compliance(
                     out.get("notes", "")
                     + " Recommendations failed token-overlap checks after retries."
                 )
-                return out
+                return apply_phase3_enrichment(out, chunks)
             suffix = (
                 "\n\nTOKEN_OVERLAP_FIX_REQUIRED:\n"
                 f"- Minimum token recall vs cited chunks: {overlap_floor}\n"
@@ -398,9 +399,9 @@ def analyze_compliance(
         merged["ok"] = True
         out["grounding"] = merged
         out["grounding_attempts"] = attempts
-        return out
+        return apply_phase3_enrichment(out, chunks)
 
-    return out
+    return apply_phase3_enrichment(out, chunks)
 
 
 def chat_followup_policy_qa(
@@ -465,9 +466,14 @@ def chat_followup_policy_qa(
     for m in messages[-24:]:
         role = m.get("role")
         content = (m.get("content") or "").strip()
-        if role not in ("user", "assistant") or not content:
+        if not content:
             continue
-        history.append({"role": role, "content": content})
+        # Build with a literal role so the message matches one TypedDict variant exactly;
+        # a plain {"role": role, ...} dict is ambiguous across the union.
+        if role == "user":
+            history.append({"role": "user", "content": content})
+        elif role == "assistant":
+            history.append({"role": "assistant", "content": content})
 
     try:
         resp = client.chat.completions.create(

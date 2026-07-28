@@ -1,9 +1,102 @@
 import re
-from typing import List
+from typing import List, Optional, Tuple
+
+# "Source:", "License:", "Tier:" and similar front-matter keys are not section headings.
+_KEY_VALUE_LINE = re.compile(r"^[A-Za-z][A-Za-z ]{0,18}:\s")
+_LIST_MARKERS = "-•*·—"
+_SENTENCE_BOUNDARY = re.compile(r"[.!?]\s+[A-Z]")
+
+# A heading is a noun phrase; a hard-wrapped body line usually breaks mid-clause on one
+# of these. Used to reject wrapped prose that happens to sit between blank lines.
+_CONTINUATION_WORDS = frozenset(
+    {
+        "a",
+        "an",
+        "the",
+        "and",
+        "or",
+        "but",
+        "of",
+        "to",
+        "in",
+        "on",
+        "at",
+        "by",
+        "for",
+        "with",
+        "from",
+        "as",
+        "that",
+        "which",
+        "who",
+        "whom",
+        "whose",
+        "such",
+        "these",
+        "this",
+        "those",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "has",
+        "have",
+        "had",
+        "may",
+        "must",
+        "should",
+        "will",
+        "can",
+        "not",
+        "any",
+        "all",
+        "their",
+        "its",
+        "when",
+        "where",
+        "while",
+        "if",
+        "than",
+        "then",
+        "into",
+        "under",
+        "over",
+    }
+)
+
+MAX_HEADING_CHARS = 90
 
 
 def tokenize(text: str) -> List[str]:
     return re.findall(r"[a-z0-9]+", text.lower())
+
+
+def chunk_spans(
+    text: str,
+    chunk_size: int = 900,
+    overlap: int = 150,
+) -> List[Tuple[str, int]]:
+    """
+    Split text into overlapping chunks, returning ``(chunk, start_offset)`` pairs.
+
+    Offsets are relative to the *stripped* text and let callers map a chunk back to
+    structure discovered in the same string (see :func:`detect_headings`).
+    """
+    text = text.strip()
+    if not text:
+        return []
+    spans: List[Tuple[str, int]] = []
+    start = 0
+    n = len(text)
+    while start < n:
+        end = min(start + chunk_size, n)
+        spans.append((text[start:end], start))
+        if end >= n:
+            break
+        start = max(end - overlap, start + 1)
+    return spans
 
 
 def chunk_text(
@@ -11,16 +104,95 @@ def chunk_text(
     chunk_size: int = 900,
     overlap: int = 150,
 ) -> List[str]:
-    text = text.strip()
-    if not text:
+    return [chunk for chunk, _ in chunk_spans(text, chunk_size, overlap)]
+
+
+def detect_headings(text: str) -> List[Tuple[int, str]]:
+    """
+    Find section headings in line-structured text, as ``(offset, heading)`` pairs.
+
+    A heading is a short standalone line surrounded by blank lines, without terminal
+    punctuation, list markers, or a ``Key: value`` shape. The rule is deliberately strict:
+    a wrong ``section`` label on a cited clause is worse for a reviewer than no label, so
+    this prefers missing a heading over inventing one.
+
+    Layout-flattened sources (notably ``pypdf`` PDF extraction, which merges heading,
+    subheading and body onto one line) yield no headings here. That is intended — such
+    chunks get no ``section`` rather than a guessed one.
+    """
+    stripped = text.strip()
+    if not stripped:
         return []
-    chunks: List[str] = []
-    start = 0
-    n = len(text)
-    while start < n:
-        end = min(start + chunk_size, n)
-        chunks.append(text[start:end])
-        if end >= n:
+    lines = stripped.split("\n")
+    if is_hard_wrapped(lines):
+        return []
+
+    out: List[Tuple[int, str]] = []
+    offset = 0
+    for i, raw in enumerate(lines):
+        line = raw.strip()
+        start = offset
+        offset += len(raw) + 1
+        if not _looks_like_heading(line):
+            continue
+        prev_blank = i == 0 or not lines[i - 1].strip()
+        next_blank = i + 1 >= len(lines) or not lines[i + 1].strip()
+        if prev_blank and next_blank:
+            out.append((start, line))
+    return out
+
+
+def is_hard_wrapped(lines: List[str], *, min_lines: int = 6) -> bool:
+    """
+    True when the text is laid out at a fixed column width rather than in paragraphs.
+
+    ``pypdf`` emits one line per *visual* line, so body text arrives hard-wrapped and often
+    blank-line separated — which defeats a "standalone line" heading rule. In paragraph
+    text, long lines end at sentence boundaries; in wrapped text, they break mid-clause.
+    """
+    body = [ln.strip() for ln in lines if ln.strip()]
+    if len(body) < min_lines:
+        return False
+    long_lines = [ln for ln in body if len(ln) > 55]
+    if len(long_lines) < min_lines // 2:
+        return False
+    unterminated = sum(1 for ln in long_lines if ln[-1] not in ".!?:;")
+    return unterminated / len(long_lines) > 0.5
+
+
+def _looks_like_heading(line: str) -> bool:
+    if not (3 <= len(line) <= MAX_HEADING_CHARS):
+        return False
+    if line[-1] in ".,;":
+        return False
+    if "|" in line or _KEY_VALUE_LINE.match(line):
+        return False
+    if line[0] in _LIST_MARKERS:
+        return False
+    if not re.search(r"[A-Za-z]", line):
+        return False
+    # Headings start a phrase; wrapped prose usually resumes mid-sentence.
+    if not (line[0].isupper() or line[0].isdigit()):
+        return False
+    # More than one sentence means it is prose, not a heading.
+    if _SENTENCE_BOUNDARY.search(line):
+        return False
+    if line.count("(") != line.count(")"):
+        return False
+    words = re.findall(r"[A-Za-z']+", line)
+    if not (1 <= len(words) <= 14):
+        return False
+    if words[-1].lower() in _CONTINUATION_WORDS:
+        return False
+    return True
+
+
+def section_for_offset(headings: List[Tuple[int, str]], offset: int) -> Optional[str]:
+    """Nearest heading at or before ``offset`` — the section a chunk starts inside."""
+    found: Optional[str] = None
+    for start, heading in headings:
+        if start <= offset:
+            found = heading
+        else:
             break
-        start = max(end - overlap, start + 1)
-    return chunks
+    return found

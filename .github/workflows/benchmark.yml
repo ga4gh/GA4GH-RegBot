@@ -1,0 +1,68 @@
+name: Retrieval benchmark
+
+# Not run on every PR: it ingests the corpus, which downloads the embedding model
+# (~90 MB) and takes minutes. The metric logic itself is unit-tested in the fast CI
+# job (tests/test_evaluation.py stubs the retriever), so PRs still catch scoring bugs.
+#
+# This job measures the real pipeline end to end. It is currently informational —
+# `--min-recall` is deliberately not set, because the gold set is contributor-drafted
+# and not yet mentor-reviewed (see docs/eval_results.md). Once it is approved, add
+# `--min-recall <threshold>` to turn this into a regression gate. Retrieval is
+# deterministic as of the exact-cosine fix, so a gate here will not flake.
+
+on:
+  workflow_dispatch:
+    inputs:
+      min_recall:
+        description: "Fail if macro recall at the largest k is below this (blank = report only)"
+        required: false
+        default: ""
+  schedule:
+    # Mondays 06:00 UTC — catches drift from dependency bumps.
+    - cron: "0 6 * * 1"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache Hugging Face model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-all-MiniLM-L6-v2
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ingest corpus
+        run: python -m src.main ingest-manifest --reset --force
+
+      - name: Run benchmark
+        run: |
+          ARGS="--markdown benchmark_report.md"
+          if [ -n "${{ github.event.inputs.min_recall }}" ]; then
+            ARGS="$ARGS --min-recall ${{ github.event.inputs.min_recall }}"
+          fi
+          python -m src.main benchmark $ARGS | tee benchmark_result.json
+
+      - name: Summary
+        if: always()
+        run: cat benchmark_report.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-benchmark
+          path: |
+            benchmark_report.md
+            benchmark_result.json

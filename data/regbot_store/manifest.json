@@ -10,7 +10,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -23,7 +24,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -36,7 +38,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -49,7 +52,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -62,7 +66,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -75,7 +80,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -88,7 +94,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -101,7 +108,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -114,7 +122,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -127,7 +136,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -140,7 +150,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -153,7 +164,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -166,7 +178,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -179,7 +192,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -192,7 +206,8 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -205,7 +220,67 @@
         "category": "ga4gh-consent-policy",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-consent-policy",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
+      }
+    },
+    {
+      "id": "ga4gh-data-access-committee-brief.txt_d885337edfea_p0_c0",
+      "text": "GA4GH Data Access Committee (DAC) and responsible access — brief for reviewers\nSource: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/ ; GA4GH DAC/Recommendations\nLicense: GA4GH public guidance (not legal advice)\nTier: P0 | Jurisdiction: GA4GH, INTL | Framework: GA4GH\n\nDISCLAIMER: RegBot navigation summary. Institutional DAC procedures may differ.\n\nRole of Data Access Committees\n\nData Access Committees (DACs) review requests to access controlled genomic and health datasets. They verify that the proposed research:\n- Falls within participant consent and data-use limitations\n- Has appropriate ethics approval where required\n- Protects privacy and security of data subjects\n- Serves legitimate scientific purposes with minimised re-identification risk\n\nDAC review typically considers: research proposal summary, Data Use Ontology (DUO) permissions, institutional affiliation,",
+      "metadata": {
+        "source": "ga4gh-data-access-committee-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-data-access-committee-brief.txt",
+        "page": 0,
+        "category": "ga4gh-data-access-committee",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-data-access-committee",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-data-access-committee-brief.txt_d885337edfea_p0_c1",
+      "text": "sed re-identification risk\n\nDAC review typically considers: research proposal summary, Data Use Ontology (DUO) permissions, institutional affiliation, publication plans, commercial use restrictions, and geographic limits.\n\nGA4GH access principles\n\n- Consent-aligned: access granted only for uses participants authorised (human-readable consent + DUO codes where available).\n- Non-discriminatory: criteria applied consistently across applicants.\n- Transparent: documented decisions and appeal pathways where institutions provide them.\n- Time-bound: access may expire; ongoing use may require renewal or amendment.\n- Attribution: researchers expected to acknowledge data sources and comply with publication embargoes if specified.\n\nData Use Ontology (DUO) in access decisions\n\nDUO terms encode permissions and restrictions (e.g. general research use (GRU), health/medical/biomedical research (HMB), no ",
+      "metadata": {
+        "source": "ga4gh-data-access-committee-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-data-access-committee-brief.txt",
+        "page": 0,
+        "category": "ga4gh-data-access-committee",
+        "section": "Role of Data Access Committees",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-data-access-committee",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-data-access-committee-brief.txt_d885337edfea_p0_c2",
+      "text": "UO) in access decisions\n\nDUO terms encode permissions and restrictions (e.g. general research use (GRU), health/medical/biomedical research (HMB), no commercial use (NPU), geographic restrictions). DACs match applicant intent to DUO tags attached to datasets. Mismatches require consent amendment, ethics review, or denial.\n\nCross-border access considerations\n\nWhen applicants are in a different country from the data custodian:\n- Confirm export/import compliance (HGR, PDPA, PIPL, GDPR transfers, etc.)\n- Verify recipient institution security and subprocessor locations\n- Check whether cloud analysis jurisdictions were disclosed to participants\n- Ensure MTA/DUA covers international collaborators and downstream sharing\n\nRegBot review prompts for consent / DUL vs DAC workflow\n\n- Can each proposed use be mapped to a DUO code or consent clause?\n- Does the application disclose all countries where a",
+      "metadata": {
+        "source": "ga4gh-data-access-committee-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-data-access-committee-brief.txt",
+        "page": 0,
+        "category": "ga4gh-data-access-committee",
+        "section": "Data Use Ontology (DUO) in access decisions",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-data-access-committee",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-data-access-committee-brief.txt_d885337edfea_p0_c3",
+      "text": "onsent / DUL vs DAC workflow\n\n- Can each proposed use be mapped to a DUO code or consent clause?\n- Does the application disclose all countries where analysis will occur?\n- Are commercial, moratorium, or disease-specific restrictions reflected in the DUL?\n- If access is for linkage or AI/secondary analysis, is broad/future-use consent plus ethics oversight documented?\n\nRelated: MRCG/DUO brief (P1), Consent Policy (P0), regional transfer excerpts (P2).",
+      "metadata": {
+        "source": "ga4gh-data-access-committee-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-data-access-committee-brief.txt",
+        "page": 0,
+        "category": "ga4gh-data-access-committee",
+        "section": "RegBot review prompts for consent / DUL vs DAC workflow",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-data-access-committee",
+        "framework": "GA4GH",
+        "content_type": "summary"
       }
     },
     {
@@ -218,7 +293,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -231,7 +307,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -244,7 +321,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -257,7 +335,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -270,7 +349,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -283,7 +363,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -296,7 +377,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -309,7 +391,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -322,7 +405,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -335,7 +419,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -348,7 +433,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -361,7 +447,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -374,7 +461,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -387,7 +475,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -400,7 +489,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -413,7 +503,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -426,7 +517,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -439,7 +531,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -452,7 +545,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -465,7 +559,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -478,7 +573,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -491,7 +587,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -504,7 +601,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -517,7 +615,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -530,7 +629,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -543,7 +643,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -556,7 +657,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -569,7 +671,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -582,7 +685,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -595,7 +699,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -608,7 +713,8 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
       }
     },
     {
@@ -621,7 +727,200 @@
         "category": "ga4gh-frs",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-frs",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "primary"
+      }
+    },
+    {
+      "id": "ga4gh-privacy-security-policy-brief.txt_1865c51cf1dd_p0_c0",
+      "text": "GA4GH Privacy and Security Policy — brief for genomic data sharing review\nSource: https://www.ga4gh.org/document/privacy-and-security-policy/\nLicense: GA4GH document terms (public)\nTier: P0 | Jurisdiction: GA4GH, INTL | Framework: GA4GH\n\nDISCLAIMER: RegBot navigation excerpt. Align operational controls with institutional security policies and applicable law.\n\nPolicy purpose\n\nThe GA4GH Privacy and Security Policy sets expectations for organisations that generate, hold, or share genomic and health-related data within the GA4GH ecosystem. It complements the Framework for Responsible Sharing (FRS) by specifying privacy-by-design and security practices for federated and cloud-based research infrastructure.\n\nCore privacy principles (summary)\n\n- Lawful basis and transparency: processing must have a defined legal or ethical basis; data subjects or participants should receive clear information ab",
+      "metadata": {
+        "source": "ga4gh-privacy-security-policy-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-privacy-security-policy-brief.txt",
+        "page": 0,
+        "category": "ga4gh-privacy-security-policy",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-privacy-security-policy",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-privacy-security-policy-brief.txt_1865c51cf1dd_p0_c1",
+      "text": "awful basis and transparency: processing must have a defined legal or ethical basis; data subjects or participants should receive clear information about collection, use, and sharing.\n- Purpose limitation: data use should stay within purposes described at collection or approved by governance (ethics committee, DAC).\n- Data minimisation: collect and retain only what is necessary for authorised research.\n- Accuracy and quality: genomic pipelines should maintain data integrity and documented provenance.\n- Storage limitation: retention schedules and secure deletion when no longer required.\n- Accountability: designated roles for privacy, security, and access decisions.\n\nSecurity expectations (summary)\n\n- Access control: role-based access, authentication, and logging for sensitive genomic datasets.\n- Encryption: protection in transit and at rest appropriate to sensitivity and threat model.\n- I",
+      "metadata": {
+        "source": "ga4gh-privacy-security-policy-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-privacy-security-policy-brief.txt",
+        "page": 0,
+        "category": "ga4gh-privacy-security-policy",
+        "section": "Core privacy principles (summary)",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-privacy-security-policy",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-privacy-security-policy-brief.txt_1865c51cf1dd_p0_c2",
+      "text": "tication, and logging for sensitive genomic datasets.\n- Encryption: protection in transit and at rest appropriate to sensitivity and threat model.\n- Incident response: procedures for breach detection, notification, and remediation per applicable law.\n- Third-party processors: due diligence and contracts (DPA/MTA/DUA) for cloud, sequencing vendors, and international collaborators.\n- Re-identification risk: treat genomic data as potentially identifiable even when pseudonymised; apply controlled-access models.\n\nLink to cross-border sharing\n\nInternational transfers should combine GA4GH security baselines with jurisdiction-specific rules (GDPR Chapter V, PDPA transfer limitation, PIPL cross-border mechanisms, APPI foreign transfer consent, etc.). Security alone does not substitute for legal transfer basis.\n\nRegBot review prompts\n\n- Does the protocol describe access controls and encryption for",
+      "metadata": {
+        "source": "ga4gh-privacy-security-policy-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-privacy-security-policy-brief.txt",
+        "page": 0,
+        "category": "ga4gh-privacy-security-policy",
+        "section": "Security expectations (summary)",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-privacy-security-policy",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-privacy-security-policy-brief.txt_1865c51cf1dd_p0_c3",
+      "text": ". Security alone does not substitute for legal transfer basis.\n\nRegBot review prompts\n\n- Does the protocol describe access controls and encryption for genomic data at each processing location?\n- Are cloud regions and subprocessors listed for participant notification / consent alignment?\n- Is there a documented incident-response path spanning international partners?\n- Do MTA/DUA terms require GA4GH-aligned security or accreditation (e.g. ISO 27001, GA4GH standards)?\n\nRelated: FRS (P0), Consent Policy (P0), REWS Toolkit overview (P0).",
+      "metadata": {
+        "source": "ga4gh-privacy-security-policy-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/ga4gh-privacy-security-policy-brief.txt",
+        "page": 0,
+        "category": "ga4gh-privacy-security-policy",
+        "section": "Link to cross-border sharing",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-privacy-security-policy",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regulatory-ethics-toolkit.txt_e519cd8f7d21_p0_c0",
+      "text": "GA4GH Regulatory and Ethics Work Stream (REWS) — Regulatory & Ethics Toolkit overview\nSource: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/\nLicense: GA4GH public toolkit materials (not legal advice)\nTier: P0 | Jurisdiction: GA4GH, INTL | Framework: REWS\n\nDISCLAIMER: RegBot navigation summary of REWS toolkit scope. Does not replace mentor, DPO, IRB, or DAC review.\n\nPurpose of the Regulatory & Ethics Toolkit\n\nThe GA4GH Regulatory and Ethics Work Stream (REWS) develops practical guidance for responsible genomic and health-related data sharing across borders. The Regulatory & Ethics Toolkit helps researchers, biobanks, Data Access Committees (DACs), and institutions align study consent, data-use language, and governance with international norms and jurisdiction-specific requirements.\n\nToolkit components relevant to RegBot navigation\n\n1. Framework for Responsible Shari",
+      "metadata": {
+        "source": "rews-regulatory-ethics-toolkit.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/rews-regulatory-ethics-toolkit.txt",
+        "page": 0,
+        "category": "rews-regulatory-ethics-toolkit",
+        "jurisdiction": "GA4GH",
+        "document_id": "rews-regulatory-ethics-toolkit",
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regulatory-ethics-toolkit.txt_e519cd8f7d21_p0_c1",
+      "text": "with international norms and jurisdiction-specific requirements.\n\nToolkit components relevant to RegBot navigation\n\n1. Framework for Responsible Sharing (FRS) — foundational principles: respect for persons, privacy, data quality, transparency, accountability, and security. See P0 ga4gh-frs-en.pdf.\n\n2. Consent Policy and Consent Toolkit — standard clauses for collection, use, sharing, withdrawal, and recontact. See P0 ga4gh-consent-policy.pdf and P1 MRCG/DUO brief.\n\n3. Machine Readable Consent Guidance (MRCG) and Data Use Ontology (DUO) — map human-readable consent to machine-readable access codes for DAC review.\n\n4. GDPR Forum Policy Briefs — EU-focused primers on consent, DPIA, transfers, and research processing (P1 corpus).\n\n5. Regional Jurisdiction resources — East Asia legal basis index and per-country excerpts (P2 corpus: SG, CN, TW, KR, JP, HK).\n\nHow REWS guidance supports cross-bo",
+      "metadata": {
+        "source": "rews-regulatory-ethics-toolkit.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/rews-regulatory-ethics-toolkit.txt",
+        "page": 0,
+        "category": "rews-regulatory-ethics-toolkit",
+        "section": "Purpose of the Regulatory & Ethics Toolkit",
+        "jurisdiction": "GA4GH",
+        "document_id": "rews-regulatory-ethics-toolkit",
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regulatory-ethics-toolkit.txt_e519cd8f7d21_p0_c2",
+      "text": "urisdiction resources — East Asia legal basis index and per-country excerpts (P2 corpus: SG, CN, TW, KR, JP, HK).\n\nHow REWS guidance supports cross-border genomic sharing review\n\nResearchers preparing international collaborations should:\n- Identify source jurisdiction(s) for samples and data (see P2 regional excerpts).\n- Compare consent / data-use language against GA4GH Consent Policy themes (purpose, sharing, secondary use, withdrawal, recontact).\n- Check whether proposed use fits participant authorisation and DUO codes where datasets are coded.\n- Document transfer mechanisms (contractual, adequacy, consent-based) for each destination country.\n- Route ambiguous cases to institutional ethics review and, where applicable, DPO or DAC.\n\nREWS relationship to institutional governance\n\nREWS materials inform but do not replace:\n- Institutional Review Boards / Research Ethics Committees\n- Data P",
+      "metadata": {
+        "source": "rews-regulatory-ethics-toolkit.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/rews-regulatory-ethics-toolkit.txt",
+        "page": 0,
+        "category": "rews-regulatory-ethics-toolkit",
+        "section": "Toolkit components relevant to RegBot navigation",
+        "jurisdiction": "GA4GH",
+        "document_id": "rews-regulatory-ethics-toolkit",
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regulatory-ethics-toolkit.txt_e519cd8f7d21_p0_c3",
+      "text": "elationship to institutional governance\n\nREWS materials inform but do not replace:\n- Institutional Review Boards / Research Ethics Committees\n- Data Protection Officers and privacy impact assessments\n- Data Access Committees and material/data transfer agreements\n- National competent authorities (HGR approval in China, HBRA in Singapore, etc.)\n\nRegBot review prompts (REWS-aligned)\n\n- Does the study protocol cite applicable GA4GH framework principles (FRS pillars)?\n- Is consent language consistent with GA4GH Consent Policy on international sharing and future research?\n- Are DUO/consent-code restrictions respected for the requested data use?\n- For multi-jurisdiction flows, has each leg (export, import, cloud processing) been mapped to a legal basis?\n- Is there an escalation path when retrieval confidence is low (human review, not automated compliance)?\n\nRelated corpus paths: data/corpus/P0/",
+      "metadata": {
+        "source": "rews-regulatory-ethics-toolkit.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/rews-regulatory-ethics-toolkit.txt",
+        "page": 0,
+        "category": "rews-regulatory-ethics-toolkit",
+        "section": "REWS relationship to institutional governance",
+        "jurisdiction": "GA4GH",
+        "document_id": "rews-regulatory-ethics-toolkit",
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regulatory-ethics-toolkit.txt_e519cd8f7d21_p0_c4",
+      "text": "basis?\n- Is there an escalation path when retrieval confidence is low (human review, not automated compliance)?\n\nRelated corpus paths: data/corpus/P0/ga4gh-frs-en.pdf, ga4gh-consent-policy.pdf; data/corpus/P1/*; data/corpus/P2/rews-regional-jurisdiction-overview.txt",
+      "metadata": {
+        "source": "rews-regulatory-ethics-toolkit.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P0/rews-regulatory-ethics-toolkit.txt",
+        "page": 0,
+        "category": "rews-regulatory-ethics-toolkit",
+        "section": "RegBot review prompts (REWS-aligned)",
+        "jurisdiction": "GA4GH",
+        "document_id": "rews-regulatory-ethics-toolkit",
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-duo-data-use-ontology-brief.txt_9240532d1d31_p0_c0",
+      "text": "GA4GH Data Use Ontology (DUO) — brief for access control and consent mapping\nSource: https://www.ga4gh.org/product/data-use-ontology/ ; DUO documentation (DURI Work Stream)\nLicense: GA4GH product documentation (public)\nTier: P1 | Jurisdiction: GA4GH, EU, INTL | Framework: GA4GH\n\nDISCLAIMER: Summary for RegBot corpus. Pair with MRCG brief and institutional DAC procedures.\n\nWhat is DUO?\n\nThe Data Use Ontology (DUO) is a standardised vocabulary of terms describing permissions and restrictions on human-subjects data. It enables automated matching between researcher requests and dataset consent limitations, supporting responsible sharing at scale.\n\nPermission terms (examples)\n\n- GRU (General Research Use) — research use unrelated to specific disease or population.\n- HMB (Health/Medical/Biomedical Research) — research on health, medical care, or biomedical topics.\n- DS (Disease-specific) — mod",
+      "metadata": {
+        "source": "ga4gh-duo-data-use-ontology-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt",
+        "page": 0,
+        "category": "ga4gh-duo-data-use-ontology",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-duo-data-use-ontology",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-duo-data-use-ontology-brief.txt_9240532d1d31_p0_c1",
+      "text": "ease or population.\n- HMB (Health/Medical/Biomedical Research) — research on health, medical care, or biomedical topics.\n- DS (Disease-specific) — modifier requiring research on specified disease (e.g. DS:MONDO:0005148 for type 2 diabetes).\n\nRestriction terms (examples)\n\n- NPU (No commercial use) — prohibits use primarily intended for commercial advantage.\n- NCU (No copyright restriction) — publication moratorium or copyright limits may apply per dataset policy.\n- GSO (Geographic location) — research limited to specific countries or regions.\n- IRB (Ethics approval required) — applicant must demonstrate ethics committee approval.\n- PUB (Publication required) — results must be published or made available.\n- COL (Collaboration required) — collaboration with data generator required.\n\nHow DUO links to consent and GDPR\n\nHuman-readable consent forms should express the same permissions/restricti",
+      "metadata": {
+        "source": "ga4gh-duo-data-use-ontology-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt",
+        "page": 0,
+        "category": "ga4gh-duo-data-use-ontology",
+        "section": "Permission terms (examples)",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-duo-data-use-ontology",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-duo-data-use-ontology-brief.txt_9240532d1d31_p0_c2",
+      "text": "aboration with data generator required.\n\nHow DUO links to consent and GDPR\n\nHuman-readable consent forms should express the same permissions/restrictions that are encoded as DUO tags on datasets (see MRCG). DACs verify applicant proposals against DUO. Under GDPR, DUO supports transparency and purpose limitation by documenting authorised use categories.\n\nCross-border workflow\n\n1. Dataset deposited with DUO tags reflecting participant consent.\n2. Researcher submits access request with proposed use.\n3. DAC checks DUO compatibility, ethics approval, and transfer compliance.\n4. Approved access recorded; violations trigger audit or revocation.\n\nRegBot review prompts\n\n- Are DUO tags attached or inferable from consent / DUL language?\n- Does proposed use violate NPU, GSO, or disease-specific modifiers?\n- Is IRB/ethics approval required by DUO and satisfied?\n- For federated analysis across countri",
+      "metadata": {
+        "source": "ga4gh-duo-data-use-ontology-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt",
+        "page": 0,
+        "category": "ga4gh-duo-data-use-ontology",
+        "section": "Restriction terms (examples)",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-duo-data-use-ontology",
+        "framework": "GA4GH",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "ga4gh-duo-data-use-ontology-brief.txt_9240532d1d31_p0_c3",
+      "text": "d use violate NPU, GSO, or disease-specific modifiers?\n- Is IRB/ethics approval required by DUO and satisfied?\n- For federated analysis across countries, do geographic restrictions (GSO) block any processing location?\n\nRelated: ga4gh-mrcg-consent-duo-brief.txt, ga4gh-data-access-committee-brief.txt (P0).",
+      "metadata": {
+        "source": "ga4gh-duo-data-use-ontology-brief.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-duo-data-use-ontology-brief.txt",
+        "page": 0,
+        "category": "ga4gh-duo-data-use-ontology",
+        "section": "RegBot review prompts",
+        "jurisdiction": "GA4GH",
+        "document_id": "ga4gh-duo-data-use-ontology",
+        "framework": "GA4GH",
+        "content_type": "summary"
       }
     },
     {
@@ -634,7 +933,8 @@
         "category": "ga4gh-mrcg-consent-duo-brief",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-mrcg-consent-duo-brief",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "summary"
       }
     },
     {
@@ -645,9 +945,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt",
         "page": 0,
         "category": "ga4gh-mrcg-consent-duo-brief",
+        "section": "Why consent codes matter for cross-border sharing",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-mrcg-consent-duo-brief",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "summary"
       }
     },
     {
@@ -658,9 +960,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/ga4gh-mrcg-consent-duo-brief.txt",
         "page": 0,
         "category": "ga4gh-mrcg-consent-duo-brief",
+        "section": "Link to GDPR and broad consent",
         "jurisdiction": "GA4GH",
         "document_id": "ga4gh-mrcg-consent-duo-brief",
-        "framework": "GA4GH"
+        "framework": "GA4GH",
+        "content_type": "summary"
       }
     },
     {
@@ -673,7 +977,8 @@
         "category": "gdpr-consent-broad-genomic-research",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -684,9 +989,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
+        "section": "Summary",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -697,9 +1004,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
+        "section": "Arguments supporting broad consent under GDPR",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -710,9 +1019,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
+        "section": "Explicit consent and future controllers",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -723,9 +1034,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-consent-broad-genomic-research.txt",
         "page": 0,
         "category": "gdpr-consent-broad-genomic-research",
+        "section": "Conclusion for reviewers",
         "jurisdiction": "EU",
         "document_id": "gdpr-consent-broad-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -738,7 +1051,8 @@
         "category": "gdpr-dpia-genomic-research",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -749,9 +1063,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
+        "section": "Applicability to genomic research",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -762,9 +1078,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
+        "section": "Timing and structure",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -775,9 +1093,70 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-dpia-genomic-research.txt",
         "page": 0,
         "category": "gdpr-dpia-genomic-research",
+        "section": "Relationship to other GDPR obligations",
         "jurisdiction": "EU",
         "document_id": "gdpr-dpia-genomic-research",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-genetic-data-special-category.txt_e78c0d284468_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Genetic and biometric data as \"special category\" personal data under the GDPR\nSource: https://www.ga4gh.org/news_item/gdpr-brief-genetic-and-biometric-data/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.\n\nSummary\n\nArticle 9(1) GDPR prohibits processing of special categories of personal data — including genetic data and biometric data for unique identification — unless a condition in Article 9(2) applies. Nearly all genomic research involves special category data.\n\nDefinition of genetic data (Article 4(13))\n\n\"Personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis o",
+      "metadata": {
+        "source": "gdpr-genetic-data-special-category.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genetic-data-special-category.txt",
+        "page": 0,
+        "category": "gdpr-genetic-data-special-category",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genetic-data-special-category",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-genetic-data-special-category.txt_e78c0d284468_p0_c1",
+      "text": "ral person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question.\"\n\nWhole-genome, exome, SNP arrays, RNA-seq linked to individuals, and derived variant calls typically qualify. Aggregated statistics without individual-level data may fall outside Article 9 if truly non-identifiable.\n\nArticle 9(2) conditions common in research\n\n(a) Explicit consent for specified purposes.\n(b) Employment, social security law — rarely applicable to research biobanks.\n(h) Health or social care — processing by health professionals subject to confidentiality.\n(i) Public interest in public health — Member State law dependent.\n(j) Scientific or historical research or statistical purposes — with safeguards under Article 89(1).\n\nExplicit consent under Article 9\n\nConsent must",
+      "metadata": {
+        "source": "gdpr-genetic-data-special-category.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genetic-data-special-category.txt",
+        "page": 0,
+        "category": "gdpr-genetic-data-special-category",
+        "section": "Definition of genetic data (Article 4(13))",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genetic-data-special-category",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-genetic-data-special-category.txt_e78c0d284468_p0_c2",
+      "text": ".\n(j) Scientific or historical research or statistical purposes — with safeguards under Article 89(1).\n\nExplicit consent under Article 9\n\nConsent must be explicit (clear affirmative action) for special category data. Broad genomic research consent may satisfy explicitness when wording clearly covers genetic analysis and sharing, supplemented by ethics oversight per GA4GH GDPR Briefs on broad consent.\n\nSafeguards (Article 89(1))\n\nAppropriate technical and organisational measures including pseudonymisation; data minimisation; respect for data protection by design; ethics review; limited access.\n\nRegBot review prompts\n\n- Is Article 9 lawful basis identified (consent, research exemption, public health)?\n- Is consent \"explicit\" for genetic analysis, storage, and international sharing?\n- Are pseudonymisation and access controls documented as Article 89 safeguards?\n- Does the study distinguish ",
+      "metadata": {
+        "source": "gdpr-genetic-data-special-category.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genetic-data-special-category.txt",
+        "page": 0,
+        "category": "gdpr-genetic-data-special-category",
+        "section": "Article 9(2) conditions common in research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genetic-data-special-category",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-genetic-data-special-category.txt_e78c0d284468_p0_c3",
+      "text": "sis, storage, and international sharing?\n- Are pseudonymisation and access controls documented as Article 89 safeguards?\n- Does the study distinguish special category genomic data from de-identified aggregate outputs?\n\nRelevant provisions: Article 4(13), Article 4(14) (biometric), Article 9, Article 89(1), Recital 34, Recital 53.\n\nRelated: gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt.",
+      "metadata": {
+        "source": "gdpr-genetic-data-special-category.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-genetic-data-special-category.txt",
+        "page": 0,
+        "category": "gdpr-genetic-data-special-category",
+        "section": "RegBot review prompts",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-genetic-data-special-category",
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -790,7 +1169,8 @@
         "category": "gdpr-genomic-research-primer",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -803,7 +1183,8 @@
         "category": "gdpr-genomic-research-primer",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -816,7 +1197,8 @@
         "category": "gdpr-genomic-research-primer",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -829,7 +1211,8 @@
         "category": "gdpr-genomic-research-primer",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -842,7 +1225,229 @@
         "category": "gdpr-genomic-research-primer",
         "jurisdiction": "EU",
         "document_id": "gdpr-genomic-research-primer",
-        "framework": "GDPR"
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-international-transfers-genomic-research.txt_cfc2235179a6_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — International transfers of genomic and health-related data under the GDPR\nSource: https://www.ga4gh.org/news_item/gdpr-brief-international-transfers-of-genomic-and-health-related-data/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Verify current EDPB guidance and Schrems II requirements.\n\nSummary\n\nGenomic research is inherently international. EU-based controllers and processors frequently transfer personal data (including genetic and health data) to collaborators, cloud providers, and repositories outside the European Economic Area (EEA). Chapter V of the GDPR governs such transfers.\n\nWhen transfers are restricted\n\nArticle 44: any transfer of personal data to a third country or international organisation may take place only if the conditions of Chapter V a",
+      "metadata": {
+        "source": "gdpr-international-transfers-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-international-transfers",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-international-transfers",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-international-transfers-genomic-research.txt_cfc2235179a6_p0_c1",
+      "text": "icted\n\nArticle 44: any transfer of personal data to a third country or international organisation may take place only if the conditions of Chapter V are complied with — adequacy decision, appropriate safeguards, or derogations.\n\nSpecial category data (Article 9): genetic and health data require an Article 9 lawful basis in addition to transfer compliance. Consent, substantial public interest with Member State law, or scientific research with safeguards are common research contexts.\n\nTransfer mechanisms used in genomic research\n\n1. Adequacy decisions — Commission finds third country ensures adequate protection (e.g. certain territories; list evolves).\n\n2. Standard Contractual Clauses (SCCs) — EU Commission-approved clauses between exporter and importer; post-Schrems II requires Transfer Impact Assessment (TIA) documenting supplementary measures if local law may impede protection.\n\n3. Bind",
+      "metadata": {
+        "source": "gdpr-international-transfers-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-international-transfers",
+        "section": "When transfers are restricted",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-international-transfers",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-international-transfers-genomic-research.txt_cfc2235179a6_p0_c2",
+      "text": "nd importer; post-Schrems II requires Transfer Impact Assessment (TIA) documenting supplementary measures if local law may impede protection.\n\n3. Binding Corporate Rules (BCRs) — for multinational research institutions with internal transfers.\n\n4. Explicit consent — Article 49(1)(a) derogation: data subject explicitly consents after being informed of transfer risks; generally not preferred as primary basis for systematic research transfers but may apply in limited cases.\n\n5. Public interest / research derogations — Article 49(1)(d) or (g) in non-repetitive transfers; Member State law may authorise transfers for important public interest or legal claims.\n\nCloud and sequencing vendors\n\nGenomic pipelines often use US or global cloud regions. Controllers must identify subprocessors, document SCCs or other mechanisms, and assess whether foreign surveillance laws require encryption, pseudonymi",
+      "metadata": {
+        "source": "gdpr-international-transfers-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-international-transfers",
+        "section": "Transfer mechanisms used in genomic research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-international-transfers",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-international-transfers-genomic-research.txt_cfc2235179a6_p0_c3",
+      "text": "ontrollers must identify subprocessors, document SCCs or other mechanisms, and assess whether foreign surveillance laws require encryption, pseudonymisation, or EU-only processing as supplementary measures.\n\nRegBot review prompts\n\n- Is the destination country identified and covered by adequacy, SCCs, or another Chapter V tool?\n- Has a Transfer Impact Assessment been completed for US or non-adequate destinations?\n- Does participant consent / ethics approval describe international sharing and recipient categories?\n- Are onward transfers (subprocessors, federated analysis) covered in DPA/MTA chain?\n\nRelevant provisions: Articles 44–49, Recital 112, EDPB Recommendations 01/2020 on supplementary measures.\n\nRelated: gdpr-genomic-research-primer.txt, regional P2 transfer excerpts.",
+      "metadata": {
+        "source": "gdpr-international-transfers-genomic-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-international-transfers-genomic-research.txt",
+        "page": 0,
+        "category": "gdpr-international-transfers",
+        "section": "Cloud and sequencing vendors",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-international-transfers",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-legal-basis-research-without-consent.txt_77e1ea5e8f30_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Legal bases for processing genomic research data without consent under the GDPR\nSource: https://www.ga4gh.org/news_item/gdpr-brief-legal-bases-for-processing-genomic-and-health-related-data-for-scientific-research/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. National implementing law varies; not legal advice.\n\nSummary\n\nWhile consent is widely used in genomic research, the GDPR permits other Article 6 and Article 9 bases in defined circumstances. Member States may provide specific research exemptions under Article 89 and national health/research law.\n\nArticle 6 bases (non-special-category processing)\n\n(e) Public task — public authority or task in public interest.\n(f) Legitimate interests — rarely sole basis for large-scale genomic databases; requires bala",
+      "metadata": {
+        "source": "gdpr-legal-basis-research-without-consent.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-legal-basis-research-without-consent.txt",
+        "page": 0,
+        "category": "gdpr-legal-basis-without-consent",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-legal-basis-without-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-legal-basis-research-without-consent.txt_77e1ea5e8f30_p0_c1",
+      "text": "blic task — public authority or task in public interest.\n(f) Legitimate interests — rarely sole basis for large-scale genomic databases; requires balancing test and usually not for special category without Article 9 basis.\n\nArticle 9 bases without consent (selected)\n\n(j) Scientific research — processing necessary for scientific or historical research or statistical purposes in accordance with Article 89(1), based on Union or Member State law, proportionate to aim, with respect for essence of right to data protection.\n(i) Public interest in public health — for threats or ensuring high standards of health care/medicinal products, per Member State law.\n(h) Health or social care — processing by or under responsibility of professional subject to professional secrecy.\n\nNational research exemptions\n\nMany EU Member States adopt legislation allowing biobank and registry processing for research wi",
+      "metadata": {
+        "source": "gdpr-legal-basis-research-without-consent.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-legal-basis-research-without-consent.txt",
+        "page": 0,
+        "category": "gdpr-legal-basis-without-consent",
+        "section": "Article 6 bases (non-special-category processing)",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-legal-basis-without-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-legal-basis-research-without-consent.txt_77e1ea5e8f30_p0_c2",
+      "text": " professional secrecy.\n\nNational research exemptions\n\nMany EU Member States adopt legislation allowing biobank and registry processing for research with ethics approval, transparency duties, and opt-out instead of opt-in for certain archival health data. Applicability depends on local law — RegBot flags for human review when consent is absent.\n\nSafeguards under Article 89(1)\n\nPseudonymisation where possible; technical and organisational measures; data minimisation; ethics review; proportionality; conditions for international transfers still apply under Chapter V.\n\nRegBot review prompts\n\n- If consent is not relied upon, which Article 6 and Article 9 bases apply and under what national law?\n- Is ethics approval documented as substitute or complement to consent?\n- Are Article 89 safeguards (pseudonymisation, access control) described?\n- Does absence of consent affect international transfer ",
+      "metadata": {
+        "source": "gdpr-legal-basis-research-without-consent.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-legal-basis-research-without-consent.txt",
+        "page": 0,
+        "category": "gdpr-legal-basis-without-consent",
+        "section": "Article 9 bases without consent (selected)",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-legal-basis-without-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-legal-basis-research-without-consent.txt_77e1ea5e8f30_p0_c3",
+      "text": "plement to consent?\n- Are Article 89 safeguards (pseudonymisation, access control) described?\n- Does absence of consent affect international transfer options?\n\nRelevant provisions: Articles 6, 9(2)(i)(j), Article 89, Recital 159.\n\nRelated: gdpr-consent-broad-genomic-research.txt, gdpr-secondary-use-further-processing.txt.",
+      "metadata": {
+        "source": "gdpr-legal-basis-research-without-consent.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-legal-basis-research-without-consent.txt",
+        "page": 0,
+        "category": "gdpr-legal-basis-without-consent",
+        "section": "RegBot review prompts",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-legal-basis-without-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-secondary-use-further-processing.txt_a37df6551188_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Secondary use and further processing of genomic data for research under the GDPR\nSource: https://www.ga4gh.org/news_item/gdpr-brief-secondary-use-and-further-processing-of-genomic-and-health-related-data-for-scientific-research/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.\n\nSummary\n\nBiobanks and genomic repositories often seek to use data collected for one study in new research projects (\"secondary use\" or \"further processing\"). The GDPR permits further processing for scientific research in many cases, but purpose limitation and transparency requirements apply.\n\nPurpose limitation and research exception (Article 5(1)(b))\n\nPersonal data must be collected for specified, explicit, and legitimate purposes and not further processed in a manne",
+      "metadata": {
+        "source": "gdpr-secondary-use-further-processing.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use-further-processing.txt",
+        "page": 0,
+        "category": "gdpr-secondary-use",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-secondary-use",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-secondary-use-further-processing.txt_a37df6551188_p0_c1",
+      "text": "rch exception (Article 5(1)(b))\n\nPersonal data must be collected for specified, explicit, and legitimate purposes and not further processed in a manner incompatible with those purposes. Further processing for scientific research purposes shall not be considered incompatible with the initial purpose, subject to appropriate safeguards.\n\nImplications for genomic research\n\n- Original consent may authorise broad \"genomic and health-related research\" with ethics oversight, supporting secondary projects within that scope.\n- Uses outside original scope (e.g. commercial product development if not consented, new population, identifiable linkage with unrelated datasets) may require new legal basis or consent.\n- Pseudonymisation and access controls are expected safeguards for secondary research databases.\n\nLawful bases for secondary research (Articles 6 and 9)\n\n- Consent (Articles 6(1)(a) and 9(2)(a",
+      "metadata": {
+        "source": "gdpr-secondary-use-further-processing.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use-further-processing.txt",
+        "page": 0,
+        "category": "gdpr-secondary-use",
+        "section": "Purpose limitation and research exception (Article 5(1)(b))",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-secondary-use",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-secondary-use-further-processing.txt_a37df6551188_p0_c2",
+      "text": " expected safeguards for secondary research databases.\n\nLawful bases for secondary research (Articles 6 and 9)\n\n- Consent (Articles 6(1)(a) and 9(2)(a)) — including broad consent per Recital 33.\n- Scientific research (Article 9(2)(j)) — processing necessary for scientific research per Union or Member State law, with proportionate safeguards.\n- Public interest in public health (Article 9(2)(i)) — where applicable under national law.\n\nEthics committee role\n\nWP29/EDPB guidance emphasises that ethics review provides ongoing oversight for unspecified future research, complementing GDPR accountability. Secondary use proposals should document compatibility with original purpose, consent scope, and minimisation.\n\nRegBot review prompts\n\n- Does consent or ethics approval cover the new research question and data linkage proposed?\n- Is further processing still within \"scientific research\" and origin",
+      "metadata": {
+        "source": "gdpr-secondary-use-further-processing.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use-further-processing.txt",
+        "page": 0,
+        "category": "gdpr-secondary-use",
+        "section": "Implications for genomic research",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-secondary-use",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-secondary-use-further-processing.txt_a37df6551188_p0_c3",
+      "text": "nt or ethics approval cover the new research question and data linkage proposed?\n- Is further processing still within \"scientific research\" and original purpose, or a new purpose requiring new basis?\n- Are safeguards (pseudonymisation, DAC access, publication rules) documented for secondary database use?\n- If combining cohorts cross-border, is compatibility assessed for each source consent?\n\nRelevant provisions: Article 5(1)(b), Recital 33, Article 6, Article 9(2)(j), Article 89(1) (research safeguards).\n\nRelated: gdpr-consent-broad-genomic-research.txt, ga4gh-mrcg-consent-duo-brief.txt.",
+      "metadata": {
+        "source": "gdpr-secondary-use-further-processing.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-secondary-use-further-processing.txt",
+        "page": 0,
+        "category": "gdpr-secondary-use",
+        "section": "RegBot review prompts",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-secondary-use",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-withdrawal-consent-research.txt_53886fa13660_p0_c0",
+      "text": "GA4GH GDPR Forum Policy Brief — Withdrawal of consent in genomic and health-related research under the GDPR\nSource: https://www.ga4gh.org/news_item/gdpr-brief-withdrawal-of-consent/\nLicense: GA4GH GDPR Brief (public; not legal advice)\nTier: P1 | Jurisdiction: EU | Framework: GDPR\n\nDISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.\n\nSummary\n\nArticle 7(3) GDPR: data subjects may withdraw consent at any time. Withdrawal must be as easy as giving consent. Withdrawal does not affect lawfulness of processing before withdrawal, but future processing based on consent must stop.\n\nWithdrawal in long-running biobanks and cohorts\n\nGenomic studies often store samples and data for decades. Participants may withdraw from:\n- Future contact or new studies\n- Further use of identifiable data\n- Retention of biological samples\n\nWhat can continue after withdrawal\n\n- Data already shared with thi",
+      "metadata": {
+        "source": "gdpr-withdrawal-consent-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-withdrawal-consent-research.txt",
+        "page": 0,
+        "category": "gdpr-withdrawal-consent",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-withdrawal-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-withdrawal-consent-research.txt_53886fa13660_p0_c1",
+      "text": "r new studies\n- Further use of identifiable data\n- Retention of biological samples\n\nWhat can continue after withdrawal\n\n- Data already shared with third parties under valid consent may be difficult to recall; consent forms should explain limits of withdrawal for irreversible actions (published results, anonymised aggregates, data already in international repositories).\n- Processing based on another lawful basis (e.g. legal obligation to retain audit records) may continue for specified records.\n- Ethics committees may define proportionate withdrawal procedures (destroy samples, suppress data, flag \"no further use\").\n\nRelationship to research integrity\n\nWithdrawal rights must be balanced with scientific validity (e.g. cannot remove participant from already-completed analysis) and collaborator obligations. GA4GH Consent Policy recommends clear participant information on withdrawal effects o",
+      "metadata": {
+        "source": "gdpr-withdrawal-consent-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-withdrawal-consent-research.txt",
+        "page": 0,
+        "category": "gdpr-withdrawal-consent",
+        "section": "Withdrawal in long-running biobanks and cohorts",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-withdrawal-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "gdpr-withdrawal-consent-research.txt_53886fa13660_p0_c2",
+      "text": "t from already-completed analysis) and collaborator obligations. GA4GH Consent Policy recommends clear participant information on withdrawal effects on shared datasets.\n\nRegBot review prompts\n\n- Does consent explain how to withdraw and what happens to samples, data, and already-shared copies?\n- Are downstream DUA/MTA terms compatible with custodian withdrawal procedures?\n- For international repositories, is there a documented process to flag withdrawn participants?\n- Does the protocol distinguish withdrawal from opt-out of recontact or return of results?\n\nRelevant provisions: Article 7(3), Article 13(2)(c), Article 17 (erasure interaction), Recital 42.\n\nRelated: P0 ga4gh-consent-policy.pdf, gdpr-consent-broad-genomic-research.txt.",
+      "metadata": {
+        "source": "gdpr-withdrawal-consent-research.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P1/gdpr-withdrawal-consent-research.txt",
+        "page": 0,
+        "category": "gdpr-withdrawal-consent",
+        "section": "Relationship to research integrity",
+        "jurisdiction": "EU",
+        "document_id": "gdpr-withdrawal-consent",
+        "framework": "GDPR",
+        "content_type": "summary"
       }
     },
     {
@@ -855,7 +1460,8 @@
         "category": "cn-law-excerpt",
         "jurisdiction": "CN",
         "document_id": "cn-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -866,9 +1472,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
         "page": 0,
         "category": "cn-law-excerpt",
+        "section": "Human Genetic Resources (HGR) Regulation — international cooperation and export",
         "jurisdiction": "CN",
         "document_id": "cn-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -879,9 +1487,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
         "page": 0,
         "category": "cn-law-excerpt",
+        "section": "Personal Information Protection Law (PIPL) — sensitive personal information",
         "jurisdiction": "CN",
         "document_id": "cn-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -892,9 +1502,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/CN/hgr-pipl-excerpt.txt",
         "page": 0,
         "category": "cn-law-excerpt",
+        "section": "Data Security Law (DSL)",
         "jurisdiction": "CN",
         "document_id": "cn-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -907,7 +1519,8 @@
         "category": "hk-law-excerpt",
         "jurisdiction": "HK",
         "document_id": "hk-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -918,9 +1531,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
         "page": 0,
         "category": "hk-law-excerpt",
+        "section": "Personal Data (Privacy) Ordinance (PDPO) — data protection principles",
         "jurisdiction": "HK",
         "document_id": "hk-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -931,9 +1546,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
         "page": 0,
         "category": "hk-law-excerpt",
+        "section": "Section 33 — cross-border transfer (transfer limitation)",
         "jurisdiction": "HK",
         "document_id": "hk-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -944,9 +1561,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/HK/pdpo-excerpt.txt",
         "page": 0,
         "category": "hk-law-excerpt",
+        "section": "RegBot review prompts for Hong Kong-origin genomic data",
         "jurisdiction": "HK",
         "document_id": "hk-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -959,7 +1578,8 @@
         "category": "jp-law-excerpt",
         "jurisdiction": "JP",
         "document_id": "jp-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -970,9 +1590,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
         "page": 0,
         "category": "jp-law-excerpt",
+        "section": "Ethical Guidelines for Medical and Health Research Involving Human Subjects",
         "jurisdiction": "JP",
         "document_id": "jp-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -983,9 +1605,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
         "page": 0,
         "category": "jp-law-excerpt",
+        "section": "Act on the Protection of Personal Information (APPI) — cross-border transfer",
         "jurisdiction": "JP",
         "document_id": "jp-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -996,9 +1620,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/JP/ethics-appi-excerpt.txt",
         "page": 0,
         "category": "jp-law-excerpt",
+        "section": "RegBot review prompts for Japan-origin genomic data",
         "jurisdiction": "JP",
         "document_id": "jp-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1011,7 +1637,8 @@
         "category": "kr-law-excerpt",
         "jurisdiction": "KR",
         "document_id": "kr-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1022,9 +1649,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
         "page": 0,
         "category": "kr-law-excerpt",
+        "section": "Bioethics and Safety Act — human subject research and genetic data",
         "jurisdiction": "KR",
         "document_id": "kr-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1035,9 +1664,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
         "page": 0,
         "category": "kr-law-excerpt",
+        "section": "Personal Information Protection Act (PIPA) — cross-border transfer",
         "jurisdiction": "KR",
         "document_id": "kr-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1048,9 +1679,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/KR/bioethics-pipa-excerpt.txt",
         "page": 0,
         "category": "kr-law-excerpt",
+        "section": "RegBot review prompts for Korea-origin genomic data",
         "jurisdiction": "KR",
         "document_id": "kr-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1063,7 +1696,8 @@
         "category": "rews-regional-jurisdiction-overview",
         "jurisdiction": "INTL",
         "document_id": "rews-regional-jurisdiction-overview",
-        "framework": "REWS"
+        "framework": "REWS",
+        "content_type": "summary"
       }
     },
     {
@@ -1076,12 +1710,13 @@
         "category": "rews-regional-jurisdiction-overview",
         "jurisdiction": "INTL",
         "document_id": "rews-regional-jurisdiction-overview",
-        "framework": "REWS"
+        "framework": "REWS",
+        "content_type": "summary"
       }
     },
     {
       "id": "rews-regional-jurisdiction-overview.txt_6b2c6a8f5cb7_p0_c2",
-      "text": " Medicine (2023).\nSee: data/corpus/P2/JP/ethics-appi-excerpt.txt\n\nHong Kong (HK)\nProgrammes: Hong Kong Genome Project.\nLegal basis: Personal Data (Privacy) Ordinance (PDPO); cross-border transfer Section 33 (not yet in force); PCPD model clauses.\nSee: data/corpus/P2/HK/pdpo-excerpt.txt\n\nCross-border review checklist: identify source jurisdiction, consent scope, transfer mechanism, ethics/IRB pathway, and whether genetic/health data triggers special-category rules in destination country.",
+      "text": " Medicine (2023).\nSee: data/corpus/P2/JP/ethics-appi-excerpt.txt\n\nHong Kong (HK)\nProgrammes: Hong Kong Genome Project.\nLegal basis: Personal Data (Privacy) Ordinance (PDPO); cross-border transfer Section 33 (not yet in force); PCPD model clauses.\nSee: data/corpus/P2/HK/pdpo-excerpt.txt\n\nCross-border review checklist: identify source jurisdiction, consent scope, transfer mechanism, ethics/IRB pathway, and whether genetic/health data triggers special-category rules in destination country.\n\nRelated RegBot corpus (by tier)\n\nP0 — GA4GH framework: ga4gh-frs-en.pdf, ga4gh-consent-policy.pdf, rews-regulatory-ethics-toolkit.txt, ga4gh-privacy-security-policy-brief.txt, ga4gh-data-access-committee-brief.txt\n\nP1 — GDPR and consent codes: gdpr-genomic-research-primer.txt, gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt, gdpr-international-transfers-genomic-research.txt, gdpr-",
       "metadata": {
         "source": "rews-regional-jurisdiction-overview.txt",
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/rews-regional-jurisdiction-overview.txt",
@@ -1089,7 +1724,23 @@
         "category": "rews-regional-jurisdiction-overview",
         "jurisdiction": "INTL",
         "document_id": "rews-regional-jurisdiction-overview",
-        "framework": "REWS"
+        "framework": "REWS",
+        "content_type": "summary"
+      }
+    },
+    {
+      "id": "rews-regional-jurisdiction-overview.txt_6b2c6a8f5cb7_p0_c3",
+      "text": "research-primer.txt, gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt, gdpr-international-transfers-genomic-research.txt, gdpr-secondary-use-further-processing.txt, gdpr-genetic-data-special-category.txt, gdpr-withdrawal-consent-research.txt, gdpr-legal-basis-research-without-consent.txt, ga4gh-mrcg-consent-duo-brief.txt, ga4gh-duo-data-use-ontology-brief.txt\n\nP2 — This index plus per-region excerpts under SG/, CN/, TW/, KR/, JP/, HK/",
+      "metadata": {
+        "source": "rews-regional-jurisdiction-overview.txt",
+        "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/rews-regional-jurisdiction-overview.txt",
+        "page": 0,
+        "category": "rews-regional-jurisdiction-overview",
+        "section": "Related RegBot corpus (by tier)",
+        "jurisdiction": "INTL",
+        "document_id": "rews-regional-jurisdiction-overview",
+        "framework": "REWS",
+        "content_type": "summary"
       }
     },
     {
@@ -1102,7 +1753,8 @@
         "category": "sg-law-excerpt",
         "jurisdiction": "SG",
         "document_id": "sg-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1113,9 +1765,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
         "page": 0,
         "category": "sg-law-excerpt",
+        "section": "Personal Data Protection Act 2012 (PDPA) — key themes for research data",
         "jurisdiction": "SG",
         "document_id": "sg-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1126,9 +1780,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
         "page": 0,
         "category": "sg-law-excerpt",
+        "section": "Human Biomedical Research Act (HBRA) — human biomedical research oversight",
         "jurisdiction": "SG",
         "document_id": "sg-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1139,9 +1795,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/SG/pdpa-hbra-excerpt.txt",
         "page": 0,
         "category": "sg-law-excerpt",
+        "section": "Health Information Bill (HIB) — emerging framework",
         "jurisdiction": "SG",
         "document_id": "sg-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1154,7 +1812,8 @@
         "category": "tw-law-excerpt",
         "jurisdiction": "TW",
         "document_id": "tw-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1165,9 +1824,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/TW/biobank-pdpa-excerpt.txt",
         "page": 0,
         "category": "tw-law-excerpt",
+        "section": "Human Biobank Management Act — biobank establishment and use",
         "jurisdiction": "TW",
         "document_id": "tw-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     },
     {
@@ -1178,9 +1839,11 @@
         "source_path": "/Users/ringochen/Projects_Git/GA4GH-RegBot/data/corpus/P2/TW/biobank-pdpa-excerpt.txt",
         "page": 0,
         "category": "tw-law-excerpt",
+        "section": "Personal Data Protection Act (PDPA) — cross-border transfer",
         "jurisdiction": "TW",
         "document_id": "tw-law-excerpt",
-        "framework": "national"
+        "framework": "national",
+        "content_type": "summary"
       }
     }
   ]

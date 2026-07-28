@@ -6,9 +6,11 @@ from typing import Any, Dict, List, Optional
 from rank_bm25 import BM25Okapi
 
 from src.regbot.config import (
+    BM25_CANDIDATES,
     CHROMA_SUBDIR,
     DEFAULT_COLLECTION,
     DEFAULT_EMBEDDING_MODEL,
+    SEMANTIC_CANDIDATES,
     chromadb_settings,
 )
 from src.regbot.embeddings import load_sentence_transformer
@@ -34,6 +36,8 @@ class HybridRetriever:
         self._by_id: Dict[str, Dict[str, Any]] = {}
         self._bm25: Optional[BM25Okapi] = None
         self._bm25_ids: List[str] = []
+        self._embeddings: Any = None
+        self._embedding_ids: List[str] = []
 
     def _ensure_loaded(self) -> None:
         if self._collection is not None:
@@ -59,6 +63,43 @@ class HybridRetriever:
         else:
             self._bm25 = None
 
+        self._load_embeddings()
+
+    def _load_embeddings(self) -> None:
+        """
+        Pull every stored embedding into memory for exact cosine search.
+
+        Chroma's HNSW index is *approximate*: the same query embedding against the same
+        collection returns different tail neighbours across processes, which jitters the
+        candidate-pool boundary and propagates into the fused top-k. That makes benchmark
+        numbers irreproducible and a `--min-recall` CI gate flaky.
+
+        Exact search removes that class of problem. It costs nothing architecturally: the
+        retriever already holds every chunk's full text in memory for BM25, so memory was
+        already proportional to corpus size. At the current corpus (128 chunks x 384 dims)
+        this is a few hundred kilobytes.
+        """
+        if self._collection is None:
+            return
+        try:
+            import numpy as np
+
+            payload = self._collection.get(include=["embeddings"])
+            ids = list(payload.get("ids") or [])
+            vectors = payload.get("embeddings")
+            if not ids or vectors is None or len(vectors) == 0:
+                return
+            matrix = np.asarray(vectors, dtype=float)
+            # Ingest normalizes embeddings, but re-normalize defensively so cosine == dot.
+            norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+            norms[norms == 0] = 1.0
+            self._embeddings = matrix / norms
+            self._embedding_ids = [str(i) for i in ids]
+        except Exception:
+            # Fall back to Chroma's ANN query; retrieval still works, just not bit-reproducible.
+            self._embeddings = None
+            self._embedding_ids = []
+
     @property
     def model(self) -> Any:
         if self._model is None:
@@ -74,6 +115,39 @@ class HybridRetriever:
         self._ensure_loaded()
         return jurisdictions_in_manifest(list(self._by_id.values()))
 
+    def _dense_candidates(self, query_embedding: List[float], limit: int) -> List[str]:
+        """
+        Top-``limit`` chunk ids by cosine similarity, ranked deterministically.
+
+        Ties break on chunk id so equal-scoring chunks always order the same way; without
+        that, ordering would depend on dict insertion order and stay irreproducible even
+        with exact scores.
+        """
+        if self._embeddings is None or not self._embedding_ids:
+            # Approximate fallback when embeddings could not be loaded.
+            if self._collection is None:
+                return []
+            sem = self._collection.query(
+                query_embeddings=[query_embedding],
+                n_results=min(limit, max(1, len(self._by_id))),
+                include=["documents", "metadatas", "distances"],
+            )
+            ids_raw = sem.get("ids")
+            return list(ids_raw[0]) if ids_raw else []
+
+        import numpy as np
+
+        q = np.asarray(query_embedding, dtype=float)
+        norm = float(np.linalg.norm(q))
+        if norm:
+            q = q / norm
+        sims = self._embeddings @ q
+        scored = sorted(
+            zip(self._embedding_ids, sims.tolist()),
+            key=lambda pair: (-pair[1], pair[0]),
+        )
+        return [cid for cid, _ in scored[:limit]]
+
     def retrieve(
         self,
         query: str,
@@ -81,9 +155,13 @@ class HybridRetriever:
         top_k: int = 8,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
-        semantic_candidates: int = 24,
-        bm25_candidates: int = 24,
+        semantic_candidates: Optional[int] = None,
+        bm25_candidates: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
+        semantic_candidates = (
+            SEMANTIC_CANDIDATES if semantic_candidates is None else int(semantic_candidates)
+        )
+        bm25_candidates = BM25_CANDIDATES if bm25_candidates is None else int(bm25_candidates)
         self._ensure_loaded()
         if not query.strip() or self._collection is None or not self._by_id:
             return []
@@ -97,13 +175,7 @@ class HybridRetriever:
             return True
 
         q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
-        sem = self._collection.query(
-            query_embeddings=[q_emb],
-            n_results=min(semantic_candidates, len(self._by_id)),
-            include=["documents", "metadatas", "distances"],
-        )
-        ids_raw = sem.get("ids")
-        sem_ids: List[str] = list(ids_raw[0]) if ids_raw else []
+        sem_ids = self._dense_candidates(q_emb, semantic_candidates)
         sem_ids = [i for i in sem_ids if passes_filter(i)]
 
         bm25_ids: List[str] = []
