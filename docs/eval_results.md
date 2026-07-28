@@ -26,7 +26,7 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: recall@8 = 0.638 over a primary-source corpus (§4b, §4c).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.715, chunk-level 0.638, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -338,6 +338,46 @@ is a real measurement replacing a hollow one.
 
 ---
 
+## 4d. Provision-level recall
+
+§4c showed chunk-level recall is unstable under re-chunking: the gold set is defined by
+*which chunks contain an anchor phrase*, so changing the chunker changes the gold set and
+the numbers stop being comparable. It also asks the wrong question. A reviewer does not care
+whether fragment 3 of Article 35 was retrieved; they care whether **Article 35 was found**.
+
+`provision_keys` identifies a chunk by `document_id § section`, falling back to page and
+then to the document. `provision_recall@k` is the fraction of gold *provisions* covered by
+the top-k, regardless of which fragment surfaced. Pinned by `tests/test_evaluation.py`,
+including the defining property: splitting one provision across more chunks must not change
+the score.
+
+| Metric | @1 | @3 | @5 | @8 |
+|--------|----|----|----|----|
+| chunk-level recall | 0.449 | 0.552 | 0.626 | 0.638 |
+| **provision-level recall** | 0.549 | 0.611 | 0.653 | **0.715** |
+
+Provision recall is 8 points higher because retrieval often surfaces *a* fragment of the
+right rule while missing its siblings — which is a success, not a failure. Two queries show
+the divergence clearly:
+
+- **q09-dpia-trigger**: chunk 0.75 → provision **1.00**. Every relevant rule was found.
+- **q12-duo-consent-codes**: chunk 0.33 → provision **1.00**. Same story.
+- **q10-broad-consent-validity** moves the other way (0.57 → 0.33): its gold spans three
+  distinct sections and only one was reached. Chunk recall was flattering it.
+
+**A data-quality problem this exposed.** q09's gold provisions include
+`gdpr-dpia-genomic-research § Further Reading` and `§ News — 2 Sep 2019`. Those are page
+furniture from the scraped GA4GH brief, not provisions — the heading detector treats the
+page's `<h2>` navigation as sections. It inflates the provision count for the fetched HTML
+documents (not for the GDPR or Taiwan statutes, which are clean). Worth filtering at fetch
+time; recorded rather than quietly tolerated.
+
+**Both metrics stay reported.** Chunk recall still measures how much supporting text a
+reviewer receives; provision recall measures whether the rule was found at all. The second
+is the one to optimise, and the one that survives a change of chunker.
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -434,9 +474,11 @@ Stated plainly, because the numbers look better than the evidence supports:
       Recall fell 0.876 → 0.684 as predicted.
 - [x] ~~Filter scoping~~ and ~~heading-aware chunking~~ — done, §4c. The scoping hypothesis
       was wrong; max fusion was the actual fix.
-- [ ] q02 shows the current ceiling: the right article ranks 14th out of 207. Chunk-level
-      recall may be the wrong metric — provision-level recall would be stable across
-      chunking schemes and is what a reviewer actually cares about.
+- [x] ~~Provision-level recall~~ — done, §4d.
+- [ ] q02 remains the clearest ceiling: Human Biobank Management Act Art. 8 ranks 14th of
+      207 even with the jurisdiction filter active. Neither fusion nor chunking moved it.
+- [ ] Filter page furniture ("Further Reading", news dates) out of headings when fetching
+      HTML sources — it pollutes `section` and therefore provision keys (§4d).
 - [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
       table of contents; the operative text needs a different entry point.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).

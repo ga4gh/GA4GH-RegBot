@@ -5,6 +5,8 @@ from typing import Any, Dict, List, Optional
 
 from src.regbot.evaluation import (
     chunk_matches_anchor,
+    provision_keys,
+    score_provisions,
     evaluate_gold_set,
     format_markdown_report,
     load_gold_set,
@@ -98,6 +100,58 @@ def _stub_retriever(ranking: List[str]):
         return [by_id[i] for i in ranking[:top_k] if i in by_id]
 
     return fn
+
+
+class TestProvisionRecall(unittest.TestCase):
+    """Provision-level recall must stay stable when the chunker changes."""
+
+    def _chunk(self, cid, doc, section=None, page=0):
+        meta = {"document_id": doc, "page": page}
+        if section:
+            meta["section"] = section
+        return {"id": cid, "text": "x", "metadata": meta}
+
+    def test_key_uses_document_and_section(self) -> None:
+        c = self._chunk("a", "gdpr-full-text", "Article 35 — DPIA")
+        self.assertEqual(provision_keys(c), {"gdpr-full-text § Article 35 — DPIA"})
+
+    def test_chunk_spanning_two_sections_belongs_to_both(self) -> None:
+        c = self._chunk(
+            "a", "gdpr-full-text", "Article 8 — Child consent; Article 9 — Special categories"
+        )
+        self.assertEqual(len(provision_keys(c)), 2)
+
+    def test_falls_back_to_page_then_document(self) -> None:
+        self.assertEqual(provision_keys(self._chunk("a", "frs", page=5)), {"frs p5"})
+        self.assertEqual(provision_keys(self._chunk("a", "frs", page=0)), {"frs"})
+
+    def test_two_chunks_of_one_article_count_once(self) -> None:
+        # The core property: splitting a provision into more chunks must not change recall.
+        gold_one = [self._chunk("g1", "law", "Article 8")]
+        gold_two = [self._chunk("g1", "law", "Article 8"), self._chunk("g2", "law", "Article 8")]
+        retrieved = [self._chunk("r1", "law", "Article 8")]
+        self.assertEqual(
+            score_provisions(retrieved, gold_one, [1])["provision_recall@1"],
+            score_provisions(retrieved, gold_two, [1])["provision_recall@1"],
+        )
+
+    def test_retrieving_a_different_fragment_of_the_right_article_counts(self) -> None:
+        gold = [self._chunk("g1", "law", "Article 8")]
+        other_fragment = [self._chunk("r9", "law", "Article 8")]
+        self.assertEqual(score_provisions(other_fragment, gold, [1])["provision_recall@1"], 1.0)
+
+    def test_wrong_article_scores_zero(self) -> None:
+        gold = [self._chunk("g1", "law", "Article 8")]
+        wrong = [self._chunk("r1", "law", "Article 14")]
+        self.assertEqual(score_provisions(wrong, gold, [1])["provision_recall@1"], 0.0)
+
+    def test_partial_coverage(self) -> None:
+        gold = [self._chunk("g1", "law", "Article 8"), self._chunk("g2", "law", "Article 9")]
+        got = [self._chunk("r1", "law", "Article 8")]
+        self.assertEqual(score_provisions(got, gold, [1])["provision_recall@1"], 0.5)
+
+    def test_empty_gold_is_zero_not_error(self) -> None:
+        self.assertEqual(score_provisions([], [], [1])["provision_recall@1"], 0.0)
 
 
 class TestEvaluateGoldSet(unittest.TestCase):
