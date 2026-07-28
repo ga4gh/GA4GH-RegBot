@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 from rank_bm25 import BM25Okapi
 
@@ -115,25 +115,39 @@ class HybridRetriever:
         self._ensure_loaded()
         return jurisdictions_in_manifest(list(self._by_id.values()))
 
-    def _dense_candidates(self, query_embedding: List[float], limit: int) -> List[str]:
+    def _dense_candidates(
+        self,
+        query_embedding: List[float],
+        limit: int,
+        allowed: Optional[Set[str]] = None,
+    ) -> List[str]:
         """
         Top-``limit`` chunk ids by cosine similarity, ranked deterministically.
+
+        ``allowed`` restricts the candidate universe *before* the top-``limit`` cut, so a
+        scoped query fills its pool with in-scope chunks. Selecting globally and filtering
+        afterwards would leave a narrow scope with almost nothing to fuse.
 
         Ties break on chunk id so equal-scoring chunks always order the same way; without
         that, ordering would depend on dict insertion order and stay irreproducible even
         with exact scores.
         """
         if self._embeddings is None or not self._embedding_ids:
-            # Approximate fallback when embeddings could not be loaded.
+            # Approximate fallback when embeddings could not be loaded. Over-fetch, then
+            # filter, since the ANN index cannot be restricted up front.
             if self._collection is None:
                 return []
+            want = limit if allowed is None else min(limit * 8, max(1, len(self._by_id)))
             sem = self._collection.query(
                 query_embeddings=[query_embedding],
-                n_results=min(limit, max(1, len(self._by_id))),
+                n_results=min(want, max(1, len(self._by_id))),
                 include=["documents", "metadatas", "distances"],
             )
             ids_raw = sem.get("ids")
-            return list(ids_raw[0]) if ids_raw else []
+            ids = list(ids_raw[0]) if ids_raw else []
+            if allowed is not None:
+                ids = [i for i in ids if i in allowed]
+            return ids[:limit]
 
         import numpy as np
 
@@ -142,11 +156,52 @@ class HybridRetriever:
         if norm:
             q = q / norm
         sims = self._embeddings @ q
-        scored = sorted(
-            zip(self._embedding_ids, sims.tolist()),
-            key=lambda pair: (-pair[1], pair[0]),
-        )
+        pairs: Iterable[Tuple[str, float]] = zip(self._embedding_ids, sims.tolist())
+        if allowed is not None:
+            pairs = ((cid, s) for cid, s in pairs if cid in allowed)
+        scored = sorted(pairs, key=lambda pair: (-pair[1], pair[0]))
         return [cid for cid, _ in scored[:limit]]
+
+    def _allowed_ids(
+        self,
+        *,
+        category: Optional[str] = None,
+        jurisdiction: Optional[List[str]] = None,
+        framework: Optional[List[str]] = None,
+    ) -> Optional[Set[str]]:
+        """
+        Chunk ids satisfying every active filter, or ``None`` when nothing is scoped.
+
+        ``None`` means "no restriction" and lets the caller skip the membership test
+        entirely — distinct from an empty set, which means the scope matched nothing.
+        """
+        if not category and not jurisdiction and not framework:
+            return None
+
+        wanted_frameworks = (
+            {str(f).strip().upper() for f in framework if str(f).strip()} if framework else None
+        )
+        allowed: Set[str] = set()
+        for cid, rec in self._by_id.items():
+            meta = rec.get("metadata") or {}
+            if category and str(meta.get("category", "")).lower() != category.lower():
+                continue
+            if jurisdiction and not jurisdiction_matches(meta, jurisdiction):
+                continue
+            if wanted_frameworks:
+                if str(meta.get("framework", "")).strip().upper() not in wanted_frameworks:
+                    continue
+            allowed.add(cid)
+        return allowed
+
+    def list_frameworks(self) -> List[str]:
+        """Framework labels present in the store manifest (GA4GH, GDPR, REWS, national…)."""
+        self._ensure_loaded()
+        found = {
+            str((r.get("metadata") or {}).get("framework", "")).strip()
+            for r in self._by_id.values()
+        }
+        return sorted(f for f in found if f)
 
     def retrieve(
         self,
@@ -155,6 +210,7 @@ class HybridRetriever:
         top_k: int = 8,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
+        framework: Optional[List[str]] = None,
         semantic_candidates: Optional[int] = None,
         bm25_candidates: Optional[int] = None,
     ) -> List[Dict[str, Any]]:
@@ -166,30 +222,29 @@ class HybridRetriever:
         if not query.strip() or self._collection is None or not self._by_id:
             return []
 
-        def passes_filter(cid: str) -> bool:
-            meta = self._by_id.get(cid, {}).get("metadata") or {}
-            if category and str(meta.get("category", "")).lower() != category.lower():
-                return False
-            if jurisdiction and not jurisdiction_matches(meta, jurisdiction):
-                return False
-            return True
+        allowed = self._allowed_ids(
+            category=category, jurisdiction=jurisdiction, framework=framework
+        )
+        if allowed is not None and not allowed:
+            return []
 
         q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
-        sem_ids = self._dense_candidates(q_emb, semantic_candidates)
-        sem_ids = [i for i in sem_ids if passes_filter(i)]
+        sem_ids = self._dense_candidates(q_emb, semantic_candidates, allowed)
 
         bm25_ids: List[str] = []
         if self._bm25 is not None:
             scores = self._bm25.get_scores(tokenize(query))
             order = sorted(
                 range(len(scores)),
-                key=lambda i: scores[i],
-                reverse=True,
+                key=lambda i: (-scores[i], self._bm25_ids[i]),
             )
-            for idx in order[:bm25_candidates]:
+            for idx in order:
                 cid = self._bm25_ids[idx]
-                if passes_filter(cid):
-                    bm25_ids.append(cid)
+                if allowed is not None and cid not in allowed:
+                    continue
+                bm25_ids.append(cid)
+                if len(bm25_ids) >= bm25_candidates:
+                    break
 
         fused = reciprocal_rank_fusion([sem_ids, bm25_ids], top_n=max(top_k * 3, top_k))
 

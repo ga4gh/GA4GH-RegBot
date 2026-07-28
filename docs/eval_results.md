@@ -20,13 +20,13 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 689 chunks / 22 documents — 96% primary source (see §4b) |
-| Gold set | v0.3 — 12 queries, 0 skipped |
+| Corpus | 763 chunks / 22 documents — 15 primary / 7 summary (see §4b, §4c) |
+| Gold set | v0.4 — 12 queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: recall@8 = 0.684 over a 96%-primary-source corpus (§4b).** Sections 2, 3 and 3b
+**Headline: recall@8 = 0.638 over a primary-source corpus (§4b, §4c).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -272,6 +272,72 @@ ranking change. That is the next experiment.
 
 ---
 
+## 4c. Three targeted improvements, measured in sequence
+
+§4b named unfiltered queries over a GDPR-dominated corpus as the next lever. Three changes
+followed, each measured on its own so the attribution is clean.
+
+| Step | R@1 | R@3 | R@5 | R@8 | MRR@8 | P@8 |
+|------|-----|-----|-----|-----|-------|-----|
+| primary corpus, sliding window, additive RRF | 0.299 | 0.622 | 0.643 | 0.684 | 0.778 | 0.375 |
+| ① pre-filtering + max fusion | 0.299 | 0.601 | **0.684** | **0.726** | 0.785 | 0.368 |
+| ② + section-aligned chunking | **0.533** | 0.635 | **0.709** | **0.733** | 0.785 | 0.231 |
+| ③ + Taiwan official law | 0.449 | 0.552 | 0.626 | 0.638 | 0.701 | 0.200 |
+
+### ① Filters now scope retrieval instead of truncating results
+
+A latent bug: filters were applied *after* the top-N candidate cut, so a scoped query did
+not search a smaller corpus — it searched the whole corpus and then deleted the results that
+did not match. `_allowed_ids` now restricts the candidate universe first.
+
+**The hypothesis this was meant to test was wrong.** §4b predicted q11-reidentification
+failed because 470 GDPR chunks drowned it. Scoping to `framework=GA4GH` changed nothing —
+still 0 of 4. Inspection showed the real cause: within GA4GH, six of the top eight came from
+the 63-chunk Privacy and Security Policy, general privacy prose out-competing the FRS's one
+specific prohibition. Enlarging the dense pool did not help either (the sweep is flat from
+12/48 to 128/128).
+
+The actual cause was **additive RRF**. The FRS prohibition ranked BM25 **#2** and dense
+**#50**; chunks that were merely respectable in *both* channels out-scored it, because
+summing rewards corroboration. Switching to `max` fusion — take the best single channel —
+gained 4 points of recall@8 and 4 of recall@5. It costs rank-1 accuracy and MRR, the same
+trade direction as the lexical-weighted pools and for the same reason. `REGBOT_FUSION=sum`
+restores classic RRF.
+
+### ② Section-aligned chunking
+
+Chunks now break at heading boundaries, splitting only inside sections that exceed the size
+cap. Straddling chunks fell from 146 of 689 to **15 of 763**, so a citation points at one
+article instead of two unrelated obligations.
+
+**Recall@1 jumped 0.299 → 0.533**, but read the precision column with care: P@8 fell to
+0.231 largely as an artefact. The gold set is defined by *which chunks contain an anchor
+phrase*, so re-chunking changes the gold set itself — several queries went from 2 gold
+chunks to 1, which mechanically caps precision@8 at 1/8. **Recall figures are not strictly
+comparable across chunking schemes.** The durable justification for this change is the
+citation quality, not the metric.
+
+### ③ Taiwan on official law — and why the other five are still summaries
+
+Only Taiwan could be migrated. Of the six P2 jurisdictions:
+
+| | Result |
+|---|---|
+| **TW** | ✅ MOJ official English text, both Acts, 198 articles, 207 chunks |
+| SG, JP | ❌ the sites return a **table of contents only** — the Singapore file had zero occurrences of "shall not", the Japanese one had 109 collapsed-section markers. Ingesting a table of contents would pollute retrieval with structural headings that match query vocabulary and contain no rules, so both were discarded |
+| HK, KR | ❌ single-page apps; the served HTML is a 7.5 KB shell |
+| CN | ❌ no canonical official English text |
+
+**q02 fell from 1.00 to 0.00**, and that is the most informative number in the table. §3
+warned that the P2 queries scoring 1.00 were measuring the jurisdiction filter rather than
+retrieval quality. With Taiwan on 3 summary chunks, any retrieval found the answer. With 207
+chunks of real statute, the operative withdrawal provision (Human Biobank Management Act
+Art. 8) sits at **rank 14** — just outside the top-8, behind genuine but less relevant
+biobank provisions. The aggregate drop in step ③ is almost entirely this one query, and it
+is a real measurement replacing a hollow one.
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -366,12 +432,13 @@ Stated plainly, because the numbers look better than the evidence supports:
       promising for recall@5 but is not separable from noise at n=12.
 - [x] ~~Replace contributor summaries with primary statutory text~~ — done, §4b.
       Recall fell 0.876 → 0.684 as predicted.
-- [ ] Exploit `framework` / `jurisdiction` scoping so GA4GH-framework queries are not
-      drowned by 470 GDPR chunks (§4b, cause 3). Metadata already exists; this is a filter
-      experiment, not a ranking change.
-- [ ] Consider heading-aware chunking for statutes: 146 of 689 chunks straddle an article
-      boundary, which the `section` label now reports honestly but which also splits
-      provisions mid-clause.
+- [x] ~~Filter scoping~~ and ~~heading-aware chunking~~ — done, §4c. The scoping hypothesis
+      was wrong; max fusion was the actual fix.
+- [ ] q02 shows the current ceiling: the right article ranks 14th out of 207. Chunk-level
+      recall may be the wrong metric — provision-level recall would be stable across
+      chunking schemes and is what a reviewer actually cares about.
+- [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
+      table of contents; the operative text needs a different entry point.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).
 - [ ] Wire `benchmark --min-recall` into CI as a regression gate once the gold set is
       approved. Now viable: the benchmark is reproducible (§5), so the gate will not flake.

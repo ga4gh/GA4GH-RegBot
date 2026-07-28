@@ -107,6 +107,57 @@ def chunk_text(
     return [chunk for chunk, _ in chunk_spans(text, chunk_size, overlap)]
 
 
+def chunk_by_sections(
+    text: str,
+    chunk_size: int = 900,
+    overlap: int = 150,
+    min_chars: int = 40,
+) -> List[Tuple[str, int]]:
+    """
+    Chunk at heading boundaries, falling back to a sliding window inside long sections.
+
+    A fixed-width window cuts statutes mid-provision: GDPR Article 9's prohibition and
+    Article 8's child-consent rule land in one 900-character chunk, so a citation spans two
+    unrelated obligations and the embedding mixes both topics. Cutting at headings keeps a
+    chunk inside one article, which is what a clause-precision tool is supposed to cite.
+
+    Sections longer than ``chunk_size`` are still split — some articles run for pages — but
+    every piece stays within the same section. Text before the first heading (front matter)
+    forms its own span. Returns ``(chunk, offset)`` like :func:`chunk_spans`, and falls back
+    to :func:`chunk_spans` entirely when the document has no detectable headings.
+    """
+    stripped = text.strip()
+    if not stripped:
+        return []
+
+    headings = detect_headings(stripped)
+    if not headings:
+        return chunk_spans(stripped, chunk_size, overlap)
+
+    boundaries = [pos for pos, _ in headings]
+    if boundaries[0] > 0:
+        boundaries.insert(0, 0)
+    boundaries.append(len(stripped))
+
+    out: List[Tuple[str, int]] = []
+    for start, end in zip(boundaries, boundaries[1:]):
+        block = stripped[start:end]
+        if not block.strip():
+            continue
+        if len(block.strip()) < min_chars and out:
+            # A heading with almost no body under it — fold it into the previous chunk
+            # rather than emitting a citable fragment.
+            prev_text, prev_start = out[-1]
+            out[-1] = (prev_text + block, prev_start)
+            continue
+        if len(block) <= chunk_size:
+            out.append((block.strip(), start))
+            continue
+        for piece, rel in chunk_spans(block, chunk_size, overlap):
+            out.append((piece, start + rel))
+    return out
+
+
 def detect_headings(text: str) -> List[Tuple[int, str]]:
     """
     Find section headings in line-structured text, as ``(offset, heading)`` pairs.

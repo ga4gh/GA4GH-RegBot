@@ -5,6 +5,7 @@ from src.regbot.study_type import detect_study_type
 from src.regbot.text_utils import (
     chunk_spans,
     chunk_text,
+    chunk_by_sections,
     detect_headings,
     is_hard_wrapped,
     section_for_offset,
@@ -187,6 +188,38 @@ class TestSectionsForSpan(unittest.TestCase):
         start = body.index("1. Where point")
         end = body.index("racial")
         self.assertEqual(len(sections_for_span(headings, start, end)), 2)
+
+
+class TestChunkBySections(unittest.TestCase):
+    def test_each_chunk_stays_inside_one_article(self) -> None:
+        pieces = chunk_by_sections(STATUTE_DOC, chunk_size=900, overlap=150)
+        headings = detect_headings(STATUTE_DOC)
+        for text, off in pieces:
+            spanned = sections_for_span(headings, off, off + len(text))
+            self.assertLessEqual(len(spanned), 1, f"chunk straddles sections: {spanned}")
+
+    def test_falls_back_to_sliding_window_without_headings(self) -> None:
+        plain = "word " * 500
+        self.assertEqual(
+            [c for c, _ in chunk_by_sections(plain)],
+            [c for c, _ in chunk_spans(plain)],
+        )
+
+    def test_long_section_is_split_but_stays_in_its_section(self) -> None:
+        doc = "Article 1\n\nTitle here\n\n" + ("clause text. " * 400)
+        pieces = chunk_by_sections(doc, chunk_size=300, overlap=50)
+        self.assertGreater(len(pieces), 1)
+        headings = detect_headings(doc)
+        for text, off in pieces:
+            self.assertLessEqual(len(sections_for_span(headings, off, off + len(text))), 1)
+
+    def test_offsets_locate_the_chunk(self) -> None:
+        body = STATUTE_DOC.strip()
+        for text, off in chunk_by_sections(STATUTE_DOC):
+            self.assertIn(text[:30], body[off : off + len(text) + 5])
+
+    def test_empty_input(self) -> None:
+        self.assertEqual(chunk_by_sections(""), [])
 
 
 class TestStudyType(unittest.TestCase):

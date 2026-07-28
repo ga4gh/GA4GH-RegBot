@@ -16,7 +16,7 @@ from src.regbot.config import (
 )
 from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.jurisdiction import normalize_jurisdiction
-from src.regbot.text_utils import chunk_spans, detect_headings, sections_for_span
+from src.regbot.text_utils import chunk_by_sections, detect_headings, sections_for_span
 
 
 def _stable_source_id(path: str) -> str:
@@ -117,7 +117,7 @@ def ingest_policy_file(
     chunk_idx = 0
     for page_text, page_num in pages:
         headings = detect_headings(page_text)
-        for piece, offset in chunk_spans(page_text):
+        for piece, offset in chunk_by_sections(page_text):
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
             meta: Dict[str, Any] = {

@@ -85,7 +85,7 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 | Vector store | Chroma (local persistent) | Persistence only — see below |
 | Dense search | Exact cosine over in-memory embeddings | Chroma's HNSW is approximate and was not reproducible across processes |
 | Lexical | BM25 over manifest | Rare legal terms (“pseudonymisation”, etc.) |
-| Fusion | RRF, tie-broken on chunk id | No score calibration across dense vs sparse |
+| Fusion | RRF, **max** across channels, tie-broken on chunk id | `REGBOT_FUSION=sum` for classic additive RRF |
 | LLM | Ollama (default) / OpenAI | OpenAI-compatible client for both |
 | UI | Next.js + FastAPI (primary), Streamlit (legacy) | Both render the Phase 3 evidence layer |
 
@@ -110,11 +110,18 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 |-----------|----------|-----------------|
 | `top_k` | CLI / UI | **8** — recall saturates at 12 while precision decays monotonically |
 | Semantic / BM25 pool | `config.py` | **12 / 48** — lexical weighting won on both recall and precision |
-| Chunk size / overlap | `text_utils.chunk_text` | Unchanged (900 / 150); overlap widens anchor resolution |
-| `category` / `jurisdiction` filter | ingest metadata | Filtered queries reach recall 1.00 |
+| Chunking | `text_utils.chunk_by_sections` | **Heading-aligned**; sliding window only inside long sections |
+| `category` / `jurisdiction` / `framework` filter | ingest metadata | Applied **before** candidate selection, so a scope narrows the search rather than truncating results |
 | Re-ranker | — | **Not adopted** — failure mode is missing candidates, not mis-ranking |
 | Per-document diversification | — | **Measured and rejected** — costs up to 19 points of recall@8 |
 | Document sibling boost | — | **Deferred** — trades recall@8 for recall@5; not separable from noise at n=12 |
+
+**Why max fusion.** Additive RRF rewards agreement between channels, which is wrong for
+statutes: the operative clause is often a precise lexical hit that a general-purpose
+embedding ranks poorly. The GA4GH re-identification prohibition sat at BM25 #2 and dense
+#50, and additive fusion let six chunks of general privacy prose beat it out of the top-8.
+`max` gains recall and precision and gives up rank-1 accuracy — the same trade direction as
+the lexical-weighted pools. See [`eval_results.md` §4c](eval_results.md).
 
 Measured results and the reasoning behind each choice: [`eval_results.md`](eval_results.md).
 Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`.

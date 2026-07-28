@@ -28,6 +28,15 @@ SEMANTIC_CANDIDATES = _pos_int_env("REGBOT_SEMANTIC_CANDIDATES", 12)
 BM25_CANDIDATES = _pos_int_env("REGBOT_BM25_CANDIDATES", 48)
 
 
+def _fusion_strategy() -> str:
+    """How reciprocal-rank contributions combine: 'max' (default) or 'sum' (classic RRF)."""
+    v = os.getenv("REGBOT_FUSION", "max").strip().lower()
+    return "sum" if v == "sum" else "max"
+
+
+FUSION_STRATEGY = _fusion_strategy()
+
+
 def llm_provider() -> str:
     """ollama (default): local Llama / Mistral via Ollama. Set REGBOT_LLM_PROVIDER=openai for OpenAI API."""
     v = os.getenv("REGBOT_LLM_PROVIDER", "ollama").strip().lower()
