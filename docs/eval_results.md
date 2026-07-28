@@ -26,7 +26,7 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: provision-level recall@8 = 0.729, chunk-level 0.628, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.812, chunk-level 0.739, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -384,6 +384,59 @@ is the one to optimise, and the one that survives a change of chunker.
 
 ---
 
+## 4e. q02 solved — a tokenizer problem, not a ranking problem
+
+§4c left q02 as the clearest ceiling: the Taiwan withdrawal provision ranked 14th of 207
+even with the jurisdiction filter on. Neither fusion nor chunking moved it. Comparing the
+query's vocabulary against the provision's explained why in one line:
+
+```
+query   : Can participants withdraw ... what happens to retained samples?
+Art. 8  : A Participant may ... withdraw ... the Operator shall destroy the
+          biological specimens ...
+shared content words: {withdraw}
+```
+
+**Statutes are written in the singular; questions are asked in the plural.** `tokenize`
+did no normalisation, so `participants` and `participant` were unrelated terms, as were
+`samples` and `sample`. BM25 had almost nothing to match on.
+
+`fold_plural` folds regular plurals only, protecting `-ss`, `-us` and `-is` endings so
+`process`, `status` and `analysis` survive. No verb or comparative stemming: an aggressive
+stemmer collides distinct legal terms, and since the same function normalises both query
+and corpus, a wrong fold corrupts both sides at once.
+
+| Metric | @1 | @3 | @5 | @8 |
+|--------|----|----|----|----|
+| chunk-level recall | 0.468 → **0.496** | 0.565 → **0.649** | 0.607 → **0.690** | 0.628 → **0.739** |
+| provision-level recall | 0.569 | 0.639 → **0.722** | 0.660 → **0.743** | 0.729 → **0.812** |
+
+**q02 goes from 0.00 to 1.00**, and provision recall@8 gains 8 points overall — the largest
+single improvement measured in this phase, from a dozen lines of tokenizer code. Eight of
+twelve queries now reach 1.00 provision recall.
+
+The lesson generalises beyond this corpus: for statutory retrieval, matching the register
+of the source text matters more than the ranking function. Two ranking heuristics were
+measured and rejected (§3b) and a fusion change bought 4 points (§4c); normalising number
+agreement bought 8.
+
+---
+
+## 4f. The corpus is now reproducible
+
+`tools/fetch_corpus.py` rebuilds every primary source from its publisher —
+`--list`, `--only KEY`, `--check`, `--dry-run`. Previously the corpus was a set of opaque
+files nobody could regenerate or audit.
+
+**Every fetch is validated before it is written**, which encodes the §4c failure directly:
+a target declares `must_contain` phrases and a `min_words` floor, and content that fails is
+reported and *not written*. Given the Singapore table of contents that started this, the
+check reports `missing required phrase 'shall not' — likely a table of contents` instead of
+silently adding 11,000 words of navigation to the corpus. `--check` re-validates what is
+already on disk; all 13 targets currently pass.
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -481,11 +534,11 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [x] ~~Filter scoping~~ and ~~heading-aware chunking~~ — done, §4c. The scoping hypothesis
       was wrong; max fusion was the actual fix.
 - [x] ~~Provision-level recall~~ — done, §4d.
-- [ ] q02 remains the clearest ceiling: Human Biobank Management Act Art. 8 ranks 14th of
-      207 even with the jurisdiction filter active. Neither fusion nor chunking moved it.
+- [x] ~~q02 ceiling~~ — solved in §4e; it was a tokenizer problem (0.00 → 1.00).
 - [x] ~~Filter page furniture out of headings~~ — done, §4d.
-- [ ] Move the corpus fetchers into the repo so the primary-source corpus is reproducible
-      from a clean checkout; they currently live outside it.
+- [x] ~~Move the corpus fetchers into the repo~~ — done, §4f (`tools/fetch_corpus.py`).
+- [ ] Remaining weak queries are all multi-provision: q03 (0.25), q01/q10/q11 (0.50). Gold
+      spans several sections and top-8 reaches one or two. This is the next ceiling.
 - [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
       table of contents; the operative text needs a different entry point.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).

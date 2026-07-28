@@ -5,12 +5,12 @@ from typing import Any, Dict, List, Optional
 
 from src.regbot.evaluation import (
     chunk_matches_anchor,
-    provision_keys,
-    score_provisions,
     evaluate_gold_set,
     format_markdown_report,
     load_gold_set,
+    provision_keys,
     resolve_anchors,
+    score_provisions,
     score_ranking,
 )
 

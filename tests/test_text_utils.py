@@ -3,10 +3,11 @@ import unittest
 from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.study_type import detect_study_type
 from src.regbot.text_utils import (
+    chunk_by_sections,
     chunk_spans,
     chunk_text,
-    chunk_by_sections,
     detect_headings,
+    fold_plural,
     is_hard_wrapped,
     section_for_offset,
     sections_for_span,
@@ -69,6 +70,42 @@ class TestTextUtils(unittest.TestCase):
     def test_rrf_orders_by_fusion(self) -> None:
         fused = reciprocal_rank_fusion([["a", "b"], ["b", "c"]], top_n=4)
         self.assertIn("b", fused[:2])
+
+
+class TestPluralFolding(unittest.TestCase):
+    """Statutes speak in the singular; questions are asked in the plural."""
+
+    def test_regular_plurals_fold(self) -> None:
+        for plural, singular in [
+            ("participants", "participant"),
+            ("samples", "sample"),
+            ("specimens", "specimen"),
+            ("policies", "policy"),
+            ("processes", "process"),
+            ("safeguards", "safeguard"),
+        ]:
+            self.assertEqual(fold_plural(plural), singular)
+
+    def test_singulars_that_end_in_s_are_protected(self) -> None:
+        # Over-folding these would collide distinct legal terms.
+        for word in ("process", "status", "analysis", "basis", "consensus", "access"):
+            self.assertEqual(fold_plural(word), word)
+
+    def test_short_words_untouched(self) -> None:
+        for word in ("is", "as", "its", "has", "data"):
+            self.assertEqual(fold_plural(word), word)
+
+    def test_folding_is_idempotent(self) -> None:
+        for word in ("participants", "policies", "processes", "analysis"):
+            self.assertEqual(fold_plural(fold_plural(word)), fold_plural(word))
+
+    def test_query_and_statute_wording_now_match(self) -> None:
+        # The exact failure this addresses: q02's query vs Taiwan Biobank Act Art. 8.
+        query = set(tokenize("Can participants withdraw and what happens to samples?"))
+        statute = set(
+            tokenize("A Participant may withdraw; the Operator shall destroy the sample.")
+        )
+        self.assertTrue({"participant", "withdraw", "sample"} <= query & statute)
 
 
 class TestHeadingDetection(unittest.TestCase):

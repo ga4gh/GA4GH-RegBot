@@ -131,8 +131,33 @@ def _is_page_furniture(line: str) -> bool:
     return False
 
 
+def fold_plural(word: str) -> str:
+    """
+    Fold a regular English plural to its singular. Deliberately narrow.
+
+    Statutes are written in the singular — "A Participant may make a request", "the
+    biological specimen" — while questions are asked in the plural — "can participants
+    withdraw", "what happens to samples". Without this, BM25 scores those as unrelated
+    terms, and the Taiwan withdrawal provision shared exactly one content word with its
+    own gold query.
+
+    Only regular plurals are folded, and ``-ss`` / ``-us`` / ``-is`` endings are protected
+    so "process", "status" and "analysis" survive intact. No verb or comparative stemming:
+    an aggressive stemmer collides distinct legal terms, and the same function normalises
+    both the query and the corpus, so a wrong fold would corrupt both sides at once.
+    """
+    if len(word) > 4 and word.endswith("ies"):
+        return word[:-3] + "y"
+    if len(word) > 4 and word.endswith(("sses", "xes", "zes", "ches", "shes")):
+        return word[:-2]
+    if len(word) > 3 and word.endswith("s") and not word.endswith(("ss", "us", "is")):
+        return word[:-1]
+    return word
+
+
 def tokenize(text: str) -> List[str]:
-    return re.findall(r"[a-z0-9]+", text.lower())
+    """Lowercase word tokens with regular plurals folded (see :func:`fold_plural`)."""
+    return [fold_plural(w) for w in re.findall(r"[a-z0-9]+", text.lower())]
 
 
 def chunk_spans(
