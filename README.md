@@ -12,7 +12,7 @@ Documentation
 
 What works today
 - **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest. Chunks carry `source`, `page`, `category`, `document_id`, `jurisdiction`, `framework`, `content_type` (`primary` source text vs contributor `summary` — badged in the UI), and `section` (every heading the chunk spans) where the source is line-structured.
-- **Hybrid retrieval**: exact cosine embedding search + **BM25**, merged with reciprocal rank fusion. Ranking is deterministic — identical inputs give identical results across runs.
+- **Hybrid retrieval**: exact cosine embedding search + **BM25**, fused by reciprocal rank (best-channel `max` by default; `REGBOT_FUSION=sum` for classic additive RRF). `jurisdiction` / `framework` / `category` filters scope the candidate search itself, not just the output. Ranking is deterministic — identical inputs give identical results across runs.
 - **Compliance pass**: JSON-mode LLM via **[Ollama](https://ollama.com) by default** (e.g. `llama3`, configurable with `REGBOT_OLLAMA_MODEL`). Set `REGBOT_LLM_PROVIDER=openai` and `OPENAI_API_KEY` to use OpenAI instead. If no LLM is reachable (or on API failure), a **keyword heuristic fallback** still returns grounded chunk ids.
 - **Web UI** (recommended): FastAPI + Next.js in `frontend/` — see **Run the web UI** below.
 - **Streamlit UI** (legacy): upload + paste flows (`src/streamlit_app.py`).
@@ -139,7 +139,8 @@ Environment Variables
 - `HF_HUB_DOWNLOAD_TIMEOUT`: Hugging Face Hub download timeout in seconds (embedding model on first use). The app sets a higher default when unset; increase if you see read timeouts.
 - `REGBOT_HF_ENDPOINT`: If set, copied to `HF_ENDPOINT` (e.g. `https://hf-mirror.com` where Hub mirrors are used).
 - `REGBOT_MIN_TOKEN_OVERLAP`: On the LLM path, minimum **token recall** between each recommendation and cited chunk texts (default `0.06`). Set to `0` to disable dropping low-overlap rows.
-- `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`: Candidate pool sizes feeding reciprocal rank fusion (defaults `12` / `48`). Lexical weighting was measured to beat balanced pools on both recall and precision — see `docs/eval_results.md` §2.
+- `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`: Candidate pool sizes feeding reciprocal rank fusion (defaults `12` / `48`). Lexical weighting was measured to beat balanced pools — see `docs/eval_results.md` §2.
+- `REGBOT_FUSION`: `max` (default) takes each chunk's best channel; `sum` restores classic additive RRF. See `docs/eval_results.md` §4c.
 - `REGBOT_CHROMA_ANONYMIZED_TELEMETRY`: Set to `1` to enable Chroma client telemetry; default is off (`0`).
 - `REGBOT_OPENAI_MAX_RETRIES`: Retries for the **OpenAI Python client** (used for both OpenAI API and Ollama’s compatible endpoint; default `3`).
 
