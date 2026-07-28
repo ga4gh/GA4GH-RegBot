@@ -60,3 +60,35 @@ class TestRunningHeaderRemoval(unittest.TestCase):
 
         pages = ["Appendix\nbody"] + ["other body text here"] * 9
         self.assertNotIn("Appendix", _running_lines(pages))
+
+
+class TestCitableContent(unittest.TestCase):
+    """Structural leftovers are not evidence; genuinely short provisions are."""
+
+    def test_rejects_page_labels_and_provenance(self) -> None:
+        from src.regbot.ingestion import has_citable_content
+
+        for junk in (
+            "9 Appendix 2",
+            "Source: https://publications.europa.eu/resource/celex/32016R0679",
+            "--- Retrieved: 2026-07-28",
+        ):
+            self.assertFalse(has_citable_content(junk), f"accepted junk: {junk!r}")
+
+    def test_keeps_genuinely_short_provisions(self) -> None:
+        from src.regbot.ingestion import has_citable_content
+
+        # Taiwan PDPA Article 36 really is one sentence — dropping a rule is the worse error.
+        self.assertTrue(
+            has_citable_content(
+                "Article 36 The statute of limitation for each data subject to exercise "
+                "the right to claim damages shall be calculated separately."
+            )
+        )
+
+    def test_url_does_not_count_towards_the_word_budget(self) -> None:
+        from src.regbot.ingestion import has_citable_content
+
+        self.assertFalse(
+            has_citable_content("See https://example.org/a/very/long/path/with/many/segments")
+        )

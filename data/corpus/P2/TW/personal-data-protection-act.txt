@@ -1,5 +1,3 @@
-Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
-
 Taiwan — Personal Data Protection Act (official English)
 
 Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
@@ -267,3 +265,7 @@ The Enforcement Rules of the PDPA shall be prescribed by the competent authority
 Article 56
 
 The enforcement date of the PDPA shall be set by the Executive Yuan.The deletion of Articles 19 through 22 and Article 43 on May 26, 2010, and the revision of Article 48 under the amendment to the PDPA made on May 16, 2023, shall become effective on the date of promulgation.
+
+---
+Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
+Retrieved: 2026-07-28

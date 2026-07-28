@@ -39,6 +39,7 @@ UA = (
     "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"
 )
 POLITE_DELAY_S = 1.5
+RETRIEVED = "2026-07-28"
 
 BOILERPLATE = re.compile(
     r"^(skip to|search|menu|share this|sign up|subscribe|cookie|newsletter|"
@@ -370,9 +371,11 @@ def fetch_one(t: Target, *, dry_run: bool = False) -> bool:
         print("         nothing written — a table of contents pollutes retrieval")
         return False
 
-    header = f"Source: {t.url.split('|')[0]}\n\n{t.title}\n\n"
+    # Provenance goes at the end: as a leading block it became its own chunk, an
+    # indexable citation consisting of a URL. The manifest remains the authoritative record.
+    footer = f"\n\n---\nSource: {t.url.split('|')[0]}\nRetrieved: {RETRIEVED}\n"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(header + body + "\n", encoding="utf-8")
+    out.write_text(f"{t.title}\n\n{body}{footer}", encoding="utf-8")
     print(f"  ok     {t.key}  {len(body.split()):6d} words  -> {t.out}")
     return True
 

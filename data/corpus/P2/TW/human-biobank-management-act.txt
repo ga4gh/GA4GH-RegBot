@@ -1,5 +1,3 @@
-Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164
-
 Taiwan — Human Biobank Management Act (official English)
 
 Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164
@@ -127,3 +125,7 @@ For any Biobank established prior to the enforcement of Human Biobank Act, its O
 Article 31
 
 The Human Biobank Act shall become effective as of the day of promulgation.
+
+---
+Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164
+Retrieved: 2026-07-28

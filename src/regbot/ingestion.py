@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from typing import Any, Dict, List, Optional, Tuple
 
 from pypdf import PdfReader
@@ -77,6 +78,26 @@ def load_document_pages(path: str) -> List[Tuple[str, int]]:
     return _load_plaintext(path)
 
 
+_URL_RE = re.compile(r"https?://\S+")
+
+
+def has_citable_content(text: str, *, min_words: int = 10) -> bool:
+    """
+    False for chunks with too little prose to be worth citing.
+
+    Catches the leftovers of document structure — a bare "9 Appendix 2" page label, or the
+    provenance line a fetched file carries — which are indexable but useless as evidence:
+    a reviewer offered one of them as the support for a recommendation learns nothing.
+
+    Deliberately permissive. Several genuine provisions are very short (Taiwan PDPA
+    Article 36 is a single sentence), and dropping a real rule is far worse than keeping a
+    dull chunk, so only near-empty text is rejected.
+    """
+    stripped = _URL_RE.sub(" ", text)
+    words = re.findall(r"[A-Za-z]{2,}", stripped)
+    return len(words) >= min_words
+
+
 def _manifest_path(store_dir: str) -> str:
     return os.path.join(store_dir, MANIFEST_NAME)
 
@@ -148,6 +169,8 @@ def ingest_policy_file(
     for page_text, page_num in pages:
         headings = detect_headings(page_text)
         for piece, offset in chunk_by_sections(page_text):
+            if not has_citable_content(piece):
+                continue
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
             meta: Dict[str, Any] = {
