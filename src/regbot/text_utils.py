@@ -127,7 +127,7 @@ def detect_headings(text: str) -> List[Tuple[int, str]]:
     if is_hard_wrapped(lines):
         return []
 
-    out: List[Tuple[int, str]] = []
+    found: List[Tuple[int, int, str]] = []  # (line index, offset, text)
     offset = 0
     for i, raw in enumerate(lines):
         line = raw.strip()
@@ -138,8 +138,40 @@ def detect_headings(text: str) -> List[Tuple[int, str]]:
         prev_blank = i == 0 or not lines[i - 1].strip()
         next_blank = i + 1 >= len(lines) or not lines[i + 1].strip()
         if prev_blank and next_blank:
-            out.append((start, line))
-    return out
+            found.append((i, start, line))
+
+    return _merge_adjacent_headings(found, lines)
+
+
+def _merge_adjacent_headings(
+    found: List[Tuple[int, int, str]],
+    lines: List[str],
+) -> List[Tuple[int, str]]:
+    """
+    Join a heading to the one directly below it when no body text separates them.
+
+    Legal texts routinely split a heading across two blocks — EUR-Lex renders GDPR as
+    ``Article 9`` then ``Processing of special categories of personal data``. Kept apart,
+    a chunk cites the least useful of the two; merged, it cites
+    ``Article 9 — Processing of special categories of personal data``.
+    """
+    merged: List[Tuple[int, str]] = []
+    idx = 0
+    while idx < len(found):
+        line_no, start, text = found[idx]
+        parts = [text]
+        # Cap at two: the pattern is "designation + title". Merging further starts
+        # swallowing lead-in sentences, e.g. "Article 4 — Definitions — For the
+        # purposes of this Regulation:".
+        if idx + 1 < len(found):
+            next_line, _, next_text = found[idx + 1]
+            between = lines[line_no + 1 : next_line]
+            if between and all(not b.strip() for b in between):
+                parts.append(next_text)
+                idx += 1
+        merged.append((start, " — ".join(parts)))
+        idx += 1
+    return merged
 
 
 def is_hard_wrapped(lines: List[str], *, min_lines: int = 6) -> bool:
@@ -196,3 +228,26 @@ def section_for_offset(headings: List[Tuple[int, str]], offset: int) -> Optional
         else:
             break
     return found
+
+
+def sections_for_span(
+    headings: List[Tuple[int, str]],
+    start: int,
+    end: int,
+) -> List[str]:
+    """
+    Every heading the span ``[start, end)`` sits under or runs into.
+
+    A fixed-width chunk regularly straddles a boundary: a 900-character window opened
+    inside GDPR Article 8 and closed inside Article 9. Labelling it from the start offset
+    alone reports "Article 8" for text that is Article 9 — precisely the wrong-label
+    failure this metadata exists to avoid. Returning both keeps the label truthful, and
+    a reviewer can see the chunk spans a boundary.
+    """
+    covering = section_for_offset(headings, start)
+    spanned = [h for pos, h in headings if start < pos < end]
+    out: List[str] = []
+    for heading in ([covering] if covering else []) + spanned:
+        if heading and heading not in out:
+            out.append(heading)
+    return out

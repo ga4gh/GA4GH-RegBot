@@ -1,43 +1,77 @@
-GA4GH GDPR Forum Policy Brief — Genetic and biometric data as "special category" personal data under the GDPR
-Source: https://www.ga4gh.org/news_item/gdpr-brief-genetic-and-biometric-data/
-License: GA4GH GDPR Brief (public; not legal advice)
-Tier: P1 | Jurisdiction: EU | Framework: GDPR
+Source: https://www.ga4gh.org/news_item/what-specific-protections-apply-to-health-related-genetic-or-biometric-data/ (retrieved 2026-07-28)
 
-DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
+News
 
-Summary
+5 Dec 2018
 
-Article 9(1) GDPR prohibits processing of special categories of personal data — including genetic data and biometric data for unique identification — unless a condition in Article 9(2) applies. Nearly all genomic research involves special category data.
+Policy Brief: what specific protections apply to health-related, genetic, or biometric data?
 
-Definition of genetic data (Article 4(13))
+In the eyes of the GDPR, not all data are equal. Rather, ‘special categories’ of personal data are given additional protection. In the December 2018 installment of the GDPR Forum Brief, Johan Ordish and Alison Hall of the PHG Foundation discuss those of relevance to the genomics and health community.
 
-"Personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question."
+In the eyes of the GDPR, not all data are equal. Rather, ‘special categories’ of personal data are given additional protection. For our purposes, there are three special categories of note:
 
-Whole-genome, exome, SNP arrays, RNA-seq linked to individuals, and derived variant calls typically qualify. Aggregated statistics without individual-level data may fall outside Article 9 if truly non-identifiable.
+- ‘genetic data’, defined in Article 4(13)
 
-Article 9(2) conditions common in research
+- ‘biometric data’ defined in Article 4(14) for the purpose of uniquely identifying a person
 
-(a) Explicit consent for specified purposes.
-(b) Employment, social security law — rarely applicable to research biobanks.
-(h) Health or social care — processing by health professionals subject to confidentiality.
-(i) Public interest in public health — Member State law dependent.
-(j) Scientific or historical research or statistical purposes — with safeguards under Article 89(1).
+- ‘data concerning health’ defined in Article 4(15).
 
-Explicit consent under Article 9
+The boundaries of ‘genetic data’ and ‘data concerning health’ are particularly indistinct. Of two possible interpretations of ‘genetic data’, the latter seems more probable:
 
-Consent must be explicit (clear affirmative action) for special category data. Broad genomic research consent may satisfy explicitness when wording clearly covers genetic analysis and sharing, supplemented by ethics oversight per GA4GH GDPR Briefs on broad consent.
+- that all genetic data that fit the description offered in Article 4(13) are necessarily personal data; or
 
-Safeguards (Article 89(1))
+- that ‘genetic data’ means only genetic data that also meet the definition of ‘personal data’ found in Article 4(1).
 
-Appropriate technical and organisational measures including pseudonymisation; data minimisation; respect for data protection by design; ethics review; limited access.
+Similarly, it is uncertain what counts as ‘data concerning health.’ If interpreted along similar lines as the Data Protection Directive and Lindqvist, the concept will be expansive and blurred.
 
-RegBot review prompts
+Notwithstanding these definitional questions, the lawful processing of special category datarequires both an Article 6 legal basis and Article 9 derogation. However, some civil law jurisdictions interpret the Article 9 derogations as superseding this requirement to have an Article 6 legal basis. Health, genetic, and biometric data are unique amongst the special categories in allowing Member States to introduce further conditions on their processing.
 
-- Is Article 9 lawful basis identified (consent, research exemption, public health)?
-- Is consent "explicit" for genetic analysis, storage, and international sharing?
-- Are pseudonymisation and access controls documented as Article 89 safeguards?
-- Does the study distinguish special category genomic data from de-identified aggregate outputs?
+Data controllers should select a derogation that is compatible with the purpose of their processing and the legal basis they rely upon. Depending on the purpose of processing, clinical and research genomics will usually invoke derogations (g) to (j) of Article 9(2).
 
-Relevant provisions: Article 4(13), Article 4(14) (biometric), Article 9, Article 89(1), Recital 34, Recital 53.
+To provide UK examples, the GDPR Working Group counsels that NHS organisations utilise the Article 6(1)(e) ‘public interest’ legal basis with the Article 9(2)(h) derogation on ‘preventative or occupational medicine’ or the Article 9(2)(i) derogation on ‘public health.’ Regarding research, the NHS Health Research Authority recommends that the Article 6(1)(e) legal basis be paired with the Article 9(2)(j) derogation on scientific or research purposes.
 
-Related: gdpr-consent-broad-genomic-research.txt, gdpr-dpia-genomic-research.txt.
+In certain circumstances, invoking a derogation (e.g. Article 9(2)(j)) frees data controllers from some obligations to their data subjects (Article 89(2)). However, if one relies upon the Article 9(2)(j) research derogation, the rights and freedoms of data subjects must be safeguarded (Article 89(1)). Data controllers must be cognizant of the potential risks to these rights and freedoms (Recital 75) when carrying out data protection impact assessments, especially when processing genetic and health data (Article 35 and Recital 91).
+
+Alison Hall and Johan Ordish work for the PHG Foundation, a think tank with a special focus on genomics and personalised medicine that is a part of the University of Cambridge.
+
+Further Reading
+
+- National GDPR Working Group, GDPR: guidance on lawful processing
+
+- NHS Health Research Authority, GDPR: technical guidance
+
+- UK Information Commissioner’s Office, Special category processing
+
+Relevant GDPR Provisions
+
+- Article 9(1) – prohibition on processing special category data
+
+- Article 9(2) – prohibition derogations
+
+- Recital 52 – with suitable safeguards, Member State law may provide for additional derogations
+
+- Article 9(3) – when invoking the preventative/occupational medicine derogation, processing must be under an obligation of secrecy
+
+- Recital 53 – health-related purposes processing
+
+- Recital 54 – interpretation of ‘public health’; safeguarding necessary to process for this purpose; restriction on third party processing
+
+- Article 9(4) – Member States may introduce further conditions on genetic, biometric data, and data concerning health processing
+
+- Article 4(13) & Recital 34 – definition of ‘genetic data’
+
+- Article 4(14) – definition of ‘biometric data’
+
+- Article 4(15) & Recital 35 – definition of ‘data concerning health’
+
+- Article 89 – safeguards and derogations relating to processing for scientific and historical research purposes
+
+- Recital 75 – risks to rights and freedoms of data subjects to consider
+
+- Article 35 & Recital 91 – data protection impact assessment
+
+See all previous briefs.
+
+Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
+
+Latest News

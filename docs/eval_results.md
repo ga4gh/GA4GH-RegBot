@@ -20,15 +20,16 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 128 chunks / 22 documents (P0 GA4GH, P1 GDPR briefs, P2 six East Asia jurisdictions) |
-| Gold set | v0.2 — 12 queries, 41 resolved gold chunks, 0 skipped |
+| Corpus | 689 chunks / 22 documents — 96% primary source (see §4b) |
+| Gold set | v0.3 — 12 queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
-| Date | 2026-07-27 |
+| Date | 2026-07-28 |
 
-All sections report the full 22-document corpus on the deterministic retriever, except §4,
-which documents an earlier 13-document run in order to explain what corpus growth did to the
-numbers.
+**Headline: recall@8 = 0.684 over a 96%-primary-source corpus (§4b).** Sections 2, 3 and 3b
+report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
+kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
+and why the number fell.
 
 **Why anchors instead of chunk ids.** Chunk ids embed a SHA-256 of the *absolute ingest
 path* (`ingestion._stable_source_id`), so an id recorded on one machine never resolves on
@@ -211,6 +212,66 @@ item before the CI gate is switched on.
 
 ---
 
+## 4b. Moving to primary sources — the honest baseline
+
+§6.3 listed "20 of 22 documents are contributor summaries" as the largest threat to
+validity, and §7 predicted that replacing them would make recall **drop**. Both have now
+been done and measured.
+
+**What changed.** P0/P1 moved from contributor paraphrases to primary sources:
+
+| | Before | After |
+|---|--------|-------|
+| Documents | 22 (2 primary / 20 summary) | 22 (14 primary / 8 summary) |
+| Chunks | 128 | **689** |
+| Primary-source chunks | ~48 (37%) | **658 (96%)** |
+| Chunks with `section` | 42% | **78%** |
+
+Sources: the consolidated GDPR text from the EU Publications Office (CELEX 32016R0679 —
+all 99 Articles and the recitals, ~54,900 words), the GA4GH Privacy and Security Policy as
+published (18pp), and the GA4GH Regulatory & Ethics Toolkit, DUO, MRCG and GDPR Brief pages
+as published. `gdpr-legal-basis-without-consent` was dropped: the full GDPR text supersedes
+that paraphrase (Articles 6, 9(2)(j), 89). P2 regional law remains contributor summaries by
+design and is marked `content_type: summary`, surfaced as a red badge in both UIs.
+
+**The gold set broke, loudly.** Every P0/P1 anchor pointed at paraphrase wording that no
+longer exists. The harness skipped 2 queries outright and silently shrank the gold set of
+several others — exactly the failure mode §4 was written about, and exactly why an
+unresolvable anchor is reported rather than scored as a miss. Gold v0.3 re-anchors those
+queries onto **operative provisions in the law itself** — Art. 7(3) for withdrawal, Art. 35
+for DPIA, Art. 44/46 for transfers, Recital 33 for broad consent — so a relevance judgment
+is now a judgment about the regulation rather than about the contributor's own wording.
+
+**Result:**
+
+| Corpus | Gold | R@1 | R@3 | R@5 | **R@8** | MRR@8 | P@8 |
+|--------|------|-----|-----|-----|---------|-------|-----|
+| paraphrases, 128 chunks | v0.2 | 0.324 | 0.689 | 0.723 | **0.876** | 0.840 | 0.490 |
+| **primary, 689 chunks** | **v0.3** | 0.299 | 0.622 | 0.643 | **0.684** | 0.778 | 0.375 |
+
+**Recall@8 fell 19 points.** That is the headline result of this phase, and it is the
+number to trust. Three things drove it, and only one is a retrieval weakness:
+
+1. **The vocabulary-overlap bias is gone.** Queries and paraphrases previously shared an
+   author, so BM25 had an unearned edge — the effect §6.3 warned about. Real statutory
+   language does not phrase things the way a query does: GDPR Art. 7(3) says "withdraw his
+   or her consent at any time", never "withdrawal of consent in genomic data sharing".
+2. **The corpus grew 5.4×**, so every query now has far more genuine competitors.
+3. **GDPR is 68% of the corpus** (470 of 689 chunks) and floods unfiltered queries.
+   q11-reidentification fell to 0.00: the GA4GH re-identification clauses are still there,
+   but they no longer surface above 470 chunks of EU regulation.
+
+The earlier 0.876 was substantially an artefact of a small corpus written in the same voice
+as the queries. **0.684 over real law is the number the project should be judged on**, and
+the one to improve against.
+
+The most promising lever is now clear from cause 3: unfiltered queries over a
+GDPR-dominated corpus. `framework` and `jurisdiction` metadata already exist on every
+chunk — scoping a GA4GH-framework query away from 470 GDPR chunks is a filter change, not a
+ranking change. That is the next experiment.
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -283,13 +344,11 @@ Stated plainly, because the numbers look better than the evidence supports:
    retriever. Needs mentor review before it means anything externally.
 2. **12 queries on 91 chunks.** A 4-point recall difference is roughly one chunk moving in
    one query. The adopted config is a reasonable default, not a settled result.
-3. **20 of 22 documents are contributor-authored summaries, not primary law.** Only
-   `ga4gh-frs` and `ga4gh-consent-policy` are source PDFs; the rest are ~300–450-word
-   paraphrases (their file headers say so, and chunks now carry
-   `content_type: primary|summary` so this is queryable). Retrieval scored against a
-   paraphrase does not demonstrate retrieval against statutory text, and the phrasing of
-   both the summaries and the queries came from the same author — a vocabulary-overlap
-   bias that inflates BM25 in particular. **This is the largest threat on the list.**
+3. ~~**20 of 22 documents are contributor-authored summaries.**~~ **Addressed in §4b** —
+   P0/P1 are now primary sources (96% of chunks). P2 regional law remains summarised by
+   design and is marked `content_type: summary` in the data and in both UIs. The residual
+   threat is smaller but real: those 8 summary documents still carry the contributor's
+   phrasing, and the six regional queries are scored against them.
 4. **Anchors resolve more broadly than intended.** With 150-char chunk overlap, a phrase
    like `Recital 33` matches adjacent chunks, so some queries have larger gold sets than
    hand-specified (q10: 7 chunks from 3 anchors). This deflates recall slightly — a
@@ -305,9 +364,14 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [ ] Expand to ~30 queries, weighted toward unfiltered multi-chunk topics.
 - [ ] Revisit sibling boost (§3b) once the gold set is larger and reviewed — it looks
       promising for recall@5 but is not separable from noise at n=12.
-- [ ] Replace contributor summaries with primary statutory text where licensing permits;
-      re-run and expect recall to *drop*. Treat that as the honest baseline. Use
-      `content_type` to measure the primary-vs-summary split explicitly.
+- [x] ~~Replace contributor summaries with primary statutory text~~ — done, §4b.
+      Recall fell 0.876 → 0.684 as predicted.
+- [ ] Exploit `framework` / `jurisdiction` scoping so GA4GH-framework queries are not
+      drowned by 470 GDPR chunks (§4b, cause 3). Metadata already exists; this is a filter
+      experiment, not a ranking change.
+- [ ] Consider heading-aware chunking for statutes: 146 of 689 chunks straddle an article
+      boundary, which the `section` label now reports honestly but which also splits
+      provisions mid-clause.
 - [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).
 - [ ] Wire `benchmark --min-recall` into CI as a regression gate once the gold set is
       approved. Now viable: the benchmark is reproducible (§5), so the gate will not flake.

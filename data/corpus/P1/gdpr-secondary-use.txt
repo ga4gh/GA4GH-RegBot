@@ -1,0 +1,73 @@
+Source: https://www.ga4gh.org/news_item/finding-a-route-out-of-the-impasse/ (retrieved 2026-07-28)
+
+News
+
+17 May 2021
+
+Policy Brief: finding a route out of the impasse? Ordering the secondary processing of already gathered data in a code of conduct
+
+Multi-dataset, secondary processing of already gathered data is crucial for genomic and health research. However, data protection practice creates barriers to this work. Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.
+
+Multi-dataset, secondary (further) processing of already gathered data (“secondary processing”) is crucial for genomic and health research. However, data protection practice creates barriers to this work. This note suggests a way of thinking about this in practice, and conceptual steps that an Article 40 Code of Conduct (a Code) (at least) needs to resolve to remove the barriers. (See also Dove, 2019) Two parallel lines require solution: issues around “legal basis”, “processing” and “purpose”; the duty to inform the data subject.
+
+Line 1: “Legal basis”, “processing” and “purpose” in secondary processing
+
+This line is clarified by understanding three key steps in secondary processing:
+
+- Is the proposed secondary processing actually just part of the primary processing?
+
+- If not, is the proposed secondary processing compatible with the primary processing?
+
+- If not, the proposed secondary processing would have to be a new primary processing. Is this possible?
+
+Step 1: Is this new processing just part of the primary processing?
+
+Secondary processing combines (often already gathered) datasets. These must be processed under at least one legal basis under Article 6 (and, for special data, Article 9), and for a disclosed purpose or purposes. The first question is: is the new unforeseen processing actually within the terms of the primary processing? So, in practice, much depends on how information and terms given to data subjects were drafted; the new, unforeseen processing could be squarely within the already described purposes and legal basis. A Code could provide best practice.
+
+Step 2: Is it ‘compatible’ processing?
+
+If the primary processing legal basis and purpose(s) do not specifically cover the secondary processing, is the secondary processing and purpose “compatible” with the original processing and purpose? Under the GDPR: 1) compatibility includes processing or purpose (Article 5.1.b); and, 2) there is a (rebuttable) presumption that processing for research purposes is compatible with other purposes (Recital 50) (and research is understood to include applied research, see Recital 159). Therefore, unless the proposed research is de facto incompatible with the original purpose, research processing should be compatible. Article 6(4) indicates considerations to take into account in assessing compatibility. The Code should further clarify these considerations.
+
+Step 3: When steps 1 and 2 fail, is it a new processing?
+
+This is the most difficult step. “Purpose limitation” is strong: “and not further processed” (Article 5.1.b) seems conclusive that if Steps 1 and 2 (above) fail, secondary processing is not possible. However, Recital 50 gives exceptions: “Where the data subject has given consent or the processing is based on Union or Member State law which constitutes a necessary and proportionate measure in a democratic society to safeguard, in particular, important objectives of general public interest, the controller should be allowed to further process the personal data irrespective of the compatibility of the purposes.” Article 23.1.e operationalises this (requiring Union or Member State Law). And this is where a Code (through Union Law) must seek a harmonising position that data sharing in genomics and health research fall within these exceptions.
+
+Line 2: Around Information Requirements
+
+Information Provision cannot destroy data sharing
+
+Data subjects must be informed of processing of data relating to them. Where it is gathered directly, Article 13 applies: data subjects must be informed. Where data are gathered indirectly, Article 14 applies: data subjects must be informed unless it is impossible to do so or would require a disproportionate effort. If data in secondary processing situations have been gathered directly from the data subject; under Article 13.3 those data subjects must be informed of any secondary processing (regardless of impossibility or proportionality).
+
+Article 13.3 is potentially devastating. “Where the controller intends to further process the personal data for a purpose other than that for which the personal data were collected, the controller shall provide the data subject prior to that further processing with information on that other purpose and with any relevant further information as referred to in paragraph 2.” The effect of this is potentially that only situations where the data subjects can be informed directly of the processing can proceed; this seems close to insisting on a legal basis of informed consent. However, secondary processing is allowed for compatible purposes where any of the Article 6 (and 9) legal bases are used; Article 23.1.e and Recital 50 allow a lifting of the purpose limitation in the public interest. Is this really overruled by the effect of Article 13.3? A Code must address this inconsistency.
+
+Conclusion
+
+Secondary processing of already-gathered data is essential to realise the publicly desired goods of genomic and health research. A Code must be created to resolve the difficulties indicated here, and to re-negotiate an EU-wide harmonisation for data sharing in this sector.
+
+Further reading
+
+- Edward S. Dove (5 August 2019) “GDPR Brief: Codes of Conduct under the GDPR: A Useful but Challenging Tool to Enable Responsible International Data Sharing” https://www.ga4gh.org/news_item/gdpr-brief-codes-of-conduct-under-the-gdpr-a-useful-but-challenging-tool-to-enable-responsible-international-data-sharing/
+
+Relevant GDPR Provisions
+
+- Code of Conduct: Article 40 et seq.
+
+- Legal Basis (and informed consent): Articles 6 and 9; Recitals 33 and 171.
+
+- Compatible Purposes and Processing: Articles 5(1)(b) and 6(4); Recital 50. (See also 95/46/EC Article 6(1)(b))
+
+- Information Requirements: Articles 13 and 14.
+
+David Townend is Professor of Health and Life Sciences Jurisprudence at CAPHRI (Care And Public Health Research Institute) at Maastricht University.
+
+Birgit Wouters is Scientific Researcher at Maastricht University Institute of Data Science.
+
+Nina Stahl is a Researcher at the Faculty of Health, Medicine and Life Sciences at Maastricht University.
+
+See all previous briefs.
+
+Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
+
+Regulatory & Ethics Work Stream (REWS)
+
+Latest News

@@ -1,49 +1,243 @@
-GA4GH Regulatory and Ethics Work Stream (REWS) — Regulatory & Ethics Toolkit overview
-Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
-License: GA4GH public toolkit materials (not legal advice)
-Tier: P0 | Jurisdiction: GA4GH, INTL | Framework: REWS
+Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/ (retrieved 2026-07-28)
 
-DISCLAIMER: RegBot navigation summary of REWS toolkit scope. Does not replace mentor, DPO, IRB, or DAC review.
+- Our products
 
-Purpose of the Regulatory & Ethics Toolkit
+Our products
 
-The GA4GH Regulatory and Ethics Work Stream (REWS) develops practical guidance for responsible genomic and health-related data sharing across borders. The Regulatory & Ethics Toolkit helps researchers, biobanks, Data Access Committees (DACs), and institutions align study consent, data-use language, and governance with international norms and jurisdiction-specific requirements.
+Explore our open-source standards, frameworks, and tools. Learn how they empower responsible genomic data use worldwide.
 
-Toolkit components relevant to RegBot navigation
+Filter
 
-1. Framework for Responsible Sharing (FRS) — foundational principles: respect for persons, privacy, data quality, transparency, accountability, and security. See P0 ga4gh-frs-en.pdf.
+Filter:
 
-2. Consent Policy and Consent Toolkit — standard clauses for collection, use, sharing, withdrawal, and recontact. See P0 ga4gh-consent-policy.pdf and P1 MRCG/DUO brief.
+Authorisation and Authentication Infrastructure (AAI)
 
-3. Machine Readable Consent Guidance (MRCG) and Data Use Ontology (DUO) — map human-readable consent to machine-readable access codes for DAC review.
+Enables secure data sharing by communicating the permissions needed to conduct research
 
-4. GDPR Forum Policy Briefs — EU-focused primers on consent, DPIA, transfers, and research processing (P1 corpus).
+Beacon
 
-5. Regional Jurisdiction resources — East Asia legal basis index and per-country excerpts (P2 corpus: SG, CN, TW, KR, JP, HK).
+Enables researchers to discover new, relevant datasets while honouring patient consents and legal requirements
 
-How REWS guidance supports cross-border genomic sharing review
+Browser Extensible Data (BED)
 
-Researchers preparing international collaborations should:
-- Identify source jurisdiction(s) for samples and data (see P2 regional excerpts).
-- Compare consent / data-use language against GA4GH Consent Policy themes (purpose, sharing, secondary use, withdrawal, recontact).
-- Check whether proposed use fits participant authorisation and DUO codes where datasets are coded.
-- Document transfer mechanisms (contractual, adequacy, consent-based) for each destination country.
-- Route ambiguous cases to institutional ethics review and, where applicable, DPO or DAC.
+Stores information on the location of genomic features
 
-REWS relationship to institutional governance
+Categorical Variation Representation Specification (Cat-VRS)
 
-REWS materials inform but do not replace:
-- Institutional Review Boards / Research Ethics Committees
-- Data Protection Officers and privacy impact assessments
-- Data Access Committees and material/data transfer agreements
-- National competent authorities (HGR approval in China, HBRA in Singapore, etc.)
+Provides a data model (and related tools) for categorical variants in genomic knowledge-bases.
 
-RegBot review prompts (REWS-aligned)
+Clinical Data Sharing
 
-- Does the study protocol cite applicable GA4GH framework principles (FRS pillars)?
-- Is consent language consistent with GA4GH Consent Policy on international sharing and future research?
-- Are DUO/consent-code restrictions respected for the requested data use?
-- For multi-jurisdiction flows, has each leg (export, import, cloud processing) been mapped to a legal basis?
-- Is there an escalation path when retrieval confidence is low (human review, not automated compliance)?
+This group elucidates the circumstances under which clinical data may be shared without a patient’s explicit consent for quality and timely clinical care improvement.
 
-Related corpus paths: data/corpus/P0/ga4gh-frs-en.pdf, ga4gh-consent-policy.pdf; data/corpus/P1/*; data/corpus/P2/rews-regional-jurisdiction-overview.txt
+Consent Policy
+
+Provides guidelines for the international sharing of genomic and related health data
+
+Consent Toolkit
+
+Documents designed to help researchers and clinicians draft clear, informative consent forms
+
+CRAM
+
+Uses data compression strategies to efficiently store genomic data
+
+Data Access Committee Review Standards (DACReS) Toolkit
+
+Provides guiding principles and procedural standards for data access committees
+
+Data Connect
+
+Connects researchers to information on datasets regardless of how the data was originally stored or formatted
+
+Data Passports
+
+A computable, visa-based governance framework using GA4GH Passports to represent data access policies in a clear and standard manner
+
+Data Privacy and Security Policy
+
+Guides sharing of genomic and related health data to respect participant and patient privacy and integrity
+
+Data Repository Service (DRS)
+
+Provides a standardised set of data retrieval methods
+
+Data Security Infrastructure Policy (DSIP)
+
+Provides security and technology infrastructure recommendations for genomic and related health data sharing
+
+Data Sharing Lexicon
+
+Provides common or concordant terminology for data sharing within GA4GH and across jurisdictions, disciplines, and individual providers of health care and research
+
+Data Use Ontology (DUO)
+
+Allows data stewards to tag datasets with permitted use terms that facilitate data discovery and access
+
+Data Visiting
+
+This group further evaluates the concept of Data Visiting to help navigate the legal challenges that exist.
+
+Diversity in Datasets
+
+Shares actionable recommendations to promote global diversity in datasets within genomic research
+
+Ethical Provenance Toolkit
+
+Tools to promote consistency and harmonisation throughout the stages of the biomedical data life cycle — ensuring clear oversight despite differences between institutions
+
+Ethics Review Recognition Policy
+
+Provides a standard baseline of the ethics review process for research involving multiple jurisdictions
+
+Experiments Metadata Checklist (Expmeta)
+
+Specifies the minimum information needed to characterise a genomic experiment
+
+Family History Toolkit
+
+Provides tools and best practices for documenting family health history information
+
+Framework for Involving and Engaging Participants, Patients, and Publics in Genomics Research and Health Implementation
+
+Helps institutions evaluate their engagement strategies with research participants, patients, and the public
+
+Framework for responsible sharing of genomic and health-related data
+
+Provides foundational principles for responsible data sharing
+
+Generative AI for Genomic Data Sharing
+
+Develops guidance on the responsible use of generative AI in large-scale genomic databases
+
+Genetic Data Encryption (Crypt4GH)
+
+Provides an encrypted file format to keep data secure throughout its lifetime while allowing random access
+
+Genetic Discrimination: Implications for Data Sharing Projects (GEDI)
+
+Explores key issues and the implications of addressing genetic discrimination
+
+Genetic Variation Formats (VCF)
+
+Provides a text file format for storing genetic variation data
+
+Genomic sequencing in newborn screening
+
+Developing a policy tool for those in the genomic newborn sequencing field to navigate ethical, legal, and social implications.
+
+Global ELSI: Building Global Capacity for Genomics Research
+
+Collaborates with researchers in low- and middle-income countries (LMICs) to develop practical, context-appropriate resources that help navigate legal and ethical issues in genomic data sharing
+
+htsget
+
+Allows users to download read and variation data for subsections of the genome
+
+Human Exposome Data Standards
+
+Builds standards to help researchers share and combine data on environmental exposures that affect human health
+
+Machine Readable Consent Guidance (MRCG)
+
+Describes how to map consent forms directly to the Data Use Ontology (DUO)
+
+Passports
+
+Contains a researcher’s securely-encoded “Visas,” which allow access to genomic datasets
+
+Pathogen Genomic Data Sharing: Bridging the Sovereignty and Access Divide
+
+Practical guidance for equitable sharing of pathogen genomic data to support pandemic preparedness and response while respecting data sovereignty rights
+
+Pedigree
+
+Allows for computable exchange of family health history and representation of larger, more complex families
+
+Phenopackets
+
+Offers a human and machine-readable way to structure clinical and phenotypic data about a patient or individual
+
+Policy on Clinically Actionable Genomic Research Results
+
+Provides guidance on establishing policies for returning genomic results to research participants
+
+Position Statement on Genetic Discrimination
+
+Explores key issues and the implications of addressing genetic discrimination.
+
+refget Sequence Collections
+
+Solves naming chaos for genomes by generating unique identifiers for collections of sequences
+
+refget Sequences
+
+Employs a computer algorithm to unambiguously identify reference sequences for genomic analysis
+
+Responsible Data Sharing to Respond to the COVID-19 Pandemic: Ethical and Legal Considerations
+
+Shares key legal and ethical issues of human genomic research in the context of the COVID-19 pandemic
+
+RNAget
+
+Provides a common set of communication channels to efficiently retrieve RNA data of interest
+
+SAM/BAM
+
+Provides a format for storing next-generation sequencing read data
+
+Sequence Annotation (SA)
+
+Aims to develop an extensible, common model for describing genomic features
+
+Service Info
+
+Provides a simple standardised protocol to describe information about a single web service
+
+Service Registry
+
+Facilitates service discovery by collecting multiple web services into groups
+
+Task Execution Service (TES)
+
+Provides a standard mechanism for orchestrating complex analyses across different compute environments
+
+Tool Registry Service (TRS)
+
+Provides a standard mechanism to list, search, and retrieve tools and workflows across multiple registries
+
+Variant Annotation (VA)
+
+Defines a modelling framework and machine-readable schema to represent statements of knowledge about genetic variations
+
+Variation Representation Specification (VRS)
+
+Used by computers to structure and exchange information about variants
+
+Whole Genome Sequencing (WGS) Quality Control (QC) Standards
+
+Describes a set of quality control metrics and their detailed definitions to facilitate exchange of results across initiatives
+
+Workflow Execution Service (WES)
+
+Describes a protocol for running the same genomic data analysis in multiple cloud environments
+
+Your DNA, Your Say (Participant Values Survey)
+
+Explores how people around the world feel about the collection, use, and sharing of genetic and health data for research
+
+There are no matches for your search criteria
+
+Toolkits
+
+Toolkits are GA4GH products that share a common theme, or are designed to be used together. Explore our toolkits below.
+
+Genetic Discrimination Toolkit
+
+Provides resources to help genomic data initiatives, funders, and policymakers adopt more streamlined approaches to address genetic discrimination.
+
+Want to see our products in action?
+
+Discover how people are using GA4GH products to share data, bring genomics into the clinic, and conduct research across borders.
+
+Are you a developer? Check out our developer resources, with tools you can use to pilot GA4GH technical standards.

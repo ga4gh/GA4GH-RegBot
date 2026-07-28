@@ -6,12 +6,12 @@ RegBot is a Global Alliance for Genomics and Health [Regulatory and Ethics Work 
 Documentation
 - **`docs/DESIGN.md`** — architecture, data model, evaluation plan (GSoC design doc)
 - **`docs/eval_results.md`** — measured retrieval benchmark: metrics, tuning runs, threats to validity
-- **`docs/corpus_manifest.yaml`** — regulatory corpus inventory (22 documents, all ingested)
+- **`docs/corpus_manifest.yaml`** — regulatory corpus inventory (22 documents; P0/P1 primary sources, P2 marked `summary`)
 - **`examples/eval/gold_ga4gh.yaml`** — retrieval gold set (drafted; awaiting mentor review)
 - **`examples/DEMO.md`** — local end-to-end demo
 
 What works today
-- **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest. Chunks carry `source`, `page`, `category`, `document_id`, `jurisdiction`, `framework`, `content_type` (`primary` source text vs contributor `summary`), and `section` where the source has detectable headings.
+- **Ingest** policy PDFs or `.txt` files into a local **Chroma** store plus a JSON manifest. Chunks carry `source`, `page`, `category`, `document_id`, `jurisdiction`, `framework`, `content_type` (`primary` source text vs contributor `summary` — badged in the UI), and `section` (every heading the chunk spans) where the source is line-structured.
 - **Hybrid retrieval**: exact cosine embedding search + **BM25**, merged with reciprocal rank fusion. Ranking is deterministic — identical inputs give identical results across runs.
 - **Compliance pass**: JSON-mode LLM via **[Ollama](https://ollama.com) by default** (e.g. `llama3`, configurable with `REGBOT_OLLAMA_MODEL`). Set `REGBOT_LLM_PROVIDER=openai` and `OPENAI_API_KEY` to use OpenAI instead. If no LLM is reachable (or on API failure), a **keyword heuristic fallback** still returns grounded chunk ids.
 - **Web UI** (recommended): FastAPI + Next.js in `frontend/` — see **Run the web UI** below.

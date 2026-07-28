@@ -16,7 +16,7 @@ from src.regbot.config import (
 )
 from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.jurisdiction import normalize_jurisdiction
-from src.regbot.text_utils import chunk_spans, detect_headings, section_for_offset
+from src.regbot.text_utils import chunk_spans, detect_headings, sections_for_span
 
 
 def _stable_source_id(path: str) -> str:
@@ -127,10 +127,12 @@ def ingest_policy_file(
                 "category": base_category,
             }
             # Absent when the source has no detectable heading structure (e.g. PDF text
-            # extraction flattens layout). Omitted rather than guessed.
-            section = section_for_offset(headings, offset)
-            if section:
-                meta["section"] = section
+            # extraction flattens layout). Omitted rather than guessed. A chunk that
+            # straddles a boundary lists every section it touches, joined by "; ",
+            # rather than claiming only the one it started in.
+            spanned = sections_for_span(headings, offset, offset + len(piece))
+            if spanned:
+                meta["section"] = "; ".join(spanned)
             if jurisdiction_tag:
                 meta["jurisdiction"] = jurisdiction_tag
             if document_id and str(document_id).strip():

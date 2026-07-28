@@ -8,6 +8,7 @@ from src.regbot.text_utils import (
     detect_headings,
     is_hard_wrapped,
     section_for_offset,
+    sections_for_span,
     tokenize,
 )
 
@@ -125,6 +126,67 @@ class TestSectionForOffset(unittest.TestCase):
             for _, off in chunk_spans(PARAGRAPH_DOC.strip(), chunk_size=120, overlap=20)
         }
         self.assertIn("Applicability to genomic research", sections)
+
+
+STATUTE_DOC = """Article 8
+
+Conditions applicable to child's consent
+
+1. Where point (a) of Article 6(1) applies, the processing shall be lawful.
+
+Article 9
+
+Processing of special categories of personal data
+
+1. Processing of personal data revealing racial or ethnic origin shall be prohibited.
+"""
+
+
+class TestHeadingMerge(unittest.TestCase):
+    def test_designation_and_title_are_joined(self) -> None:
+        found = [h for _, h in detect_headings(STATUTE_DOC)]
+        self.assertIn("Article 9 — Processing of special categories of personal data", found)
+        self.assertNotIn("Article 9", found)
+
+    def test_merge_stops_at_two_parts(self) -> None:
+        # A third adjacent heading must not be swallowed into the label.
+        doc = "Article 4\n\nDefinitions\n\nFor the purposes of this Regulation\n\nbody text here.\n"
+        for _, h in detect_headings(doc):
+            self.assertLessEqual(h.count(" — "), 1, f"over-merged: {h!r}")
+
+    def test_headings_separated_by_body_are_not_merged(self) -> None:
+        found = [h for _, h in detect_headings(STATUTE_DOC)]
+        self.assertIn("Article 8 — Conditions applicable to child's consent", found)
+
+
+class TestSectionsForSpan(unittest.TestCase):
+    def test_reports_every_section_the_span_touches(self) -> None:
+        headings = [(0, "Article 8"), (100, "Article 9"), (400, "Article 10")]
+        self.assertEqual(sections_for_span(headings, 50, 200), ["Article 8", "Article 9"])
+
+    def test_span_inside_one_section(self) -> None:
+        headings = [(0, "Article 8"), (400, "Article 9")]
+        self.assertEqual(sections_for_span(headings, 50, 200), ["Article 8"])
+
+    def test_span_before_the_first_heading_reports_only_what_it_runs_into(self) -> None:
+        headings = [(100, "Article 9")]
+        self.assertEqual(sections_for_span(headings, 0, 200), ["Article 9"])
+
+    def test_no_duplicates(self) -> None:
+        headings = [(0, "Same"), (100, "Same")]
+        self.assertEqual(sections_for_span(headings, 0, 200), ["Same"])
+
+    def test_empty_when_no_headings(self) -> None:
+        self.assertEqual(sections_for_span([], 0, 500), [])
+
+    def test_straddling_chunk_does_not_claim_only_its_start(self) -> None:
+        # Regression: a 900-char window opened in Article 8 and closed in Article 9 used to
+        # be labelled "Article 8" alone — a wrong section on text that is Article 9.
+        headings = detect_headings(STATUTE_DOC)
+        body = STATUTE_DOC.strip()
+        start = body.index("1. Where point")
+        end = body.index("racial")
+        self.assertEqual(len(sections_for_span(headings, start, end)), 2)
 
 
 class TestStudyType(unittest.TestCase):

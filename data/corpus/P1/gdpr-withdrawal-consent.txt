@@ -1,0 +1,61 @@
+Source: https://www.ga4gh.org/news_item/gdpr-brief-withdrawing-consent-to-data-processing-under-the-gdpr/ (retrieved 2026-07-28)
+
+News
+
+4 Nov 2019
+
+Policy Brief: withdrawing consent to data processing under the GDPR
+
+For research involving human participants, consent is a foundational principle in both law and ethics that supports participant autonomy. In the context of data processing, and the GDPR specifically, consent is only one of several legal bases for the processing of personal data, including special-category data such as genomic and health-related data. That is, the data subject’s consent may not be the lawful basis under which data processing occurs. Nevertheless, seeking consent may remain an ethical requirement, even if it is not necessary for the purposes of data processing under the GDPR.
+
+To understand withdrawing consent under the GDPR, it is essential to distinguish between consent to research and consent to data processing. For research involving human participants, consent is a foundational principle in both law and ethics that supports participant autonomy. In the context of data processing, and the GDPR specifically, consent is only one of several legal bases for the processing of personal data, including special-category data such as genomic and health-related data. That is, the data subject’s consent may not be the lawful basis under which data processing occurs. Nevertheless, seeking consent may remain an ethical requirement, even if it is not necessary for the purposes of data processing under the GDPR.
+
+A corollary of free, informed, specific, and unambiguous consent to data processing is the right to withdraw consent at any time. The lawful basis chosen has particularly important consequences in the case of consent withdrawal. Where the data subject’s consent is the only lawful basis relied upon and communicated (in accordance with either Article 13 or Article 14), the data controller must stop processing such data upon receipt of a withdrawal and delete the personal data whose lawful basis for processing was the data subject’s consent.
+
+Given the potential serious disruption to data processing activities, legal bases other than consent deserve consideration in the context of genomic and health-related research. Where personal data are processed under other lawful bases, there is no question of “withdrawing” consent to data processing as consent is not the lawful basis that justifies the processing. Accordingly, where a research participant withdraws their consent to participate in a research project, data processing may still continue under the GDPR so long as consent is not a lawful basis of processing for any data. In accordance both with research ethics and the GDPR’s principle of transparency, researchers should clearly describe to participants what effects their withdrawal of consent will have with regard to research participation and any future data processing. For example, withdrawing research consent may mean that no further data are collected but previously collected data will still be processed.
+
+Even where consent is not a lawful basis on which a data controller relies, a data subject may still have other rights that affect data processing activities in similar ways to consent withdrawal. These include a right to erasure and a right to object. The right to erasure is not absolute: the data subject’s right to erasure will not apply in those circumstances where data are processed for research purposes with accompanying appropriate safeguards in accordance with Article 89(1) and erasure is likely to make impossible or seriously impair the research’s objectives. In regards to the right to object, when a data subject invokes their right to object, the data controller must stop the processing of the personal data at issue. To resume processing, the data controller must justify the further processing of the data. Possible justifications that are relevant to processing for research purposes include tasks in the public interest.
+
+Further Reading
+
+- UK Information Commissioner’s Office – Consent as lawful basis for processing
+
+- Article 29 Working Party – Guidelines on Consent under Regulation2016/679 (wp259rev.01)
+
+- NHS Health Research Authority – Data subject rights and research exemptions
+
+- Donnelly, Mary, and Maeve McDonagh. 2019. “Health Research, Consent and the GDPR Exemption.” European Journal of Health Law 26 (2): 97–119.
+
+- European Data Protection Board – Opinion 3/2019 concerning the Questions and Answers on the interplay between the Clinical Trials Regulation (CTR) and the General Data Protection regulation (GDPR) (art. 70.1.b)
+
+Relevant GDPR Provisions
+
+- Recital 58 – principle of transparency
+
+- Recital 159 – scientific research broadly interpreted
+
+- Article 6 – lawful bases for processing
+
+- Article 7 – conditions for consent, including the right to withdraw
+
+- Article 9 – processing of special categories of personal data, including genomic and health-related data
+
+- Article 13 – information to be provided where personal data are collected from data subject
+
+- Article 14 – information to be provided where personal data have not been obtained from data subject
+
+- Article 17 – right to erasure
+
+- Article 21 – right to object
+
+- Article 89 – appropriate safeguards in processing for research purposes
+
+Michael Beauvais works at the Centre of Genomics and Policy at McGill University in Montreal, Quebec, Canada.
+
+See all previous briefs.
+
+Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
+
+Regulatory & Ethics Work Stream (REWS)
+
+Latest News
