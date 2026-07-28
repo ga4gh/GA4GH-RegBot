@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/
 
-News
+GDPR Brief — DPIA
 
 2 Sep 2019
 
@@ -49,7 +49,3 @@ Alexander Bernier is a Research Assistant at McGill University’s Centre of Gen
 See all previous briefs.
 
 Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
-
-Regulatory & Ethics Work Stream (REWS)
-
-Latest News

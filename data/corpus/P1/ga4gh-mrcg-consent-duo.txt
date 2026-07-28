@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/product/machine-readable-consent-guidance/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/product/machine-readable-consent-guidance/
 
-- Our products
+GA4GH Machine Readable Consent Guidance
 
 Machine Readable Consent Guidance (MRCG)
 
@@ -21,8 +21,6 @@ Benefits
 Target users
 
 Data generators, data access committees, and data protection authorities
-
-- Regulatory & Ethics Work Stream (REWS)
 
 - Data Use & Researcher Identity (DURI) Work Stream
 

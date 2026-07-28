@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/product/data-use-ontology-duo/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/product/data-use-ontology-duo/
 
-- Our products
+GA4GH Data Use Ontology
 
 Data Use Ontology (DUO)
 
@@ -40,27 +40,15 @@ PDAP Review
 
 Date
 
-Publications
-
 - The Federated European Genome–Phenome Archive as a global network for sharing human genomics data (2025)
-
-The Federated European Genome–Phenome Archive as a global network for sharing human genomics data (2025)
 
 - The Data Use Ontology to streamline responsible access to human biomedical datasets (2021)
 
-The Data Use Ontology to streamline responsible access to human biomedical datasets (2021)
-
 - International federation of genomic medicine databases using GA4GH standards (2021)
-
-International federation of genomic medicine databases using GA4GH standards (2021)
 
 - BioSamples Database: An Updated Sample Metadata Hub. (2019)
 
-BioSamples Database: An Updated Sample Metadata Hub. (2019)
-
 - Simplifying research access to genomics and health data with Library Cards (2018)
-
-Simplifying research access to genomics and health data with Library Cards (2018)
 
 Community resources
 

@@ -198,7 +198,7 @@ def chunk_by_sections(
     text: str,
     chunk_size: int = 900,
     overlap: int = 150,
-    min_chars: int = 40,
+    min_chars: int = 120,
 ) -> List[Tuple[str, int]]:
     """
     Chunk at heading boundaries, falling back to a sliding window inside long sections.
@@ -227,21 +227,35 @@ def chunk_by_sections(
     boundaries.append(len(stripped))
 
     out: List[Tuple[str, int]] = []
+    pending = ""  # a heading whose own body was empty, waiting to lead the next block
+    pending_start = 0
     for start, end in zip(boundaries, boundaries[1:]):
         block = stripped[start:end]
         if not block.strip():
             continue
-        if len(block.strip()) < min_chars and out:
-            # A heading with almost no body under it — fold it into the previous chunk
-            # rather than emitting a citable fragment.
-            prev_text, prev_start = out[-1]
-            out[-1] = (prev_text + block, prev_start)
+        if pending:
+            block, start = pending + "\n\n" + block, pending_start
+            pending, pending_start = "", 0
+
+        # A structural heading with no body of its own — "Section 2 Information and access
+        # to personal data" standing alone. Citing it tells a reviewer nothing, so carry it
+        # forward to head the next block instead of emitting it as its own chunk.
+        if len(block.strip()) < min_chars:
+            pending, pending_start = block.strip(), start
             continue
+
         if len(block) <= chunk_size:
             out.append((block.strip(), start))
             continue
         for piece, rel in chunk_spans(block, chunk_size, overlap):
             out.append((piece, start + rel))
+
+    if pending:
+        if out:  # trailing heading with nothing after it
+            prev_text, prev_start = out[-1]
+            out[-1] = (prev_text + "\n\n" + pending, prev_start)
+        else:
+            out.append((pending, pending_start))
     return out
 
 

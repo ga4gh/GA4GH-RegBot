@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/
 
-News
+GDPR Brief — international transfers
 
 6 May 2019
 
@@ -59,7 +59,3 @@ Edward Dove is a Lecturer in Law at the University of Edinburgh. Robert Eiss is 
 See all previous briefs.
 
 Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
-
-Regulatory & Ethics Work Stream (REWS)
-
-Latest News

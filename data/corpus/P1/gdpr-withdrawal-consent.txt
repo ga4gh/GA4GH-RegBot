@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/news_item/gdpr-brief-withdrawing-consent-to-data-processing-under-the-gdpr/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/news_item/gdpr-brief-withdrawing-consent-to-data-processing-under-the-gdpr/
 
-News
+GDPR Brief — withdrawal of consent
 
 4 Nov 2019
 
@@ -55,7 +55,3 @@ Michael Beauvais works at the Centre of Genomics and Policy at McGill University
 See all previous briefs.
 
 Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
-
-Regulatory & Ethics Work Stream (REWS)
-
-Latest News

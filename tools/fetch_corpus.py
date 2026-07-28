@@ -42,8 +42,25 @@ POLITE_DELAY_S = 1.5
 
 BOILERPLATE = re.compile(
     r"^(skip to|search|menu|share this|sign up|subscribe|cookie|newsletter|"
-    r"follow us|back to top|related (news|posts)|previous|next)\b",
+    r"follow us|back to top|related (news|posts)|previous|next|latest news|"
+    r"our products|read more|view all|all news|home)\b",
     re.I,
+)
+
+#: Navigation strings that survive BOILERPLATE because they read like content. Matched
+#: against the whole normalised line, so a provision merely mentioning REWS is unaffected.
+NAV_EXACT = frozenset(
+    {
+        "latest news",
+        "regulatory & ethics work stream (rews)",
+        "regulatory and ethics work stream (rews)",
+        "our products",
+        "product documentation",
+        "news",
+        "blog",
+        "events",
+        "publications",
+    }
 )
 
 
@@ -72,16 +89,28 @@ TARGETS: List[Target] = [
         min_words=40000,
         note="EU Publications Office CELLAR, content-negotiated to English XHTML.",
     ),
+    # Two separate Acts, each numbering its articles from 1. Kept as separate documents so
+    # a provision key like "Article 8" is unambiguous — merged, both Acts contributed an
+    # Article 8 and the section label could not say which law it came from.
     Target(
-        key="tw",
-        title="Taiwan — Human Biobank Management Act & Personal Data Protection Act",
-        url="https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164"
-        "|https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021",
-        out="data/corpus/P2/TW/official-law.txt",
+        key="tw-biobank",
+        title="Taiwan — Human Biobank Management Act (official English)",
+        url="https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164",
+        out="data/corpus/P2/TW/human-biobank-management-act.txt",
         extractor="moj_tw",
-        must_contain=["Article 8", "shall"],
-        min_words=8000,
-        note="Ministry of Justice official English translations.",
+        must_contain=["Article 8", "withdraw"],
+        min_words=3000,
+        note="Ministry of Justice official English translation.",
+    ),
+    Target(
+        key="tw-pdpa",
+        title="Taiwan — Personal Data Protection Act (official English)",
+        url="https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021",
+        out="data/corpus/P2/TW/personal-data-protection-act.txt",
+        extractor="moj_tw",
+        must_contain=["Article 21", "personal data"],
+        min_words=6000,
+        note="Ministry of Justice official English translation.",
     ),
     Target(
         key="ga4gh-psp",
@@ -200,8 +229,16 @@ def _clean_xhtml(raw: str) -> str:
             parent.remove(bad)
     text = doc.text_content()
     text = re.sub(r"[ \t\xa0]+", " ", text)
-    text = "\n".join(line.strip() for line in text.split("\n"))
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
+    lines = [line.strip() for line in text.split("\n")]
+    # Drop the publisher's own file metadata, e.g. "L_2016119EN.01000101.xml 4.5.2016 EN"
+    # and the Official Journal running line — neither is part of the Regulation.
+    lines = [
+        ln
+        for ln in lines
+        if not re.match(r"^L_\d+[A-Z]{2}\.\d+\.xml\b", ln)
+        and not re.match(r"^Official Journal of the European Union\s*L?\s*[\d/]*$", ln)
+    ]
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
 
 
 def extract_cellar(t: Target) -> str:
@@ -223,6 +260,8 @@ def extract_html(t: Target) -> str:
         text = " ".join(el.text_content().split())
         if not text or len(text) < 3 or BOILERPLATE.match(text):
             continue
+        if text.strip().lower() in NAV_EXACT:
+            continue
         key = text.lower()
         if key in seen:
             continue
@@ -237,22 +276,45 @@ def extract_html(t: Target) -> str:
 
 
 def extract_moj_tw(t: Target) -> str:
+    """
+    Extract Taiwan statutes from the MOJ page's per-article structure.
+
+    Each provision is a ``div.row`` holding ``div.col-no`` (the designation) and
+    ``div.col-data`` (the text). Using that structure instead of splitting the page text on
+    /Article \\d+/ matters: the earlier regex approach also fired on **cross-references**
+    inside a provision — "referred to in Article 5, Paragraph 3 hereof" became a fake
+    "Article 5" heading followed by a sentence fragment, so several designations appeared
+    four times and real articles were shattered.
+    """
     parts = []
     for url in t.url.split("|"):
         root = LH.fromstring(_decode(_get(url)))
-        node = root.xpath("//div[contains(@class,'law-reg-content')]")
-        if not node:
+        content = root.xpath("//div[contains(@class,'law-reg-content')]")
+        if not content:
             raise RuntimeError(f"law-reg-content not found at {url}")
-        text = " ".join(node[0].text_content().split())
-        # Put each designation on its own blank-line-delimited line so detect_headings
-        # picks up all 198 articles as sections.
-        text = re.sub(
-            r"\s*(Chapter\s+[0-9IVXA-Z]+[^A-Za-z0-9]*[A-Za-z ]{0,40}?)\s*(?=Article\s)",
-            r"\n\n\1\n\n",
-            text,
-        )
-        text = re.sub(r"\s*(Article\s+\d+(?:-\d+)?)\s*", r"\n\n\1\n\n", text)
-        parts.append(f"Source: {url}\n\n{re.sub(chr(10) + '{3,}', chr(10) * 2, text).strip()}")
+
+        blocks = []
+        for node in content[0].xpath(".//h3 | .//div[contains(@class,'row')]"):
+            if node.tag == "h3":  # chapter heading
+                chapter = " ".join(node.text_content().split())
+                if chapter:
+                    blocks.append(f"\n{chapter}\n")
+                continue
+            no = node.xpath(".//div[contains(@class,'col-no')]")
+            data = node.xpath(".//div[contains(@class,'col-data')]")
+            if not no or not data:
+                continue
+            designation = " ".join(no[0].text_content().split()).rstrip(".")
+            body = " ".join(data[0].text_content().split())
+            if not designation or not body:
+                continue
+            # Blank-line delimited so detect_headings sees exactly one heading per article.
+            blocks.append(f"\n{designation}\n\n{body}")
+
+        if len(blocks) < 5:
+            raise RuntimeError(f"only {len(blocks)} articles parsed from {url}")
+        body_text = re.sub(r"\n{3,}", "\n\n", "\n\n".join(blocks)).strip()
+        parts.append(f"Source: {url}\n\n{body_text}")
         time.sleep(POLITE_DELAY_S)
     return "\n\n".join(parts)
 

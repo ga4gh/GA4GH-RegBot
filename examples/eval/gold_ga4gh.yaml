@@ -57,7 +57,7 @@ queries:
     jurisdiction: [TW]
     relevant:
       # Human Biobank Management Act Art. 8 — the operative withdrawal provision
-      - document_id: tw-law
+      - document_id: tw-biobank-act
         contains: Should any participant withdraw from the program
 
   - query_id: q03-transfer-safeguards-gdpr

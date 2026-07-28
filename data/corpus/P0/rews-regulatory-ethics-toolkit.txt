@@ -1,8 +1,6 @@
-Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
 
-- Our products
-
-Our products
+REWS Regulatory & Ethics Toolkit
 
 Explore our open-source standards, frameworks, and tools. Learn how they empower responsible genomic data use worldwide.
 

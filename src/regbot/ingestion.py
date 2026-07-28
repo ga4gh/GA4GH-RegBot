@@ -31,13 +31,43 @@ def _load_plaintext(path: str) -> List[Tuple[str, int]]:
         return [(f.read(), 0)]
 
 
+def _running_lines(pages: List[str], *, min_pages: int = 3, ratio: float = 0.5) -> set:
+    """
+    Lines repeated on at least ``ratio`` of pages — running headers and footers.
+
+    Every page of the GA4GH Consent Policy carries "CONSENT POLICY" as a header, which
+    ``pypdf`` extracts as body text. Left in, it lands at the top of most chunks from that
+    document: it pollutes the embedding, inflates BM25 on a meaningless term, and can be
+    picked as a chunk's verbatim quote. One chunk consisted of nothing else.
+    """
+    if len(pages) < min_pages:
+        return set()
+    counts: Dict[str, int] = {}
+    for page in pages:
+        seen = set()
+        for raw in page.split("\n"):
+            line = " ".join(raw.split())
+            # Long lines are body text even if a page repeats one; short ones are furniture.
+            if not line or len(line) > 70 or line in seen:
+                continue
+            seen.add(line)
+            counts[line] = counts.get(line, 0) + 1
+    threshold = max(min_pages, int(len(pages) * ratio))
+    return {line for line, n in counts.items() if n >= threshold}
+
+
+def _strip_running_lines(page: str, running: set) -> str:
+    if not running:
+        return page
+    kept = [raw for raw in page.split("\n") if " ".join(raw.split()) not in running]
+    return "\n".join(kept)
+
+
 def _load_pdf(path: str) -> List[Tuple[str, int]]:
     reader = PdfReader(path)
-    pages: List[Tuple[str, int]] = []
-    for i, page in enumerate(reader.pages):
-        t = page.extract_text() or ""
-        pages.append((t, i + 1))
-    return pages
+    raw_pages = [(page.extract_text() or "") for page in reader.pages]
+    running = _running_lines(raw_pages)
+    return [(_strip_running_lines(t, running), i + 1) for i, t in enumerate(raw_pages)]
 
 
 def load_document_pages(path: str) -> List[Tuple[str, int]]:

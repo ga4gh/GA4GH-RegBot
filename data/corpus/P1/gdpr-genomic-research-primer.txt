@@ -1,6 +1,6 @@
-Source: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/ (retrieved 2026-07-28)
+Source: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/
 
-News
+GA4GH GDPR Forum announcement
 
 7 Sep 2018
 
@@ -17,7 +17,3 @@ Please subscribe to the monthly GDPR Briefs!
 See all previous briefs.
 
 Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
-
-Regulatory & Ethics Work Stream (REWS)
-
-Latest News

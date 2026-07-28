@@ -283,6 +283,33 @@ class TestChunkBySections(unittest.TestCase):
         self.assertEqual(chunk_by_sections(""), [])
 
 
+class TestHeadingOnlyBlocks(unittest.TestCase):
+    """A structural heading with no body of its own is not a citable chunk."""
+
+    def test_bare_heading_leads_the_next_block(self) -> None:
+        doc = (
+            "Section 2\n\nInformation and access to personal data\n\n"
+            "Article 12\n\n"
+            "The controller shall take appropriate measures to provide any information "
+            "referred to in Articles 13 and 14 to the data subject in a concise form.\n"
+        )
+        pieces = [t for t, _ in chunk_by_sections(doc)]
+        self.assertTrue(all(len(p) > 60 for p in pieces), f"emitted a bare heading: {pieces}")
+        joined = " ".join(pieces)
+        self.assertIn("Section 2", joined)
+        self.assertIn("appropriate measures", joined)
+
+    def test_trailing_bare_heading_folds_backwards(self) -> None:
+        doc = (
+            "Article 1\n\nThis Regulation lays down rules relating to the protection of "
+            "natural persons with regard to the processing of personal data.\n\n"
+            "Chapter XI\n"
+        )
+        pieces = [t for t, _ in chunk_by_sections(doc)]
+        self.assertEqual(len(pieces), 1)
+        self.assertIn("Chapter XI", pieces[0])
+
+
 class TestStudyType(unittest.TestCase):
     def test_detect_genomic(self) -> None:
         self.assertEqual(

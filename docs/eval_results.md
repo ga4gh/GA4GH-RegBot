@@ -20,13 +20,13 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 763 chunks / 22 documents — 15 primary / 7 summary (see §4b, §4c) |
+| Corpus | 868 chunks / 23 documents — 16 primary / 7 summary (see §4b, §4c, §4h) |
 | Gold set | v0.4 — 12 queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-07-28 |
 
-**Headline: provision-level recall@8 = 0.854, chunk-level 0.725, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.846, chunk-level 0.713, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -482,6 +482,73 @@ to 0.662 leaves a reviewer with less of each rule's text.
 
 All four weak queries improved or held: q01 0.50 → 0.75, q03 0.25 → 0.50, q10 and q11
 unchanged at 0.50. **Eight of twelve queries now reach 1.00 provision recall.**
+
+---
+
+## 4h. Corpus audit — reading the chunks one by one
+
+Reviewing actual chunk text rather than aggregate metrics surfaced four defects, one of
+them introduced by me. None had shown up in any score.
+
+**1. PDF running headers were being ingested as body text.** Every page of the GA4GH
+Consent Policy carries "CONSENT POLICY" as a header, which `pypdf` extracts inline. It
+opened most chunks of that document, and one chunk consisted of *nothing but* the header:
+
+```
+'\u200b\nC\nONSENT\n P\nOLICY'      ← a 19-character chunk in the index
+```
+
+It polluted embeddings, inflated BM25 on a meaningless term, and could be selected as a
+chunk's verbatim quote. `_running_lines` now detects short lines repeating on at least half
+a document's pages and strips them; long repeated lines are kept, since body text may
+legitimately repeat. 48 affected chunks, now 0.
+
+**2. My own Taiwan extractor was corrupting the statute.** Splitting the page text on
+`/Article \d+/` also fired on **cross-references inside a provision**:
+
+```
+"...referred to in Article 5, Paragraph 3 hereof shall apply..."
+        ↓
+Article 5                          ← fabricated heading
+, Paragraph 3 hereof shall apply…  ← sentence fragment as its "body"
+```
+
+Articles 13 and 19 each appeared four times, real provisions were shattered, and the
+`section` metadata attributed text to the wrong article. The MOJ page has proper structure —
+`div.row` containing `div.col-no` and `div.col-data`, one row per article — so the extractor
+now reads that and never guesses. This was a self-inflicted correctness bug that no metric
+caught: q02 scored 1.00 while its corpus was corrupt.
+
+**3. Taiwan's two Acts shared an article numbering space.** Both the Human Biobank
+Management Act and the Personal Data Protection Act number from Article 1, so a provision
+key of `tw-law § Article 8` was ambiguous. They are now separate documents
+(`tw-biobank-act`, 31 articles; `tw-pdpa`, 66), which makes every provision key unique.
+
+**4. 44 chunks were bare structural headings.** "Section 2 Information and access to
+personal data" as a standalone chunk cites nothing a reviewer can use. A heading with no
+body of its own now carries forward to lead the following block.
+
+Plus web navigation ("Latest News", "Our products") and EUR-Lex file metadata
+(`L_2016119EN.01000101.xml`) that the fetcher's boilerplate filter had missed.
+
+| | before | after |
+|---|--------|-------|
+| chunks | 963 | **868** |
+| chunks under 200 characters | 110 | **26** |
+| bare-heading chunks | 44 | **0** |
+| chunks carrying a PDF running header | 48 | **0** |
+| Taiwan chunks | 207 (one document) | 135 (two Acts) |
+
+Retrieval barely moved — provision recall@5 rose 0.743 → 0.787, @8 held at 0.846 — which is
+the point worth recording: **none of these defects were visible in the metrics.** A cleaner
+corpus mostly buys correct citations, and the Taiwan bug would have produced a confidently
+mislabelled article reference in a report meant for regulatory review.
+
+**Corpus balance is still uneven and that is expected**, not a defect: GDPR contributes 504
+chunks and Taiwan 135 because those are the two jurisdictions on real statute, while
+Singapore, Japan, Hong Kong, Korea and China are still ~5-chunk contributor summaries. The
+imbalance is a direct measure of how much of the corpus has been migrated, and it will even
+out only when the remaining five are replaced.
 
 ---
 
