@@ -40,27 +40,29 @@ export function ChatTab({
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedJurisdictions, setSelectedJurisdictions] = useState<string[]>(
-    lastJurisdictions,
-  );
   const [lastChunks, setLastChunks] = useState<Chunk[]>([]);
   const [lastScope, setLastScope] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (lastJurisdictions.length > 0) {
-      setSelectedJurisdictions(lastJurisdictions);
-    }
-  }, [lastJurisdictions]);
+  // The follow-up question defaults to the scope of the most recent Check run, but the
+  // user may re-scope it freely in between. Rather than mirroring the prop into state
+  // with an effect, the override records which run it was made against: when a new
+  // analysis arrives, the stale override is ignored and the new scope takes over.
+  const [override, setOverride] = useState<{ from: string[]; value: string[] } | null>(
+    null,
+  );
+  const selectedJurisdictions =
+    override && override.from === lastJurisdictions ? override.value : lastJurisdictions;
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading, lastChunks]);
 
   const toggleJurisdiction = (code: string) => {
-    setSelectedJurisdictions((prev) =>
-      prev.includes(code) ? prev.filter((c) => c !== code) : [...prev, code],
-    );
+    const next = selectedJurisdictions.includes(code)
+      ? selectedJurisdictions.filter((c) => c !== code)
+      : [...selectedJurisdictions, code];
+    setOverride({ from: lastJurisdictions, value: next });
   };
 
   const onSend = useCallback(async () => {

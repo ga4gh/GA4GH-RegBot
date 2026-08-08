@@ -20,6 +20,23 @@ import {
 
 const DEFAULT_STORE = "./data/regbot_store";
 
+/** Pure fetch: reads the API, touches no component state, never throws. */
+async function fetchMeta(dir: string) {
+  try {
+    const [meta, corpus, jur] = await Promise.all([
+      getStoreMeta(dir),
+      getCorpus(),
+      getJurisdictions(),
+    ]);
+    return { ok: true as const, meta, corpus, jur };
+  } catch (e) {
+    return {
+      ok: false as const,
+      error: e instanceof Error ? e.message : "Failed to connect to API",
+    };
+  }
+}
+
 export function RegBotApp() {
   const [storeDir, setStoreDir] = useState(DEFAULT_STORE);
   const [jurisdictions, setJurisdictions] = useState<
@@ -28,7 +45,8 @@ export function RegBotApp() {
   const [storeJurisdictions, setStoreJurisdictions] = useState<string[]>([]);
   const [corpusCount, setCorpusCount] = useState(0);
   const [llmHint, setLlmHint] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
+  // Starts true: the mount effect below is already fetching by first paint.
+  const [refreshing, setRefreshing] = useState(true);
 
   const [lastConsent, setLastConsent] = useState("");
   const [lastJurisdictions, setLastJurisdictions] = useState<string[]>([]);
@@ -37,14 +55,16 @@ export function RegBotApp() {
   const [sourceUrls, setSourceUrls] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string | null>(null);
 
-  const refreshMeta = useCallback(async (dir?: string) => {
-    setRefreshing(true);
-    try {
-      const [meta, corpus, jur] = await Promise.all([
-        getStoreMeta(dir ?? storeDir),
-        getCorpus(),
-        getJurisdictions(),
-      ]);
+  // Fetching and applying are separate so the mount effect can await before it touches
+  // state. `applyMeta` holds every setState; `fetchMeta` holds none.
+  const applyMeta = useCallback(
+    (result: Awaited<ReturnType<typeof fetchMeta>>) => {
+      if (!result.ok) {
+        setApiError(result.error);
+        setRefreshing(false);
+        return;
+      }
+      const { meta, corpus, jur } = result;
       setStoreJurisdictions(meta.jurisdictions);
       setCorpusCount(meta.corpus_document_count);
       setLlmHint(meta.llm_hint);
@@ -57,16 +77,29 @@ export function RegBotApp() {
       }
       setSourceUrls(urls);
       setApiError(null);
-    } catch (e) {
-      setApiError(e instanceof Error ? e.message : "Failed to connect to API");
-    } finally {
       setRefreshing(false);
-    }
-  }, [storeDir]);
+    },
+    [],
+  );
+
+  const refreshMeta = useCallback(
+    async (dir?: string) => {
+      applyMeta(await fetchMeta(dir ?? storeDir));
+    },
+    [storeDir, applyMeta],
+  );
 
   useEffect(() => {
-    void refreshMeta();
-  }, [refreshMeta]);
+    let cancelled = false;
+    void (async () => {
+      const result = await fetchMeta(storeDir);
+      if (cancelled) return;
+      applyMeta(result);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [storeDir, applyMeta]);
 
   const onAnalyzed = useCallback(
     (payload: {
@@ -111,7 +144,10 @@ export function RegBotApp() {
           jurisdictionOptions={jurisdictions}
           corpusCount={corpusCount}
           llmHint={llmHint}
-          onRefresh={() => void refreshMeta(storeDir)}
+          onRefresh={() => {
+            setRefreshing(true);
+            void refreshMeta(storeDir);
+          }}
           refreshing={refreshing}
         />
 
@@ -136,7 +172,10 @@ export function RegBotApp() {
               <IngestTab
                 storeDir={storeDir}
                 jurisdictions={jurisdictions}
-                onSuccess={() => void refreshMeta(storeDir)}
+                onSuccess={() => {
+                  setRefreshing(true);
+                  void refreshMeta(storeDir);
+                }}
               />
             </TabsContent>
             <TabsContent value="corpus">
