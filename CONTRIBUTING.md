@@ -2,7 +2,8 @@
 
 ## Environment
 
-- Use **Python 3.10–3.12** (3.11 matches CI). Avoid 3.14 for the full ML/Chroma stack until wheels catch up.
+- Use **Python 3.10–3.13** (the range `pyproject.toml` accepts; 3.11 matches CI). Avoid 3.14 for the full ML/Chroma stack until wheels catch up.
+- Working on `frontend/` also needs **Node 20.9+** (CI uses 22).
 - Create a venv and install runtime deps:
 
 ```bash
@@ -50,6 +51,22 @@ python -m mypy -p src.regbot
 ```
 
 This type-checks the `src.regbot` package (same as CI).
+
+## Frontend (`frontend/`)
+
+Run all three before pushing a change to the Next.js UI — CI runs the same set on any
+PR that touches `frontend/`:
+
+```bash
+npm --prefix frontend run lint
+npx --prefix frontend tsc -p frontend/tsconfig.json --noEmit
+npm --prefix frontend run build
+```
+
+`npm run lint` enforces the React hook rules, including `set-state-in-effect`: an effect
+body may not update state synchronously. Mirroring a prop into state, or starting a fetch
+with `setLoading(true)`, will fail here — derive from the prop instead, or raise the flag
+in the event handler that starts the fetch.
 
 ## Secrets and local data
 

@@ -14,7 +14,6 @@ import { ChunkCard } from "@/components/regbot/chunk-card";
 import { ReportView } from "@/components/regbot/report-view";
 import {
   checkConsent,
-  type ChatMessage,
   type CheckResult,
   type Chunk,
   type JurisdictionOption,

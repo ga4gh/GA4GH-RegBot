@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Loader2 } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -86,22 +86,28 @@ export function CorpusTab({ jurisdictions }: CorpusTabProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await getCorpus(region);
-      setDocs(res.documents);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to load corpus");
-    } finally {
-      setLoading(false);
-    }
-  }, [region]);
-
+  // Every state update follows an await, so the effect body itself starts no render
+  // cascade. `cancelled` drops the response of a region the user has already moved on
+  // from — without it, two quick switches could let the slower reply win.
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    void (async () => {
+      try {
+        const res = await getCorpus(region);
+        if (cancelled) return;
+        setDocs(res.documents);
+        setError(null);
+      } catch (e) {
+        if (cancelled) return;
+        setError(e instanceof Error ? e.message : "Failed to load corpus");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [region]);
 
   const byTier = useMemo(() => {
     const groups: Record<string, CorpusDocument[]> = { P0: [], P1: [], P2: [] };
@@ -124,7 +130,16 @@ export function CorpusTab({ jurisdictions }: CorpusTabProps) {
         </div>
         <div className="w-full space-y-2 sm:w-72">
           <Label>Filter by jurisdiction</Label>
-          <Select value={region} onValueChange={(v) => v && setRegion(v)}>
+          <Select
+            value={region}
+            onValueChange={(v) => {
+              if (!v) return;
+              // The spinner is raised here rather than in the effect: an event handler
+              // may update state synchronously, an effect body may not.
+              setLoading(true);
+              setRegion(v);
+            }}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>

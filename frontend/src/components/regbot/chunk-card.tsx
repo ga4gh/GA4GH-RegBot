@@ -32,6 +32,10 @@ export function ChunkCard({ chunk, sourceUrls }: ChunkCardProps) {
   const tags = jurisdictionTags(meta);
   const docId = String(meta.document_id ?? meta.category ?? "");
   const sourceUrl = docId && sourceUrls ? sourceUrls[docId] : undefined;
+  // Page 0 is the sentinel for a source with no pagination (plain text, scraped HTML).
+  // Printing "p.0" invites a reviewer to cite a page that does not exist, so it is
+  // omitted — the same rule the evidence list in report-view applies.
+  const page = typeof meta.page === "number" && meta.page > 0 ? meta.page : null;
 
   return (
     <Card className="border-border/80 shadow-sm">
@@ -42,7 +46,8 @@ export function ChunkCard({ chunk, sourceUrls }: ChunkCardProps) {
               {chunk.id}
             </CardTitle>
             <CardDescription className="text-xs">
-              {String(meta.source ?? "?")} · p.{String(meta.page ?? "?")}
+              {String(meta.source ?? "?")}
+              {page ? ` · p.${page}` : ""}
               {meta.category ? ` · ${String(meta.category)}` : ""}
             </CardDescription>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { FileUp, Loader2 } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -27,19 +27,24 @@ export function IngestTab({ storeDir, jurisdictions, onSuccess }: IngestTabProps
   const [file, setFile] = useState<File | null>(null);
   const [reset, setReset] = useState(false);
   const [category, setCategory] = useState("");
-  const [jurisdiction, setJurisdiction] = useState("GA4GH");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "ok" | "err"; text: string } | null>(
     null,
   );
 
-  useEffect(() => {
-    if (jurisdictions.some((j) => j.code === "GA4GH")) {
-      setJurisdiction("GA4GH");
-    } else if (jurisdictions[0]) {
-      setJurisdiction(jurisdictions[0].code);
-    }
-  }, [jurisdictions]);
+  // Derived from the prop rather than mirrored into state by an effect. The effect
+  // this replaces re-ran on every new `jurisdictions` array — including the refresh
+  // that follows a successful ingest — and silently reset the user's choice back to
+  // GA4GH. An explicit pick now wins until the user changes it again.
+  const defaultJurisdiction = useMemo(
+    () =>
+      jurisdictions.some((j) => j.code === "GA4GH")
+        ? "GA4GH"
+        : (jurisdictions[0]?.code ?? "GA4GH"),
+    [jurisdictions],
+  );
+  const [picked, setPicked] = useState<string | null>(null);
+  const jurisdiction = picked ?? defaultJurisdiction;
 
   const onIngest = useCallback(async () => {
     if (!file) return;
@@ -108,7 +113,7 @@ export function IngestTab({ storeDir, jurisdictions, onSuccess }: IngestTabProps
 
         <div className="space-y-2">
           <Label>Jurisdiction for this document</Label>
-          <Select value={jurisdiction} onValueChange={(v) => v && setJurisdiction(v)}>
+          <Select value={jurisdiction} onValueChange={(v) => v && setPicked(v)}>
             <SelectTrigger className="w-full">
               <SelectValue />
             </SelectTrigger>

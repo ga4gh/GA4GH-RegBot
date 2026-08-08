@@ -1,0 +1,45 @@
+name: Frontend
+
+# The Next.js UI had four eslint errors and an unused import sitting in the tree
+# unnoticed, because CI checked only Python. Paths-filtered so a backend-only PR
+# does not pay for an npm install it cannot affect.
+
+on:
+  push:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend.yml"
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend.yml"
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          # next@16 requires >=20.9.0; 22 is the active LTS.
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: TypeScript (no emit)
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
