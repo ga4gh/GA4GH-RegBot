@@ -6,7 +6,7 @@ RegBot is a Global Alliance for Genomics and Health [Regulatory and Ethics Work 
 Documentation
 - **`docs/DESIGN.md`** — architecture, data model, evaluation plan (GSoC design doc)
 - **`docs/eval_results.md`** — measured retrieval benchmark: metrics, tuning runs, threats to validity
-- **`docs/corpus_manifest.yaml`** — regulatory corpus inventory (22 documents; P0/P1 primary sources, P2 marked `summary`)
+- **`docs/corpus_manifest.yaml`** — regulatory corpus inventory (23 documents; P0/P1 primary sources, P2 marked `summary`)
 - **`examples/eval/gold_ga4gh.yaml`** — retrieval gold set (drafted; awaiting mentor review)
 - **`examples/DEMO.md`** — local end-to-end demo
 
@@ -24,7 +24,7 @@ What works today
 - **PDF eval harness:** `eval` subcommand ingests a real GA4GH PDF and prints retrieval hits for built-in or custom queries (manual inspection; use `benchmark` for scored evaluation).
 
 Quickstart (Development)
-- Prerequisites: **Python 3.10–3.12** (CI uses 3.11). Python 3.14 is not supported yet for the full stack (native wheels for parts of the ML/Chroma toolchain often lag).
+- Prerequisites: **Python 3.10–3.13** (the range `pyproject.toml` accepts; CI runs 3.11, which is the tested one). Python 3.14 is not supported yet for the full stack (native wheels for parts of the ML/Chroma toolchain often lag). Running the web UI also needs **Node 18+** for `frontend/`.
 - Create a virtual environment and install dependencies:
 
 ```bash
@@ -90,7 +90,9 @@ uvicorn src.api.app:app --reload --port 8000
 cd frontend && npm install && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The Next.js dev server proxies `/api/*` to the API on port 8000.
+Open [http://localhost:3000](http://localhost:3000). The Next.js dev server proxies `/api/*` and `/health` to the API on port 8000; set `REGBOT_API_URL` before `npm run dev` if the API is not on `http://127.0.0.1:8000`.
+
+A fresh clone ships `manifest.json` but **not** the Chroma vectors (git-ignored), so run `ingest-manifest --reset` once before the UI can retrieve anything — the Corpus tab shows an empty store until you do.
 
 - Run the legacy **Streamlit** UI:
 
@@ -147,6 +149,7 @@ Environment Variables
 - `REGBOT_OLLAMA_BASE_URL`: Ollama HTTP host only (default `http://127.0.0.1:11434`); `/v1` is appended automatically for the OpenAI-compatible routes.
 - `REGBOT_OLLAMA_API_KEY`: Sent as the Bearer/API key to Ollama’s shim (default `ollama`; ignored by Ollama).
 - `REGBOT_STORE`: On-disk store directory (default `./data/regbot_store`).
+- `REGBOT_API_URL`: Read by the **Next.js dev server** (`frontend/next.config.ts`) to proxy `/api/*` and `/health` (default `http://127.0.0.1:8000`). Set it when the FastAPI process is on another host or port.
 - `REGBOT_EMBEDDING_MODEL`: SentenceTransformers model id (default `sentence-transformers/all-MiniLM-L6-v2`).
 - `HF_HUB_DOWNLOAD_TIMEOUT`: Hugging Face Hub download timeout in seconds (embedding model on first use). The app sets a higher default when unset; increase if you see read timeouts.
 - `REGBOT_HF_ENDPOINT`: If set, copied to `HF_ENDPOINT` (e.g. `https://hf-mirror.com` where Hub mirrors are used).
@@ -158,11 +161,12 @@ Environment Variables
 - `REGBOT_OPENAI_MAX_RETRIES`: Retries for the **OpenAI Python client** (used for both OpenAI API and Ollama’s compatible endpoint; default `3`).
 
 Architecture (implemented vs planned)
-- **Core:** Python 3, package under `src/regbot/` (ingest, hybrid retrieval, compliance, optional local embedding download helpers).
+- **Core:** Python 3, package under `src/regbot/` — ingestion, hybrid retrieval, fusion, grounding, evidence, evaluation, jurisdiction and text utilities.
 - **Embeddings:** `sentence-transformers` + Hugging Face Hub (minimal file set; ONNX-heavy artifacts skipped where possible).
-- **Vector store:** Chroma persistent files under `REGBOT_STORE/chroma` plus `manifest.json` for BM25 text.
-- **Retrieval:** cosine similarity in Chroma + `rank-bm25`, fused via reciprocal rank fusion; optional metadata category filter.
+- **Vector store:** Chroma persistent files under `REGBOT_STORE/chroma` plus `manifest.json`, which holds chunk text and metadata for BM25 and citation audit.
+- **Retrieval:** exact cosine ranking over the stored embeddings (loaded once from Chroma, ranked in process — the ANN index was approximate and made results irreproducible) + `rank-bm25`, fused by reciprocal rank. `jurisdiction` / `framework` / `category` filters restrict the candidate pool before the top-N cut.
 - **LLM:** **Default:** Ollama (`llama3` or `REGBOT_OLLAMA_MODEL`) via OpenAI-compatible chat completions + JSON parsing. **Optional:** `REGBOT_LLM_PROVIDER=openai` with `OPENAI_API_KEY`. **Fallback:** keyword heuristic if OpenAI is selected without a key, or after LLM errors (e.g. Ollama not running).
-- **UI:** Streamlit (`src/streamlit_app.py`).
-- **Optional / roadmap:** LangChain or LlamaIndex adapters on top of the same stores (not required by the current code); richer offline evaluation (Ragas, human labels); structured per-recommendation evidence (e.g. quotes).
+- **API:** FastAPI (`src/api/app.py`) — corpus, chunk, ingest, check and chat endpoints behind `/api`.
+- **UI:** Next.js in `frontend/` (recommended); Streamlit (`src/streamlit_app.py`) retained as the legacy single-process option.
+- **Optional / roadmap:** LangChain or LlamaIndex adapters on top of the same stores (not required by the current code); richer offline evaluation (Ragas, human labels); a cross-encoder re-ranker over the fused pool (`docs/eval_results.md` §7).
 

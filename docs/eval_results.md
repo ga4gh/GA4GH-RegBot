@@ -20,7 +20,7 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 868 chunks / 23 documents — 16 primary / 7 summary (see §4b, §4c, §4h) |
+| Corpus | 864 chunks / 23 documents — 16 primary / 7 summary (see §4b, §4c, §4h) |
 | Gold set | v0.4 — 12 queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
@@ -533,11 +533,17 @@ Plus web navigation ("Latest News", "Our products") and EUR-Lex file metadata
 
 | | before | after |
 |---|--------|-------|
-| chunks | 963 | **868** |
-| chunks under 200 characters | 110 | **26** |
+| chunks | 963 | **864** |
+| chunks under 200 characters | 110 | **21** |
 | bare-heading chunks | 44 | **0** |
 | chunks carrying a PDF running header | 48 | **0** |
 | Taiwan chunks | 207 (one document) | 135 (two Acts) |
+
+The `after` column includes a second pass over the 26 short chunks the first one left. Two
+were not content — a bare `9 Appendix 2` page label and the fetcher's own provenance line,
+now written as a footer so it stops leading the document's first chunk — which took the
+corpus to 864. The 21 that remain were each read and kept deliberately: real provision text,
+footnotes, and bibliography entries from the FRS appendix.
 
 Retrieval barely moved — provision recall@5 rose 0.743 → 0.787, @8 held at 0.846 — which is
 the point worth recording: **none of these defects were visible in the metrics.** A cleaner
