@@ -72,6 +72,10 @@ def _render_evidence_entry(entry: Dict[str, Any]) -> None:
     ctype = entry.get("content_type")
     if ctype == "summary":
         bits.append(":red[**summary — not statutory text**]")
+    elif ctype == "translation":
+        # Full statutory text, but an English rendering its own publisher says carries no
+        # legal force. A reviewer quoting it is quoting a translation, not the law.
+        bits.append(":orange[**unofficial translation**]")
     elif ctype == "primary":
         bits.append("primary source")
     if bits:

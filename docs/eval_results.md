@@ -20,13 +20,13 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 864 chunks / 23 documents — 16 primary / 7 summary (see §4b, §4c, §4h) |
-| Gold set | v0.4 — 12 queries, 0 skipped |
+| Corpus | 3,287 chunks / 40 documents — 30 primary / 7 unofficial translation / 3 summary (see §4i) |
+| Gold set | v0.5 — 12 queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
-| Date | 2026-07-28 |
+| Date | 2026-08-09 |
 
-**Headline: provision-level recall@8 = 0.846, chunk-level 0.713, over a primary-source corpus (§4b–§4d).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.621, chunk-level 0.475, over a 40-document corpus in which six jurisdictions now carry full statutory text (§4i).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
@@ -555,6 +555,73 @@ chunks and Taiwan 135 because those are the two jurisdictions on real statute, w
 Singapore, Japan, Hong Kong, Korea and China are still ~5-chunk contributor summaries. The
 imbalance is a direct measure of how much of the corpus has been migrated, and it will even
 out only when the remaining five are replaced.
+
+---
+
+## 4i. The corpus tripled, and the regional scores collapsed
+
+§4h closed with five of six P2 jurisdictions still on ~350-word contributor summaries. All
+five now carry full text, and the GA4GH set gained four publications its own Toolkit page
+names but the corpus never had.
+
+| | before | after |
+|---|--------|-------|
+| documents | 23 | **40** |
+| chunks | 864 | **3,287** |
+| summary chunks | 38 | **15** |
+| jurisdictions on full text | TW | **TW, SG, HK, KR, CN, JP (partly)** |
+
+**What was added.** GA4GH: the Ethics Review Recognition Policy, the DACReS policy, the
+Data Security Infrastructure Policy, and five of the six Consent Toolkit clause sets.
+Singapore: PDPA, HBRA and the Health Information Act 2026, from AGC. Hong Kong: the PDPO
+and both PCPD cross-border guidance notes. Korea: the Bioethics and Safety Act and PIPA.
+China: the HGR Regulation, its Implementation Rules, PIPL and the Data Security Law.
+Japan: the current Ethical Guidelines.
+
+Three of these were previously recorded as impossible. Hong Kong e-Legislation and Korea
+KLRI were both listed in §4c as JavaScript shells. e-Legislation genuinely is one — but the
+Privacy Commissioner publishes the Ordinance itself, and KLRI's `lawView.do` is only a
+frameset wrapper whose iframe target is server-rendered. Singapore and Japan were recorded
+as serving tables of contents; Singapore does, unless you ask for `ViewType=Pdf`.
+
+**The gold set broke, loudly, again.** Three queries anchored on summary documents that no
+longer exist, and were skipped rather than scored — §4b's mechanism doing its job a second
+time. Gold v0.5 re-anchors them onto the statutes: HGR Implementation Rules Art. 9 for
+q04, PDPO s.33's own "not yet in operation" remark for q05, PDPA s.26 for q08.
+
+**Result, all 12 queries scored:**
+
+| Corpus | Gold | R@8 | MRR@8 | P@8 | **provision R@8** |
+|--------|------|-----|-------|-----|-------------------|
+| 864 chunks | v0.4 | 0.713 | 0.667 | — | **0.846** |
+| **3,287 chunks** | **v0.5** | 0.475 | 0.542 | 0.156 | **0.621** |
+
+**Provision recall fell 22 points, and this is the §4c result repeating at scale.** There
+q02 went 1.00 → 0.00 when Taiwan moved from 3 summary chunks to 207 of real statute, and
+§3 had already warned that P2 queries scoring 1.00 were measuring the jurisdiction filter
+rather than retrieval. Five more jurisdictions have now made that same transition at once.
+Six of twelve queries still reach 1.00, including all four that the new statutes answer
+directly (q04 China, q06 Japan, q07 Korea, q08 Singapore).
+
+**One result is not a corpus-size effect, and it is the most interesting thing here.**
+q02 fell from 1.00 to 0.00 although Taiwan's own documents did not change and the query is
+filtered to `TW` — 134 chunks, exactly as before. Its gold provision now ranks **13**. The
+cause is that **BM25 statistics are global while filtering is local**: the index is built
+over the whole corpus, so adding Singapore, Hong Kong and Korean statutes changed the
+document frequency of "withdraw", "participant" and "biobank", and that reordered results
+inside a jurisdiction those documents can never be returned from.
+
+That is a design question this benchmark has not had to face before. Scoped retrieval
+arguably should score against the scoped subset, and the fix — computing BM25 over the
+filtered candidate set — is contained. It is the next experiment, and it should be run
+before reading anything else into the regional numbers.
+
+**Known corpus-quality issue.** The Singapore PDFs carry their own tables of contents,
+which are now indexed: `strip_before` only applies to the text extractors, not to PDFs.
+Chunks like "PART 4 COLLECTION, USE AND DISCLOSURE ... Division 1 — Consent Section 13"
+are exactly the pollution §4f was built to prevent, arriving by a route that check does not
+cover. Also, pypdf renders Singapore's typography as "guilty of an of fence" and
+"THE ST A TUTES", which costs BM25 some of those terms.
 
 ---
 

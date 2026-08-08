@@ -22,8 +22,8 @@
 # STATUS: drafted by the contributor. NOT YET MENTOR-REVIEWED — see docs/eval_results.md
 # before quoting these numbers.
 
-version: '0.4'
-updated: '2026-07-28'
+version: '0.5'
+updated: '2026-08-09'
 notes: >-
   v0.3 — re-anchored after the P0/P1 corpus moved from contributor paraphrases to primary
   sources (official GDPR text from EUR-Lex, GA4GH published documents). Anchors now point
@@ -75,15 +75,19 @@ queries:
     query: What approval is required to supply human genetic resources from China to foreign collaborators?
     jurisdiction: [CN]
     relevant:
-      - document_id: cn-law-excerpt
-        contains: without approval from relevant authorities
+      # HGR Implementation Rules (MOST Order No. 21) — the operative provision-abroad rules
+      - document_id: cn-hgr-rules
+        contains: provision abroad of our nation's human genetic resources
+      - document_id: cn-hgr
+        contains: international cooperation in scientific research
 
   - query_id: q05-hk-section-33
     query: Is the Hong Kong cross-border data transfer restriction currently in force?
     jurisdiction: [HK]
     relevant:
-      - document_id: hk-law-excerpt
-        contains: Section 33 has not been brought into force
+      # PDPO s.33 itself, which still carries its "not yet in operation" remark
+      - document_id: hk-pdpo
+        contains: 'Remarks: not yet in operation'
 
   - query_id: q06-jp-transfer-mechanisms
     query: What mechanisms permit transferring personal data out of Japan for research?
@@ -103,8 +107,9 @@ queries:
     query: Can personal data be transferred outside Singapore for research collaboration?
     jurisdiction: [SG]
     relevant:
-      - document_id: sg-law-excerpt
-        contains: must not transfer personal data outside Singapore
+      # PDPA s.26 — the transfer limitation itself
+      - document_id: sg-pdpa
+        contains: transfer any personal data to a country or territory outside Singapore
 
   - query_id: q09-dpia-trigger
     query: When is a data protection impact assessment required for large-scale genomic research?

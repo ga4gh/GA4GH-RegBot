@@ -101,6 +101,12 @@ function EvidenceCard({ entry }: { entry: EvidenceEntry }) {
           <Badge variant="destructive" className="text-[10px]">
             summary — not statutory text
           </Badge>
+        ) : entry.content_type === "translation" ? (
+          // Full statutory text, but an English rendering its own publisher says carries
+          // no legal force. A reviewer quoting it is quoting a translation, not the law.
+          <Badge variant="secondary" className="text-[10px]">
+            unofficial translation
+          </Badge>
         ) : entry.content_type === "primary" ? (
           <Badge variant="outline" className="text-[10px]">
             primary source
