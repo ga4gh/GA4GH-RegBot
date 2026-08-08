@@ -27,8 +27,32 @@ class TestIngestionPdf(unittest.TestCase):
             os.unlink(path)
 
 
-if __name__ == "__main__":
-    unittest.main()
+class TestNothingIndexed(unittest.TestCase):
+    """A document that indexes nothing must say so instead of returning 0 quietly."""
+
+    def test_all_chunks_filtered_raises(self) -> None:
+        from src.regbot.ingestion import ingest_policy_file
+
+        with tempfile.TemporaryDirectory() as store:
+            path = os.path.join(store, "toc.txt")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write("Part I\n\nPart II\n\nPart III\n")
+            with self.assertRaises(ValueError) as ctx:
+                ingest_policy_file(path, store)
+            msg = str(ctx.exception).lower()
+            self.assertIn("nothing was indexed", msg)
+            self.assertIn("toc.txt", msg)
+
+    def test_empty_text_file_raises(self) -> None:
+        from src.regbot.ingestion import ingest_policy_file
+
+        with tempfile.TemporaryDirectory() as store:
+            path = os.path.join(store, "blank.txt")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write("   \n\n")
+            with self.assertRaises(ValueError) as ctx:
+                ingest_policy_file(path, store)
+            self.assertIn("no text", str(ctx.exception).lower())
 
 
 class TestRunningHeaderRemoval(unittest.TestCase):
@@ -92,3 +116,7 @@ class TestCitableContent(unittest.TestCase):
         self.assertFalse(
             has_citable_content("See https://example.org/a/very/long/path/with/many/segments")
         )
+
+
+if __name__ == "__main__":
+    unittest.main()
