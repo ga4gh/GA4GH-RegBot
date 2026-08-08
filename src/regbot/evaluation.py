@@ -24,6 +24,8 @@ from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Set,
 
 import yaml
 
+from src.regbot.types import provision_keys
+
 DEFAULT_KS: Tuple[int, ...] = (1, 3, 5, 8)
 
 # Signature of a retrieval callable: (query, top_k, jurisdiction) -> chunk records.
@@ -113,6 +115,26 @@ def _round(value: float) -> float:
     return round(float(value), 4)
 
 
+def score_provisions(
+    ranked_chunks: Sequence[Dict[str, Any]],
+    gold_chunks: Sequence[Dict[str, Any]],
+    ks: Sequence[int],
+) -> Dict[str, float]:
+    """Recall over provisions rather than chunks — stable across chunking schemes."""
+    gold: Set[str] = set()
+    for c in gold_chunks:
+        gold |= provision_keys(c)
+
+    scores: Dict[str, float] = {}
+    for k in ks:
+        found: Set[str] = set()
+        for c in ranked_chunks[:k]:
+            found |= provision_keys(c)
+        hit = found & gold
+        scores[f"provision_recall@{k}"] = _round(len(hit) / len(gold)) if gold else 0.0
+    return scores
+
+
 def score_ranking(
     ranked_ids: Sequence[str],
     gold_ids: Set[str],
@@ -186,14 +208,23 @@ def evaluate_gold_set(
         hits = retrieve_fn(query, max_k, jurisdiction_list)
         ranked_ids = [str(h.get("id")) for h in hits if h.get("id")]
 
+        gold_chunks = [c for c in chunks if str(c.get("id")) in gold_ids]
+        gold_provisions: Set[str] = set()
+        for c in gold_chunks:
+            gold_provisions |= provision_keys(c)
+
+        scores = score_ranking(ranked_ids, gold_ids, ks)
+        scores.update(score_provisions(hits, gold_chunks, ks))
+
         row: Dict[str, Any] = {
             "query_id": query_id,
             "query": query,
             "jurisdiction": jurisdiction_list,
             "gold_count": len(gold_ids),
+            "gold_provisions": sorted(gold_provisions),
             "returned": len(ranked_ids),
             "top_chunk_ids": ranked_ids[:max_k],
-            "scores": score_ranking(ranked_ids, gold_ids, ks),
+            "scores": scores,
         }
         if unresolved:
             row["unresolved_anchors"] = unresolved

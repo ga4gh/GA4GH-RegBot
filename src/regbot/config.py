@@ -28,6 +28,15 @@ SEMANTIC_CANDIDATES = _pos_int_env("REGBOT_SEMANTIC_CANDIDATES", 12)
 BM25_CANDIDATES = _pos_int_env("REGBOT_BM25_CANDIDATES", 48)
 
 
+def _fusion_strategy() -> str:
+    """How reciprocal-rank contributions combine: 'max' (default) or 'sum' (classic RRF)."""
+    v = os.getenv("REGBOT_FUSION", "max").strip().lower()
+    return "sum" if v == "sum" else "max"
+
+
+FUSION_STRATEGY = _fusion_strategy()
+
+
 def llm_provider() -> str:
     """ollama (default): local Llama / Mistral via Ollama. Set REGBOT_LLM_PROVIDER=openai for OpenAI API."""
     v = os.getenv("REGBOT_LLM_PROVIDER", "ollama").strip().lower()
@@ -58,6 +67,12 @@ def _nonneg_int_env(name: str, default: int) -> int:
 
 # Retries for transient errors on the OpenAI Python client (OpenAI API or Ollama-compatible URL).
 OPENAI_MAX_RETRIES = _nonneg_int_env("REGBOT_OPENAI_MAX_RETRIES", 3)
+
+# Chunks admitted per provision (document + section). A reviewer working through a
+# checklist wants the list of distinct applicable provisions, not three fragments of one
+# article; returning a second fragment costs a slot a different rule could have used.
+# 0 disables the cap. See docs/eval_results.md §4g.
+MAX_CHUNKS_PER_PROVISION = _nonneg_int_env("REGBOT_MAX_CHUNKS_PER_PROVISION", 2)
 
 
 def chromadb_settings() -> Any:

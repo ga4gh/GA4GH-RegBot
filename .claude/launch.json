@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "regbot-api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["src.api.app:app", "--reload", "--port", "8000"],
+      "port": 8000
+    },
+    {
+      "name": "regbot-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "frontend", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

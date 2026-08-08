@@ -18,6 +18,7 @@ type EvidenceEntry = {
   page?: number;
   document_id?: string;
   section?: string;
+  content_type?: string;
   jurisdiction?: string | string[];
   framework?: string;
   quote?: string;
@@ -94,6 +95,15 @@ function EvidenceCard({ entry }: { entry: EvidenceEntry }) {
         {entry.framework ? (
           <Badge variant="outline" className="text-[10px]">
             {entry.framework}
+          </Badge>
+        ) : null}
+        {entry.content_type === "summary" ? (
+          <Badge variant="destructive" className="text-[10px]">
+            summary — not statutory text
+          </Badge>
+        ) : entry.content_type === "primary" ? (
+          <Badge variant="outline" className="text-[10px]">
+            primary source
           </Badge>
         ) : null}
       </div>

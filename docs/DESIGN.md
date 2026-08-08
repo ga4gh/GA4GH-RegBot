@@ -85,7 +85,9 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 | Vector store | Chroma (local persistent) | Persistence only — see below |
 | Dense search | Exact cosine over in-memory embeddings | Chroma's HNSW is approximate and was not reproducible across processes |
 | Lexical | BM25 over manifest | Rare legal terms (“pseudonymisation”, etc.) |
-| Fusion | RRF, tie-broken on chunk id | No score calibration across dense vs sparse |
+| Fusion | RRF, **max** across channels, tie-broken on chunk id | `REGBOT_FUSION=sum` for classic additive RRF |
+| LLM | Ollama (default) / OpenAI | OpenAI-compatible client for both |
+| UI | Next.js + FastAPI (primary), Streamlit (legacy) | Both render the Phase 3 evidence layer |
 
 **Why exact dense search.** Chroma's HNSW index returned different tail neighbours across
 process starts for the same query embedding, jittering the candidate pool and moving
@@ -95,8 +97,10 @@ already holds every chunk's full text in memory for BM25, so memory was already
 proportional to corpus size. Chroma remains the persistence layer, and the ANN query
 remains as a fallback if embeddings cannot be loaded. See
 [`eval_results.md` §5](eval_results.md).
-| LLM | Ollama (default) / OpenAI | OpenAI-compatible client for both |
-| UI | Streamlit | Phase 4: evidence display + export polish |
+
+The embedding loader also falls back to the local Hugging Face cache when the Hub is
+unreachable — RegBot is local-first by design, and a cached model must keep working
+offline.
 
 Core path does **not** depend on LangChain/LlamaIndex adapters.
 
@@ -106,11 +110,18 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 |-----------|----------|-----------------|
 | `top_k` | CLI / UI | **8** — recall saturates at 12 while precision decays monotonically |
 | Semantic / BM25 pool | `config.py` | **12 / 48** — lexical weighting won on both recall and precision |
-| Chunk size / overlap | `text_utils.chunk_text` | Unchanged (900 / 150); overlap widens anchor resolution |
-| `category` / `jurisdiction` filter | ingest metadata | Filtered queries reach recall 1.00 |
+| Chunking | `text_utils.chunk_by_sections` | **Heading-aligned**; sliding window only inside long sections |
+| `category` / `jurisdiction` / `framework` filter | ingest metadata | Applied **before** candidate selection, so a scope narrows the search rather than truncating results |
 | Re-ranker | — | **Not adopted** — failure mode is missing candidates, not mis-ranking |
 | Per-document diversification | — | **Measured and rejected** — costs up to 19 points of recall@8 |
 | Document sibling boost | — | **Deferred** — trades recall@8 for recall@5; not separable from noise at n=12 |
+
+**Why max fusion.** Additive RRF rewards agreement between channels, which is wrong for
+statutes: the operative clause is often a precise lexical hit that a general-purpose
+embedding ranks poorly. The GA4GH re-identification prohibition sat at BM25 #2 and dense
+#50, and additive fusion let six chunks of general privacy prose beat it out of the top-8.
+`max` gains recall and precision and gives up rank-1 accuracy — the same trade direction as
+the lexical-weighted pools. See [`eval_results.md` §4c](eval_results.md).
 
 Measured results and the reasoning behind each choice: [`eval_results.md`](eval_results.md).
 Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES`.
@@ -123,8 +134,7 @@ Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDI
 
 Each ingested unit is addressable for retrieval, BM25, and citation verification.
 
-**Implemented today** (all 128 chunks carry every field below except `content_type`,
-which is set from the corpus manifest):
+**Implemented today** (689 chunks; `section` where the source is line-structured):
 
 ```json
 {
@@ -152,22 +162,28 @@ which is set from the corpus manifest):
 | `framework` | ✅ implemented | e.g. `GA4GH`, `REWS`, `GDPR`, `national` |
 | `content_type` | ✅ implemented | `primary` (source regulatory text) or `summary` (contributor paraphrase) |
 | `source`, `page`, `category` | ✅ implemented | As before |
-| `section` | ⚠️ partial (42% of chunks) | Heading the chunk starts under; populated for line-structured sources, omitted for layout-flattened PDFs (see below) |
+| `section` | ⚠️ partial (78% of chunks) | Every heading the chunk spans, joined by `; `; populated for line-structured sources, omitted for layout-flattened PDFs (see below) |
 | `ingested_at` | ⚠️ manifest only | Recorded per document in `corpus_manifest.yaml`, not copied onto chunks |
 
-**`content_type` and why it exists.** Only `ga4gh-frs` and `ga4gh-consent-policy` are
-primary source documents. The other 20 corpus entries are ~300–450-word contributor-written
-paraphrases. A citation to a paraphrase is **not** a citation to the underlying clause, so
-the distinction must be machine-readable rather than left to a disclaimer inside the text.
-Replacing summaries with primary text where licensing permits is the top corpus priority.
+**`content_type` and why it exists.** A citation to a paraphrase is **not** a citation to
+the underlying clause, so the distinction is machine-readable rather than left to a
+disclaimer inside the text, and both UIs badge a `summary` citation in red.
+
+P0/P1 are now **primary sources** (96% of chunks): the consolidated GDPR text from the EU
+Publications Office (CELEX 32016R0679, all 99 Articles and recitals) and GA4GH's published
+policies, product pages and GDPR Briefs. P2 regional law remains contributor summaries by
+design — official English texts exist for SG/TW/KR/JP/HK/CN but consolidating them is
+post-GSoC work — and every P2 chunk is marked `summary`. See
+[`eval_results.md` §4b](eval_results.md) for what this cost in measured recall.
 
 **`section` and why coverage is partial.** `text_utils.detect_headings` finds headings as
 short standalone lines between blank lines, rejecting `Key: value` front matter, list
 items, multi-sentence prose, unbalanced parentheses, and lines ending on a continuation
 word. Chunks inherit the nearest heading at or before their start offset.
 
-Coverage is 54/128 chunks (42%), and **all of it comes from the `.txt` corpus; PDF chunks
-get no `section` at all.** `pypdf` emits one line per *visual* line, so heading, subheading
+Coverage is 540/689 chunks (78%) — the official GDPR text is line-structured, so all 99
+Articles are detected and a heading is merged with its title (`Article 9 — Processing of
+special categories of personal data`). **PDF chunks still get no `section` at all.** `pypdf` emits one line per *visual* line, so heading, subheading
 and body text land on a single line while ordinary wrapped prose sits between blank lines —
 the exact shape a standalone-line rule mistakes for headings. A first implementation
 without that guard produced labels like *"the autonomous decision-making of data subjects
@@ -175,7 +191,12 @@ while promoting the common good of"*: mid-sentence fragments presented to a revi
 clause's section. `is_hard_wrapped` now detects fixed-width layout (most long lines ending
 mid-clause) and suppresses detection entirely for those pages.
 
-The trade is deliberate: **42% coverage with clean labels over 50% with fragments.** A
+A chunk that straddles an article boundary lists **every** section it touches (146 of 689
+do), rather than claiming only the one it started in: a 900-character window opened in
+Article 8 and closed in Article 9 was otherwise labelled "Article 8" on text that is
+Article 9.
+
+The trade is deliberate: **clean labels over more labels.** A
 wrong `section` on a cited clause actively misleads a DPO/IRB reviewer, while a missing one
 merely offers less help. Raising PDF coverage needs a layout-aware extractor (`PyMuPDF`
 font-size heuristics, or `pdfplumber` word positions) — a worthwhile follow-up, not a

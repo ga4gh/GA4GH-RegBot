@@ -68,9 +68,19 @@ class TestJurisdiction(unittest.TestCase):
         mock_ingest_load.return_value = fake
         mock_retrieve_load.return_value = fake
         with tempfile.TemporaryDirectory() as store:
+            # Both fixtures must clear the citable-content floor (MIN_CITABLE_WORDS); a
+            # document under it is now rejected outright rather than silently indexed empty.
             for region, text in (
-                ("SG", "Singapore PDPA personal data protection and cross-border transfer."),
-                ("JP", "Japan APPI act on protection of personal information genomic research."),
+                (
+                    "SG",
+                    "The Singapore PDPA governs personal data protection and the "
+                    "cross-border transfer of health information.",
+                ),
+                (
+                    "JP",
+                    "Japan's APPI governs the protection of personal information used "
+                    "in genomic research.",
+                ),
             ):
                 path = f"{store}/{region.lower()}.txt"
                 with open(path, "w", encoding="utf-8") as f:

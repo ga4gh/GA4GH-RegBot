@@ -19,54 +19,57 @@
 #
 # Run:  python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml
 #
-# STATUS: drafted by the contributor against the ingested P0/P1/P2 corpus.
-# NOT YET MENTOR-REVIEWED — see docs/eval_results.md before quoting these numbers.
+# STATUS: drafted by the contributor. NOT YET MENTOR-REVIEWED — see docs/eval_results.md
+# before quoting these numbers.
 
-version: '0.2'
-updated: '2026-07-27'
+version: '0.4'
+updated: '2026-07-28'
 notes: >-
-  12 queries over the ingested corpus (128 chunks, 22 documents). Covers GA4GH framework
-  norms, GDPR briefs, and the six REWS East Asia jurisdictions.
-  v0.2 — relabelled after the corpus grew from 13 to 22 documents. Nine newly ingested
-  documents are topically relevant to existing queries (e.g. a dedicated
-  gdpr-international-transfers brief for q03); leaving them unlabelled scored correct
-  retrievals as misses. Gold sets must be re-reviewed whenever the corpus changes.
+  v0.3 — re-anchored after the P0/P1 corpus moved from contributor paraphrases to primary
+  sources (official GDPR text from EUR-Lex, GA4GH published documents). Anchors now point
+  at operative provisions in the law itself — GDPR Art. 7(3) for withdrawal, Art. 35 for
+  DPIA, Art. 44/46 for transfers, Recital 33 for broad consent — rather than at a summary
+  of them, so a relevance judgment is a judgment about the regulation and not about the
+  contributor's own wording. Anchors are kept narrow (1-3 chunks each) so that a broad
+  phrase does not sweep marginal chunks into the gold set and depress recall artificially.
+  v0.4 — Taiwan moved to the Ministry of Justice official English text, so q02 anchors on
+  Human Biobank Management Act Art. 8 rather than on a summary of it. The other five P2
+  jurisdictions remain contributor summaries: official English text exists for all of them,
+  but SG/JP returned only tables of contents and HK/KR render via JavaScript. Those
+  documents stay marked content_type: summary.
 
 queries:
   - query_id: q01-withdrawal-ga4gh
     query: How must withdrawal of consent be handled in genomic data sharing?
     relevant:
+      # GDPR Art. 7(3) — the operative right
+      - document_id: gdpr-full-text
+        contains: right to withdraw his or her consent at any time
+      - document_id: gdpr-withdrawal-consent
+        contains: distinguish between consent
       - document_id: ga4gh-consent-policy
         contains: withdrawal, complaints
-      - document_id: ga4gh-consent-policy
-        contains: options chosen or withdrawn
       - document_id: ga4gh-frs
         contains: processes of withdrawal from data sharing
-      # added v0.2 — dedicated withdrawal brief ingested after v0.1 was written
-      - document_id: gdpr-withdrawal-consent
-        contains: What can continue after withdrawal
-      - document_id: gdpr-withdrawal-consent
-        contains: withdrawal effects on shared datasets
 
   - query_id: q02-withdrawal-tw-biobank
     query: Can participants withdraw from a Taiwan biobank, and what happens to retained samples?
     jurisdiction: [TW]
     relevant:
-      - document_id: tw-law-excerpt
-        contains: biobanks must establish procedures for withdrawal
+      # Human Biobank Management Act Art. 8 — the operative withdrawal provision
+      - document_id: tw-biobank-act
+        contains: Should any participant withdraw from the program
 
   - query_id: q03-transfer-safeguards-gdpr
     query: What safeguards apply to international transfers of genomic data under the GDPR?
     relevant:
-      - document_id: gdpr-genomic-research-primer
-        contains: Standard Contractual Clauses
-      - document_id: gdpr-dpia-genomic-research
-        contains: before cross-border sharing
-      # added v0.2 — dedicated transfers brief ingested after v0.1 was written
+      # GDPR Art. 44 general principle, Art. 46 appropriate safeguards
+      - document_id: gdpr-full-text
+        contains: Any transfer of personal data which are undergoing processing
+      - document_id: gdpr-full-text
+        contains: standard data protection clauses adopted by the Commission
       - document_id: gdpr-international-transfers
-        contains: conditions of Chapter V are complied with
-      - document_id: gdpr-international-transfers
-        contains: Binding Corporate Rules
+        contains: must adhere to at least one of the lawful avenues
 
   - query_id: q04-cn-hgr-approval
     query: What approval is required to supply human genetic resources from China to foreign collaborators?
@@ -106,23 +109,20 @@ queries:
   - query_id: q09-dpia-trigger
     query: When is a data protection impact assessment required for large-scale genomic research?
     relevant:
+      # GDPR Art. 35(1) — the trigger itself
+      - document_id: gdpr-full-text
+        contains: carry out an assessment of the impact of the envisaged processing operations
       - document_id: gdpr-dpia-genomic-research
-        contains: Article 35 of the GDPR requires data controllers
-      - document_id: gdpr-dpia-genomic-research
-        contains: risk indicators relevant to genomics
-      - document_id: gdpr-genomic-research-primer
-        contains: likely to result in high risk
+        contains: impact assessment
 
   - query_id: q10-broad-consent-validity
     query: Is broad consent for unspecified future genomic research valid under the GDPR?
     relevant:
+      # GDPR Recital 33 — the research-consent carve-out
+      - document_id: gdpr-full-text
+        contains: not possible to fully identify the purpose of personal data processing for scientific research
       - document_id: gdpr-consent-broad-genomic-research
         contains: broad consent
-      - document_id: gdpr-consent-broad-genomic-research
-        contains: Recital 33
-      # added v0.2 — the "without consent" brief is the direct counterpart to this question
-      - document_id: gdpr-legal-basis-without-consent
-        contains: National research exemptions
 
   - query_id: q11-reidentification
     query: Are researchers permitted to attempt re-identification of anonymized genomic data?
@@ -135,10 +135,7 @@ queries:
   - query_id: q12-duo-consent-codes
     query: How do machine-readable consent codes and DUO support Data Access Committee review?
     relevant:
+      - document_id: ga4gh-duo-data-use-ontology
+        contains: computer-readable use permissions
       - document_id: ga4gh-mrcg-consent-duo-brief
-        contains: Data Access Committees (DACs) must verify
-      - document_id: ga4gh-mrcg-consent-duo-brief
-        contains: Data Use Ontology (DUO)
-      # added v0.2 — dedicated DAC brief ingested after v0.1 was written
-      - document_id: ga4gh-data-access-committee
-        contains: DACs match applicant intent to DUO tags
+        contains: co-created Machine Readable Consent Guidance

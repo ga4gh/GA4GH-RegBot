@@ -1,0 +1,157 @@
+GA4GH Data Use Ontology
+
+Data Use Ontology (DUO)
+
+Patient and participant consent forms often use different language to describe how generated data can be used and reused. The lack of standard terms and definitions to describe permitted uses of data makes it difficult for data access committees (DACs) to confidently and quickly grant researchers access to data. Developed by the GA4GH Data Use & Researcher Identities (DURI) Work Stream, the Data Use Ontology (DUO) provides a standard set of terms that can be used to tag datasets with use permissions, aiding researchers in discovering data and facilitating DAC decisions in the data access process.
+
+Jump to...
+
+Benefits
+
+- Allows data to be tagged with consistently defined, computer-readable use permissions and optional modifiers
+
+- Enables tagged data to be more easily discoverable and accessible
+
+- Streamlines the process of identifying appropriate uses and users of data
+
+Target users
+
+Researchers, clinicians, data generators, data access committees, and data protection authorities
+
+- Data Use & Researcher Identity (DURI) Work Stream
+
+- Mélanie Courtot
+
+- Jonathan Lawson
+
+- DURI Work Stream Manager
+
+Version history
+
+Version
+
+Maintenance
+
+Development
+
+PDAP Review
+
+Date
+
+- The Federated European Genome–Phenome Archive as a global network for sharing human genomics data (2025)
+
+- The Data Use Ontology to streamline responsible access to human biomedical datasets (2021)
+
+- International federation of genomic medicine databases using GA4GH standards (2021)
+
+- BioSamples Database: An Updated Sample Metadata Hub. (2019)
+
+- Simplifying research access to genomics and health data with Library Cards (2018)
+
+Community resources
+
+Dive deeper into this product! When sharing datasets for secondary research, consent form language governing secondary data use varies widely. The lack of a standard vocabulary to define permitted secondary uses makes it challenging for data access committees and researchers to interpret how data may be used. DUO provides a list of terms in two categories: permissions and modifiers. The terms allow datasets to be tagged with their permitted uses, facilitating data discovery and the data access process. To define use permissions specific to certain diseases, DUO incorporates inward and outward mapping to the widely-used Mondo Disease Ontology. DUO can also be distributed and utilised as a machine-readable file, enabling levels of automation in the data access process and expediting researcher access requests.
+
+Title
+
+Related Driver Projects and Organisations
+
+Don't see your name? Get in touch:
+
+- Dixie BakerMartin, Blanck and Associates
+
+- Michael BaudisUniversity of Zurich, Zurich
+
+- Guillaume BourqueMcGill University / Université McGill, Montréal, Canada
+
+- Sarion BowersWellcome Sanger Institute (WSI), Hinxton, UK
+
+- Rebecca BoylesRTI International
+
+- Michael BrudnoUniversity Health Network, Toronto, Canada
+
+- Tony BurdettEMBL's European Bioinformatics Institute (EBI), Hinxton, UK
+
+- Moran CabiliFoundation Medicine, Inc., Cambridge
+
+- Shu Hui ChenNIH National Heart, Lung, and Blood Institute (NHLBI), Bethesda
+
+- Hayley ClissoldWellcome Sanger Institute (WSI), Hinxton, UK
+
+- Mélanie CourtotOntario Institute for Cancer Research (OICR), Toronto, Canada
+
+- Megan DoerrSage Bionetworks, Seattle
+
+- Marc FiumeDNAstack, Toronto
+
+- Mallory FreebergEMBL's European Bioinformatics Institute (EBI), Hinxton, UK
+
+- Robert FreimuthMayo Clinic, Rochester
+
+- Jaime Guidry AuvilNIH National Cancer Institute (NCI), Bethesda
+
+- Melissa HaendelUNC School of Medicine
+
+- Francis JeansonDatadex
+
+- Giselle KerryELIXIR, International
+
+- Melissa KonopkoELIXIR, International
+
+- Jonathan LawsonBroad Institute of MIT and Harvard, Cambridge, US
+
+- Nancy MahFraunhofer Institute for Biomedical Engineering
+
+- Alice MannWellcome Sanger Institute (WSI), Hinxton, UK
+
+- Mizuki MoritaOkayama University
+
+- Nicola MulderUniversity of Cape Town, Cape Town
+
+- Jean MullerLaboratoire de génétique médicale (UMR_S 1112)
+
+- Heimo MuollerMedical Univerisity Graz
+
+- Satoshi NagaieTohoku University Tohoku, Medical Megabank Organization, Sendai
+
+- Jamal NasirUniversity of Northampton, Northampton
+
+- Tommi NyrönenCSC – IT CENTER FOR SCIENCE
+
+- Soichi OgishimaTohoku University Tohoku, Medical Megabank Organization, Sendai
+
+- Laura PaglioneSpherical Cow Group, New York, NY, USA
+
+- Dina PaltooNIH National Heart, Lung, and Blood Institute (NHLBI), Bethesda
+
+- Helen ParkinsonEMBL's European Bioinformatics Institute (EBI), Hinxton, UK
+
+- Kathy ReinoldIndependent Contributor
+
+- Laura Lyman RodriguezPatient-Centered Outcomes Research Institute (PCORI)
+
+- Dylan SpaldingCSC – IT CENTER FOR SCIENCE
+
+- Morris SwertzUniversity Medical Center Groningen
+
+- Adrian ThorogoodTerry Fox Research Institute, Vancouver, Canada
+
+- Ilia TulchinskyAlphabet
+
+- Susheel VarmaInformation Commissioner's Office
+
+- Vanessa Vogel-FarleyRARE-X, Aliso Viejo, California
+
+- Craig VoisinGoogle LLC, Mountain View
+
+- Chisato YamasakiNational Institute of Biomedical Innovation, Health and Nutrition (NIBIOHN)
+
+- Christina YungOntario Institute for Cancer Research (OICR), Toronto, Canada, Indoc Research, Toronto
+
+News, events, and more
+
+Catch up with all news and articles associated with Data Use Ontology (DUO).
+
+---
+Source: https://www.ga4gh.org/product/data-use-ontology-duo/
+Retrieved: 2026-07-28

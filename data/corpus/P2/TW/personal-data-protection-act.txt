@@ -1,0 +1,271 @@
+Taiwan — Personal Data Protection Act (official English)
+
+Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
+
+Article 1
+
+The Personal Data Protection Act (the "PDPA") is enacted to regulate the collection, processing and use of personal data so as to prevent harm to personality rights, and to facilitate the proper use of personal data.
+
+Article 1-1
+
+The competent authority of the PDPA is the Personal Data Protection Commission (the "PDPC").
+
+Article 1-2
+
+The central government and local governments at all levels shall endeavor to coordinate and implement specific measures to achieve the legislative objectives of the PDPA, ensuring that government agencies under their jurisdiction and non-government agencies under their supervision comply with the PDPA when performing their duties and conducting their businesses, jointly establishing a secure and trustworthy environment for personal data protection.To implement matters related to personal data protection, the competent authority may coordinate a personal data protection policy promotion meeting; the regulations on the operational procedures and other relevant matters shall be prescribed by the competent authority.
+
+Article 2
+
+The terms used in the PDPA have the following meanings:1."personal data" refers to a natural person's name, date of birth, national identification Card number, passport number, physical characteristics, fingerprints, marital status, family information, education background, occupation, medical records, healthcare data, genetic data, sex life, records of physical examination, criminal records, contact information, financial conditions, social activities and any other information that may be used to directly or indirectly identify a natural person;2.a "personal data file" refers to a collection of personal data structured to facilitate data retrieval and management by automated or non-automated means;3. "collection" refers to the act of collecting personal data in any way;4."processing" refers to the act of recording, inputting, storing, compiling/editing, correcting, duplicating, retrieving, deleting, outputting, connecting or internally transferring data for the purpose of establishing or using a personal data file;5."use" refers to the act of using personal data via any methods other than processing;6."cross-border transfer" refers to the cross-border processing or use of personal data;7."government agency" refers to central or local government agencies or non-departmental public bodies authorized to exercise public authority;8."non-government agency" refers to a natural person, legal person or group other than those stated in the preceding subparagraph; and9."data subject" refers to an individual whose personal data is collected, processed or used.
+
+Article 3
+
+A data subject shall be able to exercise the following rights with regard to his/her personal data and such rights shall not be waived or limited contractually in advance:1.the right to make an inquiry of and to review his/her personal data;2.the right to request a copy of his/her personal data;3.the right to supplement or correct his/her personal data;4.the right to demand the cessation of the collection, processing or use of his/her personal data; and5.the right to erase his/her personal data.
+
+Article 4
+
+Whoever is commissioned by government agencies or non-government agencies to collect, process or use personal data shall be deemed to be acting on behalf of the commissioning agency to the extent that the PDPA applies.
+
+Article 5
+
+The collection, processing and use of personal data shall be carried out in a way that respects the data subject's rights and interest, in an honest and good-faith manner, shall not exceed the necessary scope of specific purposes, and shall have legitimate and reasonable connections with the purposes of collection.
+
+Article 6
+
+Data pertaining to a natural person's medical records, healthcare, genetics, sex life, physical examination and criminal records shall not be collected, processed or used unless on any of the following bases:1.where it is expressly required by law;2.where it is within the necessary scope for a government agency to perform its statutory duties or for a non-government agency to fulfill its statutory obligation, provided that proper security and maintenance measures are adopted prior or subsequent to such collection, processing or use of personal data;3.where the personal data has been manifestly made public by the data subject or publicized legally;4.where it is necessary for statistics gathering or academic research by a government agency or an academic institution for the purpose of healthcare, public health, or crime prevention, provided that such data, as processed by the data provider or as disclosed by the data collector, may not lead to the identification of a specific data subject;5.where it is necessary to assist a government agency in performing its statutory duties or a non-government agency in fulfilling its statutory obligations, provided that proper security and maintenance measures are adopted prior or subsequent to such collection, processing, or use of personal data; or6.where the data subject has consented to the collection, processing and use of his/her personal data in writing, except where the collection, processing or use exceeds the necessary scope of the specific purpose, or where the collection, processing or use based solely on the consent of the data subject is otherwise prohibited by law, or where such consent is not given by the data subject out of his/her free will.Articles 8 and 9 shall apply mutatis mutandis to the collection, processing, or use of personal data in accordance with the preceding paragraph; paragraphs 1, 2 and 4 of Article 7 shall apply mutatis mutandis to the consent required under subparagraph 6 of the preceding paragraph.
+
+Article 7
+
+"Consent", as referred to in subparagraph 2, paragraph 1 of Article 15 and subparagraph 5, paragraph 1 of Article 19, means a declaration of agreement given by a data subject after he/she has been informed by the data collector of the information required under the PDPA."Consent", as referred to in subparagraph 7, paragraph 1 of Article 16 and subparagraph 6, paragraph 1 of Article 20, means a separate declaration of agreement given by a data subject after he/she has been informed by the data collector of any of the purposes other than that originally specified, the scope of other use, and the impact of giving or not giving consent on the rights and interests of the data subject.The data subject's consent may be presumed given pursuant to subparagraph 2, paragraph 1 of Article 15 and subparagraph 5, paragraph 1 of Article 19 if the data subject does not indicate his/her objection and affirmatively provides his/her personal data after the government or non-government agency has informed the data subject of the relevant information specified in paragraph 1 of Article 8 of the PDPA.The data collector shall bear the burden of proof regarding the fact that the data subject has given the consent prescribed under the PDPA.
+
+Article 8
+
+Government or non-government agencies shall expressly inform the data subject of the following information when colleting their personal data in accordance with Article 15 or 19 of the PDPA:1.the name of the government or non-government agency;2.the purpose of the collection;3.the categories of the personal data to be collected;4.the time period, territory, recipients, and methods of which the personal data is used;5.the data subject's rights under Article 3 and the methods for exercising such rights; and6.the data subject's rights and interests that will be affected if he/she elects not to provide his/her personal data.The obligation to inform as prescribed in the preceding paragraph may be waived under any of the following circumstances:1.where notification may be waived in accordance with the law;2.where the collection of personal data is necessary for the government agencies to perform their statutory duties or the non-government agencies to fulfill their statutory obligation;3.where giving notice will prevent the government agencies from performing their statutory duties;4.where giving notice will harm public interests;5.where the data subject has already known the content of the notification; or6.where the collection of personal data is for non-profit purposes and clearly has no adverse effect on the data subject.
+
+Article 9
+
+Government or non-government agencies shall, before processing or using the personal data collected in accordance with Article 15 or 19 which was not provided by the data subject, inform the data subject of their source of data and other information specified in subparagraphs 1 through 5, paragraph 1 of the preceding article.The obligation to inform as prescribed in the preceding paragraph may be exempt under any of the following circumstances:1.under any of the circumstances provided in paragraph 2 of the preceding article;2.where the personal data has been manifestly made public by the data subject or publicized legally;3.where it is unable to inform the data subject or his/her legal representative;4.where it is necessary for statistics gathering or academic research in pursuit of public interests, provided that such data, as processed by the data provider or as disclosed by the data collector, may not lead to the identification of a specific data subject; or5.where the personal data is collected by mass communication enterprises for the purpose of news reporting for the benefit of public interests.The obligation to inform as prescribed in paragraph 1 may be performed at the time of the first use of the personal data towards the data subject.
+
+Article 10
+
+Upon the request of a data subject, the government or non-government agency shall reply to the data subject's inquiry, allow the data subject to review the personal data collected, or provide the data subject with a copy thereof except under any of the following circumstances:1.where national security, diplomatic or military secrets, overall economic interests or other material national interests may be harmed;2.where a government agency may be prevented from performing its statutory duties; or3.where the vital interests of the data collectors or any third parties may be adversely affected.
+
+Article 11
+
+A government or non-government agency shall ensure the accuracy of personal data in its possession and correct or supplement such data on its own initiative or upon the request of data subjects.In the event of a dispute regarding the accuracy of the personal data, the government or non-government agency shall, on its own initiative or upon the request of the data subject, cease processing or using the personal data, unless the processing or use is either necessary for the performance of an official or business duty, or has been agreed to by the data subject in writing, and the dispute has been recorded.When the specific purpose of data collection no longer exists, or upon expiration of the relevant time period, government or non-government agencies shall, on their own initiative or upon the request of the data subject, erase or cease processing or using the personal data, unless the processing or use is either necessary for the performance of an official or business duty, or has been agreed to by the data subject in writing.Government or non-government agencies shall, on their own initiative or upon the request of the data subject, erase the personal data collected or cease collecting, processing or using the personal data in the event where the collection, processing or use of the personal data is in violation of the PDPA.If any failure to correct or supplement any personal data is attributable to a government or non-government agency, the government or non-government agency shall notify the persons who have been provided with such personal data after the correction or supplement is made.
+
+Article 12
+
+When a government or non-government agency becomes aware that the personal data it holds has been stolen, altered, damaged, lost, or leaked, it shall notify the data subject.Where the circumstances described under the preceding paragraph fall within a specified scope of report, the government or non-government agency shall submit reports to the following authorities:1.Government agencies shall submit reports to the competent authority and the authorities designated under Paragraph 1, Article 21-1 to receive reports on their implementation status.2.Non-government agencies shall submit reports to the competent authority. Upon receiving the reports, the competent authority shall also inform the authorities in charge of the industries concerned.Under the circumstances described under Paragraph 1, the government or non-government agency shall take immediate and effective countermeasures to prevent the incident from escalating, document the relevant facts, impacts, and response measures taken, and preserve the relevant records for inspection by the competent authority.The regulations on the content, method, time limit, and scope of notification or reporting, countermeasures, record retention, and other relevant matters under the preceding three paragraphs shall be prescribed by the competent authority.
+
+Article 13
+
+Where a request is made by a data subject to a government or non-government agency pursuant to Article 10, the agency shall determine whether to accept or reject such request within fifteen days; such deadline may be extended by up to fifteen days if necessary, and the data subject shall be notified in writing of the reason for the extension.Where a request is made by a data subject to a government or non-government agency pursuant to Article 11, the agency shall determine whether to accept or reject such request within thirty days; such deadline may be extended by up to thirty days if necessary, and the data subject shall be notified in writing of the reason for the extension.
+
+Article 14
+
+Government or non-government agencies may charge a fee to cover necessary costs from those who make an inquiry or request to review or obtain copies of the personal data.
+
+Article 15
+
+Except for the personal data specified under paragraph 1 of Article 6, the collection or processing of personal data by government agencies shall be for specific purposes and on one of the following bases:1.where it is within the necessary scope to perform its statutory duties;2.where consent has been given by the data subject; or3.where the rights and interests of the data subject will not be infringed upon.
+
+Article 16
+
+Except for the personal data specified under paragraph 1 of Article 6, government agencies shall use personal data only within the necessary scope of their statutory duties and for the specific purpose of collection; the use of personal data for another purpose shall be only on any of the following bases:1.where it is expressly required by law;2.where it is necessary for ensuring national security or furthering public interests;3.where it is to prevent harm to the life, body, freedom, or property of the data subject;4.where it is to prevent material harm to the rights and interests of others;5.where it is necessary for statistics gathering or academic research by a government agency or an academic institution for public interests; provided that such data, as processed by the data provider or as disclosed by the data collector, may not lead to the identification of a specific data subject;6.where it is for the data subject's rights and interests; or7.where consent has been given by the data subject.
+
+Article 17
+
+Government agencies shall make public the following information online or allow the public to make inquiries thereof via other appropriate means; the foregoing also applies when any changes are made to the following information:1.the names of the personal data files;2.the name and contact information of the agency that is in possession of the personal data files;3.the legal basis and purpose of keeping the personal data files; and4.the category of the personal data.
+
+Article 18
+
+Government agencies shall appoint a Personal Data Protection Officer, designated by the head of the agency from among suitable personnel to serve concurrently with their original position. Adequate personnel and resources shall be allocated to this officer, who shall be responsible for coordinating, promoting, supervising, and evaluating matters related to personal data protection within the agency, its subordinate agencies, and agencies under its supervision.Government agencies shall designate personnel to handle the security and maintenance of personal data files, preventing the theft, alteration, damage, loss, or leakage of personal data. The regulations on the security and maintenance, management mechanisms, measures to be taken, and other related matters concerning personal data files shall be prescribed by the competent authority.Government agencies shall not impose unfavorable disciplinary actions or take management measures against personnel for lawfully performing personal data protection duties.The competent authority shall properly plan and implement competency training for the personnel referred to under Paragraphs 1 and 2 to enhance their professional knowledge and skills in personal data protection.The regulations on the duties, competency requirements, training, and other relevant matters for the personnel referred to under Paragraphs 1 and 2 shall be prescribed by the competent authority.
+
+Article 19
+
+Except for the personal data specified under paragraph 1 of Article 6, the collection or processing of personal data by non-government agencies shall be for specific purposes and on one of the following bases:1.where it is expressly required by law;2.where there is a contractual or quasi-contractual relationship between the non-government agency and the data subject, and proper security measures have been adopted to ensure the security of the personal data;3.where the personal data has been manifestly made public by the data subject or publicized legally;4.where it is necessary for statistics gathering or academic research by an academic institution in pursuit of public interests, provided that such data, as processed by the data provider or as disclosed by the data collector, may not lead to the identification of a specific data subject;5. where consent has been given by the data subject;6.where it is necessary for furthering public interests;7.where the personal data is obtained from publicly available sources unless the data subject has an overriding interest in prohibiting the processing or use of such personal data; or8.where the rights and interests of the data subject will not be infringed upon.A data collector or processor shall, on its own initiative or upon the request of the data subject, erase or cease processing or using the personal data when it becomes aware of, or upon being notified by the data subject, that the processing or use of the personal data should be prohibited pursuant to the proviso to subparagraph 7 of the preceding paragraph.
+
+Article 20
+
+Except for the personal data specified in paragraph 1 of Article 6, non-government agencies shall use personal data only within the necessary scope of the specific purpose of collection; the use of personal data for another purpose shall be only on any of the following bases:1.where it is expressly required by law;2.where it is necessary for furthering public interests;3.where it is to prevent harm to the life, body, freedom, or property of the data subject;4.where it is to prevent material harm to the rights and interests of others;5.where it is necessary for statistics gathering or academic research by a government agency or an academic institution for public interests; provided that such data, as provided by the data provider or disclosed by the data collector, may not lead to the identification of a specific data subject;6.where consent has been given by the data subject; or7.where it is for the data subject's rights and interests.When a non-government agency uses personal data for marketing purpose pursuant to the preceding paragraph, upon the data subject's objection to such use, the agency shall cease using the data subject's personal data for marketing.Non-government agencies, when using the data subject’s personal data for marketing purpose for the first time, shall provide the data subject the ways that he/she can object to such use, and the agency shall pay for the fees therefrom.
+
+Article 20-1
+
+Non-government agencies possessing personal data files shall implement security and maintenance measures to prevent the theft, alteration, damage, loss, or leakage of personal data.The regulations on the security and maintenance, management mechanisms, measures to be taken, and other related matters concerning personal data files as referred to under the preceding paragraph shall be prescribed by the competent authority.
+
+Article 21
+
+If a cross-border transfer of personal data is carried out by a non-government agency under any of the following circumstances, the competent authority may impose restrictions on such transfer:1.where major national interests are involved;2.where an international treaty or agreement so stipulates;3.where the country receiving the personal data lacks proper regulations on protection of personal data and the data subjects’ rights and interests may consequently be harmed; or4.where the cross-border transfer of the personal data to a third country (territory) is carried out to circumvent the PDPA.
+
+Article 21-1
+
+Government agencies shall submit reports annually regarding the implementation status on their management and protection of personal data to their superior agencies or supervisory agencies. Where no superior agency or supervisory agency exists, the following provisions shall apply:1.The Office of the President, the National Security Council, and the Five Yuans of government shall submit reports to the competent authority.2.Special municipal governments, special municipal councils, county (city) governments, and county (city) councils shall submit reports to the competent authority.3.The offices of mountain indigenous districts in special municipalities and their representative councils shall submit reports to the special municipal government; township (town, city) offices and their representative councils shall submit reports to the county government.Government agencies shall supervise and audit the implementation of protection and management of personal data by their subordinate or supervised government agencies, township (town, city) offices under their jurisdiction, offices of mountain indigenous districts in special municipalities, and representative councils of townships (towns, cities) and mountain indigenous districts in special municipalities.If deficiencies or areas requiring rectification are identified during the audits conducted pursuant to the preceding paragraph, the audited agency shall submit a rectification report to the auditing agency. After review, the auditing agency shall forward the report along with the audit findings to the competent authority.When deemed necessary, the auditing agency or competent authority may require the audited agency to provide explanations or make adjustments.Regarding the requirements under the preceding four paragraphs, the regulations on the required information of the implementation reports, the frequency, items, and methods of the audits, the delivery of the audit results, the procedures for submitting the rectification reports, and other related matters shall be prescribed by the competent authority.
+
+Article 21-2
+
+The competent authority shall conduct periodic or ad hoc audits on the implementation of the protection and management of personal data by government agencies; when necessary, it may request assistance from the auditing authority specified under Paragraph 2 of the preceding article.If deficiencies or areas requiring rectification are identified in the audited agency’s implementation during an audit under the preceding paragraph, the audited agency shall submit a rectification report. This report shall be submitted to the authority designated to receive the implementation report under Paragraph 1 of the preceding article for review, and subsequently forwarded to the competent authority by such reviewing authority.The reviewing authority or competent authority under the preceding paragraph may, when deemed necessary, request the audited agency to provide explanations or make adjustments.Regarding the requirements under the preceding three paragraphs, the regulations on the frequency, items, and methods of the audits, the procedures for submitting the rectification reports, and other related matters shall be prescribed by the competent authority.Personnel participating in audits pursuant to the preceding article and this article shall bear a duty of confidentiality regarding any information learned or received in the course of performing such audits.
+
+Article 21-3
+
+Where it is likely that a government agency may violate the PDPA, the competent authority may request the government agency to submit information and explanations, or dispatch personnel with official identification documents to conduct on-site inspections. Except where confidentiality is required by law, the government agency and its relevant personnel shall cooperate with the inspections.Where necessary, the competent authority may request assistance from the auditing authority specified under Paragraph 2, Article 21-1 for the on-site inspection referred to under the preceding paragraph.Personnel participating in the inspection shall bear a duty of confidentiality regarding any information learned or received in the course of performing such inspection.
+
+Article 21-4
+
+Where a government agency violates the PDPA, the competent authority shall order it to rectify the violation within a specified time limit. The government agency shall make appropriate rectification within the time limit and shall respond in writing to the competent authority regarding the status of the rectification.Where a government agency fails to rectify the violation as required under the preceding paragraph, the competent authority may publicize its name and the facts of its violation.Where personnel of a government agency fail to act in accordance with the PDPA, they shall be subject to disciplinary sanction, action, or punishment in accordance with relevant laws and regulations, depending on the severity of the violation.
+
+Article 21-5
+
+The provisions under this section do not apply to intelligence agencies.
+
+Article 22
+
+Where the competent authority deems that a non-government agency is likely to violate the PDPA, or deems it necessary to verify its compliance the PDPA, it may conduct inspections in the following ways:1.notify the non-government agency or its relevant personnel to state their opinions;2.notify the non-government agency or its relevant personnel to provide necessary documents, data, or items, or take other cooperative measures; and3.conduct inspections independently or jointly with the central government authorities in charge of the industries concerned, special municipal governments, county (city) governments, or other relevant authorities by dispatching personnel with official identification documents, and may require relevant personnel to provide necessary explanations, take cooperative measures, or furnish relevant supporting documents.Regarding the inspection on reviewing the compliance with the PDPA as stated under the preceding paragraph, the regulations on the planning, evaluation method, the factors to be considered, the matters requiring cooperation among the central government authorities in charge of the industries concerned, special municipalities governments, county (city) governments, or relevant authorities, and other related matters shall be prescribed by the competent authority.When conducting the inspections specified under Paragraph 1, the competent authority may seize or copy personal data or personal data files that may be confiscated or used as evidence. For items that are subject to seizure or required to be copied, the competent authority may require the owner, holder, or custodian thereof to present or deliver them. Where there is no legitimate grounds for refusal to present or deliver such items, or resisting the seizure or copying, the competent authority may enforce compliance by means causing the least harm to the rights and interests of the non-government agency.Non-government agencies and their relevant personnel shall not evade, obstruct, or refuse any notification, entry, inspection, or measures carried out pursuant to Paragraph 1 or the preceding paragraph without legitimate grounds.When conducting the inspections under Subparagraph 3, Paragraph 1, the competent authority may be accompanied by information technology, telecommunications, legal, and/or other professional personnel.Personnel participating in the inspection shall bear a duty of confidentiality regarding any information learned or received during the inspection and shall take care to preserve the reputation of the inspected party.When conducting the inspections under Paragraph 1, the competent authority may, when necessary, request the central government authorities in charge of the industries concerned, the special municipal governments, the county (city) governments, or other relevant authorities (institutions) to cooperate in taking effective measures or providing assistance.
+
+Article 23
+
+Seized or copied items under Paragraph 3 of the preceding article shall be sealed or otherwise marked and appropriately processed. Items that are difficult to transport or store may be placed under guard or entrusted to the owner or other suitable person for safekeeping.Seized or copied items that no longer need to be retained, or where a decision has been made not to impose penalties or not to confiscate, shall be returned. However, this shall not apply to items that should be confiscated or retained for investigation into other cases.
+
+Article 24
+
+The non-government agency and the owners, holders, custodians, or interested parties of such items may file an objection with the competent authority against the requests, enforcement, seizure, or copying under the preceding two articles.If the competent authority finds the objection under the preceding paragraph justified, it shall immediately cease or modify the action; if it finds the objection unjustified, it may continue with the action. Upon request by the objecting party, a record of the grounds regarding objection shall be prepared and provided.Where a party objects to the competent authority’s decision under the preceding paragraph, such objection may only be raised concurrently with an appeal against the substantive decision in the case. However, where the party under Paragraph 1 is legally barred from appealing the substantive decision, they may directly initiate an administrative lawsuit against the action under Paragraph 1.
+
+Article 25
+
+Where a non-government agency violates the PDPA, the competent authority may, in addition to imposing fines as prescribed under the PDPA, impose the following penalties:1.prohibit the collection, processing, or use of personal data;2.order the deletion of processed personal data files;3.confiscate or order the destruction of illegally collected personal data; and4.publicize the violations, along with the names of the violator and the statutory representative thereof.When imposing the penalties under the preceding paragraph, the competent authority shall adopt the method that causes the least harm to the rights and interests of the non-government agency, within the scope necessary to prevent violations of the PDPA.
+
+Article 26
+
+Where the competent authority finds no violation of the PDPA after an inspection pursuant to Article 22, it may publish the inspection findings with the consent of the non-government agency.
+
+Article 27
+
+(Deleted)
+
+Article 28
+
+Government agencies shall be liable for the damages arising from injury caused by any unlawful collection, processing or use of personal data, or other infringement on the rights of data subjects due to such government agency's violation of the PDPA, unless such injury was caused by any natural disaster, emergency or other force majeure event.If an injury suffered by the victim is a non-pecuniary damage, he/she may request an appropriate amount of monetary compensation; if the injury suffered by the victim is damage to his/her reputation, the victim may request appropriate corrective measures to restore his/her reputation.Under the circumstances identified in the preceding two paragraphs, if it is difficult or impossible for the victim to prove the monetary value of the actual damage, he/she may ask the court to award the compensation in the amount of not less than NT$500 but not more than NT$20,000 per incident, per person based on the severity of the damage.Where the rights of multiple data subjects have been infringed upon due to the same incident, the total amount of compensation awarded to such data subjects shall not exceed NT$200 million. However, if the interests involved in the incident exceed NT$200 million, the compensation shall be up to the value of such interests.If the total amount of damages for the injuries attributable to the same incident exceeds the amount referred to in the preceding paragraph, the compensation payable to each victim shall not be limited to the lower end of damages, i.e. NT$500, per incident as set forth in paragraph 3 of this Article.The right of claim referred to in paragraph 2 above may not be transferred or inherited. However, this does not apply to the circumstances where monetary compensation has been agreed upon in a contract or a claim therefor has been filed with the court.
+
+Article 29
+
+Non-government agencies shall be liable for the damages arising from any injury caused by any unlawful collection, processing or use of personal data, or other infringement on the rights of data subjects due to such non-government agency's violation of the PDPA, unless the non-government agency can prove that such injury is not caused by its willful act or negligence.Paragraphs 2 through 6 of the preceding article apply to the damage claims raised in accordance with the preceding paragraph.
+
+Article 30
+
+The right to claim damage compensation will be extinguished if the right-holder does not exercise such right within the two-year period after he/she becomes aware of his/her damage and the identity of the person(s) liable for the compensation, or the five-year period following the occurrence of the damage.
+
+Article 31
+
+With regard to matters pertaining to damages, aside from the provisions of the PDPA, the State Compensation Law may be applied to a government agency and the Civil Code may be applied to a non-government agency.
+
+Article 32
+
+An incorporated foundation or an incorporated charity that brings a case to the court in accordance with this Chapter shall fulfill the following criteria:1.the total registered assets of an incorporated foundation shall be NT$10 million or more, or the total number of members of an incorporated charity shall be 100 or more;2.the protection of personal data shall be set forth as one of its purposes in its charter; and3.It shall have been established for more than three years following its receipt of the approval thereof.
+
+Article 33
+
+The lawsuit filed with the court for damages against a government agency in accordance with the PDPA shall be subject to the exclusive jurisdiction of the district court where the agency is located. The lawsuit against a non-government agency is subject to the exclusive jurisdiction of the district court where its main office, principal place of business or domicile is located.If the non-government agency referred to in the preceding paragraph is a natural person and has no place of domicile in the Republic of China, or the address thereof is unknown, such natural person's place of residence in the Republic of China shall be deemed to be the place of domicile. If the natural person has no place of residence in the Republic of China or the address thereof is unknown, his/her last known domicile in the Republic of China shall be deemed to be the place of domicile. If the natural person has no last known domicile, the district court where the central government is located shall have exclusive jurisdiction.If the non-government agency referred to in paragraph 1 is a legal person or a group and has no main office, principal place of business, or the addresses thereof are both unknown, the district court where the central government is located shall have exclusive jurisdiction.
+
+Article 34
+
+Where the rights of multiple data subjects have been infringed upon due to the same incident, the incorporated foundation or incorporated charity may file a lawsuit with the court in its own name after obtaining a written delegation of litigation rights of at least 20 data subjects. The data subjects may withdraw their delegation in writing before the conclusion of the oral argument and the data subjects shall notify the court thereof.With regard to the litigation referred to in the preceding paragraph, the court may issue a public notice, either upon receiving a petition therefor or on its own initiative, informing other data subjects that suffer damages due to the same incident that they may delegate their litigation rights to the incorporated foundation or the incorporated charity referred to in the preceding paragraph within a specified period of time. The incorporated foundation or the incorporated charity may expand demand for the relief sought before the conclusion of the oral argument.If other data subjects that suffer damages due to the same incident chose not to delegate their litigation rights pursuant to the preceding paragraph, they may still bring the case to the court within the timeframe specified in the public notice for the court to combine the cases.Other data subjects that have suffered damages due to the same incident may also file a petition, requesting the court to issue the public notice referred to in the preceding paragraph.The notice referred to in the preceding two paragraphs may be posted on the bulletin boards of the court, on the Internet or at other proper locations. Should the court consider it necessary, it may make such notice in a government gazette or newspaper, or through other means, and the fees therefrom shall be paid by the National Treasury.For the incorporated foundation or the incorporated charity that brings a case to the court in accordance with paragraph 1, if the claim value of the case exceeds NT$600,000, the court fee attributable to the excess portion of the claim value shall be waived.
+
+Article 35
+
+If a data subject withdraws his/her delegation of the litigation rights in accordance with paragraph 1 of the preceding article, the part of the court proceedings relating to such data subject shall automatically be suspended, and such data subject shall make a declaration to become a party to the suit. The court may also, on its own initiative, order such data subject to become a party to the suit.After the incorporated foundation or the incorporated charity files a lawsuit with the court in accordance with the preceding article, if the withdrawal of litigation rights by some data subjects causes the number of remaining data subjects in the lawsuit to drop to less than 20, the court proceedings for the remaining data subjects may still continue.
+
+Article 36
+
+The statute of limitation for each data subject to exercise the right to claim damages under paragraphs 1 and 2 of Article 34 shall be calculated separately.
+
+Article 37
+
+An incorporated foundation or an incorporated charity that has been delegated litigation rights by data subjects shall be entitled to implement any and all acts pertaining to the lawsuit. However, the data subjects may set restrictions on the abandonment, withdrawal, or settlement relating to such lawsuit.The restrictions set by one of the data subjects referred to in the preceding paragraph have no effect on the other data subjects.The restrictions referred to in paragraph 1 shall be specified in the documents identified in paragraph 1 of Article 34, or shall be submitted to the court in writing.
+
+Article 38
+
+In the event that a data subject is not satisfied with the judgment of the lawsuit filed pursuant to Article 34, he/she may withdraw his/her delegation of litigation rights before the deadline for filing an appeal by such incorporated foundation or incorporated charity, and then file the appeal himself/herself.After receiving the original copy of the judgment, the incorporated foundation or the incorporated charity shall notify the data subjects of the outcome and also notify the data subjects in writing within seven days as to whether or not an appeal will be filed.
+
+Article 39
+
+The incorporated foundation or the incorporated charity shall deduct the necessary litigation fees from the compensation awarded in accordance with the result of the lawsuit filed pursuant to Article 34, and deliver the remaining amount to the data subjects that delegate the litigation rights.The incorporated foundation or the incorporated charity may not ask for remuneration for the lawsuit filed in accordance with paragraph 1 of Article 34.
+
+Article 40
+
+The incorporated foundation or the incorporated charity that filed a lawsuit in accordance with the provisions of this Chapter shall engage an attorney as its agent ad litem for the lawsuit.
+
+Article 41
+
+Any person who, with intent to obtain unlawful benefit for themselves or a third party or to cause harm to another’s interests, violates Paragraph 1 of Article 6, Article 15, Article 16, Article 19, Paragraph 1 of Article 20, or an order or decision restricting cross-border transfer under Article 21, thereby causing harm to another, shall be sentenced to imprisonment for up to five (5) years and may also be fined up to NT$1,000,000.
+
+Article 42
+
+If a person, with the intention of obtaining unlawful gains for himself/herself or for a third party, or infringing upon the interests of others, illegally changes or erases personal data files, or otherwise compromises the accuracy of another's personal data files, thereby causing damages to others, the person shall be sentenced to imprisonment for no more than five years or detention, and/or a fine of no more than NT$1,000,000.
+
+Article 43
+
+The preceding two articles also apply to nationals of the Republic of China if they commit any offense specified therein outside of the Republic of China against any other national of the Republic of China.
+
+Article 44
+
+A government official who abuses the power, opportunity or means available to him/her to commit any of the offenses described in this Chapter shall be subject to a more severe punishment which is up to 50% more than that prescribed above.
+
+Article 45
+
+A person who committed any of the offenses identified in this Chapter shall be indicted only upon a complaint, except for the offenses specified in Article 41 and those identified in Article 42 against a government agency.
+
+Article 46
+
+If a more severe punishment is provided for under other laws with respect to the offenses identified in this Chapter, the more severe punishment shall take precedence.
+
+Article 47
+
+Where a non-government agency commits any of the violations listed below, the competent authority shall impose a fine of not less than NT$50,000 and not more than NT$500,000, order it to rectify the violation within a specified period of time, and impose fines successively until the violation is rectified:1.violation of Paragraph 1, Article 6;2.violation of Article 19;3.violation of Paragraph 1, Article 20; and4.violation of an order or decision restricting cross-border transfer under Article 21.
+
+Article 48
+
+Where a non-government agency commits any of the violations listed below, the competent authority shall order it to rectify the violation within a specified period of time, and, if the violation is not rectified within such period, impose a fine of not less than NT$20,000 and not more than NT$200,000 successively until the violation is rectified:1.violation of Article 8 or Article 9;2.violation of Article 10, Article 11, or Article 13;3.violation of Paragraph 1 of Article 12, or the provisions concerning the content, method, or time limit of notifications as stipulated in the regulations prescribed under Paragraph 4; and4.violation of Paragraph 2 or 3, Article 20.Where a non-government agency is in violation of Paragraph 2 or 3 of Article 12, or the provisions concerning the content, method and time limit of reporting, response measures, and record retention as stipulated in the regulations prescribed under Paragraph 4, the competent authority shall impose a fine of not less than NT$20,000 and not more than NT$200,000, order it to rectify the violation within a specified period of time, and impose fines successively until the violation is rectified.Where a non-government agency commits any of the violations listed below, the competent authority shall impose a fine of not less than NT$20,000 and not more than NT$2,000,000, order it to rectify the violation within a specified period of time, and, if the violation is not rectified within such period, impose a fine of not less than NT$150,000 and not more than NT$15,000,000 successively until the violation is rectified:1.violation of Paragraph 1, Article 20-1;2.violation of the provisions concerning the security and maintenance matters, management mechanisms, or measures to be taken related to personal data files as stipulated under the regulations established under Paragraph 2, Article 20-1;3.failure to establish a security and maintenance plan for personal data files or methods for processing personal data after business termination as required under Paragraph 3, Article 51-1; and4.violation of the provisions concerning the content, implementation methods or standards that the plans or processing methods must possess as stipulated in the regulations established under Paragraph 4, Article 51-1.Where a non-government agency commits any of the acts listed under the preceding paragraph and the violation is material, the competent authority shall impose a fine of not less than NT$150,000 and not more than NT$15,000,000, order it to rectify the violation within a specified period of time, and impose fines successively until the violation is rectified.
+
+Article 49
+
+Non-government agencies in violation of Paragraph 4, Article 22 shall be subject to a fine of not less than NT$20,000 and not more than NT$200,000 to be imposed by the competent authority.
+
+Article 50
+
+The representative, manager, or any other authorized representative of a non-government agency shall be fined the same amount imposed on the non-government agency for a violation of any of the preceding three articles, unless said person proves that he/she has exercised due care to prevent such violation.
+
+Article 51
+
+The PDPA does not apply to the following circumstances:1.where personal data is being collected, processed, or used by a natural person purely for purposes of personal or household activities; or2. where audio-visual data is collected, processed, or used in public places or public activities and not connected to other personal data.The PDPA also applies to the government and the non-government agencies outside the territory of the Republic of China (R.O.C) when they collect, process or use the personal data of R.O.C. nationals.
+
+Article 51-1
+
+Regarding the supervision and management matters concerning non-governmental agencies stipulated under Paragraphs 1 and 3 to 7 of Article 22, Articles 23 to 26, and Articles 47 to 50, within six (6) years from the date of establishment of the competent authority, the competent authority will propose to the Executive Yuan for announcement of a specified scope of non-governmental agencies that shall remain under the jurisdiction of the central government authorities in charge of the industries concerned, special municipal governments, and county (city) governments.The competent authority shall, after consultation with relevant authorities every two (2) years, propose to the Executive Yuan the adjustment or reduction of the scope of non-government agencies specified in the announcement referred to under the preceding paragraph.The central government authorities in charge of the industries concerned may require non-government agencies within the scope announced in the preceding two paragraphs to formulate personal data file security and maintenance plans or methods for processing personal data after business termination.The central government authorities in charge of the industries concerned will prescribe, pursuant to the regulations prescribed by the competent authority under Paragraph 2, Article 20-1, the regulations on the content, implementation methods or standards, and other relevant requirements for the plans and processing methods referred to under the preceding paragraph, and may prescribe stricter requirements.
+
+Article 52
+
+The competent authority may commission other authorities (institutions), non-departmental public bodies, or public interest organizations to exercise its authority under Paragraph 2 of Article 12, Paragraphs 1, 3, 5, and 7 of Article 22, Article 23, and Article 24.Within the scope announced under Paragraphs 1 and 2 of the preceding article, the central government authorities in charge of the industries concerned, special municipal governments, or county (city) governments may delegate their subordinate authorities or commission other authorities (institutions), non-departmental public bodies, or public interest organizations to exercise their authority under Paragraphs 1, 3, 5, and 7 of Article 22, Article 23, and Article 24 to its subordinate authorities.Members of the entities commissioned or delegated under the preceding two paragraphs shall bear a duty of confidentiality regarding any information learned or received in the course of performing such duties.A public interest organization referred to under Paragraphs 1 and 2 shall not be granted the legal standing to sue by the data subjects under Paragraph 1, Article 34 to file damage compensation lawsuits in its own name.
+
+Article 53
+
+The competent authority shall prescribe specific purposes and categories of personal data, and provide the same to government and non-government agencies for reference and use.
+
+Article 53-1
+
+Those dissatisfied with an administrative disposition rendered by the competent authority under the PDPA may resort to administrative litigation directly.Non-government agencies within the scope announced under Paragraphs 1 and 2 of Article 51-1 may file administrative appeals with the competent authority against the administrative dispositions rendered by central government authorities in charge of the industries concerned, special municipal governments, or county (city) governments under the PDPA. However, where an administrative disposition is made by an independent agency established under the Basic Code Governing Central Administrative Agencies and Organizations, administrative litigation may be initiated directly.For administrative dispositions rendered under the PDPA prior to the effective date of the amendments enacted on October 17, 2025, administrative appeals shall be filed with the competent authority.Administrative appeals accepted but not yet concluded before October 17, 2025, the effective date of the amendments to the PDPA, shall continue to be processed by the original accepting authority in accordance with the Administrative Appeal Act after the effective date of the amendments.
+
+Article 54
+
+After the enactment of the amendments to the PDPA on December 15, 2015, if any personal data was furnished before the amendments to the PDPA on May 26, 2010, not by the data subject, the data subject shall be provided with the information required under Article 9 before such personal data is processed or used.The obligation to inform as prescribed in the preceding paragraph may be given at the time when such personal data is used for the first time after the enactment of the amendments to the PDPA on December 15, 2015.Any use of personal data without the information provided in accordance with the preceding two paragraphs shall be deemed and punished as a violation of Article 9.
+
+Article 55
+
+The Enforcement Rules of the PDPA shall be prescribed by the competent authority.
+
+Article 56
+
+The enforcement date of the PDPA shall be set by the Executive Yuan.The deletion of Articles 19 through 22 and Article 43 on May 26, 2010, and the revision of Article 48 under the amendment to the PDPA made on May 16, 2023, shall become effective on the date of promulgation.
+
+---
+Source: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
+Retrieved: 2026-07-28

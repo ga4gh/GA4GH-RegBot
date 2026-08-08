@@ -127,6 +127,7 @@ class RegBot:
         top_k: int = 8,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
+        framework: Optional[List[str]] = None,
     ) -> List[Dict[str, Any]]:
         r = self._retriever_instance()
         if not r.is_ready():
@@ -136,6 +137,7 @@ class RegBot:
             top_k=top_k,
             category=category,
             jurisdiction=jurisdiction,
+            framework=framework,
         )
 
     def compliance_report_and_chunks(
@@ -144,6 +146,7 @@ class RegBot:
         *,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
+        framework: Optional[List[str]] = None,
         top_k: int = 8,
     ) -> tuple[dict, List[Dict[str, Any]]]:
         """Same retrieval + compliance as check_compliance; also returns retrieved chunks."""
@@ -153,6 +156,7 @@ class RegBot:
             top_k=top_k,
             category=category,
             jurisdiction=jurisdiction,
+            framework=framework,
         )
         report = analyze_compliance(
             user_consent_form,
@@ -168,12 +172,14 @@ class RegBot:
         *,
         category: Optional[str] = None,
         jurisdiction: Optional[List[str]] = None,
+        framework: Optional[List[str]] = None,
         top_k: int = 8,
     ) -> dict:
         report, _ = self.compliance_report_and_chunks(
             user_consent_form,
             category=category,
             jurisdiction=jurisdiction,
+            framework=framework,
             top_k=top_k,
         )
         return report
@@ -214,6 +220,7 @@ def _cmd_check(args: argparse.Namespace) -> int:
         text,
         category=args.category,
         jurisdiction=jurisdiction,
+        framework=args.framework or None,
         top_k=args.top_k,
     )
     print(json.dumps(report, indent=2, ensure_ascii=False))
@@ -406,6 +413,13 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         metavar="CODE",
         help="Repeatable: scope retrieval to jurisdiction(s), e.g. --jurisdiction SG --jurisdiction GA4GH.",
+    )
+    pc.add_argument(
+        "--framework",
+        action="append",
+        default=None,
+        metavar="NAME",
+        help="Repeatable: scope retrieval to a framework, e.g. --framework GA4GH --framework GDPR.",
     )
     pc.add_argument("--top-k", type=int, default=8, dest="top_k")
     pc.set_defaults(func=_cmd_check)

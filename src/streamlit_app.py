@@ -69,6 +69,11 @@ def _render_evidence_entry(entry: Dict[str, Any]) -> None:
         bits.append(f"§ *{entry['section']}*")
     if entry.get("framework"):
         bits.append(f"`{entry['framework']}`")
+    ctype = entry.get("content_type")
+    if ctype == "summary":
+        bits.append(":red[**summary — not statutory text**]")
+    elif ctype == "primary":
+        bits.append("primary source")
     if bits:
         st.caption(" · ".join(bits))
 

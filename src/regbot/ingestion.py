@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from typing import Any, Dict, List, Optional, Tuple
 
 from pypdf import PdfReader
@@ -16,7 +17,10 @@ from src.regbot.config import (
 )
 from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.jurisdiction import normalize_jurisdiction
-from src.regbot.text_utils import chunk_spans, detect_headings, section_for_offset
+from src.regbot.text_utils import chunk_by_sections, detect_headings, sections_for_span
+
+# Minimum alphabetic words a chunk must carry to be worth citing. See has_citable_content.
+MIN_CITABLE_WORDS = 10
 
 
 def _stable_source_id(path: str) -> str:
@@ -31,13 +35,43 @@ def _load_plaintext(path: str) -> List[Tuple[str, int]]:
         return [(f.read(), 0)]
 
 
+def _running_lines(pages: List[str], *, min_pages: int = 3, ratio: float = 0.5) -> set:
+    """
+    Lines repeated on at least ``ratio`` of pages — running headers and footers.
+
+    Every page of the GA4GH Consent Policy carries "CONSENT POLICY" as a header, which
+    ``pypdf`` extracts as body text. Left in, it lands at the top of most chunks from that
+    document: it pollutes the embedding, inflates BM25 on a meaningless term, and can be
+    picked as a chunk's verbatim quote. One chunk consisted of nothing else.
+    """
+    if len(pages) < min_pages:
+        return set()
+    counts: Dict[str, int] = {}
+    for page in pages:
+        seen = set()
+        for raw in page.split("\n"):
+            line = " ".join(raw.split())
+            # Long lines are body text even if a page repeats one; short ones are furniture.
+            if not line or len(line) > 70 or line in seen:
+                continue
+            seen.add(line)
+            counts[line] = counts.get(line, 0) + 1
+    threshold = max(min_pages, int(len(pages) * ratio))
+    return {line for line, n in counts.items() if n >= threshold}
+
+
+def _strip_running_lines(page: str, running: set) -> str:
+    if not running:
+        return page
+    kept = [raw for raw in page.split("\n") if " ".join(raw.split()) not in running]
+    return "\n".join(kept)
+
+
 def _load_pdf(path: str) -> List[Tuple[str, int]]:
     reader = PdfReader(path)
-    pages: List[Tuple[str, int]] = []
-    for i, page in enumerate(reader.pages):
-        t = page.extract_text() or ""
-        pages.append((t, i + 1))
-    return pages
+    raw_pages = [(page.extract_text() or "") for page in reader.pages]
+    running = _running_lines(raw_pages)
+    return [(_strip_running_lines(t, running), i + 1) for i, t in enumerate(raw_pages)]
 
 
 def load_document_pages(path: str) -> List[Tuple[str, int]]:
@@ -45,6 +79,26 @@ def load_document_pages(path: str) -> List[Tuple[str, int]]:
     if ext == ".pdf":
         return _load_pdf(path)
     return _load_plaintext(path)
+
+
+_URL_RE = re.compile(r"https?://\S+")
+
+
+def has_citable_content(text: str, *, min_words: int = MIN_CITABLE_WORDS) -> bool:
+    """
+    False for chunks with too little prose to be worth citing.
+
+    Catches the leftovers of document structure — a bare "9 Appendix 2" page label, or the
+    provenance line a fetched file carries — which are indexable but useless as evidence:
+    a reviewer offered one of them as the support for a recommendation learns nothing.
+
+    Deliberately permissive. Several genuine provisions are very short (Taiwan PDPA
+    Article 36 is a single sentence), and dropping a real rule is far worse than keeping a
+    dull chunk, so only near-empty text is rejected.
+    """
+    stripped = _URL_RE.sub(" ", text)
+    words = re.findall(r"[A-Za-z]{2,}", stripped)
+    return len(words) >= min_words
 
 
 def _manifest_path(store_dir: str) -> str:
@@ -117,7 +171,9 @@ def ingest_policy_file(
     chunk_idx = 0
     for page_text, page_num in pages:
         headings = detect_headings(page_text)
-        for piece, offset in chunk_spans(page_text):
+        for piece, offset in chunk_by_sections(page_text):
+            if not has_citable_content(piece):
+                continue
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
             meta: Dict[str, Any] = {
@@ -127,10 +183,12 @@ def ingest_policy_file(
                 "category": base_category,
             }
             # Absent when the source has no detectable heading structure (e.g. PDF text
-            # extraction flattens layout). Omitted rather than guessed.
-            section = section_for_offset(headings, offset)
-            if section:
-                meta["section"] = section
+            # extraction flattens layout). Omitted rather than guessed. A chunk that
+            # straddles a boundary lists every section it touches, joined by "; ",
+            # rather than claiming only the one it started in.
+            spanned = sections_for_span(headings, offset, offset + len(piece))
+            if spanned:
+                meta["section"] = "; ".join(spanned)
             if jurisdiction_tag:
                 meta["jurisdiction"] = jurisdiction_tag
             if document_id and str(document_id).strip():
@@ -151,16 +209,24 @@ def ingest_policy_file(
             )
 
     if not new_records:
-        if ext == ".pdf":
-            total_chars = sum(len((t or "").strip()) for t, _ in pages)
-            if total_chars == 0:
+        name = os.path.basename(file_path)
+        total_chars = sum(len((t or "").strip()) for t, _ in pages)
+        if total_chars == 0:
+            if ext == ".pdf":
                 raise ValueError(
                     "No extractable text from this PDF (0 characters after stripping). "
                     "The file may be scanned images only, encrypted, or corrupt; try OCR, "
                     "another PDF export, or a text-based source."
                 )
-        write_manifest(store_dir, existing)
-        return 0
+            raise ValueError(f"{name} contains no text (0 characters after stripping).")
+        # Text was extracted, but every chunk fell below the citable-content floor. Returning
+        # 0 here left the caller with an unchanged store and no reason for it — the CLI even
+        # exited 0. A document that indexes nothing is a failure, so it fails out loud.
+        raise ValueError(
+            f"{name}: extracted {total_chars} characters, but no chunk carries at least "
+            f"{MIN_CITABLE_WORDS} citable words, so nothing was indexed. This is usually a "
+            "table of contents, a cover page, or a scan whose text needs OCR."
+        )
 
     model = load_sentence_transformer(embedding_model_name)
     texts = [r["text"] for r in new_records]

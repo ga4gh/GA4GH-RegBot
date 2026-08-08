@@ -204,6 +204,10 @@ def build_evidence(
             entry["document_id"] = meta["document_id"]
         if meta.get("section"):
             entry["section"] = meta["section"]
+        # Surfaced so a reviewer can tell a citation to the statute from a citation to a
+        # contributor summary of it. The two are not interchangeable for governance review.
+        if meta.get("content_type"):
+            entry["content_type"] = meta["content_type"]
         tags = sorted(chunk_jurisdiction_tags(meta))
         if tags:
             entry["jurisdiction"] = tags[0] if len(tags) == 1 else tags

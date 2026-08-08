@@ -1,0 +1,63 @@
+GDPR Brief — international transfers
+
+6 May 2019
+
+Policy Brief: how can researchers approach international data transfers under the GDPR?
+
+Data controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers.
+
+Data controllers that plan to transfer personal data to a non-EU/EEA country or international organization (including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization) must be mindful of the GDPR’s strict provisions on international data transfers. There are four avenues for lawful international data transfers under the GDPR:
+
+- an adequacy decision (Article 45);
+
+- appropriate safeguards (Articles 46 and 47);
+
+- specific derogations (Article 49); and
+
+- exceptions for one-off or infrequent transfers (second subparagraph of Article 49(1)).
+
+We only focus on avenues that may be most suitable in the genomic research context. A controller must satisfy a two-stage permissibility test before an international transfer may proceed: first, a controller must have a lawful basis for processing personal data; second, the international transfer must adhere to at least one of the lawful avenues listed above. No matter the avenue, a controller must inform data subjects, when a privacy notice is provided, that the controller intends to transfer these personal data internationally, and must specify the legal basis upon which the transfer will be made.
+
+The best scenario is where data can be transferred internationally to a recipient country whose relevant legal framework has been assessed by the European Commission as having an “adequate level of protection.” However, to date, the Commission has recognized as adequate only a small handful of countries.
+
+In the absence of an adequacy decision, data can still be transferred internationally if the data controller or processor has appropriate safeguards, and that enforceable data subject rights and effective legal remedies are available. Adequate safeguards may be provided for by, inter alia, contractual clauses between the sender and recipient that are authorized by the competent data protection authority. However, these clauses may be difficult to negotiate or receive authorization.
+
+Adequate safeguards also may be provided for by European Commission-approved standard contractual clauses; this may be a suitable option for investigators transferring data to their sponsors, though a less suitable option for transfers to public authorities out of concerns regarding compliance with, among other things, indemnification and jurisdiction clauses. These clauses do not require additional European Commission authorization and cannot be negotiated. The constraints are that they can only be used where there is an EU/EEA-based controller-exporter, so cannot be used by EU/EEA-based data processors (e.g. contract research organizations).
+
+Codes of conduct constitute another possible safeguard. However, to date, the European Data Protection Board (EDPB) has not approved any code following the process laid down in Article 40.
+
+Another avenue is derogations for specific situations, although the EDPB has made clear that these derogations are exemptions to the general rule and must be interpreted restrictively. One possible derogation is obtaining explicit consent from the data subject to the proposed international transfer. However, explicit consent is not always feasible in large-scale genomic research projects. Among other issues, consent will only be valid after data controllers have informed the data subject of the possible risks of such transfers for the data subject due to the absence of an adequacy decision and appropriate safeguards. Also, consent must be revocable; therefore, data controllers must be able not to transfer the data if consent is revoked.
+
+Finally, where a transfer cannot be based on an adequacy decision or appropriate safeguards, and none of the specific derogations referred to in Article 49 are applicable, a non-repetitive transfer, concerning only a limited number of data subjects, may take place, subject to a number of conditions. The GDPR specifically mentions that: “For scientific […] research purposes […], the legitimate expectations of society for an increase of knowledge should be taken into consideration” in permitting transfers in this scenario. This avenue requires data controllers to inform the relevant data protection authority of the transfer and provide additional information to individuals on the international data transfer; it also requires them to make a thorough assessment of all the circumstances surrounding the data transfer and provide suitable safeguards with regard to the protection of personal data.
+
+European Union or Member State law may set express limits to the transfer of specific categories of personal data to a third country or an international organization unless an adequacy decision applies to it. Data controllers should check this point before finalizing transfer arrangements.
+
+- Mark Phillips, “International data-sharing norms: from the OECD to the General Data Protection Regulation (GDPR)” (2018) Human Genetics 575. Available here.
+
+- Information Commissioner’s Office (ICO), “International Transfers.” Available here.
+
+- European Commission, “International dimension of data protection.” Available here.
+
+- European Data Protection Board, “Guidelines 2/2018 on derogations of Article 49 under Regulation 2016/679.” Available here.
+
+- Recital 101 – General principles for international data transfers
+
+- Recital 113 – Transfers qualified as not repetitive and that only concern a limited number of data subjects
+
+- Article 44 – General principle for international data transfers
+
+- Article 45 – Transfers on the basis of an adequacy decision
+
+- Article 46 – Transfers subject to appropriate safeguards
+
+- Article 49 – Derogations for specific situations
+
+Edward Dove is a Lecturer in Law at the University of Edinburgh. Robert Eiss is a senior adviser at the Fogarty International Center of the US National Institutes of Health. Jennifer Stoddart was Privacy Commissioner of Canada from 2003 to 2013.
+
+See all previous briefs.
+
+Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
+
+---
+Source: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/
+Retrieved: 2026-07-28

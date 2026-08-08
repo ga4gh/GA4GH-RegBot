@@ -1,37 +1,53 @@
-GA4GH GDPR Forum Policy Brief — Data Protection Impact Assessment (DPIA) and Genomic Health Research
+GDPR Brief — DPIA
+
+2 Sep 2019
+
+Policy Brief: the Data Protection Impact Assessment and genomic health research
+
+Article 35 of the GDPR requires that data controllers perform a Data Protection Impact Assessment (DPIA) before processing personal data if the processing “is likely to result in a high risk to the rights and freedoms of natural persons.”
+
+Examples of situations requiring a DPIA include the “processing on a large scale of sensitive data, such as health data, genetic data, and data revealing racial or ethnic origin,” “storage for archiving purpose of pseudonymised personal sensitive data concerning vulnerable data subjects of research projects or clinical trials” and “matching or combining” multiple datasets concerning the same data subject (reference).
+
+In all likelihood then, controllers subject to the GDPR undertaking large-scale genomic health research will need to conduct a DPIA. This does not mean that each and every processing activity or project requires its own separate DPIA. A single assessment may address a set of similar processing operations that present similar high risks. Specifically relevant for large-scale genomic health research projects, there are circumstances under which it may be reasonable and economical for the subject of a DPIA to be broader than a single project, for example where several controllers plan to introduce a common application or processing environment across an industry sector or segment.
+
+As to the substance of the DPIA: the DPIA is a tool for managing risks to the rights of the data subjects, and thus must take their perspective. The DPIA must detail the intended processing and its purposes, the necessity and proportionality of said processing relative to its purposes, risks incurred, and proposed risk-mitigation measures.
+
+As to the DPIA process, if the controller has a Data Protection Officer (DPO), the DPO should be consulted in performing the DPIA. If the DPIA reveals data subjects are exposed to a high risk absent risk-mitigation measures, the supervisory authorities must be consulted. It is advisable to consult either the intended data subjects prior to processing, or if their identities are yet unknown, to consult the public or research the views of the intended class of data subject. Processors, internal stakeholders and independent experts should also be consulted.
+
+As to structure, the GDPR provides data controllers with flexibility to determine the precise structure and form of the DPIA in order to allow for this to fit with existing working practices. Official and unofficial DPIA templates exist, such as the UK Information Commissioner’s Office (ICO) general DPIA template and the French CNIL template. However, it is advisable to take genomic research specific considerations into account. A DPIA should be performed as early as possible and continually updated.
+
+The results of a DPIA do not have to be published; it is nevertheless recommended that a summary be published, leaving out any proprietary and security sensitive data.
+
+While a DPIA can be burdensome, performing one is not just a matter of compliance, but may also serve to demonstrate accountability and transparency and foster trust with funders, collaborators, ethics committees, participants and the public in the genomic health research enterprise.
+
+Further Reading
+
+- Information Commissioner’s Office “Accountability and Governance: Data Protection Impact Assessments”
+
+- Article 29 Working Party “Guidelines on Data Protection Impact Assessment (DPIA) and Determining Whether Processing ‘Is likely to result in a high risk’ for the purposes of Regulation 2016/679” (2017).
+
+- Chassang G. (2017). The impact of the EU general data protection regulation on scientific research. E-Cancer Medical Science, 11, 709. doi:10.3332/ecancer.2017.709.
+
+Relevant Legislative Provisions
+
+- Article 35 – Data Protection Impact Assessment
+
+- Article 36 – Prior Consultation
+
+- Recital 90 – Data Protection Impact Assessment
+
+- Recital 91 – Necessity of a Data Protection Impact Assessment
+
+- Recital 92 – Broader Data Protection Impact Assessment
+
+- Recital 94 – Consultation of the Supervisory Authority
+
+Alexander Bernier is a Research Assistant at McGill University’s Centre of Genomics and Policy. Jasper Bovenberg is an attorney and is the founder and Director of Legal Pathways Institute for Health and Bio-Law.
+
+See all previous briefs.
+
+Please note that GDPR Briefs neither constitute nor should be relied upon as legal advice. Briefs represent a consensus position among Forum Members regarding the current understanding of the GDPR and its implications for genomic and health-related research. As such, they are no substitute for legal advice from a licensed practitioner in your jurisdiction.
+
+---
 Source: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/
-License: GA4GH GDPR Brief (public; not legal advice)
-Tier: P1 | Jurisdiction: EU | Framework: GDPR
-
-DISCLAIMER: Excerpted for RegBot corpus ingest. Not legal advice.
-
-Article 35 of the GDPR requires data controllers to perform a Data Protection Impact Assessment (DPIA) before processing personal data when processing "is likely to result in a high risk to the rights and freedoms of natural persons."
-
-Applicability to genomic research
-
-Large-scale genomic health research involving personal data will typically require a DPIA. High-risk indicators relevant to genomics include:
-- systematic and extensive evaluation of personal aspects (including genetic data);
-- large-scale processing of special categories of data (genetic, biometric, health);
-- matching or combining datasets in ways that affect data subjects;
-- processing that may lead to exclusion or discrimination.
-
-Scope of one DPIA
-
-Not every individual processing activity requires a separate DPIA. A single assessment may address a set of similar processing operations presenting similar high risks. For large-scale genomic programmes, sector-wide or programme-level DPIAs may be appropriate where operations share comparable risk profiles.
-
-Timing and structure
-
-DPIAs should be performed as early as possible and updated continually as processing evolves. The GDPR allows flexibility in structure to fit existing institutional practices. Templates exist (e.g. UK ICO, French CNIL), but genomic research should incorporate research-specific considerations such as:
-- re-identification risk from genomic data;
-- familial and population implications;
-- international transfer pathways;
-- secondary use and data linkage plans;
-- governance by research ethics committees and data access committees.
-
-Relationship to other GDPR obligations
-
-DPIAs complement data protection by design/default (Article 25), records of processing (Article 30), and consultation with supervisory authorities where residual high risk remains (Article 36).
-
-Reviewers (DPO, IRB, DAC) should verify that a DPIA exists or is planned before cross-border sharing of identifiable or re-identifiable genomic datasets from EU/EEA subjects.
-
-Relevant GDPR provisions: Article 35, Article 36, Recitals 84, 90, 91.
+Retrieved: 2026-07-28

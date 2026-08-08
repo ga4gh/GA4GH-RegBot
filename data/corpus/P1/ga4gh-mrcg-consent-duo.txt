@@ -1,0 +1,69 @@
+GA4GH Machine Readable Consent Guidance
+
+Machine Readable Consent Guidance (MRCG)
+
+Incorporating standard data sharing language into consent forms is beneficial for all parties involved. Participants can have a clear understanding of how their genomic and health data will be used, allowing them to make informed decisions about their personal information. Researchers and governing bodies can clearly understand the data use conditions of any dataset, thus streamlining the data access process.
+
+The Data Use Ontology (DUO) supports this goal by providing standard codes that specify the use conditions of a dataset. To explain how to create consent forms that map directly to DUO, the GA4GH Data Use & Researcher Identities (DURI) Work Stream and Regulatory and Ethics Work Stream (REWS) co-created Machine Readable Consent Guidance (MRCG). The document allows institutions to automate and expedite aspects of the data access process.
+
+Jump to...
+
+Benefits
+
+- Supports automation of consent collection and tracking
+
+- Supports automation of the data access process
+
+- Provides consent clause summaries and descriptions for each DUO code
+
+Target users
+
+Data generators, data access committees, and data protection authorities
+
+- Data Use & Researcher Identity (DURI) Work Stream
+
+- Adrian Thorogood
+
+- Jessica Seegobin
+
+Community resources
+
+Dive deeper into this product!
+
+When drafting consent forms and information sheets for a research project, researchers may start by obtaining a template from their research ethics committee. However, it is often unclear what specific language will explain how a participant or patient’s data may be shared or used for secondary research. To streamline the data access process while protecting participant and patient consents, DUO provides standard codes to unambiguously specify the conditions under which a dataset should be used.
+
+In order to help researchers and governing bodies translate consent forms into DUO codes, DURI and REWS developed MRCG. The guidance explains how to draft a machine-readable consent form that correlates with DUO. Doing so renders the consent machine-readable, which can in turn help automate and expedite the collection and tracking of consent and the data access process. MRCG outlines three criteria: a short consent clause providing a ​summary​ description of the data use terms, a detailed ​explanation of the meaning of the data use terms, and an optional consent form ​appendix that maps the consent language to DUO codes.
+
+Date
+
+Title
+
+Don't see your name? Get in touch:
+
+- Mélanie CourtotOntario Institute for Cancer Research (OICR), Toronto, Canada
+
+- Clara GaffMelbourne Genomics Health Alliance, Melbourne
+
+- Jaime Guidry AuvilNIH National Cancer Institute (NCI), Bethesda
+
+- Alice MannWellcome Sanger Institute (WSI), Hinxton, UK
+
+- Mizuki MoritaOkayama University
+
+- Tommi NyrönenCSC – IT CENTER FOR SCIENCE
+
+- Soichi OgishimaTohoku University Tohoku, Medical Megabank Organization, Sendai
+
+- Adrian ThorogoodTerry Fox Research Institute, Vancouver, Canada
+
+- Susheel VarmaInformation Commissioner's Office
+
+- Chisato YamasakiNational Institute of Biomedical Innovation, Health and Nutrition (NIBIOHN)
+
+News, events, and more
+
+Catch up with all news and articles associated with Machine Readable Consent Guidance (MRCG).
+
+---
+Source: https://www.ga4gh.org/product/machine-readable-consent-guidance/
+Retrieved: 2026-07-28

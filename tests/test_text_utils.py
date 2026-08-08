@@ -3,11 +3,14 @@ import unittest
 from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.study_type import detect_study_type
 from src.regbot.text_utils import (
+    chunk_by_sections,
     chunk_spans,
     chunk_text,
     detect_headings,
+    fold_plural,
     is_hard_wrapped,
     section_for_offset,
+    sections_for_span,
     tokenize,
 )
 
@@ -69,6 +72,42 @@ class TestTextUtils(unittest.TestCase):
         self.assertIn("b", fused[:2])
 
 
+class TestPluralFolding(unittest.TestCase):
+    """Statutes speak in the singular; questions are asked in the plural."""
+
+    def test_regular_plurals_fold(self) -> None:
+        for plural, singular in [
+            ("participants", "participant"),
+            ("samples", "sample"),
+            ("specimens", "specimen"),
+            ("policies", "policy"),
+            ("processes", "process"),
+            ("safeguards", "safeguard"),
+        ]:
+            self.assertEqual(fold_plural(plural), singular)
+
+    def test_singulars_that_end_in_s_are_protected(self) -> None:
+        # Over-folding these would collide distinct legal terms.
+        for word in ("process", "status", "analysis", "basis", "consensus", "access"):
+            self.assertEqual(fold_plural(word), word)
+
+    def test_short_words_untouched(self) -> None:
+        for word in ("is", "as", "its", "has", "data"):
+            self.assertEqual(fold_plural(word), word)
+
+    def test_folding_is_idempotent(self) -> None:
+        for word in ("participants", "policies", "processes", "analysis"):
+            self.assertEqual(fold_plural(fold_plural(word)), fold_plural(word))
+
+    def test_query_and_statute_wording_now_match(self) -> None:
+        # The exact failure this addresses: q02's query vs Taiwan Biobank Act Art. 8.
+        query = set(tokenize("Can participants withdraw and what happens to samples?"))
+        statute = set(
+            tokenize("A Participant may withdraw; the Operator shall destroy the sample.")
+        )
+        self.assertTrue({"participant", "withdraw", "sample"} <= query & statute)
+
+
 class TestHeadingDetection(unittest.TestCase):
     def test_finds_real_headings(self) -> None:
         found = [h for _, h in detect_headings(PARAGRAPH_DOC)]
@@ -105,6 +144,30 @@ class TestHeadingDetection(unittest.TestCase):
         self.assertEqual(detect_headings("   \n\n  "), [])
 
 
+class TestPageFurniture(unittest.TestCase):
+    """Scraped-page headings that are not provisions must not become sections."""
+
+    def _headings(self, label: str):
+        doc = f"Intro paragraph here.\n\n{label}\n\nMore body text follows here.\n"
+        return [h for _, h in detect_headings(doc)]
+
+    def test_rejects_furniture_labels(self) -> None:
+        for bad in ("News", "Further Reading", "References", "Share this", "Our products"):
+            self.assertNotIn(bad, self._headings(bad), f"accepted furniture: {bad!r}")
+
+    def test_rejects_bare_dates(self) -> None:
+        for bad in ("2 Sep 2019", "September 2019", "Sep 2, 2019", "2019-09-02"):
+            self.assertNotIn(bad, self._headings(bad), f"accepted date: {bad!r}")
+
+    def test_rejects_furniture_joined_to_a_date(self) -> None:
+        # The exact shape that polluted the GA4GH brief provisions.
+        self.assertNotIn("News — 2 Sep 2019", self._headings("News — 2 Sep 2019"))
+
+    def test_keeps_real_provisions(self) -> None:
+        for good in ("Article 35", "Timing and structure", "Scope of one DPIA"):
+            self.assertIn(good, self._headings(good), f"rejected real heading: {good!r}")
+
+
 class TestSectionForOffset(unittest.TestCase):
     def test_returns_nearest_preceding_heading(self) -> None:
         headings = [(10, "First"), (100, "Second"), (200, "Third")]
@@ -125,6 +188,126 @@ class TestSectionForOffset(unittest.TestCase):
             for _, off in chunk_spans(PARAGRAPH_DOC.strip(), chunk_size=120, overlap=20)
         }
         self.assertIn("Applicability to genomic research", sections)
+
+
+STATUTE_DOC = """Article 8
+
+Conditions applicable to child's consent
+
+1. Where point (a) of Article 6(1) applies, the processing shall be lawful.
+
+Article 9
+
+Processing of special categories of personal data
+
+1. Processing of personal data revealing racial or ethnic origin shall be prohibited.
+"""
+
+
+class TestHeadingMerge(unittest.TestCase):
+    def test_designation_and_title_are_joined(self) -> None:
+        found = [h for _, h in detect_headings(STATUTE_DOC)]
+        self.assertIn("Article 9 — Processing of special categories of personal data", found)
+        self.assertNotIn("Article 9", found)
+
+    def test_merge_stops_at_two_parts(self) -> None:
+        # A third adjacent heading must not be swallowed into the label.
+        doc = "Article 4\n\nDefinitions\n\nFor the purposes of this Regulation\n\nbody text here.\n"
+        for _, h in detect_headings(doc):
+            self.assertLessEqual(h.count(" — "), 1, f"over-merged: {h!r}")
+
+    def test_headings_separated_by_body_are_not_merged(self) -> None:
+        found = [h for _, h in detect_headings(STATUTE_DOC)]
+        self.assertIn("Article 8 — Conditions applicable to child's consent", found)
+
+
+class TestSectionsForSpan(unittest.TestCase):
+    def test_reports_every_section_the_span_touches(self) -> None:
+        headings = [(0, "Article 8"), (100, "Article 9"), (400, "Article 10")]
+        self.assertEqual(sections_for_span(headings, 50, 200), ["Article 8", "Article 9"])
+
+    def test_span_inside_one_section(self) -> None:
+        headings = [(0, "Article 8"), (400, "Article 9")]
+        self.assertEqual(sections_for_span(headings, 50, 200), ["Article 8"])
+
+    def test_span_before_the_first_heading_reports_only_what_it_runs_into(self) -> None:
+        headings = [(100, "Article 9")]
+        self.assertEqual(sections_for_span(headings, 0, 200), ["Article 9"])
+
+    def test_no_duplicates(self) -> None:
+        headings = [(0, "Same"), (100, "Same")]
+        self.assertEqual(sections_for_span(headings, 0, 200), ["Same"])
+
+    def test_empty_when_no_headings(self) -> None:
+        self.assertEqual(sections_for_span([], 0, 500), [])
+
+    def test_straddling_chunk_does_not_claim_only_its_start(self) -> None:
+        # Regression: a 900-char window opened in Article 8 and closed in Article 9 used to
+        # be labelled "Article 8" alone — a wrong section on text that is Article 9.
+        headings = detect_headings(STATUTE_DOC)
+        body = STATUTE_DOC.strip()
+        start = body.index("1. Where point")
+        end = body.index("racial")
+        self.assertEqual(len(sections_for_span(headings, start, end)), 2)
+
+
+class TestChunkBySections(unittest.TestCase):
+    def test_each_chunk_stays_inside_one_article(self) -> None:
+        pieces = chunk_by_sections(STATUTE_DOC, chunk_size=900, overlap=150)
+        headings = detect_headings(STATUTE_DOC)
+        for text, off in pieces:
+            spanned = sections_for_span(headings, off, off + len(text))
+            self.assertLessEqual(len(spanned), 1, f"chunk straddles sections: {spanned}")
+
+    def test_falls_back_to_sliding_window_without_headings(self) -> None:
+        plain = "word " * 500
+        self.assertEqual(
+            [c for c, _ in chunk_by_sections(plain)],
+            [c for c, _ in chunk_spans(plain)],
+        )
+
+    def test_long_section_is_split_but_stays_in_its_section(self) -> None:
+        doc = "Article 1\n\nTitle here\n\n" + ("clause text. " * 400)
+        pieces = chunk_by_sections(doc, chunk_size=300, overlap=50)
+        self.assertGreater(len(pieces), 1)
+        headings = detect_headings(doc)
+        for text, off in pieces:
+            self.assertLessEqual(len(sections_for_span(headings, off, off + len(text))), 1)
+
+    def test_offsets_locate_the_chunk(self) -> None:
+        body = STATUTE_DOC.strip()
+        for text, off in chunk_by_sections(STATUTE_DOC):
+            self.assertIn(text[:30], body[off : off + len(text) + 5])
+
+    def test_empty_input(self) -> None:
+        self.assertEqual(chunk_by_sections(""), [])
+
+
+class TestHeadingOnlyBlocks(unittest.TestCase):
+    """A structural heading with no body of its own is not a citable chunk."""
+
+    def test_bare_heading_leads_the_next_block(self) -> None:
+        doc = (
+            "Section 2\n\nInformation and access to personal data\n\n"
+            "Article 12\n\n"
+            "The controller shall take appropriate measures to provide any information "
+            "referred to in Articles 13 and 14 to the data subject in a concise form.\n"
+        )
+        pieces = [t for t, _ in chunk_by_sections(doc)]
+        self.assertTrue(all(len(p) > 60 for p in pieces), f"emitted a bare heading: {pieces}")
+        joined = " ".join(pieces)
+        self.assertIn("Section 2", joined)
+        self.assertIn("appropriate measures", joined)
+
+    def test_trailing_bare_heading_folds_backwards(self) -> None:
+        doc = (
+            "Article 1\n\nThis Regulation lays down rules relating to the protection of "
+            "natural persons with regard to the processing of personal data.\n\n"
+            "Chapter XI\n"
+        )
+        pieces = [t for t, _ in chunk_by_sections(doc)]
+        self.assertEqual(len(pieces), 1)
+        self.assertIn("Chapter XI", pieces[0])
 
 
 class TestStudyType(unittest.TestCase):

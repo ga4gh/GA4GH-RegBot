@@ -21,10 +21,10 @@ jobs:
           pip install ruff==0.8.4
 
       - name: Ruff check
-        run: ruff check src tests
+        run: ruff check src tests tools
 
       - name: Ruff format (check only)
-        run: ruff format --check src tests
+        run: ruff format --check src tests tools
 
       - name: Mypy (package src.regbot)
         run: |

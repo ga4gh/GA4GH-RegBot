@@ -15,6 +15,7 @@ import unittest
 
 from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.retrieval import HybridRetriever
+from src.regbot.types import provision_keys
 
 
 def _retriever_with_embeddings(ids, vectors):
@@ -64,6 +65,36 @@ class TestDenseRanking(unittest.TestCase):
     def test_no_embeddings_and_no_collection_returns_empty(self) -> None:
         r = HybridRetriever("unused")
         self.assertEqual(r._dense_candidates([1.0, 0.0], 5), [])
+
+
+class TestProvisionCap(unittest.TestCase):
+    """A result list should name distinct applicable rules, not repeat one of them."""
+
+    def _chunk(self, cid, doc, section):
+        return {"id": cid, "text": "x", "metadata": {"document_id": doc, "section": section}}
+
+    def test_provision_keys_group_fragments_of_one_article(self) -> None:
+        a = self._chunk("c1", "gdpr", "Article 35 — DPIA")
+        b = self._chunk("c2", "gdpr", "Article 35 — DPIA")
+        self.assertEqual(provision_keys(a), provision_keys(b))
+
+    def test_fragments_of_different_articles_do_not_collide(self) -> None:
+        a = self._chunk("c1", "gdpr", "Article 35 — DPIA")
+        b = self._chunk("c2", "gdpr", "Article 36 — Prior consultation")
+        self.assertNotEqual(provision_keys(a), provision_keys(b))
+
+    def test_cap_admits_at_most_n_fragments_per_provision(self) -> None:
+        # Simulates the selection loop: three fragments of one article, cap of two.
+        fragments = [self._chunk(f"c{i}", "gdpr", "Article 35 — DPIA") for i in range(3)]
+        cap, used, kept = 2, {}, []
+        for chunk in fragments:
+            keys = provision_keys(chunk)
+            if any(used.get(k, 0) >= cap for k in keys):
+                continue
+            for k in keys:
+                used[k] = used.get(k, 0) + 1
+            kept.append(chunk)
+        self.assertEqual(len(kept), 2)
 
 
 class TestFusionDeterminism(unittest.TestCase):
