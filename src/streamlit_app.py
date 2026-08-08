@@ -277,7 +277,11 @@ def _render_chunk_cards(
         meta = ch.get("metadata") or {}
         tags = sorted(chunk_jurisdiction_tags(meta))
         tag_str = ", ".join(tags) if tags else "—"
-        title = f"`{ch.get('id', '')}` · {meta.get('source', '?')} p.{meta.get('page', '?')} · **{tag_str}**"
+        # Page 0 means the source has no pagination; showing "p.0" invites a citation to a
+        # page that does not exist. Same rule as the evidence list above.
+        page = meta.get("page")
+        page_str = f" p.{page}" if isinstance(page, int) and page > 0 else ""
+        title = f"`{ch.get('id', '')}` · {meta.get('source', '?')}{page_str} · **{tag_str}**"
         with st.expander(title):
             doc_id = str(meta.get("document_id") or meta.get("category") or "")
             source_url = urls.get(doc_id)
