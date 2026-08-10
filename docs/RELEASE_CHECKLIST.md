@@ -22,6 +22,11 @@ independent review that must not be self-certified.
       responses contain no server filesystem paths.
 - [x] Frontend dependency graph updated to Next.js 16.3.0 and patched transitive versions;
       `npm audit` reports zero vulnerabilities on 2026-08-10.
+- [x] Removed unused LangChain packages and upgraded the Python ML/PDF/legacy-UI stack;
+      `pip-audit -r requirements.txt --ignore-vuln PYSEC-2026-311` reports no applicable
+      vulnerabilities on 2026-08-10. The ignored advisory is a pre-authentication RCE in
+      Chroma's separately exposed FastAPI server; RegBot only creates the in-process
+      `PersistentClient` and never starts or routes to that server.
 - [x] Version and user/developer/demo documentation updated for `0.1.0`.
 
 ## Intentionally pending
