@@ -1,0 +1,304 @@
+Global Alliance for Genomics and Health
+Global Alliance for Genomics and Health (GA4GH) – Model Data Access Agreement (DAA)
+Clauses
+This document is part of the Global Alliance for Genomics and Health (GA4GH) Regulatory and Ethics
+Workstream (REWS) Toolkit. It contains template clauses that can be used to draft data access
+agreements.
+This document was produced by the Ethical Provenance (EP) subgroup of the GA4GH REWS. Data
+access agreements were solicited from existing GA4GH Driver projects and known collaborators
+affiliated with large biomedical data repositories internationally. The documents were reviewed by two
+independent analysts and fifteen common elements were synthesised. An original draft template was then
+further refined through discussions among members of the EP subgroup. This finalised document brings
+together contents common to the data access agreements reviewed, and recommended best practices often
+recognised in the biomedical research sector.
+This document supplies model language used to assist in drafting data access agreements to share health
+relevant research data. It is important that clauses be adapted to respect local law, national research ethics
+requirements, and applicable institutional policies
+USER GUIDANCE
+The Model DAA Clauses are designed to assist research organisations in sharing sensitive biomedical or
+health-related data with third parties (e.g., data that is subject to data protection law, to research ethics
+requirements, or to other restrictions on its open dissemination).
+These clauses address the following biomedical ethics, data governance, and open science topics:
+1. Definitions
+2. Purposes of Use
+3. Reporting and Monitoring of Use and Access
+4. Intellectual Property Requirements
+5. Outbound Data Transfers
+6. Contract Breach Notification
+7. Confidentiality
+8. Re-identification and Harm
+9. Scientific Publication
+10. Data Destruction
+11. Data Security
+12. Data Breach Notification
+13. Changes to the Agreement
+14. Liability
+15. Duration
+To translate the Model DAA Clauses into a complete contractual agreement, certain sections of the
+template agreement need to be completed. These are the following:
+● The names of the parties to the agreement must be completed at the top of the agreement. ●
+Details of the datasets and other materials that are to be shared, including limitations applicable to
+their use [these are to be detailed in Appendix A].
+● Details of relevant regional, jurisdictional, or institutional policies, if desired [these can
+optionally be listed at Clause 4].
+● Details of the Research Team that will use the data [these are to be detailed in Appendix B]. ●
+The duration of the agreement [list the duration of the agreement at Clause 15]. ● The sample
+definitions, if desired, can be supplemented or replaced with institution-specific or
+jurisdiction-specific defaults.
+In translating the Model DAA Clauses into a full contractual agreement, additional contractual clauses
+can also be added to address the following, if desired. It is useful to consult with organisational legal
+counsel in adding these clauses:
+● Processes and formalities to respect in providing contractual notices.
+● Choice of forum, choice of law.
+● Preferred method of notification.
+● A survival clause stipulating which obligations continue to bind the parties after the
+termination of the agreement.
+These latter elements have not been drafted as part of the Model DAA Clauses because these are often
+specific to the particular research organisation, to the local jurisdiction, or to the data that is being
+exchanged, and must therefore be drafted anew for each contractual agreement.
+The Model DAA Clauses are intended to enable data exchange between an upstream research
+organisation that holds data (the Data Provider) and a downstream data user (referred to as You), for
+their own research use.
+The Data Provider can refer to either the original research organisation that coordinated the generation of
+research data, or to a designated repository that stewards the research data on behalf of a community, a
+research team, or the research participants. If the Data Provider stewards research data on behalf of other
+contributors, it should make certain that the terms of this agreement are compatible with other restrictions
+applicable to the use of that data (e.g., those that the contributor has imposed).
+The Model DAA Clauses are not suitable for performing multilateral data exchanges in which more than
+one organisation sends, or receives, data. Different contractual language is required to enable multilateral
+data exchanges. Such agreements may still take inspiration from these clauses.
+In using the Model DAA Clauses to share data with third parties, it is generally recommended to use the
+clauses as-stands. Select changes could nonetheless be required to align the language thereof to standard
+terminology used in the local legal tradition, or to incorporate substantive content that reflects unique
+local legal, normative, or ethical requirements. Individual clauses can also be drawn from this template
+and incorporated into another independent contractual agreement. However, this should be done with
+prudence because there are linkages between the clauses – these are intended to be used and interpreted
+together.
+GA4GH MODEL DATA ACCESS AGREEMENT (DAA)
+(1) [NAME INSTITUTION], (the “Data Provider”), a legal person duly incorporated pursuant to ...,
+having its head office at ... [name location],
+AND:
+(2) [NAME INSTITUTION], (“You” or “the User Institution”), a legal person duly incorporated
+pursuant to the laws of ____________________________________________, having its head office at
+____________________________________________________________________________________
+_ AND:
+Acknowledged by:
+(3) [NAME PRINCIPAL INVESTIGATOR], (the “Principal Investigator”)
+________________________________________________________________________________
+_ [Principal Investigator]
+(individually a “Party” and collectively the “Parties”).
+1. Definitions:
+Agreement: means the present agreement;
+Authorized Personnel: means the employees or the agents responsible for performing the anticipated
+Research Project on behalf of the User Institution and the Principal Investigator;
+Authorized Trainees: means the trainees that support the performance of the anticipated Research
+Project on behalf of the User Institution and the Principal Investigator;
+Data: means the data, in whole or in part, that is made accessible to You by the Data Provider on the
+basis of this Agreement, including metadata, and any enriched or derived data. It includes, but is not
+limited to, representations, observations, narratives or measurements that could be used as the basis for
+further analysis, calculation or reasoning, regardless of the manner of their expression or the medium used
+to represent them;
+Data Provider: means the legal entity, or organisation, that authorizes the User Institution, the Principal
+Investigator, and the Research Team to access the Data, and acts as the data steward responsible for
+performing oversight functions relative to the Data;
+Principal Investigator: means the senior researcher that has acknowledged this agreements and is
+accountable for ensuring the responsible conduct of the proposed Research Project, including the
+supervision of Authorized Personnel and Authorized Trainees;
+Research Team: means the Principal Investigator, the Authorized Personnel, and the Authorized
+Trainees described in Appendix B of this Agreement;
+User Institution (“You”): means the research organisation or legal entity that is made accountable for
+the responsible use of the Data, in accordance with the terms of this agreement, and all access approvals,
+policies, or supplementing materials that can reasonably be construed to condition the use thereof.
+2. Purposes of Use
+You agree to only use the Data for the approved purposes, in accordance with the conditions
+established in this Agreement and its appendices. You further agree to respect restrictions on data use
+arising from public law that applies to You, research ethics guidance, contracts, informed consent
+materials, institutional policies, and data access committee approvals [include descriptions of data use
+limitations, copies of applicable policies, and other relevant supporting materials in Appendix A]. .
+3. Reporting and Monitoring of Use and Access
+You agree to submit to the Data Provider a report detailing the use made of the Data upon the
+completion of the approved Research Project, or upon termination of this Agreement, whichever
+comes first.
+You agree to maintain a list detailing all of the members of the Research Team that will have access
+to the Data, including their name, their qualifications, and their role. You agree to notify the Data
+Provider of the addition or removal of Research Team members [The template in Appendix B can be
+used for this purpose]. Research Team members must be removed prior to their departure from the
+User Institution.
+You further agree that each member of the Research Team will be required to read this Agreement
+and to confirm their compliance with its conditions. The Principal Investigator is required to read and
+acknowledge the terms of the Agreement, to confirm their compliance with its conditions, and to
+monitor the compliance of the Research Team with its conditions.
+4. Intellectual Property Requirements
+You understand and acknowledge that the Data may be protected by copyright and other rights,
+including other intellectual property rights. Duplication, as reasonably required to carry out Your
+Research Project with the Data, is nonetheless permitted. Sale of all or part of the Data on any media
+is not permitted.
+You recognise that nothing in this Agreement shall operate to transfer to You any intellectual
+property rights in or relating to the Data.
+You agree not to make intellectual property claims on the Data. You agree not to use intellectual
+property protection in ways that would prevent or block access to, or use of, any element of these
+Data, or conclusions drawn directly from the Data.
+You can elect to perform further research that would add intellectual and resource capital to the Data
+and decide to obtain intellectual property rights on these downstream discoveries. You agree to
+implement licensing policies that will not obstruct further research
+[OPTIONAL: You agree to respect the Fort Lauderdale Agreement [consider also listing other
+policies relevant to the local jurisdiction]].
+5. Outbound Data Transfers
+You agree not to transfer or to disclose the Data to third parties, including any individuals that are not
+listed in Your Research Team. Should You wish to share the Data with an external collaborator
+outside of the User Institution, the external collaborator must first obtain approval from the Data
+Provider to use the Data. The external collaborator must complete a separate Data Access Agreement
+authorizing them to use the Data.
+Notwithstanding, the Data can be transferred or disclosed to third parties for the purpose of ensuring
+compliance with the monitoring and audit requirements that research funding agencies, sponsors, and
+regulators impose, or with binding public law. You may also disclose the data to third-party service
+providers that provide services that are integral to the performance of the research activities described
+in this agreement. You agree to provide notice to the Data Provider of all transfers made to recipients
+other than third-party service providers at the time that these transfers are made.
+In all cases, you must bind recipient third parties to hold the data according to standards of
+confidentiality and security that are equivalent to those described in this agreement.
+6. Contract Breach Notification
+If You are in breach of the terms of this Agreement, the Data Provider can terminate the Agreement at
+its discretion if: (i) the breach has not been remediated within a reasonable period of time after You
+become aware of such a breach, or (ii) the breach is serious and material. A reasonable period of time
+shall generally be interpreted to mean thirty (30) days.
+If You become aware that You are in breach of the terms of this Agreement, You must immediately
+notify the Data Provider.
+7. Confidentiality
+You agree to preserve, at all times, the confidentiality of the Data. You agree not to use or to attempt
+to use the Data in a manner that infringes the confidentiality of the Research Participants.
+8. Re-identification and Harm
+You agree not to attempt to re-identify Research Participants, nor to take any actions that could
+reasonably be expected to result in the re-identification thereof. You further agree not to attempt to
+contact or communicate with the Research Participants.
+You agree not to use the data in a manner that is reasonably anticipated to cause Research
+Participants, their families, their communities, or members of specific populations to experience harm
+or stigmatization.
+9. Scientific Publication
+In publishing the findings from Your Research Project, You agree to include the attribution statement
+that is associated to the dataset, if any. Such an attribution statement provides clear instructions on
+how to attribute the Research Team, and/or the database or biobank of origin, and/or the dataset.
+In addition, You agree that the publications arising from Your Research Project will not contain the
+personal data of Research Participants. Such publications will not contain information that could
+reasonably be expected to cause a Research Participants, their families, their communities, or
+members of specific populations to experience harm or stigmatization.
+10. Data Destruction
+You agree to destroy the Data once it is no longer useful for Your Research Project, or upon
+termination of this Agreement, whichever comes first.
+You agree not to retain any copies of the Data, except as required to ensure compliance with
+applicable legal requirements; to ensure compliance with Data retention or audit
+requirements; or to preserve study integrity.
+If you wish to proceed to the disposition of the Data through another means, such as its
+anonymisation, its archiving, or the return thereof to the Data Provider, you must obtain explicit
+approval from the Data Provider to do so.
+11. Data Security
+In handling the Data, You agree to implement and to maintain reasonable security measures that are
+appropriate to protect confidential and non-public information of a sensitive nature. Security
+measures must include the following: physical, organisational, and technological safeguards.
+Upon written request, You agree to allow the Data Provider to audit the security and management
+documentation to ensure compliance with the terms of this Agreement.
+12. Data Breach Notification
+You agree to provide immediate notice to the Data Provider if you become aware of (or reasonably
+suspect) a data breach, unauthorised disclosure, or unauthorised use of the Data (together, breach).
+You further agree to collaborate in good faith with the Data Provider to remedy the concerned breach
+and to mitigate the associated harms. You agree that You will stop processing the Data immediately
+upon the discovery of a data breach, until such a time as the You and the Data Provider agree to a
+course of remedial action and mutually decide to resume data processing.
+You understand that the Data Provider may inform third parties such as regulatory authorities or
+affected individuals of the concerned breach, without being required to notify You.
+13. Changes to the Agreement
+You understand that the Data Provider may be required to alter the terms of this agreement to respond
+to changes in applicable legislation, to address evolving ethical and legal guidance, or to address other
+considerations that could emerge in the future. If this occurs, Your continued access to the Data, and
+use thereof, are conditional on the conclusion of a modified version of this agreement.
+14. Liability
+The Data is provided as-is, without warranties or guarantees, express or implied, as to its fitness for a
+particular purpose, its accuracy, quality, or comprehensiveness. The Data Provider accepts no liability
+or other responsibility for direct or indirect damages or losses arising from the use of the Data, nor for
+direct or indirect damages or losses occasioned due to the unavailability of the Data.
+Each party agrees to bear all liability arising from its use, storage, and disposal of the Data. Each
+party shall be liable for any loss, claim, damage or liability that said party incurs as a result of its
+activities under this agreement. In all eventualities, no party to the agreement shall be required to
+provide compensation to the other that exceeds limits established in applicable public law.
+15. Duration
+This agreement has a duration of one year [if a different duration is intended, replace the foregoing
+text as needed]. The parties can agree to renew the agreement according to the same conditions in
+writing, prior to its conclusion. The agreement can be terminated earlier according to the conditions
+established in this agreement, or upon the mutual written consent of both parties.
+APPENDIX A: DESCRIPTION OF DATASETS AND DATA USE LIMITATIONS
+Please include a description of the data to which this agreement applies, using the nomenclature that is
+preferred by your institution. This could include: digital object identifiers (DOIs), dataset identifiers from
+the data catalog of origin, or other.
+Please include a description of the data use limitations applicable to the datasets shared. These can be
+included in the form of textual descriptions, or through reference to external policies or other supporting
+documents that describe the applicable data use limitations. If no additional data use limitations other than
+those described in the contract find application to the shared data, this section need not be completed.
+APPENDIX B: RESEARCH TEAM MEMBERS Principal Investigator:
+Name:
+Title:
+Position:
+Institutional affiliation:
+Institutional email address:
+Contact email address:
+Institutional Representative:
+Name:
+Title:
+Position:
+Institutional affiliation:
+Institutional email address:
+Contact email address:
+Authorised Personnel:
+List each according to:
+Name:
+Title:
+Position:
+Institutional affiliation:
+Institutional email address:
+Contact email address:
+Authorised Trainees:
+List each according to:
+Name:
+Title:
+Position:
+Institutional affiliation:
+Institutional email address:
+Contact email address:
+APPENDIX C: WORKS CONSULTED
+Legislation and public policy documents
+National Institutes of Health (NIH) Genomic Data Sharing (GDS) Policy (2014).
+OECD Recommendation on Health Data Governance (2022).
+Precision Public Health Asia Society and National University of Singapore. Responsible Data Sharing in
+Health and Healthcare (2022).
+Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the
+Protection of Natural Persons with Regard to the Processing of Personal Data and on the Free Movement
+of Such Data, and Repealing Directive 95/46/EC (General Data Protection Regulation). OJ L 119/1, OJ L
+119/1.
+United Nations Educational, Scientific and Cultural Organization (UNESCO) Recommendation on Open
+Science (2021).
+World Health Organization (WHO) Sharing and reuse of health-related data for research purposes: WHO
+policy and implementation guidance (2022).
+Academic literature
+Bernier, A., Raven-Adams, M., Zaccagnini, D., & Knoppers, B. M. (2023). Recording the ethical
+provenance of data and automating data stewardship. Big Data & Society, 10(1).
+Cabili, M. N., Carey, K., Dyke, S. O., Brookes, A. J., Fiume, M., Jeanson, F., ... & Pandya, R. (2018).
+Simplifying research access to genomics and health data with Library Cards. Scientific data, 5(1), 1-5.
+Knoppers, B. M., Chisholm, R. L., Kaye, J., Cox, D., Thorogood, A., Burton, P., ... & Stolk, R. P. (2013).
+A P3G generic access agreement for population genomic studies. Nature biotechnology, 31(5), 384-385.
+Rahimzadeh, V., Dyke, S. O., & Knoppers, B. M. (2016). An international framework for data sharing:
+moving forward with the global alliance for genomics and health. Biopreservation and biobanking, 14(3),
+256-259.
+Rehm, H. L., Page, A. J., Smith, L., Adams, J. B., Alterovitz, G., Babb, L. J., ... & Rodarmer, K. W.
+(2021). GA4GH: International policies and standards for data sharing across genomic research and
+healthcare. Cell genomics, 1(2).
+Saulnier, K.M., Bujold, D., Dyke, S.O.M. et al. Benefits and barriers in the design of harmonized access
+agreements for international data sharing. Sci Data 6, 297 (2019).
+Swales L, Botes M, Donnelly D, Thaldar D. Towards a data transfer agreement for the South African
+research community: The empowerment approach. S Afr J Bioeth Law. 2023 Apr;16(1):13-18. doi:
+10.7196/SAJBL.2023.v16i1.827. Epub 2023 May 8.
+Thorogood, A. (2020). Policy-aware data lakes: a flexible approach to achieve legal interoperability for
+global research collaborations. Journal of Law and the Biosciences, 7(1), lsaa065.
+11
+
+---
+Source: https://www.ga4gh.org/document/model-data-access-agreement-daa-clauses/
+Retrieved via GA4GH public Google Drive

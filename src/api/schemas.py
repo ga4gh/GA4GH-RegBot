@@ -1,8 +1,18 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
+
+
+class LoginRequest(BaseModel):
+    username: str = Field(min_length=1, max_length=128)
+    password: str = Field(min_length=1, max_length=1024)
+
+
+class AuthUserResponse(BaseModel):
+    username: str
+    role: Literal["admin", "viewer"]
 
 
 class JurisdictionOption(BaseModel):
@@ -51,10 +61,10 @@ class IngestResponse(BaseModel):
 
 
 class CheckRequest(BaseModel):
-    consent_text: str
+    consent_text: str = Field(max_length=200_000)
     store_dir: Optional[str] = None
     category: Optional[str] = None
-    jurisdictions: List[str] = Field(default_factory=list)
+    jurisdictions: List[str] = Field(default_factory=list, max_length=20)
     top_k: int = Field(default=8, ge=3, le=16)
 
 
@@ -66,16 +76,16 @@ class CheckResponse(BaseModel):
 
 
 class ChatMessage(BaseModel):
-    role: str
-    content: str
+    role: Literal["user", "assistant"]
+    content: str = Field(max_length=20_000)
 
 
 class ChatRequest(BaseModel):
-    messages: List[ChatMessage]
-    chunks: List[Dict[str, Any]] = Field(default_factory=list)
-    consent_text: str = ""
+    messages: List[ChatMessage] = Field(max_length=100)
+    chunks: List[Dict[str, Any]] = Field(default_factory=list, max_length=100)
+    consent_text: str = Field(default="", max_length=200_000)
     store_dir: Optional[str] = None
-    jurisdictions: List[str] = Field(default_factory=list)
+    jurisdictions: List[str] = Field(default_factory=list, max_length=20)
     top_k: int = Field(default=8, ge=3, le=16)
     category: Optional[str] = None
 

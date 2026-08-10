@@ -101,6 +101,11 @@ function EvidenceCard({ entry }: { entry: EvidenceEntry }) {
           <Badge variant="destructive" className="text-[10px]">
             summary — not statutory text
           </Badge>
+        ) : entry.content_type === "translation" ? (
+          // The translated wording is not the legally controlling language.
+          <Badge variant="secondary" className="text-[10px]">
+            reference translation
+          </Badge>
         ) : entry.content_type === "primary" ? (
           <Badge variant="outline" className="text-[10px]">
             primary source

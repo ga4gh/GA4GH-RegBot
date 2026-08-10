@@ -11,10 +11,21 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Query, Response, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.api.auth import (
+    SESSION_COOKIE,
+    AuthUser,
+    auth_settings,
+    authenticate,
+    create_session_token,
+    guest_viewer,
+    require_admin,
+    require_user,
+)
 from src.api.schemas import (
+    AuthUserResponse,
     ChatRequest,
     ChatResponse,
     CheckRequest,
@@ -25,6 +36,7 @@ from src.api.schemas import (
     CorpusResponse,
     IngestResponse,
     JurisdictionOption,
+    LoginRequest,
     StoreMetaResponse,
 )
 from src.main import RegBot
@@ -67,12 +79,21 @@ app.add_middleware(
 )
 
 
-def _resolve_store(store_dir: Optional[str]) -> str:
-    return store_dir.strip() if store_dir and store_dir.strip() else _DEFAULT_STORE
+def _resolve_store(store_dir: Optional[str], user: Optional[AuthUser] = None) -> str:
+    resolved = store_dir.strip() if store_dir and store_dir.strip() else _DEFAULT_STORE
+    if user and user.role != "admin":
+        requested_path = Path(resolved).expanduser().resolve()
+        default_path = Path(_DEFAULT_STORE).expanduser().resolve()
+        if requested_path != default_path:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Only administrators may select a custom store directory.",
+            )
+    return resolved
 
 
-def _bot(store_dir: Optional[str] = None) -> RegBot:
-    return RegBot(store_dir=_resolve_store(store_dir))
+def _bot(store_dir: Optional[str] = None, user: Optional[AuthUser] = None) -> RegBot:
+    return RegBot(store_dir=_resolve_store(store_dir, user))
 
 
 def _corpus_documents() -> List[Dict[str, Any]]:
@@ -85,6 +106,8 @@ def _corpus_documents() -> List[Dict[str, Any]]:
 
 def _chunk_out(rec: Dict[str, Any]) -> ChunkOut:
     meta = dict(rec.get("metadata") or {})
+    # Old stores may predate portable manifests. Never expose a server filesystem path.
+    meta.pop("source_path", None)
     tags = sorted(chunk_jurisdiction_tags(meta))
     if tags and "jurisdiction" not in meta:
         meta["jurisdiction"] = tags
@@ -95,23 +118,109 @@ def _chunk_out(rec: Dict[str, Any]) -> ChunkOut:
     )
 
 
+def _trusted_chunks(store_dir: str, submitted: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Resolve client-selected chunk ids against the active store's canonical records."""
+    requested_ids = [str(chunk.get("id") or "").strip() for chunk in submitted]
+    if not all(requested_ids):
+        raise HTTPException(status_code=400, detail="Every submitted chunk must have an id.")
+
+    try:
+        stored = read_manifest(store_dir)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    by_id = {str(chunk.get("id") or ""): chunk for chunk in stored}
+    unknown = sorted({chunk_id for chunk_id in requested_ids if chunk_id not in by_id})
+    if unknown:
+        raise HTTPException(
+            status_code=400,
+            detail="Submitted evidence contains chunk ids that are not in the active store.",
+        )
+
+    # Preserve the client's evidence order, but do not let duplicate ids inflate context.
+    seen = set()
+    trusted: List[Dict[str, Any]] = []
+    for chunk_id in requested_ids:
+        if chunk_id not in seen:
+            trusted.append(by_id[chunk_id])
+            seen.add(chunk_id)
+    return trusted
+
+
 @app.get("/health")
 def health() -> Dict[str, str]:
     return {"status": "ok"}
 
 
+def _set_session_cookie(response: Response, user: AuthUser) -> None:
+    settings = auth_settings()
+    response.set_cookie(
+        key=SESSION_COOKIE,
+        value=create_session_token(user),
+        max_age=settings.session_seconds,
+        httponly=True,
+        secure=settings.cookie_secure,
+        samesite="lax",
+        path="/",
+    )
+    response.headers["Cache-Control"] = "no-store"
+
+
+@app.post("/api/auth/guest", response_model=AuthUserResponse)
+def guest_login(response: Response) -> AuthUserResponse:
+    user = guest_viewer()
+    _set_session_cookie(response, user)
+    return AuthUserResponse(username=user.username, role=user.role)
+
+
+@app.post("/api/auth/login", response_model=AuthUserResponse)
+def login(body: LoginRequest, response: Response) -> AuthUserResponse:
+    user = authenticate(body.username, body.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid username or password.",
+        )
+    _set_session_cookie(response, user)
+    return AuthUserResponse(username=user.username, role=user.role)
+
+
+@app.post("/api/auth/logout", status_code=status.HTTP_204_NO_CONTENT)
+def logout(response: Response) -> None:
+    settings = auth_settings()
+    response.delete_cookie(
+        key=SESSION_COOKIE,
+        httponly=True,
+        secure=settings.cookie_secure,
+        samesite="lax",
+        path="/",
+    )
+    response.headers["Cache-Control"] = "no-store"
+
+
+@app.get("/api/auth/me", response_model=AuthUserResponse)
+def current_user(
+    response: Response,
+    user: AuthUser = Depends(require_user),
+) -> AuthUserResponse:
+    response.headers["Cache-Control"] = "no-store"
+    return AuthUserResponse(username=user.username, role=user.role)
+
+
 @app.get("/api/meta/jurisdictions", response_model=List[JurisdictionOption])
-def list_jurisdictions() -> List[JurisdictionOption]:
+def list_jurisdictions(_user: AuthUser = Depends(require_user)) -> List[JurisdictionOption]:
     return [
         JurisdictionOption(code=code, label=label) for code, label in jurisdiction_options_for_ui()
     ]
 
 
 @app.get("/api/meta/store", response_model=StoreMetaResponse)
-def store_meta(store_dir: Optional[str] = Query(default=None)) -> StoreMetaResponse:
-    resolved = _resolve_store(store_dir)
+def store_meta(
+    store_dir: Optional[str] = Query(default=None),
+    user: AuthUser = Depends(require_user),
+) -> StoreMetaResponse:
+    resolved = _resolve_store(store_dir, user)
     try:
-        jurisdictions = _bot(resolved).list_store_jurisdictions()
+        jurisdictions = _bot(resolved, user).list_store_jurisdictions()
     except Exception:
         jurisdictions = []
     return StoreMetaResponse(
@@ -125,6 +234,7 @@ def store_meta(store_dir: Optional[str] = Query(default=None)) -> StoreMetaRespo
 @app.get("/api/corpus", response_model=CorpusResponse)
 def get_corpus(
     region: Optional[str] = Query(default=None, description="Jurisdiction filter code"),
+    _user: AuthUser = Depends(require_user),
 ) -> CorpusResponse:
     docs = _corpus_documents()
     if region and region.upper() != "ALL":
@@ -150,10 +260,11 @@ def get_chunks(
     region: str = Query(..., description="Jurisdiction code"),
     limit: int = Query(default=25, ge=1, le=80),
     store_dir: Optional[str] = Query(default=None),
+    user: AuthUser = Depends(require_user),
 ) -> ChunksResponse:
     if region.upper() not in JURISDICTION_CODES:
         raise HTTPException(status_code=400, detail=f"Unknown jurisdiction: {region}")
-    resolved = _resolve_store(store_dir)
+    resolved = _resolve_store(store_dir, user)
     try:
         chunks = read_manifest(resolved)
     except Exception as exc:
@@ -175,6 +286,7 @@ async def ingest_policy(
     category: str = Form(default=""),
     jurisdiction: str = Form(default="GA4GH"),
     store_dir: Optional[str] = Form(default=None),
+    user: AuthUser = Depends(require_admin),
 ) -> IngestResponse:
     if jurisdiction.upper() not in JURISDICTION_CODES:
         raise HTTPException(status_code=400, detail=f"Unknown jurisdiction: {jurisdiction}")
@@ -189,7 +301,7 @@ async def ingest_policy(
         with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
             tmp.write(content)
             tmp_path = tmp.name
-        bot = _bot(store_dir)
+        bot = _bot(store_dir, user)
         ok = bot.ingest_policy_documents(
             tmp_path,
             reset=reset,
@@ -216,10 +328,13 @@ async def ingest_policy(
 
 
 @app.post("/api/check", response_model=CheckResponse)
-def check_consent(body: CheckRequest) -> CheckResponse:
+def check_consent(
+    body: CheckRequest,
+    user: AuthUser = Depends(require_user),
+) -> CheckResponse:
     if not body.consent_text.strip():
         raise HTTPException(status_code=400, detail="consent_text is required.")
-    bot = _bot(body.store_dir)
+    bot = _bot(body.store_dir, user)
     jur_filter = parse_jurisdiction_filter(body.jurisdictions)
     try:
         report, chunks = bot.compliance_report_and_chunks(
@@ -240,7 +355,10 @@ def check_consent(body: CheckRequest) -> CheckResponse:
 
 
 @app.post("/api/chat", response_model=ChatResponse)
-def chat_followup(body: ChatRequest) -> ChatResponse:
+def chat_followup(
+    body: ChatRequest,
+    user: AuthUser = Depends(require_user),
+) -> ChatResponse:
     if not body.messages:
         return ChatResponse(reply="Please enter a question.")
 
@@ -252,9 +370,11 @@ def chat_followup(body: ChatRequest) -> ChatResponse:
     if not user_query:
         return ChatResponse(reply="Please enter a question.")
 
-    bot = _bot(body.store_dir)
+    bot = _bot(body.store_dir, user)
     jur_filter = parse_jurisdiction_filter(body.jurisdictions)
-    chunks: List[Dict[str, Any]] = list(body.chunks) if body.chunks else []
+    chunks: List[Dict[str, Any]] = (
+        _trusted_chunks(bot.store_dir, body.chunks) if body.chunks else []
+    )
     if not chunks:
         try:
             chunks = bot.retrieve_relevant_clauses(

@@ -1,5 +1,5 @@
-import { RegBotApp } from "@/components/regbot/regbot-app";
+import { AuthGuard } from "@/components/regbot/auth-guard";
 
 export default function Home() {
-  return <RegBotApp />;
+  return <AuthGuard />;
 }

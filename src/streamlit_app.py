@@ -14,6 +14,7 @@ if str(_ROOT) not in sys.path:
 import streamlit as st
 from dotenv import load_dotenv
 
+from src.api.auth import AuthUser, authenticate, guest_viewer
 from src.main import RegBot
 from src.regbot.compliance import chat_followup_policy_qa
 from src.regbot.corpus_manifest import load_corpus_manifest
@@ -72,6 +73,9 @@ def _render_evidence_entry(entry: Dict[str, Any]) -> None:
     ctype = entry.get("content_type")
     if ctype == "summary":
         bits.append(":red[**summary — not statutory text**]")
+    elif ctype == "translation":
+        # The translated wording is not the legally controlling language.
+        bits.append(":orange[**reference translation**]")
     elif ctype == "primary":
         bits.append("primary source")
     if bits:
@@ -297,6 +301,51 @@ def _render_chunk_cards(
             st.text((ch.get("text") or "")[:2000])
 
 
+def _require_streamlit_login() -> AuthUser:
+    saved = st.session_state.get("auth_user")
+    if isinstance(saved, dict) and saved.get("role") in {"admin", "viewer"}:
+        return AuthUser(username=str(saved.get("username") or ""), role=saved["role"])
+
+    st.title("GA4GH-RegBot")
+    st.caption("Enter as a read-only user, or sign in with an operator account.")
+    if st.button("Continue as public user", type="primary", use_container_width=True):
+        try:
+            user = guest_viewer()
+        except Exception as exc:  # noqa: BLE001 — configuration message belongs in the UI
+            st.error(str(getattr(exc, "detail", exc)))
+        else:
+            st.session_state["auth_user"] = {
+                "username": user.username,
+                "role": user.role,
+            }
+            st.rerun()
+    st.caption("Public-user access cannot ingest, reset, or select a custom store.")
+    st.divider()
+    with st.form("login_form"):
+        username = st.text_input("Username", autocomplete="username")
+        password = st.text_input("Password", type="password", autocomplete="current-password")
+        submitted = st.form_submit_button("Sign in", type="primary")
+    if submitted:
+        try:
+            named_user = authenticate(username, password)
+        except Exception as exc:  # noqa: BLE001 — configuration message belongs in the UI
+            st.error(str(getattr(exc, "detail", exc)))
+        else:
+            if named_user:
+                st.session_state["auth_user"] = {
+                    "username": named_user.username,
+                    "role": named_user.role,
+                }
+                st.rerun()
+            st.error("Invalid username or password.")
+    st.info("Users can search and review. Only administrators can ingest or reset content.")
+    st.stop()
+    raise RuntimeError("unreachable")
+
+
+_auth_user = _require_streamlit_login()
+_is_admin = _auth_user.role == "admin"
+
 st.title("GA4GH-RegBot")
 st.caption(
     "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, "
@@ -307,10 +356,15 @@ _corpus_docs = _corpus_documents()
 _corpus_urls = _corpus_source_urls(_corpus_docs)
 
 with st.sidebar:
+    st.caption(f"Signed in as **{_auth_user.username}** · `{_auth_user.role}`")
+    if st.button("Sign out", use_container_width=True):
+        st.session_state.pop("auth_user", None)
+        st.rerun()
     store_dir = st.text_input(
         "Store directory",
         value=os.getenv("REGBOT_STORE", "./data/regbot_store"),
         help="Where Chroma + manifest.json are written.",
+        disabled=not _is_admin,
     )
     st.markdown("### Corpus by region")
     in_store = _stored_jurisdictions(store_dir)
@@ -330,48 +384,57 @@ with st.sidebar:
         "If the LLM is unreachable, a heuristic fallback runs."
     )
 
-tab_ingest, tab_corpus, tab_browse, tab_check, tab_chat = st.tabs(
-    ["Ingest policy", "Corpus", "Browse by region", "Check consent", "Ask a question"]
-)
-
-with tab_ingest:
-    uploaded = st.file_uploader("Policy PDF or .txt", type=["pdf", "txt"])
-    reset = st.checkbox("Reset store before ingest", value=False)
-    category = st.text_input("Category label (optional)", value="")
-    ingest_codes = list(JURISDICTION_CODES)
-    ingest_labels = [_JURISDICTION_UI_OPTIONS[c] for c in ingest_codes]
-    ingest_pick = st.selectbox(
-        "Jurisdiction for this document",
-        options=ingest_labels,
-        index=ingest_labels.index(_JURISDICTION_UI_OPTIONS["GA4GH"])
-        if _JURISDICTION_UI_OPTIONS["GA4GH"] in ingest_labels
-        else 0,
-        help="Tags every chunk from this upload (DESIGN.md §3.1). Required for region-scoped retrieval.",
+tab_ingest: Any = None
+if _is_admin:
+    tab_ingest, tab_corpus, tab_browse, tab_check, tab_chat = st.tabs(
+        ["Ingest policy", "Corpus", "Browse by region", "Check consent", "Ask a question"]
     )
-    ingest_jurisdiction = ingest_codes[ingest_labels.index(ingest_pick)]
-    if st.button("Ingest", type="primary") and uploaded is not None:
-        suffix = Path(uploaded.name).suffix or ".txt"
-        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
-            tmp.write(uploaded.getbuffer())
-            tmp_path = tmp.name
-        try:
-            bot = _bot(store_dir)
-            ok = bot.ingest_policy_documents(
-                tmp_path,
-                reset=reset,
-                category=category.strip() or None,
-                jurisdiction=ingest_jurisdiction,
-            )
-            st.success(
-                f"Ingest finished ({ingest_jurisdiction})."
-                if ok
-                else "Ingest reported a problem (see terminal/logs)."
-            )
-        finally:
+else:
+    tab_ingest = None
+    tab_corpus, tab_browse, tab_check, tab_chat = st.tabs(
+        ["Corpus", "Browse by region", "Check consent", "Ask a question"]
+    )
+
+if tab_ingest is not None:
+    with tab_ingest:
+        uploaded = st.file_uploader("Policy PDF or .txt", type=["pdf", "txt"])
+        reset = st.checkbox("Reset store before ingest", value=False)
+        category = st.text_input("Category label (optional)", value="")
+        ingest_codes = list(JURISDICTION_CODES)
+        ingest_labels = [_JURISDICTION_UI_OPTIONS[c] for c in ingest_codes]
+        ingest_pick = st.selectbox(
+            "Jurisdiction for this document",
+            options=ingest_labels,
+            index=ingest_labels.index(_JURISDICTION_UI_OPTIONS["GA4GH"])
+            if _JURISDICTION_UI_OPTIONS["GA4GH"] in ingest_labels
+            else 0,
+            help="Tags every chunk from this upload (DESIGN.md §3.1). Required for region-scoped retrieval.",
+        )
+        assert ingest_pick is not None  # options is non-empty
+        ingest_jurisdiction = ingest_codes[ingest_labels.index(ingest_pick)]
+        if st.button("Ingest", type="primary") and uploaded is not None:
+            suffix = Path(uploaded.name).suffix or ".txt"
+            with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+                tmp.write(uploaded.getbuffer())
+                tmp_path = tmp.name
             try:
-                os.remove(tmp_path)
-            except OSError:
-                pass
+                bot = _bot(store_dir)
+                ok = bot.ingest_policy_documents(
+                    tmp_path,
+                    reset=reset,
+                    category=category.strip() or None,
+                    jurisdiction=ingest_jurisdiction,
+                )
+                st.success(
+                    f"Ingest finished ({ingest_jurisdiction})."
+                    if ok
+                    else "Ingest reported a problem (see terminal/logs)."
+                )
+            finally:
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
 
 with tab_corpus:
     st.markdown(
@@ -402,6 +465,7 @@ with tab_browse:
         format_func=lambda c: jurisdiction_option_label(c),
         key="browse_region_select",
     )
+    assert browse_region is not None  # options is non-empty
     browse_limit = st.slider("Max chunks to show", min_value=5, max_value=80, value=25)
     if st.button("Load chunks", type="primary", key="browse_load"):
         region_chunks = _chunks_for_region(store_dir, browse_region)

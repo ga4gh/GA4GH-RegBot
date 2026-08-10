@@ -172,6 +172,17 @@ class TestHumanReviewEscalation(unittest.TestCase):
         out = assess_human_review(report, CHUNKS)
         self.assertEqual(out["review_reason"], "low_overlap")
 
+    def test_partial_overlap_drop_also_flags_low_overlap(self) -> None:
+        report = {
+            "recommendations": [{"text": "supported", "evidence_chunk_ids": ["sg_p0_c1"]}],
+            "grounding": {
+                "ok": True,
+                "overlap": {"dropped_all": False, "dropped_count": 1, "min_threshold": 0.06},
+            },
+        }
+        out = assess_human_review(report, CHUNKS)
+        self.assertEqual(out["review_reason"], "low_overlap")
+
     def test_skipped_overlap_does_not_trigger_low_overlap(self) -> None:
         # Offline fallback marks overlap as skipped; that is not a review trigger.
         report = {
@@ -225,6 +236,81 @@ class TestReportIntegration(unittest.TestCase):
         first = report["recommendations"][0]
         self.assertIn("evidence", first)
         self.assertTrue(first["evidence"][0]["quote"])
+        self.assertFalse(report["grounding"]["overlap"].get("skipped", False))
+
+        by_id = {chunk["id"]: chunk for chunk in CHUNKS}
+        for recommendation in report["recommendations"]:
+            evidence_id = recommendation["evidence_chunk_ids"][0]
+            self.assertGreater(recommendation["token_overlap_score"], 0)
+            self.assertNotEqual(by_id[evidence_id]["text"].strip(), "Table:")
+
+    def test_offline_fallback_drops_unsupported_recommendations_and_escalates(self) -> None:
+        import os
+        from unittest import mock
+
+        unrelated = [
+            {
+                "id": "table",
+                "text": "Table appendix schedule contents index headings only.",
+                "metadata": {"source": "x.pdf", "page": 1},
+            }
+        ]
+        with mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "openai"}):
+            report = analyze_compliance(
+                "Some consent text.",
+                unrelated,
+                study_type="genomic_research",
+                api_key=None,
+            )
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(report["needs_human_review"])
+        self.assertIn("low_overlap", report["review_reasons"])
+
+    def test_offline_fallback_does_not_treat_generic_data_word_as_support(self) -> None:
+        import os
+        from unittest import mock
+
+        generic = [
+            {
+                "id": "generic",
+                "text": "Data records are listed in this appendix with administrative details.",
+                "metadata": {"source": "x.pdf", "page": 1},
+            }
+        ]
+        with mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "openai"}):
+            report = analyze_compliance(
+                "Some consent text.",
+                generic,
+                study_type="genomic_research",
+                api_key=None,
+            )
+        self.assertEqual(report["recommendations"], [])
+        self.assertTrue(report["needs_human_review"])
+
+    def test_ollama_client_disables_environment_proxies(self) -> None:
+        import os
+        from unittest import mock
+
+        response = mock.Mock()
+        response.choices = [mock.Mock(message=mock.Mock(content='{"recommendations": []}'))]
+        completion = mock.Mock(return_value=response)
+        client = mock.Mock()
+        client.chat.completions.create = completion
+
+        with (
+            mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "ollama"}),
+            mock.patch("src.regbot.compliance.httpx.Client") as http_client,
+            mock.patch("src.regbot.compliance.OpenAI", return_value=client),
+        ):
+            analyze_compliance(
+                "Some consent text.",
+                CHUNKS,
+                study_type="genomic_research",
+                api_key=None,
+                max_grounding_retries=0,
+            )
+
+        http_client.assert_called_once_with(trust_env=False)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,410 @@
+FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+POL 006/ v1.0: July 2021
+Global Alliance for Genomics and Health: FRAMEWORK
+FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTSAND PUBLICS IN
+GENOMICS RESEARCH AND HEALTH IMPLEMENTATION
+Preamble
+This document is the Global Alliance for Genomics and Health’s (GA4GH’s) Framework for
+involving and engaging participants, patients and publics in genomics research and health
+implementation (hereafter, Engagement Framework). It recognises that the benefits of genomics
+must be global, yet the practices might impact, benefit and harm people and communities in
+different ways and builds on the mission of the GA4GH, its Framework for Responsible Sharing
+of Genomic and Health-Related Data and commitment to Diversity and Inclusion.
+I. Context
+1. Why is engagement important in genomics?
+Genomics is increasingly central to the provision of health care. To ensure alignment with social
+expectations and values with the use of genomics, all who work in this area need to consider the
+interests and concerns of those who choose to give their genomic data, or who are impacted in
+other ways by genomics: (1) participants of studies that inform scientific development in
+genomics, (2) patients who may be directly affected by genomics science, and (3) members of
+the public globally. This is best done by involving and engaging with those participants, patients,
+and publics.
+2. What are the benefits of involving and engaging participants, patients, and publics?
+Involvement and engagement practices, done well, can enhance trust, support understanding of
+diversity and the impact of research, increase the value, relevance and quality of genomics and
+support societal alignment over the life course of genomics research and implementation.
+Involvement and engagement in genomics can foster greater fairness and justice.
+● Trust: Researchers and clinicians depend on people providing large amounts of personal
+data. While transparency in how personal data is used is important, transparency of how
+and to what extent participants, patients and publics will be involved, can support the
+building of trustworthy relationships - that is, it can lead to gaining the trust of peopleFRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+whose data is being investigated. Such relationships of trust may facilitate people
+providing their data, and so engagement can be a way to help ensure accountability and
+transparency in science especially, but not exclusively, where activities are publicly
+funded.
+● Collaboration: Genomics is a collective endeavour, bringing together professionals from
+many disciplines as well as participant, patient and public stakeholders from all walks of
+life. Improved collaboration across these different groups allows for the identification of
+new research and clinical priorities.
+● Diversity: Genomics research and clinical practices are most effective when they capture
+data from people across the widest possible demographic and geographic backgrounds.
+● Impact: Depending on the project’s design, genomics can reveal significant study results
+and information about individuals and their families. It can also tell us about unrelated
+people who are part of the same community. Not all such information is welcome, and
+stakeholders may not be affected by, or respond to, this information in the same way.
+Engagement will help to identify potential positive and negative impacts at both the
+individual and community level.
+● Value: Engagement with participants, patients and publics stakeholders on research and
+clinical care can leverage real-world evidence to maximise the utility and outputs of
+genomic information and practices. Engagement can help create additional value within
+projects through closer alignment of professional objectives to participant, patient and
+public interests and concerns. Such added value can in turn be made apparent through
+systematic evaluation of the participant, patient and public involvement and engagement
+process. What are the Engagement Framework’s key components?
+● Relevance: Participant, patient and public stakeholders have experience which gives them
+unique knowledge and expertise of the potential impact of genomics in their lives. They
+are well placed to help shape genomics research and transform clinical work. Involving
+them in genomics initiatives ensures that genomics research is relevant to those impacted
+by its findings.
+● Quality: Involving participant, patient and public stakeholders in research can improve
+not only the relevance and impact of genomics, but the quality and quantity of data
+collected. Better data means better science, which in turn enriches the experience of
+genomics for everyone involved.
+● Longitudinality: Genomic analysis produces new knowledge long after a genome has
+been collected and sequenced. Ongoing engagement with participant, patient and public
+stakeholders as knowledge is generated (after initial data collection and sequencing) is
+important to see whether the findings and the knowledge are acceptable. As new genomic
+technologies continue to emerge, the knowledge and technologies should be explored
+with different participant, patient and public stakeholders.FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+3. Framework Genesis and Purpose
+This Engagement Framework is for all those involved in genomics activities across different GA4GH
+initiatives and projects, who are interested in engaging with different stakeholders around genomics
+and data sharing. It might also be of interest to the broader genomics communities outside of
+GA4GH, who are interested in public engagement. The Engagement Framework is underpinned by
+principles of fairness and justice.
+The Engagement Framework acknowledges the importance of reflexivity, thinking deeply, about
+the purposes and strategies of engagement. Such reflexivity aims to recognise the diverse
+demographic and geographic backgrounds in genomics engagement. Reflexive approaches also
+recognise the importance of evaluating engagement strategy/strategies to enhance learning and
+future work.
+This Engagement Framework was collaboratively developed with stakeholders and members of the
+GA4GH community1, drawing on knowledge and expertise on engagement from within GA4GH
+especially from its driver projects and the Genomics in Health Implementation Forum (GHIF), the
+Your DNA Your Say study, and from other collaborators interested in genomics and engagement. A
+range of engagement activities undertaken by driver projects and initiatives within the GHIF (GHIF 
+and Driver Projects Resource Catalogue) illustrate some of the breadth of engagement activities 
+alreadybeing undertaken.
+4. How to use the Engagement Framework
+The Engagement Framework is intended to support those working in genomics research and medicine
+to reflexively approach participant, patient and public involvement and engagement work. The
+Engagement Framework enables consideration of the aims and purposes of engagement, and
+reflection on the strengths, limitations and/or likely outcomes and impacts of various approaches
+that engagement might bring. It does this by providing a series of reflexive questions for those
+developing involvement and engagement plans/activities. These questions explore how involvement
+and engagement can reflect different participant, patient and public stakeholders’ demographics and
+geographies.
+The Engagement Framework does not promote a singular understanding or approach to engagement.
+Nor does it rehearse the benefits and limits of particular forms of involvement and engagement as
+this is ably done elsewhere REFS.
+1 Please see the Acknowledgements section.FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+To guide genomics activities towards core GA4GH values and principles four themes are central to
+participant, patient and public stakeholder engagement.
+• Fairness
+• Context
+• Heterogeneity
+• Recognising tensions and conflict
+Section II outlines the key considerations for reflexively developing involvement and engagement
+strategies. It provides a definition of each theme and proposes reflexive questions to guide readers
+of the Engagement Framework through the process of thinking critically about engagement work
+and considering how to choose an approach best suited to their project. Although the themes are
+discussed individually, in practice, each impacts the application of the others. As such, the themes
+are meant to be read as complementary rather than standalone. Section III directs the reader to
+engagement methods resources and highlights the importance of evaluation and learning from
+involvement and engagement activities. Sections IV to VIII provide a conclusion, practical
+information about the Framework, and points to available resources.
+II. Developing engagement reflexively
+1. Fairness
+Incorporating participant, patient and public stakeholder perspectives and experiences into genomic
+research and health implementation is essential for scientific and ethical reasons. Fairness ensures
+that research and healthcare are undertaken responsibly and do not produce inequity or exacerbate
+inequalities that people already face. Management of genomic data must now commonly adhere to
+FAIR principles (Findable, Accessible, Interoperable, Reproducible) (Wilkinson et al., 2016), but
+trying to achieve those principles may cause inequities and inequalities. The Engagement
+Framework therefore argues that all genomic activities must aim to be equitable and researchers
+responsible to their communities. This aim for equity and responsibility can lead to fairness as it
+encourages listening to and incorporating diverse participant, patient and public stakeholder voices
+(Fricker, 2007; Kaye et al., 2018; Pratt & Hyder, 2016). Considering society means re-evaluating
+what being fair from participant, patient and public perspectives may look like. This ensures that:
+(1) impacts on people – individually or collectively – are considered; (2) power differentials
+between professionals and non-professionals are considered and rebalanced where possible; and (3)
+different perspectives are considered in relation to who asks the questions and who answers them.
+For each of these points, how stakeholders might benefit or whether they have a say in those matters
+are important additional issues to consider. To this end, the CARE Principles for Indigenous dataFRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+governance are a good resource that can help projects think further about involvement and
+engagement.
+Reflexive questions to enable fairness-sensitive engagement:
+• What is the purpose of the activity I choose? What do I want to achieve?
+• What is the best way to achieve that purpose (strategies, methods/activities and
+practice)?
+• How am I defining my stakeholder groups?
+• Why do I want to engage this stakeholder group? Why choose them rather than another group of
+stakeholders?
+• How inclusive is this stakeholder group?
+• What promises have been made to invite, engage and involve that audience? Are they
+achievable?
+• How will the chosen stakeholders be involved in the project pathway?
+• When is the ideal time to involve different people?
+• What might different audiences think of the results of the project/activity?
+• Could the way a stakeholder group, research question/purpose or activity is defined cause or
+reproduce:
+• misconceptions, stigma, oppression, etc?
+• inequalities?
+2. Context
+The context in which an activity occurs includes the range of circumstances under which research or
+health implementation takes place. Context reflects many different elements such as a genomic
+project’s stage of development, its connection to other projects, the genomic/health condition in
+question, where the project’s activities are conducted, and potential project funding priorities.
+Context also evolves as priorities and people change over time and so will drive decisions on who is
+involved in engagement. Because of this, it is important to think about how solutions in one set of
+circumstances may cause unwanted or unexpected results in another. These circumstances, and
+therefore the contexts they occur in, shape engagement work by influencing what is needed, what is
+possible, what is acceptable and what is achievable. Good engagement practices will involve
+regularly adapting strategies to ensure that the purpose of engaging stakeholders aligns with the
+context being considered.
+Reflexive questions to support context-sensitive engagement:
+• What is the context of the initiative?
+• In this context, whose perspective is being championed by the engagement activity?
+• Could a different perspective provide more benefit or value to everyone involved?FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+• Is the engagement activity in this context a sustainable solution?
+• As the project evolves, is the same engagement activity with the same stakeholders
+sufficient or does something need to change?
+• Is the purpose of pursuing this specific engagement, in this context, enough to ensure
+fairness to all involved?
+3. Heterogeneity
+Where context refers to circumstances, heterogeneity refers to the diversity and inclusivity among
+and within the groups of people involved in a project and its subsequent engagement work. Like
+considerations of context, heterogeneity acknowledges that the nature and scope of engagement
+may need to be tailored to both differences and similarities among people within specific settings. A
+single project might use one or more engagement strategies1at different times and with different
+people. This way, engagement can involve diverse stakeholders or achieve different sets of
+outcomes.
+participant, patient and public stakeholders and institutions bring unique experiences, knowledge
+and values. It is useful for the person/team choosing the engagement strategy to remember that none
+of these groups are the same, and not to expect the same outcomes out of engagement practices.
+Being open to potential differences between and within groups allows those undertaking
+engagement work to explore a diversity of potential engagement activities before deciding on
+specific strategies.
+Reflexive questions to support heterogeneity-sensitive engagement:
+• How can multiple perspectives be heard and incorporated into genomics initiatives?
+• Are there potential perspectives not being heard?
+• What does diversity look like? Why do you want to pursue it?
+• How can these differences shape the purpose of the engagement overall?
+• How can they shape the purpose of the engagement from the time a decision to
+undertake engagement is?
+• What decisions around engagement in the project have been taken before and what might
+need to be changed?
+• What will be the potential impact on people’s lives?
+4. Recognising tensions and conflict
+Genomics initiatives can create both excitement and anxiety. These can lead to tensions, and, on
+occasion, disagreements between stakeholders. The central aim of engagement - to bring different
+perspectives together - inevitably draws attention to differences in opinions, values and beliefsFRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+which may be described or experienced as tensions or conflict. All stakeholders in genomics should
+be given opportunities to acknowledge and question one another without prejudice or penalty.
+Tensions, even disagreements, can indicate when people may not be willing to modify or change
+their views. These should not be seen as damaging or a sign of failure, as they present opportunities
+for dialogue where there is a mutual desire to achieve an outcome. Transparent engagement
+processes can offer a way to address tensions and stakeholders must be supported and able to
+highlight areas of concern which may be leading to tensions, differences and conflicts. When
+professionals are open to exploring why participant, patient and public stakeholders might be
+responding in a particular way, such openness can promote better understanding of what causes
+tensions and can promote fairness in how professionals respond.
+Tensions can be present at the start of a project or emerge over time. Management of tensions may
+not be required (or appear to be required) at the time, but an awareness of those tensions can help to
+explore different viewpoints early in the engagement process. A transparent process therefore helps
+stakeholders evaluate whether their concerns have been dealt with appropriately or not. Thus,
+providing time to discover differences in experience, knowledge and values, which may necessitate
+difficult discussions, may reduce the chances of engagement becoming unproductive or leading to
+engagement itself being seen as a tick-box exercise.
+Good practice means that project leaders take responsibility for coming up with acceptable
+approaches to manage or resolve tensions. Understanding the experiences and potential worries of
+participant, patient and public stakeholders allows genomic researchers and health care
+professionals to adapt their practices to specific communities. One key approach includes having a
+good communication strategy. However, communication alone is sometimes only one element of
+dealing with tensions or conflict. When communication focusses only on one-directional
+information flows instead of dialogue and feedback, engagement may not be very effective.
+Achieving good communication means listening with intent to the different views that stakeholders
+may hold. This approach to communication can be useful for resolving conflict. Good
+communication is therefore fundamental for establishing respectful, sustainable relationships thus
+requires committing to listening with the intent to create action (if required), rather than listening for
+its own sake. Giving people regular opportunities to express their views and acting on those views is
+important as it can lead to improved outcomes for all people involved. Additionally, project leaders
+should be willing to seek independent support, if needed, to resolve tensions and to change the
+direction of their projects in response to participant, patient and public stakeholder concerns.
+Engagement addressing tensions/conflict considers the following questions:
+• How can the initiative support better engagement between stakeholders so that it avoids
+long-term damage and loss of trust?FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+• How are activities, intentions and findings/outcomes being communicated in ways that
+encourage diverse feedback?
+• What might be a source or cause of tension?
+o Who is responsible for managing or responding to that tension?
+o How could responses to people’s concerns or differences of opinion avoid blame,
+shame, and stigma, and instead, create better outcomes for all?
+• How can different perspectives work together constructively?
+• How are tensions and conflicts resolved and managed at different levels and times in the
+project?
+o How will differing or conflicting perspectives be accommodated and accounted
+for?
+• How do researchers show they are listening and responding to different perspectives?
+III Engaging Effectively
+Having considered the key components and questions above, the next steps when thinking about, or
+choosing, an engagement approach is to align the purpose of the engagement with the approach(es)
+chosen. There is a wealth of information about the various engagement activities the GA4GH GHIF
+and driver projects are undertaking (details are available in the GA4GH Engagement resource
+catalogue1).
+As part of the process of considering engagement approaches, we also suggest building in time and
+resources to evaluate those approaches. In so doing, the value of engagement can be considered in
+view of the intended aims and outcomes of the project. It is desirable to evaluate engagement
+practices against project aims and outcome goals as an ongoing process both during and after the
+project. Outcomes themselves can additionally be evaluated against the aims and reasons of
+conducting engagement. Assessing outcomes of engagement activities can be done quantitatively or
+qualitatively (Russell et al., 2020). The potential ways of conducting evaluations of engagement are
+not covered in the Engagement Framework, but models such as STARDiT, and resources provided
+by INVOLVE, Consumer and Community Involvement Program, Imperial College London's public
+involvement resource, National Institute for Health Research and the International Association for
+Public Participation, and others, offer specific approaches to evaluating engagement that might be
+useful. Considering the strengths and limitations of each engagement activity (i.e. what it can and
+cannot do), will better equip those running such activities to evaluate whether their chosen approach
+was fit for the purpose or achieved what they had intended.
+The type and impact of engagement, the spectrum of strategies, and the level of interaction between
+different groups or people therefore forms a complex landscape of strategies and outcomes. Despite
+this complexity, the underlying principles of fairness and justice must remain of central importance.FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+Evaluating different approaches to engagement
+The following questions can also be useful to support the analysis of the strengths and limitations of
+the different strategies of an engagement approach. These questions can guide decisions about
+which forms of engagement to use and can help ensure these align with the overall aims of the
+project:
+• How will I assess the outcome of the strategy or engagement activity?
+• Does the choice of engagement activity support the context?
+• What are the limitations of the activity chosen - what can it do and what can it not do?
+• Is the chosen activity appropriate to the purpose of the research and the resources available?
+• Are the outcomes of the activity in line with the purpose of engagement?
+• How might the activities or outcomes have been different with or without participant, patient
+and public involvement and engagement?
+IV Conclusion
+The four key components in the Engagement Framework – Fairness, Context, Heterogeneity and
+Recognising tensions and conflict – provide a framework to assist those involved in genomics to use
+to reflect on and consider the strengths and limitations of the engagement decisions they make for
+their initiatives. These can include the strategies selected, the participant, patient and public
+stakeholders chosen, and the anticipated outcomes. Trying to define fair outputs and participation in
+such situations are important ethical discussions that are out of the scope of the Engagement
+Framework. However, as multiple stakeholders have diverse expectations, working through some of
+the many issues and questions we have raised, can help to take those views into account when
+designing appropriate engagement approaches requires. By considering the strengths and limitations
+of what may be achieved by different approaches to engagement, it becomes possible to evaluate
+whether engagement work is achieving its intended purpose, and to identify where it may be further
+improved.
+Finally, in the spirit of promoting and using diversity to improve genomics initiatives, we encourage
+those involved in genomics to always think about the underlying principles of fairness and justice
+and maintain a reflexive orientation by coming back to the question:
+● What would involvement and engagement look like if a different method had been used
+or a different group had been approached?FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+V Implementation Mechanisms and Amendments
+Attention should be paid to the interrelation of the Engagement Framework with other GA4GH
+guidance (e.g.,Consent Policy, Privacy and Security Policy, Security Infrastructure).
+Any stakeholder adhering to the Engagement Framework may propose one or more amendments to
+the present Engagement Framework by communicating the amendments to the GA4GH’s
+Regulatory and Ethics Work Stream (REWS). The REWS shall publicly circulate such amendments
+for comments and possible inclusion in the Engagement Framework.
+The REWS, in collaboration with biomedical, patient advocacy, and ethical and policy
+organizations and committees, will track the adoption of the Engagement Framework and its
+application. It will also routinely review its provisions, be aware of advances in basic research and
+technology, and ethical and legal developments, and attempt to ensure that the Engagement
+Framework is fit for purpose.
+VI Acknowledgements
+Chairs: Madeleine Murtagh (University of Glasgow), Clara Gaff (Melbourne Genomics Health 
+Alliance)
+Coordinator: Mavis Machirori (Ada Lovelace Institute)
+Contributors: Mwenza Blell (Newcastle University), Jantina de Vries (University of Cape 
+Town), Megan Doerr (Sage Bionetworks), Edward Dove (University of Edinbrugh), Audrey 
+Duncanson (Wellcome Trust), Dean Hartley (Autism Speaks), Rachele Hendricks-Sturrup (DukeMargolis Center for Health Policy), Calvin WL Ho (University of Hong Kong), Amber Johns
+(Garvan Institute of Medical Research), Yann Joly (Centre of Genomics and Policy, McGill), 
+KazutoKato (GEM-Japan), Keiko Katsui (Japan Agency for Medical Research), Judit Kumuthini
+(Centre for Proteomic and Genomic Research, Cape Town), Fiona Maleady-Crowe (Genomics 
+England), Mogomotsi Matshaba (Botswana-Baylor Children’s Clinical Centre of Excellence, 
+H3Africa), Anna Middleton (Wellcome Trust Sanger Institute), Richard Milne (Wellcome Trust 
+Sanger Institute), Joel Minion (University of Calgary), Stephanie Mulrine (Newcastle University), 
+Christine Patch (Genomics England), Rosalyn Ryan (Bicgen Inc.), William Viney (Goldsmiths, 
+University of London), Jillian Hastings Ward (Genomics England Participant Panel).
+We would also like to wholeheartedly thank the GA4GH Secretariat for their support and expertise.
+We thank the external reviewers, for reading and commenting on the document.
+We acknowledge the funding support from the following organisations: METADAC MRC, ESRC,
+Wellcome Grant Numbers MR/N01104X/1 and ES/S008349/1 EUCAN-Connect EU H2020
+Grant Agreement No 824989. Their funding provided the time and resources for Mavis Machirori to
+coordinate this work.FRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+VII Engagement resources
+GA4GH Resources
+GA4GH Framework for Responsible Sharing of Genomic and Health-related Data
+GA4GH Your DNA, Your Say (Participant Values Survey) and Middleton et al., (2020)
+GA4GH Consent Policy
+GHIF and Driver Projects Resource Catalogue
+External Resources
+Consumer and Community Involvement Program: https://cciprogram.org/researcher-services/types-ofcommunity-involvement/
+GIDA – Global Indigenous Data Alliance. Care Principles of Indigenous data governance: https://www.gidaglobal.org/care
+H3Africa – CEBioGen. Developing best practices of community engagement for genomics and biobanking
+in Africa: https://h3africa.org/index.php/developing-best-practices-of-community-engagement-for-genomicsand-biobanking-in-africa-cebiogen/
+International Association for Public Participation (www.iap2.org):
+https://cdn.ymaws.com/www.iap2.org/resource/resmgr/pillars/Spectrum_8.5x11_Print.pdf
+INVOLVE 2015: https://www.invo.org.uk/wp-content/uploads/2017/08/Values-Principles-frameworkJan2016.pdf
+National Institute for Health Research (NIHR) School for Primary Care Research -
+https://www.spcr.nihr.ac.uk/PPI/what-is-patient-and-public-involvement-and-engagement
+OmicsXchange Podcast, Episode 9 (27 August 2020) The importance of diverse perspectives in standards
+development: An interview with Laura Paglione. https://www.ga4gh.org/news/omicsxchange-podcastepisode-9-the-importance-of-diverse-perspectives-in-standards-development-an-interview-with-laurapaglione/
+MESH community engagement network: https://mesh.tghn.org
+Public involvement – Imperial College London Patient Experience Research Centre
+https://www.imperial.ac.uk/patient-experience-research-centre/ppi/
+STARDIT: Standardised Data on Initiatives: Alpha Version. Nunn, J. S., Shafee, T., Chang, S., Stephens, R.,
+Elliott, J., Oliver, S., … Orr, N. (2019, September 20). https://doi.org/10.31219/osf.io/5q47hFRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+VIII References
+Appiah, B. (2015). Challenges and opportunities of community engagement. The Trust Project - Sci
+Dev Net. https://www.scidev.net/sub-saharan-africa/health/feature/community-cooperationhealth-research-kemri.html
+Public engagement in setting priorities in health care. Canadian Medical Association Journal,
+179(1), 15–18. https://doi.org/10.1503/cmaj.071656
+Cox, S. M., Kazubowski-Houston, M., & Nisker, J. (2009). Genetics on stage: Public engagement in
+health Policy development on preimplantation genetic diagnosis. Social Science and Medicine,
+68(8), 1472–1480. https://doi.org/10.1016/j.socscimed.2009.01.044
+Folayan, M. O., & Peterson, K. (2020). HIV prevention clinical trials’ community engagement
+guidelines: inequality, and ethical conflicts. Global Bioethics, 31(1), 47–66.
+https://doi.org/10.1080/11287462.2020.1773061
+Fricker, M. (2007). Epistemic Injustice. Oxford University Press.
+https://doi.org/10.1093/acprof:oso/9780198237907.001.0001
+Greenhalgh, T., Hinton, L., Finlay, T., Macfarlane, A., Fahy, N., Clyde, B., & Chant, A. (2019).
+Frameworks for supporting patient and public involvement in research: Systematic review and
+co-design pilot. Health Expectations, 22(4), 785–801. https://doi.org/10.1111/hex.12888
+H3Africa. (n.d.). Community engagement in biobanking. H3Africa.
+Hamadache, D., & Polly, C. (n.d.). Module 6: Community engagement. www.who.int/hiv/pub/6.pdf
+Hobbs, G., & Tully, M. P. (2020). Realist evaluation of public engagement and involvement in dataintensive health research. Research Involvement and Engagement, 6(1), 1–13.
+https://doi.org/10.1186/s40900-020-00215-4
+Kaye, J., Terry, S. F., Juengst, E., Coy, S., Harris, J. R., Chalmers, D., Dove, E. S., Budin-Ljøsne, I.,
+Adebamowo, C., Ogbe, E., Bezuidenhout, L., Morrison, M., Minion, J. T., Murtagh, M. J.,
+Minari, J., Teare, H., Isasi, R., Kato, K., Rial-Sebbag, E., … Cambon-Thomsen, A. (2018).
+Including all voices in international datasharing governance. Human Genomics, 12(1), 18–23.
+https://doi.org/10.1186/s40246-018-0143-9
+Middleton, A., Milne, R., Almarri, M. A., Anwer, S., Atutornu, J., Baranova, E. E., Bevan, P.,
+Cerezo, M., Cong, Y., Critchley, C., Fernow, J., Goodhand, P., Hasan, Q., Hibino, A.,
+Houeland, G., Howard, H. C., Hussain, S. Z., Malmgren, C. I., Izhevskaya, V. L., … Morley,
+K. I. (2020). Global Public Perceptions of Genomic Data Sharing: What Shapes the Willingness
+to Donate DNA and Health Data? American Journal of Human Genetics, 107(4), 743–752.
+https://doi.org/10.1016/j.ajhg.2020.08.023
+O’Mara-Eves, A., Brunton, G., Oliver, S., Kavanagh, J., Jamal, F., & Thomas, J. (2015). The
+effectiveness of community engagement in public health interventions for disadvantagedFRAMEWORK FOR INVOLVING AND ENGAGING PARTICIPANTS, PATIENTS AND PUBLICS
+groups: A meta-analysis. BMC Public Health, 15(1), 1–23. https://doi.org/10.1186/s12889-015-
+1352-y
+Pratt, B., & Hyder, A. A. (2016). Governance of Transnational Global Health Research Consortia
+and Health Equity. The American Journal of Bioethics, 16(10), 29–45.
+https://doi.org/10.1080/15265161.2016.1214304
+Russell, J., Fudge, N., & Greenhalgh, T. (2020). The impact of public involvement in health
+research: what are we measuring? Why are we measuring it? Should we stop measuring it?
+Research Involvement and Engagement, 6(1), 63. https://doi.org/10.1186/s40900-020-00239-w
+Wilkinson, M. D., Dumontier, M., Aalbersberg, Ij. J., Appleton, G., Axton, M., Baak, A., Blomberg,
+N., Boiten, J. W., da Silva Santos, L. B., Bourne, P. E., Bouwman, J., Brookes, A. J., Clark, T.,
+Crosas, M., Dillo, I., Dumon, O., Edmunds, S., Evelo, C. T., Finkers, R., … Mons, B. (2016).
+Comment: The FAIR Guiding Principles for scientific data management and stewardship.
+Scientific Data, 3(160018), 1–9. https://doi.org/10.1038/sdata.2016.18ENGAGEMENT FRAMEWORK
+Engagement Framework Revision History
+Policy Number/Version Date Effective Summary of Revisions
+006 July 2021 Original Document
+
+---
+Source: https://www.ga4gh.org/document/engagement-policy-v1/
+Retrieved via GA4GH public Google Drive
+

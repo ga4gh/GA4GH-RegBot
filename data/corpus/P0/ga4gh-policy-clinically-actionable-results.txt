@@ -1,0 +1,390 @@
+2021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+POL 007 v1.0: June 24 2021
+Global Alliance for Genomics and Health:
+2021 Policy on Clinically Actionable Genomic Research Results
+I. Context
+1. Background
+The Global Alliance for Genomics and Health (GA4GH) is a policy-framing and technical
+standards-setting organization seeking to enable responsible genomic data sharing within a human rights
+framework.
+1
+Its Framework for Responsible Sharing of Genomic and Health-Related Data is founded on
+the universal human right to benefit from science and its applications.
+2 Responsible disclosure of
+clinically actionable genomic findings from research studies to those research participants who elect to
+receive them could advance data sharing and benefit the research participants themselves.
+When data is shared, the knowledge that the initial researchers responsibly addressed the return of results
+can reassure data repositories aggregating those data and researchers conducting secondary research with
+those data that obligations to return results have been seriously considered and addressed with research
+participants. Data repositories and researchers conducting secondary research may have their own duties
+with regards to addressing the return of results,
+3 but as a starting point establishing the minimum core
+obligations for the original researchers is important. This is particularly pertinent in cases in which data is
+shared across jurisdictional boundaries, because of the existence of multiple legal and ethical frameworks,
+requiring adherence to different rules and principles. Ensuring that the wellbeing and the rights of
+sequenced individuals have been appropriately addressed facilitates international data sharing, the core
+purpose of the GA4GH. The need to achieve transparency at all stages of data sharing and for all the
+relevant parties — namely the data controllers, processors, recipients and users, including the secondary
+users of data — helps motivate the move towards a clear minimum global standard with regards to the
+return of results.
+2. Purpose
+The focus of this policy is on clinically actionable genomic results, that is, results that indicate risk for or
+the presence of a condition for which prevention or treatment is available. We restrict ourselves to such
+results because, as outlined below, the vast majority of the ethical and legal arguments that favor the
+return of results in genomic research studies are focused on such information. However, there is a large
+literature debating the ethically appropriate definition of “clinically actionable.” We include not only
+12021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+results for which clinicians can provide prevention or treatment, but also results that allow a participant to
+take steps (such as change in diet or health surveillance) that can prevent or ameliorate a genetically based
+disease or disability. Moreover, clinical actionability can differ between jurisdictions, where prevailing
+opinions on appropriate treatment, and available resources to act on these opinions, may differ. We note
+that a significant part of the literature would go further, contemplating the return of results valued by
+participants, even if no effective action is currently available.
+4 However, in keeping with the goal of this
+document to set minimum standards, we focus here on clinically actionable results.
+This document uses “return of results” to include return of results sought by the research, incidental
+findings that are not sought but are discovered in the course of research, and secondary findings that are
+not the focus of the research but are deliberately sought.
+The following GA4GH Policy on Clinically Actionable Genomic Research Results aims to provide a
+reference point for managing the return of such results that recognizes the importance of the
+accountability and transparency of genomic researchers towards participants. It also acknowledges the
+differing levels of evidence behind the clinical utility of such information, and the complexities involved
+in returning it to individuals in an ethically and legally appropriate manner. The Policy aims to identify
+common ground while also allowing for appropriate customization by locale and by research project. The
+GA4GH recognizes the evolving thinking and research around the return of genomic research results and
+will revisit and update this Policy as required.
+II. Policy
+1. A clear protocol that is adhered to. Every research study generating clinically actionable
+genomic research results should have a specific protocol regarding the return of such results. Such
+a protocol should be devised before the start of the study, should be approved by the relevant
+research oversight body, and be revisited periodically throughout the duration of the study.
+Researchers should be held accountable by their participants, funders, and ethics committees to
+meet the standards they define in this protocol.
+2. Upfront resourcing. Where return of clinically actionable genomic results is intended, resourcing
+should include funding for the full process of returning results to participants, as well as ensuring
+the availability of appropriately trained personnel.
+3. Link to clinical standards. In deciding the parameters for return of clinically actionable genomic
+results, researchers should be guided by current practice regarding the clinical standard of care
+within their jurisdictions.
+4. Community engagement. Which genomic research results should be returned and how they are
+returned will be project and community specific, and depending on the nature of the research
+should be guided by community involvement.
+22021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+5. Sharing of resources. Whenever feasible, medical, behavioral and economic tools and outcomes
+associated with the return of clinically actionable genomic research results should be documented
+and shared to continue to lower the barriers to responsible return.
+6. Funders urged to support the return of results. Funders should set aside resources to support
+the return of results in those projects that plan to do so.
+III. Discussion
+We note a combination of four trends that support the return of clinically actionable results to research
+participants.
+1. Emerging Ethical and Legal Consensus in Support of the Return of Results
+There is an emerging ethical and legal consensus in support of the return of results. Many international
+bodies and countries have guidance, legislation, and regulations in place that support a robust return of
+results, i.e. mandate that certain results should or must be returned. These are summarized in Table 1 of a
+2019 overview of the relevant international legal landscape.
+5 Some of these regulations are genomics
+specific and others are broader in scope. This legislative landscape reflects growing agreement throughout
+the world that if clinically actionable results are found during the course of a research study, they should
+be returned to those participants who wish to receive them. Specifically, in the context of genetics
+research, the Council for International Organizations of Medical Sciences (CIOMS), in collaboration with
+the World Health Organization (WHO), stated in their 2016 report: "There is an emerging consensus that
+at least some findings in genetic research must be returned to individual donors if they wish” and that
+“life-saving information and data of immediate clinical utility involving a significant health problem must
+be offered for disclosure.”
+6
+This consensus is grounded in an extensive patchwork of ethical reasoning.
+7 Most laws and policies,
+where they give reasoning, refer to rights of participants: the right to access (e.g. in the EU’s General Data
+Protection Regulation), the right to be informed (e.g. in Spain’s Law on Biomedical Research)
+8
+, and the
+right not to know (e.g. in the UNESCO Universal Declaration on the Human Genome and Human Rights,
+1997).
+9 Many bioethicists have also focused on the duties of researchers, such as the duty of care10–12
+(a
+duty also enshrined in the Additional Protocol to the Convention on Human Rights and Biomedicine,
+concerning Biomedical Research),
+13
+the duty to warn,
+14
+the duty of rescue,
+15 and the duty of reciprocity.16
+Many of these duties rest on a beneficence argument, which is supported by the strengthening data on the
+clinical benefit of individuals receiving certain genomic results.
+17 An appeal to beneficence rests on a
+favorable overall benefit-to-risk tradeoff. Systematic review of the literature suggests that where genomic
+research results have been returned, they have been well received without demonstrated physical or
+psychological harm (forthcoming from Vears et al). Other types of potential harm, however, such as
+32021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+insurance reimbursement or payment denial (e.g. life, disability, or long-term care insurance payments)
+have not been evidenced adequately in the relevant literature. Despite these remaining evidence gaps,
+systematic review of the literature suggests that researchers and members of ethics review committees are
+supportive of returning results that are sufficiently reliable and clinically actionable. An important caveat
+is that much of the existing data is US focused.
+2. The Evolving Research Enterprise Supports the Return of Results
+The nature of the research enterprise is changing in a way that supports the return of results. There is a
+broad international trend in research towards respect for research participants as partners in the research
+process, and more participant engagement in how research is carried out, including what results will be
+offered to participants. The return of results is becoming an increasingly important part of the research
+process because it is part of this move towards participants becoming more involved in the research
+process.
+14
+3. The Public Supports the Return of Results
+Related to the previous point, systematic review of the published literature suggests that participants and
+members of the public highly desire the return of results. Return of results may also motivate some
+individuals to donate their data to research (in general, motivations for participating in genetics research
+are complex).
+18,19 Evidence from the ‘Your DNA Your Say’survey suggests that this is variable based on
+country: across the 22 countries surveyed, the proportion of people responding that they would be
+influenced to participate in genetics research by receiving results vary from below 50% (Spain, Portugal,
+Brazil, Argentina, UK, Sweden) to 70% and upwards (Russia, USA, China, India) (publication
+forthcoming).
+4. There are Fewer Barriers for the Return of Results
+There are now widely available tools and resources which reduce the barriers to enacting the return of
+results, and hence enhance the benefits-to-cost tradeoff inherent in returning results. For example, a large
+component of returning results is identifying whether a given result is indeed likely to be clinically
+actionable.
+20 To aid in this, ClinGen curates disease-gene associations, and publishes their full
+methodology and findings.
+21 ClinVar is a freely available repository of variant classifications, including
+those from expert panels that can form the basis for more automated filtration and reporting of
+well-established clinically actionable variants.
+22
+(Though we note that current data biases in ClinVar lead
+to higher Variant of Uncertain Significance rates outside of predominantly European ancestry
+populations).
+23,24
+We now elaborate on each policy point.
+1. A clear protocol which is then adhered to
+A clear protocol that specifies whether and how a study intends to return results is a prerequisite for
+informed consent. The informed consent process — and hence the protocol — needs to cover what types
+42021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+of information will be returned and how judgment will be made on whether a variant qualifies for return.
+Additionally, it needs to specify how that information will be returned, focusing on ensuring this is done
+responsibly. If a study adopts a protocol to not return clinically actionable results, this should be clearly
+stated in the consent process. Depending on the nature of the study, a protocol may or may not allow
+participants to opt out of receiving results. Prospective participants should be able to exercise their right
+not to know genetic information about themselves,
+9 which can involve not participating in a study.25
+(We
+note that there is some debate about whether there should be an absolute right not to know if an individual
+has had a result generated about them,
+26 and that in some jurisdictions limitations are put on this right.5
+)
+For informed consent to be meaningful, this protocol must then be adhered to. There is a danger that
+consent for return of results may be viewed by researchers more loosely as permission to return clinically
+actionable results, rather than as a more strict commitment. Ethics review committees and funders should
+hold researchers to account for adhering to the policy that they outline. Participants can also have a role in
+this.
+2. Upfront resourcing
+The return of genomic results is a resource-intensive process. The identification of what needs to be
+returned is only one part of the whole process which connects a patient to downstream resources. An
+additional component piece is the potential need to validate results, for example the need for a CLIA’88
+(US) or ISO15189 (international) confirmation of the findings before these are used to change clinical
+management. An additional major consideration is the availability of appropriately trained clinical staff to
+communicate the significance of a genetic result. In some countries, there is a lack of appropriately
+trained personnel, potentially necessitating the training of healthcare professionals supported by clinical
+point-of-care tools
+27
+to be able to manage these results. Within this context, the return of research results
+requires careful budgeting and resource planning from the outset of project conceptualization. This also
+allows the benefit-to-cost tradeoff of the return of results to be estimated as accurately as possible at study
+inception, in turn helping to frame a study’s chosen protocol. Such resourcing considerations mirror the
+move in the last decade by funders to require data sharing plans and budgets in funding applications.
+3. Link to clinical standards
+Clinical standards include identifying which variants are deemed clinically actionable, standards for
+analytical validity, and processes that ensure results are returned with appropriate counseling and/or
+clinical guidance. There are three main considerations that justify the relevance of clinical standards to the
+return of clinically actionable results in research. The first is that ultimately it is the prospect of a clinical
+action that motivates such return. It is to support such action that standards in the clinical setting have
+been adopted in the first place. Second, relevant clinical standards will be appropriately sensitive to the
+health system context (including its cost structure), legal system, and additional constraints of the location
+of the participants. For example, as noted above, perspectives on clinical actionability can differ by
+country (see the differences in approaches to secondary findings between the American College of
+Medical Genetics and Genomics on the one hand and the European Society for Human Genetics and
+52021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+Canadian College of Medical Genetics on the other).
+28–31 The link to relevant clinical standards helps
+ensure that the return of results will be appropriately tailored to the whole context in which those results
+are received. Third, the blurring of the research/clinical divide
+32
+suggests harmonization could lead to
+consistency across the continuum that encompasses clinical care, clinical trials, research studies
+embedded in health systems, other research studies, and population biobanks. Despite the relevance of
+clinical standards in this context, there are key differences between the research and clinical endeavours.
+Particularly relevant in this instance is that the duties of researchers do not extend beyond the duration of
+their research projects.
+33
+4. Community engagement
+Consultation with the communities to be approached as research participants is important in order to
+address local concerns. The GA4GH’s Framework For Involving And Engaging Participants, Patients
+And Publics In Genomics Research And Health Implementation, outlines why and how engaging with
+people can best address the concerns of those who give their genomic data, or who are otherwise
+impacted by genomics research. Members of the community, or communities, who are the intended
+participants should have a say in the content and mechanisms for return of genomic results. For example,
+the costs, including opportunity costs, of return of results will be context specific and relevant to decisions
+about scarce resources across a population. The protections against genetic discrimination in a particular
+jurisdiction will also have an impact. These considerations are key for ensuring that a return of results
+policy is suitably informed by the principles of justice and beneficence. Community engagement can also
+help determine the level of support that participants will require on result return to ensure adequate
+understanding. Community engagement hence not only helps with the instrumental ends of a research
+project, such as the recruitment and the retention of participants, but is also part of ethical good practice.
+34
+For certain communities, there are specific guidelines already in place for community involvement.
+35
+5. Sharing resources
+A time-consuming aspect of implementing the return of results is the development of resources that
+enable this process, such as informed consent documents and tools, detailed protocols, and budgets. If
+researchers share these resources with other projects, the barriers to the return of results are lowered,
+enhancing the benefit-to-cost ratio of the return of results. GA4GH projects can contribute to these
+evolving resources. For example, the H3Africa’s Guideline for the Return of Individual Genetic Research
+Findings could be useful in settings where there are limited resources, expertise, and data, and where there
+are particular sociocultural issues around consent.
+36
+6. Funders urged to support the return of results
+The reasoning outlined at the beginning of this Discussion supports studies opting to return results to
+participants. Evidence suggests the existence of a large gap between what researchers would consider best
+practice for returning results and what is currently being implemented.
+37 This motivates our appeal to
+funders. Additionally, this appeal is motivated by the debates over the risk-benefit trade-offs in returning
+62021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+genomic results. These debates, which cover both the research and clinical settings, suggest the need for
+more research, from multiple countries. Return of results as part of this research not only directly benefits
+participants, but — when suitably coupled with data gathering strategies — allows for the assessment of
+impact and overall cost effectiveness of return of genomic results in general. The gathering of this
+evidence supports the human right of everyone to benefit from science and its applications.
+2 A number of
+observational and randomized studies with limited sample size have suggested that returning selected
+research results has been useful and cost-effective in participants’ clinical care.
+38–41 Larger projects
+returning clinically actionable research findings to participants and, to various degrees, tracking outcomes
+and cost-effectiveness, are underway. These include: the Project Baseline by Verily, the
+Framingham/Jackson Return of Results Study (both in the US), the 100,000 Genomes Project (UK) ,
+Australian Genomics, Melbourne Genomics, a program through the Institute of Precision Medicine,
+Singapore,
+23
+the Incidental Genomics Trial in Canada,
+42 and the All of Us Research Program in the US.43
+Future research needs to cover the global breadth of settings, including sociocultural perspectives, in
+which individuals may receive genomic results.
+IV. Acknowledgements
+Co-chairs: Anna Lewis (E J Safra Center for Ethics, Harvard University), Bartha Knoppers (Centre of
+Genomics and Policy, McGill University), Robert Green (Harvard Medical School)
+Task Force: Katherine Blizinsky (All of Us, NIH), Subhashini Chandrasekharan (All of Us, NIH), Clara
+Gaff (Melbourne Genomics Health Alliance), Melissa Heidelberg (Genentech), Saumya Jamuar
+(SingHealth Duke-NUS Genomic Medicine Center), Alice Matimba (Wellcome Connecting Science,
+Cambridge), Anna Middleton (Wellcome Connecting Science, Cambridge), Richard Milne (Wellcome
+Connecting Science, Cambridge), Madeleine Murtagh (University of Glasgow), Christine Patch
+(Genomics England), Jessica Reusch (All of Us, NIH), Pedro Rondot Radío (University of Buenos Aires),
+Adrian Thorogood (University of Luxembourg), Danya Vears (Murdoch Children’s Research Institute,
+University of Melbourne), Ma'n Zawati (Centre of Genomics and Policy, McGill University)
+V. References
+1. Global Alliance for Genomics and Health. Global Alliance for Genomics and Health
+https://www.ga4gh.org/.
+2. Knoppers, B. M. Framework for responsible sharing of genomic and health-related data. HUGO J. 8,
+(2014).
+3. Wolf, S. M. et al. Managing incidental findings and research results in genomic research involving
+72021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+biobanks and archived data sets. Genet. Med. 14, 361–384 (2012).
+4. Mighton, C. et al. Quality of life drives patients’ preferences for secondary findings from genomic
+sequencing. Eur. J. Hum. Genet. 28, 1178–1186 (2020).
+5. Thorogood, A., Dalpé, G. & Knoppers, B. M. Return of individual genomic research results: are laws
+and policies keeping step? Eur. J. Hum. Genet. 27, 535–546 (2019).
+6. Council for International Organizations of Medical Sciences (CIOMS) in collaboration with the World
+Health Organization (WHO). International ethical guidelines for health-related research involving
+humans.
+https://cioms.ch/shop/product/international-ethical-guidelines-for-health-related-research-involving-hu
+mans/ (2016).
+7. Bredenoord, A. L., Kroes, H. Y., Cuppen, E., Parker, M. & van Delden, J. J. M. Disclosure of
+individual genetic data to research participants: the debate reconsidered. Trends Genet. TIG 27, 41–47
+(2011).
+8. Law on Biomedical Research, Spain. 14/2007 (2007).
+9. Universal Declaration on the Human Genome and Human Rights: UNESCO.
+http://portal.unesco.org/en/ev.php-URL_ID=13177&URL_DO=DO_TOPIC&URL_SECTION=201.ht
+ml.
+10. Miller, P. B. & Weijer, C. Fiduciary Obligation in Clinical Research. J. Law. Med. Ethics 34,
+424–440 (2006).
+11.Richardson, H. S. Incidental findings and ancillary-care obligations. J. Law Med. Ethics J. Am. Soc.
+Law Med. Ethics 36, 256–270, 211 (2008).
+12. Richardson, H. S. & Belsky, L. The ancillary-care responsibilities of medical researchers. An
+ethical framework for thinking about the clinical care that researchers owe their subjects. Hastings
+82021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+Cent. Rep. 34, 25–33 (2004).
+13. European Union. Additional Protocol to the Convention on Human Rights and Biomedicine,
+concerning Biomedical Research. (2005).
+14. National Academies of Sciences, E. Returning Individual Research Results to Participants:
+Guidance for a New Research Paradigm. (2018). doi:10.17226/25094.
+15. Ulrich, M. The Duty to Rescue in Genomic Research. Am. J. Bioeth. 13, 50–51 (2013).
+16. Illes, J. et al. Incidental Findings in Brain Imaging Research. Science 311, 783–784 (2006).
+17. Manchanda, R., Lieberman, S., Gaba, F., Lahad, A. & Levy-Lahad, E. Population Screening for
+Inherited Predisposition to Breast and Ovarian Cancer. Annu. Rev. Genomics Hum. Genet. 21, 373–412
+(2020).
+18. Hendricks-Sturrup, R. M. & Lu, C. Y. What motivates the sharing of consumer-generated
+genomic information? SAGE Open Med. 8, 2050312120915400 (2020).
+19. Sanderson, S. C. et al. Motivations, concerns and preferences of personal genome sequencing
+research participants: Baseline findings from the HealthSeq project. Eur. J. Hum. Genet. 24, 14–20
+(2016).
+20. Kochan, D. C. et al. Challenges in returning results in a genomic medicine implementation study:
+the Return of Actionable Variants Empirical (RAVE) study. Npj Genomic Med. 5, 1–7 (2020).
+21. Gene Validity Curations - ClinGen Knowledge Base | Clinical Genome Resource.
+https://search.clinicalgenome.org/kb/gene-validity.
+22. Landrum, M. J. & Kattman, B. L. ClinVar at five years: Delivering on the promise. Hum. Mutat.
+39, 1623–1630 (2018).
+23. Bylstra, Y. et al. Implementation of genomics in medical practice to deliver precision medicine
+for an Asian population. NPJ Genomic Med. 4, (2019).
+92021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+24. Shah, N. et al. Identification of Misclassified ClinVar Variants via Disease Population Prevalence.
+Am. J. Hum. Genet. 102, 609–619 (2018).
+25. Darnell, A. J. et al. A Clinical Service to Support the Return of Secondary Genomic Findings in
+Human Research. Am. J. Hum. Genet. 98, 435–441 (2016).
+26. Berkman, B. E. & Hull, S. C. The “Right Not to Know” in the Genomic Era: Time to Break From
+Tradition? Am. J. Bioeth. AJOB 14, 28–31 (2014).
+27. Sebastian, A. et al. Effect of genetics clinical decision support tools on health-care providers’
+decision making: a mixed-methods systematic review. Genet. Med. 23, 593–602 (2021).
+28. Green, R. C. et al. ACMG recommendations for reporting of incidental findings in clinical exome
+and genome sequencing. Genet. Med. Of . J. Am. Coll. Med. Genet. 15, 565–574 (2013).
+29. Kalia, S. S. et al. Recommendations for reporting of secondary findings in clinical exome and
+genome sequencing, 2016 update (ACMG SF v2.0): a policy statement of the American College of
+Medical Genetics and Genomics. Genet. Med. 19, 249–255 (2017).
+30. de Wert, G. et al. Opportunistic genomic screening. Recommendations of the European Society of
+Human Genetics. Eur. J. Hum. Genet. 1–13 (2020) doi:10.1038/s41431-020-00758-w.
+31. Boycott, K. et al. The clinical application of genome-wide sequencing for monogenic diseases in
+Canada: Position Statement of the Canadian College of Medical Geneticists. J. Med. Genet. 52,
+431–437 (2015).
+32. Wolf, S. M. et al. Navigating the research-clinical interface in genomic medicine: analysis from
+the CSER Consortium. Genet. Med. Of . J. Am. Coll. Med. Genet. 20, 545–553 (2018).
+33. Bombard, Y. et al. The Responsibility to Recontact Research Participants after Reinterpretation of
+Genetic and Genomic Research Results. Am. J. Hum. Genet. 104, 578–595 (2019).
+34. Adhikari, B., Pell, C. & Cheah, P. Y. Community engagement and ethical global health research.
+102021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+Glob. Bioeth. 31, 1–12 (2019).
+35. Garrison, N. A. et al. Genomic Research Through an Indigenous Lens: Understanding the
+Expectations. Annu. Rev. Genomics Hum. Genet. 20, 495–517 (2019).
+36. Matimba, A. H3Africa Guideline for the Return of Individual Genetic Research Findings. (2018).
+37. Kostick, K., Pereira, S., Brannan, C., Torgerson, L. & Lázaro-Muñoz, G. Psychiatric genomics
+researchers’ perspectives on best practices for returning results to individual participants. Genet. Med.
+1–8 (2019) doi:10.1038/s41436-019-0642-7.
+38. Vassy, J. L. et al. The Impact of Whole-Genome Sequencing on the Primary Care and Outcomes
+of Healthy Adult Patients: A Pilot Randomized Trial. Ann. Intern. Med. 167, 159–169 (2017).
+39. Hart, M. R. et al. Secondary findings from clinical genomic sequencing: prevalence, patient
+perspectives, family history assessment, and health-care costs from a multisite study. Genet. Med. 21,
+1100–1110 (2019).
+40. Ceyhan-Birsoy, O. et al. Interpretation of Genomic Sequencing Results in Healthy and Ill
+Newborns: Results from the BabySeq Project. Am. J. Hum. Genet. 104, 76–93 (2019).
+41. Buchanan, A. H. et al. Clinical outcomes of a genomic screening program for actionable genetic
+conditions. Genet. Med. 22, 1874–1882 (2020).
+42. Shickh, S. et al. Health outcomes, utility and costs of returning incidental results from genomic
+sequencing in a Canadian cancer population: protocol for a mixed-methods randomised controlled
+trial. BMJ Open 9, e031092 (2019).
+43. The “All of Us” Research Program. N. Engl. J. Med. 381, 668–676 (2019).
+112021 POLICY ON CLINICALLY ACTIONABLE GENOMIC RESEARCH RESULTS
+Policy Revision History
+Policy Number/Version Date Effective Summary of Revisions
+v1.0 June 24 2021 n/a
+12
+
+---
+Source: https://www.ga4gh.org/document/2021-policy-on-clinically-actionable-genomic-research-results/
+Retrieved via GA4GH public Google Drive
+

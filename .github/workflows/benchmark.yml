@@ -44,7 +44,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Ingest corpus
-        run: python -m src.main ingest-manifest --reset --force
+        run: python -m src.main ingest-manifest --reset
 
       - name: Run benchmark
         run: |

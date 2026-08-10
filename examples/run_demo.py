@@ -15,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    store = ROOT / "data" / "regbot_store"
+    # Never reset the full corpus store: the demo intentionally owns a separate path.
+    store = ROOT / "data" / "regbot_demo_store"
     policy = ROOT / "examples" / "data" / "sample_ga4gh_policy_stub.txt"
     consent = ROOT / "examples" / "data" / "sample_consent_short.txt"
     py = sys.executable

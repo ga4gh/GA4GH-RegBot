@@ -80,6 +80,15 @@ _STOPWORDS: Set[str] = {
     "if",
     "when",
     "where",
+    "what",
+    "how",
+    "why",
+    "who",
+    "whom",
+    "whose",
+    "whether",
+    "happen",
+    "happens",
     "which",
     "their",
     "its",
@@ -277,6 +286,12 @@ def assess_human_review(
         details.append(
             "Every recommendation fell below the token-overlap threshold "
             f"({overlap.get('min_threshold')}) against its cited chunks."
+        )
+    elif overlap.get("dropped_count", 0) > 0 and not overlap.get("skipped"):
+        reasons.append("low_overlap")
+        details.append(
+            f"{overlap.get('dropped_count')} recommendation(s) were removed because their "
+            "evidence was missing or lexical support was below the configured threshold."
         )
     elif chunks and not recommendations:
         reasons.append("low_overlap")

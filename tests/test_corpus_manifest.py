@@ -134,6 +134,76 @@ class TestCorpusManifest(unittest.TestCase):
             reloaded = load_corpus_manifest(manifest_path)
             self.assertIsNone(reloaded["documents"][0]["ingested_at"])
 
+    @patch("src.regbot.ingestion.load_sentence_transformer")
+    def test_reset_rebuilds_entries_with_historical_ingest_timestamp(self, mock_load) -> None:
+        """A tracked ingested_at value must not turn a fresh-store rebuild into a no-op."""
+        mock_load.return_value = _FakeSentenceTransformer()
+        with tempfile.TemporaryDirectory() as root:
+            docs_dir = os.path.join(root, "docs")
+            corpus_dir = os.path.join(root, "data", "corpus", "P0")
+            store_dir = os.path.join(root, "store")
+            os.makedirs(docs_dir)
+            os.makedirs(corpus_dir)
+            policy_path = os.path.join(corpus_dir, "policy.txt")
+            with open(policy_path, "w", encoding="utf-8") as f:
+                f.write(
+                    "Policy text with enough citable words for a complete local rebuild. "
+                    "Researchers must document consent, withdrawal, access, safeguards, "
+                    "retention, governance, review, accountability, and international transfer."
+                )
+            manifest_path = os.path.join(docs_dir, "corpus_manifest.yaml")
+            with open(manifest_path, "w", encoding="utf-8") as f:
+                yaml.safe_dump(
+                    {
+                        "version": "0.1",
+                        "documents": [
+                            {
+                                "document_id": "policy",
+                                "tier": "P0",
+                                "jurisdiction": ["GA4GH"],
+                                "ingest_path": "data/corpus/P0/policy.txt",
+                                "ingested_at": "2026-01-01T00:00:00+00:00",
+                            }
+                        ],
+                    },
+                    f,
+                )
+
+            summary = ingest_from_corpus_manifest(manifest_path, store_dir, reset=True)
+
+            self.assertEqual(summary["ingested"], 1)
+            self.assertGreater(len(read_manifest(store_dir)), 0)
+
+    def test_incremental_dry_run_uses_active_store_not_global_timestamp(self) -> None:
+        with tempfile.TemporaryDirectory() as root:
+            docs_dir = os.path.join(root, "docs")
+            corpus_dir = os.path.join(root, "data", "corpus", "P0")
+            store_dir = os.path.join(root, "store")
+            os.makedirs(docs_dir)
+            os.makedirs(corpus_dir)
+            policy_path = os.path.join(corpus_dir, "policy.txt")
+            with open(policy_path, "w", encoding="utf-8") as f:
+                f.write("This policy file exists for an incremental dry-run check.")
+            manifest_path = os.path.join(docs_dir, "corpus_manifest.yaml")
+            with open(manifest_path, "w", encoding="utf-8") as f:
+                yaml.safe_dump(
+                    {
+                        "documents": [
+                            {
+                                "document_id": "policy",
+                                "tier": "P0",
+                                "ingest_path": "data/corpus/P0/policy.txt",
+                                "ingested_at": "2026-01-01T00:00:00+00:00",
+                            }
+                        ]
+                    },
+                    f,
+                )
+
+            summary = ingest_from_corpus_manifest(manifest_path, store_dir, dry_run=True)
+
+            self.assertEqual(summary["results"][0]["status"], "dry_run")
+
 
 if __name__ == "__main__":
     unittest.main()

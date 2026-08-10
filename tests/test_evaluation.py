@@ -84,9 +84,10 @@ class TestMetrics(unittest.TestCase):
         self.assertEqual(scores["hit@2"], 0.0)
 
     def test_precision_uses_returned_count_not_k(self) -> None:
-        # Only 1 result returned but k=5: precision is 1/1, not 1/5.
+        # Report both conventions: returned-count precision and fixed-k precision.
         scores = score_ranking(["a"], {"a"}, ks=[5])
         self.assertEqual(scores["precision@5"], 1.0)
+        self.assertEqual(scores["precision_fixed@5"], 0.2)
 
     def test_empty_ranking_is_zero_not_error(self) -> None:
         scores = score_ranking([], {"a"}, ks=[3])

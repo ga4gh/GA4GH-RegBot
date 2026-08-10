@@ -22,8 +22,8 @@
 # STATUS: drafted by the contributor. NOT YET MENTOR-REVIEWED — see docs/eval_results.md
 # before quoting these numbers.
 
-version: '0.4'
-updated: '2026-07-28'
+version: '0.8'
+updated: '2026-08-09'
 notes: >-
   v0.3 — re-anchored after the P0/P1 corpus moved from contributor paraphrases to primary
   sources (official GDPR text from EUR-Lex, GA4GH published documents). Anchors now point
@@ -32,11 +32,16 @@ notes: >-
   of them, so a relevance judgment is a judgment about the regulation and not about the
   contributor's own wording. Anchors are kept narrow (1-3 chunks each) so that a broad
   phrase does not sweep marginal chunks into the gold set and depress recall artificially.
-  v0.4 — Taiwan moved to the Ministry of Justice official English text, so q02 anchors on
-  Human Biobank Management Act Art. 8 rather than on a summary of it. The other five P2
-  jurisdictions remain contributor summaries: official English text exists for all of them,
-  but SG/JP returned only tables of contents and HK/KR render via JavaScript. Those
-  documents stay marked content_type: summary.
+  v0.4 — Taiwan moved to the Ministry of Justice official English text. v0.5 re-anchored
+  Singapore, Hong Kong, Korea, China and Japan after full official or publisher-issued
+  texts were added. v0.6 expands the contributor-labelled set from 12 to 30 queries and
+  covers security controls, DAC procedure, ethics review, pediatric/familial consent and
+  each regional jurisdiction. v0.7 adds six mechanically checked labels for EHDS, Japan
+  APPI, Taiwan human-subjects research, Singapore tissue banking, and the two current
+  Chinese outbound-data instruments. v0.8 replaces the superseded GA4GH privacy policy
+  with v2.0 and adds five labels for current GA4GH policy products. The contributor labels
+  and anchors are mechanically
+  checked against the live corpus, but this set remains NOT YET MENTOR-REVIEWED.
 
 queries:
   - query_id: q01-withdrawal-ga4gh
@@ -75,15 +80,21 @@ queries:
     query: What approval is required to supply human genetic resources from China to foreign collaborators?
     jurisdiction: [CN]
     relevant:
-      - document_id: cn-law-excerpt
-        contains: without approval from relevant authorities
+      # HGR Implementation Rules (MOST Order No. 21) — the operative provision-abroad rules
+      - document_id: cn-hgr-rules
+        contains: provision abroad of our nation's human genetic resources
+      - document_id: cn-hgr
+        contains: international cooperation in scientific research
 
   - query_id: q05-hk-section-33
     query: Is the Hong Kong cross-border data transfer restriction currently in force?
     jurisdiction: [HK]
     relevant:
-      - document_id: hk-law-excerpt
-        contains: Section 33 has not been brought into force
+      # PDPO s.33 itself, which still carries its "not yet in operation" remark
+      - document_id: hk-pdpo
+        contains: 'Remarks: not yet in operation'
+      - document_id: hk-crossborder-guidance
+        contains: Although section 33 is not yet effective
 
   - query_id: q06-jp-transfer-mechanisms
     query: What mechanisms permit transferring personal data out of Japan for research?
@@ -96,15 +107,16 @@ queries:
     query: Does Korean law require separate consent for sensitive genetic data?
     jurisdiction: [KR]
     relevant:
-      - document_id: kr-law-excerpt
-        contains: requires separate consent for collection and use
+      - document_id: kr-pipa
+        contains: obtains the consent of the data subject apart from the consent to the processing of other personal information
 
   - query_id: q08-sg-transfer-limitation
     query: Can personal data be transferred outside Singapore for research collaboration?
     jurisdiction: [SG]
     relevant:
-      - document_id: sg-law-excerpt
-        contains: must not transfer personal data outside Singapore
+      # PDPA s.26 — the transfer limitation itself
+      - document_id: sg-pdpa
+        contains: transfer any personal data to a country or territory outside Singapore
 
   - query_id: q09-dpia-trigger
     query: When is a data protection impact assessment required for large-scale genomic research?
@@ -131,6 +143,8 @@ queries:
         contains: Forego any attempt to re-identify anonymized data
       - document_id: ga4gh-consent-policy
         contains: risk of re-identifying individuals
+      - document_id: ga4gh-privacy-security-policy
+        contains: Any attempt to re-identify individuals should be strictly prohibited
 
   - query_id: q12-duo-consent-codes
     query: How do machine-readable consent codes and DUO support Data Access Committee review?
@@ -139,3 +153,198 @@ queries:
         contains: computer-readable use permissions
       - document_id: ga4gh-mrcg-consent-duo-brief
         contains: co-created Machine Readable Consent Guidance
+
+  - query_id: q13-ga4gh-access-control
+    query: What access-control obligation applies to processors in the GA4GH ecosystem?
+    relevant:
+      - document_id: ga4gh-dsip
+        contains: only authorized users (human user or software client) may access data and services
+
+  - query_id: q14-ga4gh-audit-logs
+    query: Which security events must a GA4GH data processor log?
+    relevant:
+      - document_id: ga4gh-dsip
+        contains: record and maintain a log of security-relevant events
+
+  - query_id: q15-ga4gh-data-breach
+    query: How should a GA4GH data user report a breach involving identifiable data?
+    relevant:
+      - document_id: ga4gh-privacy-security-policy
+        contains: should be reported to the data steward without undue delay
+
+  - query_id: q16-dac-transparent-application
+    query: What makes a Data Access Committee application process transparent?
+    relevant:
+      - document_id: ga4gh-dacres
+        contains: provide transparent mechanisms for an applicant to apply for data access
+
+  - query_id: q17-ethics-review-recognition
+    query: Why should research ethics committees recognize reviews from other jurisdictions?
+    relevant:
+      - document_id: ga4gh-errp
+        contains: improving mutual recognition among RECs in multi-site/multi-jurisdictional research
+
+  - query_id: q18-pediatric-assent
+    query: Should younger children provide assent for pediatric genomic research?
+    relevant:
+      - document_id: ga4gh-consent-clauses-pediatric
+        contains: should be asked at a minimum, to verbally provide assent
+
+  - query_id: q19-familial-contact
+    query: May researchers contact relatives about findings important to family health?
+    relevant:
+      - document_id: ga4gh-consent-clauses-familial
+        contains: if we can contact your [family members] if we find something
+
+  - query_id: q20-sg-hbra-consent
+    query: What consent must be obtained before a person becomes a biomedical research subject in Singapore?
+    jurisdiction: [SG]
+    relevant:
+      - document_id: sg-hbra
+        contains: appropriate consent has been obtained in accordance with Part 3
+
+  - query_id: q21-sg-health-access-restriction
+    query: What does an access restriction do under Singapore's Health Information Act?
+    jurisdiction: [SG]
+    relevant:
+      - document_id: sg-hia
+        contains: prevents the access, collection and disclosure of any accessible health information
+
+  - query_id: q22-cn-sensitive-separate-consent
+    query: Is separate consent needed to process sensitive personal information in China?
+    jurisdiction: [CN]
+    relevant:
+      - document_id: cn-pipl
+        contains: For the processing of sensitive personal information, individual's separate consent shall be obtained
+
+  - query_id: q23-cn-crossborder-security-assessment
+    query: Which security assessment can authorize cross-border provision of personal information from China?
+    jurisdiction: [CN]
+    relevant:
+      - document_id: cn-pipl
+        contains: passing the security assessment organized by the national cyberspace department
+
+  - query_id: q24-cn-important-data-risk-assessment
+    query: Must processors of important data in China conduct regular risk assessments?
+    jurisdiction: [CN]
+    relevant:
+      - document_id: cn-dsl
+        contains: Processors of important data shall
+      - document_id: cn-dsl
+        contains: conduct risk assessments of their data processing on a regular basis
+
+  - query_id: q25-tw-crossborder-restrictions
+    query: When may Taiwan restrict an international transfer of personal data?
+    jurisdiction: [TW]
+    relevant:
+      - document_id: tw-pdpa
+        contains: the country receiving the personal data lacks proper regulations on protection of personal data
+
+  - query_id: q26-tw-biobank-ethics-committee
+    query: Must a Taiwan biobank establish an ethics committee?
+    jurisdiction: [TW]
+    relevant:
+      - document_id: tw-biobank-act
+        contains: A Biobank Operator shall establish an ethics committee
+
+  - query_id: q27-kr-human-research-written-consent
+    query: What written consent is required before human subjects research in Korea begins?
+    jurisdiction: [KR]
+    relevant:
+      - document_id: kr-bioethics
+        contains: A human subjects researcher shall obtain written consent
+
+  - query_id: q28-kr-pseudonymized-research
+    query: Can pseudonymized information be used for scientific research in Korea without consent?
+    jurisdiction: [KR]
+    relevant:
+      - document_id: kr-pipa
+        contains: may process pseudonymized information without the consent of data subjects for statistical purposes, scientific research purposes
+
+  - query_id: q29-jp-opportunity-to-refuse
+    query: When informed consent is not obtained in Japan, must research subjects have an opportunity to refuse?
+    jurisdiction: [JP]
+    relevant:
+      - document_id: jp-ethical-guidelines
+        contains: research subjects, etc. are provided with an opportunity to refuse
+
+  - query_id: q30-hk-model-clause-security
+    query: What security measure should Hong Kong cross-border model clauses require from the transferee?
+    jurisdiction: [HK]
+    relevant:
+      - document_id: hk-model-clauses
+        contains: apply agreed security measures to the use of the personal data
+
+  - query_id: q31-ehds-secondary-use
+    query: What safeguards govern secondary use of electronic health data for research under the EHDS?
+    jurisdiction: [EU]
+    relevant:
+      - document_id: ehds-full-text
+        contains: processing in a secure processing environment
+      - document_id: ehds-full-text
+        contains: secondary use of personal electronic health data
+
+  - query_id: q32-tw-overseas-research-materials
+    query: What approvals are required to provide identifiable research materials from Taiwan for overseas research?
+    jurisdiction: [TW]
+    relevant:
+      - document_id: tw-human-subjects-research-act
+        contains: provided for specified research purposes overseas
+
+  - query_id: q33-sg-tissue-export
+    query: What must a Singapore tissue bank verify before exporting identifiable human tissue?
+    jurisdiction: [SG]
+    relevant:
+      - document_id: sg-tissue-banking-regulations
+        contains: appropriate consent has been obtained from the donor for the export or removal
+
+  - query_id: q34-jp-appi-foreign-transfer
+    query: When does Japan APPI require consent for a transfer of personal data to a foreign country?
+    jurisdiction: [JP]
+    relevant:
+      - document_id: jp-appi
+        contains: businesses must obtain an identifiable person's consent to the effect that the person approves the provision to a third party in a foreign country
+
+  - query_id: q35-cn-crossborder-exemptions
+    query: 中国境内数据出境在什么情况下可以免予申报安全评估、标准合同和个人信息保护认证？
+    jurisdiction: [CN]
+    relevant:
+      - document_id: cn-crossborder-data-flow-provisions-2024
+        contains: 免予申报数据出境安全评估、订立个人信息出境标准合同、通过个人信息保护认证
+
+  - query_id: q36-cn-important-data-export
+    query: 中国的重要数据确需出境时必须通过什么程序？
+    jurisdiction: [CN]
+    relevant:
+      - document_id: cn-network-data-security-management-regulations
+        contains: 应当通过国家网信部门组织的数据出境安全评估
+
+  - query_id: q37-ga4gh-actionable-results-protocol
+    query: What protocol should a genomic research study establish for returning clinically actionable results?
+    relevant:
+      - document_id: ga4gh-clinically-actionable-results
+        contains: should have a specific protocol regarding the return of such results
+
+  - query_id: q38-ga4gh-engagement-fairness
+    query: Which principle should underpin participant, patient and public engagement in genomics?
+    relevant:
+      - document_id: ga4gh-engagement-framework
+        contains: underpinned by principles of fairness and justice
+
+  - query_id: q39-ga4gh-controlled-access-definition
+    query: How does the GA4GH Data Sharing Lexicon define controlled or managed access?
+    relevant:
+      - document_id: ga4gh-data-sharing-lexicon
+        contains: Access to data that is subject to conditions and/or an approval process
+
+  - query_id: q40-ga4gh-daa-external-collaborator
+    query: What must happen before a data user shares GA4GH-governed data with an external collaborator?
+    relevant:
+      - document_id: ga4gh-model-daa
+        contains: external collaborator must first obtain approval from the Data Provider
+
+  - query_id: q41-ga4gh-genetic-discrimination
+    query: What protected ground should a genetic non-discrimination policy explicitly identify?
+    relevant:
+      - document_id: ga4gh-genetic-discrimination
+        contains: should explicitly mention “genetic characteristics” as a prohibited ground of discrimination

@@ -53,6 +53,9 @@ class TestTextUtils(unittest.TestCase):
     def test_tokenize_basic(self) -> None:
         self.assertEqual(tokenize("Data Sharing (v2)"), ["data", "sharing", "v2"])
 
+    def test_tokenize_cjk_as_bigrams(self) -> None:
+        self.assertEqual(tokenize("数据出境"), ["数据", "据出", "出境"])
+
     def test_chunk_text_overlap(self) -> None:
         text = "a" * 100
         chunks = chunk_text(text, chunk_size=30, overlap=10)

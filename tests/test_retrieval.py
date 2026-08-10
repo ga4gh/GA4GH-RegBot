@@ -67,6 +67,41 @@ class TestDenseRanking(unittest.TestCase):
         self.assertEqual(r._dense_candidates([1.0, 0.0], 5), [])
 
 
+class TestScopedBm25(unittest.TestCase):
+    def test_scope_recomputes_idf_instead_of_filtering_global_scores(self) -> None:
+        from rank_bm25 import BM25Okapi
+
+        r = HybridRetriever("unused")
+        r._bm25_ids = ["a", "b", "outside-1", "outside-2", "outside-3"]
+        texts = {
+            "a": "alpha beta",
+            "b": "alpha",
+            "outside-1": "beta",
+            "outside-2": "beta",
+            "outside-3": "beta",
+        }
+        from src.regbot.text_utils import tokenize
+
+        r._bm25_tokens = {cid: tokenize(text) for cid, text in texts.items()}
+        r._bm25 = BM25Okapi([r._bm25_tokens[cid] for cid in r._bm25_ids])
+
+        scoped = r._bm25_candidates("alpha beta", 2, {"a", "b"})
+        expected_model = BM25Okapi([r._bm25_tokens["a"], r._bm25_tokens["b"]])
+        expected_scores = expected_model.get_scores(tokenize("alpha beta"))
+        expected = ["a", "b"] if expected_scores[0] >= expected_scores[1] else ["b", "a"]
+        self.assertEqual(scoped, expected)
+
+    def test_empty_scope_returns_no_candidates(self) -> None:
+        from rank_bm25 import BM25Okapi
+        from src.regbot.text_utils import tokenize
+
+        r = HybridRetriever("unused")
+        r._bm25_ids = ["a"]
+        r._bm25_tokens = {"a": tokenize("alpha")}
+        r._bm25 = BM25Okapi([r._bm25_tokens["a"]])
+        self.assertEqual(r._bm25_candidates("alpha", 10, set()), [])
+
+
 class TestProvisionCap(unittest.TestCase):
     """A result list should name distinct applicable rules, not repeat one of them."""
 

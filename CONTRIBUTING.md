@@ -27,20 +27,20 @@ Unit tests do **not** require Ollama or `OPENAI_API_KEY`; the pipeline test forc
 ## Tests
 
 ```bash
-python -m unittest discover -s tests -p "test*.py" -v
+python -m pytest -q
 ```
 
 ## Lint
 
 ```bash
-ruff check src tests
-ruff format --check src tests
+ruff check src tests tools
+ruff format --check src tests tools
 ```
 
 Auto-format:
 
 ```bash
-ruff format src tests
+ruff format src tests tools
 ```
 
 ## Type check (optional)
@@ -75,4 +75,5 @@ in the event handler that starts the fetch.
 
 ## Where to start
 
-- See **Next steps** in `README.md` for suggested features (gold eval set, stricter JSON schema, ops hardening).
+- See `docs/eval_results.md` for measured limitations and `docs/RELEASE_CHECKLIST.md` for
+  the remaining release blocker: independent review of the contributor-labelled gold set.

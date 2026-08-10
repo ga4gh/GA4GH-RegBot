@@ -6,6 +6,38 @@ import unittest
 from unittest.mock import patch
 
 
+class TestPortableManifest(unittest.TestCase):
+    def test_source_id_depends_on_content_not_absolute_path(self) -> None:
+        from src.regbot.ingestion import _stable_source_id
+
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            first_path = os.path.join(first, "policy.txt")
+            second_path = os.path.join(second, "policy.txt")
+            for path in (first_path, second_path):
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write("The same authoritative policy text.")
+            self.assertEqual(_stable_source_id(first_path), _stable_source_id(second_path))
+
+            with open(second_path, "w", encoding="utf-8") as f:
+                f.write("A revised authoritative policy text.")
+            self.assertNotEqual(_stable_source_id(first_path), _stable_source_id(second_path))
+
+    def test_write_manifest_strips_legacy_source_path(self) -> None:
+        from src.regbot.ingestion import read_manifest, write_manifest
+
+        chunks = [
+            {
+                "id": "policy_c0",
+                "text": "Policy text",
+                "metadata": {"source": "policy.txt", "source_path": "/private/policy.txt"},
+            }
+        ]
+        with tempfile.TemporaryDirectory() as store:
+            write_manifest(store, chunks)
+            metadata = read_manifest(store)[0]["metadata"]
+        self.assertNotIn("source_path", metadata)
+
+
 class TestIngestionPdf(unittest.TestCase):
     def test_empty_pdf_text_raises_clear_error(self) -> None:
         with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
@@ -86,6 +118,52 @@ class TestRunningHeaderRemoval(unittest.TestCase):
         self.assertNotIn("Appendix", _running_lines(pages))
 
 
+class TestPdfTextCleanup(unittest.TestCase):
+    def test_statutory_contents_pages_are_removed_before_operative_text(self) -> None:
+        from src.regbot.ingestion import _strip_pdf_front_matter
+
+        pages = [
+            "Cover page",
+            "ARRANGEMENT OF SECTIONS\n1. Short title\n2. Interpretation",
+            "Part 2\n3. Consent\n4. Protection",
+            "An Act to regulate health information.\nBe it enacted by Parliament",
+            "1. This Act is the Health Information Act.",
+        ]
+        cleaned = _strip_pdf_front_matter(pages)
+        self.assertEqual(cleaned[:3], ["", "", ""])
+        self.assertIn("An Act to", cleaned[3])
+        self.assertEqual(cleaned[4], pages[4])
+
+    def test_non_statutory_document_is_unchanged(self) -> None:
+        from src.regbot.ingestion import _strip_pdf_front_matter
+
+        pages = ["Contents", "Policy recommendations", "Substantive guidance"]
+        self.assertEqual(_strip_pdf_front_matter(pages), pages)
+
+    def test_dotted_table_of_contents_is_removed_before_preamble(self) -> None:
+        from src.regbot.ingestion import _strip_pdf_front_matter
+
+        pages = [
+            "Guidelines cover",
+            "Table of Contents\nPreamble ........ 1\nChapter 1 ........ 3\nChapter 2 ........ 8",
+            "More entries ........ 10\nConsent ........ 12\nReview ........ 14",
+            "1 Preamble Through the development of medical science, these guidelines apply.",
+        ]
+        cleaned = _strip_pdf_front_matter(pages)
+        self.assertEqual(cleaned[:3], ["", "", ""])
+        self.assertTrue(cleaned[3].startswith("1 Preamble"))
+
+    def test_audited_pypdf_word_splits_are_repaired(self) -> None:
+        from src.regbot.ingestion import _repair_pdf_text
+
+        text = "ST A TUTES: an of fence may be subject to re view by a Resear ch officer."
+        repaired = _repair_pdf_text(text)
+        self.assertIn("STATUTES", repaired)
+        self.assertIn("offence", repaired)
+        self.assertIn("review", repaired)
+        self.assertIn("Research", repaired)
+
+
 class TestCitableContent(unittest.TestCase):
     """Structural leftovers are not evidence; genuinely short provisions are."""
 
@@ -116,6 +194,16 @@ class TestCitableContent(unittest.TestCase):
         self.assertFalse(
             has_citable_content("See https://example.org/a/very/long/path/with/many/segments")
         )
+
+    def test_keeps_cjk_provision_without_whitespace(self) -> None:
+        from src.regbot.ingestion import has_citable_content
+
+        self.assertTrue(
+            has_citable_content(
+                "第三十七条网络数据处理者向境外提供重要数据的，应当通过数据出境安全评估。"
+            )
+        )
+        self.assertFalse(has_citable_content("第三章重要数据安全"))
 
 
 if __name__ == "__main__":
