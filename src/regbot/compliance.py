@@ -4,6 +4,7 @@ import json
 import re
 from typing import Any, Dict, List, Optional
 
+import httpx
 from openai import (
     APIConnectionError,
     AuthenticationError,
@@ -22,14 +23,16 @@ from src.regbot.config import (
     llm_provider,
     ollama_openai_base_url,
 )
-from src.regbot.evidence import apply_phase3_enrichment
+from src.regbot.evidence import apply_phase3_enrichment, shared_terms
 from src.regbot.grounding import (
     allowed_chunk_ids,
     audit_report_grounding,
     filter_recommendations_by_token_overlap,
+    max_token_recall_against_chunks,
     normalize_recommendations,
 )
 from src.regbot.study_type import detect_study_type
+from src.regbot.types import RecommendationItem
 
 # Navigation report: coverage describes topic completeness, not a compliance verdict.
 _COVERAGE_VALUES = frozenset({"complete", "partial", "incomplete", "unknown"})
@@ -85,7 +88,7 @@ def _fallback_report(
     *,
     grounding_strict: bool = True,
 ) -> Dict[str, Any]:
-    """Heuristic output when no LLM key is available; ties each recommendation to chunk ids."""
+    """Heuristic output when no LLM is available, with evidence selected lexically."""
     consent_l = consent.lower()
     keywords = [
         "secondary use",
@@ -99,25 +102,52 @@ def _fallback_report(
     ]
     missing = [k for k in keywords if k not in consent_l]
     coverage = coverage_from_missing_count(len(missing), len(keywords))
-    ids_pool = [str(c["id"]) for c in chunks if c.get("id")]
     texts = [
         "Add explicit language on permitted secondary uses and any restrictions.",
         "Clarify withdrawal of consent and what happens to already-shared data.",
         "State whether data may be stored or processed outside the original jurisdiction.",
     ]
-    recommendations: List[Dict[str, Any]] = []
-    for i, t in enumerate(texts):
-        ev = [ids_pool[i % len(ids_pool)]] if ids_pool else []
-        recommendations.append({"text": t, "evidence_chunk_ids": ev})
-
-    citations: List[Dict[str, str]] = []
-    for c in chunks[:5]:
-        citations.append(
-            {
-                "chunk_id": str(c["id"]),
-                "reason": "Retrieved as potentially relevant policy context.",
-            }
+    fallback_recommendations: List[RecommendationItem] = []
+    for recommendation in texts:
+        ranked = sorted(
+            (
+                (
+                    len(
+                        shared_terms(
+                            recommendation,
+                            str(chunk.get("text") or ""),
+                            limit=20,
+                        )
+                    ),
+                    max_token_recall_against_chunks(recommendation, [str(chunk.get("text") or "")]),
+                    str(chunk["id"]),
+                )
+                for chunk in chunks
+                if chunk.get("id")
+            ),
+            key=lambda item: (-item[0], -item[1], item[2]),
         )
+        evidence_ids = [ranked[0][2]] if ranked and ranked[0][0] > 0 else []
+        fallback_recommendations.append(
+            {"text": recommendation, "evidence_chunk_ids": evidence_ids}
+        )
+
+    recommendations, overlap = filter_recommendations_by_token_overlap(
+        fallback_recommendations,
+        chunks,
+        min_overlap=MIN_TOKEN_OVERLAP,
+    )
+
+    selected_ids = list(
+        dict.fromkeys(cid for rec in recommendations for cid in rec.get("evidence_chunk_ids", []))
+    )
+    citations = [
+        {
+            "chunk_id": cid,
+            "reason": "Lexically supports an offline keyword recommendation.",
+        }
+        for cid in selected_ids
+    ]
 
     out: Dict[str, Any] = {
         "study_type": study_type,
@@ -132,17 +162,14 @@ def _fallback_report(
         ),
     }
     allow = allowed_chunk_ids(chunks)
-    out["grounding"] = audit_report_grounding(
+    grounding = audit_report_grounding(
         out,
         allow,
         require_evidence_per_recommendation=grounding_strict,
         validate_supplementary_citations=True,
     )
-    # Offline path: do not apply token-overlap drops (generic text may not lexically match policy).
-    out["grounding"]["overlap"] = {
-        "skipped": True,
-        "reason": "Keyword fallback does not apply REGBOT_MIN_TOKEN_OVERLAP filtering.",
-    }
+    grounding["overlap"] = overlap
+    out["grounding"] = grounding
     out["grounding_attempts"] = 1
     return apply_phase3_enrichment(out, chunks)
 
@@ -229,6 +256,9 @@ def analyze_compliance(
             base_url=ollama_openai_base_url(),
             api_key=OLLAMA_API_KEY,
             max_retries=OPENAI_MAX_RETRIES,
+            # Localhost must not inherit HTTP(S)_PROXY. On managed networks the proxy can
+            # accept the connection and then hang, making a healthy Ollama look offline.
+            http_client=httpx.Client(trust_env=False),
         )
     else:
         model_name = model or DEFAULT_LLM_MODEL
@@ -437,6 +467,7 @@ def chat_followup_policy_qa(
             base_url=ollama_openai_base_url(),
             api_key=OLLAMA_API_KEY,
             max_retries=OPENAI_MAX_RETRIES,
+            http_client=httpx.Client(trust_env=False),
         )
     else:
         model_name = model or DEFAULT_LLM_MODEL

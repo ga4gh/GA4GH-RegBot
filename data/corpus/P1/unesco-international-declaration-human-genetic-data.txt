@@ -1,0 +1,273 @@
+UNESCO International Declaration on Human Genetic Data
+
+The General Conference,
+
+Recalling the Universal Declaration of Human Rights of 10 December 1948, the two United Nations International Covenants on Economic, Social and Cultural Rights and on Civil and Political Rights of 16 December 1966, the United Nations International Convention on the Elimination of All Forms of Racial Discrimination of 21 December 1965, the United Nations Convention on the Elimination of All Forms of Discrimination against Women of 18 December 1979, the United Nations Convention on the Rights of the Child of 20 November 1989, the United Nations Economic and Social Council resolutions 2001/39 on Genetic Privacy and Non-Discrimination of 26 July 2001 and 2003/232 on Genetic Privacy and Non-Discrimination of 22 July 2003, the ILO Convention (No. 111) concerning Discrimination in Respect of Employment and Occupation of 25 June 1958, the UNESCO Universal Declaration on Cultural Diversity of 2 November 2001, the Trade Related Aspects of Intellectual Property Rights Agreement (TRIPS) annexed to the Agreement establishing the World Trade Organization, which entered into force on 1 January 1995, the Doha Declaration on the TRIPS Agreement and Public Health of 14 November 2001 and the other international human rights instruments adopted by the United Nations and the specialized agencies of the United Nations system,
+
+Recalling more particularly the Universal Declaration on the Human Genome and Human Rights which it adopted, unanimously and by acclamation, on 11 November 1997 and which was endorsed by the United Nations General Assembly on 9 December 1998 and the Guidelines for the implementation of the Universal Declaration on the Human Genome and Human Rights which it endorsed on 16 November 1999 by 30 C/Resolution 23,
+
+Welcoming the broad public interest worldwide in the Universal Declaration on the Human Genome and Human Rights, the firm support it has received from the international community and its impact in Member States drawing upon it for their legislation, regulations, norms and standards, and ethical codes of conduct and guidelines,
+
+Bearing in mind the international and regional instruments, national laws, regulations and ethical texts relating to the protection of human rights and fundamental freedoms and to respect for human dignity as regards the collection, processing, use and storage of scientific data, as well as of medical data and personal data,
+
+Recognizing that genetic information is part of the overall spectrum of medical data and that the information content of any medical data, including genetic data and proteomic data, is highly contextual and dependent on the particular circumstances,
+
+Also recognizing that human genetic data have a special status on account of their sensitive nature since they can be predictive of genetic predispositions concerning individuals and that the power of predictability can be stronger than assessed at the time of deriving the data; they may have a significant impact on the family, including offspring, extending over generations, and in some instances on the whole group; they may contain information the significance of which is not necessarily known at the time of the collection of biological samples; and they may have cultural significance for persons or groups,
+
+Emphasizing that all medical data, including genetic data and proteomic data, regardless of their apparent information content, should be treated with the same high standards of confidentiality,
+
+Noting the increasing importance of human genetic data for economic and commercial purposes,
+
+Having regard to the special needs and vulnerabilities of developing countries and the need to reinforce international cooperation in the field of human genetics,
+
+Considering that the collection, processing, use and storage of human genetic data are of paramount importance for the progress of life sciences and medicine, for their applications and for the use of such data for non-medical purposes,
+
+Also considering that the growing amount of personal data collected makes genuine irretrievability increasingly difficult,
+
+Aware that the collection, processing, use and storage of human genetic data have potential risks for the exercise and observance of human rights and fundamental freedoms and respect for human dignity,
+
+Noting that the interests and welfare of the individual should have priority over the rights and interests of society and research,
+
+Reaffirming the principles established in the Universal Declaration on the Human Genome and Human Rights and the principles of equality, justice, solidarity and responsibility as well as respect for human dignity, human rights and fundamental freedoms, particularly freedom of thought and expression, including freedom of research, and privacy and security of the person, which must underlie the collection, processing, use and storage of human genetic data,
+
+Proclaims the principles that follow and adopts the present Declaration.
+
+A. General provisions
+
+Article 1 – Aims and scope
+
+(a) The aims of this Declaration are: to ensure the respect of human dignity and protection of human rights and fundamental freedoms in the collection, processing, use and storage of human genetic data, human proteomic data and of the biological samples from which they are derived, referred to hereinafter as “biological samples”, in keeping with the requirements of equality, justice and solidarity, while giving due consideration to freedom of thought and expression, including freedom of research; to set out the principles which should guide States in the formulation of their legislation and their policies on these issues; and to form the basis for guidelines of good practices in these areas for the institutions and individuals concerned.
+
+(b) Any collection, processing, use and storage of human genetic data, human proteomic data and biological samples shall be consistent with the international law of human rights.
+
+(c) The provisions of this Declaration apply to the collection, processing, use and storage of human genetic data, human proteomic data and biological samples, except in the investigation, detection and prosecution of criminal offences and in parentage testing that are subject to domestic law that is consistent with the international law of human rights.
+
+Article 2 – Use of terms
+
+For the purposes of this Declaration, the terms used have the following meanings:
+
+(i) Human genetic data: Information about heritable characteristics of individuals obtained by analysis of nucleic acids or by other scientific analysis;
+
+(ii) Human proteomic data: Information pertaining to an individual’s proteins including their expression, modification and interaction;
+
+(iii) Consent: Any freely given specific, informed and express agreement of an individual to his or her genetic data being collected, processed, used and stored;
+
+(iv) Biological samples: Any sample of biological material (for example blood, skin and bone cells or blood plasma) in which nucleic acids are present and which contains the characteristic genetic make-up of an individual;
+
+(v) Population-based genetic study: A study which aims at understanding the nature and extent of genetic variation among a population or individuals within a group or between individuals across different groups;
+
+(vi) Behavioural genetic study: A study that aims at establishing possible connections between genetic characteristics and behaviour;
+
+(vii) Invasive procedure: Biological sampling using a method involving intrusion into the human body, such as obtaining a blood sample by using a needle and syringe;
+
+(viii) Non-invasive procedure: Biological sampling using a method which does not involve intrusion into the human body, such as oral smears;
+
+(ix) Data linked to an identifiable person: Data that contain information, such as name, birth date and address, by which the person from whom the data were derived can be identified;
+
+(x) Data unlinked to an identifiable person: Data that are not linked to an identifiable person, through the replacement of, or separation from, all identifying information about that person by use of a code;
+
+(xi) Data irretrievably unlinked to an identifiable person: Data that cannot be linked to an identifiable person, through destruction of the link to any identifying information about the person who provided the sample;
+
+(xii) Genetic testing: A procedure to detect the presence or absence of, or change in, a particular gene or chromosome, including an indirect test for a gene product or other specific metabolite that is primarily indicative of a specific genetic change;
+
+(xiii) Genetic screening: Large-scale systematic genetic testing offered in a programme to a population or subsection thereof intended to detect genetic characteristics in asymptomatic people;
+
+(xiv) Genetic counselling: A procedure to explain the possible implications of the findings of genetic testing or screening, its advantages and risks and where applicable to assist the individual in the long-term handling of the consequences; It takes place before and after genetic testing and screening;
+
+(xv) Cross-matching: Matching of information about an individual or a group contained in various data files set up for different purposes.
+
+Article 3 – Person’s identity
+
+Each individual has a characteristic genetic make-up. Nevertheless, a person’s identity should not be reduced to genetic characteristics, since it involves complex educational, environmental and personal factors and emotional, social, spiritual and cultural bonds with others and implies a dimension of freedom.
+
+Article 4 – Special status
+
+(a) Human genetic data have a special status because:
+
+(i) they can be predictive of genetic predispositions concerning individuals;
+
+(ii) they may have a significant impact on the family, including offspring, extending over generations, and in some instances on the whole group to which the person concerned belongs;
+
+(iii) they may contain information the significance of which is not necessarily known at the time of the collection of the biological samples;
+
+(iv) they may have cultural significance for persons or groups.
+
+(b) Due consideration should be given to the sensitivity of human genetic data and an appropriate level of protection for these data and biological samples should be established.
+
+Article 5 – Purposes
+
+Human genetic data and human proteomic data may be collected, processed, used and stored only for the purposes of:
+
+(i) diagnosis and health care, including screening and predictive testing;
+
+(ii) medical and other scientific research, including epidemiological, especially population-based genetic studies, as well as anthropological or archaeological studies, collectively referred to hereinafter as “medical and scientific research”;
+
+(iii) forensic medicine and civil, criminal and other legal proceedings, taking into account the provisions of Article 1(c);
+
+(iv) or any other purpose consistent with the Universal Declaration on the Human Genome and Human Rights and the international law of human rights.
+
+Article 6 – Procedures
+
+(a) It is ethically imperative that human genetic data and human proteomic data be collected, processed, used and stored on the basis of transparent and ethically acceptable procedures. States should endeavour to involve society at large in the decision-making process concerning broad policies for the collection, processing, use and storage of human genetic data and human proteomic data and the evaluation of their management, in particular in the case of population-based genetic studies. This decision-making process, which may benefit from international experience, should ensure the free expression of various viewpoints.
+
+(b) Independent, multidisciplinary and pluralist ethics committees should be promoted and established at national, regional, local or institutional levels, in accordance with the provisions of Article 16 of the Universal Declaration on the Human Genome and Human Rights. Where appropriate, ethics committees at national level should be consulted with regard to the establishment of standards, regulations and guidelines for the collection, processing, use and storage of human genetic data, human proteomic data and biological samples. They should also be consulted concerning matters where there is no domestic law. Ethics committees at institutional or local levels should be consulted with regard to their application to specific research projects.
+
+(c) When the collection, processing, use and storage of human genetic data, human proteomic data or biological samples are carried out in two or more States, the ethics committees in the States concerned, where appropriate, should be consulted and the review of these questions at the appropriate level should be based on the principles set out in this Declaration and on the ethical and legal standards adopted by the States concerned.
+
+(d) It is ethically imperative that clear, balanced, adequate and appropriate information shall be provided to the person whose prior, free, informed and express consent is sought. Such information shall, alongside with providing other necessary details, specify the purpose for which human genetic data and human proteomic data are being derived from biological samples, and are used and stored. This information should indicate, if necessary, risks and consequences. This information should also indicate that the person concerned can withdraw his or her consent, without coercion, and this should entail neither a disadvantage nor a penalty for the person concerned.
+
+Article 7 – Non-discrimination and non-stigmatization
+
+(a) Every effort should be made to ensure that human genetic data and human proteomic data are not used for purposes that discriminate in a way that is intended to infringe, or has the effect of infringing human rights, fundamental freedoms or human dignity of an individual or for purposes that lead to the stigmatization of an individual, a family, a group or communities.
+
+(b) In this regard, appropriate attention should be paid to the findings of population-based genetic studies and behavioural genetic studies and their interpretations.
+
+B. Collection
+
+Article 8 – Consent
+
+(a) Prior, free, informed and express consent, without inducement by financial or other personal gain, should be obtained for the collection of human genetic data, human proteomic data or biological samples, whether through invasive or non-invasive procedures, and for their subsequent processing, use and storage, whether carried out by public or private institutions. Limitations on this principle of consent should only be prescribed for compelling reasons by domestic law consistent with the international law of human rights.
+
+(b) When, in accordance with domestic law, a person is incapable of giving informed consent, authorization should be obtained from the legal representative, in accordance with domestic law. The legal representative should have regard to the best interest of the person concerned.
+
+(c) An adult not able to consent should as far as possible take part in the authorization procedure. The opinion of a minor should be taken into consideration as an increasingly determining factor in proportion to age and degree of maturity.
+
+(d) In diagnosis and health care, genetic screening and testing of minors and adults not able to consent will normally only be ethically acceptable when they have important implications for the health of the person and have regard to his or her best interest.
+
+Article 9 – Withdrawal of consent
+
+(a) When human genetic data, human proteomic data or biological samples are collected for medical and scientific research purposes, consent may be withdrawn by the person concerned unless such data are irretrievably unlinked to an identifiable person. In accordance with the provisions of Article 6(d), withdrawal of consent should entail neither a disadvantage nor a penalty for the person concerned.
+
+(b) When a person withdraws consent, the person’s genetic data, proteomic data and biological samples should no longer be used unless they are irretrievably unlinked to the person concerned.
+
+(c) If not irretrievably unlinked, the data and biological samples should be dealt with in accordance with the wishes of the person. If the person’s wishes cannot be determined or are not feasible or are unsafe, the data and biological samples should either be irretrievably unlinked or destroyed.
+
+Article 10 – The right to decide whether or not to be informed about research results
+
+When human genetic data, human proteomic data or biological samples are collected for medical and scientific research purposes, the information provided at the time of consent should indicate that the person concerned has the right to decide whether or not to be informed of the results. This does not apply to research on data irretrievably unlinked to identifiable persons or to data that do not lead to individual findings concerning the persons who have participated in such a research. Where appropriate, the right not to be informed should be extended to identified relatives who may be affected by the results.
+
+Article 11 – Genetic counselling
+
+It is ethically imperative that when genetic testing that may have significant implications for a person’s health is being considered, genetic counselling should be made available in an appropriate manner. Genetic counselling should be non-directive, culturally adapted and consistent with the best interest of the person concerned.
+
+Article 12 – Collection of biological samples for forensic medicine or in civil, criminal and other legal proceedings
+
+When human genetic data or human proteomic data are collected for the purposes of forensic medicine or in civil, criminal and other legal proceedings, including parentage testing, the collection of biological samples, in vivo or post-mortem, should be made only in accordance with domestic law consistent with the international law of human rights.
+
+C. Processing
+
+Article 13 – Access
+
+No one should be denied access to his or her own genetic data or proteomic data unless such data are irretrievably unlinked to that person as the identifiable source or unless domestic law limits such access in the interest of public health, public order or national security.
+
+Article 14 – Privacy and confidentiality
+
+(a) States should endeavour to protect the privacy of individuals and the confidentiality of human genetic data linked to an identifiable person, family or, where appropriate, group, in accordance with domestic law consistent with the international law of human rights.
+
+(b) Human genetic data, human proteomic data and biological samples linked to an identifiable person should not be disclosed or made accessible to third parties, in particular, employers, insurance companies, educational institutions and the family, except for an important public interest reason in cases restrictively provided for by domestic law consistent with the international law of human rights or where the prior, free, informed and express consent of the person concerned has been obtained provided that such consent is in accordance with domestic law and the international law of human rights. The privacy of an individual participating in a study using human genetic data, human proteomic data or biological samples should be protected and the data should be treated as confidential.
+
+(c) Human genetic data, human proteomic data and biological samples collected for the purposes of scientific research should not normally be linked to an identifiable person. Even when such data or biological samples are unlinked to an identifiable person, the necessary precautions should be taken to ensure the security of the data or biological samples.
+
+(d) Human genetic data, human proteomic data and biological samples collected for medical and scientific research purposes can remain linked to an identifiable person, only if necessary to carry out the research and provided that the privacy of the individual and the confidentiality of the data or biological samples concerned are protected in accordance with domestic law.
+
+(e) Human genetic data and human proteomic data should not be kept in a form which allows the data subject to be identified for any longer than is necessary for achieving the purposes for which they were collected or subsequently processed.
+
+Article 15 – Accuracy, reliability, quality and security
+
+The persons and entities responsible for the processing of human genetic data, human proteomic data and biological samples should take the necessary measures to ensure the accuracy, reliability, quality and security of these data and the processing of biological samples. They should exercise rigour, caution, honesty and integrity in the processing and interpretation of human genetic data, human proteomic data or biological samples, in view of their ethical, legal and social implications.
+
+D. Use
+
+Article 16 – Change of purpose
+
+(a) Human genetic data, human proteomic data and the biological samples collected for one of the purposes set out in Article 5 should not be used for a different purpose that is incompatible with the original consent, unless the prior, free, informed and express consent of the person concerned is obtained according to the provisions of Article 8(a) or unless the proposed use, decided by domestic law, corresponds to an important public interest reason and is consistent with the international law of human rights. If the person concerned lacks the capacity to consent, the provisions of Article 8(b) and (c) should apply mutatis mutandis.
+
+(b) When prior, free, informed and express consent cannot be obtained or in the case of data irretrievably unlinked to an identifiable person, human genetic data may be used in accordance with domestic law or following the consultation procedures set out in Article 6(b).
+
+Article 17 – Stored biological samples
+
+(a) Stored biological samples collected for purposes other than set out in Article 5 may be used to produce human genetic data or human proteomic data with the prior, free, informed and express consent of the person concerned. However, domestic law may provide that if such data have significance for medical and scientific research purposes e.g. epidemiological studies, or public health purposes, they may be used for those purposes, following the consultation procedures set out in Article 6(b).
+
+(b) The provisions of Article 12 should apply mutatis mutandis to stored biological samples used to produce human genetic data for forensic medicine.
+
+Article 18 – Circulation and international cooperation
+
+(a) States should regulate, in accordance with their domestic law and international agreements, the cross-border flow of human genetic data, human proteomic data and biological samples so as to foster international medical and scientific cooperation and ensure fair access to these data. Such a system should seek to ensure that the receiving party provides adequate protection in accordance with the principles set out in this Declaration.
+
+(b) States should make every effort, with due and appropriate regard for the principles set out in this Declaration, to continue fostering the international dissemination of scientific knowledge concerning human genetic data and human proteomic data and, in that regard, to foster scientific and cultural cooperation, particularly between industrialized and developing countries.
+
+(c) Researchers should endeavour to establish cooperative relationships, based on mutual respect with regard to scientific and ethical matters and, subject to the provisions of Article 14, should encourage the free circulation of human genetic data and human proteomic data in order to foster the sharing of scientific knowledge, provided that the principles set out in this Declaration are observed by the parties concerned. To this end, they should also endeavour to publish in due course the results of their research.
+
+Article 19 – Sharing of benefits
+
+(a) In accordance with domestic law or policy and international agreements, benefits resulting from the use of human genetic data, human proteomic data or biological samples collected for medical and scientific research should be shared with the society as a whole and the international community. In giving effect to this principle, benefits may take any of the following forms:
+
+(i) special assistance to the persons and groups that have taken part in the research;
+
+(ii) access to medical care;
+
+(iii) provision of new diagnostics, facilities for new treatments or drugs stemming from the research;
+
+(iv) support for health services;
+
+(v) capacity-building facilities for research purposes;
+
+(vi) development and strengthening of the capacity of developing countries to collect and process human genetic data, taking into consideration their specific problems;
+
+(vii) any other form consistent with the principles set out in this Declaration.
+
+(b) Limitations in this respect could be provided by domestic law and international agreements.
+
+E. Storage
+
+Article 20 – Monitoring and management framework
+
+States may consider establishing a framework for the monitoring and management of human genetic data, human proteomic data and biological samples based on the principles of independence, multidisciplinarity, pluralism and transparency as well as the principles set out in this Declaration. This framework could also deal with the nature and purposes of the storage of these data.
+
+Article 21 – Destruction
+
+(a) The provisions of Article 9 apply mutatis mutandis in the case of stored human genetic data, human proteomic data and biological samples.
+
+(b) Human genetic data, human proteomic data and the biological samples collected from a suspect in the course of a criminal investigation should be destroyed when they are no longer necessary, unless otherwise provided for by domestic law consistent with the international law of human rights.
+
+(c) Human genetic data, human proteomic data and biological samples should be available for forensic purposes and civil proceedings only for as long as they are necessary for those proceedings, unless otherwise provided for by domestic law consistent with the international law of human rights.
+
+Article 22 – Cross-matching
+
+Consent should be essential for the cross-matching of human genetic data, human proteomic data or biological samples stored for diagnostic and health care purposes and for medical and other scientific research purposes, unless otherwise provided for by domestic law for compelling reasons and consistent with the international law of human rights.
+
+F. Promotion and implementation
+
+Article 23 – Implementation
+
+(a) States should take all appropriate measures, whether of a legislative, administrative or other character, to give effect to the principles set out in this Declaration, in accordance with the international law of human rights. Such measures should be supported by action in the sphere of education, training and public information.
+
+(b) In the framework of international cooperation, States should endeavour to enter into bilateral and multilateral agreements enabling developing countries to build up their capacity to participate in generating and sharing scientific knowledge concerning human genetic data and the related know-how.
+
+Article 24 – Ethics education, training and information
+
+In order to promote the principles set out in this Declaration, States should endeavour to foster all forms of ethics education and training at all levels as well as to encourage information and knowledge dissemination programmes about human genetic data. These measures should aim at specific audiences, in particular researchers and members of ethics committees, or be addressed to the public at large. In this regard, States should encourage the participation of international and regional intergovernmental organizations and international, regional and national non-governmental organizations in this endeavour.
+
+Article 25 – Roles of the International Bioethics Committee (IBC) and the Intergovernmental Bioethics Committee (IGBC)
+
+The International Bioethics Committee (IBC) and the Intergovernmental Bioethics Committee (IGBC) shall contribute to the implementation of this Declaration and the dissemination of the principles set out therein. On a collaborative basis, the two Committees should be responsible for its monitoring and for the evaluation of its implementation, inter alia, on the basis of reports provided by States. The two Committees should be responsible in particular for the formulation of any opinion or proposal likely to further the effectiveness of this Declaration. They should make recommendations in accordance with UNESCO’s statutory procedures, addressed to the General Conference.
+
+Article 26 – Follow-up action by UNESCO
+
+UNESCO shall take appropriate action to follow up this Declaration so as to foster progress of the life sciences and their applications through technologies, based on respect for human dignity and the exercise and observance of human rights and fundamental freedoms.
+
+Article 27 – Denial of acts contrary to human rights, fundamental freedoms and human dignity
+
+Nothing in this Declaration may be interpreted as implying for any State, group or person any claim to engage in any activity or to perform any act contrary to human rights, fundamental freedoms and human dignity, including, in particular, the principles set out in this Declaration.
+
+Share
+
+Related items
+
+- Type of instrument: Declaration
+
+- Themes: Social & Human Sciences
+
+---
+Source: https://www.unesco.org/en/legal-affairs/international-declaration-human-genetic-data?hub=66535
+Retrieved: 2026-08-09

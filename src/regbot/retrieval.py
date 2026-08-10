@@ -38,6 +38,7 @@ class HybridRetriever:
         self._by_id: Dict[str, Dict[str, Any]] = {}
         self._bm25: Optional[BM25Okapi] = None
         self._bm25_ids: List[str] = []
+        self._bm25_tokens: Dict[str, List[str]] = {}
         self._embeddings: Any = None
         self._embedding_ids: List[str] = []
 
@@ -59,7 +60,10 @@ class HybridRetriever:
         chunks = read_manifest(self.store_dir)
         self._by_id = {c["id"]: c for c in chunks}
         self._bm25_ids = [c["id"] for c in chunks]
-        tokenized = [tokenize(self._by_id[i]["text"]) for i in self._bm25_ids]
+        self._bm25_tokens = {
+            i: tokenize(str(self._by_id[i].get("text") or "")) for i in self._bm25_ids
+        }
+        tokenized = [self._bm25_tokens[i] for i in self._bm25_ids]
         if tokenized:
             self._bm25 = BM25Okapi(tokenized)
         else:
@@ -78,8 +82,8 @@ class HybridRetriever:
 
         Exact search removes that class of problem. It costs nothing architecturally: the
         retriever already holds every chunk's full text in memory for BM25, so memory was
-        already proportional to corpus size. At the current corpus (128 chunks x 384 dims)
-        this is a few hundred kilobytes.
+        already proportional to corpus size. At a few thousand chunks x 384 dimensions,
+        this remains a small in-memory matrix.
         """
         if self._collection is None:
             return
@@ -196,6 +200,29 @@ class HybridRetriever:
             allowed.add(cid)
         return allowed
 
+    def _bm25_candidates(
+        self,
+        query: str,
+        limit: int,
+        allowed: Optional[Set[str]] = None,
+    ) -> List[str]:
+        """Rank BM25 inside the active scope, including scope-local IDF statistics."""
+        if limit <= 0 or self._bm25 is None:
+            return []
+
+        ids = self._bm25_ids if allowed is None else [i for i in self._bm25_ids if i in allowed]
+        if not ids:
+            return []
+
+        bm25 = self._bm25
+        if allowed is not None:
+            # Filtering global scores afterwards is not equivalent to scoped retrieval:
+            # out-of-scope documents change IDF and can reverse the in-scope ranking.
+            bm25 = BM25Okapi([self._bm25_tokens[i] for i in ids])
+        scores = bm25.get_scores(tokenize(query))
+        order = sorted(range(len(scores)), key=lambda i: (-scores[i], ids[i]))
+        return [ids[i] for i in order[:limit]]
+
     def list_frameworks(self) -> List[str]:
         """Framework labels present in the store manifest (GA4GH, GDPR, REWS, national…)."""
         self._ensure_loaded()
@@ -234,20 +261,7 @@ class HybridRetriever:
         q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
         sem_ids = self._dense_candidates(q_emb, semantic_candidates, allowed)
 
-        bm25_ids: List[str] = []
-        if self._bm25 is not None:
-            scores = self._bm25.get_scores(tokenize(query))
-            order = sorted(
-                range(len(scores)),
-                key=lambda i: (-scores[i], self._bm25_ids[i]),
-            )
-            for idx in order:
-                cid = self._bm25_ids[idx]
-                if allowed is not None and cid not in allowed:
-                    continue
-                bm25_ids.append(cid)
-                if len(bm25_ids) >= bm25_candidates:
-                    break
+        bm25_ids = self._bm25_candidates(query, bm25_candidates, allowed)
 
         cap = MAX_CHUNKS_PER_PROVISION if max_per_provision is None else int(max_per_provision)
         headroom = 6 if cap > 0 else 3

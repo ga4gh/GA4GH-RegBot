@@ -1,9 +1,9 @@
 [project]
 name = "ga4gh-regbot"
-version = "0.0.0"
+version = "0.1.0"
 requires-python = ">=3.10,<3.14"
 readme = "README.md"
-description = "GA4GH-RegBot regulatory navigation assistant (MVP)"
+description = "GA4GH-RegBot citation-grounded regulatory navigation assistant"
 
 [tool.ruff]
 target-version = "py310"

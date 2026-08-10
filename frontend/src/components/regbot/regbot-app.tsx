@@ -1,9 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { AlertCircle, Scale } from "lucide-react";
+import { AlertCircle, LogOut, UserRound } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { BrowseTab } from "@/components/regbot/browse-tab";
 import { ChatTab } from "@/components/regbot/chat-tab";
 import { CheckTab } from "@/components/regbot/check-tab";
@@ -13,8 +17,10 @@ import { Sidebar } from "@/components/regbot/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   getCorpus,
+  logout,
   getJurisdictions,
   getStoreMeta,
+  type AuthUser,
   type ChatMessage,
 } from "@/lib/api";
 
@@ -37,7 +43,9 @@ async function fetchMeta(dir: string) {
   }
 }
 
-export function RegBotApp() {
+export function RegBotApp({ user }: { user: AuthUser }) {
+  const router = useRouter();
+  const canManageStore = user.role === "admin";
   const [storeDir, setStoreDir] = useState(DEFAULT_STORE);
   const [jurisdictions, setJurisdictions] = useState<
     Awaited<ReturnType<typeof getJurisdictions>>
@@ -54,6 +62,7 @@ export function RegBotApp() {
 
   const [sourceUrls, setSourceUrls] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string | null>(null);
+  const [signingOut, setSigningOut] = useState(false);
 
   // Fetching and applying are separate so the mount effect can await before it touches
   // state. `applyMeta` holds every setState; `fetchMeta` holds none.
@@ -115,23 +124,70 @@ export function RegBotApp() {
 
   const headerSubtitle = useMemo(
     () =>
-      "Prototype assistant: ingest GA4GH-style policy excerpts, retrieve hybrid context, and draft a citation-oriented regulatory navigation note.",
+      "Evidence-linked regulatory navigation for genomic and health data policy.",
     [],
   );
+  const identityLabel = canManageStore
+    ? "Administrator"
+    : user.username === "guest"
+      ? "Public user"
+      : user.username;
+
+  const onLogout = useCallback(async () => {
+    setSigningOut(true);
+    try {
+      await logout();
+      router.replace("/login");
+      router.refresh();
+    } catch (reason) {
+      setApiError(reason instanceof Error ? reason.message : "Could not sign out.");
+      setSigningOut(false);
+    }
+  }, [router]);
 
   return (
     <div className="bg-background flex min-h-screen flex-col">
-      <header className="border-border/80 bg-card/50 border-b backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-start gap-3 px-4 py-4 lg:px-6">
-          <div className="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-xl">
-            <Scale className="size-5" />
+      <header className="border-border/70 bg-card/85 sticky top-0 z-20 border-b backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between lg:px-6">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+            <Image
+              src="/global-alliance-logo.svg"
+              alt="Global Alliance for Genomics and Health"
+              width={192}
+              height={50}
+              priority
+              className="h-auto w-36 shrink-0 sm:w-40"
+            />
+            <div className="bg-border h-10 w-px shrink-0" aria-hidden="true" />
+            <div className="min-w-0">
+              <h1 className="text-lg font-semibold tracking-tight sm:text-xl">RegBot</h1>
+              <p className="text-muted-foreground mt-0.5 hidden max-w-2xl text-xs leading-5 md:block lg:text-sm">
+                {headerSubtitle}{" "}
+                <span className="text-foreground/70 font-medium">Not legal advice.</span>
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-semibold tracking-tight">GA4GH-RegBot</h1>
-            <p className="text-muted-foreground mt-0.5 max-w-3xl text-sm">
-              {headerSubtitle}{" "}
-              <span className="text-foreground/70 font-medium">Not legal advice.</span>
-            </p>
+          <div className="flex shrink-0 items-center justify-between gap-2 sm:justify-end">
+            <div className="bg-muted/60 flex items-center gap-2 rounded-full px-3 py-1.5">
+              <UserRound className="text-muted-foreground size-4" />
+              <span className="text-sm font-medium">{identityLabel}</span>
+              <Badge
+                variant={canManageStore ? "default" : "secondary"}
+                className={canManageStore ? "" : "bg-emerald-50 text-emerald-700"}
+              >
+                {canManageStore ? "Admin access" : "Read only"}
+              </Badge>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              disabled={signingOut}
+              onClick={() => void onLogout()}
+            >
+              <LogOut className="size-3.5" />
+              <span>Sign out</span>
+            </Button>
           </div>
         </div>
       </header>
@@ -140,6 +196,7 @@ export function RegBotApp() {
         <Sidebar
           storeDir={storeDir}
           onStoreDirChange={setStoreDir}
+          canManageStore={canManageStore}
           storeJurisdictions={storeJurisdictions}
           jurisdictionOptions={jurisdictions}
           corpusCount={corpusCount}
@@ -159,25 +216,27 @@ export function RegBotApp() {
               <AlertDescription>{apiError}</AlertDescription>
             </Alert>
           ) : null}
-          <Tabs defaultValue="ingest" className="space-y-6">
+          <Tabs defaultValue={canManageStore ? "ingest" : "corpus"} className="space-y-6">
             <TabsList className="bg-muted/50 h-auto flex-wrap justify-start gap-1 p-1">
-              <TabsTrigger value="ingest">Ingest policy</TabsTrigger>
+              {canManageStore ? <TabsTrigger value="ingest">Ingest policy</TabsTrigger> : null}
               <TabsTrigger value="corpus">Corpus</TabsTrigger>
               <TabsTrigger value="browse">Browse by region</TabsTrigger>
               <TabsTrigger value="check">Check consent</TabsTrigger>
               <TabsTrigger value="chat">Ask a question</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="ingest">
-              <IngestTab
-                storeDir={storeDir}
-                jurisdictions={jurisdictions}
-                onSuccess={() => {
-                  setRefreshing(true);
-                  void refreshMeta(storeDir);
-                }}
-              />
-            </TabsContent>
+            {canManageStore ? (
+              <TabsContent value="ingest">
+                <IngestTab
+                  storeDir={storeDir}
+                  jurisdictions={jurisdictions}
+                  onSuccess={() => {
+                    setRefreshing(true);
+                    void refreshMeta(storeDir);
+                  }}
+                />
+              </TabsContent>
+            ) : null}
             <TabsContent value="corpus">
               <CorpusTab jurisdictions={jurisdictions} />
             </TabsContent>

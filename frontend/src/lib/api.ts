@@ -19,10 +19,23 @@ function formatApiError(status: number, detail: unknown): string {
   return text || `Request failed (${status})`;
 }
 
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}${path}`, init);
+    res = await fetch(`${API_BASE}${path}`, {
+      credentials: "include",
+      ...init,
+    });
   } catch {
     throw new Error(`Network error. ${API_START_HINT}`);
   }
@@ -34,11 +47,21 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     } catch {
       /* ignore */
     }
-    throw new Error(formatApiError(res.status, detail));
+    if (
+      res.status === 401 &&
+      path !== "/api/auth/login" &&
+      typeof window !== "undefined" &&
+      window.location.pathname !== "/login"
+    ) {
+      window.location.replace("/login");
+    }
+    throw new ApiError(formatApiError(res.status, detail), res.status);
   }
+  if (res.status === 204) return undefined as T;
   return res.json() as Promise<T>;
 }
 
+export type AuthUser = { username: string; role: "admin" | "viewer" };
 export type JurisdictionOption = { code: string; label: string };
 
 export type CorpusDocument = {
@@ -71,6 +94,26 @@ export type CheckResult = {
 };
 
 export type ChatMessage = { role: "user" | "assistant"; content: string };
+
+export function login(username: string, password: string) {
+  return request<AuthUser>("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+}
+
+export function continueAsViewer() {
+  return request<AuthUser>("/api/auth/guest", { method: "POST" });
+}
+
+export function logout() {
+  return request<void>("/api/auth/logout", { method: "POST" });
+}
+
+export function getCurrentUser() {
+  return request<AuthUser>("/api/auth/me");
+}
 
 export function getJurisdictions() {
   return request<JurisdictionOption[]>("/api/meta/jurisdictions");

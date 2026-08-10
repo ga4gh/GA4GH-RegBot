@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GA4GH-RegBot web UI
 
-## Getting Started
+This Next.js app is the primary RegBot interface. It calls the FastAPI service in
+`src/api/app.py` for corpus browsing, ingest, consent checks, evidence display, and
+follow-up policy questions.
 
-First, run the development server:
+## Run locally
+
+Requires Node 20.9+ (CI uses Node 22). From the repository root, start the API after
+rebuilding the corpus store:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+export REGBOT_ADMIN_PASSWORD='replace-with-a-long-admin-password'
+python -m src.main ingest-manifest --reset
+uvicorn src.api.app:app --reload --port 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In another terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm --prefix frontend ci
+npm --prefix frontend run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open <http://localhost:3000/login>. The development server proxies `/api/*` and `/health` to
+`http://127.0.0.1:8000`; set `REGBOT_API_URL` before starting Next.js to use another API.
 
-## Learn More
+The login page offers **Continue as public user** without an account. This session retains read,
+retrieval, consent-check, and chat access but cannot ingest, reset, or select a custom store.
+Set `REGBOT_ALLOW_GUEST_VIEWER=0` to disable it. The default account usernames are `admin`
+and `viewer` when their corresponding passwords are set; there are no built-in passwords.
+The latter identifier is retained for configuration compatibility while the UI labels the
+read-only role **user**.
+Without `REGBOT_SESSION_SECRET`, the API generates a secure per-process secret suitable for
+local development. Configure a stable 32+ character secret for production or multiple API
+workers.
 
-To learn more about Next.js, take a look at the following resources:
+## Verify
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm --prefix frontend run lint
+npx --prefix frontend tsc -p frontend/tsconfig.json --noEmit
+npm --prefix frontend run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The production build uses system fonts and does not download fonts from Google.

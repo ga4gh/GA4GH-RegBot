@@ -12,6 +12,8 @@ Metrics reported per query and macro-averaged over the set:
 ``precision@k``  fraction of *returned* results that are gold (denominator is the number
                  actually returned, not k, so a small corpus is not penalised for
                  returning fewer than k candidates; ``returned`` is recorded per query)
+``precision_fixed@k`` fraction of gold results over the requested k, reported alongside
+                 the returned-count version so scoped queries remain comparable
 ``mrr@k``        reciprocal rank of the first gold chunk within the top-k, else 0
 ``hit@k``        1 when at least one gold chunk appears in the top-k
 """
@@ -148,6 +150,7 @@ def score_ranking(
 
         recall = len(relevant_found) / len(gold_ids) if gold_ids else 0.0
         precision = len(relevant_found) / len(top) if top else 0.0
+        precision_fixed = len(relevant_found) / k
 
         rr = 0.0
         for rank, cid in enumerate(top, start=1):
@@ -157,6 +160,7 @@ def score_ranking(
 
         scores[f"recall@{k}"] = _round(recall)
         scores[f"precision@{k}"] = _round(precision)
+        scores[f"precision_fixed@{k}"] = _round(precision_fixed)
         scores[f"mrr@{k}"] = _round(rr)
         scores[f"hit@{k}"] = 1.0 if relevant_found else 0.0
     return scores
@@ -264,13 +268,14 @@ def format_markdown_report(result: Dict[str, Any]) -> str:
         f"{result.get('skipped_count', 0)} skipped"
     )
     lines.append("")
-    lines.append("| k | Recall@k | Precision@k | MRR@k | Hit@k |")
-    lines.append("|---|----------|-------------|-------|-------|")
+    lines.append("| k | Recall@k | Precision@returned | Precision@fixed-k | MRR@k | Hit@k |")
+    lines.append("|---|----------|--------------------|-------------------|-------|-------|")
     for k in ks:
         lines.append(
             f"| {k} "
             f"| {agg.get(f'recall@{k}', 0):.3f} "
             f"| {agg.get(f'precision@{k}', 0):.3f} "
+            f"| {agg.get(f'precision_fixed@{k}', 0):.3f} "
             f"| {agg.get(f'mrr@{k}', 0):.3f} "
             f"| {agg.get(f'hit@{k}', 0):.3f} |"
         )

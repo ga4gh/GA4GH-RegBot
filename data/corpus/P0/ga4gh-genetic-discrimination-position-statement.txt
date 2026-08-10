@@ -1,0 +1,168 @@
+GA4GH - Position Statement on Genetic Discrimination
+
+
+This position statement is based on the work of the Genetic Discrimination Group of the Global Alliance for Genomics and Health (GA4GH). Data were obtained from stakeholder interviews, reports, literature reviews, and an international Delphi study entitled: The Key Features of a Genetic Non-Discrimination Policy.[1] The recommendations presented in this position statement are intended for a broad group of stakeholders, including policymakers, community leaders, legal and ethics experts, genetic researchers, geneticists, healthcare workers in genetics, genetic counsellors, patients, research participants, and members of the public. We are particularly grateful to the participants of the Delphi, members of the GA4GH community, and of the international Genetic Discrimination Observatory (GDO) for their comments on the Genetic Discrimination toolkit.  
+
+
+Background 
+As genomic research and testing continue to advance, concerns about genetic discrimination (GD) have become increasingly prominent. Though numerous conceptions of GD exist, this position statement is framed by the definition adopted by Kaiser et al., where GD is understood as “[involving] an individual or a group being negatively treated, unfairly profiled, or harmed, relative to the rest of the population, on the basis of actual or presumed genetic characteristics”.[2] While GD can occur across various fields, research studies, media reports, and administrative data suggest that it is most prevalent in the context of private insurance, employment access, and within intrafamilial relations.[3],[4] Reports of GD have been documented in North America, Western Europe, Australia, and East Asia, with incidents often involving the use of results from predictive genetic tests for serious or life-threatening, monogenic, highly heritable conditions (e.g. Huntington’s disease and sickle cell disease).[5],[6],[7],[8] 
+Despite growing concerns around GD, its frequency and spread have been very challenging to precisely determine given differences in scientific methodologies used for data collection and varying levels of analytic rigor across studies.[9] While many countries have enacted regulations to address GD, these often vary widely and may not be optimized to tackle emerging forms of GD, including those related to pharmacogenetics or epigenetics.[10] Notably, even in countries where genetic non-discrimination policies are in place, or where there is no clear evidence of GD, concerns about this type of discrimination persist and can negatively impact research participation and uptake of genetic testing services.[11] 
+Position of GA4GH  
+As an international organisation committed to advancing human health through the responsible sharing of genomic data, the GA4GH wishes to take an unequivocal stance against GD. Given that the occurrence of and concerns around GD can hinder the uptake of medically indicated genetic services and research participation, GD constitutes a violation of equity and human rights. The GA4GH recognizes this and supports the right of everyone to  benefit from scientific progress through its Framework for responsible sharing of genomic and health-related data.[12]  Everyone should be free to decide whether they want to provide their genomic data for research and/or clinical care, without their choice being compromised by concerns over GD. Below, we propose a series of recommendations that stakeholders should take to address GD.  
+Recommendations
+1. Create standards for information sharing about the risk of GD
+Researchers and clinicians should strive to convey clear, accurate, and contextualized information about the risk of GD to patients, research participants, and their biological families. If it is warranted, they should contribute to the implementation of ethical guidelines based on international human rights norms prohibiting GD and existing protections in their region.  
+
+2. Develop guidance for addressing GD in an equitable and culturally sensitive manner
+All individuals and groups are equally deserving of adequate protections against GD, within the bounds of each state's legal and sociocultural systems. While nations have the flexibility to implement safeguards that align with their specific cultural contexts and population needs, the fundamental requirement is that these approaches must effectively address and prevent GD. Even in jurisdictions where genetic non-discrimination policies exist, public perceptions and concerns over GD may justify the adoption of additional legislative or educational and awareness-raising measures.  
+
+3. Support the use of international legal standards in GD regulation
+At the national level, GD protections should be grounded in international human rights law.[13] In recent years, the international community has affirmed the importance of articles 6 and 17 of the Universal Declaration on the Human Genome and Human Rights, with a growing number of countries incorporating its provisions into their national and regional frameworks.[14],[15] To ensure adequate protection against GD, genetic non-discrimination policies should explicitly mention “genetic characteristics” as a prohibited ground of discrimination. Exceptions to this provision should be kept to a strict minimum and interpreted narrowly. Notably, the responsible use of genetic information by researchers or healthcare workers for therapeutic purposes, including health research, should not be considered GD.
+
+4. Integrate scientific terms into legislation through reflexive regulations 
+To ensure the flexibility of genetic non-discrimination legislation, the definition of specific scientific terms such as ‘genetics’, ‘genetic data’, ‘genetic characteristics’, ‘genomics’ or ‘family history’, in the context of these laws, should be left to national and regional jurisdictions.[16] Policymakers are encouraged to collaborate closely with patients, scientific and medical experts to develop definitions that are sufficiently broad and inclusive to address all reasonable concerns of GD for the foreseeable future. To maintain relevance as scientific understanding evolves, jurisdictions should implement flexible administrative mechanisms that provide for local language translations and periodic updates to these definitions.
+
+5. Monitor for gaps in protection against GD 
+To better anticipate the frequency and spread of GD, researchers should implement consistent monitoring protocols using standardized methodologies and questionnaires to track GD reports and the effectiveness of policy protections across jurisdictions. Research efforts should further include diverse populations, with particular emphasis on communities that have had adverse experiences involving genomic research and genomic medicine. When identifying legislative gaps within specific jurisdictions, researchers, at a minimum will need to account for the following factors:
+   1. Any existing regulatory protections specifically addressing GD
+   2. Protections afforded by privacy regulations, constitutional rights, and other similar legislation[17]
+   3. Structure of the healthcare system and universality of access 
+   4. Extent of regional, national, and international genomic data sharing
+   5. Local availability and uptake of genetic testing, screening, and personalized medicine
+   6. Perspectives of local stakeholders and community members’ experiences of and concerns around GD.
+
+
+   6. Establish informational resources around GD 
+Given that adequate protections against GD also depend on people having accurate knowledge regarding its definition and impact, it is imperative that stakeholders collaborate in developing accessible, informational resources, tailored to local contexts. Developing informational resources, meeting these requirements, and more generally, engaging and informing the population about the risk of GD and options for recourse should be considered as a priority for all.[18]
+
+   7. Build and maintain a global GD reporting system
+To better monitor the evolving state of affairs around GD, the GA4GH emphasizes the need for a reliable, centralized platform to document individual cases of GD consistently. This platform should:
+      1. Enable anonymous incident reporting from global sources
+      2. Publish annual aggregate statistics for public access
+      3. Provide controlled access to anonymized individual reports for researchers, policymakers, and patient advocacy groups to inform policy decisions.
+Implementation responsibilities should be clearly defined, with principal investigators of genetic projects and clinical geneticists submitting bi-annual reports to a designated institution. Additionally, governments should establish formal administrative channels for redirecting information about GD cases that come to their attention through this secure platform.
+To promote data interoperability, we recommend that incident reports include the information listed in Appendix 1 below.
+      8. Address the intersection of GD with other forms of discrimination 
+Given the potential for misuse and misinterpretation, researchers who include ethnicity and/or ancestry information alongside genetic data in their studies should communicate their findings with care, providing appropriate nuance and clearly disclosing all study limitations, to avoid reinforcing racial discrimination based on perceived associations between genetic information and racial categories. This responsibility is especially important given that individuals may be discriminated against due to their association with an ethnic or ancestral group perceived as more vulnerable, or genetically predisposed, to certain health conditions or human traits.[19] Such discrimination at the intersection of genetics and ethnicity is particularly troubling, given that race and ethnicity are now known to be sociocultural constructs without a biological basis.[20] [21]
+Contributions
+Yann Joly
+Diya Uberoi
+Abby Rud
+Erin Porter
+Athira P S
+Erisa Mwaka
+Anya Prince
+Ine Van Hoyweghen
+Yunhe Xue
+Hannah Kim
+Yvonne Bombard
+Misha Rashkin
+Megan Doerr
+Aisling De Paor
+Audrey Lebret 
+Dianne Nicol
+Margaret Otlowski
+Jane Tiller
+Henriette Raventos
+Mik Black
+Saumya Jamuar
+Timo Minssen
+Charles Dupras
+Kaori Muto
+Mayumi Kusunose
+Emily Boja
+Tina Hernandez-Boussard
+Jamal Nasir
+Bartha Maria Knoppers
+Aryan Chaudhary
+
+
+
+
+
+
+
+
+Appendix 1
+Incident’s Date
+	      * Year/Month
+	Genomic Information Requested From Affected Person
+	      * Genomic characteristics
+      * WGS/WES
+      * Specific genetic test
+(ex. Huntington’s disease test)
+      * CODIS Profile
+      * Epigenetics data
+      * Other
+	Country of incident
+	         * [Jurisdiction] &  State/ Federal jurisdiction
+	Outcome
+	         * Exclusion
+         * Legal Redress sought
+         * Participation at a higher rate
+         * Other
+	Sex of the Affected Person
+	         * M/F/O 
+	Affected Person Identification
+	         * Unique non-identifying ID
+	Sector of Discrimination
+	         * Private Life Insurance
+         * Private health Insurance (all types)
+         * Private group Insurance
+         * Work
+         * Academic institution
+         * Immigration and policing
+         * Social relations
+         * Other
+	Ethnicity 
+	         * Black
+         * East Asian
+         * Indigenous
+         * Middle Eastern/North African
+         * South Asian
+         * South East Asian
+         * White
+         * Do not know
+         * Prefer not to answer
+	Source of the report 
+	         * PI/geneticists
+         * Government representative 
+         * Other
+	Likelihood of this report being a duplicate?
+	         * High
+         * Intermediate
+         * Low
+	
+
+
+
+
+
+ 
+________________
+[1] Uberoi, D., Dalpé, G., Cheung, K., Kondrup, E., Palmour, N., Arawi, T., Arych, M., Aviles, M. A. R., Ayuso, C., Bentzen, H. B., Blizinsky, K., Bombard, Y., Chandrasekharan, S., Chung, B. H. Y., Paor, A. de, Doerr, M., Dove, E. S., Dupras, C., Granados-Moreno, P., … Joly, Y. (2024). The Key Features of a Genetic Nondiscrimination Policy: A Delphi Consensus Statement. JAMA Network Open, 7(9), e2435355–e2435355. Please note, this study was approved by the Research Ethics Board of the Faculty of Medicine at McGill University. 
+[2] Kaiser, B., Uberoi, D., Raven-Adams, M. C., Cheung, K., Bruns, A., Chandrasekharan, S., Otlowski, M., Prince, A. E. R., Tiller, J., Ahmed, A., Bombard, Y., Dupras, C., Moreno, P. G., Ryan, R., Valderrama-Aguirre, A., & Joly, Y. (2024). A proposal for an inclusive working definition of genetic discrimination to promote a more coherent debate. Nature Genetics, 56(7), 1339–1345. 
+[3] Yanes, T., Tiller, J., Haining, C. M., Wallingford, C., Otlowski, M., Keogh, L., McInerney-Leo, A., & Lacaze, P. (2024). Future implications of polygenic risk scores for life insurance underwriting. Npj Genomic Medicine, 9(1), 25. 
+[4] Gostin, L. (1991). Genetic discrimination: The use of genetically based diagnostic and prognostic tests by employers and insurers. American Journal of Law & Medicine, 17(1–2), 109–144.
+[5] Tiller, J., Bakshi, A., Dowling, G., Keogh, L., McInerney-Leo, A., Barlow-Stewart, K., Boughtwood, T., Gleeson, P., Delatycki, M. B., Winship, I., Otlowski, M., & Lacaze, P. (2024). Community concerns about genetic discrimination in life insurance persist in Australia: A survey of consumers offered genetic testing. European Journal of Human Genetics: EJHG, 32(3), 286–294; Tiller, J., Gleeson, P., McInerney-Leo, A. M., Keogh, L., Nowak, K., Barlow-Stewart, K., Boughtwood, T., Delatycki, M. B., Winship, I., Otlowski, M., & Lacaze, P. (2023). Final Stakeholder Report of the Australian Genetics and Life Insurance Moratorium: Monitoring the Effectiveness and Response (A-GLIMMER) Project. [Report]. Monash University.
+[6] Bombard, Y., Palin, J., Friedman, J. M., Veenstra, G., Creighton, S., Bottorff, J. L., Hayden, M. R., & Group, T. C. R.-H. C. R. (2012). Beyond the patient: The broader impact of genetic discrimination among individuals at risk of Huntington disease. American Journal of Medical Genetics Part B: Neuropsychiatric Genetics, 159B(2), 217–226; Bombard, Y., Veenstra, G., Friedman, J. M., Creighton, S., Currie, L., Paulsen, J. S., Bottorff, J. L., & Hayden, M. R. (2009). Perceptions of genetic discrimination among people at risk for Huntington’s disease: A cross sectional survey. BMJ, 338.
+[7] Erwin, C., Williams, J. K., Juhl, A. R., Mengeling, M., Mills, J. A., Bombard, Y., Hayden, M. R., Quaid, K., Shoulson, I., Taylor, S., Paulsen, J. S., & I-RESPOND-HD Investigators of the Huntington Study Group. (2010). Perception, experience, and response to genetic discrimination in Huntington disease: The international RESPOND-HD study. American Journal of Medical Genetics. Part B, Neuropsychiatric Genetics: The Official Publication of the International Society of Psychiatric Genetics, 153B(5), 1081–1093.
+[8] Kimura, M., Matsuzaki, S., Ishii, K., Ogawa, M., & Kato, K. (2023). Individual experiences and issues in predictive genetic testing for untreatable hereditary neuromuscular diseases in Japan. European Journal of Medical Genetics, 66(1), 104667. 
+[9] Prince, A. E. R., & Roche, M. I. (2014). Genetic information, non-discrimination, and privacy protections in genetic counseling practice. Journal of Genetic Counseling, 23(6), 891–902.
+[10] Joly, Y., Ngueng Feze, I., & Simard, J. (2013). Genetic discrimination and life insurance: A systematic review of the evidence. BMC Medicine, 11(1), 25; Dupras, C., Song, L., Saulnier, K. M., & Joly, Y. (2018). Epigenetic Discrimination: Emerging Applications of Epigenetics Pointing to the Limitations of Policies Against Genetic Discrimination. Frontiers in Genetics, 9. 
+[11] Lenartz, A., Scherer, A. M., Uhlmann, W. R., Suter, S. M., Anderson Hartley, C., & Prince, A. E. R. (2021). The persistent lack of knowledge and misunderstanding of the Genetic Information Nondiscrimination Act (GINA) more than a decade after passage. Genetics in Medicine: Official Journal of the American College of Medical Genetics, 23(12), 2324–2334.
+[12] Global Alliance for Genomics and Health. (2019). Framework for responsible sharing of genomic and health-related data. Retrieved June 19, 2025, from https://www.ga4gh.org/framework/.
+[13] United Nations Human Rights (UNHR). Convention on the Rights of Persons with Disabilities (2006). 
+[14] United Nations Educational, Scientific and Cultural Organization (UNESCO). Universal Declaration on the Human Genome and Human Rights. (1997) 
+[15] Andorno, R. (2020). The Relevance of Human Rights for Dealing with the Challenges Posed by Genetics. In A. von Arnauld, K. von der Decken, & M. Susi (Eds.), The Cambridge Handbook of New Human Rights: Recognition, Novelty, Rhetoric (pp. 335–349). Cambridge University Press. 
+[16] In considering definitions, including  family history within the definition of genetic data  may be necessary to fully  address occurrences of GD in health insurance. In other contexts, using such a broad definition may carry substantial economic and social implications that should be carefully considered.  
+[17] For example, consider the requirements of data deletion or sample destruction, upon request from patients.  Genomic data and samples are stored in a variety of manners. Options and limitations for data deletion or, for sample destruction, should be clearly explained to patients at the enrolment stage. The specific modalities of data deletion and samples destruction depends on a variety of complex factors, including the storage format, whether the data was consented in a clinical or research context, and the local regulatory framework. However, genomic data directly associated with a unique individual should never be kept in a file without the consent of that individual and the application of reasonable protection and security measures (ex. two-step password login, coding, firewall, etc.)
+[18] This includes researchers partnering with affected communities, whose lived experiences and insights into genetic technologies can inform more equitable and ethical research practices to prevent GD.
+[19] The risks of associating  GD with race are perhaps the most well-documented; however, other identities—such as caste, gender, or other factors—are equally important to interrogate. Egorova, Y. (2010). Castes of genes? Representing human genetic diversity in India. Genomics, Society and Policy, 6(3), 32; de Paor, A. (2013). US and EU Perspectives on Genetic Discrimination in Employment and Insurance: Striking a Balance in a Battlefield of Competing Rights. European Yearbook of Disability Law, 4, 99.
+[20] National Academies of Sciences, Engineering, and Medicine; Division of Behavioral and Social Sciences and Education; Health and Medicine Division; Committee on Population; Board on Health Sciences Policy; Committee on the Use of Race, Ethnicity, and Ancestry as Population Descriptors in Genomics Research. (2023). Using Population Descriptors in Genetics and Genomics Research: A New Framework for an Evolving Field. National Academies Press (US). 
+[21] In kinship-based societies that prioritize blood ties, individuals with genetic variants linked to diseases or disabilities may face moral blame, isolation, or disownment from their families. Women are disproportionately affected by such exclusion. Understanding how genetic discrimination intersects with other forms of exclusion is thus crucial.
+
+---
+Source: https://www.ga4gh.org/document/genetic-discrimination-toolkit-position-statement-on-genetic-discrimination/
+Retrieved via GA4GH public Google Drive
+

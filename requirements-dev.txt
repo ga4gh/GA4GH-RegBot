@@ -1,5 +1,6 @@
 # Development-only tools (not required to run the app)
 -r requirements.txt
+pytest>=8.0.0,<9.0.0
 ruff==0.8.4
 pre-commit==3.6.0
 mypy==1.13.0

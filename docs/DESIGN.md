@@ -42,7 +42,7 @@ RegBot follows three layers aligned with the GSoC proposal—each targets a know
 │ LAYER 2 — HYBRID RETRIEVAL                                                 │
 │  Query (+ optional jurisdiction / category filter)                         │
 │  Dense (SentenceTransformers) ∥ BM25 → RRF → top-k                         │
-│  [Phase 2: optional re-ranker on candidate pool]                           │
+│  Scope-local IDF for filtered BM25; provision-aware result diversity      │
 └────────────────────────────────────────────────────────────────────────────┘
                              ▼
 ┌────────────────────────────────────────────────────────────────────────────┐
@@ -73,21 +73,23 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 | `src/regbot/evaluation.py` | Phase 2: gold-set anchors, Recall@k / Precision@k / MRR |
 | `src/regbot/study_type.py` | Lightweight routing hints (trial, biobank, cohort, genomic) |
 | `src/main.py` | `RegBot` façade; CLI (`ingest`, `ingest-manifest`, `check`, `status`, `eval`, `benchmark`) |
-| `src/api/app.py` | FastAPI layer for the Next.js UI |
+| `src/api/app.py` | Role-protected FastAPI layer for the Next.js UI |
+| `src/api/auth.py` | HMAC-signed HttpOnly sessions; `admin` / `viewer` enforcement |
 | `src/streamlit_app.py` | Upload, analyse, export, exploratory chat on last retrieval |
 
 ### 2.3 Technology stack
 
 | Layer | Choice | Notes |
 |-------|--------|--------|
-| Runtime | Python 3.10–3.12 (CI: 3.11) | See README for venv / deps |
+| Runtime | Python 3.10–3.13 (CI: 3.11) | See README for venv / deps |
 | Embeddings | `all-MiniLM-L6-v2` (configurable) | HF download on first ingest |
 | Vector store | Chroma (local persistent) | Persistence only — see below |
 | Dense search | Exact cosine over in-memory embeddings | Chroma's HNSW is approximate and was not reproducible across processes |
 | Lexical | BM25 over manifest | Rare legal terms (“pseudonymisation”, etc.) |
 | Fusion | RRF, **max** across channels, tie-broken on chunk id | `REGBOT_FUSION=sum` for classic additive RRF |
 | LLM | Ollama (default) / OpenAI | OpenAI-compatible client for both |
-| UI | Next.js + FastAPI (primary), Streamlit (legacy) | Both render the Phase 3 evidence layer |
+| UI | Next.js + FastAPI (primary), Streamlit (legacy) | Both render the Phase 3 evidence layer and require login |
+| Web access control | Signed HttpOnly API cookie / Streamlit server session; environment-configured accounts | Anonymous denied; only `admin` may ingest/reset or select custom stores |
 
 **Why exact dense search.** Chroma's HNSW index returned different tail neighbours across
 process starts for the same query embedding, jittering the candidate pool and moving
@@ -111,10 +113,10 @@ Core path does **not** depend on LangChain/LlamaIndex adapters.
 | `top_k` | CLI / UI | **8** — recall saturates at 12 while precision decays monotonically |
 | Semantic / BM25 pool | `config.py` | **12 / 48** — lexical weighting won on both recall and precision |
 | Chunking | `text_utils.chunk_by_sections` | **Heading-aligned**; sliding window only inside long sections |
-| `category` / `jurisdiction` / `framework` filter | ingest metadata | Applied **before** candidate selection, so a scope narrows the search rather than truncating results |
+| `category` / `jurisdiction` / `framework` filter | ingest metadata | Applied **before** candidate selection; BM25 also recomputes IDF inside the scope |
 | Re-ranker | — | **Not adopted** — failure mode is missing candidates, not mis-ranking |
 | Per-document diversification | — | **Measured and rejected** — costs up to 19 points of recall@8 |
-| Document sibling boost | — | **Deferred** — trades recall@8 for recall@5; not separable from noise at n=12 |
+| Document sibling boost | — | **Not adopted** — trades recall@8 for recall@5; the expanded 41-query benchmark still prioritizes recall@8 |
 
 **Why max fusion.** Additive RRF rewards agreement between channels, which is wrong for
 statutes: the operative clause is often a precise lexical hit that a general-purpose
@@ -134,7 +136,7 @@ Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDI
 
 Each ingested unit is addressable for retrieval, BM25, and citation verification.
 
-**Implemented today** (689 chunks; `section` where the source is line-structured):
+**Implemented today** (8,081 chunks; `section` where the source is line-structured):
 
 ```json
 {
@@ -142,7 +144,6 @@ Each ingested unit is addressable for retrieval, BM25, and citation verification
   "text": "<chunk body>",
   "metadata": {
     "source": "<filename>",
-    "source_path": "<absolute path>",
     "page": 0,
     "category": "<stem or ingest label>",
     "document_id": "ga4gh-frs",
@@ -160,30 +161,36 @@ Each ingested unit is addressable for retrieval, BM25, and citation verification
 | `document_id` | ✅ implemented | Stable corpus id, e.g. `ga4gh-frs`, `gdpr-dpia-genomic-research` |
 | `jurisdiction` | ✅ implemented | Governance scope for filtering (`GA4GH` / `EU` for framework docs) |
 | `framework` | ✅ implemented | e.g. `GA4GH`, `REWS`, `GDPR`, `national` |
-| `content_type` | ✅ implemented | `primary` (source regulatory text) or `summary` (contributor paraphrase) |
-| `source`, `page`, `category` | ✅ implemented | As before |
-| `section` | ⚠️ partial (78% of chunks) | Every heading the chunk spans, joined by `; `; populated for line-structured sources, omitted for layout-flattened PDFs (see below) |
+| `content_type` | ✅ implemented | `primary`, non-authoritative/reference `translation`, or contributor `summary` |
+| `source`, `page`, `category` | ✅ implemented | Portable provenance; server filesystem paths are not stored or returned |
+| `section` | ⚠️ partial (47% of chunks) | Every heading the chunk spans, joined by `; `; populated for line-structured sources, omitted for layout-flattened PDFs (see below) |
 | `ingested_at` | ⚠️ manifest only | Recorded per document in `corpus_manifest.yaml`, not copied onto chunks |
 
 **`content_type` and why it exists.** A citation to a paraphrase is **not** a citation to
 the underlying clause, so the distinction is machine-readable rather than left to a
 disclaimer inside the text, and both UIs badge a `summary` citation in red.
 
-P0/P1 are now **primary sources** (96% of chunks): the consolidated GDPR text from the EU
-Publications Office (CELEX 32016R0679, all 99 Articles and recitals) and GA4GH's published
-policies, product pages and GDPR Briefs. P2 regional law remains contributor summaries by
-design — official English texts exist for SG/TW/KR/JP/HK/CN but consolidating them is
-post-GSoC work — and every P2 chunk is marked `summary`. See
-[`eval_results.md` §4b](eval_results.md) for what this cost in measured recall.
+The last benchmarked 51-document snapshot contains 3,211 primary-source chunks, 1,190
+reference-translation chunks, and 15 contributor-summary chunks. Manifest v0.6 contains
+85 documents and the rebuilt store contains 8,081 chunks: 6,531 primary-source, 1,540
+reference-translation, and 10 contributor-summary chunks. This larger corpus has not been
+benchmarked because the gold set still awaits independent mentor review. Its bounded source
+scope is complete under [`CORPUS_SCOPE.md`](CORPUS_SCOPE.md). Regional full text is present
+for SG, CN, TW, KR, JP and HK;
+`content_type` keeps translations and the small residual summary set visibly distinct from
+authentic-language primary law. Chinese primary texts use character-bigram BM25 tokens,
+because whitespace-delimited English tokenisation otherwise drops complete provisions.
 
 **`section` and why coverage is partial.** `text_utils.detect_headings` finds headings as
 short standalone lines between blank lines, rejecting `Key: value` front matter, list
 items, multi-sentence prose, unbalanced parentheses, and lines ending on a continuation
 word. Chunks inherit the nearest heading at or before their start offset.
 
-Coverage is 540/689 chunks (78%) — the official GDPR text is line-structured, so all 99
+Coverage is 3,764/8,081 chunks (47%) — line-structured statutes expose reliable headings,
+while the larger PDF corpus lowers the percentage. The official GDPR text is line-structured, so all 99
 Articles are detected and a heading is merged with its title (`Article 9 — Processing of
-special categories of personal data`). **PDF chunks still get no `section` at all.** `pypdf` emits one line per *visual* line, so heading, subheading
+special categories of personal data`). **Nearly all PDF chunks have no `section`**
+(8 of 3,829 currently have one). `pypdf` emits one line per *visual* line, so heading, subheading
 and body text land on a single line while ordinary wrapped prose sits between blank lines —
 the exact shape a standalone-line rule mistakes for headings. A first implementation
 without that guard produced labels like *"the autonomous decision-making of data subjects
@@ -191,8 +198,8 @@ while promoting the common good of"*: mid-sentence fragments presented to a revi
 clause's section. `is_hard_wrapped` now detects fixed-width layout (most long lines ending
 mid-clause) and suppresses detection entirely for those pages.
 
-A chunk that straddles an article boundary lists **every** section it touches (146 of 689
-do), rather than claiming only the one it started in: a 900-character window opened in
+A chunk that straddles an article boundary lists **every** section it touches, rather than
+claiming only the one it started in: a 900-character window opened in
 Article 8 and closed in Article 9 was otherwise labelled "Article 8" on text that is
 Article 9.
 
@@ -208,19 +215,25 @@ Initial corpus tagging aligns with East Asia / cross-border sharing priorities d
 
 | Code | Representative legal basis (corpus labels, not legal advice) |
 |------|----------------------------------------------------------------|
-| `SG` | PDPA 2012, HBRA, Health Information Bill |
-| `CN` | Human Genetic Resources Regulation; PIPL; Data Security Law |
-| `TW` | Human Biobank Management Act; PDPA |
-| `KR` | Bioethics and Safety Act; PIPA; AI framework (2025/26) |
-| `JP` | Ethical Guidelines for Medical/Health Research; APPI; Act on Promotion of Genomic Medicine (2023) |
-| `HK` | Personal Data (Privacy) Ordinance; cross-border transfer (s.33) |
-| `EU` | GDPR and related briefs (where redistributable) |
-| `GA4GH` | GA4GH / REWS framework documents (international norms) |
-| `INTL` | Cross-cutting GA4GH guidance not tied to one member state |
+| `SG` | PDPA 2012; HBRA and its general, restricted-research, and tissue-banking regulations; Health Information Act 2026 (not yet commenced) |
+| `CN` | Human Genetic Resources rules; PIPL; Data Security and Biosecurity Laws; human-research ethics review; export assessment, standard-contract, and 2024 cross-border/network-data rules |
+| `TW` | Human Biobank Management Act; PDPA; Human Subjects Research Act |
+| `KR` | Bioethics and Safety Act and decree; PIPA and decree; AI framework summary (2025/26). English decrees are labelled reference translations |
+| `JP` | Ethical Guidelines and 2024 guidance; APPI; medical-data secondary use; Genomic Medicine Promotion Act (2023) |
+| `HK` | Personal Data (Privacy) Ordinance; cross-border guidance/model clauses; eHealth Code of Practice |
+| `EU` | GDPR; EHDS; clinical-trials, data-governance and data regulations; SCCs; EDPB consent/clinical-trials guidance; Council of Europe instruments |
+| `GA4GH` | Current directly relevant GA4GH / REWS policies, toolkits, and approved product texts |
+| `INTL` | WHO, OECD and UNESCO genomic, bioethics, biobank, and health-data governance instruments |
 
-**Query behaviour:** optional `jurisdiction` (and `category`) filters narrow retrieval to relevant law. Multi-jurisdiction analysis in a single pass remains post-GSoC; Phase 1 focuses on metadata that makes scoped retrieval possible.
+**Query behaviour:** optional `jurisdiction`, `framework`, and `category` filters narrow
+retrieval before candidate selection. CLI and web checks accept multiple jurisdictions in
+one pass; jurisdiction values are combined as a union, while other active filters are
+intersected with that scope.
 
-**Corpus inventory:** [`docs/corpus_manifest.yaml`](corpus_manifest.yaml) (Phase 1)—per document: `document_id`, `jurisdiction[]`, version, URL, license, ingest date. No vector stores in git.
+**Corpus inventory:** [`docs/corpus_manifest.yaml`](corpus_manifest.yaml) (Phase 1)—per
+document: `document_id`, `tier`, `content_type`, `jurisdiction[]`, `framework`, source URL,
+license/provenance note, local ingest path, and last ingest timestamp. Chroma vector files
+are not tracked in git.
 
 ### 3.2 Compliance / navigation report (JSON)
 
@@ -289,11 +302,12 @@ Two constraints follow directly from the grounding contract (§3.3):
 ```
 
 Set when retrieval is empty (`weak_retrieval`), grounding fails after retries
-(`grounding_failed`), or the overlap filter drops every recommendation (`low_overlap`).
+(`grounding_failed`), or the overlap filter drops any recommendation (`low_overlap`).
 When several fire, `review_reason` reports the one that explains the others
 (weak retrieval → grounding failure → low overlap); `review_reasons` keeps the full set.
-The offline keyword fallback marks overlap as `skipped`, which is deliberately **not** a
-review trigger — it means the filter did not run, not that support was weak.
+The offline keyword fallback uses the same overlap filter as the LLM path. It chooses the
+best retrieved chunk lexically for each fixed recommendation, drops unsupported rows, and
+escalates any partial or total drop for human review.
 
 ### 3.3 Grounding contract (invariants)
 
@@ -302,7 +316,8 @@ These rules are **code-enforced** on the LLM path:
 1. `evidence_chunk_ids` and `citations[].chunk_id` ⊆ retrieved chunk ids for this request.
 2. Violations → automatic retry with explicit allow-list (`max_grounding_retries`).
 3. Token recall vs cited chunk texts ≥ `REGBOT_MIN_TOKEN_OVERLAP` (default `0.06`); drops recorded in `grounding.overlap`.
-4. Offline keyword fallback: overlap skipped; chunk-id audit where ids exist.
+4. Offline keyword fallback: evidence selected lexically, overlap-filtered, and audited
+   against the same retrieved chunk-id allow-list.
 
 ---
 
@@ -317,7 +332,7 @@ These rules are **code-enforced** on the LLM path:
 
 ### 4.2 Retrieval benchmark (Phase 2)
 
-**Gold set:** [`examples/eval/gold_ga4gh.yaml`](../examples/eval/gold_ga4gh.yaml) — 12
+**Gold set:** [`examples/eval/gold_ga4gh.yaml`](../examples/eval/gold_ga4gh.yaml) — 41
 queries with `(query, relevant[], optional jurisdiction)`. **Drafted, not yet
 mentor-reviewed.**
 
@@ -369,19 +384,34 @@ hits as misses — a labelling artefact that looked like a code regression. See
 
 | Tier | Content |
 |------|---------|
-| **P0** | GA4GH Framework for Responsible Sharing; priority REWS guidance |
-| **P1** | GDPR / consent-code **briefs** where license permits ingest instructions |
-| **P2** | Regional excerpts tagged per §3.1 (`SG`, `CN`, `TW`, `KR`, `JP`, `HK`)—text-native PDFs or mentor-provided exports |
+| **P0** | GA4GH Framework, policies, statements, lexicon, and priority REWS guidance |
+| **P1** | Cross-jurisdiction law and normative guidance: EU, WHO, OECD, UNESCO, GA4GH GDPR briefs, and consent-toolkit materials |
+| **P2** | Regional law and guidance tagged per §3.1 (`SG`, `CN`, `TW`, `KR`, `JP`, `HK`), with provenance recorded as primary, publisher/reference translation, or contributor summary |
 
-Excluded from public repo: private DUL templates; scanned PDFs without OCR (ingest fails with guidance).
+The finite inclusion and stopping rules are recorded in
+[`CORPUS_SCOPE.md`](CORPUS_SCOPE.md). Excluded from the public repo: private DUL templates;
+scanned PDFs without OCR (ingest fails with guidance).
 
 ### 5.2 Security & ops
 
 - No secrets in git. Local-first processing unless the operator opts into a cloud LLM.
+- **Web/API authentication:** no default passwords. HMAC-signed sessions are HttpOnly,
+  SameSite=Lax and expire after eight hours by default. A cryptographically random
+  per-process signing secret supports zero-configuration local use; production and
+  multi-worker deployments must configure a stable 32+ character `REGBOT_SESSION_SECRET`.
+  Rotating it invalidates all sessions. Account-free guest viewer access is enabled by
+  default and may be disabled with `REGBOT_ALLOW_GUEST_VIEWER=0`. Both guest and named
+  `viewer` sessions are read/review-only; `admin` gates ingest, reset, and custom-store
+  paths. HTTPS deployments must set `REGBOT_COOKIE_SECURE=1` and should apply login rate
+  limiting at the reverse proxy. Streamlit applies the same roles in its server-managed
+  session. CLI access remains an OS/filesystem trust boundary rather than an HTTP role
+  boundary.
 - **Vector store:** `data/regbot_store/chroma/` is git-ignored — it is regenerable binary
-  that rewrites wholesale on every ingest (~3.7 MB of churn per run).
+  that rewrites wholesale on every ingest (about 351 MB in the current full build).
   `data/regbot_store/manifest.json` **is** tracked: it is text, diffable, and serves as
   both the BM25 corpus and the citation-audit record. Rebuild vectors with
-  `python -m src.main ingest-manifest --reset`.
+  `python -m src.main ingest-manifest --reset`. Incremental runs skip document ids already
+  present in the active store; `ingested_at` in the corpus inventory is audit metadata,
+  not a machine-local vector-state flag.
 - UI and exports carry a **not legal advice** disclaimer.
 - Chroma telemetry off by default.

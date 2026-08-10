@@ -13,6 +13,8 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 > **Status:** the gold set was drafted by the contributor and is **not yet mentor-reviewed**.
 > Numbers below are a working baseline for the Phase 2 discussion, not a validated benchmark.
+> They describe the 51-document snapshot. Manifest v0.6 now contains 85 documents
+> (8,081 chunks) and should be re-benchmarked only after the pending gold-set review.
 
 ---
 
@@ -20,29 +22,31 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseli
 
 | | |
 |---|---|
-| Corpus | 3,287 chunks / 40 documents — 30 primary / 7 unofficial translation / 3 summary (see §4i) |
-| Gold set | v0.5 — 12 queries, 0 skipped |
+| Corpus | 4,416 chunks / 51 documents — 3,211 primary / 1,190 reference translations / 15 summary chunks (see §4k) |
+| Gold set | v0.8 — 41 contributor-labelled queries, 0 skipped |
 | Embeddings | `all-MiniLM-L6-v2`, cosine |
 | Fusion | Reciprocal rank fusion over dense + BM25 |
 | Date | 2026-08-09 |
 
-**Headline: provision-level recall@8 = 0.621, chunk-level 0.475, over a 40-document corpus in which six jurisdictions now carry full statutory text (§4i).** Sections 2, 3 and 3b
+**Headline: provision-level recall@8 = 0.909, chunk-level recall@8 = 0.724, MRR@8 = 0.650, over a 51-document corpus in which six regional jurisdictions carry full text (§4k).** Sections 2, 3 and 3b
 report the earlier paraphrase corpus, which scored higher for reasons §4b explains; they are
 kept because the tuning conclusions drawn there still hold. §4 and §4b document what changed
 and why the number fell.
 
-**Why anchors instead of chunk ids.** Chunk ids embed a SHA-256 of the *absolute ingest
-path* (`ingestion._stable_source_id`), so an id recorded on one machine never resolves on
-another. Gold labels are therefore `(document_id, contains)` anchors resolved against the
-live manifest at benchmark time. Anchors that match nothing are reported as
+**Why anchors instead of chunk ids.** Chunk ids include a SHA-256 content fingerprint and
+still change when a source is revised or chunking changes. Gold labels are therefore
+`(document_id, contains)` anchors resolved against the live manifest at benchmark time.
+Anchors that match nothing are reported as
 `unresolved_anchors`, and a query whose anchors all fail is **skipped, not scored** — a
 stale gold set fails loudly instead of silently inflating recall.
 
-**Precision denominator.** `precision@k` divides by the number of results actually
+**Precision denominators.** `precision@k` divides by the number of results actually
 returned, not by `k`. With a jurisdiction filter active, retrieval legitimately returns
 fewer than `k` candidates (e.g. 3 for `TW`), and dividing by `k` would score that as a
 precision failure. Each row records `returned` so the denominator is auditable. This choice
-has a downside of its own — see §3b.
+has a downside of its own, so `precision_fixed@k` is also reported with `k` as the
+denominator. On the current run, both precision@8 variants are 0.140 because all queries
+returned eight results.
 
 ---
 
@@ -424,16 +428,16 @@ agreement bought 8.
 
 ## 4f. The corpus is now reproducible
 
-`tools/fetch_corpus.py` rebuilds every primary source from its publisher —
+At that stage, `tools/fetch_corpus.py` rebuilt every then-indexed source from its publisher —
 `--list`, `--only KEY`, `--check`, `--dry-run`. Previously the corpus was a set of opaque
 files nobody could regenerate or audit.
 
 **Every fetch is validated before it is written**, which encodes the §4c failure directly:
 a target declares `must_contain` phrases and a `min_words` floor, and content that fails is
 reported and *not written*. Given the Singapore table of contents that started this, the
-check reports `missing required phrase 'shall not' — likely a table of contents` instead of
-silently adding 11,000 words of navigation to the corpus. `--check` re-validates what is
-already on disk; all 13 targets currently pass.
+check reports a missing operative phrase instead of silently adding navigation to the
+corpus. `--check` re-validates what is already on disk; this initial pass covered 13
+targets. The current 48-target result is reported in §4k.
 
 ---
 
@@ -625,6 +629,75 @@ cover. Also, pypdf renders Singapore's typography as "guilty of an of fence" and
 
 ---
 
+## 4j. Previous 40-document contributor-labelled baseline
+
+The §4i issues are resolved in code and the rebuilt store. PDF ingestion removes recognized
+statutory and dotted-leader front matter before chunking, repairs a deliberately narrow set
+of audited `pypdf` word splits, and still strips running headers. The rebuild reduced the
+store from 3,287 to **3,221** chunks; no indexed chunk contains `ARRANGEMENT OF SECTIONS`,
+`of fence`, `re view`, `Resear ch`, or `ST A TUTES`.
+
+Scoped BM25 now rebuilds document-frequency statistics inside the allowed jurisdiction or
+framework rather than computing global scores and filtering afterwards. This restores the
+Taiwan withdrawal provision from outside top-8 to rank 1. The gold set was expanded from
+12 to **30** contributor-labelled queries, with zero unresolved anchors and coverage of
+security controls, DAC process, ethics recognition, consent patterns, and all six regional
+jurisdictions.
+
+| k | Recall@k | Precision@returned | MRR@k | Hit@k | Provision recall@k |
+|---|----------|--------------------|-------|-------|--------------------|
+| 1 | 0.377 | 0.567 | 0.567 | 0.567 | 0.518 |
+| 3 | 0.607 | 0.300 | 0.656 | 0.767 | 0.751 |
+| 5 | 0.640 | 0.207 | 0.664 | 0.800 | 0.798 |
+| 8 | **0.721** | **0.150** | **0.674** | **0.867** | **0.893** |
+
+Candidate-pool checks at `(semantic, BM25) = (12,48), (24,48), (48,48), (12,96),
+(24,96)` produced the same final metrics. Disabling the per-provision cap increased only
+chunk-fragment recall (0.675 → 0.697 on the pre-final labels) and did not improve provision
+recall, so the review-oriented cap remains. A cross-encoder is not adopted: the final set
+has no query with zero provision recall, and adding a model and latency is not justified by
+the measured failure mode.
+
+The gold set remains **not mentor-reviewed**. The numbers above are an internal,
+reproducible baseline, not an externally validated performance claim.
+
+---
+
+## 4k. Targeted regional and GA4GH expansion
+
+The next source audit added six reproducible full texts: EHDS (EU 2025/327), Japan APPI,
+Taiwan's Human Subjects Research Act, Singapore's Tissue Banking Regulations, China's 2024
+cross-border data-flow provisions, and China's Network Data Security Management Regulations
+(effective 2025). All 43 fetch targets now pass full-text length and operative-phrase
+validation. A second pass replaced the superseded GA4GH Privacy and Security Policy v1.0
+with v2.0 and added five approved GA4GH products: the Clinically Actionable Results Policy,
+Engagement Framework, Data Sharing Lexicon, Model DAA Clauses, and Genetic Discrimination
+Position Statement. That benchmarked manifest contained 51 documents and its rebuilt store
+contained 4,416 chunks; all 48 fetch targets in that snapshot passed validation. The later
+scope-completion pass is recorded in [`CORPUS_SCOPE.md`](CORPUS_SCOPE.md) and is deliberately
+not mixed into these historical benchmark measurements.
+
+The first rebuild exposed an English-only assumption: `has_citable_content` counted only
+Latin words, so one complete Chinese regulation produced zero chunks. CJK provisions now
+pass a conservative character floor, and BM25 tokenises CJK runs as overlapping bigrams.
+The two Chinese additions consequently produce 17 citable chunks, and both new Chinese gold
+queries retrieve the expected provision at rank 1.
+
+Gold v0.8 contains 41 contributor-labelled queries: six for the regional additions and five
+for the new/current GA4GH products. All anchors resolve; none is skipped.
+
+| k | Recall@k | Precision@returned | MRR@k | Hit@k | Provision recall@k |
+|---|----------|--------------------|-------|-------|--------------------|
+| 1 | 0.373 | 0.537 | 0.537 | 0.537 | 0.582 |
+| 3 | 0.647 | 0.309 | 0.642 | 0.781 | 0.814 |
+| 5 | 0.666 | 0.200 | 0.642 | 0.781 | 0.840 |
+| 8 | **0.724** | **0.140** | **0.650** | **0.829** | **0.909** |
+
+These remain contributor labels. The expansion improves source coverage and provision-level
+recall, but does not remove the independent-review requirement.
+
+---
+
 ## 5. The benchmark was not reproducible (and the fix)
 
 Running `python -m src.main benchmark` three times with no changes produced **three
@@ -695,28 +768,25 @@ Stated plainly, because the numbers look better than the evidence supports:
 
 1. **The gold set is self-labelled.** Written by the same contributor who tuned the
    retriever. Needs mentor review before it means anything externally.
-2. **12 queries on 91 chunks.** A 4-point recall difference is roughly one chunk moving in
-   one query. The adopted config is a reasonable default, not a settled result.
-3. ~~**20 of 22 documents are contributor-authored summaries.**~~ **Addressed in §4b** —
-   P0/P1 are now primary sources (96% of chunks). P2 regional law remains summarised by
-   design and is marked `content_type: summary` in the data and in both UIs. The residual
-   threat is smaller but real: those 8 summary documents still carry the contributor's
-   phrasing, and the six regional queries are scored against them.
+2. **41 queries are still a small set.** The expansion covers all implemented scopes, but
+   uncommon legal questions remain underrepresented. The adopted config is a reasonable
+   default, not a settled universal result.
+3. ~~**20 of 22 documents are contributor-authored summaries.**~~ **Addressed.** The final
+   corpus has 3,211 primary chunks, 1,190 reference translations, and 15 contributor-summary
+   chunks. Translation status still matters legally and is surfaced in both UIs.
 4. **Anchors resolve more broadly than intended.** With 150-char chunk overlap, a phrase
    like `Recital 33` matches adjacent chunks, so some queries have larger gold sets than
    hand-specified (q10: 7 chunks from 3 anchors). This deflates recall slightly — a
    conservative bias, but not a deliberate one.
-5. **No re-ranker was tested.** The proposal listed it as conditional ("if beneficial").
-   Given the failure mode is recall spread across chunks rather than mis-ranking, a
-   cross-encoder would likely not fix q10/q11 — it reorders a candidate list that is
-   already missing the gold chunks.
+5. **No independent relevance assessor has checked the newly added labels.** Mechanical
+   anchor resolution proves portability, not that the chosen provisions are exhaustive.
 
 ## 7. Next steps
 
 - [ ] Mentor review of the gold set — the blocking item.
-- [ ] Expand to ~30 queries, weighted toward unfiltered multi-chunk topics.
-- [ ] Revisit sibling boost (§3b) once the gold set is larger and reviewed — it looks
-      promising for recall@5 but is not separable from noise at n=12.
+- [x] ~~Expand beyond 30 queries~~ — v0.8 has 41, all resolving against the rebuilt corpus.
+- [x] ~~Revisit sibling boost / candidate pools~~ — larger pools did not change final
+      metrics; provision diversity remains beneficial.
 - [x] ~~Replace contributor summaries with primary statutory text~~ — done, §4b.
       Recall fell 0.876 → 0.684 as predicted.
 - [x] ~~Filter scoping~~ and ~~heading-aware chunking~~ — done, §4c. The scoping hypothesis
@@ -726,17 +796,14 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [x] ~~Filter page furniture out of headings~~ — done, §4d.
 - [x] ~~Move the corpus fetchers into the repo~~ — done, §4f (`tools/fetch_corpus.py`).
 - [x] ~~Multi-provision recall~~ — partly addressed in §4g (0.812 → 0.854).
-- [ ] q03, q10, q11 still sit at 0.50: their remaining provisions rank 20-49, too deep for
-      slot reallocation to reach. These need better ranking, not better allocation — a
-      cross-encoder re-ranker over the fused pool is now worth the experiment §3b deferred,
-      because the candidates *are* present.
-- [ ] HK, KR: official text needs a JavaScript-capable fetch. SG, JP: the sites serve a
-      table of contents; the operative text needs a different entry point.
-- [ ] Re-run `benchmark` and re-review the gold set on **every** corpus change (see §4).
+- [x] ~~Scoped BM25 / PDF contents cleanup~~ — implemented and regression-tested (§4j).
+- [x] ~~HK, KR, SG, JP full text~~ — publisher-issued sources are in the reproducible
+      51-document corpus; translation status remains explicit.
+- [x] ~~Re-run `benchmark` on the expanded corpus~~ — v0.8: 41/41 scored, provision R@8
+      0.909.
 - [ ] Wire `benchmark --min-recall` into CI as a regression gate once the gold set is
       approved. Now viable: the benchmark is reproducible (§5), so the gate will not flake.
-      Currently passes at 0.85.
-- [ ] Reconsider `precision@k`'s denominator. Dividing by results returned (§1) is right
-      for jurisdiction-filtered queries but rewards configurations that return fewer
-      results, as §3b showed. Reporting `returned` alongside is a partial mitigation;
-      reporting both denominators would be better.
+      The workflow already accepts an explicit manual threshold; its scheduled default
+      remains report-only until mentor approval.
+- [x] ~~Report both precision denominators~~ — `precision@k` uses returned results and
+      `precision_fixed@k` uses the requested k.

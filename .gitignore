@@ -13,6 +13,7 @@ frontend/out/
 # Vector store is regenerable from data/corpus/ via `ingest-manifest --reset`.
 # manifest.json stays tracked: it is text, diffable, and the BM25 + citation-audit record.
 data/regbot_store/chroma/
+data/regbot_demo_store/
 
 # Presentation material and progress write-ups are personal artefacts, never committed.
 docs/progress_report*.md

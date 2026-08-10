@@ -7,8 +7,8 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 
-from src.regbot.config import DEFAULT_COLLECTION
-from src.regbot.ingestion import ingest_policy_file
+from src.regbot.config import CHROMA_SUBDIR, DEFAULT_COLLECTION
+from src.regbot.ingestion import ingest_policy_file, read_manifest
 from src.regbot.jurisdiction import normalize_jurisdiction
 
 _TIER_ORDER = {"P0": 0, "P1": 1, "P2": 2}
@@ -103,16 +103,34 @@ def ingest_from_corpus_manifest(
     """
     Ingest documents listed in corpus_manifest.yaml (P0 → P1 → P2 order).
     Updates ingested_at in the manifest when ingest succeeds (unless dry_run).
+
+    ``ingested_at`` is an audit timestamp, not proof that this particular local store has
+    vectors. Incremental runs therefore skip only document ids already present in the
+    active store. A reset always rebuilds every selected manifest entry.
     """
     data = load_corpus_manifest(manifest_path)
     documents: List[Dict[str, Any]] = list(data.get("documents") or [])
     tier_filter = tier.upper() if tier else None
 
+    # A fresh clone carries the tracked text manifest but not Chroma's git-ignored vector
+    # files. Treat it as empty until the vector directory exists; otherwise the corpus
+    # inventory's historical ingested_at values would make a first ingest a no-op.
+    has_vector_store = (Path(store_dir) / CHROMA_SUBDIR).is_dir()
+    existing_document_ids = (
+        {
+            str((chunk.get("metadata") or {}).get("document_id") or "").strip()
+            for chunk in read_manifest(store_dir)
+        }
+        if has_vector_store and not reset
+        else set()
+    )
+
     selected: List[Dict[str, Any]] = []
     for doc in documents:
         if tier_filter and str(doc.get("tier") or "").upper() != tier_filter:
             continue
-        if skip_ingested and doc.get("ingested_at"):
+        document_id = str(doc.get("document_id") or "").strip()
+        if skip_ingested and document_id and document_id in existing_document_ids:
             continue
         ingest_path = doc.get("ingest_path")
         if not ingest_path or not str(ingest_path).strip():

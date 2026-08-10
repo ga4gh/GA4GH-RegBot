@@ -156,8 +156,21 @@ def fold_plural(word: str) -> str:
 
 
 def tokenize(text: str) -> List[str]:
-    """Lowercase word tokens with regular plurals folded (see :func:`fold_plural`)."""
-    return [fold_plural(w) for w in re.findall(r"[a-z0-9]+", text.lower())]
+    """Tokenize Latin text and CJK text for BM25.
+
+    Latin tokens keep the narrow plural folding used throughout the project. Consecutive
+    CJK runs are emitted as overlapping character bigrams, which gives Chinese statutory
+    queries lexical recall without adding a segmentation dependency. A single-character
+    run is retained so short defined terms are not silently dropped.
+    """
+    lowered = text.lower()
+    tokens = [fold_plural(w) for w in re.findall(r"[a-z0-9]+", lowered)]
+    for run in re.findall(r"[\u3400-\u4dbf\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]+", lowered):
+        if len(run) == 1:
+            tokens.append(run)
+        else:
+            tokens.extend(run[i : i + 2] for i in range(len(run) - 1))
+    return tokens
 
 
 def chunk_spans(

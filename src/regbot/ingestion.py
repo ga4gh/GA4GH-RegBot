@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import re
 from typing import Any, Dict, List, Optional, Tuple
@@ -19,14 +20,23 @@ from src.regbot.embeddings import load_sentence_transformer
 from src.regbot.jurisdiction import normalize_jurisdiction
 from src.regbot.text_utils import chunk_by_sections, detect_headings, sections_for_span
 
-# Minimum alphabetic words a chunk must carry to be worth citing. See has_citable_content.
+# Malformed decorative image streams in some official PDFs do not affect extracted text;
+# missing or unusable text is rejected by the citable-content checks below.
+logging.getLogger("pypdf").setLevel(logging.ERROR)
+
+# Minimum Latin-script words a chunk must carry to be worth citing. CJK text uses a
+# character floor because whitespace is not a lexical delimiter in those languages.
 MIN_CITABLE_WORDS = 10
+MIN_CITABLE_CJK_CHARS = 20
 
 
 def _stable_source_id(path: str) -> str:
     base = os.path.basename(path)
-    h = hashlib.sha256(os.path.abspath(path).encode()).hexdigest()[:12]
-    return f"{base}_{h}"
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(block)
+    return f"{base}_{digest.hexdigest()[:12]}"
 
 
 def _load_plaintext(path: str) -> List[Tuple[str, int]]:
@@ -67,9 +77,73 @@ def _strip_running_lines(page: str, running: set) -> str:
     return "\n".join(kept)
 
 
+def _strip_pdf_front_matter(pages: List[str]) -> List[str]:
+    """Remove recognized contents pages when a clear operative opening follows."""
+    arrangement = next(
+        (i for i, text in enumerate(pages[:12]) if "ARRANGEMENT OF SECTIONS" in text.upper()),
+        None,
+    )
+    operative = None
+    if arrangement is not None:
+        operative = next(
+            (
+                i
+                for i, text in enumerate(pages[arrangement + 1 : 20], start=arrangement + 1)
+                if re.search(r"\bAn\s+Act\s+to\b", text, flags=re.IGNORECASE)
+            ),
+            None,
+        )
+
+    # Some official guidelines use conventional dotted-leader contents rather than the
+    # statutory heading above. Only strip when a later page has an unmistakable Preamble
+    # opening; a generic page titled "Contents" is not sufficient evidence by itself.
+    if operative is None:
+        contents = next(
+            (
+                i
+                for i, text in enumerate(pages[:6])
+                if "TABLE OF CONTENTS" in text.upper() and text.count("...") >= 3
+            ),
+            None,
+        )
+        if contents is not None:
+            operative = next(
+                (
+                    i
+                    for i, text in enumerate(pages[contents + 1 : 20], start=contents + 1)
+                    if re.match(r"\s*\d*\s*Preamble\b", text, flags=re.IGNORECASE)
+                ),
+                None,
+            )
+    if operative is None:
+        return pages
+    return ["" if i < operative else text for i, text in enumerate(pages)]
+
+
+def _repair_pdf_text(text: str) -> str:
+    """Repair audited pypdf word splits without guessing arbitrary whitespace joins."""
+    replacements = {
+        r"\bST\s+A\s+TUTES\b": "STATUTES",
+        r"\bof\s+fence\b": "offence",
+        r"\bof\s+fences\b": "offences",
+        r"\bof\s+ficer\b": "officer",
+        r"\bof\s+ficers\b": "officers",
+        r"\bof\s+fice\b": "office",
+        r"\bre\s+view\b": "review",
+        r"\brev\s+iew\b": "review",
+        r"\br\s+eview\b": "review",
+        r"\bResear\s+ch\b": "Research",
+        r"\bresear\s+ch\b": "research",
+    }
+    for pattern, replacement in replacements.items():
+        text = re.sub(pattern, replacement, text)
+    return text
+
+
 def _load_pdf(path: str) -> List[Tuple[str, int]]:
     reader = PdfReader(path)
-    raw_pages = [(page.extract_text() or "") for page in reader.pages]
+    raw_pages = [_repair_pdf_text(page.extract_text() or "") for page in reader.pages]
+    raw_pages = _strip_pdf_front_matter(raw_pages)
     running = _running_lines(raw_pages)
     return [(_strip_running_lines(t, running), i + 1) for i, t in enumerate(raw_pages)]
 
@@ -98,7 +172,13 @@ def has_citable_content(text: str, *, min_words: int = MIN_CITABLE_WORDS) -> boo
     """
     stripped = _URL_RE.sub(" ", text)
     words = re.findall(r"[A-Za-z]{2,}", stripped)
-    return len(words) >= min_words
+    if len(words) >= min_words:
+        return True
+    # Han, Hiragana, Katakana and Hangul. A provision in these scripts may contain no
+    # spaces at all; rejecting it for lacking English words discarded complete Chinese
+    # regulations. Twenty characters still rejects bare labels such as “第三章”.
+    cjk = re.findall(r"[\u3400-\u4dbf\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]", stripped)
+    return len(cjk) >= MIN_CITABLE_CJK_CHARS
 
 
 def _manifest_path(store_dir: str) -> str:
@@ -119,9 +199,16 @@ def read_manifest(store_dir: str) -> List[Dict[str, Any]]:
 
 
 def write_manifest(store_dir: str, chunks: List[Dict[str, Any]]) -> None:
+    portable_chunks: List[Dict[str, Any]] = []
+    for record in chunks:
+        portable = dict(record)
+        metadata = dict(record.get("metadata") or {})
+        metadata.pop("source_path", None)
+        portable["metadata"] = metadata
+        portable_chunks.append(portable)
     os.makedirs(store_dir, exist_ok=True)
     with open(_manifest_path(store_dir), "w", encoding="utf-8") as f:
-        json.dump({"chunks": chunks}, f, ensure_ascii=False, indent=2)
+        json.dump({"chunks": portable_chunks}, f, ensure_ascii=False, indent=2)
 
 
 def ingest_policy_file(
@@ -178,7 +265,6 @@ def ingest_policy_file(
             chunk_idx += 1
             meta: Dict[str, Any] = {
                 "source": os.path.basename(file_path),
-                "source_path": os.path.abspath(file_path),
                 "page": int(page_num),
                 "category": base_category,
             }
@@ -224,7 +310,8 @@ def ingest_policy_file(
         # exited 0. A document that indexes nothing is a failure, so it fails out loud.
         raise ValueError(
             f"{name}: extracted {total_chars} characters, but no chunk carries at least "
-            f"{MIN_CITABLE_WORDS} citable words, so nothing was indexed. This is usually a "
+            f"{MIN_CITABLE_WORDS} citable words or equivalent CJK text, so nothing was "
+            "indexed. This is usually a "
             "table of contents, a cover page, or a scan whose text needs OCR."
         )
 

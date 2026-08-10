@@ -13,6 +13,10 @@ if str(_ROOT) not in sys.path:
 
 from dotenv import load_dotenv
 
+# Load CLI/API configuration before importing modules whose defaults are read at import
+# time (embedding model, candidate pools, overlap floor, and model names).
+load_dotenv()
+
 from src.regbot.compliance import analyze_compliance
 from src.regbot.config import DEFAULT_COLLECTION
 from src.regbot.corpus_manifest import ingest_from_corpus_manifest
@@ -44,13 +48,12 @@ class RegBot:
         collection_name: str = DEFAULT_COLLECTION,
         embedding_model: Optional[str] = None,
     ) -> None:
-        load_dotenv()
         if api_key is None:
             self.api_key = os.getenv("OPENAI_API_KEY")
         else:
             # Treat "" as "no key" so callers/tests can force the offline fallback path.
             self.api_key = api_key or None
-        self.store_dir = store_dir or os.getenv("REGBOT_STORE", "./data/regbot_store")
+        self.store_dir: str = store_dir or os.getenv("REGBOT_STORE") or "./data/regbot_store"
         self.collection_name = collection_name
         self.embedding_model = embedding_model
         self._retriever: Optional[HybridRetriever] = None
@@ -198,10 +201,11 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
 
 def _cmd_ingest_manifest(args: argparse.Namespace) -> int:
     bot = RegBot(store_dir=args.store)
+    rebuild = bool(args.reset or args.force)
     summary = bot.ingest_from_manifest(
         args.manifest,
-        reset=args.reset,
-        skip_ingested=not args.force,
+        reset=rebuild,
+        skip_ingested=not rebuild,
         tier=args.tier,
         dry_run=args.dry_run,
     )
@@ -380,12 +384,12 @@ def build_parser() -> argparse.ArgumentParser:
     pim.add_argument(
         "--reset",
         action="store_true",
-        help="Clear the store before the first document in this batch.",
+        help="Clear the store and rebuild every selected manifest entry.",
     )
     pim.add_argument(
         "--force",
         action="store_true",
-        help="Re-ingest entries even when ingested_at is already set.",
+        help="Force a safe full rebuild (also resets the store to avoid duplicate chunks).",
     )
     pim.add_argument(
         "--tier",

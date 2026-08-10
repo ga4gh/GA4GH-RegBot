@@ -9,8 +9,8 @@
 #
 # jurisdiction codes: SG, CN, TW, KR, JP, HK, EU, GA4GH, INTL
 
-version: '0.2'
-updated: '2026-08-08T17:01:07+00:00'
+version: '0.6'
+updated: '2026-08-10T04:39:11+00:00'
 documents:
 - document_id: ga4gh-frs
   title: Framework for Responsible Sharing of Genomic and Health-Related Data
@@ -23,7 +23,7 @@ documents:
   source_url: https://www.ga4gh.org/framework/
   license: GA4GH document terms
   ingest_path: data/corpus/P0/ga4gh-frs-en.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: FRS v3 September 2019 English PDF. Primary source.
 - document_id: ga4gh-consent-policy
   title: GA4GH Consent Policy v2.0
@@ -36,7 +36,7 @@ documents:
   source_url: https://www.ga4gh.org/document/consent-policy-v2/
   license: GA4GH document terms
   ingest_path: data/corpus/P0/ga4gh-consent-policy.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: POL 002 / v2.0 September 2019 PDF. Primary source.
 - document_id: rews-regulatory-ethics-toolkit
   title: REWS Regulatory and Ethics Toolkit (selected guidance)
@@ -49,22 +49,22 @@ documents:
   source_url: https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/
   license: GA4GH public toolkit materials (not legal advice)
   ingest_path: data/corpus/P0/rews-regulatory-ethics-toolkit.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Toolkit page text as published by GA4GH.
 - document_id: ga4gh-privacy-security-policy
-  title: GA4GH Privacy and Security Policy — brief
+  title: GA4GH Data Privacy and Security Policy v2.0
   tier: P0
   content_type: primary
   jurisdiction:
   - GA4GH
   - INTL
   framework: GA4GH
-  source_url: https://www.ga4gh.org/document/privacy-and-security-policy/
+  source_url: https://www.ga4gh.org/document/ga4gh-data-privacy-and-security-policy_final-august-2019/
   license: GA4GH document terms
-  ingest_path: data/corpus/P0/ga4gh-privacy-security-policy.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
-  notes: Privacy and Security Policy v1.0 (26 May 2015), 18pp PDF as published by
-    GA4GH.
+  ingest_path: data/corpus/P0/ga4gh-data-privacy-security-policy-v2.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: POL 001 / v2.0 August 2019. Full text extracted from the GA4GH-published
+    PDF; replaces v1.0 (2015).
 - document_id: gdpr-full-text
   title: Regulation (EU) 2016/679 (GDPR) — full consolidated text
   tier: P1
@@ -75,7 +75,7 @@ documents:
   source_url: https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
   license: EUR-Lex / Publications Office of the EU — official text, free reuse
   ingest_path: data/corpus/P1/gdpr-full-text-2016-679.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: 'Retrieved 2026-07-28 from the EU Publications Office CELLAR (CELEX 32016R0679,
     Accept: application/xhtml+xml, Accept-Language: eng). All 99 Articles and the
     recitals; ~54,900 words.'
@@ -89,7 +89,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/introducing-the-ga4gh-gdpr-and-international-health-data-sharing-forum/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-genomic-research-primer.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Forum announcement text as published.
 - document_id: gdpr-consent-broad-genomic-research
   title: GA4GH GDPR Brief — broad consent for genomic research under GDPR
@@ -101,7 +101,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/gdpr-brief-is-consent-for-genomic-and-health-related-research-specific-enough-to-constitute-a-valid-consent-under-the-gdpr/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-consent-broad-genomic-research.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published (Edward Dove).
 - document_id: gdpr-dpia-genomic-research
   title: GA4GH GDPR Brief — DPIA and large-scale genomic health research
@@ -113,7 +113,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/gdpr-brief-the-data-protection-impact-assessment-and-genomic-health-research/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-dpia-genomic-research.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published.
 - document_id: ga4gh-mrcg-consent-duo-brief
   title: GA4GH MRCG / DUO — machine-readable consent and consent codes brief
@@ -127,7 +127,7 @@ documents:
   source_url: https://www.ga4gh.org/product/machine-readable-consent-guidance/
   license: GA4GH product documentation (public)
   ingest_path: data/corpus/P1/ga4gh-mrcg-consent-duo.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: MRCG product page text as published.
 - document_id: ga4gh-duo-data-use-ontology
   title: GA4GH Data Use Ontology (DUO) — brief
@@ -141,7 +141,7 @@ documents:
   source_url: https://www.ga4gh.org/product/data-use-ontology-duo/
   license: GA4GH product documentation (public)
   ingest_path: data/corpus/P1/ga4gh-duo-data-use-ontology.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: DUO product page text as published.
 - document_id: gdpr-international-transfers
   title: GA4GH GDPR Brief — international transfers of genomic data
@@ -153,7 +153,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/how-can-researchers-approach-international-data-transfers-under-the-gdpr/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-international-transfers.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published.
 - document_id: gdpr-secondary-use
   title: GA4GH GDPR Brief — secondary use and further processing for research
@@ -165,7 +165,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/finding-a-route-out-of-the-impasse/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-secondary-use.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published.
 - document_id: gdpr-genetic-data-special-category
   title: GA4GH GDPR Brief — genetic data as special category (Art 9)
@@ -177,7 +177,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/what-specific-protections-apply-to-health-related-genetic-or-biometric-data/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-genetic-data-special-category.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published.
 - document_id: gdpr-withdrawal-consent
   title: GA4GH GDPR Brief — withdrawal of consent in genomic research
@@ -189,7 +189,7 @@ documents:
   source_url: https://www.ga4gh.org/news_item/gdpr-brief-withdrawing-consent-to-data-processing-under-the-gdpr/
   license: GA4GH GDPR Brief (public; not legal advice)
   ingest_path: data/corpus/P1/gdpr-withdrawal-consent.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: GDPR Brief text as published.
 - document_id: rews-regional-jurisdiction-overview
   title: REWS Regional Jurisdiction overview (SG, CN, TW, KR, JP, HK)
@@ -201,7 +201,7 @@ documents:
   source_url: null
   license: null
   ingest_path: data/corpus/P2/rews-regional-jurisdiction-overview.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: CONTRIBUTOR SUMMARY — not statutory text. Official English text exists but
     the source site renders via JavaScript and could not be retrieved non-interactively;
     see docs/eval_results.md §4d. REWS regional index; biobanks and legal bases for
@@ -216,7 +216,7 @@ documents:
   source_url: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020164
   license: Ministry of Justice official English translation (Taiwan)
   ingest_path: data/corpus/P2/TW/human-biobank-management-act.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: MOJ official English translation, 31 articles. Separate document from the
     PDPA because both Acts number their articles from 1.
 - document_id: tw-pdpa
@@ -228,7 +228,7 @@ documents:
   source_url: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=I0050021
   license: Ministry of Justice official English translation (Taiwan)
   ingest_path: data/corpus/P2/TW/personal-data-protection-act.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: MOJ official English translation, 66 articles.
 - document_id: kr-law-excerpt
   title: South Korea — Bioethics and Safety Act / PIPA excerpt
@@ -240,24 +240,10 @@ documents:
   source_url: https://elaw.klri.re.kr/
   license: Public statute excerpt summary (RegBot); not legal advice
   ingest_path: data/corpus/P2/KR/bioethics-pipa-excerpt.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: CONTRIBUTOR SUMMARY — retained only for the Framework Act on AI (in force
     Jan 2026), which has no English text yet. The Bioethics Act and PIPA are now carried
     in full.
-- document_id: jp-law-excerpt
-  title: Japan — medical research ethics / APPI excerpt
-  tier: P2
-  content_type: summary
-  jurisdiction:
-  - JP
-  framework: national
-  source_url: https://www.mhlw.go.jp/
-  license: Public statute excerpt summary (RegBot); not legal advice
-  ingest_path: data/corpus/P2/JP/ethics-appi-excerpt.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
-  notes: CONTRIBUTOR SUMMARY — retained only for APPI and the Act on the Promotion
-    of Genomic Medicine, which have no fetchable official English full text. The Ethical
-    Guidelines are now carried by jp-ethical-guidelines.
 - document_id: ga4gh-errp
   title: GA4GH Ethics Review Recognition Policy
   tier: P0
@@ -269,7 +255,7 @@ documents:
   source_url: https://www.ga4gh.org/product/ethics-review-recognition-policy/
   license: See publisher terms
   ingest_path: data/corpus/P0/ga4gh-ethics-review-recognition-policy.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: POL 004 / v2.0, 8 July 2020. Baseline for recognising ethics review across
     jurisdictions.
 - document_id: ga4gh-dacres
@@ -283,7 +269,7 @@ documents:
   source_url: https://www.ga4gh.org/product/data-access-committee-review-standards-dacres-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P0/ga4gh-dacres-policy.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: POL 008 / v1.0, 27 October 2021. Replaces the contributor summary ga4gh-data-access-committee,
     whose note wrongly said no primary publication existed.
 - document_id: ga4gh-dsip
@@ -297,7 +283,7 @@ documents:
   source_url: https://github.com/ga4gh/data-security/blob/master/DSIP/DSIP_v4.0.md
   license: See publisher terms
   ingest_path: data/corpus/P0/ga4gh-data-security-infrastructure-policy.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: From the ga4gh/data-security repository. The ga4gh.org document page still
     serves v1.1 from 2015.
 - document_id: ga4gh-consent-clauses-clinical
@@ -311,7 +297,7 @@ documents:
   source_url: https://www.ga4gh.org/product/consent-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P1/ga4gh-consent-clauses-clinical.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: D015 / v6.0, 23 June 2022. Consent Toolkit component.
 - document_id: ga4gh-consent-clauses-research
   title: GA4GH Consent Clauses for Genomic Research
@@ -324,7 +310,7 @@ documents:
   source_url: https://www.ga4gh.org/product/consent-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P1/ga4gh-consent-clauses-research.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: 8 July 2020. Consent Toolkit component.
 - document_id: ga4gh-consent-clauses-large-scale
   title: GA4GH Consent Clauses for Large Scale Initiatives
@@ -337,7 +323,7 @@ documents:
   source_url: https://www.ga4gh.org/product/consent-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P1/ga4gh-consent-clauses-large-scale.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: D014 / v1.0, 21 April 2022. Consent Toolkit component.
 - document_id: ga4gh-consent-clauses-familial
   title: GA4GH Familial Consent Clauses
@@ -350,7 +336,7 @@ documents:
   source_url: https://www.ga4gh.org/product/consent-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P1/ga4gh-consent-clauses-familial.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: D011 / v1.0, 20 January 2021. Consent Toolkit component.
 - document_id: ga4gh-consent-clauses-pediatric
   title: 'GA4GH Pediatric Consent to Genetic Research: Clauses'
@@ -363,7 +349,7 @@ documents:
   source_url: https://www.ga4gh.org/product/consent-toolkit/
   license: See publisher terms
   ingest_path: data/corpus/P1/ga4gh-consent-clauses-pediatric.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: D012a / v1.0, 27 October 2021. Consent Toolkit component.
 - document_id: sg-pdpa
   title: Singapore — Personal Data Protection Act 2012
@@ -375,7 +361,7 @@ documents:
   source_url: https://sso.agc.gov.sg/Act/PDPA2012
   license: See publisher terms
   ingest_path: data/corpus/P2/SG/personal-data-protection-act-2012.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: AGC official text; English is the authentic language. Replaces the contributor
     summary sg-law-excerpt.
 - document_id: sg-hbra
@@ -388,7 +374,7 @@ documents:
   source_url: https://sso.agc.gov.sg/Act/HBRA2015
   license: See publisher terms
   ingest_path: data/corpus/P2/SG/human-biomedical-research-act-2015.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: AGC official text.
 - document_id: sg-hia
   title: Singapore — Health Information Act 2026
@@ -400,7 +386,7 @@ documents:
   source_url: https://sso.agc.gov.sg/Acts-Supp/1-2026/Published/20260212
   license: See publisher terms
   ingest_path: data/corpus/P2/SG/health-information-act-2026.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Act 1 of 2026, assented 3 Feb 2026, NOT YET COMMENCED (MOH targets 2027).
     Retrieval may surface obligations not yet in force.
 - document_id: hk-pdpo
@@ -413,7 +399,7 @@ documents:
   source_url: https://www.pcpd.org.hk/english/data_privacy_law/ordinance_at_a_Glance/ordinance.html
   license: See publisher terms
   ingest_path: data/corpus/P2/HK/personal-data-privacy-ordinance-cap486.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Published by the PCPD. Consolidated to 2013, so it predates the 2021 anti-doxxing
     amendments; s.33 is unamended and still not in operation. Replaces hk-law-excerpt.
 - document_id: hk-crossborder-guidance
@@ -426,7 +412,7 @@ documents:
   source_url: https://www.pcpd.org.hk/english/resources_centre/publications/guidance/guidance.html
   license: See publisher terms
   ingest_path: data/corpus/P2/HK/pcpd-cross-border-transfer-guidance.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: PCPD Guidance Note, s.33 due diligence.
 - document_id: hk-model-clauses
   title: Hong Kong — PCPD Recommended Model Contractual Clauses
@@ -438,7 +424,7 @@ documents:
   source_url: https://www.pcpd.org.hk/english/resources_centre/publications/guidance/guidance.html
   license: See publisher terms
   ingest_path: data/corpus/P2/HK/pcpd-model-contractual-clauses.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: PCPD Guidance Note, model clauses.
 - document_id: jp-ethical-guidelines
   title: Japan — Ethical Guidelines for Medical and Biological Research Involving
@@ -451,7 +437,7 @@ documents:
   source_url: https://www.mhlw.go.jp/
   license: See publisher terms
   ingest_path: data/corpus/P2/JP/ethical-guidelines-medical-biological-research.pdf
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: MEXT/MHLW/METI, 2021 as amended 2023; superseded the 2015 guidelines. Reference
     translation — the Japanese text has legal effect.
 - document_id: kr-bioethics
@@ -464,7 +450,7 @@ documents:
   source_url: https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=68583&lang=ENG
   license: See publisher terms
   ingest_path: data/corpus/P2/KR/bioethics-and-safety-act.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Act No. 20327 (2024). KLRI translation, which KLRI states is neither official
     nor legally effective.
 - document_id: kr-pipa
@@ -477,7 +463,7 @@ documents:
   source_url: https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=71740&lang=ENG
   license: See publisher terms
   ingest_path: data/corpus/P2/KR/personal-information-protection-act.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Act No. 20897, current. KLRI translation, not official text.
 - document_id: cn-hgr
   title: China — Regulation on the Management of Human Genetic Resources
@@ -489,7 +475,7 @@ documents:
   source_url: https://www.chinalawtranslate.com/en/p-r-c-regulation-on-the-management-of-human-genetic-resources/
   license: See publisher terms
   ingest_path: data/corpus/P2/CN/human-genetic-resources-regulation.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Third-party translation; no official English full text exists.
 - document_id: cn-hgr-rules
   title: China — Implementation Rules for the Human Genetic Resources Regulation
@@ -501,7 +487,7 @@ documents:
   source_url: https://www.chinalawtranslate.com/en/Implementation-Rules-for-the-Regulations-on-the-Management-of-Human-Genetic-Resources/
   license: See publisher terms
   ingest_path: data/corpus/P2/CN/human-genetic-resources-implementation-rules.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: MOST Order No. 21, published in Chinese only. The operative approval and
     filing rules for cross-border genomic transfer.
 - document_id: cn-pipl
@@ -514,7 +500,7 @@ documents:
   source_url: https://en.spp.gov.cn/2021-12/29/c_948419.htm
   license: See publisher terms
   ingest_path: data/corpus/P2/CN/personal-information-protection-law.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: Supreme People's Procuratorate, crediting the NPC, which labels its English
     texts for reference only.
 - document_id: cn-dsl
@@ -527,5 +513,631 @@ documents:
   source_url: http://www.npc.gov.cn/englishnpc/c2759/c23934/202112/t20211209_385109.html
   license: See publisher terms
   ingest_path: data/corpus/P2/CN/data-security-law.txt
-  ingested_at: '2026-08-08T17:01:07+00:00'
+  ingested_at: '2026-08-10T04:39:11+00:00'
   notes: NPC English site; published for reference only.
+- document_id: ehds-full-text
+  title: Regulation (EU) 2025/327 on the European Health Data Space — full text
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EHDS
+  source_url: https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng
+  license: EUR-Lex / Publications Office of the EU — official text, free reuse
+  ingest_path: data/corpus/P1/european-health-data-space-regulation-2025-327.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official English text from CELLAR (CELEX 32025R0327). In force since 26 March
+    2025; most secondary-use provisions apply from 26 March 2029.
+- document_id: tw-human-subjects-research-act
+  title: Taiwan — Human Subjects Research Act (official English)
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - TW
+  framework: national
+  source_url: https://law.moj.gov.tw/ENG/LawClass/LawAll.aspx?pcode=L0020176
+  license: Ministry of Justice official English translation (Taiwan)
+  ingest_path: data/corpus/P2/TW/human-subjects-research-act.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official English translation, 26 articles, amended 2 January 2019. Includes
+    IRB review, consent withdrawal, retention and overseas research-material transfer.
+- document_id: sg-tissue-banking-regulations
+  title: Singapore — Human Biomedical Research (Tissue Banking) Regulations
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - SG
+  framework: HBRA
+  source_url: https://sso.agc.gov.sg/SL-Rev/HBRA2015-RG3/Published/20250530
+  license: Singapore Statutes Online / AGC — official legislation
+  ingest_path: data/corpus/P2/SG/human-biomedical-research-tissue-banking-regulations.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official 2020 Revised Edition incorporating amendments through 2025. Covers
+    tissue supply and export, consent tracking, records and incidental findings.
+- document_id: jp-appi
+  title: Japan — Act on the Protection of Personal Information
+  tier: P2
+  content_type: translation
+  jurisdiction:
+  - JP
+  framework: APPI
+  source_url: https://www.japaneselawtranslation.go.jp/en/laws/view/4241/en
+  license: Japanese Law Translation — government reference translation
+  ingest_path: data/corpus/P2/JP/act-on-protection-of-personal-information.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Full government reference translation, 185 articles, as amended through Act
+    No. 37 of 2021. The Japanese text has legal effect.
+- document_id: cn-crossborder-data-flow-provisions-2024
+  title: China — Provisions on Promoting and Regulating Cross-Border Data Flows
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: PIPL / DSL
+  source_url: https://www.cac.gov.cn/2024-03/22/c_1712776611775634.htm
+  license: Cyberspace Administration of China — official Chinese text
+  ingest_path: data/corpus/P2/CN/cross-border-data-flow-provisions-2024-zh.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official Chinese text, effective 22 March 2024. No official English full
+    text is available; use Chinese queries or the PIPL reference translation alongside
+    it.
+- document_id: cn-network-data-security-management-regulations
+  title: China — Regulations on Network Data Security Management
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: PIPL / DSL
+  source_url: https://www.cac.gov.cn/2024-09/30/c_1729384452307680.htm
+  license: Cyberspace Administration of China — official Chinese text
+  ingest_path: data/corpus/P2/CN/network-data-security-management-regulations-2024-zh.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official Chinese text, 64 articles, effective 1 January 2025. Includes a
+    dedicated chapter on outbound network-data security management.
+- document_id: ga4gh-clinically-actionable-results
+  title: GA4GH Policy on Clinically Actionable Genomic Research Results
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/2021-policy-on-clinically-actionable-genomic-research-results/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-policy-clinically-actionable-results.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: POL 007 / v1.0, approved 24 June 2021. Full text extracted from the GA4GH-published
+    PDF.
+- document_id: ga4gh-engagement-framework
+  title: GA4GH Framework for Involving and Engaging Participants, Patients and Publics
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/engagement-policy-v1/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-participant-patient-public-engagement-framework.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: POL 006 / v1.0, July 2021. Full text extracted from the GA4GH-published PDF.
+- document_id: ga4gh-data-sharing-lexicon
+  title: GA4GH Data Sharing Lexicon
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/ga4gh-data-sharing-lexicon/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-data-sharing-lexicon.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Revised official GA4GH product, February 2025. Full text extracted from the
+    GA4GH-published PDF.
+- document_id: ga4gh-model-daa
+  title: GA4GH Model Data Access Agreement Clauses
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/model-data-access-agreement-daa-clauses/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-model-data-access-agreement-clauses.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official GA4GH product approved 19 November 2024. Full text extracted from
+    the GA4GH-published PDF.
+- document_id: ga4gh-genetic-discrimination
+  title: GA4GH Position Statement on Genetic Discrimination
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH
+  source_url: https://www.ga4gh.org/document/genetic-discrimination-toolkit-position-statement-on-genetic-discrimination/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-genetic-discrimination-position-statement.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official GA4GH position statement, published February 2026. Full text read
+    from the GA4GH-published Google Doc.
+- document_id: eu-data-governance-act
+  title: Regulation (EU) 2022/868 on European data governance (Data Governance Act)
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EU Data Governance Act
+  source_url: https://eur-lex.europa.eu/eli/reg/2022/868/oj/eng
+  license: European Union — EUR-Lex reuse notice
+  ingest_path: data/corpus/P1/eu-data-governance-act-2022-868.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official English text from the EU Publications Office CELLAR. Applicable
+    since 24 September 2023; covers protected public-sector data reuse, data intermediaries,
+    data altruism, safeguards, and international access.
+- document_id: eu-data-act
+  title: Regulation (EU) 2023/2854 on fair access to and use of data (Data Act)
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EU Data Act
+  source_url: https://eur-lex.europa.eu/eli/reg/2023/2854/oj/eng
+  license: European Union — EUR-Lex reuse notice
+  ingest_path: data/corpus/P1/eu-data-act-2023-2854.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official English text from the EU Publications Office CELLAR. Applicable
+    since 12 September 2025; includes data access, sharing, cloud switching, interoperability,
+    and third-country access safeguards.
+- document_id: eu-clinical-trials-regulation
+  title: Regulation (EU) No 536/2014 on clinical trials on medicinal products
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EU Clinical Trials Regulation
+  source_url: https://eur-lex.europa.eu/eli/reg/2014/536/oj/eng
+  license: European Union — EUR-Lex reuse notice
+  ingest_path: data/corpus/P1/eu-clinical-trials-regulation-536-2014.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official English text from the EU Publications Office CELLAR. Applicable
+    since 31 January 2022; includes ethics review, informed consent, vulnerable participants,
+    transparency, safety reporting, and trial data governance.
+- document_id: who-human-genome-data-guidance
+  title: WHO Guidance for human genome data collection, access, use and sharing
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: WHO Human Genome Data Guidance
+  source_url: https://www.who.int/publications/i/item/9789240102149/
+  license: CC BY-NC-SA 3.0 IGO
+  ingest_path: data/corpus/P1/who-human-genome-data-guidance-2024.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: WHO normative guidance published 20 November 2024. Sets globally applicable
+    principles for ethical, legal, equitable, transparent, and secure genome-data
+    governance.
+- document_id: oecd-health-data-governance
+  title: OECD Recommendation of the Council on Health Data Governance
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: OECD Health Data Governance
+  source_url: https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0433
+  license: OECD — free reproduction and distribution if unaltered and not sold
+  ingest_path: data/corpus/P1/oecd-health-data-governance-recommendation.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current official OECD legal-instrument PDF. Adopted 13 December 2016; covers
+    privacy-protective access, public-interest use, consent, transparency, security,
+    and trans-border cooperation.
+- document_id: oecd-human-biobanks-genetic-databases
+  title: OECD Recommendation on Human Biobanks and Genetic Research Databases
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: OECD HBGRD
+  source_url: https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0375
+  license: OECD — free reproduction and distribution if unaltered and not sold
+  ingest_path: data/corpus/P1/oecd-human-biobanks-genetic-research-databases.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current official OECD legal-instrument PDF. Adopted 22 October 2009; includes
+    governance, consent, withdrawal, access, privacy, benefit sharing, and custodianship
+    principles for human biobanks and genetic research databases.
+- document_id: unesco-human-genetic-data
+  title: UNESCO International Declaration on Human Genetic Data
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: UNESCO Human Genetic Data Declaration
+  source_url: https://www.unesco.org/en/legal-affairs/international-declaration-human-genetic-data?hub=66535
+  license: UNESCO legal instrument — official public text
+  ingest_path: data/corpus/P1/unesco-international-declaration-human-genetic-data.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official declaration adopted 16 October 2003. Addresses consent, withdrawal,
+    privacy, confidentiality, change of purpose, cross-border circulation, benefit
+    sharing, and biological samples.
+- document_id: unesco-human-genome-rights
+  title: UNESCO Universal Declaration on the Human Genome and Human Rights
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: UNESCO Human Genome and Human Rights Declaration
+  source_url: https://www.unesco.org/en/legal-affairs/universal-declaration-human-genome-and-human-rights
+  license: UNESCO legal instrument — official public text
+  ingest_path: data/corpus/P1/unesco-universal-declaration-human-genome-human-rights.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official declaration adopted 11 November 1997 and endorsed by the UN General
+    Assembly in 1998. Covers dignity, genetic discrimination, informed consent, research
+    safeguards, confidentiality, and international cooperation.
+- document_id: unesco-bioethics-human-rights
+  title: UNESCO Universal Declaration on Bioethics and Human Rights
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: UNESCO Bioethics and Human Rights Declaration
+  source_url: https://www.unesco.org/en/legal-affairs/universal-declaration-bioethics-and-human-rights?hub=66535
+  license: UNESCO legal instrument — official public text
+  ingest_path: data/corpus/P1/unesco-universal-declaration-bioethics-human-rights.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official declaration adopted 19 October 2005. Covers consent, vulnerable
+    persons, privacy, confidentiality, non-discrimination, benefit sharing, ethics
+    review, and transnational research.
+- document_id: coe-oviedo-convention
+  title: Council of Europe Convention on Human Rights and Biomedicine (ETS No. 164)
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  - INTL
+  framework: Council of Europe Biomedicine
+  source_url: https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=164
+  license: Official Council of Europe treaty text — publisher terms apply
+  ingest_path: data/corpus/P1/coe-oviedo-convention-ets-164.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Convention covering consent, biomedical research, genetics, privacy, and
+    human biological materials; in force since 1 December 1999.
+- document_id: coe-biomedical-research-protocol
+  title: Council of Europe Additional Protocol concerning Biomedical Research (CETS
+    No. 195)
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  - INTL
+  framework: Council of Europe Biomedicine
+  source_url: https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=195
+  license: Official Council of Europe treaty text — publisher terms apply
+  ingest_path: data/corpus/P1/coe-biomedical-research-protocol-cets-195.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Research protocol covering independent ethics review, consent, risk, vulnerable
+    persons, confidentiality, and multinational research.
+- document_id: coe-genetic-testing-protocol
+  title: Council of Europe Additional Protocol concerning Genetic Testing for Health
+    Purposes
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  - INTL
+  framework: Council of Europe Biomedicine
+  source_url: https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=203
+  license: Official Council of Europe treaty text — publisher terms apply
+  ingest_path: data/corpus/P1/coe-genetic-testing-health-purposes-cets-203.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Genetic-testing protocol covering clinical utility, consent, counselling,
+    privacy, and access to information.
+- document_id: coe-biological-materials-recommendation
+  title: Council of Europe Recommendation CM/Rec(2016)6 on biological materials
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  - INTL
+  framework: Council of Europe Biomedicine
+  source_url: https://search.coe.int/cm?i=090000168064e8ff
+  license: Official Council of Europe recommendation — publisher terms apply
+  ingest_path: data/corpus/P1/coe-recommendation-2016-6-biological-materials.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current recommendation on collection, storage, governance, consent, access,
+    and research use of biological materials of human origin.
+- document_id: coe-health-data-recommendation
+  title: Council of Europe Recommendation CM/Rec(2019)2 on health-related data
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  - INTL
+  framework: Council of Europe Health Data
+  source_url: https://search.coe.int/cm?i=090000168093b26e
+  license: Official Council of Europe recommendation — publisher terms apply
+  ingest_path: data/corpus/P1/coe-recommendation-2019-2-health-related-data.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Covers health-data processing, scientific research, genetic data, security,
+    and transborder flows.
+- document_id: who-human-genome-editing-governance
+  title: WHO Human genome editing — a framework for governance
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - INTL
+  framework: WHO Genome Editing Governance
+  source_url: https://www.who.int/publications/i/item/9789240030060
+  license: CC BY-NC-SA 3.0 IGO
+  ingest_path: data/corpus/P1/who-human-genome-editing-governance-2021.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: WHO governance framework published 12 July 2021; covers oversight values,
+    institutions, tools, and human-genome-editing scenarios.
+- document_id: eu-standard-contractual-clauses
+  title: Commission Implementing Decision (EU) 2021/914 — Standard Contractual Clauses
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: GDPR
+  source_url: https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj/eng
+  license: EUR-Lex / Publications Office of the EU — official text, free reuse
+  ingest_path: data/corpus/P1/eu-standard-contractual-clauses-2021-914.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official controller/processor modules and safeguards for GDPR transfers to
+    third countries.
+- document_id: edpb-consent-guidelines
+  title: EDPB Guidelines 05/2020 on consent under Regulation 2016/679
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EDPB / GDPR
+  source_url: https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-052020-consent-under-regulation-2016679_en
+  license: Official EDPB text — EU reuse policy
+  ingest_path: data/corpus/P1/edpb-guidelines-05-2020-consent.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Version 1.1 adopted 4 May 2020; includes valid consent, withdrawal, explicit
+    consent, and scientific-research interpretation.
+- document_id: edpb-clinical-trials-gdpr-opinion
+  title: EDPB Opinion 3/2019 on the Clinical Trials Regulation and GDPR
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - EU
+  framework: EDPB / GDPR
+  source_url: https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-art-70/opinion-32019-concerning-questions-and-answers_en
+  license: Official EDPB text — EU reuse policy
+  ingest_path: data/corpus/P1/edpb-opinion-3-2019-clinical-trials-gdpr.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Clarifies GDPR legal bases for primary and secondary processing of clinical-trial
+    data and distinguishes research consent from data-protection legal bases.
+- document_id: ga4gh-diversity-in-datasets
+  title: GA4GH Diversity in Datasets Policy v2.4
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH / REWS
+  source_url: https://www.ga4gh.org/document/diversity-in-datasets-policy-v2-4/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-diversity-in-datasets-policy.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current GA4GH policy on diversity, equity, data lifecycles, and benefit sharing.
+- document_id: ga4gh-consent-rare-disease
+  title: GA4GH Model Consent Clauses for Rare Disease Research
+  tier: P1
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH Consent Toolkit
+  source_url: https://www.ga4gh.org/document/model-consent-clauses-for-rare-disease-research/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P1/ga4gh-consent-clauses-rare-disease.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Sixth Consent Toolkit component; completes the current set of model clause
+    publications.
+- document_id: ga4gh-gedi
+  title: 'GA4GH Genetic Discrimination: Implications for Data Sharing Projects'
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH / REWS
+  source_url: https://www.ga4gh.org/document/genetic-discrimination/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-genetic-discrimination-data-sharing-projects.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Operational policy tool on genetic-discrimination risk; complements the later
+    GA4GH position statement.
+- document_id: ga4gh-genomic-newborn-screening
+  title: GA4GH Genomic Sequencing in Newborn Screening Policy Tool
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH / REWS
+  source_url: https://www.ga4gh.org/document/genomic-sequencing-in-newborn-screening-policy-tool/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-genomic-newborn-screening-policy-tool.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Version 1.0.0 approved 3 February 2026; covers ethical, legal, and social
+    issues in genomic newborn screening.
+- document_id: ga4gh-covid-responsible-sharing
+  title: GA4GH Responsible Data Sharing for the COVID-19 Pandemic v3.0
+  tier: P0
+  content_type: primary
+  jurisdiction:
+  - GA4GH
+  - INTL
+  framework: GA4GH / REWS
+  source_url: https://www.ga4gh.org/document/responsible-data-sharing-to-respond-to-the-covid-19-pandemic-ethical-and-legal-considerations-v3/
+  license: GA4GH document terms
+  ingest_path: data/corpus/P0/ga4gh-covid-19-responsible-data-sharing.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current v3.0 ethical and legal considerations for rapid responsible data
+    sharing.
+- document_id: sg-human-biomedical-research-regulations
+  title: Singapore — Human Biomedical Research Regulations 2017
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - SG
+  framework: HBRA
+  source_url: https://sso.agc.gov.sg/SL/HBRA2015-RG1
+  license: Official Singapore legislation — SSO terms apply
+  ingest_path: data/corpus/P2/SG/human-biomedical-research-regulations-2017.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: HBRA implementing rules for IRBs, review procedures, consent, safety reporting,
+    and incidental findings.
+- document_id: sg-restricted-human-biomedical-research-regulations
+  title: Singapore — Human Biomedical Research (Restricted Research) Regulations 2017
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - SG
+  framework: HBRA
+  source_url: https://sso.agc.gov.sg/SL/HBRA2015-RG2
+  license: Official Singapore legislation — SSO terms apply
+  ingest_path: data/corpus/P2/SG/human-biomedical-research-restricted-research-regulations-2017.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Additional review and consent safeguards for restricted research, including
+    oocyte and embryo research.
+- document_id: cn-human-research-ethics-review-measures-2023
+  title: China — 涉及人的生命科学和医学研究伦理审查办法
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: Human Research Ethics
+  source_url: https://www.natcm.gov.cn/kejisi/zhengcewenjian/2023-02-28/29341.html
+  license: Official Chinese government text — publisher terms apply
+  ingest_path: data/corpus/P2/CN/human-research-ethics-review-measures-2023-zh.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official Chinese text; covers research participants, biological samples,
+    health records, consent, ethics committees, and continuing review.
+- document_id: cn-biosafety-law-2024
+  title: China — 中华人民共和国生物安全法（2024年修正）
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: Biosecurity Law
+  source_url: https://www.nhc.gov.cn/qjjys/rlyczygl/202503/c5373f14621e4011b6cbc932184086a2/files/1746832759166_62590.pdf
+  license: Official Chinese legal text — publisher terms apply
+  ingest_path: data/corpus/P2/CN/biosecurity-law-2024-zh.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current official Chinese text; covers human genetic resources, biological-resource
+    security, and international scientific collaboration.
+- document_id: cn-data-export-security-assessment-measures
+  title: China — 数据出境安全评估办法
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: CAC Cross-border Data
+  source_url: https://www.cac.gov.cn/2022-07/07/c_1658811536396503.htm
+  license: Official Chinese government text — publisher terms apply
+  ingest_path: data/corpus/P2/CN/data-export-security-assessment-measures-2022-zh.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Security-assessment procedure and risk factors, read together with the 2024
+    cross-border thresholds already in the corpus.
+- document_id: cn-personal-information-export-standard-contract-measures
+  title: China — 个人信息出境标准合同办法及标准合同
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - CN
+  framework: CAC Cross-border Data
+  source_url: https://www.cac.gov.cn/2023-02/24/c_1678884830036813.htm
+  license: Official Chinese government text — publisher terms apply
+  ingest_path: data/corpus/P2/CN/personal-information-export-standard-contract-measures-2023-zh.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Combines the official measures and complete contract annex; includes impact
+    assessment, filing, recipient duties, and data-subject rights.
+- document_id: kr-bioethics-enforcement-decree
+  title: South Korea — Enforcement Decree of the Bioethics and Safety Act
+  tier: P2
+  content_type: translation
+  jurisdiction:
+  - KR
+  framework: Bioethics and Safety Act
+  source_url: https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=71872&key=36&type=part
+  license: KLRI reference translation — neither official nor legally effective
+  ingest_path: data/corpus/P2/KR/bioethics-and-safety-act-enforcement-decree-en.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Reference translation through Presidential Decree No. 35811, effective 1
+    October 2025; covers human-material banks and genetic testing. Korean text has
+    legal effect.
+- document_id: kr-pipa-enforcement-decree
+  title: South Korea — Enforcement Decree of the Personal Information Protection Act
+  tier: P2
+  content_type: translation
+  jurisdiction:
+  - KR
+  framework: PIPA
+  source_url: https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=69668&lang=ENG
+  license: KLRI reference translation — neither official nor legally effective
+  ingest_path: data/corpus/P2/KR/personal-information-protection-act-enforcement-decree-en.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Latest complete reproducibly fetchable KLRI translation as of August 2026,
+    effective March 2025. The official Korean consolidation is effective 19 May 2026;
+    the Korean text has legal effect.
+- document_id: jp-medical-data-secondary-use-act
+  title: Japan — 匿名加工医療情報及び仮名加工医療情報に関する法律
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - JP
+  framework: Next Generation Medical Infrastructure Act
+  source_url: https://elaws.e-gov.go.jp/document?lawid=429AC0000000028
+  license: Government of Japan Standard Terms of Use 2.0
+  ingest_path: data/corpus/P2/JP/medical-data-secondary-use-act-ja.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official current Japanese text governing certified handlers and secondary
+    use of anonymised and pseudonymised medical information for research and development.
+- document_id: jp-genomic-medicine-promotion-act
+  title: Japan — ゲノム医療施策の総合的かつ計画的な推進に関する法律
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - JP
+  framework: Genomic Medicine Promotion Act
+  source_url: https://elaws.e-gov.go.jp/document?lawid=505AC1000000057
+  license: Government of Japan Standard Terms of Use 2.0
+  ingest_path: data/corpus/P2/JP/genomic-medicine-promotion-act-2023-ja.txt
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official Japanese Act No. 57 of 2023 covering genomic information, bioethics,
+    equitable access, and genetic discrimination; replaces the indexed contributor
+    summary.
+- document_id: jp-ethical-guidelines-guidance-2024
+  title: Japan — 人を対象とする生命科学・医学系研究に関する倫理指針 ガイダンス
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - JP
+  framework: MHLW Research Ethics
+  source_url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hokabunya/kenkyujigyou/i-kenkyu/index.html
+  license: Official Japanese government guidance — publisher terms apply
+  ingest_path: data/corpus/P2/JP/ethical-guidelines-guidance-2024-ja.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Official 1 April 2024 guidance on consent, existing samples, future research,
+    third-party provision, and transfers to foreign recipients.
+- document_id: hk-ehealth-code-of-practice
+  title: Hong Kong — Code of Practice for Using Electronic Health Record for Healthcare
+  tier: P2
+  content_type: primary
+  jurisdiction:
+  - HK
+  framework: eHealth Ordinance
+  source_url: https://www.ehealth.gov.hk/en/healthcare-provider-and-professional/resources/code-of-practice/index.html
+  license: Official Hong Kong government code — publisher terms apply
+  ingest_path: data/corpus/P2/HK/ehealth-code-of-practice.pdf
+  ingested_at: '2026-08-10T04:39:11+00:00'
+  notes: Current code issued under Cap. 625 section 52; covers sharing consent, access
+    controls, security, audit, confidentiality, and recognised non-Hong Kong systems.
