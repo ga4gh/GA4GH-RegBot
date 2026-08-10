@@ -25,8 +25,8 @@ def load_sentence_transformer(model_name: str) -> Any:
     Falls back to the local cache when the Hub is unreachable. RegBot is local-first by
     design, so a cached model must keep working without network: ``snapshot_download``
     otherwise raises on a transient Hub failure even though every file is already on disk.
-    (``HF_HUB_OFFLINE=1`` alone is not sufficient on huggingface_hub 0.19.x — it still
-    issues a revision lookup — so ``local_files_only`` is passed explicitly.)
+    ``local_files_only`` is passed explicitly so offline behaviour does not depend on Hub
+    client version details.
 
     Env (optional):
     - HF_HUB_DOWNLOAD_TIMEOUT: seconds (default here: 300 if unset; hub default is often 10).

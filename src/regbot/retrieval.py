@@ -161,7 +161,10 @@ class HybridRetriever:
         norm = float(np.linalg.norm(q))
         if norm:
             q = q / norm
-        sims = self._embeddings @ q
+        # ``einsum`` is numerically identical to matrix-vector multiplication here. It also
+        # avoids spurious divide/overflow/invalid RuntimeWarnings emitted by NumPy 2.2's
+        # Accelerate-backed ``matmul`` on macOS for this otherwise finite, normalized matrix.
+        sims = np.einsum("ij,j->i", self._embeddings, q, optimize=True)
         pairs: Iterable[Tuple[str, float]] = zip(self._embedding_ids, sims.tolist())
         if allowed is not None:
             pairs = ((cid, s) for cid, s in pairs if cid in allowed)

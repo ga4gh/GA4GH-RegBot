@@ -7,8 +7,10 @@ RegBot is an open-source tool for the Global Alliance for Genomics and Health [R
 **Release status:** `0.1.0` release candidate. Implementation, corpus rebuild, the
 41-query contributor-labelled benchmark, API/UI checks, and local Ollama validation are
 complete. Independent mentor review of the gold set is intentionally still pending; the
-scheduled benchmark remains informational until that review. The frontend dependency audit
-is clean after the 2026-08-10 security update (see `docs/RELEASE_CHECKLIST.md`).
+scheduled benchmark remains informational until that review. Frontend and applicable Python
+dependency audits are clean after the 2026-08-10 security update; the documented Chroma
+server-only exception does not apply to RegBot's embedded client (see
+`docs/RELEASE_CHECKLIST.md`).
 
 ## Documentation
 

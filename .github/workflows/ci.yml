@@ -23,7 +23,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Audit Python dependencies
+        run: |
+          pip install pip-audit==2.10.1
+          # PYSEC-2026-311 is an RCE in Chroma's separately exposed FastAPI server.
+          # RegBot only constructs the in-process PersistentClient and never starts it.
+          pip-audit -r requirements.txt --progress-spinner=off --ignore-vuln PYSEC-2026-311
+
       - name: Run unit tests
         run: |
           python -m unittest discover -s tests -p "test*.py" -v
-
