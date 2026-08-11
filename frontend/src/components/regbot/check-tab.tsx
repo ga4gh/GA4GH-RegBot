@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Download, Loader2, Sparkles } from "lucide-react";
+import { Braces, ChevronDown, Download, Loader2, Sparkles } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -194,6 +194,16 @@ export function CheckTab({
                   Download JSON
                 </Button>
               </div>
+              <details className="group border-border/80 bg-muted/20 rounded-lg border">
+                <summary className="hover:bg-muted/40 flex cursor-pointer list-none items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors [&::-webkit-details-marker]:hidden">
+                  <Braces className="text-muted-foreground size-4" />
+                  View raw JSON
+                  <ChevronDown className="text-muted-foreground ml-auto size-4 transition-transform group-open:rotate-180" />
+                </summary>
+                <pre className="border-border/70 max-h-[32rem] overflow-auto border-t p-4 font-mono text-xs leading-relaxed">
+                  {JSON.stringify(result.report, null, 2)}
+                </pre>
+              </details>
               <ReportView report={result.report} />
               <details className="group" open>
                 <summary className="cursor-pointer text-sm font-medium">

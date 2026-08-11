@@ -247,7 +247,7 @@ export function RegBotApp({ user }: { user: AuthUser }) {
                 sourceUrls={sourceUrls}
               />
             </TabsContent>
-            <TabsContent value="check">
+            <TabsContent value="check" keepMounted>
               <CheckTab
                 storeDir={storeDir}
                 jurisdictions={jurisdictions}
@@ -256,7 +256,7 @@ export function RegBotApp({ user }: { user: AuthUser }) {
                 onAnalyzed={onAnalyzed}
               />
             </TabsContent>
-            <TabsContent value="chat">
+            <TabsContent value="chat" keepMounted>
               <ChatTab
                 storeDir={storeDir}
                 jurisdictions={jurisdictions}
