@@ -5,7 +5,6 @@ import { AlertTriangle, FileText, Quote, Users } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 
 type ReportViewProps = {
   report: Record<string, unknown>;
@@ -249,16 +248,6 @@ export function ReportView({ report }: ReportViewProps) {
         <p className="text-muted-foreground text-xs leading-relaxed">{notes}</p>
       ) : null}
 
-      <Separator />
-
-      <details className="group">
-        <summary className="text-muted-foreground cursor-pointer text-sm font-medium">
-          Raw JSON report
-        </summary>
-        <pre className="bg-muted/50 mt-2 max-h-96 overflow-auto rounded-lg p-4 font-mono text-xs">
-          {JSON.stringify(report, null, 2)}
-        </pre>
-      </details>
     </div>
   );
 }

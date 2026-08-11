@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Loader2, MessageSquare, Send } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -27,6 +27,74 @@ type ChatTabProps = {
   onMessagesChange: (messages: ChatMessage[]) => void;
   sourceUrls: Record<string, string>;
 };
+
+function renderInlineMarkdown(text: string): ReactNode[] {
+  const parts = text.split(/(\*\*[^*\n]+\*\*|__[^_\n]+__|`[^`\n]+`|\*[^*\n]+\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("__") && part.endsWith("__")) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code key={index} className="bg-muted rounded px-1 py-0.5 font-mono text-[0.9em]">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return <em key={index}>{part.slice(1, -1)}</em>;
+    }
+    return <Fragment key={index}>{part}</Fragment>;
+  });
+}
+
+function ChatMessageContent({ content }: { content: string }) {
+  const blocks = content.trim().split(/\n\s*\n/).filter(Boolean);
+
+  return (
+    <div className="space-y-3">
+      {blocks.map((block, blockIndex) => {
+        const lines = block.split("\n").map((line) => line.trimEnd());
+        const numbered = lines.every((line) => /^\s*\d+\.\s+/.test(line));
+        const bulleted = lines.every((line) => /^\s*[-*]\s+/.test(line));
+
+        if (numbered) {
+          return (
+            <ol key={blockIndex} className="list-decimal space-y-1.5 pl-5">
+              {lines.map((line, lineIndex) => (
+                <li key={lineIndex}>{renderInlineMarkdown(line.replace(/^\s*\d+\.\s+/, ""))}</li>
+              ))}
+            </ol>
+          );
+        }
+
+        if (bulleted) {
+          return (
+            <ul key={blockIndex} className="list-disc space-y-1.5 pl-5">
+              {lines.map((line, lineIndex) => (
+                <li key={lineIndex}>{renderInlineMarkdown(line.replace(/^\s*[-*]\s+/, ""))}</li>
+              ))}
+            </ul>
+          );
+        }
+
+        return (
+          <p key={blockIndex} className="whitespace-pre-wrap">
+            {lines.map((line, lineIndex) => (
+              <Fragment key={lineIndex}>
+                {lineIndex > 0 ? <br /> : null}
+                {renderInlineMarkdown(line)}
+              </Fragment>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
 
 export function ChatTab({
   storeDir,
@@ -161,7 +229,11 @@ export function ChatTab({
                         : "bg-card border-border/80 border",
                     )}
                   >
-                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    {msg.role === "assistant" ? (
+                      <ChatMessageContent content={msg.content} />
+                    ) : (
+                      <p className="whitespace-pre-wrap">{msg.content}</p>
+                    )}
                   </div>
                 </div>
               ))
