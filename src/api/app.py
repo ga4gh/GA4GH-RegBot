@@ -94,9 +94,7 @@ app.add_middleware(
 
 
 @app.exception_handler(RequestValidationError)
-async def request_validation_error(
-    _request: Request, exc: RequestValidationError
-) -> JSONResponse:
+async def request_validation_error(_request: Request, exc: RequestValidationError) -> JSONResponse:
     fields = sorted(
         {
             ".".join(str(part) for part in error.get("loc", [])[1:])
@@ -437,7 +435,9 @@ def chat_followup(
                 jurisdiction=jur_filter,
             )
         except Exception as exc:
-            raise guided_http_exception(exc, operation="retrieving policy evidence for chat") from exc
+            raise guided_http_exception(
+                exc, operation="retrieving policy evidence for chat"
+            ) from exc
 
     if not chunks:
         scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
