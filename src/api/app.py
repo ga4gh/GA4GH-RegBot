@@ -11,8 +11,21 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, File, Form, HTTPException, Query, Response, UploadFile, status
+from fastapi import (
+    Depends,
+    FastAPI,
+    File,
+    Form,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    UploadFile,
+    status,
+)
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from src.api.auth import (
     SESSION_COOKIE,
@@ -24,6 +37,7 @@ from src.api.auth import (
     require_admin,
     require_user,
 )
+from src.api.errors import guided_error_detail, guided_http_exception
 from src.api.schemas import (
     AuthUserResponse,
     ChatRequest,
@@ -79,6 +93,34 @@ app.add_middleware(
 )
 
 
+@app.exception_handler(RequestValidationError)
+async def request_validation_error(_request: Request, exc: RequestValidationError) -> JSONResponse:
+    fields = sorted(
+        {
+            ".".join(str(part) for part in error.get("loc", [])[1:])
+            for error in exc.errors()
+            if error.get("loc")
+        }
+    )
+    field_text = ", ".join(field for field in fields if field) or "request fields"
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+        content={
+            "detail": {
+                "code": "INVALID_REQUEST",
+                "message": f"Some submitted values are invalid: {field_text}.",
+                "action": "Correct the highlighted input values and submit the request again.",
+            }
+        },
+    )
+
+
+@app.exception_handler(Exception)
+async def unexpected_backend_error(_request: Request, exc: Exception) -> JSONResponse:
+    status_code, detail = guided_error_detail(exc, operation="handling an API request")
+    return JSONResponse(status_code=status_code, content={"detail": detail})
+
+
 def _resolve_store(store_dir: Optional[str], user: Optional[AuthUser] = None) -> str:
     resolved = store_dir.strip() if store_dir and store_dir.strip() else _DEFAULT_STORE
     if user and user.role != "admin":
@@ -97,11 +139,8 @@ def _bot(store_dir: Optional[str] = None, user: Optional[AuthUser] = None) -> Re
 
 
 def _corpus_documents() -> List[Dict[str, Any]]:
-    try:
-        data = load_corpus_manifest(_CORPUS_MANIFEST_PATH)
-        return list(data.get("documents") or [])
-    except Exception:
-        return []
+    data = load_corpus_manifest(_CORPUS_MANIFEST_PATH)
+    return list(data.get("documents") or [])
 
 
 def _chunk_out(rec: Dict[str, Any]) -> ChunkOut:
@@ -127,7 +166,7 @@ def _trusted_chunks(store_dir: str, submitted: List[Dict[str, Any]]) -> List[Dic
     try:
         stored = read_manifest(store_dir)
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise guided_http_exception(exc, operation="loading submitted policy evidence") from exc
     by_id = {str(chunk.get("id") or ""): chunk for chunk in stored}
     unknown = sorted({chunk_id for chunk_id in requested_ids if chunk_id not in by_id})
     if unknown:
@@ -221,12 +260,13 @@ def store_meta(
     resolved = _resolve_store(store_dir, user)
     try:
         jurisdictions = _bot(resolved, user).list_store_jurisdictions()
-    except Exception:
-        jurisdictions = []
+        corpus_document_count = len(_corpus_documents())
+    except Exception as exc:
+        raise guided_http_exception(exc, operation="loading corpus metadata") from exc
     return StoreMetaResponse(
         store_dir=resolved,
         jurisdictions=jurisdictions,
-        corpus_document_count=len(_corpus_documents()),
+        corpus_document_count=corpus_document_count,
         llm_hint=_LLM_HINT,
     )
 
@@ -236,7 +276,10 @@ def get_corpus(
     region: Optional[str] = Query(default=None, description="Jurisdiction filter code"),
     _user: AuthUser = Depends(require_user),
 ) -> CorpusResponse:
-    docs = _corpus_documents()
+    try:
+        docs = _corpus_documents()
+    except Exception as exc:
+        raise guided_http_exception(exc, operation="loading the corpus inventory") from exc
     if region and region.upper() != "ALL":
         want = region.upper()
         docs = [d for d in docs if want in {str(j).upper() for j in (d.get("jurisdiction") or [])}]
@@ -268,7 +311,7 @@ def get_chunks(
     try:
         chunks = read_manifest(resolved)
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise guided_http_exception(exc, operation="opening the policy corpus") from exc
     selected = parse_jurisdiction_filter([region])
     matched = [rec for rec in chunks if jurisdiction_matches(rec.get("metadata"), selected)]
     sliced = matched[:limit]
@@ -307,6 +350,7 @@ async def ingest_policy(
             reset=reset,
             category=category.strip() or None,
             jurisdiction=jurisdiction.upper(),
+            raise_on_error=True,
         )
         if ok:
             return IngestResponse(
@@ -314,11 +358,18 @@ async def ingest_policy(
                 jurisdiction=jurisdiction.upper(),
                 message=f"Ingest finished ({jurisdiction.upper()}).",
             )
-        return IngestResponse(
-            ok=False,
-            jurisdiction=jurisdiction.upper(),
-            message="Ingest reported a problem (see server logs).",
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={
+                "code": "INGEST_FAILED",
+                "message": "The document was not added to the corpus.",
+                "action": "Retry once. If the problem continues, ask the server operator to check the API logs.",
+            },
         )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise guided_http_exception(exc, operation="ingesting an uploaded policy document") from exc
     finally:
         if tmp_path:
             try:
@@ -344,7 +395,7 @@ def check_consent(
             top_k=body.top_k,
         )
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise guided_http_exception(exc, operation="checking consent text") from exc
     scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
     return CheckResponse(
         report=report,
@@ -384,7 +435,9 @@ def chat_followup(
                 jurisdiction=jur_filter,
             )
         except Exception as exc:
-            raise HTTPException(status_code=500, detail=str(exc)) from exc
+            raise guided_http_exception(
+                exc, operation="retrieving policy evidence for chat"
+            ) from exc
 
     if not chunks:
         scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
@@ -405,7 +458,7 @@ def chat_followup(
             api_key=bot.api_key,
         )
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise guided_http_exception(exc, operation="generating a policy answer") from exc
 
     scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
     return ChatResponse(

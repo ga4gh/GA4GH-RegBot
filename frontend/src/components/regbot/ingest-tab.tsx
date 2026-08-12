@@ -139,7 +139,7 @@ export function IngestTab({ storeDir, jurisdictions, onSuccess }: IngestTabProps
 
         {message ? (
           <Alert variant={message.type === "err" ? "destructive" : "default"}>
-            <AlertDescription>{message.text}</AlertDescription>
+            <AlertDescription className="whitespace-pre-line">{message.text}</AlertDescription>
           </Alert>
         ) : null}
       </div>

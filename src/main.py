@@ -78,6 +78,7 @@ class RegBot:
         jurisdiction: Optional[str] = None,
         document_id: Optional[str] = None,
         framework: Optional[str] = None,
+        raise_on_error: bool = False,
     ) -> bool:
         try:
             n = ingest_policy_file(
@@ -92,6 +93,8 @@ class RegBot:
             )
             return n >= 0
         except Exception as exc:  # noqa: BLE001 — surface failure to CLI/UI
+            if raise_on_error:
+                raise
             print(f"Ingest failed: {exc}", file=sys.stderr)
             return False
 
