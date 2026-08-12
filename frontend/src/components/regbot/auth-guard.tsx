@@ -36,7 +36,7 @@ export function AuthGuard() {
       <main className="flex min-h-screen items-center justify-center p-6">
         <div className="border-destructive/40 bg-destructive/5 max-w-lg rounded-xl border p-5">
           <h1 className="font-semibold">Authentication service unavailable</h1>
-          <p className="text-muted-foreground mt-2 text-sm">{error}</p>
+          <p className="text-muted-foreground mt-2 whitespace-pre-line text-sm">{error}</p>
         </div>
       </main>
     );

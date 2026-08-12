@@ -226,7 +226,7 @@ export function LoginForm() {
                 </div>
                 {error ? (
                   <Alert variant="destructive" className="rounded-xl">
-                    <AlertDescription>{error}</AlertDescription>
+                    <AlertDescription className="whitespace-pre-line">{error}</AlertDescription>
                   </Alert>
                 ) : null}
                 <Button

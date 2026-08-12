@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 from typing import Any, Dict, List, Optional
 
@@ -33,6 +34,8 @@ from src.regbot.grounding import (
 )
 from src.regbot.study_type import detect_study_type
 from src.regbot.types import RecommendationItem
+
+logger = logging.getLogger(__name__)
 
 # Navigation report: coverage describes topic completeness, not a compliance verdict.
 _COVERAGE_VALUES = frozenset({"complete", "partial", "incomplete", "unknown"})
@@ -180,7 +183,8 @@ def _fallback_after_api_error(
     chunks: List[Dict[str, Any]],
     *,
     grounding_strict: bool,
-    detail: str,
+    error_code: str,
+    action: str,
 ) -> Dict[str, Any]:
     """Offline heuristic when the LLM request fails (quota, auth, Ollama down, network, etc.)."""
     out = _fallback_report(
@@ -191,8 +195,8 @@ def _fallback_after_api_error(
     )
     out["notes"] = (
         "LLM request did not complete; using offline keyword heuristic instead. "
-        "Not legal advice. "
-        f"({detail})"
+        f"What to do: {action} "
+        f"Error code: {error_code}. Not legal advice."
     )
     return out
 
@@ -322,22 +326,40 @@ def analyze_compliance(
                     temperature=0.2,
                 )
         except (RateLimitError, AuthenticationError) as e:
-            msg = str(getattr(e, "message", e))[:400]
-            return _fallback_after_api_error(
-                consent_text,
-                study_type,
-                chunks,
-                grounding_strict=grounding_strict,
-                detail=f"{type(e).__name__}: {msg}",
+            logger.warning("Compliance LLM request failed: %s", type(e).__name__, exc_info=True)
+            error_code = (
+                "OPENAI_AUTHENTICATION_FAILED"
+                if isinstance(e, AuthenticationError)
+                else "OPENAI_RATE_LIMITED"
             )
-        except APIConnectionError as e:
-            msg = str(getattr(e, "message", e))[:400]
+            action = (
+                "Ask the server operator to verify OPENAI_API_KEY, then retry."
+                if isinstance(e, AuthenticationError)
+                else "Wait briefly and retry, or ask the server operator to check API quota."
+            )
             return _fallback_after_api_error(
                 consent_text,
                 study_type,
                 chunks,
                 grounding_strict=grounding_strict,
-                detail=f"{type(e).__name__}: {msg}",
+                error_code=error_code,
+                action=action,
+            )
+        except APIConnectionError:
+            logger.warning("Compliance LLM connection failed", exc_info=True)
+            error_code = "OLLAMA_UNAVAILABLE" if use_ollama else "OPENAI_UNAVAILABLE"
+            action = (
+                "Start Ollama, confirm REGBOT_OLLAMA_MODEL is installed, and retry."
+                if use_ollama
+                else "Retry once; if it continues, ask the server operator to check the OpenAI configuration."
+            )
+            return _fallback_after_api_error(
+                consent_text,
+                study_type,
+                chunks,
+                grounding_strict=grounding_strict,
+                error_code=error_code,
+                action=action,
             )
         raw = resp.choices[0].message.content or "{}"
         try:
@@ -458,7 +480,10 @@ def chat_followup_policy_qa(
     use_openai = provider == "openai" and bool(api_key)
     if not use_ollama and not use_openai:
         return (
-            "Chat needs an LLM: start Ollama or set REGBOT_LLM_PROVIDER=openai with OPENAI_API_KEY."
+            "Chat is unavailable because no language model is configured.\n\n"
+            "What to do: start Ollama for local use, or set REGBOT_LLM_PROVIDER=openai "
+            "and provide a valid OPENAI_API_KEY.\n\n"
+            "Error code: LLM_NOT_CONFIGURED"
         )
 
     if use_ollama:
@@ -513,6 +538,31 @@ def chat_followup_policy_qa(
             temperature=0.3,
         )
     except (RateLimitError, AuthenticationError, APIConnectionError, BadRequestError) as e:
-        return f"Could not reach the LLM: {type(e).__name__}: {str(e)[:400]}"
+        logger.warning("Chat LLM request failed: %s", type(e).__name__, exc_info=True)
+        if use_ollama:
+            return (
+                "RegBot could not reach the local Ollama service.\n\n"
+                "What to do: run `ollama serve`, confirm the model named by "
+                "REGBOT_OLLAMA_MODEL is installed, and then retry.\n\n"
+                "Error code: OLLAMA_UNAVAILABLE"
+            )
+        if isinstance(e, AuthenticationError):
+            return (
+                "OpenAI rejected the configured API credentials.\n\n"
+                "What to do: ask the server operator to verify OPENAI_API_KEY and retry.\n\n"
+                "Error code: OPENAI_AUTHENTICATION_FAILED"
+            )
+        if isinstance(e, RateLimitError):
+            return (
+                "The OpenAI request was rate-limited or has insufficient quota.\n\n"
+                "What to do: wait briefly and retry, or ask the server operator to check API quota.\n\n"
+                "Error code: OPENAI_RATE_LIMITED"
+            )
+        return (
+            "RegBot could not complete the OpenAI request.\n\n"
+            "What to do: retry once. If the problem continues, ask the server operator to "
+            "check the API configuration and logs.\n\n"
+            "Error code: OPENAI_UNAVAILABLE"
+        )
 
     return (resp.choices[0].message.content or "").strip() or "(empty reply)"

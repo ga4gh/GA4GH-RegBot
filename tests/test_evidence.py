@@ -1,7 +1,7 @@
 import unittest
 from typing import Any, Dict, List
 
-from src.regbot.compliance import analyze_compliance
+from src.regbot.compliance import analyze_compliance, chat_followup_policy_qa
 from src.regbot.evidence import (
     apply_phase3_enrichment,
     assess_human_review,
@@ -45,6 +45,23 @@ CHUNKS: List[Dict[str, Any]] = [
         },
     },
 ]
+
+
+class TestChatFailureGuidance(unittest.TestCase):
+    def test_missing_openai_key_returns_setup_guidance(self) -> None:
+        import os
+        from unittest import mock
+
+        with mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "openai"}):
+            reply = chat_followup_policy_qa(
+                CHUNKS,
+                "Some consent text.",
+                [{"role": "user", "content": "What applies?"}],
+                api_key=None,
+            )
+
+        self.assertIn("What to do:", reply)
+        self.assertIn("LLM_NOT_CONFIGURED", reply)
 
 
 class TestQuoteSelection(unittest.TestCase):

@@ -4,6 +4,22 @@ const API_START_HINT =
   "Start the API from the repo root: uvicorn src.api.app:app --reload --port 8000";
 
 function formatApiError(status: number, detail: unknown): string {
+  if (detail && typeof detail === "object" && !Array.isArray(detail)) {
+    const guide = detail as Record<string, unknown>;
+    const message = typeof guide.message === "string" ? guide.message : "";
+    const action = typeof guide.action === "string" ? guide.action : "";
+    const code = typeof guide.code === "string" ? guide.code : "";
+    const reference = typeof guide.reference === "string" ? guide.reference : "";
+    if (message || action) {
+      return [
+        message,
+        action ? `What to do: ${action}` : "",
+        code ? `Error code: ${code}${reference ? ` · Reference: ${reference}` : ""}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    }
+  }
   const text =
     typeof detail === "string"
       ? detail

@@ -213,7 +213,7 @@ export function RegBotApp({ user }: { user: AuthUser }) {
             <Alert variant="destructive" className="mb-6">
               <AlertCircle className="size-4" />
               <AlertTitle>API unavailable</AlertTitle>
-              <AlertDescription>{apiError}</AlertDescription>
+              <AlertDescription className="whitespace-pre-line">{apiError}</AlertDescription>
             </Alert>
           ) : null}
           <Tabs defaultValue={canManageStore ? "ingest" : "corpus"} className="space-y-6">
