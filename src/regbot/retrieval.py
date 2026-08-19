@@ -45,11 +45,12 @@ class HybridRetriever:
     def _ensure_loaded(self) -> None:
         if self._collection is not None:
             return
-        import chromadb  # lazy: keeps lightweight imports working on odd Python combos
-
         chroma_path = os.path.join(self.store_dir, CHROMA_SUBDIR)
         if not os.path.isdir(chroma_path):
             return
+
+        import chromadb  # lazy: keeps lightweight imports working on odd Python combos
+
         client = chromadb.PersistentClient(path=chroma_path, settings=chromadb_settings())
         try:
             self._collection = client.get_collection(self.collection_name)

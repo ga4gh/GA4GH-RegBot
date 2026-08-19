@@ -150,7 +150,38 @@ proxies `/api/*` and `/health` to the API on port 8000; set `REGBOT_API_URL` bef
 
 A fresh clone ships `manifest.json` but **not** the Chroma vectors (git-ignored), so run
 `ingest-manifest --reset` once before the UI can retrieve anything. The Corpus tab lists
-the inventory, but Browse and Check have no searchable chunks until this rebuild finishes.
+the inventory and Browse can inspect portable manifest chunks, but Check and unscoped Chat
+cannot retrieve evidence until this rebuild finishes.
+
+### Deploy on Render
+
+The repository includes `render.yaml` for two Render web services:
+
+- `regbot-api` builds the Python environment, rebuilds the 85-document Chroma index, and
+  starts FastAPI on `0.0.0.0:$PORT`.
+- `regbot-web` builds and starts Next.js from `frontend/`, proxying `/api/*` and
+  `/health` to FastAPI.
+
+Create or synchronize a Render Blueprint from the repository, then provide the generated
+FastAPI public URL as the `regbot-web` service's `REGBOT_API_URL`. The API Blueprint
+generates `REGBOT_SESSION_SECRET`, enables secure cookies and public read-only access, and
+prompts for `OPENAI_API_KEY`; never commit these secrets.
+
+The default deployment rebuilds the immutable baseline index during each build. Runtime
+uploads are ephemeral. If administrator uploads must survive redeploys, attach a persistent
+disk to the API service, set `REGBOT_STORE` to a directory on that disk, and initialize the
+index from the API start command when the disk is empty. Render disks are not available to
+build or pre-deploy commands.
+
+After deploying, verify:
+
+```bash
+curl -fsS https://YOUR-API.onrender.com/health
+# Expected: {"status":"ok"}
+```
+
+Then enter through the Next.js public-user login, confirm that the sidebar says
+`Retrieval index ready`, and run one consent check that returns at least one cited chunk.
 
 - Run the legacy **Streamlit** UI:
 
@@ -220,7 +251,7 @@ python -m pytest -q
 - `REGBOT_ALLOW_GUEST_VIEWER`: Allow the login page's account-free, read-only viewer entry (default `1`). Set to `0` to require a configured account for every user.
 - `REGBOT_SESSION_HOURS`: Signed-session lifetime in hours (default `8`; clamped to `1`–`168`).
 - `REGBOT_COOKIE_SECURE`: Set to `1` when serving over HTTPS so the login cookie is never sent over plaintext HTTP (default `0` for localhost development).
-- `REGBOT_API_URL`: Read by the **Next.js dev server** (`frontend/next.config.ts`) to proxy `/api/*` and `/health` (default `http://127.0.0.1:8000`). Set it when the FastAPI process is on another host or port.
+- `REGBOT_API_URL`: Read by the **Next.js server** (`frontend/next.config.ts`) to proxy `/api/*` and `/health` (default `http://127.0.0.1:8000`). Set it when the FastAPI process is on another host or port.
 - `REGBOT_EMBEDDING_MODEL`: SentenceTransformers model id (default `sentence-transformers/all-MiniLM-L6-v2`).
 - `HF_HUB_DOWNLOAD_TIMEOUT`: Hugging Face Hub download timeout in seconds (embedding model on first use). The app sets a higher default when unset; increase if you see read timeouts.
 - `REGBOT_HF_ENDPOINT`: If set, copied to `HF_ENDPOINT` (e.g. `https://hf-mirror.com` where Hub mirrors are used).

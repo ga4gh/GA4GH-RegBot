@@ -138,6 +138,28 @@ def _bot(store_dir: Optional[str] = None, user: Optional[AuthUser] = None) -> Re
     return RegBot(store_dir=_resolve_store(store_dir, user))
 
 
+def _require_retrieval_ready(bot: RegBot) -> None:
+    if bot.is_retrieval_ready():
+        return
+    manifest_chunk_count = len(read_manifest(bot.store_dir))
+    message = (
+        "The corpus manifest is available, but the retrieval index is not ready."
+        if manifest_chunk_count
+        else "The corpus manifest and retrieval index are not ready."
+    )
+    raise HTTPException(
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        detail={
+            "code": "CORPUS_STORE_UNAVAILABLE",
+            "message": message,
+            "action": (
+                "Ask an administrator to rebuild the vector index with "
+                "`python -m src.main ingest-manifest --reset`."
+            ),
+        },
+    )
+
+
 def _corpus_documents() -> List[Dict[str, Any]]:
     data = load_corpus_manifest(_CORPUS_MANIFEST_PATH)
     return list(data.get("documents") or [])
@@ -259,14 +281,16 @@ def store_meta(
 ) -> StoreMetaResponse:
     resolved = _resolve_store(store_dir, user)
     try:
-        jurisdictions = _bot(resolved, user).list_store_jurisdictions()
+        store_status = _bot(resolved, user).store_status()
         corpus_document_count = len(_corpus_documents())
     except Exception as exc:
         raise guided_http_exception(exc, operation="loading corpus metadata") from exc
     return StoreMetaResponse(
         store_dir=resolved,
-        jurisdictions=jurisdictions,
+        jurisdictions=store_status["jurisdictions"],
         corpus_document_count=corpus_document_count,
+        manifest_chunk_count=store_status["manifest_chunk_count"],
+        retrieval_ready=store_status["retrieval_ready"],
         llm_hint=_LLM_HINT,
     )
 
@@ -386,6 +410,7 @@ def check_consent(
     if not body.consent_text.strip():
         raise HTTPException(status_code=400, detail="consent_text is required.")
     bot = _bot(body.store_dir, user)
+    _require_retrieval_ready(bot)
     jur_filter = parse_jurisdiction_filter(body.jurisdictions)
     try:
         report, chunks = bot.compliance_report_and_chunks(
@@ -427,6 +452,7 @@ def chat_followup(
         _trusted_chunks(bot.store_dir, body.chunks) if body.chunks else []
     )
     if not chunks:
+        _require_retrieval_ready(bot)
         try:
             chunks = bot.retrieve_relevant_clauses(
                 user_query,

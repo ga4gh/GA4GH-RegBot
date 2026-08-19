@@ -2,11 +2,13 @@
 
 import {
   BookOpenCheck,
+  CircleCheck,
   Database,
   Globe2,
   RefreshCw,
   Settings2,
   ShieldCheck,
+  TriangleAlert,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -22,6 +24,8 @@ type SidebarProps = {
   storeJurisdictions: string[];
   jurisdictionOptions: JurisdictionOption[];
   corpusCount: number;
+  manifestChunkCount: number;
+  retrievalReady: boolean;
   llmHint: string;
   onRefresh: () => void;
   refreshing: boolean;
@@ -34,6 +38,8 @@ export function Sidebar({
   storeJurisdictions,
   jurisdictionOptions,
   corpusCount,
+  manifestChunkCount,
+  retrievalReady,
   llmHint,
   onRefresh,
   refreshing,
@@ -106,7 +112,28 @@ export function Sidebar({
             <div>
               <p className="text-lg leading-none font-semibold">{corpusCount}</p>
               <p className="text-muted-foreground mt-1 text-xs">source documents</p>
+              <p className="text-muted-foreground mt-1 text-xs">
+                {manifestChunkCount.toLocaleString()} tracked chunks
+              </p>
             </div>
+          </div>
+          <div
+            className={
+              retrievalReady
+                ? "flex items-start gap-2 rounded-lg bg-emerald-50 p-3 text-xs leading-5 text-emerald-800"
+                : "flex items-start gap-2 rounded-lg bg-amber-50 p-3 text-xs leading-5 text-amber-900"
+            }
+          >
+            {retrievalReady ? (
+              <CircleCheck className="mt-0.5 size-3.5 shrink-0" />
+            ) : (
+              <TriangleAlert className="mt-0.5 size-3.5 shrink-0" />
+            )}
+            <span>
+              {retrievalReady
+                ? "Retrieval index ready."
+                : "Manifest available, but the Chroma retrieval index is not ready."}
+            </span>
           </div>
           {storeJurisdictions.length > 0 ? (
             <div className="border-border/60 bg-muted/20 max-h-44 overflow-y-auto overscroll-contain rounded-md border p-2">
@@ -125,7 +152,7 @@ export function Sidebar({
             </div>
           ) : (
             <p className="text-muted-foreground text-xs leading-relaxed">
-              No jurisdiction tags in the store yet. When ingesting policy, pick a region
+              No jurisdiction tags in the manifest yet. When ingesting policy, pick a region
               (SG, CN, JP, …) so retrieval can be scoped.
             </p>
           )}

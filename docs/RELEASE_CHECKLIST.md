@@ -1,6 +1,6 @@
 # GA4GH-RegBot 0.1.0 release checklist
 
-Status as of 2026-08-10. This checklist separates completed contributor verification from
+Status as of 2026-08-19. This checklist separates completed contributor verification from
 independent review that must not be self-certified.
 
 ## Complete
@@ -35,5 +35,16 @@ independent review that must not be self-certified.
 - [ ] After approval, select an agreed regression threshold and enable it for the scheduled
       benchmark. The workflow already accepts a manual `min_recall` input; its default is
       report-only so contributor labels cannot become a release claim by accident.
+
+## Deployment handoff
+
+- [ ] Synchronize the repository's `render.yaml` Blueprint.
+- [ ] Set `regbot-web.REGBOT_API_URL` to the deployed FastAPI public URL.
+- [ ] Confirm `regbot-api /health` returns JSON rather than Streamlit HTML.
+- [ ] Confirm `/api/meta/store` reports `retrieval_ready: true` and 8,081 manifest chunks.
+- [ ] Confirm the Next.js public-user flow can run a consent check with at least one cited chunk.
+- [ ] Decide whether administrator uploads must persist. If yes, attach a persistent disk and
+      initialize `REGBOT_STORE` from the runtime start command because Render disks are not
+      available during build or pre-deploy steps.
 
 No commit, tag, push, merge, or release publication is performed by this checklist.

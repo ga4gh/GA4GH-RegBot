@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: regbot-api
+    runtime: python
+    buildCommand: >-
+      python -m pip install -r requirements.txt &&
+      python -m src.main ingest-manifest --reset
+    startCommand: uvicorn src.api.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: REGBOT_SESSION_SECRET
+        generateValue: true
+      - key: REGBOT_COOKIE_SECURE
+        value: "1"
+      - key: REGBOT_ALLOW_GUEST_VIEWER
+        value: "1"
+      - key: REGBOT_LLM_PROVIDER
+        value: openai
+      - key: OPENAI_API_KEY
+        sync: false
+
+  - type: web
+    name: regbot-web
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start -- --hostname 0.0.0.0 --port $PORT
+    envVars:
+      - key: REGBOT_API_URL
+        sync: false
