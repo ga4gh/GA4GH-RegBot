@@ -28,7 +28,7 @@ from src.regbot.evaluation import (
     write_markdown_report,
 )
 from src.regbot.ingestion import ingest_policy_file, read_manifest
-from src.regbot.jurisdiction import parse_jurisdiction_filter
+from src.regbot.jurisdiction import jurisdictions_in_manifest, parse_jurisdiction_filter
 from src.regbot.retrieval import HybridRetriever
 from src.regbot.study_type import detect_study_type
 
@@ -120,11 +120,21 @@ class RegBot:
             kwargs["embedding_model_name"] = self.embedding_model
         return ingest_from_corpus_manifest(**kwargs)
 
+    def store_status(self) -> Dict[str, Any]:
+        """Report portable corpus contents separately from vector-index readiness."""
+        chunks = read_manifest(self.store_dir)
+        return {
+            "manifest_chunk_count": len(chunks),
+            "jurisdictions": jurisdictions_in_manifest(chunks),
+            "retrieval_ready": self._retriever_instance().is_ready(),
+        }
+
+    def is_retrieval_ready(self) -> bool:
+        return bool(self._retriever_instance().is_ready())
+
     def list_store_jurisdictions(self) -> List[str]:
-        r = self._retriever_instance()
-        if not r.is_ready():
-            return []
-        return r.list_jurisdictions()
+        """Jurisdiction codes present in the portable text manifest."""
+        return jurisdictions_in_manifest(read_manifest(self.store_dir))
 
     def retrieve_relevant_clauses(
         self,
@@ -236,9 +246,7 @@ def _cmd_check(args: argparse.Namespace) -> int:
 
 def _cmd_status(args: argparse.Namespace) -> int:
     bot = RegBot(store_dir=args.store)
-    r = bot._retriever_instance()
-    ready = r.is_ready()
-    print(json.dumps({"store": bot.store_dir, "retriever_ready": ready}, indent=2))
+    print(json.dumps({"store": bot.store_dir, **bot.store_status()}, indent=2))
     return 0
 
 

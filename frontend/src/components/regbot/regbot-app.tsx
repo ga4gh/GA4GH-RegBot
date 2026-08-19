@@ -52,6 +52,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
   >([]);
   const [storeJurisdictions, setStoreJurisdictions] = useState<string[]>([]);
   const [corpusCount, setCorpusCount] = useState(0);
+  const [manifestChunkCount, setManifestChunkCount] = useState(0);
+  const [retrievalReady, setRetrievalReady] = useState(false);
   const [llmHint, setLlmHint] = useState("");
   // Starts true: the mount effect below is already fetching by first paint.
   const [refreshing, setRefreshing] = useState(true);
@@ -76,6 +78,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
       const { meta, corpus, jur } = result;
       setStoreJurisdictions(meta.jurisdictions);
       setCorpusCount(meta.corpus_document_count);
+      setManifestChunkCount(meta.manifest_chunk_count);
+      setRetrievalReady(meta.retrieval_ready);
       setLlmHint(meta.llm_hint);
       setJurisdictions(jur);
       const urls: Record<string, string> = {};
@@ -200,6 +204,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
           storeJurisdictions={storeJurisdictions}
           jurisdictionOptions={jurisdictions}
           corpusCount={corpusCount}
+          manifestChunkCount={manifestChunkCount}
+          retrievalReady={retrievalReady}
           llmHint={llmHint}
           onRefresh={() => {
             setRefreshing(true);
@@ -214,6 +220,17 @@ export function RegBotApp({ user }: { user: AuthUser }) {
               <AlertCircle className="size-4" />
               <AlertTitle>API unavailable</AlertTitle>
               <AlertDescription className="whitespace-pre-line">{apiError}</AlertDescription>
+            </Alert>
+          ) : null}
+          {!apiError && !refreshing && !retrievalReady ? (
+            <Alert variant="destructive" className="mb-6">
+              <AlertCircle className="size-4" />
+              <AlertTitle>Retrieval index unavailable</AlertTitle>
+              <AlertDescription>
+                The corpus manifest can be browsed, but consent checks and unscoped chat
+                require the Chroma index. Ask an administrator to run{" "}
+                <code>python -m src.main ingest-manifest --reset</code>.
+              </AlertDescription>
             </Alert>
           ) : null}
           <Tabs defaultValue={canManageStore ? "ingest" : "corpus"} className="space-y-6">

@@ -226,12 +226,15 @@ def _bot(store_dir: str) -> RegBot:
     return RegBot(store_dir=store_dir)
 
 
-def _stored_jurisdictions(store_dir: str) -> List[str]:
-    try:
-        bot = _bot(store_dir)
-        return bot.list_store_jurisdictions()
-    except Exception:
-        return []
+def _store_status(store_dir: str) -> Dict[str, Any]:
+    return _bot(store_dir).store_status()
+
+
+def _retrieval_unavailable_message() -> str:
+    return (
+        "The tracked corpus manifest is available, but the Chroma retrieval index is not ready. "
+        "Run `python -m src.main ingest-manifest --reset` from the repository root."
+    )
 
 
 def _chunks_for_region(store_dir: str, region: str) -> List[Dict[str, Any]]:
@@ -367,16 +370,22 @@ with st.sidebar:
         disabled=not _is_admin,
     )
     st.markdown("### Corpus by region")
-    in_store = _stored_jurisdictions(store_dir)
+    current_store = _store_status(store_dir)
+    in_store = current_store["jurisdictions"]
     if in_store:
-        st.caption("Jurisdictions tagged in the current store:")
+        st.caption("Jurisdictions tagged in the tracked manifest:")
         for code in in_store:
             st.markdown(f"- **{code}** — {jurisdiction_option_label(code).split(' — ', 1)[-1]}")
     else:
         st.caption(
-            "No jurisdiction tags in the store yet. When ingesting policy, pick a region "
+            "No jurisdiction tags in the manifest yet. When ingesting policy, pick a region "
             "(SG, CN, JP, …) so retrieval can be scoped."
         )
+    st.caption(f"**{current_store['manifest_chunk_count']}** chunks in tracked manifest.")
+    if current_store["retrieval_ready"]:
+        st.success("Retrieval index ready.")
+    else:
+        st.error(_retrieval_unavailable_message())
     st.caption(f"**{len(_corpus_docs)}** documents in corpus manifest — see **Corpus** tab.")
     st.markdown(
         "**Default:** local [Ollama](https://ollama.com) (`REGBOT_OLLAMA_MODEL`, e.g. `llama3`). "
@@ -502,36 +511,39 @@ with tab_check:
     top_k = st.slider("Retrieved chunks", min_value=3, max_value=16, value=8)
     if st.button("Analyze", type="primary"):
         bot = _bot(store_dir)
-        jur_filter = parse_jurisdiction_filter(filter_jurisdictions)
-        report, chunks = bot.compliance_report_and_chunks(
-            consent_text,
-            category=filter_cat.strip() or None,
-            jurisdiction=jur_filter,
-            top_k=int(top_k),
-        )
-        st.session_state["last_chunks"] = chunks
-        st.session_state["last_consent"] = consent_text
-        st.session_state["last_jurisdictions"] = filter_jurisdictions
-        st.session_state["chat_messages"] = []
-        scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
-        st.subheader("Report")
-        st.caption(f"Retrieval scope: **{scope}** · {len(chunks)} chunk(s) used")
-        _render_report(report)
-        st.download_button(
-            "Download JSON",
-            data=json.dumps(report, indent=2, ensure_ascii=False),
-            file_name="regbot_report.json",
-            mime="application/json",
-        )
-        with st.expander("Retrieved policy excerpts", expanded=bool(chunks)):
-            _render_chunk_cards(
-                chunks,
-                empty_hint=(
-                    "No chunks matched this query and jurisdiction filter. "
-                    "Try clearing the jurisdiction filter or ingest policy for that region."
-                ),
-                source_urls=_corpus_urls,
+        if not bot.is_retrieval_ready():
+            st.error(_retrieval_unavailable_message())
+        else:
+            jur_filter = parse_jurisdiction_filter(filter_jurisdictions)
+            report, chunks = bot.compliance_report_and_chunks(
+                consent_text,
+                category=filter_cat.strip() or None,
+                jurisdiction=jur_filter,
+                top_k=int(top_k),
             )
+            st.session_state["last_chunks"] = chunks
+            st.session_state["last_consent"] = consent_text
+            st.session_state["last_jurisdictions"] = filter_jurisdictions
+            st.session_state["chat_messages"] = []
+            scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
+            st.subheader("Report")
+            st.caption(f"Retrieval scope: **{scope}** · {len(chunks)} chunk(s) used")
+            _render_report(report)
+            st.download_button(
+                "Download JSON",
+                data=json.dumps(report, indent=2, ensure_ascii=False),
+                file_name="regbot_report.json",
+                mime="application/json",
+            )
+            with st.expander("Retrieved policy excerpts", expanded=bool(chunks)):
+                _render_chunk_cards(
+                    chunks,
+                    empty_hint=(
+                        "No chunks matched this query and jurisdiction filter. "
+                        "Try clearing the jurisdiction filter or ingest policy for that region."
+                    ),
+                    source_urls=_corpus_urls,
+                )
 
 with tab_chat:
     st.caption(
@@ -569,18 +581,23 @@ with tab_chat:
         )
         bot = _bot(store_dir)
         jur_filter = parse_jurisdiction_filter(chat_jurisdictions)
-        chunks = bot.retrieve_relevant_clauses(
-            prompt.strip(),
-            top_k=8,
-            jurisdiction=jur_filter,
-        )
-        if not chunks:
+        retrieval_ready = bot.is_retrieval_ready()
+        if not retrieval_ready:
+            chunks = []
+            reply = _retrieval_unavailable_message()
+        else:
+            chunks = bot.retrieve_relevant_clauses(
+                prompt.strip(),
+                top_k=8,
+                jurisdiction=jur_filter,
+            )
+        if retrieval_ready and not chunks:
             scope = ", ".join(jur_filter) if jur_filter else "all jurisdictions"
             reply = (
                 f"No policy chunks matched (scope: {scope}). "
                 "Ingest the corpus or try another jurisdiction."
             )
-        else:
+        elif chunks:
             reply = chat_followup_policy_qa(
                 chunks,
                 st.session_state.get("last_consent") or "",
