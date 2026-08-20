@@ -46,6 +46,14 @@ _LEGACY_STATUS_TO_COVERAGE = {
     "non compliant": "incomplete",
     "unknown": "unknown",
 }
+_CHAT_CITATION_RE = re.compile(r"\[chunk_id=([^\]\s]+)\]")
+
+
+def _invalid_chat_citation_ids(reply: str, chunks: List[Dict[str, Any]]) -> List[str]:
+    """Return explicit chat citations that are absent from the retrieved evidence set."""
+    allow = allowed_chunk_ids(chunks)
+    cited = _CHAT_CITATION_RE.findall(reply)
+    return sorted({chunk_id for chunk_id in cited if chunk_id not in allow})
 
 
 def normalize_coverage(raw: Optional[str]) -> str:
@@ -537,6 +545,41 @@ def chat_followup_policy_qa(
             messages=history,
             temperature=0.3,
         )
+        reply = (resp.choices[0].message.content or "").strip() or "(empty reply)"
+        invalid_ids = _invalid_chat_citation_ids(reply, chunks)
+        if invalid_ids:
+            allow = sorted(allowed_chunk_ids(chunks))
+            logger.warning("Chat reply cited unknown chunk ids: %s", invalid_ids)
+            correction: List[ChatCompletionMessageParam] = [
+                *history,
+                {"role": "assistant", "content": reply},
+                {
+                    "role": "user",
+                    "content": (
+                        "Rewrite the complete answer because the previous response cited chunk ids "
+                        f"outside the retrieved evidence set: {invalid_ids}. Use only these exact "
+                        f"chunk ids when citing policy text: {allow}. Do not mention or reuse any "
+                        "other chunk id."
+                    ),
+                },
+            ]
+            resp = client.chat.completions.create(
+                model=model_name,
+                messages=correction,
+                temperature=0.1,
+            )
+            reply = (resp.choices[0].message.content or "").strip() or "(empty reply)"
+            invalid_ids = _invalid_chat_citation_ids(reply, chunks)
+            if invalid_ids:
+                logger.warning(
+                    "Corrected chat reply still cited unknown chunk ids: %s", invalid_ids
+                )
+                return (
+                    "RegBot could not produce an answer with fully verifiable chunk citations.\n\n"
+                    "What to do: review the retrieved policy excerpts shown below and retry the "
+                    "question.\n\n"
+                    "Error code: CHAT_CITATION_GROUNDING_FAILED"
+                )
     except (RateLimitError, AuthenticationError, APIConnectionError, BadRequestError) as e:
         logger.warning("Chat LLM request failed: %s", type(e).__name__, exc_info=True)
         if use_ollama:
@@ -565,4 +608,4 @@ def chat_followup_policy_qa(
             "Error code: OPENAI_UNAVAILABLE"
         )
 
-    return (resp.choices[0].message.content or "").strip() or "(empty reply)"
+    return reply

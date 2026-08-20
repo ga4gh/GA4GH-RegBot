@@ -19,7 +19,7 @@ JURISDICTION_CODES: Tuple[str, ...] = (
 
 # Short labels for UI (corpus scope hints — not legal advice).
 JURISDICTION_LABELS: Dict[str, str] = {
-    "SG": "Singapore — PDPA, HBRA, Health Information Bill",
+    "SG": "Singapore — PDPA, HBRA, Health Information Act 2026",
     "CN": "China — HGR, PIPL, Data Security Law",
     "TW": "Taiwan — Human Biobank Act, PDPA",
     "KR": "Korea — Bioethics Act, PIPA",

@@ -9,6 +9,7 @@ from unittest.mock import patch
 from src.regbot.ingestion import ingest_policy_file, read_manifest
 from src.regbot.jurisdiction import (
     jurisdiction_matches,
+    jurisdiction_option_label,
     jurisdictions_in_manifest,
     parse_jurisdiction_filter,
 )
@@ -33,6 +34,11 @@ class _FakeSentenceTransformer:
 
 
 class TestJurisdiction(unittest.TestCase):
+    def test_singapore_label_names_enacted_health_information_law(self) -> None:
+        label = jurisdiction_option_label("SG")
+        self.assertIn("Health Information Act 2026", label)
+        self.assertNotIn("Bill", label)
+
     def test_parse_filter_empty(self) -> None:
         self.assertIsNone(parse_jurisdiction_filter(None))
         self.assertIsNone(parse_jurisdiction_filter([]))
