@@ -63,6 +63,60 @@ class TestChatFailureGuidance(unittest.TestCase):
         self.assertIn("What to do:", reply)
         self.assertIn("LLM_NOT_CONFIGURED", reply)
 
+    def test_unknown_chat_citation_is_retried_with_allow_list(self) -> None:
+        import os
+        from unittest import mock
+
+        invalid = mock.Mock()
+        invalid.choices = [mock.Mock(message=mock.Mock(content="See [chunk_id=invented_chunk]."))]
+        corrected = mock.Mock()
+        corrected.choices = [mock.Mock(message=mock.Mock(content="See [chunk_id=sg_p0_c1]."))]
+        completion = mock.Mock(side_effect=[invalid, corrected])
+        client = mock.Mock()
+        client.chat.completions.create = completion
+
+        with (
+            mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "openai"}),
+            mock.patch("src.regbot.compliance.OpenAI", return_value=client),
+        ):
+            reply = chat_followup_policy_qa(
+                CHUNKS,
+                "Some consent text.",
+                [{"role": "user", "content": "What applies?"}],
+                api_key="test-key",
+            )
+
+        self.assertEqual(reply, "See [chunk_id=sg_p0_c1].")
+        self.assertEqual(completion.call_count, 2)
+        correction_messages = completion.call_args_list[1].kwargs["messages"]
+        self.assertIn("invented_chunk", correction_messages[-1]["content"])
+        self.assertIn("sg_p0_c1", correction_messages[-1]["content"])
+
+    def test_repeated_unknown_chat_citation_fails_closed(self) -> None:
+        import os
+        from unittest import mock
+
+        invalid = mock.Mock()
+        invalid.choices = [mock.Mock(message=mock.Mock(content="See [chunk_id=invented_chunk]."))]
+        completion = mock.Mock(return_value=invalid)
+        client = mock.Mock()
+        client.chat.completions.create = completion
+
+        with (
+            mock.patch.dict(os.environ, {"REGBOT_LLM_PROVIDER": "openai"}),
+            mock.patch("src.regbot.compliance.OpenAI", return_value=client),
+        ):
+            reply = chat_followup_policy_qa(
+                CHUNKS,
+                "Some consent text.",
+                [{"role": "user", "content": "What applies?"}],
+                api_key="test-key",
+            )
+
+        self.assertIn("CHAT_CITATION_GROUNDING_FAILED", reply)
+        self.assertNotIn("invented_chunk", reply)
+        self.assertEqual(completion.call_count, 2)
+
 
 class TestQuoteSelection(unittest.TestCase):
     def test_quote_is_verbatim_from_chunk(self) -> None:

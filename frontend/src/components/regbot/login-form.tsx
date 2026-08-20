@@ -40,7 +40,6 @@ export function LoginForm() {
     try {
       await login(username, password);
       router.replace("/");
-      router.refresh();
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Sign in failed.");
     } finally {
@@ -54,7 +53,6 @@ export function LoginForm() {
     try {
       await continueAsViewer();
       router.replace("/");
-      router.refresh();
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Viewer access failed.");
     } finally {
