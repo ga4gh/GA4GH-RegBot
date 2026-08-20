@@ -154,14 +154,22 @@ export function RegBotApp({ user }: { user: AuthUser }) {
       <header className="border-border/70 bg-card/85 sticky top-0 z-20 border-b backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between lg:px-6">
           <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-            <Image
-              src="/global-alliance-logo.svg"
-              alt="Global Alliance for Genomics and Health"
-              width={192}
-              height={50}
-              priority
-              className="h-auto w-36 shrink-0 sm:w-40"
-            />
+            <a
+              href="https://www.ga4gh.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the GA4GH website (opens in a new tab)"
+              className="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1b75bb]"
+            >
+              <Image
+                src="/global-alliance-logo.svg"
+                alt="Global Alliance for Genomics and Health"
+                width={192}
+                height={50}
+                priority
+                className="h-auto w-36 sm:w-40"
+              />
+            </a>
             <div className="bg-border h-10 w-px shrink-0" aria-hidden="true" />
             <div className="min-w-0">
               <h1 className="text-lg font-semibold tracking-tight sm:text-xl">RegBot</h1>
