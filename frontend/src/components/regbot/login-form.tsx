@@ -74,14 +74,22 @@ export function LoginForm() {
       <div className="relative mx-auto grid min-h-screen w-full max-w-7xl items-center gap-8 px-5 py-7 sm:gap-10 sm:px-8 sm:py-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:px-12">
         <section className="mx-auto w-full max-w-2xl lg:mx-0">
           <div className="mb-7 inline-flex rounded-2xl border border-white/90 bg-white/85 p-5 shadow-[0_18px_50px_-30px_rgba(15,74,122,0.55)] backdrop-blur-sm sm:mb-10 sm:p-6">
-            <Image
-              src="/global-alliance-logo.svg"
-              alt="Global Alliance for Genomics and Health"
-              width={384}
-              height={100}
-              priority
-              className="h-auto w-[17rem] sm:w-[22rem]"
-            />
+            <a
+              href="https://www.ga4gh.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the GA4GH website (opens in a new tab)"
+              className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1b75bb]"
+            >
+              <Image
+                src="/global-alliance-logo.svg"
+                alt="Global Alliance for Genomics and Health"
+                width={384}
+                height={100}
+                priority
+                className="h-auto w-[17rem] sm:w-[22rem]"
+              />
+            </a>
           </div>
 
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1b75bb]/15 bg-[#1b75bb]/8 px-3 py-1.5 text-xs font-semibold tracking-wide text-[#1769a6] uppercase">
