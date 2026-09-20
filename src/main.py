@@ -288,10 +288,12 @@ def _cmd_eval(args: argparse.Namespace) -> int:
 
 def _cmd_benchmark(args: argparse.Namespace) -> int:
     """
-    Score hybrid retrieval against the Phase 2 gold set (Recall@k / Precision@k / MRR).
+    Score hybrid retrieval against the Phase 2 gold set.
 
     Unlike ``eval`` (which only dumps hits for manual reading), this reports numbers and
-    exits non-zero when recall falls below ``--min-recall`` so it can gate a CI job.
+    exits non-zero for stale gold anchors or when a configured metric falls below its
+    threshold. Provision recall is the preferred CI gate because it is stable across
+    equivalent chunk-boundary changes.
     """
     bot = RegBot(store_dir=args.store)
     chunks = read_manifest(bot.store_dir)
@@ -323,18 +325,33 @@ def _cmd_benchmark(args: argparse.Namespace) -> int:
         )
         print(f"\nWrote Markdown report to {args.markdown}", file=sys.stderr)
 
-    if result["skipped_count"]:
+    if result["unresolved_anchor_count"]:
         print(
-            f"WARNING: {result['skipped_count']} gold queries skipped "
-            "(anchors did not resolve against this store).",
+            f"FAIL: {result['unresolved_anchor_count']} gold anchors across "
+            f"{result['unresolved_query_count']} queries did not resolve against this store "
+            f"({result['skipped_count']} queries skipped).",
             file=sys.stderr,
         )
+        return 1
 
     primary_k = max(result["ks"])
     recall = float(result["aggregate"].get(f"recall@{primary_k}", 0.0))
     if args.min_recall is not None and recall < args.min_recall:
         print(
             f"FAIL: recall@{primary_k}={recall:.3f} below threshold {args.min_recall:.3f}",
+            file=sys.stderr,
+        )
+        return 1
+    provision_recall = float(
+        result["aggregate"].get(f"provision_recall@{primary_k}", 0.0)
+    )
+    if (
+        args.min_provision_recall is not None
+        and provision_recall < args.min_provision_recall
+    ):
+        print(
+            f"FAIL: provision_recall@{primary_k}={provision_recall:.3f} below "
+            f"threshold {args.min_provision_recall:.3f}",
             file=sys.stderr,
         )
         return 1
@@ -488,6 +505,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         dest="min_recall",
         help="Exit non-zero if macro recall at the largest k falls below this (CI gate).",
+    )
+    pb.add_argument(
+        "--min-provision-recall",
+        type=float,
+        default=None,
+        dest="min_provision_recall",
+        help=(
+            "Exit non-zero if macro provision recall at the largest k falls below this "
+            "(preferred CI gate)."
+        ),
     )
     pb.set_defaults(func=_cmd_benchmark)
 

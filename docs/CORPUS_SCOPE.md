@@ -57,6 +57,7 @@ Add or replace material only when at least one of these events occurs:
 - mentor review of the gold set identifies a concrete retrieval gap; or
 - the project explicitly expands to another jurisdiction.
 
-Otherwise, adding adjacent documents merely to increase the count is out of scope. The next
-release task is independent mentor review of the gold set, followed by a benchmark rerun on
-this 85-document snapshot; that review is intentionally not claimed as complete here.
+Otherwise, adding adjacent documents merely to increase the count is out of scope. The
+85-document engineering benchmark has been rerun reproducibly and is protected by a 0.90
+provision-recall regression floor. The next external validation task is independent mentor
+review of the gold set; that review is intentionally not claimed as complete here.

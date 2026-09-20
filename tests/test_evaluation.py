@@ -1,3 +1,4 @@
+import json
 import os
 import tempfile
 import unittest
@@ -172,7 +173,27 @@ class TestEvaluateGoldSet(unittest.TestCase):
         )
         self.assertEqual(result["query_count"], 1)
         self.assertEqual(result["skipped_count"], 0)
+        self.assertEqual(result["unresolved_anchor_count"], 0)
         self.assertEqual(result["aggregate"]["recall@1"], 1.0)
+
+    def test_partial_unresolved_anchor_is_counted_without_skipping_query(self) -> None:
+        gold = {
+            "queries": [
+                {
+                    "query_id": "partly-stale",
+                    "query": "withdrawal",
+                    "relevant": [
+                        {"document_id": "doc-a", "contains": "withdraw consent"},
+                        {"document_id": "doc-a", "contains": "phrase that is gone"},
+                    ],
+                }
+            ]
+        }
+        result = evaluate_gold_set(gold, CHUNKS, _stub_retriever(["doc_a_p1_c0"]))
+        self.assertEqual(result["query_count"], 1)
+        self.assertEqual(result["skipped_count"], 0)
+        self.assertEqual(result["unresolved_anchor_count"], 1)
+        self.assertEqual(result["unresolved_query_count"], 1)
 
     def test_query_with_unresolvable_anchors_is_skipped_not_scored(self) -> None:
         gold = {
@@ -187,6 +208,8 @@ class TestEvaluateGoldSet(unittest.TestCase):
         result = evaluate_gold_set(gold, CHUNKS, _stub_retriever(["doc_a_p1_c0"]))
         self.assertEqual(result["query_count"], 0)
         self.assertEqual(result["skipped_count"], 1)
+        self.assertEqual(result["unresolved_anchor_count"], 1)
+        self.assertEqual(result["unresolved_query_count"], 1)
         self.assertEqual(result["skipped"][0]["reason"], "no_gold_anchor_resolved")
 
     def test_jurisdiction_is_passed_to_retriever(self) -> None:
@@ -221,7 +244,8 @@ class TestEvaluateGoldSet(unittest.TestCase):
         }
         result = evaluate_gold_set(gold, CHUNKS, _stub_retriever(["doc_a_p1_c0"]), ks=[1])
         md = format_markdown_report(result)
-        self.assertIn("Recall@k", md)
+        self.assertIn("Provision recall@k", md)
+        self.assertIn("0 unresolved anchors", md)
         self.assertIn("q1", md)
 
 
@@ -258,6 +282,23 @@ class TestLoadGoldSet(unittest.TestCase):
         self.assertGreaterEqual(len(data["queries"]), 10)
         for q in data["queries"]:
             self.assertTrue(q.get("relevant"), f"{q.get('query_id')} has no anchors")
+
+    def test_real_gold_set_resolves_against_checked_in_store(self) -> None:
+        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        gold = load_gold_set(os.path.join(repo_root, "examples", "eval", "gold_ga4gh.yaml"))
+        with open(
+            os.path.join(repo_root, "data", "regbot_store", "manifest.json"),
+            encoding="utf-8",
+        ) as f:
+            chunks = json.load(f)["chunks"]
+
+        unresolved = []
+        for query in gold["queries"]:
+            _, stale = resolve_anchors(query.get("relevant"), chunks)
+            if stale:
+                unresolved.append((query.get("query_id"), stale))
+
+        self.assertEqual(unresolved, [])
 
 
 if __name__ == "__main__":

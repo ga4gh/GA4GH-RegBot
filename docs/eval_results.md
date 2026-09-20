@@ -8,17 +8,75 @@ Reproduce:
 
 ```bash
 python -m src.main ingest-manifest --reset
-python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml --label baseline
+python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml \
+  --label corpus-v0.6 --min-provision-recall 0.90
 ```
 
 > **Status:** the gold set was drafted by the contributor and is **not yet mentor-reviewed**.
-> Numbers below are a working baseline for the Phase 2 discussion, not a validated benchmark.
-> They describe the 51-document snapshot. Manifest v0.6 now contains 85 documents
-> (8,081 chunks) and should be re-benchmarked only after the pending gold-set review.
+> The current 85-document run is an engineering regression baseline, not an independently
+> validated benchmark or a legal-quality claim. Independent review remains pending.
 
 ---
 
-## 1. Setup
+## 0. Current full-corpus engineering baseline
+
+Run on 2026-08-10 against manifest v0.6 and gold v0.9:
+
+| | |
+|---|---|
+| Corpus | **85 documents / 8,081 chunks** — 6,531 primary / 1,540 reference translations / 10 summary chunks |
+| Gold set | **41 queries / 56 anchors**; 41 scored, 0 skipped, **0 unresolved anchors** |
+| Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, exact cosine |
+| Fusion | Scope-local BM25 + dense reciprocal-rank fusion (`max`) |
+| Environment | Python 3.12.12; pinned application dependencies from `requirements.txt` |
+
+Snapshot fingerprints (SHA-256) make the run inputs independently identifiable:
+
+- code baseline: `24a0dadd8a3c91ce99853d8fc42e6059dae0310b`;
+- checked-in store manifest: `edcf0880ff22316cca787857c4c4e01e12cfb89373f3bf1bacfabaf5ae1fedc3`;
+- corpus inventory: `626372f080bf606525f2f94957185a8d601312d8b89a207e39b90d8c4571b297`;
+- gold v0.9: `d6e46bb0cb9681cf8299a2f0ae93a53af0bd8c8eaf9580bc773fa0248e12f5be`;
+- application requirements: `39a41ac200d99cfb4ac5e73021b24696cad9d3cf18111d1821350680f9da65d5`.
+
+| k | Provision recall | Chunk recall | Precision@returned | MRR | Hit rate |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 0.5028 | 0.3246 | 0.4390 | 0.4390 | 0.4390 |
+| 3 | 0.7671 | 0.6196 | 0.2927 | 0.5732 | 0.7317 |
+| 5 | 0.8057 | 0.6358 | 0.1902 | 0.5829 | 0.7805 |
+| 8 | **0.9102** | **0.7110** | **0.1433** | **0.5945** | **0.8537** |
+
+### Reproducibility evidence
+
+Three independent benchmark processes against the checked-in store returned identical
+aggregate metrics, per-query rankings, and scores. A fourth run after a clean 85-document
+`ingest-manifest --reset` into a new store was also bit-for-bit identical and resolved all
+56 anchors. The clean rebuild reported 85 ingested documents, zero missing files, and zero
+ingestion errors. This verifies repeatability of the engineering baseline; it does not
+replace independent relevance assessment.
+
+### CI threshold decision
+
+The scheduled workflow gates **macro provision recall@8 at 0.90**. This metric is preferred
+to chunk recall because a provision remains the same when an equivalent source is split into
+a different number of overlapping chunks. The observed margin is 0.0102. Given this gold
+set's denominators, losing the sole provision for any one single-provision query lowers the
+macro score by about 0.0244 and therefore fails the gate, while a small boundary movement in
+one multi-provision query can remain within tolerance. A negative-control run at threshold
+`0.911` exited non-zero as expected.
+
+Any unresolved anchor now fails `benchmark` independently of the metric threshold. This
+prevents a stale or partially stale gold set from appearing to pass after silently dropping
+labels. The `0.90` value is an **engineering regression floor**, not a release-quality
+performance assertion; it should be revisited after mentor review changes labels.
+
+For comparison, the earlier 51-document run scored provision recall@8 0.909, chunk
+recall@8 0.724, and MRR@8 0.650. Expanding the candidate corpus preserved provision-level
+coverage while reducing fragment recall and first-hit rank, which is expected when more
+topically similar sources compete for eight result positions.
+
+---
+
+## 1. Historical 51-document setup
 
 | | |
 |---|---|
@@ -784,7 +842,8 @@ Stated plainly, because the numbers look better than the evidence supports:
 ## 7. Next steps
 
 - [ ] Mentor review of the gold set — the blocking item.
-- [x] ~~Expand beyond 30 queries~~ — v0.8 has 41, all resolving against the rebuilt corpus.
+- [x] ~~Expand beyond 30 queries~~ — v0.9 has 41 queries and 56 anchors, all resolving
+      against the rebuilt corpus.
 - [x] ~~Revisit sibling boost / candidate pools~~ — larger pools did not change final
       metrics; provision diversity remains beneficial.
 - [x] ~~Replace contributor summaries with primary statutory text~~ — done, §4b.
@@ -799,11 +858,11 @@ Stated plainly, because the numbers look better than the evidence supports:
 - [x] ~~Scoped BM25 / PDF contents cleanup~~ — implemented and regression-tested (§4j).
 - [x] ~~HK, KR, SG, JP full text~~ — publisher-issued sources are in the reproducible
       51-document corpus; translation status remains explicit.
-- [x] ~~Re-run `benchmark` on the expanded corpus~~ — v0.8: 41/41 scored, provision R@8
-      0.909.
-- [ ] Wire `benchmark --min-recall` into CI as a regression gate once the gold set is
-      approved. Now viable: the benchmark is reproducible (§5), so the gate will not flake.
-      The workflow already accepts an explicit manual threshold; its scheduled default
-      remains report-only until mentor approval.
+- [x] ~~Re-run `benchmark` on the expanded corpus~~ — v0.9 against 85 documents:
+      41/41 scored, 56/56 anchors resolved, provision R@8 0.9102.
+- [x] ~~Wire the deterministic full benchmark into CI~~ — scheduled and manual runs enforce
+      `--min-provision-recall 0.90`; stale anchors independently fail the command.
+- [ ] After independent review, update labels as needed and reconfirm the engineering floor
+      before making an externally validated performance claim.
 - [x] ~~Report both precision denominators~~ — `precision@k` uses returned results and
       `precision_fixed@k` uses the requested k.

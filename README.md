@@ -5,9 +5,10 @@
 RegBot is an open-source tool for the Global Alliance for Genomics and Health [Regulatory and Ethics Work Stream (REWS)](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/) and cross-border genomic data sharing. It complements the Alliance’s Regulatory & Ethics Toolkit by retrieving GA4GH and related policy provisions against researcher-supplied consent / data-use text and returning citation-grounded JSON for DPO, IRB, and DAC review—not compliance rulings or legal advice.
 
 **Release status:** `0.1.0` release candidate. Implementation, corpus rebuild, the
-41-query contributor-labelled benchmark, API/UI checks, and local Ollama validation are
-complete. Independent mentor review of the gold set is intentionally still pending; the
-scheduled benchmark remains informational until that review. Frontend and applicable Python
+41-query contributor-labelled benchmark on the full 85-document corpus, API/UI checks, and
+local Ollama validation are complete. The scheduled benchmark now enforces the engineering
+regression floor `provision_recall@8 >= 0.90`. Independent mentor review of the gold set is
+still pending, so the measured baseline is not an independently validated performance claim. Frontend and applicable Python
 dependency audits are clean after the 2026-08-10 security update; the documented Chroma
 server-only exception does not apply to RegBot's embedded client (see
 `docs/RELEASE_CHECKLIST.md`).
@@ -15,6 +16,8 @@ server-only exception does not apply to RegBot's embedded client (see
 ## Documentation
 
 - **`docs/DESIGN.md`** — architecture, data model, evaluation plan (GSoC design doc)
+- **`docs/GSoC_FINAL_REPORT_EN.md`** / **`docs/GSoC_FINAL_REPORT.md`** — final project report in English and Chinese
+- **`docs/PRESENTATION_SCRIPT_EN.md`** — approximately 20-minute English presentation script and live-demo runbook
 - **`docs/eval_results.md`** — measured retrieval benchmark: metrics, tuning runs, threats to validity
 - **`docs/corpus_manifest.yaml`** — regulatory corpus inventory (85 documents; `content_type` marks each as `primary`, `translation`, or `summary`)
 - **`docs/CORPUS_SCOPE.md`** — inclusion criteria, regional coverage, exclusions, and the rule for reopening the corpus
@@ -32,7 +35,9 @@ server-only exception does not apply to RegBot's embedded client (see
 - **Citation grounding (programmatic):** Each `recommendations[]` item must be `{ "text": "...", "evidence_chunk_ids": ["..."] }` with ids taken **only** from retrieved chunks; optional `citations[]` must also respect the same allow-list. Failed LLM checks trigger **automatic rewrite requests** with the allow-list; both LLM and offline-fallback recommendations pass token-overlap filtering (`REGBOT_MIN_TOKEN_OVERLAP`).
 - **Reviewable evidence:** every recommendation carries `evidence[]` with the source document, page, a **verbatim quote** from the cited chunk, the jurisdiction, and a `governance_hint` naming the body that normally reviews that scope (DPO / IRB / DAC). Quotes are copied, never generated.
 - **Fail-safe escalation:** when retrieval is thin, grounding fails, or the overlap filter drops any recommendation, the report sets `needs_human_review` with a `review_reason` (`weak_retrieval` / `grounding_failed` / `low_overlap`) instead of presenting incomplete output as an answer.
-- **Retrieval benchmark:** `benchmark` subcommand scores retrieval against a gold set (Recall@k / Precision@k / MRR) and can gate CI via `--min-recall`. Results: `docs/eval_results.md`.
+- **Retrieval benchmark:** `benchmark` scores provision recall, chunk recall, precision, MRR,
+  and hit rate. CI uses `--min-provision-recall 0.90`; any unresolved gold anchor fails the
+  command before metrics can pass. Results: `docs/eval_results.md`.
 - **PDF eval harness:** `eval` subcommand ingests a real GA4GH PDF and prints retrieval hits for built-in or custom queries (manual inspection; use `benchmark` for scored evaluation).
 
 ## Quickstart (development)
@@ -182,23 +187,25 @@ Optionally append a full compliance JSON report for a consent file:
 python -m src.main eval --pdf path/to/ga4gh_policy.pdf --reset --consent path/to/consent.txt
 ```
 
-Score retrieval against the gold set (Recall@k / Precision@k / MRR):
+Score retrieval against the gold set (provision/chunk Recall@k, Precision@k, MRR, Hit@k):
 
 ```bash
 python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml
 ```
 
-Write a Markdown table, or optionally fail below a recall threshold (CI gate):
+Write a Markdown table, or enforce the repository's engineering regression floor:
 
 ```bash
 python -m src.main benchmark --markdown /tmp/regbot-benchmark.md
-python -m src.main benchmark --min-recall 0.70
+python -m src.main benchmark --min-provision-recall 0.90
 ```
 
-The threshold applies to macro recall at the largest requested `--ks` value (default:
-`recall@8`). Do not use it as a required release gate until the gold labels are independently
-reviewed. Run `python -m src.main --help` or append `--help` to any subcommand for the full
-CLI reference.
+The provision threshold applies at the largest requested `--ks` value (default:
+`provision_recall@8`). The legacy `--min-recall` flag remains available for chunk-level
+diagnostics. The `0.90` floor is an internal regression gate against the deterministic
+contributor-labelled baseline, not a claim of external validity; independent review remains
+required before quoting it as product performance. Run `python -m src.main --help` or append
+`--help` to any subcommand for the full CLI reference.
 
 ## Verification
 
