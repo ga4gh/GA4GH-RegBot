@@ -136,7 +136,7 @@ Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDI
 
 Each ingested unit is addressable for retrieval, BM25, and citation verification.
 
-**Implemented today** (8,081 chunks; `section` where the source is line-structured):
+**Implemented today** (8,078 chunks; `section` where the source is line-structured):
 
 ```json
 {
@@ -170,12 +170,12 @@ Each ingested unit is addressable for retrieval, BM25, and citation verification
 the underlying clause, so the distinction is machine-readable rather than left to a
 disclaimer inside the text, and both UIs badge a `summary` citation in red.
 
-The last benchmarked 51-document snapshot contains 3,211 primary-source chunks, 1,190
-reference-translation chunks, and 15 contributor-summary chunks. Manifest v0.6 contains
-85 documents and the rebuilt store contains 8,081 chunks: 6,531 primary-source, 1,540
-reference-translation, and 10 contributor-summary chunks. This larger corpus has not been
-benchmarked because the gold set still awaits independent mentor review. Its bounded source
-scope is complete under [`CORPUS_SCOPE.md`](CORPUS_SCOPE.md). Regional full text is present
+Manifest v0.6 contains 85 documents and the rebuilt store contains 8,078 chunks: 6,528
+primary-source, 1,540 reference-translation, and 10 contributor-summary chunks. Gold v0.9
+resolves all 56 anchors and the formal contributor-labelled engineering run scores
+provision recall@8 0.9102; the independent mentor review needed for an externally validated
+claim is still pending. Its bounded source scope is complete under
+[`CORPUS_SCOPE.md`](CORPUS_SCOPE.md). Regional full text is present
 for SG, CN, TW, KR, JP and HK;
 `content_type` keeps translations and the small residual summary set visibly distinct from
 authentic-language primary law. Chinese primary texts use character-bigram BM25 tokens,
@@ -186,7 +186,7 @@ short standalone lines between blank lines, rejecting `Key: value` front matter,
 items, multi-sentence prose, unbalanced parentheses, and lines ending on a continuation
 word. Chunks inherit the nearest heading at or before their start offset.
 
-Coverage is 3,764/8,081 chunks (47%) — line-structured statutes expose reliable headings,
+Coverage is 3,764/8,078 chunks (47%) — line-structured statutes expose reliable headings,
 while the larger PDF corpus lowers the percentage. The official GDPR text is line-structured, so all 99
 Articles are detected and a heading is merged with its title (`Article 9 — Processing of
 special categories of personal data`). **Nearly all PDF chunks have no `section`**
@@ -333,21 +333,23 @@ These rules are **code-enforced** on the LLM path:
 ### 4.2 Retrieval benchmark (Phase 2)
 
 **Gold set:** [`examples/eval/gold_ga4gh.yaml`](../examples/eval/gold_ga4gh.yaml) — 41
-queries with `(query, relevant[], optional jurisdiction)`. **Drafted, not yet
-mentor-reviewed.**
+queries and 56 anchors with `(query, relevant[], optional jurisdiction)`. **Drafted, not
+yet mentor-reviewed; suitable for engineering regression detection, not external validation.**
 
 Labels are **anchors** (`document_id` + `contains` phrase), not literal `chunk_id`s: chunk
-ids embed a hash of the absolute ingest path, so an id recorded on one machine never
-resolves on another. Anchors resolve against the live manifest at benchmark time, which
+ids contain a source-content hash, page, and chunk index, so source or extraction changes
+can invalidate a literal id. Anchors resolve against the live manifest at benchmark time, which
 keeps the gold set portable across re-ingests and contributors. An anchor matching nothing
-is reported as `unresolved_anchors`; a query whose anchors all fail is **skipped rather
-than scored**, so a stale gold set fails loudly instead of inflating recall.
+is reported as `unresolved_anchors`; the CLI exits non-zero if **any** anchor is unresolved,
+including partially stale queries, so a degraded label set cannot pass by scoring only its
+surviving anchors.
 
 **Metrics:**
 
 | Metric | Use |
 |--------|-----|
-| **Recall@k** | Primary; are gold chunks in top-k? |
+| **Provision Recall@k** | Primary engineering gate; are the labelled rules represented in top-k, independent of equivalent chunk splits? |
+| Chunk Recall@k | Diagnostic; how many labelled chunk fragments are in top-k? |
 | **Precision@k** | Noise in top-k for reviewers |
 | **MRR** | Rank of first relevant chunk |
 
@@ -357,9 +359,12 @@ than scored**, so a stale gold set fails loudly instead of inflating recall.
 2. Score retrieval: `python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml`.
 3. Tune via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDIDATES` / `top_k`; record runs
    in [`eval_results.md`](eval_results.md).
-4. `--min-recall` exits non-zero below a threshold, so the benchmark can gate CI once the
-   gold set is approved. Metric logic is unit-tested with a stub retriever
-   (`tests/test_evaluation.py`), so CI needs no embedding model.
+4. `--min-provision-recall 0.90` enforces the scheduled full-pipeline engineering gate at
+   the default `k=8`; `--min-recall` remains available for chunk-level experiments. The
+   baseline is contributor-labelled and therefore must not be described as independent
+   validation until mentor review is complete.
+5. Metric logic and stale-anchor handling are unit-tested with a stub retriever. The
+   scheduled job rebuilds the full store and runs the real embedding pipeline.
 
 **Re-review the gold set on every corpus change.** Growing the corpus from 13 to 22
 documents silently invalidated v0.1: newly ingested briefs were topically relevant to

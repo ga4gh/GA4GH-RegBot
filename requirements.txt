@@ -1,5 +1,5 @@
-# RegBot only uses Chroma's in-process PersistentClient. PYSEC-2026-311 affects the
-# separately exposed, unauthenticated Chroma FastAPI server, which RegBot never starts.
+# RegBot uses Chroma's in-process PersistentClient, not its HTTP server. The server-only
+# audit exceptions are individually reviewed in docs/RELEASE_CHECKLIST.md.
 chromadb==1.5.9
 pydantic-settings>=2.0.0,<3.0.0
 openai==1.7.0
@@ -8,7 +8,7 @@ streamlit==1.61.1
 fastapi>=0.109.0,<1.0.0
 uvicorn[standard]>=0.27.0,<1.0.0
 python-multipart>=0.0.6,<1.0.0
-pypdf==6.15.0
+pypdf==6.16.1
 python-dotenv==1.2.2
 tiktoken==0.5.2; python_version < "3.14"
 sentence-transformers==5.7.0

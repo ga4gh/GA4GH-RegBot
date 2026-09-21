@@ -2,13 +2,15 @@
 Retrieval benchmark for the GSoC Phase 2 gold set (see docs/DESIGN.md §4.2).
 
 Gold labels are stored as *anchors* (``document_id`` + ``contains`` / ``page``), not raw
-chunk ids: chunk ids embed a hash of the ingest path, so a literal id recorded on one
-machine will not resolve on another. Anchors are resolved against the live store manifest
-at evaluation time, which keeps the gold set portable across re-ingests and contributors.
+chunk ids: chunk ids include a source-content hash, page, and chunk index, and can change
+when source bytes or extraction boundaries change. Anchors are resolved against the live
+store manifest at evaluation time, keeping labels independent of literal chunk identifiers.
 
 Metrics reported per query and macro-averaged over the set:
 
-``recall@k``     fraction of gold chunks present in the top-k results (primary metric)
+``provision_recall@k`` fraction of gold provisions represented in the top-k results
+                 (primary regression metric; stable across chunk-boundary changes)
+``recall@k``     fraction of gold chunks present in the top-k results (diagnostic)
 ``precision@k``  fraction of *returned* results that are gold (denominator is the number
                  actually returned, not k, so a small corpus is not penalised for
                  returning fewer than k candidates; ``returned`` is recorded per query)
@@ -187,6 +189,8 @@ def evaluate_gold_set(
 
     per_query: List[Dict[str, Any]] = []
     skipped: List[Dict[str, Any]] = []
+    unresolved_anchor_count = 0
+    unresolved_query_count = 0
 
     for entry in gold.get("queries") or []:
         query = str(entry.get("query") or "").strip()
@@ -197,6 +201,9 @@ def evaluate_gold_set(
         jurisdiction_list = [str(j) for j in jurisdiction] if jurisdiction else None
 
         gold_ids, unresolved = resolve_anchors(entry.get("relevant"), chunks)
+        if unresolved:
+            unresolved_anchor_count += len(unresolved)
+            unresolved_query_count += 1
 
         if not gold_ids:
             skipped.append(
@@ -248,6 +255,8 @@ def evaluate_gold_set(
         "ks": list(ks),
         "query_count": len(per_query),
         "skipped_count": len(skipped),
+        "unresolved_anchor_count": unresolved_anchor_count,
+        "unresolved_query_count": unresolved_query_count,
         "aggregate": aggregate,
         "per_query": per_query,
         "skipped": skipped,
@@ -265,14 +274,21 @@ def format_markdown_report(result: Dict[str, Any]) -> str:
     lines.append(
         f"Gold set version `{result.get('gold_set_version') or 'n/a'}` · "
         f"{result.get('query_count', 0)} scored queries · "
-        f"{result.get('skipped_count', 0)} skipped"
+        f"{result.get('skipped_count', 0)} skipped · "
+        f"{result.get('unresolved_anchor_count', 0)} unresolved anchors"
     )
     lines.append("")
-    lines.append("| k | Recall@k | Precision@returned | Precision@fixed-k | MRR@k | Hit@k |")
-    lines.append("|---|----------|--------------------|-------------------|-------|-------|")
+    lines.append(
+        "| k | Provision recall@k | Chunk recall@k | Precision@returned "
+        "| Precision@fixed-k | MRR@k | Hit@k |"
+    )
+    lines.append(
+        "|---|--------------------|----------------|--------------------|-------------------|-------|-------|"
+    )
     for k in ks:
         lines.append(
             f"| {k} "
+            f"| {agg.get(f'provision_recall@{k}', 0):.3f} "
             f"| {agg.get(f'recall@{k}', 0):.3f} "
             f"| {agg.get(f'precision@{k}', 0):.3f} "
             f"| {agg.get(f'precision_fixed@{k}', 0):.3f} "

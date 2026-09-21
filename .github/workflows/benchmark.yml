@@ -4,19 +4,19 @@ name: Retrieval benchmark
 # (~90 MB) and takes minutes. The metric logic itself is unit-tested in the fast CI
 # job (tests/test_evaluation.py stubs the retriever), so PRs still catch scoring bugs.
 #
-# This job measures the real pipeline end to end. It is currently informational —
-# `--min-recall` is deliberately not set, because the gold set is contributor-drafted
-# and not yet mentor-reviewed (see docs/eval_results.md). Once it is approved, add
-# `--min-recall <threshold>` to turn this into a regression gate. Retrieval is
-# deterministic as of the exact-cosine fix, so a gate here will not flake.
+# This job measures the real pipeline end to end. It is an engineering regression gate,
+# not an independently validated performance claim: the gold set is contributor-labelled
+# and still awaits mentor review (see docs/eval_results.md). Provision recall is used
+# because it is stable across equivalent chunk-boundary changes. Retrieval is deterministic
+# as of the exact-cosine fix, so the gate does not depend on approximate-index ordering.
 
 on:
   workflow_dispatch:
     inputs:
-      min_recall:
-        description: "Fail if macro recall at the largest k is below this (blank = report only)"
-        required: false
-        default: ""
+      min_provision_recall:
+        description: "Fail if macro provision recall at the largest k is below this"
+        required: true
+        default: "0.90"
   schedule:
     # Mondays 06:00 UTC — catches drift from dependency bumps.
     - cron: "0 6 * * 1"
@@ -47,12 +47,14 @@ jobs:
         run: python -m src.main ingest-manifest --reset
 
       - name: Run benchmark
+        env:
+          MIN_PROVISION_RECALL: ${{ github.event.inputs.min_provision_recall || '0.90' }}
         run: |
-          ARGS="--markdown benchmark_report.md"
-          if [ -n "${{ github.event.inputs.min_recall }}" ]; then
-            ARGS="$ARGS --min-recall ${{ github.event.inputs.min_recall }}"
-          fi
-          python -m src.main benchmark $ARGS | tee benchmark_result.json
+          set -o pipefail
+          python -m src.main benchmark \
+            --markdown benchmark_report.md \
+            --min-provision-recall "$MIN_PROVISION_RECALL" \
+            | tee benchmark_result.json
 
       - name: Summary
         if: always()

@@ -9,9 +9,9 @@
 #   page:        <page number>                   (optional extra constraint)
 #   chunk_id:    <literal id>                    (escape hatch; not portable)
 #
-# An anchor that resolves to nothing is reported as `unresolved_anchors`, and a query whose
-# anchors all fail is SKIPPED rather than scored — a stale gold set fails loudly instead of
-# silently inflating recall.
+# An anchor that resolves to nothing is reported as `unresolved_anchors`. The benchmark CLI
+# exits non-zero if any anchor is unresolved (including partially stale queries), so stale
+# labels cannot pass by silently shrinking the scoring set.
 #
 # `jurisdiction` sets the retrieval filter for that query. Queries with regional scope use
 # a filter (the realistic usage pattern, and it exercises the filter path); framework-level
@@ -22,8 +22,8 @@
 # STATUS: drafted by the contributor. NOT YET MENTOR-REVIEWED — see docs/eval_results.md
 # before quoting these numbers.
 
-version: '0.8'
-updated: '2026-08-09'
+version: '0.9'
+updated: '2026-08-10'
 notes: >-
   v0.3 — re-anchored after the P0/P1 corpus moved from contributor paraphrases to primary
   sources (official GDPR text from EUR-Lex, GA4GH published documents). Anchors now point
@@ -42,6 +42,11 @@ notes: >-
   with v2.0 and adds five labels for current GA4GH policy products. The contributor labels
   and anchors are mechanically
   checked against the live corpus, but this set remains NOT YET MENTOR-REVIEWED.
+  v0.9 re-anchors the Japan transfer query from the retired contributor summary onto
+  APPI Article 28's official text, covering consent and the equivalent-measures route.
+  It also shortens the GA4GH re-identification anchor so it remains inside one chunk after
+  the v2.0 policy's final heading-aware re-ingest. All 56 anchors resolve against the
+  85-document, 8,081-chunk corpus v0.6 store.
 
 queries:
   - query_id: q01-withdrawal-ga4gh
@@ -100,8 +105,11 @@ queries:
     query: What mechanisms permit transferring personal data out of Japan for research?
     jurisdiction: [JP]
     relevant:
-      - document_id: jp-law-excerpt
-        contains: standard contractual clauses approved by PPC
+      # APPI Art. 28 — consent, an equivalent protection system, or an equivalent country.
+      - document_id: jp-appi
+        contains: must obtain an identifiable person's consent to the effect that the person approves the provision to a third party in a foreign country
+      - document_id: jp-appi
+        contains: establishes a system that conforms to standards prescribed by Order of the Personal Information Protection Commission
 
   - query_id: q07-kr-separate-consent
     query: Does Korean law require separate consent for sensitive genetic data?
@@ -144,7 +152,7 @@ queries:
       - document_id: ga4gh-consent-policy
         contains: risk of re-identifying individuals
       - document_id: ga4gh-privacy-security-policy
-        contains: Any attempt to re-identify individuals should be strictly prohibited
+        contains: Any attempt to re-identify individuals
 
   - query_id: q12-duo-consent-codes
     query: How do machine-readable consent codes and DUO support Data Access Committee review?
