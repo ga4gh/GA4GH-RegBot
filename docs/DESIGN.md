@@ -136,7 +136,7 @@ Pool sizes are overridable via `REGBOT_SEMANTIC_CANDIDATES` / `REGBOT_BM25_CANDI
 
 Each ingested unit is addressable for retrieval, BM25, and citation verification.
 
-**Implemented today** (8,081 chunks; `section` where the source is line-structured):
+**Implemented today** (8,078 chunks; `section` where the source is line-structured):
 
 ```json
 {
@@ -170,7 +170,7 @@ Each ingested unit is addressable for retrieval, BM25, and citation verification
 the underlying clause, so the distinction is machine-readable rather than left to a
 disclaimer inside the text, and both UIs badge a `summary` citation in red.
 
-Manifest v0.6 contains 85 documents and the rebuilt store contains 8,081 chunks: 6,531
+Manifest v0.6 contains 85 documents and the rebuilt store contains 8,078 chunks: 6,528
 primary-source, 1,540 reference-translation, and 10 contributor-summary chunks. Gold v0.9
 resolves all 56 anchors and the formal contributor-labelled engineering run scores
 provision recall@8 0.9102; the independent mentor review needed for an externally validated
@@ -186,7 +186,7 @@ short standalone lines between blank lines, rejecting `Key: value` front matter,
 items, multi-sentence prose, unbalanced parentheses, and lines ending on a continuation
 word. Chunks inherit the nearest heading at or before their start offset.
 
-Coverage is 3,764/8,081 chunks (47%) — line-structured statutes expose reliable headings,
+Coverage is 3,764/8,078 chunks (47%) — line-structured statutes expose reliable headings,
 while the larger PDF corpus lowers the percentage. The official GDPR text is line-structured, so all 99
 Articles are detected and a heading is merged with its title (`Article 9 — Processing of
 special categories of personal data`). **Nearly all PDF chunks have no `section`**
@@ -337,8 +337,8 @@ queries and 56 anchors with `(query, relevant[], optional jurisdiction)`. **Draf
 yet mentor-reviewed; suitable for engineering regression detection, not external validation.**
 
 Labels are **anchors** (`document_id` + `contains` phrase), not literal `chunk_id`s: chunk
-ids embed a hash of the absolute ingest path, so an id recorded on one machine never
-resolves on another. Anchors resolve against the live manifest at benchmark time, which
+ids contain a source-content hash, page, and chunk index, so source or extraction changes
+can invalidate a literal id. Anchors resolve against the live manifest at benchmark time, which
 keeps the gold set portable across re-ingests and contributors. An anchor matching nothing
 is reported as `unresolved_anchors`; the CLI exits non-zero if **any** anchor is unresolved,
 including partially stale queries, so a degraded label set cannot pass by scoring only its

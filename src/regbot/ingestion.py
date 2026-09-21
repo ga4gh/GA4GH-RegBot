@@ -89,7 +89,10 @@ def _strip_pdf_front_matter(pages: List[str]) -> List[str]:
             (
                 i
                 for i, text in enumerate(pages[arrangement + 1 : 20], start=arrangement + 1)
-                if re.search(r"\bAn\s+Act\s+to\b", text, flags=re.IGNORECASE)
+                # Newer PDF extraction can collapse the opening to "AnActtoprovide".
+                # Require a recognized contents section and an operative opening;
+                # keep the extracted body unchanged rather than guessing word breaks.
+                if re.search(r"\bAn\s*Act\s*to(?:\s+|(?=provide))", text, flags=re.IGNORECASE)
             ),
             None,
         )
@@ -140,9 +143,88 @@ def _repair_pdf_text(text: str) -> str:
     return text
 
 
+def _needs_statutory_layout(pages: List[str]) -> bool:
+    """Recognize the audited plain-extraction failure without inferring word breaks."""
+    arrangement = next(
+        (i for i, text in enumerate(pages[:12]) if "ARRANGEMENT OF SECTIONS" in text.upper()),
+        None,
+    )
+    return arrangement is not None and any(
+        re.search(r"\bAnActtoprovide", text, flags=re.IGNORECASE)
+        for text in pages[arrangement + 1 : 20]
+    )
+
+
+def _clean_statutory_layout(text: str) -> str:
+    """Remove confirmed margin line-number runs before collapsing layout spacing.
+
+    A run needs three aligned numbers increasing by five on every fifth text row,
+    separated from all intervening body text. Adjacent table rows, isolated numbers,
+    and uncertain columns remain untouched. Column tolerance allows layout-mode
+    rounding differences between single- and double-digit numbers.
+    """
+    lines = text.splitlines()
+    for side, pattern in (
+        ("left", re.compile(r"^ *(?P<number>\d{1,3}) {3,}(?=\S)")),
+        ("right", re.compile(r" {3,}(?P<number>\d{1,3}) *$")),
+    ):
+        runs: List[List[Tuple[int, int, int, int]]] = []
+        for row, line in enumerate(lines):
+            match = pattern.search(line)
+            if match is None:
+                continue
+            value = int(match.group("number"))
+            start, end = match.span("number")
+            if value == 0 or value % 5 or (side == "right" and not line[:start].strip()):
+                continue
+            item = (row, start, end, value)
+            if (
+                runs
+                and row - runs[-1][-1][0] == 5
+                and value - runs[-1][-1][3] == 5
+                and abs(start - runs[-1][-1][1]) <= 8
+            ):
+                runs[-1].append(item)
+            else:
+                runs.append([item])
+
+        for run in runs:
+            if len(run) < 3 or max(item[1] for item in run) - min(item[1] for item in run) > 8:
+                continue
+            body = lines[run[0][0] : run[-1][0] + 1]
+            for row, start, end, _ in run:
+                offset = row - run[0][0]
+                body[offset] = body[offset][:start] + " " * (end - start) + body[offset][end:]
+            if side == "left":
+                boundary = max(item[2] for item in run) + 3
+                outside_body = all(
+                    len(line) - len(line.lstrip(" ")) >= boundary for line in body if line.strip()
+                )
+            else:
+                boundary = min(item[1] for item in run) - 3
+                outside_body = all(len(line.rstrip()) <= boundary for line in body)
+            if outside_body:
+                lines[run[0][0] : run[-1][0] + 1] = body
+
+    return "\n".join(re.sub(r"[ \t]+", " ", line).strip() for line in lines)
+
+
 def _load_pdf(path: str) -> List[Tuple[str, int]]:
     reader = PdfReader(path)
     raw_pages = [_repair_pdf_text(page.extract_text() or "") for page in reader.pages]
+    if _needs_statutory_layout(raw_pages):
+        logging.getLogger(__name__).info(
+            "Using layout extraction for collapsed statutory word spacing in %s", path
+        )
+        raw_pages = [
+            _repair_pdf_text(
+                _clean_statutory_layout(
+                    page.extract_text(extraction_mode="layout", layout_mode_space_vertically=False)
+                    or ""
+                )
+            )
+            for page in reader.pages
+        ]
     raw_pages = _strip_pdf_front_matter(raw_pages)
     running = _running_lines(raw_pages)
     return [(_strip_running_lines(t, running), i + 1) for i, t in enumerate(raw_pages)]

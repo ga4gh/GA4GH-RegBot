@@ -99,6 +99,8 @@ export type StoreMeta = {
   store_dir: string;
   jurisdictions: string[];
   corpus_document_count: number;
+  manifest_chunk_count: number;
+  retrieval_ready: boolean;
   llm_hint: string;
 };
 

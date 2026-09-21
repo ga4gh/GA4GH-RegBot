@@ -100,4 +100,6 @@ class StoreMetaResponse(BaseModel):
     store_dir: str
     jurisdictions: List[str]
     corpus_document_count: int
+    manifest_chunk_count: int
+    retrieval_ready: bool
     llm_hint: str

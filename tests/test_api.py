@@ -162,6 +162,16 @@ class TestMetaEndpoints(unittest.TestCase):
         r = client.get("/api/meta/store", params={"store_dir": "./data/regbot_store"})
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.json()["store_dir"], "./data/regbot_store")
+        self.assertGreater(r.json()["manifest_chunk_count"], 0)
+        self.assertIsInstance(r.json()["retrieval_ready"], bool)
+
+    def test_store_meta_distinguishes_manifest_from_vector_index(self) -> None:
+        store = _store_with_manifest()
+        r = client.get("/api/meta/store", params={"store_dir": store})
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()["manifest_chunk_count"], 2)
+        self.assertEqual(r.json()["jurisdictions"], ["EU", "SG"])
+        self.assertFalse(r.json()["retrieval_ready"])
 
     def test_broken_corpus_inventory_is_not_silently_reported_as_empty(self) -> None:
         with mock.patch(
@@ -303,9 +313,12 @@ class TestCheckEndpoint(unittest.TestCase):
             "grounding": {"ok": True},
             "needs_human_review": False,
         }
-        with mock.patch(
-            "src.main.RegBot.compliance_report_and_chunks",
-            return_value=(report, CHUNKS[:1]),
+        with (
+            mock.patch("src.main.RegBot.is_retrieval_ready", return_value=True),
+            mock.patch(
+                "src.main.RegBot.compliance_report_and_chunks",
+                return_value=(report, CHUNKS[:1]),
+            ),
         ):
             r = client.post(
                 "/api/check",
@@ -319,18 +332,24 @@ class TestCheckEndpoint(unittest.TestCase):
         self.assertFalse(body["report"]["needs_human_review"])
 
     def test_scope_label_when_no_filter_selected(self) -> None:
-        with mock.patch(
-            "src.main.RegBot.compliance_report_and_chunks",
-            return_value=({"coverage": "unknown"}, []),
+        with (
+            mock.patch("src.main.RegBot.is_retrieval_ready", return_value=True),
+            mock.patch(
+                "src.main.RegBot.compliance_report_and_chunks",
+                return_value=({"coverage": "unknown"}, []),
+            ),
         ):
             r = client.post("/api/check", json={"consent_text": "text"})
         self.assertEqual(r.json()["scope"], "all jurisdictions")
 
     def test_embedding_failure_returns_setup_instructions(self) -> None:
-        with mock.patch(
-            "src.main.RegBot.compliance_report_and_chunks",
-            side_effect=RuntimeError(
-                "Could not reach the Hugging Face Hub for the embedding model /private/cache"
+        with (
+            mock.patch("src.main.RegBot.is_retrieval_ready", return_value=True),
+            mock.patch(
+                "src.main.RegBot.compliance_report_and_chunks",
+                side_effect=RuntimeError(
+                    "Could not reach the Hugging Face Hub for the embedding model /private/cache"
+                ),
             ),
         ):
             r = client.post("/api/check", json={"consent_text": "text"})
@@ -340,6 +359,17 @@ class TestCheckEndpoint(unittest.TestCase):
         self.assertIn("REGBOT_HF_ENDPOINT", detail["action"])
         self.assertNotIn("/private/cache", json.dumps(detail))
 
+    def test_missing_vector_index_returns_service_unavailable(self) -> None:
+        store = _store_with_manifest()
+        r = client.post(
+            "/api/check",
+            json={"consent_text": "We share genomic data.", "store_dir": store},
+        )
+        self.assertEqual(r.status_code, 503)
+        detail = r.json()["detail"]
+        self.assertEqual(detail["code"], "CORPUS_STORE_UNAVAILABLE")
+        self.assertIn("ingest-manifest --reset", detail["action"])
+
 
 class TestChatEndpoint(unittest.TestCase):
     def test_empty_messages_prompts_for_input(self) -> None:
@@ -348,13 +378,28 @@ class TestChatEndpoint(unittest.TestCase):
         self.assertIn("Please enter a question", r.json()["reply"])
 
     def test_no_matching_chunks_explains_instead_of_failing(self) -> None:
-        with mock.patch("src.main.RegBot.retrieve_relevant_clauses", return_value=[]):
+        with (
+            mock.patch("src.main.RegBot.is_retrieval_ready", return_value=True),
+            mock.patch("src.main.RegBot.retrieve_relevant_clauses", return_value=[]),
+        ):
             r = client.post(
                 "/api/chat",
                 json={"messages": [{"role": "user", "content": "What about transfers?"}]},
             )
         self.assertEqual(r.status_code, 200)
         self.assertIn("No policy chunks matched", r.json()["reply"])
+
+    def test_missing_vector_index_returns_service_unavailable(self) -> None:
+        store = _store_with_manifest()
+        r = client.post(
+            "/api/chat",
+            json={
+                "messages": [{"role": "user", "content": "What about transfers?"}],
+                "store_dir": store,
+            },
+        )
+        self.assertEqual(r.status_code, 503)
+        self.assertEqual(r.json()["detail"]["code"], "CORPUS_STORE_UNAVAILABLE")
 
     def test_uses_supplied_chunks_without_re_retrieving(self) -> None:
         store = _store_with_manifest()
@@ -406,9 +451,12 @@ class TestChatEndpoint(unittest.TestCase):
         self.assertEqual(r.status_code, 422)
 
     def test_unexpected_chat_failure_is_safe_and_actionable(self) -> None:
-        with mock.patch(
-            "src.main.RegBot.retrieve_relevant_clauses",
-            side_effect=RuntimeError("sensitive internal failure at /private/store"),
+        with (
+            mock.patch("src.main.RegBot.is_retrieval_ready", return_value=True),
+            mock.patch(
+                "src.main.RegBot.retrieve_relevant_clauses",
+                side_effect=RuntimeError("sensitive internal failure at /private/store"),
+            ),
         ):
             r = client.post(
                 "/api/chat",

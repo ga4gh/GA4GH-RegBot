@@ -3,7 +3,7 @@
 import os
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, call, patch
 
 
 class TestPortableManifest(unittest.TestCase):
@@ -134,6 +134,21 @@ class TestPdfTextCleanup(unittest.TestCase):
         self.assertIn("An Act to", cleaned[3])
         self.assertEqual(cleaned[4], pages[4])
 
+    def test_collapsed_statutory_opening_still_removes_only_front_matter(self) -> None:
+        from src.regbot.ingestion import _strip_pdf_front_matter
+
+        pages = [
+            "Cover page",
+            "ARRANGEMENT OF SECTIONS\n1. Short title",
+            "Part 2\n3. Consent",
+            "No. 1 of 2026.\nAnActtoprovideforanationalelectronicrecordssystem",
+            "Substantive provisions",
+        ]
+        cleaned = _strip_pdf_front_matter(pages)
+        self.assertEqual(cleaned[:3], ["", "", ""])
+        self.assertEqual(cleaned[3:], pages[3:])
+        self.assertEqual(_strip_pdf_front_matter(pages[2:]), pages[2:])
+
     def test_non_statutory_document_is_unchanged(self) -> None:
         from src.regbot.ingestion import _strip_pdf_front_matter
 
@@ -162,6 +177,110 @@ class TestPdfTextCleanup(unittest.TestCase):
         self.assertIn("offence", repaired)
         self.assertIn("review", repaired)
         self.assertIn("Research", repaired)
+
+
+class TestStatutoryLayoutFallback(unittest.TestCase):
+    def _numbered_lines(self, side: str, numbers=(5, 10, 15)) -> str:
+        lines = ["            Substantive body text." for _ in range(11)]
+        for row, number in zip((0, 5, 10), numbers):
+            if side == "left":
+                lines[row] = f"{number:2}          Substantive body text."
+            else:
+                lines[row] = f"Substantive body text.{number:>40}"
+        return "\n".join(lines)
+
+    def test_removes_confirmed_left_and_right_margin_runs(self) -> None:
+        from src.regbot.ingestion import _clean_statutory_layout
+
+        for side in ("left", "right"):
+            with self.subTest(side=side):
+                cleaned = _clean_statutory_layout(self._numbered_lines(side))
+                self.assertEqual(cleaned.splitlines(), ["Substantive body text."] * 11)
+
+    def test_keeps_nonsequential_numbers_and_short_runs(self) -> None:
+        from src.regbot.ingestion import _clean_statutory_layout
+
+        for side in ("left", "right"):
+            for numbers in ((5, 15, 25), (5, 10)):
+                with self.subTest(side=side, numbers=numbers):
+                    text = self._numbered_lines(side, numbers)
+                    self.assertEqual(
+                        _clean_statutory_layout(text),
+                        "\n".join(" ".join(line.split()) for line in text.splitlines()),
+                    )
+
+    def test_keeps_table_values_even_when_aligned_and_increasing_by_five(self) -> None:
+        from src.regbot.ingestion import _clean_statutory_layout
+
+        for text in (
+            "Population A               5\nPopulation B              10\nPopulation C              15",
+            " 5      Population A\n10      Population B\n15      Population C",
+        ):
+            self.assertEqual(
+                _clean_statutory_layout(text),
+                "\n".join(" ".join(line.split()) for line in text.splitlines()),
+            )
+
+    def test_keeps_numbers_inside_the_body_column(self) -> None:
+        from src.regbot.ingestion import _clean_statutory_layout
+
+        for side in ("left", "right"):
+            with self.subTest(side=side):
+                lines = self._numbered_lines(side).splitlines()
+                lines[1] = "Text entering the apparent margin. " * 3
+                text = "\n".join(lines)
+                self.assertEqual(
+                    _clean_statutory_layout(text),
+                    "\n".join(" ".join(line.split()) for line in lines),
+                )
+
+    def test_fallback_requires_prior_statutory_contents_and_collapsed_opening(self) -> None:
+        from src.regbot.ingestion import _needs_statutory_layout
+
+        self.assertTrue(
+            _needs_statutory_layout(["ARRANGEMENT OF SECTIONS", "AnActtoprovideforhealth"])
+        )
+        for pages in (
+            ["Contents", "AnActtoprovideforhealth"],
+            ["ARRANGEMENT OF SECTIONS", "An Act to provide for health"],
+            ["AnActtoprovideforhealth", "ARRANGEMENT OF SECTIONS"],
+        ):
+            with self.subTest(pages=pages):
+                self.assertFalse(_needs_statutory_layout(pages))
+
+    def test_pdf_fallback_restores_words_and_preserves_original_page_numbers(self) -> None:
+        from src.regbot.ingestion import _load_pdf
+
+        cover, body = Mock(), Mock()
+        cover.extract_text.side_effect = ["ARRANGEMENT OF SECTIONS", "ARRANGEMENT OF SECTIONS"]
+        body.extract_text.side_effect = [
+            "AnActtoprovideforhealthinformation",
+            "  An   Act   to   provide   for   health   information.\n"
+            + self._numbered_lines("right"),
+        ]
+        with patch("src.regbot.ingestion.PdfReader", return_value=Mock(pages=[cover, body])):
+            result = _load_pdf("stub.pdf")
+        self.assertEqual(result[0], ("", 1))
+        self.assertEqual(result[1][1], 2)
+        self.assertTrue(result[1][0].startswith("An Act to provide for health information."))
+        self.assertNotIn("15", result[1][0])
+        for page in (cover, body):
+            self.assertEqual(
+                page.extract_text.call_args_list,
+                [call(), call(extraction_mode="layout", layout_mode_space_vertically=False)],
+            )
+
+    def test_normal_pdf_does_not_use_layout_mode(self) -> None:
+        from src.regbot.ingestion import _load_pdf
+
+        cover, body = Mock(), Mock()
+        cover.extract_text.return_value = "ARRANGEMENT OF SECTIONS"
+        body.extract_text.return_value = "An Act to provide for health information."
+        with patch("src.regbot.ingestion.PdfReader", return_value=Mock(pages=[cover, body])):
+            result = _load_pdf("stub.pdf")
+        self.assertEqual(result, [("", 1), (body.extract_text.return_value, 2)])
+        cover.extract_text.assert_called_once_with()
+        body.extract_text.assert_called_once_with()
 
 
 class TestCitableContent(unittest.TestCase):

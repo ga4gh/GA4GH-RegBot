@@ -2,9 +2,9 @@
 Retrieval benchmark for the GSoC Phase 2 gold set (see docs/DESIGN.md §4.2).
 
 Gold labels are stored as *anchors* (``document_id`` + ``contains`` / ``page``), not raw
-chunk ids: chunk ids embed a hash of the ingest path, so a literal id recorded on one
-machine will not resolve on another. Anchors are resolved against the live store manifest
-at evaluation time, which keeps the gold set portable across re-ingests and contributors.
+chunk ids: chunk ids include a source-content hash, page, and chunk index, and can change
+when source bytes or extraction boundaries change. Anchors are resolved against the live
+store manifest at evaluation time, keeping labels independent of literal chunk identifiers.
 
 Metrics reported per query and macro-averaged over the set:
 
@@ -282,7 +282,9 @@ def format_markdown_report(result: Dict[str, Any]) -> str:
         "| k | Provision recall@k | Chunk recall@k | Precision@returned "
         "| Precision@fixed-k | MRR@k | Hit@k |"
     )
-    lines.append("|---|--------------------|----------------|--------------------|-------------------|-------|-------|")
+    lines.append(
+        "|---|--------------------|----------------|--------------------|-------------------|-------|-------|"
+    )
     for k in ks:
         lines.append(
             f"| {k} "

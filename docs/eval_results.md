@@ -18,7 +18,48 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml \
 
 ---
 
-## 0. Current full-corpus engineering baseline
+## 0. Current deployment-aligned engineering baseline (2026-09-20)
+
+A clean rebuild with pypdf **6.16.1** and the current application requirements ingested
+**85 documents / 8,078 chunks** (6,528 primary, 1,540 translation, 10 summary), with no
+missing files or ingestion errors. The unchanged gold v0.9 resolved **56/56 anchors**;
+all **41 queries** were scored and none skipped. Machine-readable per-query results,
+input SHA-256 hashes and actual installed versions are in
+[`benchmarks/2026-09-20.json`](benchmarks/2026-09-20.json).
+
+| k | Provision recall | Chunk recall | Precision@returned | MRR | Hit rate |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 0.5272 | 0.3246 | 0.4390 | 0.4390 | 0.4390 |
+| 3 | 0.7915 | 0.6440 | 0.3008 | 0.5813 | 0.7561 |
+| 5 | 0.8301 | 0.6602 | 0.1951 | 0.5911 | 0.8049 |
+| 8 | 0.9102 | 0.7110 | 0.1433 | 0.5992 | 0.8537 |
+
+Two independent benchmark processes returned identical JSON results. The production
+engineering floor `--min-provision-recall 0.90` passed; the negative control `0.911`
+failed as expected. Empty or skipped query sets and any unresolved anchor also fail;
+threshold arguments must be finite values in [0, 1].
+
+### Why the snapshot changed
+
+The deployed 8,112-chunk snapshot and the historical 8,081-chunk poster snapshot used
+different PDF extraction behavior. With the current pypdf plain extractor, the Singapore
+HIA opening became `AnActtoprovide...`, preventing front-matter detection and collapsing
+words inside a gold-labelled provision. The corrected loader recognizes that specific
+statutory extraction failure and uses layout-derived spacing for the affected PDF.
+It removes only confirmed margin line-number runs, then applies the existing front-matter
+and running-header cleanup. The original PDF and gold labels are unchanged. This is an
+extraction repair, not a label adjustment to improve scores.
+
+The current snapshot is **8,078 chunks**, and MRR@8 is **0.5992**. The poster's 8,081 chunks
+and MRR@8 0.5945 remain the historical result below; provision recall@8 (0.9102) and chunk
+recall@8 (0.7110) are unchanged. Do not mix counts or metrics between these snapshots.
+This remains a contributor-labelled engineering baseline, not independent relevance or
+legal-quality validation. Linux CI and the deployed service must use the same source
+revision and requirements; the recorded local run used Python 3.12.12 on macOS, CPU.
+
+---
+
+## 0a. Historical 8,081-chunk poster baseline
 
 Run on 2026-08-10 against manifest v0.6 and gold v0.9:
 
@@ -28,7 +69,7 @@ Run on 2026-08-10 against manifest v0.6 and gold v0.9:
 | Gold set | **41 queries / 56 anchors**; 41 scored, 0 skipped, **0 unresolved anchors** |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, exact cosine |
 | Fusion | Scope-local BM25 + dense reciprocal-rank fusion (`max`) |
-| Environment | Python 3.12.12; pinned application dependencies from `requirements.txt` |
+| Environment | Python 3.12.12; historical local environment. The requirements hash below identifies the file, not the installed environment. The September poster rerun used pypdf 6.10.2, Chroma 0.5.23, sentence-transformers 2.2.2, transformers 4.36.2 and NumPy 1.26.4. |
 
 Snapshot fingerprints (SHA-256) make the run inputs independently identifiable:
 

@@ -52,6 +52,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
   >([]);
   const [storeJurisdictions, setStoreJurisdictions] = useState<string[]>([]);
   const [corpusCount, setCorpusCount] = useState(0);
+  const [manifestChunkCount, setManifestChunkCount] = useState(0);
+  const [retrievalReady, setRetrievalReady] = useState(false);
   const [llmHint, setLlmHint] = useState("");
   // Starts true: the mount effect below is already fetching by first paint.
   const [refreshing, setRefreshing] = useState(true);
@@ -76,6 +78,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
       const { meta, corpus, jur } = result;
       setStoreJurisdictions(meta.jurisdictions);
       setCorpusCount(meta.corpus_document_count);
+      setManifestChunkCount(meta.manifest_chunk_count);
+      setRetrievalReady(meta.retrieval_ready);
       setLlmHint(meta.llm_hint);
       setJurisdictions(jur);
       const urls: Record<string, string> = {};
@@ -150,14 +154,22 @@ export function RegBotApp({ user }: { user: AuthUser }) {
       <header className="border-border/70 bg-card/85 sticky top-0 z-20 border-b backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between lg:px-6">
           <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-            <Image
-              src="/global-alliance-logo.svg"
-              alt="Global Alliance for Genomics and Health"
-              width={192}
-              height={50}
-              priority
-              className="h-auto w-36 shrink-0 sm:w-40"
-            />
+            <a
+              href="https://www.ga4gh.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the GA4GH website (opens in a new tab)"
+              className="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1b75bb]"
+            >
+              <Image
+                src="/global-alliance-logo.svg"
+                alt="Global Alliance for Genomics and Health"
+                width={192}
+                height={50}
+                priority
+                className="h-auto w-36 sm:w-40"
+              />
+            </a>
             <div className="bg-border h-10 w-px shrink-0" aria-hidden="true" />
             <div className="min-w-0">
               <h1 className="text-lg font-semibold tracking-tight sm:text-xl">RegBot</h1>
@@ -200,6 +212,8 @@ export function RegBotApp({ user }: { user: AuthUser }) {
           storeJurisdictions={storeJurisdictions}
           jurisdictionOptions={jurisdictions}
           corpusCount={corpusCount}
+          manifestChunkCount={manifestChunkCount}
+          retrievalReady={retrievalReady}
           llmHint={llmHint}
           onRefresh={() => {
             setRefreshing(true);
@@ -214,6 +228,17 @@ export function RegBotApp({ user }: { user: AuthUser }) {
               <AlertCircle className="size-4" />
               <AlertTitle>API unavailable</AlertTitle>
               <AlertDescription className="whitespace-pre-line">{apiError}</AlertDescription>
+            </Alert>
+          ) : null}
+          {!apiError && !refreshing && !retrievalReady ? (
+            <Alert variant="destructive" className="mb-6">
+              <AlertCircle className="size-4" />
+              <AlertTitle>Retrieval index unavailable</AlertTitle>
+              <AlertDescription>
+                The corpus manifest can be browsed, but consent checks and unscoped chat
+                require the Chroma index. Ask an administrator to run{" "}
+                <code>python -m src.main ingest-manifest --reset</code>.
+              </AlertDescription>
             </Alert>
           ) : null}
           <Tabs defaultValue={canManageStore ? "ingest" : "corpus"} className="space-y-6">
