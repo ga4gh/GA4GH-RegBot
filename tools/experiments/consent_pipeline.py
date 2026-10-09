@@ -93,6 +93,11 @@ def prepare_text(
     treats every line as a paragraph (HTML extraction), and ``split_before`` inserts a
     paragraph break before each regex match.
     """
+    # Page furniture statistics come from the whole document: a header that recurs on
+    # every page is still a header when the start marker leaves only a few pages behind.
+    # split("\n"), not splitlines(): splitlines() treats the form feed itself as a line
+    # break, so the page-break marker would never be seen as a line.
+    counts = Counter(_norm_line(ln) for ln in text.split("\n") if ln.strip() and len(ln) < 120)
     if start_marker:
         i = _nth_index(text, start_marker, start_occurrence)
         if i >= 0:
@@ -101,21 +106,21 @@ def prepare_text(
         j = _nth_index(text, end_marker, end_occurrence)
         if j >= 0:
             text = text[:j]
+    if line_paragraphs:
+        # HTML extraction emits one paragraph per line with no blank lines between them.
+        text = "\n\n".join(ln for ln in text.split("\n") if ln.strip())
     for pattern in split_before:
         # Web pages often run several sample clauses into one paragraph ("Example 1: …
         # Example 2: …"); a split pattern inserts a paragraph break before each match.
-        text = re.sub(f"(?<!\\n\\n)(?={pattern})", "\n\n", text)
-    if line_paragraphs:
-        # HTML extraction emits one paragraph per line with no blank lines between them.
-        text = "\n\n".join(ln for ln in text.splitlines())
-    lines = text.splitlines()
-    counts = Counter(_norm_line(ln) for ln in lines if ln.strip() and len(ln) < 120)
+        text = re.sub(f"(?={pattern})", "\n\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    lines = text.split("\n")
     drops = [re.compile(p) for p in drop_patterns]
     kept: List[str] = []
     for ln in lines:
+        if "\f" in ln and not ln.replace("\f", "").strip():
+            continue  # page break: the paragraph continues on the next page
         s = ln.strip()
-        if s == "\f":
-            continue
         if s and len(ln) < 120 and counts[_norm_line(ln)] >= min_repeats:
             continue
         if s and any(d.search(ln) for d in drops):
@@ -136,7 +141,11 @@ def _is_heading(line: str, prev: str) -> bool:
     ended a sentence, which keeps hard-wrapped lines inside their paragraph.
     """
     s = line.strip()
-    if not s or len(s) > 100:
+    if not s:
+        return False
+    if _INLINE_CAPS.match(s):
+        return True
+    if len(s) > 100:
         return False
     if _HEADING.match(s):
         return True
@@ -144,8 +153,6 @@ def _is_heading(line: str, prev: str) -> bool:
     letters = [c for c in s if c.isalpha()]
     caps_ratio = sum(c.isupper() for c in letters) / len(letters) if letters else 0.0
     if len(letters) >= 3 and caps_ratio >= 0.8:
-        return True
-    if _INLINE_CAPS.match(s):
         return True
     prev_s = prev.strip()
     prev_done = not prev_s or prev_s.endswith(_TERMINAL)
@@ -200,7 +207,7 @@ def segment(
     blocks: List[List[str]] = []
     cur: List[str] = []
     prev = ""
-    for ln in text.splitlines():
+    for ln in text.split("\n"):
         s = ln.strip()
         if not s:
             if cur and len("\n".join(cur)) >= min_chars:

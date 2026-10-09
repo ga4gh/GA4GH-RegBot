@@ -139,6 +139,12 @@ def cmd_draft(args: argparse.Namespace) -> int:
             (c.get("sha1") or clause_hash(c.get("text") or "")): c.get("aspects")
             for c in old_entries
         }
+        # Fallback when a clause's interior changed (a stripped header, a merged line) but
+        # its opening did not: re-attach the label by the first 60 characters of the preview.
+        old_by_preview = {
+            _preview(c.get("preview") or c.get("text") or "", 60): c.get("aspects")
+            for c in old_entries
+        }
         entries = []
         texts: Dict[str, str] = {}
         kept = 0
@@ -147,6 +153,15 @@ def cmd_draft(args: argparse.Namespace) -> int:
             digest = clause_hash(clause)
             proposals = [f"{a}:{s:.2f}" for a, s in clf.scores(clause)[:3]]
             aspects = old_labels.get(digest)
+            if aspects is None:
+                # Every old clause whose opening occurs inside this clause contributes its
+                # label: a clause that absorbed its page-broken continuation keeps both.
+                flat = " ".join(clause.split())
+                parts = [
+                    a for pv, a in old_by_preview.items() if pv and pv in flat and a is not None
+                ]
+                if parts:
+                    aspects = sorted({x for a in parts for x in a})
             kept += 1 if aspects is not None else 0
             entries.append(
                 {
