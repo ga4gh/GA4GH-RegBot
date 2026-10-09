@@ -20,6 +20,7 @@ instances with bootstrap confidence intervals.
 Metrics
   provision_recall@B   gold provisions covered by the top-B slots
   cell_coverage@B      non-empty gold cells with at least one provision in the top-B
+  cell_coverage_norm@B the same divided by the budget ceiling min(1, B / non-empty cells)
   precision@B          share of returned slots that belong to a gold provision
   template_rate@B      share of returned slots taken by consent templates
   gap_precision / gap_recall
@@ -105,11 +106,14 @@ def score_document(
         if roles.get(doc) == "template":
             templates += 1
     nonempty = [k for k, v in doc_gold.items() if v]
+    covered = sum(1 for k in nonempty if doc_gold[k] & found) / len(nonempty) if nonempty else 0.0
+    # A budget of B slots can cover at most B cells, so coverage is also reported relative
+    # to that ceiling; under the "all" scope a form may have 100+ non-empty cells.
+    ceiling = min(1.0, budget / len(nonempty)) if nonempty else 1.0
     return {
         f"provision_recall@{budget}": len(found & gold_all) / len(gold_all) if gold_all else 0.0,
-        f"cell_coverage@{budget}": (
-            sum(1 for k in nonempty if doc_gold[k] & found) / len(nonempty) if nonempty else 0.0
-        ),
+        f"cell_coverage@{budget}": covered,
+        f"cell_coverage_norm@{budget}": covered / ceiling if ceiling else 0.0,
         f"precision@{budget}": hits / len(top) if top else 0.0,
         f"template_rate@{budget}": templates / len(top) if top else 0.0,
     }

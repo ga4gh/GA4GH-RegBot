@@ -66,6 +66,7 @@ def test_score_document_counts_recall_coverage_precision_and_templates():
     s = score_document(ranked, doc_gold, roles, budget=3)
     assert s["provision_recall@3"] == pytest.approx(0.5)
     assert s["cell_coverage@3"] == pytest.approx(0.5)  # the empty SG cell is not counted
+    assert s["cell_coverage_norm@3"] == pytest.approx(0.5)  # ceiling is 1 when budget >= cells
     assert s["precision@3"] == pytest.approx(1 / 3)
     assert s["template_rate@3"] == pytest.approx(1 / 3)
 

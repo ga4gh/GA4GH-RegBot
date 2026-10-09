@@ -47,6 +47,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     metrics = [
         (f"provision_recall@{b}", f"recall@{b}"),
         (f"cell_coverage@{b}", f"coverage@{b}"),
+        (f"cell_coverage_norm@{b}", f"cov/ceiling@{b}"),
         (f"precision@{b}", f"precision@{b}"),
         (f"template_rate@{b}", f"templates@{b}"),
         ("gap_precision", "gap P"),
