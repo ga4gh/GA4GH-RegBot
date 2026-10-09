@@ -1,0 +1,12 @@
+# Raw downloads, frozen clause texts and non-redistributable texts stay out of git;
+# rebuild with: python -I tools/experiments/fetch_consent_docs.py && python tools/experiments/consent_docs.py draft
+raw/
+clauses/
+ee-estonian-biobank-gene-donor-consent.txt
+jp-amed-model-explanation-text.txt
+# NHGRI-hosted sample forms: public-domain status likely but unconfirmed, fetch-only for now
+us-all-of-us-consent-to-join.txt
+us-1000-genomes-consent.txt
+us-emerge-consent.txt
+us-gtex-live-donor-consent.txt
+*.tmp

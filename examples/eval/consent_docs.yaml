@@ -1,0 +1,2340 @@
+version: '0.1'
+status: DRAFT v0.1 — clause boundaries frozen from the segmenter; aspect labels assigned by the contributor
+  with AI assistance after reading every clause (2026-10-09). Not yet independently verified.
+scopes:
+  framework:
+  - GA4GH
+  - INTL
+  eu:
+  - EU
+  - GA4GH
+  asia:
+  - SG
+  - HK
+  - TW
+  - KR
+  - JP
+  - CN
+  all:
+  - GA4GH
+  - INTL
+  - EU
+  - SG
+  - HK
+  - TW
+  - KR
+  - JP
+  - CN
+documents:
+- doc_id: us-nih-osp-secondary-research-sample
+  title: 'NIH OSP — Informed Consent for Secondary Research with Data and Biospecimens: Points to Consider
+    and Sample Language (May 2022)'
+  path: data/consent_benchmark/us-nih-osp-secondary-research-sample.txt
+  language: en
+  origin: US
+  text_type: guidance with sample consent language
+  licence: US federal government work; no licence stated (public domain)
+  prepare:
+    start_marker: IV. Sample Language Components
+    drop_patterns:
+    - '^Instructions:'
+    - ^In\s*$
+    - '^structions:'
+  clauses:
+  - id: c01
+    sha1: bf69e93dc3b8f2b2
+    aspects:
+    - A02
+    - A11
+    proposed:
+    - A11:0.72
+    - A06:0.71
+    - A01:0.71
+    preview: 'IV. Sample Language Components: Introduction-Description Considerations: The Int'
+  - id: c02
+    sha1: 74b224a899e7c0f2
+    aspects: []
+    proposed:
+    - A02:0.63
+    - A09:0.62
+    - A13:0.61
+    preview: Replace embedded instructions identified in [bold grey highlighted text] with sp
+  - id: c03
+    sha1: 3eaf407bdc6070ae
+    aspects:
+    - A02
+    - A03
+    proposed:
+    - A01:0.76
+    - A03:0.74
+    - A02:0.74
+    preview: This study is collecting data and biospecimens from you. We would like to make y
+  - id: c04
+    sha1: f9288c82dc85bca3
+    aspects:
+    - A06
+    - A07
+    proposed:
+    - A06:0.76
+    - A08:0.74
+    - A03:0.73
+    preview: Your data and biospecimens will be coded to protect your identity before they ar
+  - id: c05
+    sha1: a69268cbe07d3bf2
+    aspects:
+    - A15
+    - A02
+    proposed:
+    - A02:0.75
+    - A15:0.75
+    - A03:0.73
+    preview: 'Voluntary Participation Considerations: • In general, participants should be giv'
+  - id: c06
+    sha1: 194e3713e34ce27b
+    aspects:
+    - A08
+    - A11
+    proposed:
+    - A08:0.76
+    - A14:0.75
+    - A02:0.74
+    preview: case, there is no reason to participate if the participant does not want to prov
+  - id: c07
+    sha1: 15c8ed2d4fdf3a55
+    aspects:
+    - A08
+    - A15
+    proposed:
+    - A11:0.75
+    - A08:0.74
+    - A02:0.73
+    preview: If you say “yes,” you can change your mind later. If you say “no,” you can still
+  - id: c08
+    sha1: 48814e66b86652b7
+    aspects:
+    - A02
+    - A15
+    proposed:
+    - A02:0.76
+    - A01:0.75
+    - A03:0.74
+    preview: Please initial [or sign depending on institutional practice] next to your choice
+  - id: c09
+    sha1: c459d79cdfe09a88
+    aspects: []
+    proposed:
+    - A05:0.66
+    - A01:0.66
+    - A07:0.66
+    preview: 'Risks & Benefits General Considerations: The Risks & Benefits component describe'
+  - id: c10
+    sha1: a8d2af7aa392a6e0
+    aspects:
+    - A06
+    - A07
+    - A16
+    proposed:
+    - A06:0.76
+    - A10:0.71
+    - A11:0.71
+    preview: 'Considerations- Risks: • If identifying information will be retained, include la'
+  - id: c11
+    sha1: 7539dad6d9b3463d
+    aspects:
+    - A05
+    proposed:
+    - A05:0.78
+    - A01:0.69
+    - A14:0.67
+    preview: 'Commercial Application Considerations: The Commercial Application component info'
+- doc_id: us-nhgri-gds-sample-language
+  title: 'NHGRI — Genomic Data Sharing Policy: sample informed consent language'
+  path: data/consent_benchmark/us-nhgri-gds-sample-language.txt
+  language: en
+  origin: US
+  text_type: sample consent language
+  licence: NHGRI web content is in the public domain unless otherwise indicated
+  prepare:
+    start_marker: Sample Language Aligned to Informational Elements
+    end_marker: 'Last updated:'
+    line_paragraphs: true
+    split_before:
+    - 'Example \d+:'
+  clauses:
+  - id: c01
+    sha1: 5c1c6b6fc20e36f5
+    aspects:
+    - A02
+    - A03
+    proposed:
+    - A01:0.79
+    - A14:0.77
+    - A02:0.77
+    preview: Sample Language Aligned to Informational Elements Outlined by NIH Guidance Genom
+  - id: c02
+    sha1: 9da589cedf2f44b4
+    aspects:
+    - A02
+    - A11
+    proposed:
+    - A01:0.82
+    - A14:0.79
+    - A02:0.79
+    preview: 'Example 1: Consent for General Research Uses (GRU) Portions of your samples, gen'
+  - id: c03
+    sha1: 79ab890ef1a41e4e
+    aspects:
+    - A02
+    - A03
+    - A11
+    proposed:
+    - A14:0.83
+    - A10:0.76
+    - A02:0.75
+    preview: 'Example 2: Consent for Health/Medica/Biomedical (HMB) With your consent, we will'
+  - id: c04
+    sha1: bd5b72a532e334b6
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.79
+    - A02:0.74
+    - A14:0.73
+    preview: 'Example 3: Consent for Disease-specific uses only (DS) By participating in this '
+  - id: c05
+    sha1: 9c0394a7feedffb5
+    aspects:
+    - A06
+    - A07
+    - A14
+    proposed:
+    - A06:0.80
+    - A14:0.80
+    - A03:0.75
+    preview: 'Prior to submitting the data to an NIH-designated data repository, data will be '
+  - id: c06
+    sha1: bcaebe73ce29ce65
+    aspects:
+    - A03
+    proposed:
+    - A03:0.84
+    - A14:0.80
+    - A01:0.77
+    preview: Access to de-identified, individual-level participant data will be controlled, u
+  - id: c07
+    sha1: 0a0868664bdd4880
+    aspects:
+    - A03
+    proposed:
+    - A01:0.76
+    - A02:0.74
+    - A14:0.74
+    preview: Aggregate study information (including genomic summary results) and study analys
+  - id: c08
+    sha1: 46fb46a9d66cdf43
+    aspects:
+    - A03
+    proposed:
+    - A03:0.76
+    - A02:0.76
+    - A01:0.74
+    preview: The summary information may be placed in a database and will be made available t
+  - id: c09
+    sha1: 4b0da3e1fa83c54c
+    aspects:
+    - A06
+    - A16
+    - A10
+    proposed:
+    - A06:0.83
+    - A14:0.75
+    - A03:0.75
+    preview: Because it may be possible to re-identify de-identified genomic data, even if ac
+  - id: c10
+    sha1: e4ec5dff2e007fa2
+    aspects:
+    - A06
+    - A10
+    proposed:
+    - A14:0.77
+    - A01:0.77
+    - A16:0.76
+    preview: Consequently, it may be possible that genomic information from them could be use
+  - id: c11
+    sha1: 4b46328e0a501ac8
+    aspects:
+    - A06
+    - A10
+    - A16
+    proposed:
+    - A10:0.77
+    - A14:0.76
+    - A06:0.76
+    preview: '[…] There is a risk that others will be able to trace the information in databas'
+  - id: c12
+    sha1: 50c9a4fe8a49e945
+    aspects: []
+    proposed:
+    - A01:0.75
+    - A09:0.73
+    - A03:0.73
+    preview: No direct benefits to participants are expected from any secondary research on d
+  - id: c13
+    sha1: 7d8cd621fc428b61
+    aspects:
+    - A08
+    - A15
+    proposed:
+    - A08:0.80
+    - A11:0.77
+    - A02:0.76
+    preview: Participants may withdraw consent for research use of genomic or phenotypic data
+  - id: c14
+    sha1: d89da003078965be
+    aspects:
+    - A08
+    - A11
+    proposed:
+    - A11:0.81
+    - A08:0.80
+    - A02:0.73
+    preview: If you decide to withdraw from the study or part of the study, you can contact [
+  - id: c15
+    sha1: 41d45f8f40d57e37
+    aspects:
+    - A13
+    proposed:
+    - A13:0.75
+    - A08:0.73
+    - A03:0.71
+    preview: The name and contact information of an individual who is affiliated with the ins
+  - id: c16
+    sha1: 47757d7fdb17b148
+    aspects:
+    - A07
+    proposed:
+    - A14:0.76
+    - A06:0.75
+    - A16:0.71
+    preview: The privacy protections, and limitations of those protections, afforded by a Cer
+  - id: c17
+    sha1: 28e720225bda1530
+    aspects:
+    - A07
+    proposed:
+    - A14:0.67
+    - A06:0.67
+    - A16:0.66
+    preview: The Certificate DOES NOT stop reporting that federal, state or local laws requir
+- doc_id: us-nih-irb-consent-library
+  title: NIH IRB Consent Library v18 (OHSRP, February 2026)
+  path: data/consent_benchmark/us-nih-irb-consent-library.txt
+  language: en
+  origin: US
+  text_type: consent template library (genomic sections used)
+  licence: US federal government work; no licence stated (public domain)
+  prepare:
+    start_marker: GENOMIC SEQUENCING
+    start_occurrence: 2
+    end_marker: HIV TESTING
+  clauses:
+  - id: c01
+    sha1: dd49810c0acb0201
+    aspects:
+    - A01
+    proposed:
+    - A01:0.77
+    - A14:0.72
+    - A10:0.72
+    preview: GENOMIC SEQUENCING Purpose of planned [genome, exome sequencing or other genomic
+  - id: c02
+    sha1: f344b4f551e6a0cf
+    aspects:
+    - A01
+    proposed:
+    - A09:0.70
+    - A14:0.70
+    - A01:0.70
+    preview: Sequencing [specify type of analysis, i.e., genome and/or exome] tells us the ex
+  - id: c03
+    sha1: 50aeb34419de8386
+    aspects: []
+    proposed:
+    - A10:0.74
+    - A14:0.73
+    - A09:0.72
+    preview: bits of our DNA that are different between human beings. We call these our DNA c
+  - id: c04
+    sha1: 185aba651d4fb7e3
+    aspects: []
+    proposed:
+    - A14:0.65
+    - A11:0.65
+    - A10:0.64
+    preview: DNA (also called deoxyribonucleic acid) in the cells carries genetic information
+  - id: c05
+    sha1: 3d8e84bcde9d0f36
+    aspects:
+    - A09
+    proposed:
+    - A09:0.72
+    - A02:0.71
+    - A14:0.69
+    preview: Secondary Findings Investigators performing genomic analysis that can feasibly b
+  - id: c06
+    sha1: 6e7e17fcbacd471a
+    aspects:
+    - A09
+    proposed:
+    - A02:0.74
+    - A14:0.68
+    - A10:0.66
+    preview: If there will not be any analysis and reporting of secondary findings, this must
+  - id: c07
+    sha1: 099c172a69c5ea91
+    aspects:
+    - A09
+    proposed:
+    - A09:0.77
+    - A01:0.74
+    - A10:0.72
+    preview: '• What secondary findings will be looked for and disclosed. It is acceptable to '
+  - id: c08
+    sha1: e2870eeb9a978329
+    aspects:
+    - A09
+    proposed:
+    - A02:0.71
+    - A14:0.71
+    - A10:0.71
+    preview: You do not need to specify the specific genes, unless you think this will be mea
+  - id: c09
+    sha1: 2a1cbedc320053f3
+    aspects:
+    - A09
+    proposed:
+    - A09:0.74
+    - A02:0.72
+    - A14:0.69
+    preview: In particular it should be clear that the lack of any notification does not mean
+  - id: c10
+    sha1: d3fcbdd76b391b1f
+    aspects:
+    - A09
+    - A10
+    proposed:
+    - A10:0.83
+    - A02:0.77
+    - A09:0.75
+    preview: However, during the consent discussion, it should be clear that the if a seconda
+  - id: c11
+    sha1: 5eaf57347ebdb6bf
+    aspects:
+    - A09
+    proposed:
+    - A14:0.78
+    - A10:0.75
+    - A09:0.74
+    preview: in the consent and in addition a valid release of medical information naming tha
+  - id: c12
+    sha1: 0c536becaac87703
+    aspects:
+    - A09
+    proposed:
+    - A09:0.77
+    - A10:0.73
+    - A01:0.70
+    preview: Example Language for Secondary genetic findings – Return of results In this stud
+  - id: c13
+    sha1: ccec6aaf080afecb
+    aspects:
+    - A09
+    proposed:
+    - A09:0.78
+    - A10:0.78
+    - A16:0.74
+    preview: In the future, we might learn that some gene changes we don't think are importan
+  - id: c14
+    sha1: fe1e0f69941a1d28
+    aspects:
+    - A09
+    - A10
+    proposed:
+    - A10:0.81
+    - A09:0.73
+    - A16:0.69
+    preview: If we find a risk of an adult-onset condition in your child's genes, we will als
+  - id: c15
+    sha1: 82fb920bde01dc81
+    aspects:
+    - A09
+    proposed:
+    - A09:0.77
+    - A16:0.72
+    - A14:0.70
+    preview: Risks of returning secondary genetic findings • The test for unexpected gene cha
+  - id: c16
+    sha1: 003c63d7e2240b36
+    aspects:
+    - A09
+    - A10
+    proposed:
+    - A10:0.77
+    - A16:0.75
+    - A09:0.74
+    preview: • Learning about gene changes might affect your family members and could cause s
+  - id: c17
+    sha1: b845b1e5e604fe70
+    aspects:
+    - A09
+    proposed:
+    - A09:0.77
+    - A16:0.72
+    - A10:0.71
+    preview: Benefits of returning secondary genetic findings • An unexpected gene change res
+- doc_id: us-all-of-us-consent-to-join
+  title: All of Us Research Program — Consent to Join (English)
+  path: data/consent_benchmark/us-all-of-us-consent-to-join.txt
+  language: en
+  origin: US
+  text_type: participant-facing consent form
+  licence: Hosted by NHGRI as a sample document; drafted for NIH by VUMC; public-domain status likely
+    but not confirmed — attribute
+  prepare:
+    start_marker: Consent to Join the
+  clauses:
+  - id: c01
+    sha1: 553b57fea5a8a23f
+    aspects: []
+    proposed:
+    - A15:0.62
+    - A02:0.62
+    - A03:0.61
+    preview: 'Consent to Join the All of Us Research Program Principal Investigator: Paul Harr'
+  - id: c02
+    sha1: 65cf307303cfe837
+    aspects:
+    - A15
+    proposed:
+    - A10:0.65
+    - A13:0.62
+    - A15:0.60
+    preview: Vanderbilt University Medical Center 2525 West End Ave, Suite 1500 Nashville, TN
+  - id: c03
+    sha1: 7335a0006078bd1b
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.66
+    - A10:0.62
+    - A09:0.61
+    preview: What is All of Us? All of Us is a health research program funded by the U.S. gov
+  - id: c04
+    sha1: d015f7202221eb02
+    aspects:
+    - A11
+    - A08
+    proposed:
+    - A08:0.65
+    - A11:0.61
+    - A10:0.57
+    preview: How long will All of Us last? All of Us will last for at least ten years. If you
+  - id: c05
+    sha1: e6de48f9815d5d1e
+    aspects:
+    - A01
+    proposed:
+    - A13:0.75
+    - A02:0.69
+    - A10:0.67
+    preview: What will you ask me to do? If you decide to join All of Us, we will gather data
+  - id: c06
+    sha1: d58e3b3650029078
+    aspects:
+    - A01
+    proposed:
+    - A13:0.70
+    - A10:0.68
+    - A06:0.66
+    preview: '1. Basic data We will ask you for data like your name and date of birth. Once a '
+  - id: c07
+    sha1: 43c16883f1cb2ab0
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A13:0.65
+    - A11:0.63
+    - A14:0.63
+    preview: 2. Health data We will ask you questions about your health, family, home, and wo
+  - id: c08
+    sha1: 85d57d9de43e71a2
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A13:0.66
+    - A09:0.64
+    - A14:0.64
+    preview: '3. Physical measurements We may ask you to go to a local clinic to be measured. '
+  - id: c09
+    sha1: ca14127d8fd0070a
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A15:0.70
+    - A10:0.68
+    - A09:0.68
+    preview: 4. Samples We may ask you to go to a local clinic to give a blood sample. If you
+  - id: c10
+    sha1: 9f1d3d0d08310baf
+    aspects:
+    - A11
+    - A07
+    proposed:
+    - A11:0.76
+    - A04:0.66
+    - A02:0.65
+    preview: If you say yes to giving a sample, we will use a needle to draw about 3 tablespo
+  - id: c11
+    sha1: 78936bf3f101e808
+    aspects:
+    - A01
+    proposed:
+    - A05:0.74
+    - A14:0.68
+    - A03:0.67
+    preview: 5. Fitness trackers or other de vices We may ask you to share data with us using
+  - id: c12
+    sha1: 15407703f38e6550
+    aspects:
+    - A15
+    proposed:
+    - A02:0.72
+    - A15:0.69
+    - A08:0.67
+    preview: You can say no and still participate in other parts of All of Us. Data that we w
+  - id: c13
+    sha1: 13c6f9c68999d4e5
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A10:0.72
+    - A15:0.71
+    - A09:0.70
+    preview: 1. Electronic health records If you have electronic health records, we may ask f
+  - id: c14
+    sha1: 26292c299380cadb
+    aspects:
+    - A01
+    - A14
+    proposed:
+    - A14:0.79
+    - A01:0.71
+    - A02:0.71
+    preview: of Us, but it might limit what other data we ask to collect from you. For exampl
+  - id: c15
+    sha1: 5a1e6b11fb9e614c
+    aspects:
+    - A01
+    proposed:
+    - A01:0.73
+    - A02:0.72
+    - A14:0.71
+    preview: 2. Data about your health from other sources We will add data from other sources
+  - id: c16
+    sha1: 8b146fd9868571f2
+    aspects:
+    - A14
+    proposed:
+    - A09:0.66
+    - A10:0.66
+    - A13:0.64
+    preview: For example, they may tell us about your mental health, or use of alcohol or dru
+  - id: c17
+    sha1: 0278012d62663063
+    aspects:
+    - A14
+    - A12
+    proposed:
+    - A02:0.72
+    - A14:0.72
+    - A03:0.70
+    preview: contain sexual or infection data, including HIV status. Because of this, we will
+  - id: c18
+    sha1: e9ff6ed7df6f3dd9
+    aspects:
+    - A07
+    - A01
+    proposed:
+    - A02:0.77
+    - A03:0.73
+    - A11:0.73
+    preview: What will you do with my data and samples? We will store your data and samples s
+  - id: c19
+    sha1: 342176b5dca889ac
+    aspects:
+    - A01
+    proposed:
+    - A09:0.72
+    - A14:0.72
+    - A10:0.72
+    preview: 1. We will study your samp les, including your DNA We may measure things that na
+  - id: c20
+    sha1: 5e80f3f5cb8378c6
+    aspects:
+    - A06
+    proposed:
+    - A14:0.67
+    - A09:0.63
+    - A10:0.63
+    preview: Whole genome sequencing is a way of studying nearly all of a person’s DNA. Every
+  - id: c21
+    sha1: d6ca5f0816aed8b4
+    aspects:
+    - A02
+    - A03
+    - A06
+    proposed:
+    - A06:0.69
+    - A03:0.68
+    - A02:0.66
+    preview: Because All of Us will last for ten or more years, some of the methods we will u
+  - id: c22
+    sha1: 86b919dd4f9c76cc
+    aspects:
+    - A03
+    - A02
+    proposed:
+    - A03:0.74
+    - A14:0.74
+    - A01:0.72
+    preview: 3. We will create a scientific database The scientific database will have indivi
+  - id: c23
+    sha1: 51f5a334ed8c35be
+    aspects:
+    - A03
+    - A06
+    proposed:
+    - A02:0.73
+    - A11:0.71
+    - A01:0.70
+    preview: 4. Researchers can also ask to st udy your samples or DNA directly We may send t
+  - id: c24
+    sha1: dbf1b0ee1dffce94
+    aspects:
+    - A11
+    - A02
+    proposed:
+    - A08:0.84
+    - A11:0.80
+    - A02:0.75
+    preview: 'Except if you withdraw (“quit”) or there are limits imposed by law, there is no '
+  - id: c25
+    sha1: 4c2f15ebe56226f5
+    aspects:
+    - A09
+    - A15
+    proposed:
+    - A02:0.73
+    - A13:0.70
+    - A15:0.69
+    preview: What else will you ask me to do? We may ask if you want to hear about chances to
+  - id: c26
+    sha1: eb4f75f9ebb9d30a
+    aspects:
+    - A06
+    - A07
+    proposed:
+    - A10:0.70
+    - A06:0.70
+    - A08:0.69
+    preview: 'What are the risks of taking part in All of Us? The main risk of taking part in '
+  - id: c27
+    sha1: b1b120dea66bd997
+    aspects:
+    - A16
+    proposed:
+    - A01:0.77
+    - A02:0.73
+    - A09:0.73
+    preview: These studies could one day help people of the same race, ethnic group, or sex a
+  - id: c28
+    sha1: 5f6290c7be830343
+    aspects: []
+    proposed:
+    - A10:0.66
+    - A08:0.65
+    - A15:0.64
+    preview: bruising. Some people may become dizzy or feel faint. There is also a small risk
+  - id: c29
+    sha1: 3eb79e100f73ee11
+    aspects:
+    - A06
+    proposed:
+    - A10:0.71
+    - A06:0.70
+    - A16:0.68
+    preview: 'Are there other risks I should know about? Telling people you''re part of All of '
+  - id: c30
+    sha1: 9cab9630fc7f75a3
+    aspects:
+    - A07
+    - A06
+    proposed:
+    - A14:0.75
+    - A06:0.73
+    - A16:0.69
+    preview: What will you do to protect my privacy? Your privacy is very important to us. We
+  - id: c31
+    sha1: 2dc1a1f05ba99d35
+    aspects:
+    - A16
+    - A07
+    proposed:
+    - A16:0.75
+    - A10:0.73
+    - A14:0.73
+    preview: not tell insurance companies about who has DNA changes. We will not tell employe
+  - id: c32
+    sha1: 15117928b8f000db
+    aspects:
+    - A14
+    - A07
+    proposed:
+    - A14:0.75
+    - A03:0.71
+    - A06:0.69
+    preview: If the FDA asks to look at these records to do their checks, we will let them. O
+  - id: c33
+    sha1: f7582b9f749d12dd
+    aspects:
+    - A13
+    proposed:
+    - A09:0.69
+    - A15:0.68
+    - A10:0.68
+    preview: Are there any benefits? All of Us is not medical treatment. It is a research pro
+  - id: c34
+    sha1: 585c26097ab65489
+    aspects: []
+    proposed:
+    - A09:0.67
+    - A15:0.61
+    - A05:0.61
+    preview: Are there any costs? There are no direct costs to taking part in the All of Us R
+  - id: c35
+    sha1: 5dfc248ec504e0c4
+    aspects:
+    - A05
+    proposed:
+    - A05:0.75
+    - A02:0.71
+    - A09:0.70
+    preview: Are there any payments? If we ask you to be physically measured and give samples
+  - id: c36
+    sha1: db42ea0a9bc02e04
+    aspects:
+    - A13
+    - A09
+    proposed:
+    - A01:0.75
+    - A02:0.75
+    - A03:0.74
+    preview: 'Will I be able to see my data? Yes, you will be able to see some of the data we '
+  - id: c37
+    sha1: 7dc0034ef4a20a58
+    aspects:
+    - A09
+    proposed:
+    - A09:0.76
+    - A01:0.69
+    - A05:0.68
+    preview: 'Will I find out the results of the research? Results explain or interpret data. '
+  - id: c38
+    sha1: e6eed775f83c20ff
+    aspects:
+    - A09
+    proposed:
+    - A09:0.81
+    - A14:0.77
+    - A10:0.76
+    preview: 1. Results about you Over the many years of the All of Us Research Program, we w
+  - id: c39
+    sha1: dd55e7afb26c54aa
+    aspects:
+    - A09
+    proposed:
+    - A09:0.82
+    - A10:0.73
+    - A14:0.73
+    preview: about learning your results. We will not check for these kinds of DNA changes un
+  - id: c40
+    sha1: 9cbe6ae73ff27788
+    aspects:
+    - A09
+    proposed:
+    - A09:0.72
+    - A01:0.71
+    - A03:0.67
+    preview: 2. Results about the group These are reports of what researchers learn about hea
+  - id: c41
+    sha1: 208af4e954c5d063
+    aspects:
+    - A13
+    proposed:
+    - A09:0.68
+    - A15:0.67
+    - A10:0.66
+    preview: What if I get injured? If you think you have been injured because of taking part
+  - id: c42
+    sha1: 23e81e65b0ba9e04
+    aspects:
+    - A13
+    proposed:
+    - A15:0.66
+    - A09:0.65
+    - A05:0.63
+    preview: x If you need follow-up care to treat your injury, you and/or your insurance wil
+  - id: c43
+    sha1: 7b1e8944530925b2
+    aspects:
+    - A15
+    - A08
+    proposed:
+    - A08:0.81
+    - A15:0.76
+    - A02:0.72
+    preview: Do I have to take part? Taking part in All of Us is voluntary. You can choose to
+  - id: c44
+    sha1: 1653cb98a993428e
+    aspects:
+    - A13
+    - A12
+    proposed:
+    - A13:0.66
+    - A03:0.56
+    - A10:0.56
+    preview: Who can answer my questions? Questions about… Contact The All of Us Research Pro
+  - id: c45
+    sha1: 90ae76021fd067b7
+    aspects:
+    - A11
+    - A02
+    - A09
+    - A08
+    - A15
+    proposed:
+    - A11:0.78
+    - A02:0.77
+    - A08:0.75
+    preview: 'This document prepared for: ___________________________________ I know and agree'
+  - id: c46
+    sha1: 173550f59a792731
+    aspects:
+    - A15
+    proposed:
+    - A15:0.71
+    - A13:0.69
+    - A10:0.68
+    preview: 'Sign Your Full Name: Date: Please check the box below if someone from All of Us '
+- doc_id: us-1000-genomes-consent
+  title: 1000 Genomes Project — sample consent form
+  path: data/consent_benchmark/us-1000-genomes-consent.txt
+  language: en
+  origin: US / international
+  text_type: participant-facing consent form
+  licence: Hosted by NHGRI as a sample document; attribute
+  prepare:
+    start_marker: CONSENT TO PARTICIPATE
+  clauses:
+  - id: c01
+    sha1: 32a257ed08467a54
+    aspects: []
+    proposed:
+    - A15:0.78
+    - A13:0.71
+    - A10:0.71
+    preview: CONSENT TO PARTICIPATE _________________________________________________________
+  - id: c02
+    sha1: 2a1e7e18612e5da9
+    aspects:
+    - A01
+    - A02
+    - A03
+    - A04
+    proposed:
+    - A01:0.78
+    - A14:0.71
+    - A11:0.71
+    preview: 1. Introduction We invite you to be part of the 1000 Genomes Project, which will
+  - id: c03
+    sha1: ed198c918ad90b64
+    aspects:
+    - A03
+    - A04
+    - A11
+    - A06
+    proposed:
+    - A10:0.78
+    - A14:0.74
+    - A01:0.72
+    preview: 'In order to take part, you must: • be at least 18 years old [or applicable age o'
+  - id: c04
+    sha1: 4e69226712b4ac98
+    aspects:
+    - A15
+    proposed:
+    - A15:0.77
+    - A13:0.68
+    - A10:0.68
+    preview: 'If you think you might want to be part of this project, please read the rest of '
+  - id: c05
+    sha1: d132d10104a5ae30
+    aspects:
+    - A01
+    proposed:
+    - A16:0.75
+    - A14:0.74
+    - A10:0.71
+    preview: '2. What is the purpose of this research? Genes are the basic “instruction book” '
+  - id: c06
+    sha1: 0f8bdcec60eddbf7
+    aspects:
+    - A01
+    proposed:
+    - A01:0.73
+    - A14:0.69
+    - A10:0.68
+    preview: Most genetic variations are found in people across the world. But there are diff
+  - id: c07
+    sha1: a8b539022154df46
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.81
+    - A14:0.74
+    - A02:0.70
+    preview: The scientific databases we develop for this project will not include any medica
+  - id: c08
+    sha1: 28a53dc84fa337d6
+    aspects:
+    - A02
+    proposed:
+    - A02:0.78
+    - A01:0.76
+    - A09:0.72
+    preview: Other future studies that use scientific databases and the samples themselves wi
+  - id: c09
+    sha1: 4815f2554201a1c7
+    aspects: []
+    proposed:
+    - A09:0.69
+    - A01:0.67
+    - A13:0.66
+    preview: This is a research project, not medical care. You should see your health care pr
+  - id: c10
+    sha1: ace2a1d4dee21168
+    aspects:
+    - A01
+    proposed:
+    - A10:0.76
+    - A13:0.73
+    - A15:0.70
+    preview: '3. What will you ask me to do if I want to participate? We will first ask you a '
+  - id: c11
+    sha1: 29d808ea0174e55f
+    aspects:
+    - A04
+    - A11
+    - A06
+    proposed:
+    - A04:0.76
+    - A11:0.74
+    - A09:0.69
+    preview: If we find that you are eligible to give a sample, we will then draw about [amou
+  - id: c12
+    sha1: be800019a05e9183
+    aspects:
+    - A11
+    - A04
+    proposed:
+    - A11:0.70
+    - A01:0.68
+    - A02:0.65
+    preview: '[Repository] will: • make a “cell line” from the sample so that researchers can '
+  - id: c13
+    sha1: dd00da8bcaf06db2
+    aspects:
+    - A03
+    proposed:
+    - A01:0.74
+    - A11:0.73
+    - A02:0.70
+    preview: 'Over the next 1-3 years, these project researchers will: • “sequence” the sample'
+  - id: c14
+    sha1: 3c077ba99fb95ab4
+    aspects:
+    - A03
+    - A04
+    - A05
+    proposed:
+    - A02:0.76
+    - A01:0.74
+    - A03:0.71
+    preview: '[Repository] will also make the cell lines and DNA from the samples available to'
+  - id: c15
+    sha1: d0746174ff6c0a3b
+    aspects:
+    - A02
+    proposed:
+    - A02:0.79
+    - A01:0.79
+    - A11:0.73
+    preview: Future researchers may use the samples to study many other questions, such as ho
+  - id: c16
+    sha1: ffee9f513b5eb25e
+    aspects:
+    - A02
+    - A03
+    proposed:
+    - A14:0.77
+    - A03:0.74
+    - A02:0.74
+    preview: People who do identity testing, such as for paternity testing or law enforcement
+  - id: c17
+    sha1: dcdad244581b6a82
+    aspects:
+    - A03
+    proposed:
+    - A02:0.75
+    - A01:0.74
+    - A13:0.71
+    preview: '[Note: this next paragraph may need to be modified, depending on the procedures '
+  - id: c18
+    sha1: e52adb9c0b3bbd8d
+    aspects:
+    - A12
+    proposed:
+    - A15:0.71
+    - A02:0.71
+    - A13:0.70
+    preview: is consistent with this consent form. In addition, a Community Advisory Group wi
+  - id: c19
+    sha1: 98c796b01c789b70
+    aspects: []
+    proposed:
+    - A05:0.66
+    - A15:0.64
+    - A04:0.62
+    preview: 5. What are the costs and payments? It will not cost you anything to participate
+  - id: c20
+    sha1: c382653f35155c49
+    aspects:
+    - A05
+    proposed:
+    - A05:0.77
+    - A14:0.70
+    - A06:0.69
+    preview: '[Repository] does not allow anyone who receives DNA or cell lines from [Reposito'
+  - id: c21
+    sha1: 3e5fbd116d00a62f
+    aspects: []
+    proposed:
+    - A09:0.75
+    - A01:0.74
+    - A10:0.73
+    preview: 6. Are there any benefits to participating in the project? You probably will not
+  - id: c22
+    sha1: 7fc0a39bc70f16cb
+    aspects: []
+    proposed:
+    - A08:0.63
+    - A09:0.62
+    - A15:0.61
+    preview: 7. What are the risks of participating? You may have some brief pain and bruisin
+  - id: c23
+    sha1: f84966342b58ba07
+    aspects:
+    - A06
+    - A03
+    proposed:
+    - A14:0.82
+    - A16:0.77
+    - A09:0.77
+    preview: 'Although we will not collect any names or medical information, and we will take '
+  - id: c24
+    sha1: dbdf876466236486
+    aspects:
+    - A06
+    proposed:
+    - A09:0.78
+    - A01:0.75
+    - A10:0.75
+    preview: Currently, we believe this could happen only if somebody knew that you had given
+  - id: c25
+    sha1: acad487ca6b41c95
+    aspects:
+    - A06
+    proposed:
+    - A10:0.69
+    - A13:0.68
+    - A06:0.68
+    preview: Any of these things would require that the person trying to link the information
+  - id: c26
+    sha1: 4371666ddef3ac5c
+    aspects:
+    - A06
+    proposed:
+    - A16:0.72
+    - A09:0.72
+    - A10:0.72
+    preview: As technology advances, there may be new ways of linking information back to you
+  - id: c27
+    sha1: a62c46603d3990e2
+    aspects:
+    - A13
+    proposed:
+    - A09:0.74
+    - A13:0.70
+    - A10:0.67
+    preview: If you believe you have been injured because of this research, please contact [c
+  - id: c28
+    sha1: a760ea2d211e4d9b
+    aspects:
+    - A06
+    - A07
+    proposed:
+    - A06:0.76
+    - A14:0.75
+    - A02:0.73
+    preview: 8. How will you protect my privacy? We will protect your privacy in several ways
+  - id: c29
+    sha1: 648cc5ea2779f7a4
+    aspects:
+    - A06
+    proposed:
+    - A03:0.69
+    - A06:0.67
+    - A09:0.66
+    preview: Because of these measures, it will be very hard for anyone who looks at any of t
+  - id: c30
+    sha1: 502e018f9a38d532
+    aspects:
+    - A16
+    proposed:
+    - A10:0.72
+    - A09:0.72
+    - A01:0.71
+    preview: 9. Are there any risks to my community or group? The names of the ethnic or geog
+  - id: c31
+    sha1: 1c157cef3569d130
+    aspects:
+    - A16
+    proposed:
+    - A16:0.73
+    - A01:0.73
+    - A14:0.71
+    preview: Some people may use the information from the scientific databases, or from futur
+  - id: c32
+    sha1: 9bbbcdff62e542ad
+    aspects:
+    - A16
+    proposed:
+    - A02:0.69
+    - A01:0.67
+    - A03:0.67
+    preview: We will work to make sure that the ethnic or geographic identity of your communi
+  - id: c33
+    sha1: a22f6f61f07359c6
+    aspects:
+    - A08
+    proposed:
+    - A10:0.71
+    - A06:0.70
+    - A02:0.69
+    preview: 10. Can I change my mind after I decide to participate? Because we will not coll
+  - id: c34
+    sha1: bc800ee2b1fa4b4f
+    aspects:
+    - A08
+    proposed:
+    - A08:0.84
+    - A11:0.76
+    - A02:0.74
+    preview: withdraw it from the project. Also, once the sample has been studied, you cannot
+  - id: c35
+    sha1: 02eb3a1775a92f7b
+    aspects:
+    - A08
+    - A12
+    proposed:
+    - A08:0.76
+    - A02:0.76
+    - A05:0.70
+    preview: '[The following sentence is optional, to be used only where a Community Advisory '
+  - id: c36
+    sha1: 22f3a80ababd1d63
+    aspects:
+    - A09
+    proposed:
+    - A09:0.78
+    - A01:0.77
+    - A02:0.71
+    preview: '11. How can I find out about the results of the research? It will probably take '
+  - id: c37
+    sha1: 1c55ba39b2c5eb05
+    aspects: []
+    proposed:
+    - A01:0.72
+    - A10:0.67
+    - A14:0.67
+    preview: 'The 1000 Genomes Project: Developing a Research Resource for Studies of Human Ge'
+  - id: c38
+    sha1: 3774d222532be717
+    aspects: []
+    proposed:
+    - A15:0.78
+    - A13:0.71
+    - A10:0.71
+    preview: CONSENT TO PARTICIPATE _________________________________________________________
+  - id: c39
+    sha1: c585396627466c4f
+    aspects:
+    - A13
+    proposed:
+    - A13:0.68
+    - A09:0.59
+    - A04:0.59
+    preview: 'Whom can I talk to if I have questions or problems? If you have questions about '
+  - id: c40
+    sha1: 83394e54a04bd2ad
+    aspects:
+    - A13
+    - A12
+    proposed:
+    - A13:0.71
+    - A09:0.62
+    - A10:0.61
+    preview: If you have questions about your rights as part of this research project, contac
+  - id: c41
+    sha1: 5306f1362e16320d
+    aspects:
+    - A13
+    proposed:
+    - A13:0.70
+    - A02:0.70
+    - A04:0.66
+    preview: '[Optional; to be used only where a Community Advisory Group will be used]: If yo'
+  - id: c42
+    sha1: 7bb85267992fa650
+    aspects:
+    - A15
+    proposed:
+    - A15:0.72
+    - A13:0.69
+    - A10:0.64
+    preview: (Repository) ____________________ (phone) ___________. Consent and Signature Ple
+  - id: c43
+    sha1: 528be69a2cd34e9c
+    aspects:
+    - A11
+    - A02
+    - A03
+    proposed:
+    - A14:0.75
+    - A01:0.75
+    - A11:0.73
+    preview: 'I agree: • to give a blood sample; • to have a cell line made from the sample th'
+  - id: c44
+    sha1: 1b4d006308483753
+    aspects:
+    - A15
+    proposed:
+    - A13:0.73
+    - A15:0.72
+    - A09:0.70
+    preview: I have read or listened to the information, I have asked any questions I had, an
+- doc_id: us-emerge-consent
+  title: eMERGE Network — consent and community consultation template
+  path: data/consent_benchmark/us-emerge-consent.txt
+  language: en
+  origin: US
+  text_type: participant-facing consent template
+  licence: Hosted by NHGRI as a sample document; consortium-authored; attribute
+  prepare:
+    start_marker: BIOBANK PURPOSE
+    drop_patterns:
+    - ^(Passive Sentences|Reading Ease|Grade Level)\b
+  clauses:
+  - id: c01
+    sha1: 59415c15665da7e6
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.79
+    - A11:0.77
+    - A14:0.73
+    preview: BIOBANK PURPOSE The purpose of this research project is to collect and store hum
+  - id: c02
+    sha1: 8f829507791362b8
+    aspects: []
+    proposed:
+    - A15:0.58
+    - A08:0.57
+    - A04:0.57
+    preview: 'BLOOD DRAW [Note: (1) Physical risks, and (2) Costs are covered in other section'
+  - id: c03
+    sha1: b5051cfa5d6649c8
+    aspects: []
+    proposed:
+    - A14:0.70
+    - A10:0.69
+    - A11:0.68
+    preview: Longer Version (e.g., if the IRB requires that terms like “genes” and “DNA” be d
+  - id: c04
+    sha1: fc51175b91491354
+    aspects:
+    - A01
+    proposed:
+    - A11:0.75
+    - A02:0.67
+    - A09:0.64
+    preview: Residual Specimens You are going to have blood drawn for medical tests your doct
+  - id: c05
+    sha1: f8be321e150981e2
+    aspects:
+    - A01
+    proposed:
+    - A11:0.74
+    - A10:0.72
+    - A14:0.72
+    preview: COLLECTION OF INFORMATION Basic Health Information We will ask you for some basi
+  - id: c06
+    sha1: a3a99b16e7ef8b67
+    aspects:
+    - A01
+    proposed:
+    - A14:0.78
+    - A01:0.74
+    - A10:0.74
+    preview: Clinical Information We will collect information from your medical records at [i
+  - id: c07
+    sha1: d58ac799ce85ca7c
+    aspects:
+    - A01
+    proposed:
+    - A02:0.79
+    - A01:0.77
+    - A11:0.73
+    preview: Research Information We will collect and store research data from studies done u
+  - id: c08
+    sha1: 3f8dd970ca17082c
+    aspects:
+    - A11
+    - A08
+    proposed:
+    - A11:0.85
+    - A02:0.70
+    - A01:0.69
+    preview: DURATION OF STORAGE There is no limit on the length of time we will store your s
+  - id: c09
+    sha1: cced1b3556466baf
+    aspects:
+    - A03
+    proposed:
+    - A11:0.76
+    - A14:0.72
+    - A01:0.70
+    preview: ACCESS TO BIOSPECIMENS/DATA We will store your samples and information in the Bi
+  - id: c10
+    sha1: da60afb90992e24e
+    aspects:
+    - A03
+    - A04
+    - A05
+    - A12
+    proposed:
+    - A03:0.81
+    - A02:0.77
+    - A11:0.75
+    preview: 'Local Access [Note: This section describes the process by which researchers acce'
+  - id: c11
+    sha1: 210fa4df345203a4
+    aspects:
+    - A03
+    proposed:
+    - A03:0.77
+    - A01:0.76
+    - A02:0.73
+    preview: 'Large-Scale Data Sharing [Note: This section describes sharing that is not under'
+  - id: c12
+    sha1: de263f65bafe829d
+    aspects:
+    - A03
+    - A06
+    proposed:
+    - A14:0.78
+    - A06:0.77
+    - A03:0.74
+    preview: 'Researchers with an approved study may be able to see and use your information, '
+  - id: c13
+    sha1: ef400ccad0ef2e4b
+    aspects:
+    - A09
+    proposed:
+    - A09:0.67
+    - A02:0.64
+    - A06:0.63
+    preview: 'RECONTACT [Note: Recontact to update basic information is covered under “Collect'
+  - id: c14
+    sha1: d2c2ad7f2bf29a1d
+    aspects:
+    - A09
+    proposed:
+    - A02:0.75
+    - A11:0.75
+    - A10:0.71
+    preview: Over time, stored samples may be used up or decrease in quality.  If this conta
+  - id: c15
+    sha1: 7efb0f145dfedc80
+    aspects:
+    - A09
+    - A02
+    proposed:
+    - A02:0.76
+    - A13:0.73
+    - A09:0.72
+    preview: Additional Research We will not notify you every time your sample and informatio
+  - id: c16
+    sha1: dbde2ed868514985
+    aspects: []
+    proposed:
+    - A08:0.64
+    - A04:0.62
+    - A09:0.61
+    preview: 'RISKS [Note: Privacy protections are covered in the next section.] Physical Risk'
+  - id: c17
+    sha1: 6d0eb657930c09d6
+    aspects:
+    - A06
+    - A16
+    proposed:
+    - A06:0.71
+    - A16:0.69
+    - A14:0.68
+    preview: 'Privacy Risks There is a risk that someone could get access to the data we have '
+  - id: c18
+    sha1: c740ebf6e65f0d4d
+    aspects:
+    - A16
+    proposed:
+    - A01:0.73
+    - A09:0.72
+    - A16:0.71
+    preview: Group Risks Although we will not give researchers your name, we will give them b
+  - id: c19
+    sha1: 876210af16870c4f
+    aspects:
+    - A06
+    - A07
+    proposed:
+    - A06:0.80
+    - A14:0.77
+    - A16:0.73
+    preview: PRIVACY PROTECTIONS Federal privacy rules give safeguards for privacy, security,
+  - id: c20
+    sha1: 2919da44012fbddb
+    aspects:
+    - A06
+    - A03
+    proposed:
+    - A06:0.75
+    - A03:0.69
+    - A02:0.69
+    preview: 'Researchers who study your sample and information will not know who you are. We '
+  - id: c21
+    sha1: 6284acb3337961af
+    aspects:
+    - A16
+    proposed:
+    - A16:0.86
+    - A14:0.78
+    - A10:0.71
+    preview: 'Genetic Information Nondiscrimination Act There is a new Federal law called the '
+  - id: c22
+    sha1: 27afbb8181e27ac6
+    aspects:
+    - A07
+    proposed:
+    - A14:0.71
+    - A06:0.69
+    - A10:0.65
+    preview: 'Certificates of Confidentiality To help protect your privacy, the Biobank has a '
+  - id: c23
+    sha1: a4352104087d83a6
+    aspects: []
+    proposed:
+    - A01:0.69
+    - A09:0.69
+    - A05:0.68
+    preview: BENEFITS You should not expect to get direct health benefits from this research.
+  - id: c24
+    sha1: 1d8991d2db9ba277
+    aspects: []
+    proposed:
+    - A15:0.68
+    - A11:0.64
+    - A16:0.62
+    preview: 'COSTS & PAYMENTS There are no costs to you or your insurance for taking part in '
+  - id: c25
+    sha1: 7eb05c2177d84951
+    aspects:
+    - A05
+    proposed:
+    - A05:0.84
+    - A09:0.71
+    - A01:0.70
+    preview: COMMERCIALIZATION We will use your sample only for research. We will not sell it
+  - id: c26
+    sha1: d3674abce89a5df0
+    aspects:
+    - A09
+    proposed:
+    - A09:0.82
+    - A01:0.73
+    - A11:0.73
+    preview: RETURN OF RESULTS Individual Results You should not expect to get individual res
+  - id: c27
+    sha1: 0a9d07b7998d3552
+    aspects:
+    - A09
+    proposed:
+    - A09:0.69
+    - A11:0.68
+    - A05:0.68
+    preview: 'Aggregate Results We will send a newsletter [frequency, e.g., “once a year”] to '
+  - id: c28
+    sha1: 92f3113f98ba1c55
+    aspects:
+    - A08
+    proposed:
+    - A08:0.79
+    - A11:0.78
+    - A02:0.69
+    preview: WITHDRAWAL You have the right to leave the project any time. If you want to leav
+  - id: c29
+    sha1: 38940d0f3d28d5c6
+    aspects:
+    - A08
+    proposed:
+    - A06:0.76
+    - A11:0.73
+    - A08:0.71
+    preview: 'Optional – insert above at [*]: These options are:  No more contact. This means'
+  - id: c30
+    sha1: a94a246e400b16bc
+    aspects:
+    - A15
+    proposed:
+    - A14:0.76
+    - A11:0.75
+    - A02:0.73
+    preview: 'CONSENT STATEMENT [Note: Be sure to customize the numbered list below based on w'
+  - id: c31
+    sha1: 2a066296169bfe90
+    aspects:
+    - A09
+    - A01
+    proposed:
+    - A11:0.70
+    - A13:0.67
+    - A10:0.66
+    preview: 1. Someone from the Biobank can contact me once a year to update my basic inform
+  - id: c32
+    sha1: 56aa7a5cdb652a7d
+    aspects:
+    - A09
+    proposed:
+    - A13:0.72
+    - A11:0.71
+    - A02:0.69
+    preview: 3. Someone from the Biobank can contact me to ask for another blood sample. 4. S
+- doc_id: us-gtex-live-donor-consent
+  title: GTEx — live donor informed consent template
+  path: data/consent_benchmark/us-gtex-live-donor-consent.txt
+  language: en
+  origin: US
+  text_type: participant-facing consent form
+  licence: Hosted by NHGRI as a sample document; attribute
+  prepare:
+    start_marker: Addendum Seeking Your Permission
+  clauses:
+  - id: c01
+    sha1: 0c8f5a203534c257
+    aspects:
+    - A01
+    - A06
+    - A11
+    proposed:
+    - A01:0.77
+    - A14:0.74
+    - A10:0.70
+    preview: Addendum Seeking Your Permission for Participation in a National Institutes of H
+  - id: c02
+    sha1: 3567af42c2b3a3f5
+    aspects:
+    - A04
+    - A02
+    - A05
+    - A06
+    - A16
+    - A15
+    proposed:
+    - A14:0.78
+    - A16:0.77
+    - A01:0.77
+    preview: Scientists from around the world will use the samples and information for many k
+  - id: c03
+    sha1: 696b531ff5e58401
+    aspects:
+    - A08
+    - A11
+    - A09
+    - A13
+    proposed:
+    - A11:0.81
+    - A08:0.79
+    - A02:0.76
+    preview: your mind and later withdraw your samples, genetic data, or health information f
+- doc_id: us-beskow-simplified-biobank-consent
+  title: Beskow et al. (2010) — simplified consent form for biobanking (PLoS ONE S1)
+  path: data/consent_benchmark/us-beskow-simplified-biobank-consent.txt
+  language: en
+  origin: US
+  text_type: participant-facing consent form
+  licence: CC BY (PLoS ONE open-access article supplement)
+  prepare:
+    start_marker: Exhibit S1
+    drop_patterns:
+    - MERGEFORMAT
+  clauses:
+  - id: c01
+    sha1: 9051def1c808ce6e
+    aspects:
+    - A01
+    - A15
+    - A08
+    proposed:
+    - A01:0.80
+    - A14:0.80
+    - A10:0.78
+    preview: Exhibit S1. Simplified Biobanking Consent Form Researchers are trying to learn m
+  - id: c02
+    sha1: 0ecc0add2237c253
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.77
+    - A11:0.75
+    - A14:0.69
+    preview: WHAT IS THE PURPOSE OF THIS RESEARCH PROJECT? The purpose of the Biobank is to c
+  - id: c03
+    sha1: 7c849b478cbc9bf3
+    aspects:
+    - A15
+    proposed:
+    - A15:0.71
+    - A11:0.64
+    - A04:0.64
+    preview: 'WHAT IS INVOLVED? If you agree to take part, we will ask you to sign this form. '
+  - id: c04
+    sha1: f155d07c5abe03d2
+    aspects:
+    - A01
+    - A11
+    - A03
+    proposed:
+    - A11:0.79
+    - A14:0.74
+    - A01:0.73
+    preview: 2. We will get some information about you and your health. We will ask you for s
+  - id: c05
+    sha1: ea52034033b1b12d
+    aspects:
+    - A09
+    - A02
+    - A03
+    proposed:
+    - A14:0.76
+    - A16:0.75
+    - A01:0.74
+    preview: We may contact you in the future with offers to take part in other research. The
+  - id: c06
+    sha1: 2cfff47579bd0d86
+    aspects:
+    - A06
+    proposed:
+    - A10:0.68
+    - A09:0.67
+    - A06:0.66
+    preview: We believe the chance that someone will identify you is very small. But the risk
+  - id: c07
+    sha1: c09f4e7e88e1eea5
+    aspects:
+    - A06
+    - A07
+    proposed:
+    - A06:0.78
+    - A14:0.72
+    - A11:0.70
+    preview: HOW WILL INFORMATION ABOUT ME BE KEPT PRIVATE? Your privacy is very important to
+  - id: c08
+    sha1: b2ffdc7a169c4ee4
+    aspects: []
+    proposed:
+    - A05:0.70
+    - A15:0.69
+    - A09:0.68
+    preview: WHAT ARE THE POSSIBLE BENEFITS? You will not get direct benefit from taking part
+  - id: c09
+    sha1: 8d2e06ee0bfc9b0d
+    aspects:
+    - A05
+    proposed:
+    - A05:0.77
+    - A09:0.69
+    - A02:0.67
+    preview: ARE THERE ANY COSTS OR PAYMENTS? There are no costs to you or your insurance. Yo
+  - id: c10
+    sha1: c5885fe6cb204245
+    aspects:
+    - A09
+    proposed:
+    - A09:0.81
+    - A01:0.77
+    - A02:0.71
+    preview: WILL I FIND OUT THE RESULTS OF THE RESEARCH? You should not expect to get indivi
+  - id: c11
+    sha1: bf3c16990cf26983
+    aspects:
+    - A15
+    - A08
+    proposed:
+    - A15:0.69
+    - A11:0.68
+    - A10:0.67
+    preview: WHAT ARE MY OPTIONS? Taking part in Biobank is your choice. You can choose to ta
+  - id: c12
+    sha1: d7e2526c4c73cb59
+    aspects:
+    - A08
+    - A11
+    proposed:
+    - A13:0.68
+    - A09:0.67
+    - A15:0.67
+    preview: WHAT IF I CHANGE MY MIND? Just call [number] and let us know. We will send you a
+  - id: c13
+    sha1: 08fc06c0640ce1d1
+    aspects:
+    - A13
+    - A12
+    proposed:
+    - A13:0.67
+    - A11:0.64
+    - A12:0.60
+    preview: WHAT IF I HAVE MORE QUESTIONS? For questions about this project, contact [name],
+  - id: c14
+    sha1: ec32b3045e260d05
+    aspects:
+    - A15
+    proposed:
+    - A14:0.71
+    - A11:0.71
+    - A02:0.68
+    preview: 'CONSENT STATEMENT The project staff has explained to me the purpose of the Duke '
+  - id: c15
+    sha1: ce0e7475c3a6ae7e
+    aspects:
+    - A09
+    - A01
+    proposed:
+    - A11:0.69
+    - A13:0.66
+    - A10:0.66
+    preview: 1. Someone from the Biobank can contact me once a year to update my personal inf
+  - id: c16
+    sha1: 3ad913873fd7b59c
+    aspects:
+    - A09
+    - A03
+    - A06
+    proposed:
+    - A14:0.74
+    - A09:0.73
+    - A11:0.73
+    preview: 3. Someone from the Biobank can contact me with offers to take part in up to two
+  - id: c17
+    sha1: e8fb1523334f81d0
+    aspects:
+    - A15
+    proposed:
+    - A13:0.71
+    - A15:0.70
+    - A10:0.66
+    preview: ________________________________________________ ___________ Signature of Subjec
+- doc_id: eu-uppsala-biobank-registry-consent-template
+  title: Uppsala University CRB — Informed consent guide and template for biobank and registry-based research
+  path: data/consent_benchmark/eu-uppsala-biobank-registry-consent-template.txt
+  language: en
+  origin: EU (Sweden)
+  text_type: consent template with guidance
+  licence: CC BY 4.0 (Zenodo record 3928446)
+  prepare: {}
+  clauses:
+  - id: c01
+    sha1: c0cbb4d85dc2de1e
+    aspects:
+    - A15
+    proposed:
+    - A14:0.79
+    - A02:0.74
+    - A01:0.72
+    preview: 'Informed Consent Guide Biobank and registry based research (prospective samples '
+  - id: c02
+    sha1: 65aaf14c8d55ac48
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A15:0.77
+    - A02:0.75
+    - A14:0.75
+    preview: 'Each human subject in medical research must be adequately informed of the aims, '
+  - id: c03
+    sha1: 2e3e699a81bef511
+    aspects:
+    - A07
+    - A14
+    proposed:
+    - A14:0.78
+    - A02:0.74
+    - A01:0.73
+    preview: The potential harm is related to sensitive information ending up in the wrong ha
+  - id: c04
+    sha1: fd74b30cc858c6c8
+    aspects: []
+    proposed:
+    - A14:0.73
+    - A02:0.72
+    - A06:0.71
+    preview: Eurobiobank, WP5 Informed consent form, 2007; EpiHealth, Informationsbroschyr, 2
+  - id: c05
+    sha1: a6008ab8365211b5
+    aspects:
+    - A01
+    - A15
+    - A08
+    proposed:
+    - A01:0.77
+    - A14:0.75
+    - A02:0.73
+    preview: 'Institution: Project financed by: Telephone number, address and e-mail of princi'
+  - id: c06
+    sha1: badc0b4458251660
+    aspects:
+    - A12
+    - A05
+    proposed:
+    - A02:0.78
+    - A12:0.77
+    - A03:0.74
+    preview: Provide further details of the approval (e.g. number of decision of the committe
+  - id: c07
+    sha1: 8a2a69aad8f72bb7
+    aspects:
+    - A02
+    - A12
+    - A09
+    proposed:
+    - A02:0.81
+    - A06:0.79
+    - A14:0.79
+    preview: 'If consent is broad inform that any future research project must be approved by '
+  - id: c08
+    sha1: 51ceaafcfc4587cf
+    aspects:
+    - A06
+    - A11
+    - A04
+    proposed:
+    - A06:0.81
+    - A14:0.72
+    - A03:0.70
+    preview: 'the individual in a way that makes them immediately identifiable. Pseudonymised '
+  - id: c09
+    sha1: 1771088e374f096e
+    aspects:
+    - A07
+    - A03
+    proposed:
+    - A14:0.78
+    - A06:0.77
+    - A09:0.75
+    preview: 'Inform if a privacy policy is in place and if your Biobank/Registry follows the '
+  - id: c10
+    sha1: e40496b9b94f9077
+    aspects:
+    - A10
+    proposed:
+    - A09:0.79
+    - A10:0.77
+    - A01:0.75
+    preview: 'In that regard, you may need to account for the vulnerabilities associated with '
+  - id: c11
+    sha1: ebcb0b67a68d0a65
+    aspects:
+    - A13
+    - A15
+    proposed:
+    - A15:0.76
+    - A13:0.75
+    - A14:0.73
+    preview: Describe if there will be any payment, or compensation, and if there is access t
+  - id: c12
+    sha1: c26405d22b5ee6d2
+    aspects:
+    - A13
+    proposed:
+    - A13:0.75
+    - A14:0.70
+    - A10:0.67
+    preview: 'Contact information to responsible persons Give contact information to a person '
+- doc_id: ee-estonian-biobank-gene-donor-consent
+  title: Estonian Biobank — Gene Donor Consent Form (annex to Regulation No 39 of 2019)
+  path: data/consent_benchmark/ee-estonian-biobank-gene-donor-consent.txt
+  language: en
+  origin: EU (Estonia)
+  text_type: participant-facing consent form
+  licence: Annex to a ministerial regulation; no licence stated on page
+  prepare:
+    start_marker: GENE DONOR CONSENT FORM
+  clauses:
+  - id: c01
+    sha1: 6cbcbb0ddcfa2359
+    aspects:
+    - A14
+    - A13
+    proposed:
+    - A14:0.78
+    - A10:0.72
+    - A16:0.72
+    preview: GENE DONOR CONSENT FORM This document contains information about being a gene do
+  - id: c02
+    sha1: 634a4772312d866e
+    aspects:
+    - A01
+    - A02
+    proposed:
+    - A01:0.78
+    - A14:0.74
+    - A10:0.70
+    preview: 'I have been informed of and am aware of the following: 1. The objective of the G'
+  - id: c03
+    sha1: fb82cf072cacfa8e
+    aspects:
+    - A15
+    - A16
+    proposed:
+    - A15:0.81
+    - A14:0.74
+    - A10:0.73
+    preview: 2. The granting of consent is voluntary. Nobody may be discriminated against for
+  - id: c04
+    sha1: 59bbc572de852c13
+    aspects:
+    - A14
+    - A06
+    proposed:
+    - A14:0.82
+    - A06:0.75
+    - A16:0.73
+    preview: 3. Health and genetic data are special category personal d ata, i.e. sensitive d
+  - id: c05
+    sha1: aaa484b091fd02db
+    aspects:
+    - A05
+    proposed:
+    - A14:0.75
+    - A05:0.73
+    - A10:0.72
+    preview: 4. I may not demand payment for providing a tissue sample, for the description o
+  - id: c06
+    sha1: 93dbcbc4a66ca40a
+    aspects:
+    - A11
+    proposed:
+    - A14:0.77
+    - A10:0.71
+    - A15:0.69
+    preview: 5. The controller acquires the right of ownership to the tissue sample as of the
+  - id: c07
+    sha1: 4c470d427dffaece
+    aspects:
+    - A13
+    - A09
+    proposed:
+    - A14:0.81
+    - A16:0.75
+    - A10:0.75
+    preview: 6. I have the right to be aware of my genetic data and other data about me store
+  - id: c08
+    sha1: 8edf780ba8295d28
+    aspects:
+    - A13
+    - A03
+    - A06
+    proposed:
+    - A14:0.79
+    - A06:0.73
+    - A10:0.71
+    preview: 7. I have the right to counselling when accessing my data stored in the Gene Ban
+  - id: c09
+    sha1: 4af5ba69bad4a51e
+    aspects:
+    - A06
+    proposed:
+    - A06:0.81
+    - A14:0.72
+    - A03:0.68
+    preview: 9. De-pseudonymisation means reconnecting the non-personal data with the data th
+  - id: c10
+    sha1: 81c1980366bc23b2
+    aspects:
+    - A13
+    - A09
+    proposed:
+    - A14:0.76
+    - A10:0.75
+    - A09:0.75
+    preview: 10. I may submit additional information about myself to the controller of the Ge
+  - id: c11
+    sha1: 156ffbce95ff556c
+    aspects:
+    - A13
+    - A01
+    proposed:
+    - A14:0.78
+    - A06:0.71
+    - A03:0.69
+    preview: 'are stored in the Gene Bank. The doctor can access the data free of charge. - I '
+  - id: c12
+    sha1: 53f302793192c32c
+    aspects: &id001
+    - A15
+    proposed:
+    - A09:0.60
+    - A06:0.59
+    - A02:0.59
+    preview: Below, I can make choices based on the information above. I will tick one of the
+  - id: c13
+    sha1: 82ade5e963312b82
+    aspects:
+    - A13
+    - A08
+    proposed:
+    - A15:0.69
+    - A14:0.68
+    - A08:0.68
+    preview: 'I allow my doctor to access the description of my state of health. I understand '
+  - id: c14
+    sha1: 53f302793192c32c
+    aspects: *id001
+    proposed:
+    - A09:0.60
+    - A06:0.59
+    - A02:0.59
+    preview: Below, I can make choices based on the information above. I will tick one of the
+  - id: c15
+    sha1: ba21558c6466e844
+    aspects:
+    - A01
+    - A08
+    proposed:
+    - A14:0.71
+    - A11:0.68
+    - A10:0.68
+    preview: I allow the controller of the Gene Bank to supplement, renew and verify the desc
+  - id: c16
+    sha1: 4266128987a95206
+    aspects:
+    - A01
+    proposed:
+    - A14:0.72
+    - A06:0.69
+    - A16:0.68
+    preview: I do not allow the controller of the Gene Bank to supplement, renew and verify t
+  - id: c17
+    sha1: 0af881a0232f45d7
+    aspects:
+    - A08
+    - A11
+    proposed:
+    - A06:0.76
+    - A11:0.76
+    - A08:0.75
+    preview: 12. I may withdraw my consent to become a gene donor at any time. Until the pseu
+  - id: c18
+    sha1: 6c2fa84bd14f6429
+    aspects:
+    - A13
+    - A07
+    proposed:
+    - A14:0.79
+    - A16:0.78
+    - A10:0.72
+    preview: '13. If my identity, the fact that I am a gene donor and other personal data are '
+  - id: c19
+    sha1: 98a9711db4bcff23
+    aspects:
+    - A11
+    proposed:
+    - A14:0.72
+    - A11:0.71
+    - A04:0.69
+    preview: 14. I am aware of the fact that upon the termination of the operations of the co
+  - id: c20
+    sha1: 8308f868ee977233
+    aspects:
+    - A15
+    - A14
+    proposed:
+    - A14:0.71
+    - A15:0.69
+    - A06:0.66
+    preview: By signing this document I grant my fr ee and informed consent for the processin
+  - id: c21
+    sha1: 32c8439eaffa2bb3
+    aspects:
+    - A01
+    proposed:
+    - A10:0.66
+    - A11:0.64
+    - A14:0.63
+    preview: 1) provide a venous blood sample of up to 50 ml; 2) have the description of my s
+  - id: c22
+    sha1: c26e9d6fd51901b4
+    aspects:
+    - A06
+    - A11
+    proposed:
+    - A14:0.69
+    - A11:0.67
+    - A06:0.67
+    preview: '4) enter the tissue sample, description of the state of health and genealogy in '
+  - id: c23
+    sha1: 312fb3c35206fa2f
+    aspects:
+    - A01
+    - A15
+    proposed:
+    - A14:0.78
+    - A10:0.73
+    - A15:0.72
+    preview: 5) use these for genetic research, public health research and statistical purpos
+  - id: c24
+    sha1: b46fc9206104b179
+    aspects: []
+    proposed:
+    - A01:0.64
+    - A14:0.64
+    - A13:0.64
+    preview: 'Information regarding person who takes tissue sample: __________________________'
+  - id: c25
+    sha1: aeb7cba7e783e14d
+    aspects: []
+    proposed:
+    - A06:0.66
+    - A03:0.65
+    - A13:0.63
+    preview: 'Data of processor: Name ________________________________________________________'
+  - id: c26
+    sha1: 2f25ecac85283c3d
+    aspects: &id002 []
+    proposed:
+    - A06:0.62
+    - A13:0.62
+    - A07:0.58
+    preview: Registry code___________________________________________________________________
+  - id: c27
+    sha1: b6a44954b5d22bdf
+    aspects: []
+    proposed:
+    - A03:0.67
+    - A13:0.65
+    - A06:0.64
+    preview: 'Data of controller: Name _______________________________________________________'
+  - id: c28
+    sha1: 2f25ecac85283c3d
+    aspects: *id002
+    proposed:
+    - A06:0.62
+    - A13:0.62
+    - A07:0.58
+    preview: Registry code___________________________________________________________________
+  - id: c29
+    sha1: a92da7fd55c1e4ca
+    aspects: []
+    proposed:
+    - A10:0.67
+    - A06:0.65
+    - A14:0.63
+    preview: 'Gene donor: First name and surname _____________________________________________'
+  - id: c30
+    sha1: 23598d628c4b6e0e
+    aspects: &id003 []
+    proposed:
+    - A13:0.67
+    - A10:0.63
+    - A06:0.61
+    preview: Gender ___________________________________________________________ Place of resi
+  - id: c31
+    sha1: e021e23e4d002ee4
+    aspects: []
+    proposed:
+    - A13:0.72
+    - A09:0.63
+    - A10:0.61
+    preview: Telephone _____________________ E-mail _______________________________ Date ____
+  - id: c32
+    sha1: 8b0d489839f5c0ed
+    aspects: []
+    proposed:
+    - A10:0.70
+    - A06:0.69
+    - A14:0.68
+    preview: Signature ___________________________________________________________ Representa
+  - id: c33
+    sha1: 23598d628c4b6e0e
+    aspects: *id003
+    proposed:
+    - A13:0.67
+    - A10:0.63
+    - A06:0.61
+    preview: Gender ___________________________________________________________ Place of resi
+  - id: c34
+    sha1: 14c6669014667b16
+    aspects: []
+    proposed:
+    - A13:0.70
+    - A09:0.64
+    - A06:0.63
+    preview: Telephone _____________________ E-mail _______________________________ Date ____
