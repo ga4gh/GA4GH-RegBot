@@ -175,14 +175,78 @@ def figure_fusion(results_dir: str, out: str) -> None:
     plt.close(fig)
 
 
+SYSTEM_LABELS = {
+    "whole:none": "whole-form query",
+    "decompose:none": "decompose only",
+    "bridge:aspect": "decompose + bridge",
+    "allocate:aspect": "decompose + bridge + allocate",
+}
+
+
+def figure_benchmark(eval_json: str, out: str, budget: int = 48) -> None:
+    """Cell coverage per scope for the four non-HyDE systems (one evaluation file)."""
+    data = _load(eval_json)
+    scopes = list(data["scopes"].keys())
+    systems = [k for k in SYSTEM_LABELS if k in data["summary"]]
+    by: Dict[str, Dict[str, List[float]]] = {s: {sc: [] for sc in scopes} for s in systems}
+    for inst in data["instances"]:
+        if inst["system"] in by:
+            by[inst["system"]][inst["scope"]].append(inst[f"cell_coverage@{budget}"])
+    fig, ax = plt.subplots(figsize=(5.2, 2.7))
+    styles = ((ORANGE, "o"), ("#898781", "^"), ("#1baf7a", "s"), (BLUE, "D"))
+    x = range(len(scopes))
+    for i, (system, (color, marker)) in enumerate(zip(systems, styles)):
+        ys = [sum(v) / len(v) if v else 0.0 for v in (by[system][sc] for sc in scopes)]
+        xs = [xi + (i - 1.5) * 0.18 for xi in x]
+        ax.scatter(
+            xs,
+            ys,
+            color=color,
+            marker=marker,
+            s=42,
+            zorder=3,
+            label=SYSTEM_LABELS[system],
+            edgecolor="white",
+            linewidth=0.8,
+        )
+        for xi, y in zip(xs, ys):
+            ax.text(xi, y + 0.02, f"{y:.2f}", ha="center", va="bottom", fontsize=6, color=INK)
+    for xi in x:
+        ax.axvline(xi, color=GRID, lw=0.6, zorder=1)
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(
+        [
+            f"{sc}\n{{{', '.join(data['scopes'][sc])}}}"
+            if len(data["scopes"][sc]) <= 2
+            else f"{sc}\n({len(data['scopes'][sc])} jurisdictions)"
+            for sc in scopes
+        ],
+        fontsize=7.5,
+    )
+    ax.set_ylim(0, 1)
+    ax.set_ylabel(f"cell coverage@{budget}")
+    ax.grid(axis="y", color=GRID, lw=0.6)
+    ax.set_axisbelow(True)
+    ax.legend(fontsize=7, loc="upper right", ncol=2)
+    fig.tight_layout()
+    for ext in ("pdf", "png"):
+        fig.savefig(os.path.join(out, f"fig_benchmark.{ext}"), dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--results", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument(
+        "--benchmark", help="a consent_eval result JSON for the per-scope coverage figure"
+    )
     args = ap.parse_args(argv)
     os.makedirs(args.out, exist_ok=True)
     figure_collapse(args.results, args.out)
     figure_fusion(args.results, args.out)
+    if args.benchmark:
+        figure_benchmark(args.benchmark, args.out)
     print(f"figures written to {args.out}")
     return 0
 
