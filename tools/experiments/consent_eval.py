@@ -279,19 +279,19 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print("| system | " + " | ".join(scopes) + " |")
     print("|---|" + "---|" * len(scopes))
     for spec_name in table:
-        cells = []
+        row_cells: List[str] = []
         for scope_name in scopes:
             rows = [
                 r for r in per_instance if r["system"] == spec_name and r["scope"] == scope_name
             ]
             if rows:
-                cells.append(
+                row_cells.append(
                     f"{sum(r[primary] for r in rows) / len(rows):.3f} / "
                     f"{sum(r[cover] for r in rows) / len(rows):.3f}"
                 )
             else:
-                cells.append("—")
-        print(f"| {spec_name} | " + " | ".join(cells) + " |")
+                row_cells.append("—")
+        print(f"| {spec_name} | " + " | ".join(row_cells) + " |")
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             json.dump(
