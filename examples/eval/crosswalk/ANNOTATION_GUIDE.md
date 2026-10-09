@@ -52,8 +52,8 @@ graded metrics can be reported.
    ```
 
    Copy `tools/experiments/annotate.html` next to the pool, then open
-   `http://localhost:8765/annotate.html?pool=crosswalk_pool_v0.1.json`.
-2. Set **depth ≤ 5** (about 2,200 judgments; median 18 per cell). Keep **blind** ticked.
+   `http://localhost:8765/annotate.html?pool=crosswalk_pool_v0.2.json`.
+2. Set **depth ≤ 5** (about 2,800 judgments over 144 cells; median 20 per cell). Keep **blind** ticked for the first pass; the pre-labels of two local models (llama3-8B, Qwen3-14B) appear when it is unticked.
 3. Work cell by cell. Keys: `2` `1` `0` label and advance, `j`/`k` move, `n` next unlabelled,
    `]`/`[` next/previous cell, `e` empty cell, `/` note.
 4. Export regularly (labels also autosave in the browser), then:

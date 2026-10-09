@@ -73,6 +73,7 @@
   <input type="file" id="file" accept=".json">
   <label class="muted">depth ≤ <input type="number" id="depth" min="1" max="50" value="10" style="width:60px"></label>
   <label class="muted"><input type="checkbox" id="blind" checked> blind (hide pre-labels)</label>
+  <label class="muted" title="Hide candidates that every pre-labelling model marked 0. Validate the rule on a sample of fully judged cells before relying on it."><input type="checkbox" id="screen"> screen (hide unanimous 0s)</label>
   <span id="progress" class="muted"></span>
   <span style="flex:1"></span>
   <button id="export" class="primary">Export labels</button>
@@ -110,7 +111,11 @@ function restore() {
 }
 const depth = () => +$("depth").value || 10;
 const bestRank = (c) => Math.min(...Object.values(c.found_by || {99: 99}));
-const visible = (q) => q.candidates.filter((c) => bestRank(c) <= depth());
+const screened = (c) => {
+  const labels = Object.values(c.llm_labels || {}).map((v) => v.label).filter((v) => v != null);
+  return labels.length >= 2 && labels.every((v) => v === 0);
+};
+const visible = (q) => q.candidates.filter((c) => bestRank(c) <= depth() && !($("screen").checked && screened(c) && c.label == null));
 
 function render() {
   const q = pool.queries[ci], cands = visible(q);
@@ -214,9 +219,10 @@ if (src) fetch(src).then((r) => r.text()).then((t) => load(src.split("/").pop(),
   .catch((err) => { $("drop").textContent = "Could not load " + src + ": " + err; });
 $("depth").onchange = () => pool && render();
 $("blind").onchange = () => pool && render();
+$("screen").onchange = () => pool && render();
 $("export").onclick = () => {
   if (!pool) return;
-  const out = { ...pool, annotated_at: new Date().toISOString(), annotation_depth: depth() };
+  const out = { ...pool, annotated_at: new Date().toISOString(), annotation_depth: depth(), screened_unanimous_zero: $("screen").checked };
   const blob = new Blob([JSON.stringify(out, null, 1)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = "crosswalk_labels.json"; a.click();
