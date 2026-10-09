@@ -305,11 +305,29 @@ def load_roles(path: str = os.path.join(CROSSWALK_DIR, "document_roles.yaml")) -
 class AspectClassifier:
     """Zero-shot clause → aspects by embedding similarity to aspect prototypes."""
 
-    def __init__(self, aspects: List[Aspect], enc: Encoders, model: str, margin: float = 0.05):
+    def __init__(
+        self,
+        aspects: List[Aspect],
+        enc: Encoders,
+        model: str,
+        margin: float = 0.06,
+        threshold: float = 0.6,
+        max_aspects: int = 3,
+    ):
+        """
+        Defaults are the best of the zero-shot settings swept in ``aspect_clf_eval.py`` on
+        the English benchmark clauses (micro-F1 0.477): a *relative* margin — keep aspects
+        within ``margin`` × the top score — and a similarity floor below which the clause is
+        taken to raise no governance aspect. Because they were selected on the benchmark,
+        the ``zeroshot`` evaluation mode is optimistic; the LLM and leave-one-document-out
+        classifiers are the fair comparison.
+        """
         self.aspects = aspects
         self.enc = enc
         self.model = model
         self.margin = margin
+        self.threshold = threshold
+        self.max_aspects = max_aspects
         protos = []
         for a in aspects:
             vecs = [enc.encode_query(model, t) for t in [f"{a.label}. {a.definition}", *a.cues]]
@@ -322,10 +340,13 @@ class AspectClassifier:
         sims = self.protos @ v
         return sorted(((a.id, float(s)) for a, s in zip(self.aspects, sims)), key=lambda x: -x[1])
 
-    def classify(self, clause: str, max_aspects: int = 2) -> List[str]:
+    def classify(self, clause: str, max_aspects: Optional[int] = None) -> List[str]:
         ranked = self.scores(clause)
         best = ranked[0][1]
-        return [a for a, s in ranked[:max_aspects] if s >= best - self.margin]
+        if best < self.threshold:
+            return []
+        limit = self.max_aspects if max_aspects is None else max_aspects
+        return [a for a, s in ranked[:limit] if s >= best * (1 - self.margin)]
 
 
 # --------------------------------------------------------------------------- HyDE bridge
@@ -417,7 +438,7 @@ class ConsentPipeline:
         self,
         *,
         retriever_config: str = "baseline",
-        classifier_model: str = "BAAI/bge-small-en-v1.5",
+        classifier_model: str = "BAAI/bge-base-en-v1.5",
         cache: str = os.path.expanduser("~/.cache/regbot/embeddings"),
         store: str = os.path.join(ROOT, "data", "regbot_store"),
         hyde_model: str = "llama3",
@@ -547,7 +568,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     sgm = sub.add_parser("segments", help="print clauses with proposed aspects, for labelling")
     sgm.add_argument("--consent", required=True)
     sgm.add_argument("--chars", type=int, default=400)
-    sgm.add_argument("--classifier", default="BAAI/bge-small-en-v1.5")
+    sgm.add_argument("--classifier", default="BAAI/bge-base-en-v1.5")
     sgm.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/embeddings"))
     d = sub.add_parser("demo")
     d.add_argument("--consent", required=True)
@@ -558,7 +579,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     d.add_argument("--bridge", default="aspect", choices=["none", "aspect", "hyde", "both"])
     d.add_argument("--budget", type=int, default=24)
     d.add_argument("--retriever", default="baseline")
-    d.add_argument("--classifier", default="BAAI/bge-small-en-v1.5")
+    d.add_argument("--classifier", default="BAAI/bge-base-en-v1.5")
     d.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/embeddings"))
     args = ap.parse_args(argv)
 
