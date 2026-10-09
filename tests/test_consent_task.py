@@ -98,3 +98,61 @@ def test_cohen_kappa_known_values():
     a = [1] * 50 + [0] * 50
     b = [1] * 35 + [0] * 15 + [1] * 15 + [0] * 35
     assert cohen_kappa(a, b) == pytest.approx(0.4)
+
+
+def test_prepare_text_markers_furniture_and_page_breaks():
+    from consent_pipeline import prepare_text
+
+    text = (
+        "CONTENTS\nGENOMIC SEQUENCING .... 13\nHIV TESTING .... 17\n"
+        "Study Form Page 1 of 3\nGENOMIC SEQUENCING\nWe will read your DNA.\n"
+        "\f\nStudy Form Page 2 of 3\nThis continues the same paragraph.\n"
+        "Study Form Page 3 of 3\nHIV TESTING\nNot part of the section.\n"
+    )
+    out = prepare_text(
+        text,
+        start_marker="GENOMIC SEQUENCING",
+        start_occurrence=2,
+        end_marker="HIV TESTING",
+    )
+    assert out.startswith("GENOMIC SEQUENCING")
+    assert "Not part of the section" not in out
+    assert "Page" not in out  # running header removed (repeats with different numbers)
+    assert "\f" not in out
+    assert "We will read your DNA.\nThis continues" in out
+
+
+def test_prepare_text_line_paragraphs_and_split_before():
+    from consent_pipeline import prepare_text, segment
+
+    text = "Intro paragraph. Example 1: first sample clause text here. Example 2: second sample clause."
+    out = prepare_text(text, line_paragraphs=True, split_before=[r"Example \d+:"])
+    assert out.count("\n\n") == 2
+    segs = segment(out, min_chars=10)
+    assert [s.split(":")[0] for s in segs[1:]] == ["Example 1", "Example 2"]
+
+
+def test_segment_splits_long_blocks_at_sentence_boundaries():
+    from consent_pipeline import segment
+
+    sentence = "We will store your samples securely for many years in the biobank. "
+    block = sentence * 30  # ~2,000 characters, no headings, no blank lines
+    segs = segment(block, max_chars=600)
+    assert len(segs) >= 3
+    assert all(len(s) <= 700 for s in segs)
+    assert all(s.rstrip().endswith(".") for s in segs)
+    assert " ".join(segs).split() == block.split()
+
+
+def test_question_and_caps_headings_start_clauses():
+    from consent_pipeline import segment
+
+    text = (
+        "What is All of Us?\nAll of Us is a health research program. If you join, we will gather data about you.\n"
+        "How long will it last?\nAt least ten years. You can withdraw at any time if you decide to join the program.\n"
+        "WHAT ARE MY OPTIONS? Taking part is your choice. You can choose to take part or not take part at all.\n"
+    )
+    segs = segment(text, min_chars=40)
+    assert len(segs) == 3
+    assert segs[1].startswith("How long will it last?")
+    assert segs[2].startswith("WHAT ARE MY OPTIONS?")

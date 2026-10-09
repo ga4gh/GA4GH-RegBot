@@ -136,7 +136,7 @@ def figure_fusion(results_dir: str, out: str) -> None:
     ]
     # A dot plot rather than bars: the interesting range is 0.77-0.91, and bars cut off
     # at 0.7 would exaggerate it. Marker shape carries identity alongside colour.
-    fig, ax = plt.subplots(figsize=(4.4, 2.5))
+    fig, ax = plt.subplots(figsize=(5.0, 2.5))
     x = range(len(rows))
     series = (
         ("hybrid, max fusion", BLUE, "o"),
@@ -145,7 +145,7 @@ def figure_fusion(results_dir: str, out: str) -> None:
     )
     for i, (label, color, marker) in enumerate(series):
         vals = [r[i + 1] for r in rows]
-        xs = [xi + (i - 1) * 0.22 for xi in x]
+        xs = [xi + (i - 1) * 0.3 for xi in x]
         ax.scatter(
             xs,
             vals,
@@ -163,7 +163,7 @@ def figure_fusion(results_dir: str, out: str) -> None:
         ax.axvline(xi, color=GRID, lw=0.6, zorder=1)
     ax.set_xticks(list(x))
     ax.set_xticklabels([r[0] for r in rows])
-    ax.set_xlim(-0.6, len(rows) - 0.4)
+    ax.set_xlim(-0.65, len(rows) - 0.35)
     ax.set_ylim(0.74, 0.95)
     ax.set_ylabel("provision recall@8")
     ax.grid(axis="y", color=GRID, lw=0.6)
