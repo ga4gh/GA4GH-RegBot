@@ -51,6 +51,13 @@ NORMATIVE_ROLES = {"law", "policy", "guidance"}
 # --------------------------------------------------------------------------- segmentation
 
 _HEADING = re.compile(r"^\s*(?:#{1,6}\s+|\d{1,2}[.)]\s+|[A-Z]\.\s+|[IVX]{1,4}\.\s+)")
+# CJK consent forms: "一、", "（一）", "【1】", "第3条", circled numbers, and "•" bullet headings.
+_HEADING_CJK = re.compile(
+    r"^\s*(?:[•・▪]\s*\S|[一二三四五六七八九十]+[、．.]|[（(][一二三四五六七八九十0-9０-９]+[）)]"
+    r"|【[0-9０-９一二三四五六七八九十]+】|\[[0-9０-９]+\]\s*\S|第[0-9０-９一二三四五六七八九十]+[条條項]"
+    r"|[①-⑳㉑-㉟]|[0-9０-９]{1,2}[.．、]|[＜<][^＞>]{2,60}[＞>]\s*$)"
+)
+_CJK = re.compile(r"[\u3400-\u9fff\u3040-\u30ff\uac00-\ud7af]")
 _INLINE_CAPS = re.compile(r"^(?:[A-Z][A-Z'’/&-]{2,}\s+)+[A-Z][A-Z'’/&-]{2,}[?:]?")
 _BULLET = re.compile(r"^\s*(?:[-•*●○▪]|\(?[a-z0-9]{1,2}\)|\d{1,2}\))\s+")
 _TERMINAL = (".", "?", "!", ":", ";", ")")
@@ -81,6 +88,7 @@ def prepare_text(
     split_before: Sequence[str] = (),
     start_occurrence: int = 1,
     end_occurrence: int = 1,
+    strip_patterns: Sequence[str] = (),
 ) -> str:
     """
     Trim a document to the consent text proper and drop page furniture.
@@ -90,8 +98,9 @@ def prepare_text(
     digit-normalised form repeats at least ``min_repeats`` times (running headers, "Page 3
     of 12") are removed, as are lines matching any ``drop_patterns`` regex. Page breaks are
     joined so a paragraph that crosses a page stays one paragraph. ``line_paragraphs``
-    treats every line as a paragraph (HTML extraction), and ``split_before`` inserts a
-    paragraph break before each regex match.
+    treats every line as a paragraph (HTML extraction), ``split_before`` inserts a
+    paragraph break before each regex match, and ``strip_patterns`` deletes matches inside
+    lines.
     """
     # Page furniture statistics come from the whole document: a header that recurs on
     # every page is still a header when the start marker leaves only a few pages behind.
@@ -113,6 +122,9 @@ def prepare_text(
         # Web pages often run several sample clauses into one paragraph ("Example 1: …
         # Example 2: …"); a split pattern inserts a paragraph break before each match.
         text = re.sub(f"(?={pattern})", "\n\n", text)
+    for pattern in strip_patterns:
+        # Remove a fragment inside a line (print furniture such as a paper-size note).
+        text = re.sub(pattern, "", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     lines = text.split("\n")
     drops = [re.compile(p) for p in drop_patterns]
@@ -145,6 +157,14 @@ def _is_heading(line: str, prev: str) -> bool:
         return False
     if _INLINE_CAPS.match(s):
         return True
+    if _CJK.search(s):
+        # No word spacing: a heading is a numbered or bulleted line, or a short line that
+        # does not end a sentence (。！？) after a line that did.
+        if _HEADING_CJK.match(s) and len(s) <= 120:
+            return True
+        prev_s = prev.strip()
+        prev_done = not prev_s or prev_s.endswith(("。", "！", "？", "：", ":", "．", "."))
+        return prev_done and len(s) <= 30 and not s.endswith(("。", "、", "，", ","))
     if len(s) > 100:
         return False
     if _HEADING.match(s):
@@ -172,13 +192,16 @@ def _is_heading(line: str, prev: str) -> bool:
     )
 
 
-_SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z\[(\"“])")
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z\[(\"“\uac00-\ud7af])|(?<=[。！？])")
 
 
 def _split_long(block: str, max_chars: int) -> List[str]:
     """Split an over-long block at sentence boundaries into pieces of about ``max_chars``."""
     if len(block) <= max_chars:
         return [block]
+    # CJK text is about three times as dense per character as English prose.
+    if _CJK.search(block):
+        max_chars = max(240, max_chars // 3)
     flat = " ".join(block.split())
     pieces: List[str] = []
     cur = ""

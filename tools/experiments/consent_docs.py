@@ -75,8 +75,24 @@ PREPARE: Dict[str, Dict[str, Any]] = {
     },
     "eu-uppsala-biobank-registry-consent-template": {},
     "ee-estonian-biobank-gene-donor-consent": {"start_marker": "GENE DONOR CONSENT FORM"},
-    "kr-bioethics-form-34-research-consent": {},
-    "jp-amed-model-explanation-text": {},
+    "kr-bioethics-form-34-research-consent": {
+        # A statutory form flattened from a table: the numbered explanations run inline.
+        "split_before": [
+            r"(?<=\s)[1-6]\.\s(?=[가-힣])",
+            r"※ 위의 모든",
+            r"동의 내용",
+            r"보존 기간 내 2차적",
+            r"2차적 사용을 위한 제공 시",
+            r"\(뒤쪽\)",
+        ],
+        "strip_patterns": [r"210mm×297mm\[[^\]]*\)\]?"],
+    },
+    "jp-amed-model-explanation-text": {
+        # The guidance preamble is skipped; "3．AMED 文案" opens the model text proper.
+        "start_marker": "3．AMED 文案",
+        "start_occurrence": 2,  # the first occurrence is the table of contents
+        "drop_patterns": [r"^\s*\d{1,2}\s*$"],
+    },
     "tw-mohw-biobank-consent-template": {},
 }
 
