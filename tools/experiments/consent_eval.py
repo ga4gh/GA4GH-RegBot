@@ -166,6 +166,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--scopes", default="", help="comma-separated scope names; default all")
     ap.add_argument("--systems", default=",".join(f"{s}:{b}" for s, b in SYSTEMS))
     ap.add_argument("--segmentation", choices=["oracle", "auto"], default="oracle")
+    ap.add_argument(
+        "--aspects",
+        default="zeroshot",
+        help="zeroshot (pipeline classifier), oracle (gold clause labels), or a path to a "
+        "predictions JSON from aspect_clf_llm.py; needs oracle segmentation unless zeroshot",
+    )
     ap.add_argument("--retriever", default="baseline")
     ap.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/embeddings"))
     ap.add_argument("--out")
@@ -182,6 +188,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     taxonomy = [a.id for a in pipe.aspects]
     coarse = coarse_documents(pipe.any_doc.chunks)
     budgets = [int(b) for b in args.budgets.split(",")]
+    external: Optional[Dict[str, List[str]]] = None
+    if args.aspects not in ("zeroshot", "oracle"):
+        with open(args.aspects, encoding="utf-8") as f:
+            external = json.load(f)["predictions"]
+    if args.aspects != "zeroshot" and args.segmentation != "oracle":
+        raise SystemExit("--aspects oracle / predictions requires --segmentation oracle")
 
     table: Dict[str, Dict[str, List[float]]] = defaultdict(lambda: defaultdict(list))
     per_instance: List[Dict[str, Any]] = []
@@ -194,6 +206,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             raw_text = f.read()
         text = "\n\n".join(clause_texts) if args.segmentation == "oracle" else raw_text
         clauses_arg = clause_texts if args.segmentation == "oracle" else None
+        aspects_arg: Optional[List[List[str]]] = None
+        if args.aspects == "oracle":
+            aspects_arg = clause_gold
+        elif external is not None:
+            aspects_arg = [list(external.get(c["sha1"], [])) for c in labelled]
         excluded = set(doc.get("exclude_documents") or [])
         for scope_name, scope in scopes.items():
             doc_gold = gold_for({**doc, "scope": scope}, cells)
@@ -206,6 +223,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     budget=max(budgets) * 2,
                     bridge=bridge,
                     clauses=clauses_arg,
+                    clause_aspects=aspects_arg,
                 )
                 ranked = [
                     c
@@ -253,6 +271,27 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             + " | ".join(f"{ms[m]['mean']:.3f}" if m in ms else "—" for m in metrics)
             + " |"
         )
+    # Per-scope view at the largest budget: the Asian scope is where the cross-jurisdictional
+    # allocation matters most, and a pooled average would hide it.
+    primary = f"provision_recall@{budgets[-1]}"
+    cover = f"cell_coverage@{budgets[-1]}"
+    print(f"\nPer scope ({primary} / {cover}):")
+    print("| system | " + " | ".join(scopes) + " |")
+    print("|---|" + "---|" * len(scopes))
+    for spec_name in table:
+        cells = []
+        for scope_name in scopes:
+            rows = [
+                r for r in per_instance if r["system"] == spec_name and r["scope"] == scope_name
+            ]
+            if rows:
+                cells.append(
+                    f"{sum(r[primary] for r in rows) / len(rows):.3f} / "
+                    f"{sum(r[cover] for r in rows) / len(rows):.3f}"
+                )
+            else:
+                cells.append("—")
+        print(f"| {spec_name} | " + " | ".join(cells) + " |")
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             json.dump(
@@ -260,6 +299,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     "documents": [d["doc_id"] for d in docs],
                     "scopes": scopes,
                     "segmentation": args.segmentation,
+                    "aspects": args.aspects,
                     "retriever": args.retriever,
                     "summary": summary,
                     "instances": per_instance,

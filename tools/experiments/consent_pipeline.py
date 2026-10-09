@@ -434,8 +434,13 @@ class ConsentPipeline:
         bridge: str = "aspect",
         per_query: int = 8,
         clauses: Optional[List[str]] = None,
+        clause_aspects: Optional[List[List[str]]] = None,
     ) -> Result:
-        """``clauses`` bypasses the segmenter (oracle segmentation from the benchmark)."""
+        """
+        ``clauses`` bypasses the segmenter (oracle segmentation from the benchmark) and
+        ``clause_aspects`` bypasses the classifier (oracle or externally predicted aspects,
+        parallel to ``clauses``), so retrieval error can be measured on its own.
+        """
         if system == "whole":
             return Result(self.any_doc.retrieve(consent, budget, scope))
 
@@ -444,7 +449,10 @@ class ConsentPipeline:
             lists = [self.any_doc.retrieve(c, per_query, scope) for c in clauses]
             return Result(_interleave(lists, budget))
 
-        labelled = [(c, self.classifier.classify(c)) for c in clauses]
+        if clause_aspects is not None:
+            labelled = [(c, list(a)) for c, a in zip(clauses, clause_aspects)]
+        else:
+            labelled = [(c, self.classifier.classify(c)) for c in clauses]
         detected = sorted({a for _, aspects in labelled for a in aspects})
         gaps = [a.id for a in self.aspects if a.id not in detected]
         exemplars = _interleave([self.templates.retrieve(c, 2, None) for c in clauses], 6)

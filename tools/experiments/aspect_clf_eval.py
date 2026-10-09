@@ -60,6 +60,62 @@ def predict(
     return [ids[i] for i in order[:max_aspects] if sims[i] >= best * (1 - margin)]
 
 
+def supervised_rows(
+    clauses: List[Tuple[str, List[str]]],
+    gold: List[List[str]],
+    ids: List[str],
+    enc: Encoders,
+    models: List[str],
+) -> List[Dict[str, Any]]:
+    """
+    Leave-one-document-out one-vs-rest logistic regression on clause embeddings.
+
+    A supervised reference point for the zero-shot classifier: with ~230 labelled clauses
+    it shows how much of the gap is the prototype design rather than the embedding space.
+    Documents are held out whole so a form never trains on its own clauses.
+    """
+    from sklearn.linear_model import LogisticRegression
+
+    docs = [d for d, _ in clauses]  # doc id per clause, parallel to ``gold``
+    out: List[Dict[str, Any]] = []
+    for model in models:
+        X = np.stack([_unit(enc.encode_query(model, t)) for t, _ in clause_texts_only(clauses)])
+        for c_reg in (1.0, 4.0, 16.0):
+            preds: List[List[str]] = [[] for _ in clauses]
+            for held in sorted(set(docs)):
+                train = [i for i, d in enumerate(docs) if d != held]
+                test = [i for i, d in enumerate(docs) if d == held]
+                for aspect in ids:
+                    y = np.array([1 if aspect in gold[i] else 0 for i in train])
+                    if y.sum() == 0:
+                        continue
+                    clf = LogisticRegression(C=c_reg, class_weight="balanced", max_iter=2000)
+                    clf.fit(X[train], y)
+                    for i, p in zip(test, clf.predict_proba(X[test])[:, 1]):
+                        if p >= 0.5:
+                            preds[i].append(aspect)
+            scores = clause_aspect_scores(preds, gold)
+            out.append(
+                {
+                    "model": model.split("/")[-1],
+                    "prototype": "supervised-LODO",
+                    "rule": "logreg",
+                    "margin": c_reg,
+                    "threshold": 0.5,
+                    "max": "-",
+                    **{k.replace("clause_aspect_", ""): round(v, 4) for k, v in scores.items()},
+                }
+            )
+    return out
+
+
+def clause_texts_only(clauses: List[Tuple[str, List[str]]]) -> List[Tuple[str, List[str]]]:
+    return [(t, g) for _, (t, g) in enumerate(_TEXTS)]
+
+
+_TEXTS: List[Tuple[str, List[str]]] = []
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--docs", default=os.path.join(ROOT, "examples", "eval", "consent_docs.yaml"))
@@ -69,17 +125,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
     ap.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/embeddings"))
     ap.add_argument("--top", type=int, default=15)
+    ap.add_argument(
+        "--supervised", action="store_true", help="add leave-one-document-out logistic regression"
+    )
     args = ap.parse_args(argv)
 
     with open(args.docs, encoding="utf-8") as f:
         spec = yaml.safe_load(f) or {}
-    clauses: List[Tuple[str, List[str]]] = []
+    clauses: List[Tuple[str, List[str]]] = []  # (doc_id, aspects) per clause
     for doc in spec.get("documents") or []:
         texts = load_clause_texts(doc)
         for c in doc.get("clauses") or []:
             if c.get("aspects") is not None:
-                clauses.append((texts[c["id"]], list(c["aspects"])))
-    gold = [g for _, g in clauses]
+                _TEXTS.append((texts[c["id"]], list(c["aspects"])))
+                clauses.append((doc["doc_id"], list(c["aspects"])))
+    gold = [g for _, g in _TEXTS]
     aspects: List[Aspect] = load_aspects()
     ids = [a.id for a in aspects]
     print(
@@ -90,7 +150,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     enc = Encoders(args.cache)
     rows: List[Dict[str, Any]] = []
     for model in args.models.split(","):
-        clause_vecs = np.stack([_unit(enc.encode_query(model, t)) for t, _ in clauses])
+        clause_vecs = np.stack([_unit(enc.encode_query(model, t)) for t, _ in _TEXTS])
         for proto_name, build in PROTOTYPES.items():
             protos = np.stack(
                 [
@@ -111,7 +171,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                         max_aspects=max_aspects,
                         rule=rule,
                     )
-                    for i in range(len(clauses))
+                    for i in range(len(_TEXTS))
                 ]
                 scores = clause_aspect_scores(preds, gold)
                 rows.append(
@@ -125,6 +185,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                         **{k.replace("clause_aspect_", ""): round(v, 4) for k, v in scores.items()},
                     }
                 )
+    if args.supervised:
+        rows.extend(supervised_rows(clauses, gold, ids, enc, args.models.split(",")))
     rows.sort(key=lambda r: -r["f1"])
     cols = ["model", "prototype", "rule", "margin", "threshold", "max", "precision", "recall", "f1"]
     print("| " + " | ".join(cols) + " |")

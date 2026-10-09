@@ -203,6 +203,9 @@ def cmd_anchors(args: argparse.Namespace) -> int:
             if min((cand.get("found_by") or {"_": 0}).values()) > depth:
                 continue
             label = cand.get("label")
+            if label is None and args.llm_model:
+                # Silver standard: fall back to an LLM pre-label where no human label exists.
+                label = ((cand.get("llm_labels") or {}).get(args.llm_model) or {}).get("label")
             if label is None:
                 unjudged += 1
                 continue
@@ -246,6 +249,7 @@ def cmd_anchors(args: argparse.Namespace) -> int:
         yaml.safe_dump(
             {
                 "version": args.version,
+                "silver_from": args.llm_model,
                 "notes": (
                     f"Pooled over {', '.join(pool.get('systems') or [])} at depth "
                     f"{pool.get('depth')}; judged to depth {depth}."
@@ -285,6 +289,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     a.add_argument("--min-label", type=int, default=2)
     a.add_argument("--version", default="pooled-draft")
     a.add_argument("--allow-unjudged", action="store_true")
+    a.add_argument(
+        "--llm-model",
+        help="use this model's pre-labels where no human label exists (silver standard)",
+    )
     args = ap.parse_args(argv)
     return cmd_pool(args) if args.cmd == "pool" else cmd_anchors(args)
 
