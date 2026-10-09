@@ -42,6 +42,10 @@ graded metrics can be reported.
    measure pool completeness and are reported.
 8. **Uncertain.** Pick the lower label and add a note `unsure: <reason>`. Disagreement
    analysis uses these.
+9. **Seeded candidates.** Candidates carrying a `seed` field (shown at depth 0) come from the
+   anchors of the 41-query gold set (`gold_query_aspects.yaml` maps each query to its aspect).
+   They were labelled operative for a *question*, not for the cell; judge them against the
+   cell's aspect definition like any other candidate.
 
 ## Procedure
 
