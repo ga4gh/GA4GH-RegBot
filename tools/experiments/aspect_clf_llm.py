@@ -46,6 +46,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--docs", default=os.path.join(ROOT, "examples", "eval", "consent_docs.yaml"))
     ap.add_argument("--model", default="qwen3:14b")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--languages", default="en", help="comma-separated document languages to score")
     ap.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/clause_aspects"))
     args = ap.parse_args(argv)
 
@@ -63,7 +64,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     with open(args.docs, encoding="utf-8") as f:
         spec = yaml.safe_load(f) or {}
     items: List[Dict[str, Any]] = []
+    languages = set(args.languages.split(","))
     for doc in spec.get("documents") or []:
+        if doc.get("language") not in languages:
+            continue
         texts = load_clause_texts(doc)
         for c in doc.get("clauses") or []:
             if c.get("aspects") is not None:

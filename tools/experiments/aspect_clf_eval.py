@@ -125,6 +125,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
     ap.add_argument("--cache", default=os.path.expanduser("~/.cache/regbot/embeddings"))
     ap.add_argument("--top", type=int, default=15)
+    ap.add_argument("--languages", default="en", help="comma-separated document languages to score")
     ap.add_argument(
         "--supervised", action="store_true", help="add leave-one-document-out logistic regression"
     )
@@ -133,7 +134,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     with open(args.docs, encoding="utf-8") as f:
         spec = yaml.safe_load(f) or {}
     clauses: List[Tuple[str, List[str]]] = []  # (doc_id, aspects) per clause
+    languages = set(args.languages.split(","))
     for doc in spec.get("documents") or []:
+        if doc.get("language") not in languages:
+            continue
         texts = load_clause_texts(doc)
         for c in doc.get("clauses") or []:
             if c.get("aspects") is not None:
