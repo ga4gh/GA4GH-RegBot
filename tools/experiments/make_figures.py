@@ -1,7 +1,7 @@
 """
 Paper figures from the experiment result files (static PDF + PNG for LaTeX).
 
-    python tools/experiments/make_figures.py --results ~/Desktop/GSoC/05_Paper/results --out figures/
+    python tools/experiments/make_figures.py --results <results-dir> --out figures/
 
 Figure 1  aspect collapse: provision recall of a single whole-text query vs per-aspect
           retrieval as the number of aspects grows, for two encoders and two budgets.

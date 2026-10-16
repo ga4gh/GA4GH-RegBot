@@ -52,7 +52,7 @@ graded metrics can be reported.
 1. Serve and open the tool:
 
    ```bash
-   cd ~/Desktop/GSoC/05_Paper && python -m http.server 8765
+   cd <folder holding the pool JSON> && python -m http.server 8765
    ```
 
    Copy `tools/experiments/annotate.html` next to the pool, then open
