@@ -1,0 +1,111 @@
+# Normative role of each corpus document, for the consent → provision benchmark (DRAFT v0.1)
+#
+#   law       binding legislation, regulation, implementing act or ratifiable treaty
+#   policy    GA4GH approved policy (normative for GA4GH members and Driver Projects)
+#   guidance  soft law: recommendations, declarations, regulator guidance, briefs, standards
+#   template  model clauses meant to be copied into consent forms or agreements
+#   summary   contributor paraphrase, not a published source text
+#
+# Crosswalk cells are pooled from law / policy / guidance. Templates are excluded from the
+# provision slots: they are written in the same register as the consent form being reviewed,
+# so they out-rank the provisions that govern it (the "genre attraction" failure). They remain
+# useful to a reviewer as exemplars and are returned in a separate channel.
+
+version: '0.1'
+roles:
+  # GA4GH
+  ga4gh-frs: policy
+  ga4gh-consent-policy: policy
+  ga4gh-privacy-security-policy: policy
+  ga4gh-errp: policy
+  ga4gh-dacres: policy
+  ga4gh-dsip: policy
+  ga4gh-clinically-actionable-results: policy
+  ga4gh-diversity-in-datasets: policy
+  ga4gh-engagement-framework: guidance
+  ga4gh-data-sharing-lexicon: guidance
+  ga4gh-genetic-discrimination: guidance
+  ga4gh-gedi: guidance
+  ga4gh-genomic-newborn-screening: guidance
+  ga4gh-covid-responsible-sharing: guidance
+  ga4gh-duo-data-use-ontology: guidance
+  ga4gh-mrcg-consent-duo-brief: guidance
+  rews-regulatory-ethics-toolkit: guidance
+  ga4gh-model-daa: template
+  ga4gh-consent-clauses-clinical: template
+  ga4gh-consent-clauses-research: template
+  ga4gh-consent-clauses-large-scale: template
+  ga4gh-consent-clauses-familial: template
+  ga4gh-consent-clauses-pediatric: template
+  ga4gh-consent-rare-disease: template
+  # GA4GH GDPR Forum briefs (published guidance about EU law)
+  gdpr-genomic-research-primer: guidance
+  gdpr-consent-broad-genomic-research: guidance
+  gdpr-dpia-genomic-research: guidance
+  gdpr-international-transfers: guidance
+  gdpr-secondary-use: guidance
+  gdpr-genetic-data-special-category: guidance
+  gdpr-withdrawal-consent: guidance
+  # EU and Council of Europe
+  gdpr-full-text: law
+  ehds-full-text: law
+  eu-data-governance-act: law
+  eu-data-act: law
+  eu-clinical-trials-regulation: law
+  eu-standard-contractual-clauses: law
+  edpb-consent-guidelines: guidance
+  edpb-clinical-trials-gdpr-opinion: guidance
+  coe-oviedo-convention: law
+  coe-biomedical-research-protocol: law
+  coe-genetic-testing-protocol: law
+  coe-biological-materials-recommendation: guidance
+  coe-health-data-recommendation: guidance
+  # International
+  who-human-genome-data-guidance: guidance
+  who-human-genome-editing-governance: guidance
+  oecd-health-data-governance: guidance
+  oecd-human-biobanks-genetic-databases: guidance
+  unesco-human-genetic-data: guidance
+  unesco-human-genome-rights: guidance
+  unesco-bioethics-human-rights: guidance
+  rews-regional-jurisdiction-overview: summary
+  # Singapore
+  sg-pdpa: law
+  sg-hbra: law
+  sg-hia: law
+  sg-tissue-banking-regulations: law
+  sg-human-biomedical-research-regulations: law
+  sg-restricted-human-biomedical-research-regulations: law
+  # Hong Kong
+  hk-pdpo: law
+  hk-crossborder-guidance: guidance
+  hk-model-clauses: template
+  hk-ehealth-code-of-practice: guidance
+  # Taiwan
+  tw-biobank-act: law
+  tw-pdpa: law
+  tw-human-subjects-research-act: law
+  # Korea
+  kr-bioethics: law
+  kr-pipa: law
+  kr-bioethics-enforcement-decree: law
+  kr-pipa-enforcement-decree: law
+  kr-law-excerpt: summary
+  # Japan (the Ethical Guidelines are ministerial guidelines that research ethics review
+  # enforces in practice; classed as law for crosswalk purposes, flagged for review)
+  jp-appi: law
+  jp-medical-data-secondary-use-act: law
+  jp-genomic-medicine-promotion-act: law
+  jp-ethical-guidelines: law
+  jp-ethical-guidelines-guidance-2024: guidance
+  # China
+  cn-hgr: law
+  cn-hgr-rules: law
+  cn-pipl: law
+  cn-dsl: law
+  cn-crossborder-data-flow-provisions-2024: law
+  cn-network-data-security-management-regulations: law
+  cn-human-research-ethics-review-measures-2023: law
+  cn-biosafety-law-2024: law
+  cn-data-export-security-assessment-measures: law
+  cn-personal-information-export-standard-contract-measures: law

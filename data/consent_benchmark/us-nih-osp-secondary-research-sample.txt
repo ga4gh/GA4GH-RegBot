@@ -1,0 +1,601 @@
+OFFICE OF SCIENCE POLICY 
+OFFICE OF EXTRAMURAL RESEARCH 
+INFORMED CONSENT 
+FOR SECONDARY 
+RESEARCH WITH 
+DATA AND 
+BIOSPECIMENS 
+Points to Consider and Sample Language for 
+Future Use and/or Sharing 
+MAY 2022 
+
+ 
+ 
+ 
+ 
+   
+      
+      
+   
+     
+    
+ 
+     
+    
+ 
+    
+     
+   
+   
+    
+     
+    
+ 
+    
+   
+    
+ 
+ 
+   
+ 
+ 
+  
+   
+     
+    
+     
+      
+        
+   
+    
+     
+     
+     
+       
+Informed  Consent for Secondary Research with Data and Biospecimens: Points to  
+Consider and Sample Language for Future  Use and/or Sharing   
+KEY POINTS: 
+1. The use of this resource is completely voluntary. 
+2. This resource provides points to consider and sample language for informed consent 
+documents of research studies which plan to store and share data and/ or biospecimens for 
+future use. 
+3. This resource does not address collection, storage, or sharing of data or biospecimens 
+initially obtained in a non-research context, for example, collected during the course of 
+clinical care. 
+4. This resource addresses only consent for the storage and sharing of data and biospecimens 
+collected during a primary research protocol, for the purposes of future secondary research. 
+The approval for use of these data and biospecimens in new research studies that are 
+outside the scope of the primary protocol and consent (i.e., secondary research) will need to 
+be met through other means. This may include IRB approval of the secondary research 
+project, and if necessary, re-consent, or a waiver of consent, even if participants have 
+indicated their agreement to storage and sharing for future use (45 CFR 46.111, 46.116). 
+Note that under the Common Rule, the consent document for the primary protocol (herein 
+referred to as the “primary consent”), should address requirements for notifying research 
+participants that identifiers may be removed and that the data and samples may be used for 
+future research without additional consent (45 CFR 46.116(b)(9)(i)). 
+5. The sample language provided in this resource does not alone satisfy the regulatory 
+requirements of the broad consent provision of the 2018 revised Common Rule at 45 CFR 
+46.116(d) and therefore does not provide consent for the future use of collected 
+biospecimens and data under the exemptions at 45 CFR 46.104(d)(8). Meeting the 
+additional regulatory requirements will be needed to enable the use of data and 
+biospecimens for future research under the broad consent provision of the 2018 revised 
+Common Rule. 
+I. Introduction: 
+As a steward of the nation’s biomedical research enterprise, NIH is dedicated to ensuring that data and 
+biospecimens are shared for research ethically, securely, and with respect for the privacy, autonomy, 
+and well-being of research participants and the communities to which they belong. Sharing increases 
+the scientific utility of the data and biospecimens collected and reduces the burden on research 
+participants who may be asked to donate data and biospecimens multiple times as part of different 
+research studies. As part of this commitment, NIH sought input from stakeholders to identify best 
+practices to obtain effective consent from prospective research participants about data and 
+biospecimen sharing for future research, including the potential risks and benefits. The following 
+resource was developed with substantial input from a wide range of stakeholders and outlines 
+suggested points to consider when addressing data and biospecimen storage and sharing for future use 
+in consent language and provides supplemental sample language that could be modified as needed 
+when developing informed consent documents. Of note, the sample language provided below is 
+1 
+
+ 
+ 
+     
+       
+     
+        
+   
+  
+ 
+   
+   
+        
+   
+    
+   
+      
+         
+      
+   
+    
+     
+  
+     
+ 
+      
+   
+ 
+   
+    
+       
+   
+    
+   
+   
+ 
+ 
+    
+    
+   
+       
+  
+     
+   
+   
+   
+ 
+designed to be incorporated into a primary research consent document. The use of the sample 
+language by itself does not address federal, state, local, tribal, or international requirements that may 
+apply to the primary research. Furthermore, this resource is designed for research consent documents; 
+it does not address the storage and sharing of data and biospecimens initially collected for clinical 
+purposes. Use of the information provided in this resource, including sample language, is completely 
+voluntary. 
+II. Instructions for Use: 
+This document presents points to consider, instructions for use, and optional sample language that is 
+designed for informed consent documents for research studies that include plans to store and share 
+collected data and biospecimens for future use. The use of the suggested language does not obviate the 
+need for IRB review and approval of any non-exempt secondary research. The sample consent language 
+provided in the resource does not supplant the primary study’s informed consent document, but rather 
+is intended to be incorporated into the primary study’s consent document. This resource is not a 
+comprehensive informed consent document, nor is it presented in any specific order. Not all of the 
+components will need to be included in every informed consent document. The sample language will 
+need to be tailored to institutional and study specific requirements. The sample language does not 
+address all possible scenarios for which informed consent may be needed for data and biospecimen 
+storage and sharing. It is the responsibility of researchers and institutional review boards (IRBs) to 
+determine the appropriate use of the sample language including which components, if any, are relevant 
+to a primary consent and the most appropriate section to incorporate the sample language. Researchers 
+should carefully select language appropriate for the study, and IRBs should ensure that the study’s 
+primary consent meets all applicable regulatory and policy requirements, including federal, state, local, 
+Tribal, and international requirements. 
+Use of this sample language is completely voluntary. This language is being provided as a resource for 
+the research community, and there are no requirements or expectations that any portion of the 
+language be used in an informed consent document for NIH-supported or -conducted studies. 
+The scope of this resource encompasses consent for storage and sharing of individually identifiable and 
+deidentified data and biospecimens. “Data and biospecimens” includes information collected from, or 
+about a research participant during the course of a primary study (e.g., surveys, medical images, 
+electronic health records, wearable device information) as well as human material (e.g., blood, tissue, 
+urine, extracted DNA). 
+This resource addresses only consent for the storage and sharing of data and biospecimens collected 
+during a primary research protocol, for the purposes of future secondary research. The approval for use 
+of these data and biospecimens in new research studies that are outside the scope of the primary 
+protocol and consent (i.e., secondary research) will need to be met through other means. This may 
+include IRB approval of the secondary research project, and if necessary, re-consent, or a waiver of 
+consent, even if participants have indicated their agreement to storage and sharing for future use (45 
+CFR 46.111, 46.116). Note that under the Common Rule, the primary consent should address 
+requirements for notifying research participants that identifiers may be removed and that the data and 
+samples may be used for future research without additional consent (45 CFR 46.116(b)(9)(i)). 
+2 
+
+ 
+ 
+  
+  
+  
+    
+  
+      
+      
+The sample language provided in  this resource does  not alone satisfy the regulatory requirements of the 
+broad consent provision of the 2018 revised Common Rule at 45 CFR 46.116(d) and therefore  does not  
+permit the future use  of collected biospecimens and data under  the exemptions at 45 CFR  46.104(d)(8). 
+Meeting the  additional regulatory requirements will be needed to enable the  use of data and 
+biospecimens for future research under  the broad consent  provision of the 2018 revised Common  Rule.  
+ 
+Some  sample language below  includes  embedded instructions to fill in specific information pertaining to  
+the research  study. These  embedded instructions are identified in  [grey  bold text]  and will need  to be  
+removed after study-specific language  is inserted.  
+ 
+III.  General Points to Consider:  
+•  There  may be separate storage  and/or sharing procedures for data versus biospecimens.  Some  
+protocols may require separate consent language to  specify how data versus biospecimens are  
+stored and shared.  
+•  Those writing and approving informed  consent  documents  are  always encouraged to consider the 
+reading level of the  entire informed  consent document,  including  any additional  language 
+addressing the  storage and sharing of  data and biospecimens,  with  the  goal of creating  
+understandable language  that conveys the necessary  information  to the  research participants. The 
+sample language in this resource  was crafted  to ensure a broad comprehension reading level  (with  
+an overall  goal  of not exceeding an  ~8th  grade reading level). There are  several  third-party resources  
+that  help with creating understandable consent language,  including  the National Cancer Institute  
+(NCI)  guide to  evaluating readability.  Researchers may  also  consider using  supplemental strategies  
+to  assist with  comprehension  (e.g.,  interactive videos).   
+•  Studies that involve a category of participants who are considered  vulnerable to coercion or undue  
+influence, such as children, prisoners, individuals with impaired decision-making capacity, or  
+economically  or educationally disadvantaged persons may require  additional  considerations  
+regarding the storage and  sharing of data and biospecimens. Likewise, additional considerations  
+may  need to  be taken into account for studies  that  involve  pregnant  persons, fetuses,  or neonates. 
+It is  strongly encouraged to seek  consultation  with  the appropriate  experts  to determine and take 
+into consideration the applicable  laws, policies, and  regulations  relevant  to studies involving these  
+populations.   
+•  It is  strongly encouraged to seek  consultation  with  the appropriate  experts  to determine and take 
+into consideration the applicable  laws, policies, and  regulations  relevant  when  considering  assent  
+for participants under 18  and  the  subsequent  need for obtaining the participant’s  consent when  the  
+minor reaches the legal age of majority.   
+•  Some cultural,  donor,  and/or sovereign groups may have preferences  or requirements regarding 
+how data and biospecimens are handled, including the disposition  of biospecimens. For example,  
+sovereign  Tribal  Nations may have laws,  policies, and/or  regulations governing research that may  
+i
+mpact the s
+torage and sharing of data and biospecimens. It is strongly encouraged to seek 
+consultation with the appropriate contacts to determine applicable regulations, policies, and 
+cultural preferences or Tribal laws that will need to be taken into consideration prior to storage and 
+sharing of data and biospecimens. 
+• Additional considerations may be applicable for research studies that include the storage and 
+sharing of genomic data. It is recommended that those writing and approving informed consent 
+3 
+
+ 
+ 
+   
+    
+     
+  
+    
+        
+       
+      
+       
+ 
+          
+     
+ 
+  
+ 
+    
+    
+  
+    
+  
+           
+    
+       
+  
+        
+  
+     
+ 
+        
+        
+    
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+documents review community standards, such as NIH resources provided by the National Human 
+Genome Research Institute (NHGRI) on informed consent and the NIH Genomic Data Sharing Policy, 
+as well as international standards on genomic data sharing, such as The International Council for 
+Harmonisation of Technical Requirements for Pharmaceuticals for Human Use- E18 Genomic 
+Sampling and Management of Genomic Data Guidance for Industry. 
+• If the primary study limits the future use of data and biospecimens in any way, the specifics of those 
+limitations should be outlined in the primary consent language. 
+• As coding and deidentifying technologies advance and capabilities for linking disparate data 
+together evolve, consider the implications for reidentification, privacy, and confidentiality and 
+adjust language as appropriate. 
+• Consider whether the data and biospecimens may be particularly sensitive and ensure that 
+appropriate privacy safeguards are in place and communicated in the informed consent document. 
+IV. Sample Language Components: 
+Introduction-Description 
+Considerations: The Introduction-Description component is meant to provide prospective research 
+participants with an introduction to, and description of the planned storage and sharing of data and 
+biospecimens. 
+• Consider the appropriate timeframe for data and biospecimen storage. For some, the appropriate 
+timeframe may be indefinite, while others may have a clear, limited timeframe. 
+• If identifiers will be retained, deidentification of the data and biospecimens is not feasible, or there 
+are circumstances in which re-identification may be possible, adjust language as appropriate. 
+• If there are circumstances under which a code key may be used to re-link identifying information to 
+data and biospecimens, consider including language to address this. 
+• If there are plans to share datasets with unrestricted access, adjust language to reflect this. Consider 
+including the phrase: “Your data and biospecimens will be shared in a way where anybody around 
+the world can gain access to them without review.” 
+Instructions: Adjust language as needed. To use this sample text, include the first two paragraphs 
+then choose either Option #1 or Option #2. Replace embedded instructions identified in [bold grey 
+highlighted text] with specific information pertaining to the study. Remember to remove the “Option” 
+information identified in [bold grey highlighted text]. 
+4 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+   
+    
+         
+     
+  
+  
+       
+    
+ 
+   
+   
+  
+            
+       
+       
+  
+   
+ 
+ 
+  
+     
+   
+   
+ 
+  
+   
+      
+    
+ 
+       
+  
+    
+ 
+     
+   
+ 
+         
+ 
+     
+     
+  
+Sample Language: 
+This study is collecting data and biospecimens from you. We would like to make your 
+data and biospecimens available for other research studies that may be done in the 
+future. The research may be about similar diseases or conditions to this study. However, 
+research could also be about unrelated diseases, conditions, or other types of research. 
+These studies may be done by researchers at this institution or other institutions, 
+including commercial entities. Our goal is to make more research possible. We plan to 
+keep your data and biospecimens for [Insert time frame as indicated in the study 
+protocol]. 
+Your data and biospecimens may be shared with researchers around the world. 
+However, the decision to share your data and biospecimens is controlled by [indicate 
+which entity has control]. To get your data and biospecimens, future researchers must 
+seek approval from [indicate which entity has control]. The researchers must agree not 
+to try to identify you. 
+Option #1: If the data and biospecimens are coded and can be linked back to the 
+identity of the participant: 
+We will protect the confidentiality of your information to the extent possible. Your data 
+and biospecimens will be coded to protect your identity before they are shared with 
+other researchers. [indicate which entity has the code key] will have a code key that 
+can be used to link to your identifying information. The code key will be securely stored. 
+Option #2: If the data and biospecimens cannot be easily linked back to the identity of 
+the participant: 
+Your name and identifying information will be removed from any data and biospecimens 
+you provide before they are shared with other researchers. Researchers cannot easily 
+link your identifying information to the data and biospecimens. 
+Voluntary Participation and Withdrawal of Consent from Storage and Sharing 
+Considerations: The Voluntary Participation and Withdrawal component informs prospective research 
+participants about whether data and biospecimen storage and sharing for future research is voluntary or 
+required for participation in the primary study. The component also describes what happens if the 
+participant initially agreed to the storage and sharing of data and biospecimens, and then changes their 
+mind about storage and sharing for future use. 
+Voluntary Participation Considerations: 
+• In general, participants should be given the choice about whether or not they wish to have their 
+data and biospecimens stored and shared for future use. Providing options for participants to agree 
+to data and biospecimen storage and sharing is particularly important in studies that offer the 
+prospect of direct benefit to the participant. Requiring storage and sharing may be considered 
+undue influence if the participant does not want to agree to sharing of data and biospecimens but 
+feels compelled to agree anyway to join a possibly beneficial research study. 
+• If the primary research study offers no prospect of direct benefit, it may be reasonable to consider 
+requiring storage and sharing in the primary protocol (e.g., if the primary protocol is a repository 
+protocol with the sole purpose being to collect data and/or biospecimens for future use). In this 
+5 
+
+ 
+ 
+     
+ 
+ 
+    
+      
+     
+  
+     
+        
+ 
+ 
+    
+    
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+  
+   
+    
+ 
+   
+     
+    
+     
+   
+ 
+    
+      
+ 
+    
+ 
+   
+   
+ 
+    
+   
+     
+ 
+    
+  
+case, there is no reason to participate if the participant does not want to provide consent for 
+storage and sharing. 
+Withdrawal of Consent Considerations: 
+• Consider cultural sensitivities around the return and/or destruction of biospecimens when research 
+participants withdraw their consent for the storage and sharing of data and biospecimens. 
+• If the data and biospecimens are being stored and shared for FDA-regulated research, adjust 
+language to reflect that there are cases in which data and biospecimens may need to be maintained. 
+• If the entity that controls access to data and biospecimens is different than the entity responsible 
+for holding the code key (e.g., an honest broker), consider adjusting language to reflect this. 
+Instructions: Adjust language as needed. Choose either Option #1 or Option #2. Replace embedded 
+instructions identified in [bold grey highlighted text] with specific information pertaining to the study. 
+Remember to remove “Option” information identified in [bold grey highlighted text]. 
+Sample Language: 
+Option 1: When sharing of data and biospecimens will be optional (e.g., for studies 
+that have potential benefit): 
+It is your choice whether or not to let researchers share your data and biospecimens 
+for research in the future. If you say “yes,” you can change your mind later. If you say 
+“no,” you can still fully participate in this study. 
+If you change your mind and no longer wish to have us store or share your data and 
+biospecimens, you should contact [insert contact info]. We will do our best to honor 
+your request and to retrieve any data and biospecimens that have been shared with 
+other researchers. However, there may be times we cannot. For example, if we do not 
+have a way to identify your data and biospecimens we will not be able to retrieve them. 
+In addition, if the data and biospecimens have already been used for new research, the 
+information from that research may still be used. We will [fill in what will happen to the 
+biospecimens after they are retrieved] any biospecimens we have or are able to 
+retrieve. 
+Please initial [or sign depending on institutional practice] next to your choice: 
+______YES, use my data and biospecimens in other research studies 
+______NO, do NOT use my data and biospecimens in other research studies 
+Option 2: When sharing of data and biospecimens will not be optional (e.g., where 
+sharing is integral to the purpose of the study): 
+Participating in this study means you agree to share your data and biospecimens. You 
+can change your mind later, but researchers might still use your data and biospecimens 
+if they have already been shared. If you do not want your data and biospecimens used 
+for other projects, you should not participate in this study. 
+6 
+
+ 
+ 
+ 
+    
+     
+ 
+ 
+ 
+      
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+   
+   
+    
+ 
+  
+ 
+ 
+   
+        
+          
+        
+   
+   
+     
+  
+   
+   
+   
+ 
+Risks & Benefits 
+General Considerations: The Risks & Benefits component describes the reasonably foreseeable risks 
+and/or discomforts related to storage and sharing of data and biospecimens, and any anticipated 
+benefits related to storage and sharing of data and biospecimens. 
+Considerations- Risks:   
+•  If identifying information will be retained, include language that addresses the additional measures  
+designed to safeguard participants’ privacy (e.g., coding of identifiable information,  access controls).  
+•  Adjust language if  there is a specific risk associated with loss of privacy due to storage and sharing,  
+such as stigma or the ability to obtain  certain types of insurance.  
+In
+structions: Adjust language as needed. Remove [Risks] and [Benefits] unless needed as a section 
+heading. 
+Sample Language: 
+[Risks] We will do our best to protect your data and biospecimens during storage and 
+when they are shared. However, there remains a possibility that someone could identify 
+you. There is also the possibility that unauthorized people might access your data and 
+biospecimens. In either case, we cannot reduce the risk to zero. 
+[Benefits] You will not receive any direct benefit from sharing your data and 
+biospecimens. However, sharing your data and biospecimens may contribute to research 
+that could help others in the future. 
+Commercial Application 
+Considerations: The Commercial Application component informs prospective participants about 
+whether their data and biospecimens may contribute to products with commercial value. 
+• If research participants will receive any payments related to commercial or product development, 
+adjust language in the last sentence to reflect this. 
+Instructions: Adjust language as needed. 
+Sample Language: 
+The use of your data and biospecimens may lead to new tests, drugs, devices, or other 
+products or services with commercial value. These products or services could be 
+patented and licensed. There are no plans to provide any payment to you should this 
+occur. 
+7 

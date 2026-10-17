@@ -1,0 +1,2032 @@
+1 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+NIH IRB CONSENT LIBRARY 
+The purpose of this guidance is to provide sample language for use with the NIH IRB Consent 
+Form Templates. Each topic below offers sample language that may be used to describe study 
+procedures and/or risks related to participation, as appropriate. In some cases, additional simplified 
+language for use in an assent document is provided. Any sample language used  while drafting a 
+consent form should be modified according to the study protocol. Please note that the IRB may 
+require additional changes after reviewing the protocol and application materials. Items are listed 
+in alphabetical order and include: 
+Table of Contents 
+ALLERGIC REACTION................................................................................................................ 5 
+ANESTHESIA ................................................................................................................................ 5 
+ANESTHESIA IN PEDIATRICS................................................................................................... 5 
+LOCAL ANESTHESIA.................................................................................................................. 5 
+AUDIO-TAPING AND/OR VIDEO-RECORDING ..................................................................... 5 
+BLINDED STUDIES...................................................................................................................... 5 
+BLOOD DRAWS ........................................................................................................................... 6 
+BONE MARROW ASPIRATION / BIOPSY ................................................................................ 6 
+BRONCHOSCOPY ........................................................................................................................ 6 
+CENTRAL LINE ............................................................................................................................ 7 
+CHART REVIEW .......................................................................................................................... 7 
+COGNITIVE TESTING ................................................................................................................. 7 
+CONTRAST AGENT ..................................................................................................................... 8 
+CONSCIOUS SEDATION ............................................................................................................. 8 
+CT SCAN ........................................................................................................................................ 8 
+DISCARDED TISSUE ................................................................................................................... 8 
+DISCOVERY OF PREVIOUSLY UNKNOWN CONDITION(S) ............................................... 8 
+DOSE ESCALATION .................................................................................................................... 9 
+DXA ................................................................................................................................................ 9 
+TRANSTHORACIC ECHOCARDIOGRAM ................................................................................ 9 
+ELECTROCARDIOGRAM ........................................................................................................... 9 
+EXERCISE TESTING .................................................................................................................... 9 
+FIBROSCAN ................................................................................................................................ 10 
+FLUORESCEIN ANGIOGRAPHY ............................................................................................. 10 
+
+2 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+FOCUS GROUP ........................................................................................................................... 10 
+GENE THERAPY ........................................................................................................................ 10 
+Example language for lentiviral gene transfer [tailored per protocol]: .................................... 10 
+Example: Risks and long term follow up after gene therapy (retroviral vectors) .................... 12 
+Additional example: Gene Therapy Long Term Follow up for retroviral vectors [tailored per 
+protocol] .................................................................................................................................... 12 
+Gene Therapy Long Term Follow up for non-retroviral vectors [tailored per protocol] .......... 13 
+GENOMIC SEQUENCING ......................................................................................................... 13 
+Purpose of planned [genome, exome sequencing or other genomics-related analysis research]
+................................................................................................................................................... 13 
+Secondary Findings ................................................................................................................... 14 
+Disclosure of secondary genetic findings to research participants who are minors ............. 16 
+Risks of returning secondary genetic findings ...................................................................... 16 
+HIV TESTING .............................................................................................................................. 17 
+IMMUNOSUPPRESSION: REACTIVATION OF VIRAL INFECTIONS ................................ 17 
+IPS CELLS.................................................................................................................................... 18 
+IV (INTRAVENOUS CATHETER) ............................................................................................ 18 
+INTERVIEW ................................................................................................................................ 18 
+INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY ............................................... 18 
+LEUKAPHERESIS....................................................................................................................... 18 
+LIVER BIOPSY, PERCUTANEOUS .......................................................................................... 19 
+LIVER BIOPSY, TRANSJUGULAR .......................................................................................... 19 
+LUMBAR PUNCTURE ............................................................................................................... 20 
+MAGNETIC RESONANCE IMAGING ...................................................................................... 20 
+Routine or Structural MRI ........................................................................................................ 21 
+Brain Functional MRI ............................................................................................................... 21 
+Magnetic Resonance Spectroscopy........................................................................................... 21 
+If MRI will be done combined with PET scanning .................................................................. 22 
+Investigational use of MRI (machine, sequences coils, and/or imaging software) .................. 22 
+Risks for MRI, fMRI, MRS: ..................................................................................................... 22 
+Additional language for gadolinium enhanced MRI ................................................................ 23 
+Additional language for 7T scanner .......................................................................................... 23 
+Language regarding incidental MRI findings ........................................................................... 24 
+
+3 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+NASAL WASH ............................................................................................................................ 24 
+OPTICAL COHERENCE TOMOGRAPHY(OCT) ..................................................................... 24 
+ORAL GLUCOSE TOLERANCE TEST ..................................................................................... 24 
+PAYMENT ................................................................................................................................... 25 
+PET SCAN .................................................................................................................................... 25 
+PLACEBO .................................................................................................................................... 25 
+RESEARCH-RELATED INJURIES—PREP ACT ..................................................................... 25 
+PRIVACY LANGUAGE FOR STUDIES CONDUCTED OUTSIDE OF THE CLINICAL 
+CENTER ....................................................................................................................................... 26 
+Required Informed Consent Language if applicable ................................................................ 26 
+Certificate of Confidentiality .................................................................................................... 27 
+Privacy Act................................................................................................................................ 27 
+Privacy Act (in Spanish) ........................................................................................................... 27 
+PRIVACY LANGUAGE FOR STUDIES CONDUCTED AT THE CLINICAL CENTER 
+(SPANISH) ................................................................................................................................... 28 
+PREGNANCY .............................................................................................................................. 28 
+Required Elements .................................................................................................................... 28 
+Description of rationale for preventing pregnancy during study, and which subgroups are 
+excluded .................................................................................................................................... 29 
+Description of Pregnancy Testing Requirements (women who can become pregnant only) 29 
+Description of Duration and Type of Required Contraceptive Methods .............................. 30 
+Description of Actions Taken in Event of Pregnancy .......................................................... 32 
+Description of Any Known or Suspected Potential Risks to Future Fertility (if appropriate)
+............................................................................................................................................... 32 
+Reproductive Risks ................................................................................................................... 33 
+QUESTIONNAIRES .................................................................................................................... 34 
+RADIATION ................................................................................................................................ 34 
+Non-Therapeutic Radiation ....................................................................................................... 34 
+Therapeutic Radiation ............................................................................................................... 36 
+Radiation reviewed by the RDRC............................................................................................. 37 
+RANDOMIZATION..................................................................................................................... 37 
+SALIVA SAMPLE ....................................................................................................................... 37 
+SKIN BIOPSY .............................................................................................................................. 38 
+
+4 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+STEM CELL TRANSPLANT ...................................................................................................... 38 
+STOOL SAMPLE ......................................................................................................................... 38 
+TRANSCRANIAL MAGNETIC STIMULATION (TMS) ......................................................... 38 
+WITNESS SIGNATURE.............................................................................................................. 40 
+WASHOUT PERIODS/WITHDRAWING CURRENT MEDICATION .................................... 40 
+X-RAY .......................................................................................................................................... 41 
+PROCEDURE TABLE ................................................................................................................. 41 
+ 
+ 
+
+5 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+ALLERGIC REACTION 
+Risks: You might be allergic to the study drug. You could get a mild reaction, like a skin rash. 
+Sometimes, it could be worse, like throat swelling, low blood pressure, or trouble breathing. In 
+rare cases, a severe reaction could cause death. 
+ANESTHESIA 
+Risks: We will give you anesthesia to make you sleep during the procedure. Risks include slower 
+breathing and breathing in saliva or stomach contents, which is called aspiration. Other risks are a 
+drop in heart rate or blood pressure. If these happen, the doctor  may put a longer breathing tube 
+into your mouth and windpipe. They might use a machine to help you breathe and give you 
+medicine to raise your blood pressure. Please tell us if you or any family member has had problems 
+with sedation or anesthesia before. 
+ANESTHESIA IN PEDIATRICS 
+Include this language if children on study will be getting procedures that require general 
+anesthesia—this language is required by CC anesthesiology. 
+Risks: The FDA has given a safety warning about using anesthesia in children, especially if it lasts 
+more than 3 hours or if it is used more than once, even for a short time. Studies have shown that 
+animals can have learning and behavior problems after getting an esthesia for a long time or 
+repeatedly. These problems might also happen in children. So far, no problems have been found 
+after just one short use of anesthesia. An anesthesiologist will discuss the risks and benefits of the 
+anesthesia with you for your child in this study. 
+LOCAL ANESTHESIA 
+Risks: Biopsies can be done with local anesthesia. Possible side effects include feeling sleepy, 
+headaches, blurred vision, muscle twitching or shivering, ongoing numbness, weakness, or a pins 
+and needles feeling. These side effects usually go away quickly. 
+AUDIO-TAPING AND/OR VIDEO-RECORDING   
+Procedure: We will record your interview. After the interview, we will create a written transcript 
+from the recording. Your name will not be included in the transcript. Once the transcript is done, 
+the recording will be destroyed. 
+We would also like to videotape one of your sessions. The videotape will help us review and study 
+your body language and reactions during the session. The videotape will be stored until the study 
+is finished, and then it will be destroyed. Letting us videotape one of your sessions is optional. 
+Risks:  See “INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY” below. 
+BLINDED STUDIES 
+Procedure: You and the study team will not know which study drug you will get. If there is an 
+emergency and it is important for your care, the study team can quickly find out which group you 
+are in. 
+
+6 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+BLOOD DRAWS  
+Procedure: You will have blood drawn from a vein. This may require a needle stick in your arm 
+or hand. If you already have an IV in place, we might be able to use that instead. The amount of 
+blood we will draw is about [specify in teaspoons/tablespoons] at [specify visits when there will 
+be blood draws]. 
+Risks: Blood draws may cause pain, redness, bruising, or infection where we put the needle. Some 
+people might faint, but this is rare. We can put numbing cream on the area, so the needle won't 
+hurt as much. 
+BONE MARROW ASPIRATION / BIOPSY 
+Procedure: We will ask you to have a bone marrow biopsy and will collect a small amount of bone 
+marrow tissue and cells from your hip [specify other site if appropriate for the study] . Bone 
+marrow is the soft material in the center of bones that makes new blood cells. The area will be 
+numbed with lidocaine. Once numb, a large needle will be inserted through a small cut in your 
+skin. We will then take about [4 tablespoons or specify alternative volume as relevant] of marrow 
+out of your bone (this is called aspiration). We may also take a small piece of bone. We will check 
+your pain level during the procedure, so please tell us how you are doing. We may give you more 
+numbing medicine if needed. The procedure will take about [1 hour] to complete. We will call 
+you in about [2 days] to see how you are doing. 
+Risks: The bone marrow collection and biopsy may cause pain, bruising, bleeding, and infection. 
+Soreness may last for a couple of days. You may have more pain, bleeding, and bruising if you 
+have both aspiration and biopsy rather than just the aspiration. If your pain is severe or if you have 
+a fever, tell the study team right away. 
+BRONCHOSCOPY 
+Procedure: If you decide to join this study, you will have a bronchoscopy. We will pass a long 
+tube with a light on it through your nose or mouth and into your lungs. Before we begin, we will 
+use a numbing spray in your nose and throat. An IV (intravenous) needle with a tube attached will 
+be put in your arm. The IV will give you medication to make you drowsy and to help you stay 
+comfortable during the procedure. The test will take about 20-40 minutes to complete. You can go 
+home once you're fully awake, but someone else must drive you home. 
+If Bronchoalveolar lavage will be performed:  While the tube is in your lungs, we will do a 
+procedure called bronchoalveolar lavage (BAL) to collect cells to look at in the lab. We do this by 
+putting a small amount of salt water in your lungs through the tube and then pulling it back out. 
+If transbronchial biopsy will be performed:  We also plan to collect small pieces of lung tissue 
+during the bronchoscopy. We will do this by inserting very small tweezers ("forceps") into your 
+lung through the bronchoscope. We will then collect several very small pieces of your lung tissue. 
+[If fluoroscopy will be used, add this and also include radiation language in the relevant section] 
+We will use x-ray pictures to see where the forceps are inside the lung while we collect the samples. 
+ 
+Risks: The bronchoscopy is not typically painful, but it may cause throat numbness, coughing, a 
+sore throat, and fever. Sometimes, the bronchoscopy can cause your blood oxygen levels to drop. 
+
+7 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+We will watch your oxygen levels during the entire procedure and afterwards until you are 
+recovered. The numbing spray may make your mouth feel funny and has an unpleasant taste. 
+Common side effects of the drug given to you through the IV include feeling d izzy, faint, 
+lightheaded, tired, or out of breath. We will watch you closely throughout the procedure, and we 
+will treat any side effects that happen. 
+If BAL is performed: In addition to the risks of the bronchoscopy, you may have a slight fever after 
+the bronchoscopy with BAL. This usually goes away quickly. If it does not go away, you should 
+tell the study team or your doctor. 
+If transbronchial biopsy is performed: The biopsy may cause bleeding in your lung. This usually 
+is only a small amount and will stop on its own. You may cough up small amounts of blood for a 
+few days. Rarely, (less than 1 in 100 times) the biopsy can cause a pneumothorax. This is where 
+the lung is punctured and may partially collapse. If this happens, we may need to insert a tube 
+called a chest tube to re-expand your lung. A chest tube is a tube placed through your skin into the 
+space between your lung and your chest wall. Depending on how you are doing, we may need to 
+watch you in the hospital. 
+CENTRAL LINE 
+Procedure: Before your [insert procedure/reason], you may need to have a "tunneled" catheter 
+inserted. This type of catheter is a thin, long tube made of flexible silicone rubber that is surgically 
+put into one of the main blood vessels leading to your heart. One end of the catheter is inserted 
+through a small cut into the main blood vessel leading into your heart. The other end of the catheter 
+is tunneled under your skin and comes out through a second small cut in your skin. 
+Your doctor or nurse will explain the procedure in detail and ask you to sign a separate consent 
+form. Before you go home, we will give you instructions on how to care for the catheter. 
+Risks: Many people get central catheters, and they are generally well tolerated. The most common 
+risk is infection, which can be treated with antibiotics or by removing the catheter. Other risks 
+include blood clots inside or near the catheter. These clots can b reak off and travel to the veins 
+near your neck, face, chest, arms, or lungs (called a pulmonary embolism). If you get blood clots, 
+your doctor will treat you, possibly with blood thinners. Uncommon side effects include swelling 
+of the face and arm, a nd/or lung collapse. If your lung collapses, you might need a tube placed 
+between your ribs to allow the lung to re -expand. Rarely, the catheter can break, or air could get 
+inside it and travel to the veins near your neck, face, chest, arms, or lungs. 
+CHART REVIEW 
+Procedure:  As part of this study , we will collect some information from your medical record.  
+This will include your age, sex, race, height and weight, pain level, number of blood transfusions, 
+medicines you are taking and the results of any lab or diagnostic tests. 
+Risks: See “INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY” below. 
+COGNITIVE TESTING 
+Procedure: You will have tests to check your mood, memory, attention, and mental functioning. 
+We will ask you to answer questions, take paper and pencil tests, and do a test on the computer. 
+
+8 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+This testing will take about [specify # of minutes] to complete. 
+Risks: You may feel frustrated while taking the tests. These tests are meant to be challenging. You 
+can take breaks as needed. 
+Written Assent language : You will do some tests so we can find out how you pay attention to 
+things and how you think. These tests will take about [specify # of minutes] to finish. You might 
+feel nervous or frustrated, or you might even get bored with them. You can take breaks whenever 
+you want to. 
+CONTRAST AGENT 
+Risks for IV contrast:  You may feel discomfort when the contrast is injected. You may feel warm 
+or flushed.  You may get a metallic taste in your mouth or, rarely, you may vomit or feel sick to 
+your stomach.   
+You could have an allergic reaction to the contrast, which may cause side effects ranging from 
+mild itching or a rash to severe trouble breathing, shock, or, rarely, death. The contrast may also 
+cause kidney problems. The study doctors will do a blood test to make sure it is safe for you to get 
+the contrast. 
+Risks for oral contras t: You may have vomiting, nausea, cramping, bloating, constipation, or 
+diarrhea after drinking the contrast. 
+CONSCIOUS SEDATION 
+Risks: The most common risks of conscious sedation last up to a few hours after being given can 
+include drowsiness, feeling slow or sluggish, low blood pressure, headache, and nausea. 
+CT SCAN 
+Procedure: You will have a CT (Computed Tomography) scan at months [specify which visits]. 
+The CT scanner is a donut-shaped machine that uses x-rays to make computer pictures of the inside 
+of your body. During the procedure, you will need to lie still on a table inside the CT machine. 
+The table will move you in and out of the machine during th e scan, and you will be told to hold 
+your breath. The scan itself will only take a few minutes, and the entire visit will take about 30 
+minutes [update duration as applicable]. 
+Risks:  See “RADIATION” below & “CONTRAST AGENT” above.  
+DISCARDED TISSUE 
+Procedure:  Normally during surgery small amounts of tissue are removed and thrown away.  At 
+the end of your surgery, instead of throwing it away, we will keep that tissue.  Taking your tissue 
+for this study will not affect your surgery.  No extra tissue will be taken from you for this study. 
+DISCOVERY OF PREVIOUSLY UNKNOWN CONDITION(S) 
+Risks: As a result of the study tests, we may discover that you have a medical condition that you 
+did not know about. If we find something, we will inform you. We will discuss the findings with 
+you and explain your options. You may be advised to follow up with your regular doctor or other 
+specialists for future care. 
+
+9 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+DOSE ESCALATION 
+Procedure: How much [specify drug] you get will depend on when you join the study. We will 
+start by using a low dose when people join the study. If participants on one particular dose don't 
+have serious side effects, the next group of participants will get a higher dose. 
+ 
+If you have a serious side effect, you will stop taking the drug. You will be asked to continue in 
+the study for the rest of the visits even if you stop taking the study drug. 
+DXA 
+Procedure:  You will have a DXA (Dual energy X-Ray Absorptiometry) scan to check your bone 
+density.  This scan will take place at [X] and will take about [20 minutes] to complete.  During that 
+time, you will need to lie still on a padded table while your body  is scanned.  We will do [specify 
+# of scans] different scans: [Specify, as applicable: 1 of your whole body, 1 of your lower back, 
+and 1 of your forearms]. 
+Risks:  See “RADIATION” below. 
+TRANSTHORACIC ECHOCARDIOGRAM  
+Procedure: You may/will [choose appropriate language] need to have an echocardiogram done 
+as part of this study. An echocardiogram is a painless test that uses sound waves to take a picture 
+of your heart. During this test, we will put some jelly on your  chest. We will then place the 
+ultrasound probe on your chest to take the picture. We may ask you to lie on your side to get a 
+better picture. For some pictures, we may put the probe on the upper part of your abdomen and 
+push down firmly. This can be uncomfortable. The scan takes about 30 minutes to complete. 
+Risks: Other than mild discomfort during the test, there are no known risks to an echocardiogram. 
+Also see “DISCOVERY OF PREVIOUSLY UNKNOWN CONDITION(S)” above. 
+ELECTROCARDIOGRAM 
+Procedure: An electrocardiogram (ECG) is a test that looks at the electrical activity of your heart. 
+You will need to lie still for about 5 minutes. We will place electrodes on your chest, arms, and 
+legs. Electrodes are small stickers attached to wires that go to the machine. The signals are recorded 
+by the machine. If you have a lot of hair on your chest, it may hurt a little bit when we remove the 
+stickers. 
+Risks: Other than having some minor skin irritation from the electrodes, there are no known risks 
+related to the ECG. 
+EXERCISE TESTING 
+Procedure: At study visit [X], you will have an exercise test. This test involves walking and 
+running on a treadmill while hooked up to a monitor. The monitor will measure your heart rate, 
+heart rhythm, and blood pressure. You may also be asked to wear a mouthpiece and a clip on your 
+nose so that we can check your breathing. To start, the treadmill will be set at a slow walk speed 
+but will change to slightly faster speeds and higher inclines (slope) every few minutes. You will 
+be encouraged to give as much effort as you can and to keep  going until you feel too tired to 
+
+10 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+continue. Once you reach that point, you can tell the study team, and they will slow down the 
+treadmill and lessen the incline. We will ask you to keep walking on the treadmill until you are 
+comfortable walking again. Your blood pressure, heart rate, and b reathing rates will still be 
+checked for 15 minutes after you complete the test. 
+Risks: The exercise test may cause muscle soreness, dizziness, shortness of breath, 
+lightheadedness, abnormal heart rhythm, chest pain, or you might feel faint. You could also trip or 
+fall while on the treadmill. You will be watched during the entire test by the study doctor. 
+FIBROSCAN 
+Procedure: A Fibroscan® exam is like a regular ultrasound but it only looks at the liver . It has a 
+special probe to look at the toughness of the liver. 
+You will be asked to lie flat on the exam table. We will put a small amount of warm jelly on your 
+skin.  We will slide a special probe over your liver so the Fibroscan ® can measure the toughness 
+of your liver. 
+FLUORESCEIN ANGIOGRAPHY 
+Procedure: This test is done to confirm your diagnosis of [insert disease]. A small amount of dye 
+will be injected into your arm. Your skin may turn pale yellow for a few hours, and your urine will 
+turn a bright yellow-orange. This is normal and may take 2 days to wear off. We will take special 
+pictures of the back of your eye, which will show the dye in the blood vessels of your eye. If you 
+are allergic to fluorescein dye, please tell us. You will not be able to be in this study if you have a 
+fluorescein allergy. 
+Risks: For angiography, you will get an injection (shot) in your arm of a dye that glows when 
+exposed to certain kinds of light. You may have some discomfort from the bright lights that will 
+be shined into your eyes to take the pictures. You may have mild discomfort from the needle that 
+injects the dye. The dye may leak into the tissue in your arm near the needle stick, causing 
+discomfort that lasts only a short time. It is also possible, but not likely, that you will get an 
+infection. Some people feel dizzy and may faint during the procedure. Occasionally, people have 
+mild nausea. You may have an allergic reaction to the dye. This can include vomiting, fever, 
+hives/rash, itching, and trouble breathing. Very rarely, people have a serious allergic reaction to  
+the dye. We will watch you closely during and after this procedure for any signs of side effects. 
+FOCUS GROUP   
+Procedure: You will be asked to take part in a focus group discussion led by one of the 
+investigators. The focus group will have about [specify #] members. The discussion will last for 
+about [specify duration of time]. During that time, you and the other group members will be asked 
+questions about your opinions and experiences with [specify topic about which data are being 
+collected]. We ask you to keep what is said during the group discussion confidential between the 
+focus group members only. 
+Risks: See “INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY” below. 
+GENE THERAPY 
+Example language for lentiviral gene transfer [tailored per protocol]: 
+
+11 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure: Gene therapy corrects a gene  mutation in your cells. In this study, we use an 
+experimental procedure called "lentiviral gene transfer." This procedure is considered 
+investigational, which means it has not been approved by the U.S. Food and Drug Administration 
+(FDA). We are testing it in this study. 
+The gene therapy  you will get on this study  uses a lentiviral vector. A lentiviral vector is like a 
+virus, but it does not make people sick. We use it because it can add its own DNA into other cells. 
+Our lentiviral vector holds a working, "healthy" gene. When we mix it with some of your stem 
+cells in the lab, the vector uses its own DNA to add the working gene into your stem cells. This 
+means that your stem cells will then have a working version of the gene.  Then we will infuse the 
+stem cells back into you. 
+Risks: Gene therapy can cause serious complications and even death. The risk of death or other 
+complications can vary greatly. You should discuss your individual risk with the study doctor. 
+Your risk depends on your age, the way the gene therapy is done, the amount of damage your body 
+may have from infections and treatments you have had in the past, and other reasons. 
+Lentivirus Vector 
+The process of making the changed T cells involves permanently transferring genetic material into 
+your T cells. The "vehicle" or "carrier" for this transfer is a lentivirus vector, which is related to 
+the HIV virus. The lentivirus vector cannot replicate l ike a virus and therefore cannot cause HIV 
+infection or disease. 
+The lentivirus vector contains some proteins related to HIV. As we explain above, there is no risk 
+of getting HIV from the vector. However, it is possible that future HIV testing may falsely indicate 
+that you are HIV positive when you are not . S ince s imple screening tests could detect HIV 
+antibodies in your blood, additional tests will need to be done to determine your true HIV status.  
+DNA Integration 
+When lentivirus vectors enter a normal cell in the body, the genetic material (DNA) of the vector 
+is put into the normal DNA in that cell. This process is called DNA integration. Most DNA 
+integration will not cause any harm to the cell or to you. However, there is a chance that this 
+process could damage your healthy cells and could even make these cells become cancerous. 
+Continued follow-up with your Study Doctor is important to check if you still have the changed T 
+cells and to monitor for any new medical conditions. 
+Replication Competent Lentivirus 
+There is a risk when receiving changed T cells that the lentivirus can cause an infection. This is 
+called Replication Competent Lentivirus (RCL). We do not know the risks of RCL since it has not 
+been seen yet in participants receiving changed T cells. To lower the chance of RCL, tests will be 
+performed on the T cells during the manufacturing process to make sure RCL is not found in them. 
+The FDA requires that you continue to be tested for RCL after receiving the changed T cells. 
+After you receive the changed T cells, you will have blood tests done to test for RCL while you 
+are in the active and long-term follow-up parts of the study. If at any time your blood test is positive 
+for RCL, you will have additional tests to confirm the result. If it is found that you have RCL, your 
+Study Doctor will work with you to come up with the best treatment plan for you. 
+For guidance as to whether or not you need to include Long Term Follow Up for investigational 
+
+12 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+gene therapy products in your protocol/consent; please refer to the FDA guidance document: 
+https://www.fda.gov/regulatory-information/search-fda-guidance-documents/gene-therapy-
+clinical-trials-observing-subjects-delayed-adverse-events  
+Example: Risks and long term follow up after gene therapy (retroviral vectors) 
+There are risks and complications that can happen months or years after gene therapy: 
+• Extra gene copies: Some people who get gene therapy develop blood cells that have more 
+copies of the added genes than we meant to put in each cell. We do not know whether the 
+extra genes are harmful. It is possible that these people may have a higher risk of getting 
+leukemia or other blood disorders in the future. We will monitor this and tell you if we see 
+any important changes. 
+• Cancer and other health problems: We are unsure if this type of gene therapy will cause 
+you to become sick in the future. It is possible that it may cause a sickness of your blood 
+cells or even a cancer such as leukemia. We do not know if you will develop any of these 
+disorders, but you need to be aware of this possible risk. Children in France and England 
+received gene therapy for a particular disease of the immune system. Most of the children 
+were cured, but 5 children out of 22 later developed leukemia, and one child died. Experts 
+who looked at these cases thought that the gene therapy caused the leukemia in these 
+children. To watch you for this risk, we will test your blood during the study follow-up. 
+• Failure: Sometimes, even if the modified cells engraft in the bone marrow and you recover, 
+the cells can fail at a later time. We will regularly monitor for failure after the gene therapy 
+using blood tests at 1, 2, 3, 6, and 12 months after the gene therapy. If your modified cells 
+appear stable by 1 year, it is unlikely that they would fail later, so after that, we will monitor 
+you much less often. 
+Additional example: Gene Therapy Long Term Follow up for retroviral vectors [tailored per 
+protocol] 
+Because we do not know the long -term side effects of gene therapy, we will ask you to take part 
+in long-term follow-up for the next 15 years. The Food and Drug Administration (FDA) requires 
+that people who get gene therapy are seen by a doctor for follow-up visits even after they complete 
+the study. 
+We will ask you questions about your health and ask you to have a physical exam every year for 
+[insert number] years. We will also take blood samples from you for at least one year, but maybe 
+longer. We will take blood samples (2 teaspoons each time) right after you get the [insert product], 
+and at 3, 6, and 12 months after gene therapy. 
+We may also take blood samples over the next several years if you have any tests that show a 
+retrovirus in your blood. This testing will help us learn if the cells have grown or changed in your 
+body. For this reason, we ask that you continue to give us your current address and telephone  
+number, even after you complete this research study. 
+If you return to your referring doctor after being in the study, we will ask you to have your doctor 
+send us a copy of your physical exam and any blood samples. 
+
+13 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+When you die, no matter the cause, we may ask for consent from your family for an autopsy. This 
+will allow us to learn important information about the safety of this gene therapy. Please talk about 
+this with your family to inform them about this potential request. 
+Gene Therapy Long Term Follow up for non-retroviral vectors [tailored per protocol] 
+The Food and Drug Administration (FDA) requires that people who get gene therapy be monitored 
+even after they complete the gene therapy study. Once you have finished the gene therapy study, 
+you will be monitored for up to [insert number of years] years to see how well you are doing. This 
+will be done under a separate NIH study that you have enrolled in even before enrolling in this 
+study. At the least, you will be asked to have a routine physical exam each year for five years after 
+gene therapy. 
+We will ask questions about your health, such as whether you have any new cancers or problems 
+with your blood or immune system. You will also be asked whether you have had a hospital stay 
+for something you did not expect. You will be asked what medicines y ou are taking. You will be 
+called on the telephone for more information about your health each year for [insert number of 
+years] years following the gene therapy. The FDA will have access to this information. For this 
+reason, we ask that you continue to give us your current address and telephone number, even after 
+you complete this research study. 
+GENOMIC SEQUENCING  
+Purpose of planned [genome, exome sequencing or other genomics-related analysis research] 
+Prospective participants should be given a succinct explanation of why they have been approached 
+for the proposed study.  This section should include topics such as a brief description of the 
+underlying scientific justification for the research project, the study design, the diseases(s) or 
+condition(s) being studied, and the immediate and long-term goals of the research project.  Using 
+simplified language that is not overly technical may help prospective participants understand the 
+rationale for genome sequencing, exome sequencing or other genomics-related analysis. 
+Example Language #1: 
+We are asking for your permission to do [specify type of analysis, i.e., genome and/or exome 
+sequencing] on your [specify type of specimen, i.e., blood and/or tissue samples] and to link the 
+results to your medical and/or family history.  
+Your blood and tissue samples contain genes, which are made up of DNA (deoxyribonucleic 
+acid) which serves as the "instruction book" for the cells that make up our bodies. Sequencing 
+[specify type of analysis, i.e., genome and/or exome]  tells us the exact order of the chemical 
+letters in [the tumor being studied, or blood].  Your sample(s), along with [specify any 
+correlations, i.e., medical and family history information] will help us study how genes [specify 
+purpose of analysis]. 
+Example Language #2:  
+We will also study your DNA. DNA is in your blood and other samples. 
+All human beings share more than 99% of their DNA with each other. The tiny bit that is different 
+is part of what makes each of us unique. Things like our hair color and eye color depend on the 
+
+14 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+bits of our DNA that are different between human beings. We call these our DNA changes. These 
+changes can also tell you about your health and how your body works. They can tell you about 
+where your ancestors may be from. We are still learning about what role DNA plays in many parts 
+of our lives. 
+DNA is passed from parents to children. Half of your DNA came from your mom and half came 
+from your dad. If you have children, each of them will get half of your DNA. In this way, your 
+DNA also tells you about your family. 
+We will use many methods to study your samples. For example, we might study your DNA using 
+whole genome sequencing. Whole genome sequencing is a way of studying almost all of a person's 
+DNA. Every person's whole genome sequence is different. It is unique to them, like a fingerprint. 
+Because this study will last for ten or more years, some of the methods we use may not even be 
+invented yet. 
+Example Language #3:  
+Tumor and blood samples taken for research purposes in this study may be used to look for specific 
+changes in the DNA of tumors. Learning about these changes could help us develop new ways to 
+diagnose and treat cancer. 
+DNA (also called deoxyribonucleic acid) in the cells carries genetic information and passes it from 
+one generation of cells to the next, like an instruction manual. While normal tissue contains the 
+DNA (instructions) that you were born with, DNA in tumor cells has changed—or mutated—and 
+we think that change in the DNA is what causes tumors to form and grow. RNA (also called 
+ribonucleic acid) carries the instructions from the DNA to the parts of your cells that make proteins. 
+To look at your DNA and RNA, we may use what is called "DNA sequencing" or "RNA 
+sequencing." We will do special tests in the lab to look at the order (also called a sequence) of how 
+your DNA or RNA are put together. This is what makes you unique. 
+To learn which parts of the DNA or RNA have mutated, we will compare the DNA or RNA in 
+your tumor cells to DNA or RNA from normal cells. We will then analyze the results from similar 
+tumors to see if there are any changes in the DNA or RNA that are common to a particular type of 
+tumor. 
+Secondary Findings 
+Investigators performing genomic analysis that can feasibly be interrogated for secondary 
+findings, such as genome or exome sequencing, in their protocols must describe a plan for the 
+management of such findings within the protocol and consent.  For a comp lete description of the 
+expectations for a return of secondary findings plan, please refer to the Guidance for the return of 
+secondary genomic findings document. 
+ 
+If there will not be any analysis and reporting of secondary findings, this must be stated in the 
+consent. 
+ 
+If there will be analysis and reporting of secondary findings, the informed consent must address 
+the following elements: 
+
+15 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+• What secondary findings will be looked for and disclosed.  It is acceptable to refer to 
+“genes that are important for your health” or something similar.  You do not need to 
+specify the specific genes, unless you think this will be meaningful to the subjects. 
+o The ACMG list that is most current at the time the analysis is performed is the 
+minimum that should be performed. 
+o Additional genes over and above the ACMG list may be included if they are 
+generally agreed upon by the expert community to be clinically important to the 
+subject and are actionable. 
+• A description of the expectation of research subjects to keep the NIH investigators informed 
+of current contact information and the process for them to do so. 
+o The informed consent should make it clear that the onus is on the subject to provide 
+the research team with updated contact information, and that if they fail to do so 
+the NIH will not be able to contact them and return secondary findings. 
+• A statement that subjects will not receive a negative report, i.e., that they will not be notified 
+if the result of the analysis does not show any reportable findings, unless the investigators 
+intent is to notify all subjects regardless of the presence of secondary findings. 
+• A statement describing the timing of the planned analysis expected time frame for subject 
+notification relative to the time of sample collection. 
+o If it is known that the analysis may not be conducted for an extended period, this 
+should be made clear to subjects.  In particular it should be clear that the lack of 
+any notification does not mean that there are no findings, as no analysis may yet 
+have been performed. 
+• A description of the process by which subjects will be informed of any secondary findings 
+o How do you intend to contact subjects? 
+o If the original analysis will not be conducted in a CLIA certified laboratory and the 
+investigator will contact the subject for the collection of additional samples, this 
+should be stated. 
+o How the information will be provided (in person visit, telephone or telehealth) and 
+involvement of a genetic counselor (if applicable). 
+• A statement that if at any time the subject chooses not to be informed of any secondary 
+findings, that choice will be respected. 
+o It is not required to include opt in/opt out selections on the informed consent 
+document.  However, during the consent discussion, it should be clear that the if a 
+secondary finding is detected, the subject is free to decline learning about it. 
+• A statement that the result will only be provided to the research subject (or parent/legal 
+guardian if the subject is a minor, or legally authorized representative if the subject lacks 
+decisional capacity). 
+o In the case of minor participants, the consent should disclose whether results for 
+adult-onset disorders will be disclosed to children or the parents of minor 
+participants and the rationale for either choice. 
+• If applicable, a plan for return of results when to minor research participants when they 
+reach the age of majority.  
+• If the research team wishes to have the option to inform someone other than the subject, 
+for example a family member in the event the subject is deceased, this should be addressed 
+
+16 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+in the consent and in addition a valid release of medical information naming that person 
+as authorized to receive the information should be executed. 
+• Any risks and benefits associated with returning secondary genomic findings 
+ 
+ 
+Example Language for Secondary genetic findings – Return of results 
+In this study, we will use a test to look at most or all of your genes or DNA. This test might find 
+changes in your genes that are not related to what we are studying. These are called "secondary 
+findings." Most of the time, we do not find anything. If we looked at 100 people, we might find 
+these changes in only about 2 to 4 people. 
+If we find a secondary finding that might be important for your or your family's health, we will 
+tell you. But first, we may need to do the test again in another lab to make sure the result is correct. 
+We might need you to give another sample for testing. Once we have the results, we will invite 
+you to come to the NIH (at our expense), schedule a telemedicine visit, or use another way to 
+explain the result and help you get follow-up care if needed. The NIH will not usually provide any 
+further testing or care for this condition for you or your family. 
+We might not test your samples for several years. So, if you don't hear from us, it doesn't mean 
+you don't have any important gene changes. Also, we do not know all the gene changes that cause 
+health problems. In the future, we might learn that some gene changes we don't think are important 
+now could cause health problems.  
+You can choose if you want to know about any secondary findings. You can tell us at any time 
+that you don't want to be contacted about these findings. We will only give these results to you. If 
+you want us to tell someone else, you must give us a signed written release. 
+It is very important to keep us updated on how to contact you. If we don't have your current contact 
+information, we won't be able to reach you to collect another sample or tell you about a secondary 
+finding. If your contact information changes, you need to let us know. [Insert information here on 
+how to update your contact information]. 
+If you have questions or concerns about learning this kind of genetic information, please talk to 
+someone from the study team. 
+Disclosure of secondary genetic findings to research participants who are minors 
+If we find a gene change that is known to cause a health problem in children, we will tell you so 
+you can get care for your child. Some gene changes cause health problems only in adults. If we 
+find a risk of an adult-onset condition in your child's genes, we will also tell you. You can choose 
+to include your child in this discussion, or you can tell them yourself when you think it's the right 
+time. 
+Risks of returning secondary genetic findings 
+• The test for unexpected gene changes is limited. It might not be as thorough as the clinical 
+genetic tests you could get outside of this research study. 
+• If we confirm an unexpected gene change, the test result will go into your NIH medical 
+record. These records are private, but other NIH researchers can see them. 
+
+17 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+• Learning about gene changes might affect your family members and could cause stress for 
+you or them. Before joining the study, it might be helpful to talk with your family about 
+whether they want to know your results. 
+• If we find a gene change, it might show which parent passed it to a biological child. 
+• We might tell you about a gene change that doesn't actually cause the health problem we 
+think it does. This might cause you unnecessary worry or lead to extra medical tests that 
+aren't needed and cost money. 
+Benefits of returning secondary genetic findings 
+• An unexpected gene change result may be useful because you may be able to do something 
+about it to protect your health or to plan for your future. 
+Example language for Secondary genetic findings – Explanation of why results are not being 
+returned  
+Language for use by protocols when the IRB determines that secondary results do not need to be 
+returned. 
+In this study, we will use a test called genetic sequencing that looks at most or all of your genes 
+or DNA. There is a small chance that we might find gene changes that are not related to this 
+research study. We do not plan to give you any individual results from your genetic sequencing 
+because [insert explanation here]. If you want to learn more about your genes, you can get 
+clinical genetic testing through your healthcare providers. 
+HIV TESTING 
+If your study involves testing participants for HIV at the Clinical Center, the following language 
+is required per the CC epidemiology department (it may be used for other locations as applicable):  
+As part of this study, we will test you for infection with the human immunodeficiency virus (HIV), 
+the virus that causes AIDS.  If you are infected with HIV, you will (not/still) be able to be in this 
+study.  We will tell you what the results mean, how to find care, how to avoid infecting others, 
+how we report HIV infection, and the importance of informing your partners who are at possible 
+risk because of your HIV infection. 
+IMMUNOSUPPRESSION: REACTIVATION OF VIRAL INFECTIONS  
+Many people have had infections with different viruses without knowing it or without having 
+symptoms. Some of these viruses can stay inactive in your body but might become active again 
+after certain cancer treatments, including the study drug and chemotherapy. 
+Viruses like Epstein Barr virus (EBV), cytomegalovirus (CMV), herpes zoster virus (HZV), and 
+Hepatitis B virus (HBV) can become active again after cancer treatment, including T-cell therapy. 
+If the EBV virus becomes active, it may cause a condition called lymphoproliferative disease, 
+which makes certain white blood cells multiply quickly in lymph glands or other organs. Rarely, 
+reactivation of these viruses can lead to new cancers. 
+Before you join the study, we will check to see if you have had any of these viruses in the past. If 
+the study doctor thinks any of these viruses have become active after your treatment, we will do a 
+
+18 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+blood test to confirm it and provide treatment if needed. 
+IPS CELLS 
+We may use some of your blood or skin samples to make special cells called induced pluripotent 
+stem cells, or iPS cells. iPS cells can be used in the lab to create many other types of cells. They 
+can help us make an unlimited supply of stem cells (cell lin es) for research. Using iPS cells from 
+your samples can help us understand your condition better. We can use your cells to find out if 
+changes in your genes are causing your disease or to see how your cells work. 
+IV (INTRAVENOUS CATHETER) 
+Procedure: We will put a small plastic tube called an intravenous (IV) catheter into a vein in your 
+arm using a needle. 
+Risks: The risks of putting an IV in your arm include temporary pain, bleeding, and bruising where 
+the IV goes into your skin. There is a small chance that fluid might leak into the tissue near the IV, 
+which can cause swelling and discomfort. Rarely, the IV site  might get infected. If you get an 
+infection, we may have to give you antibiotics. 
+INTERVIEW 
+Procedure: We will interview you in a private location for about [X time] . We will ask you 
+questions about your experiences with [specify topic(s)]. 
+Risks: Some of the questions may be upsetting or make you feel uncomfortable. You do not have 
+to answer any questions you do not want to answer. You can stop the interview at any time. 
+Also see “INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY” below. 
+INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY 
+Risks: Because we will collect personal, identifiable information about you, it is possible that 
+people who are not supposed to see your information might somehow get access to it. We will take 
+precautions to prevent this, but we cannot be completely sure it won 't happen. To minimize this 
+chance, we will label your information with a study number instead of your name or medical record 
+number. All the information we collect about you will be securely stored, such as in locked cabinets 
+or password-protected computer files. 
+LEUKAPHERESIS 
+Procedure: Leukapheresis is a procedure where we separate white blood cells, a type of immune 
+cell, from your blood using a machine. 
+Two large needles will be placed in your veins near each elbow. These needles are the same size 
+as those used by the Red Cross for blood donations. The needles are connected to a machine that 
+will process your blood. During the procedure, your blood will flow from one arm to the machine 
+and back to your other arm. The machine will remove some of your white blood cells and return 
+the rest of your blood to your body. 
+Sometimes we use a central line instead of needles in your arms. A central line is a large catheter 
+placed in your neck or under your collarbone. 
+
+19 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+To keep your blood from clotting inside the machine, we add a chemical called citrate. We also 
+add some saline (fluid) to your blood. The amount of saline depends on your blood pressure and 
+how long the procedure takes. Your kidneys will remove the extra saline quickly, so it won't affect 
+you. The citrate might cause tingling in your lips and fingers. If this happens, we will give you 
+calcium (like Tums) to stop the symptoms. 
+We will use standard medical procedures to collect your white blood cells. We will check your 
+pulse, blood pressure, and temperature before and after the procedure. You will also be asked to 
+tell us about any new symptoms, like lightheadedness, tingling li ps or fingers, or shortness of 
+breath. The procedure could last about 2 -4 hours, and you will be watched for about 1 hour or 
+more afterward. You will return for a check-up. 
+Risks: The risks of leukapheresis include pain, bruising, lightheadedness, dizziness, nausea, 
+vomiting, and chills. Bruising may last up to 72 hours. You might have tingling around your mouth, 
+fingers, or toes, or mild muscle cramps because your blood calcium ma y drop slightly from the 
+blood thinner used during the procedure. These symptoms can be treated by stopping the procedure 
+temporarily or by giving you a calcium pill. 
+Leukapheresis uses a completely closed sterile system. We minimize the risk of infection by 
+cleaning your skin before inserting the needle. No infections from leukapheresis have been 
+reported in thousands of procedures done over the last 10 years at the NIH. 
+Rarely, the machine can malfunction and prevent the return of your blood to your body. The 
+amount of blood lost would be very small and is not harmful. It is also rare for people to faint, 
+have seizures, or have air trapped in the bloodstream. Nerve damage  may occur where we place 
+the needle, but this is very rare. So far, there have been no cases of permanent nerve damage with 
+leukapheresis at the NIH. 
+During leukapheresis, your platelet count may drop because platelets are collected with the white 
+blood cells. Platelets help your blood to clot. Taking aspirin while you have a lowered platelet 
+count may increase your chance of bleeding. Therefore, you sh ould not take aspirin or drugs that 
+contain aspirin for 2 weeks after leukapheresis unless your doctor approves it. 
+LIVER BIOPSY, PERCUTANEOUS 
+Procedure: The percutaneous liver biopsy will be done with you lying on your back. The doctor 
+will clean the skin over your liver on the right side of your chest. You will be awake for the 
+procedure. We will give you a numbing medication. When your skin is numb, the doctor will insert 
+the liver biopsy needle into your skin. The doctor will then quickly pass the needle into and out of 
+your liver to take the biopsy. 
+The biopsy itself is a quick procedure. You may or may not feel it, but some people feel slight pain 
+when the needle enters the liver. 
+After the biopsy, you will be asked to roll onto your right side and lie on that side for [specify # of 
+hours]. This puts pressure on the biopsy site and helps stop any bleeding. Then you will need to 
+stay on your back in bed for [specify # of hours]. 
+LIVER BIOPSY, TRANSJUGULAR 
+ 
+
+20 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure: We will access your liver through a large vein in your neck. This procedure is done 
+while you are sedated. We will insert a needle into a large vein in your neck area. Through this 
+site, a thin tube (catheter) will be moved along the large veins of your c hest until it reaches the 
+veins of your liver. About [specify amount in simple terms, such as "a small piece"] of liver tissue 
+will be taken using a needle. After the biopsy, you will need to stay in bed for [specify # of hours]. 
+LUMBAR PUNCTURE 
+Procedure: You will have a lumbar puncture (also called a "spinal tap") so we can get 
+cerebrospinal fluid (CSF) samples at visits [specify which visits] . We will insert a small needle 
+into your lower back. Then we will help you lie on your side or sit up. We will clean the lower 
+part of your back with antiseptic, and then we will inject a small amount of local anesthetic to 
+numb the area. Once numb, a very thin needle will be inserted into the spinal canal in your lower 
+back (well below where the spinal cord ends). About [specify volume, such as "a few teaspoons"] 
+of spinal fluid will be removed for analysis and storage. Your body usually replaces this fluid 
+within 1-2 hours. 
+After the lumbar puncture (LP) is complete, you will be watched for about 30 minutes. To prevent 
+side effects, it is important that you do not do any strenuous physical activity for 24 hours after the 
+procedure. For example, you should not do any lifting, bending, housework, gardening, or 
+exercising. 
+Risks: The lumbar puncture (LP) may cause pain where the needle goes into your skin and where 
+the spinal fluid is taken. There is a small risk of infection or bleeding. 
+You may get a headache after the LP. About 1 in 3 adults report a headache after an LP. To 
+minimize the risk of a headache, the doctor will use a small needle during the procedure. The 
+doctor may also prescribe bed rest for one or more hours afterward. If you get a headache, it is 
+usually mild and can be controlled with bed rest, drinking lots of fluids, and taking a pain pill, such 
+as acetaminophen. Rarely, the headache is severe and may require additional treatment with a 
+"blood patch." In this procedure,  a small amount of your own blood is injected into the lumbar 
+puncture site. This usually stops the headache. 
+A rare but serious complication of an LP is known as a medullary herniation, which can cause 
+death. This can happen if the LP is done when the pressure inside your head is higher than normal 
+(such as when there is a brain tumor). Increased pressure inside your head is very unlikely. We 
+will not do the LP if there are any signs that you have increased pressure inside your head. We will 
+also not do the LP if you have a skin infection in your lower back area, or if you have bone defects 
+of the lower back (including severe scoliosis) which would make an LP difficult to do. 
+To minimize these risks, the LP will be done by a medical professional specifically trained to 
+perform this procedure. 
+Also see “ALLERGIC REACTION” above for risks related to the use of lidocaine. 
+MAGNETIC RESONANCE IMAGING  
+Instructions to investigators: If more than one type of MRI scan is done during the protocol or 
+during a single session, combine the appropriate procedure language (structural, functional, 
+spectroscopy) into a single paragraph.    
+
+21 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Routine or Structural MRI 
+Procedure: At visit [X and Y], you will have an MRI (Magnetic Resonance Imaging) done at [list 
+location]. An MRI makes pictures of the inside of your body using strong magnets instead of X -
+ray energy. At each scan, you will be asked to fill out a screening form to confirm that it is safe 
+for you to have the scan. You will also be asked to remove any metallic objects you are wearing 
+(such as watches, earrings, or piercings). We may ask you to change into a hospital gown. 
+Then you'll be asked to lie on a narrow bed that will move into the MRI scanner. If applicable: 
+[Before moving you into the scanner, special padding will be placed around your head to help keep 
+your head still.]  The scanner is a long, narrow tube that is open at each end. Once you are 
+comfortable, the table will be moved into the scanner. You will need to lie still on the table during 
+the scan. The scan will take about [30 minutes or specify as applicable] to complete. You will hear 
+normal "hammering," clicking, and squealing noises during the scan. We will give you earplugs 
+or earmuffs to muffle the sound. You will be able to communicate with the technician running the 
+scan the entire time. We will also give you an emergency button to squeeze at any time if you want 
+the scan to stop. 
+Brain Functional MRI 
+Procedure: Magnetic resonance imaging (MRI) uses a strong magnetic field and radio waves to 
+take pictures of your brain. Functional MRI (fMRI) lets us see which parts of your brain are used 
+when you do a task. 
+The MRI scanner is a metal tube surrounded by a strong magnetic field. During the MRI, you will 
+lie on a table that can slide in and out of the tube. A device called a "coil" will be placed over your 
+head. 
+For your fMRI scan, you will [insert task]. If applicable: There is a computer screen that you can 
+see when you are inside the scanner. The screen will show you task information. 
+You will be in the scanner for about [insert time] minutes/hours. During the scan, you may be 
+asked to do the study task, or you may be asked to lie still for up to [insert time] minutes at a time. 
+While in the scanner, you will hear loud knocking noises. We will give you earplugs or earmuffs 
+to muffle the sound. You will be able to communicate with the MRI staff the entire time. You may 
+ask to be moved out of the machine at any time. 
+Magnetic Resonance Spectroscopy 
+Procedure: Magnetic resonance spectroscopy (MRS) uses a strong magnetic field and radio waves 
+to take pictures of various chemicals in your (insert body part) using an MRI scanner. The MRI 
+scanner is a metal tube surrounded by a strong magnetic field. During the MRS scan, you will lie 
+on a table that can slide in and out of the tube. We will place soft padding or a coil around your 
+(insert body part). 
+You will be in the scanner for about (insert time) minutes. You may be asked to lie still for up to 
+(insert time) minutes at a time. While in the scanner, you will hear loud knocking noises. We will 
+give you earplugs or earmuffs to muffle the sound. You will be able to communicate with the MRI 
+staff the entire time. You may ask to be moved out of the machine at any time. 
+For any MRI, if applicable: 
+
+22 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+It is very important that you do not move your head or body inside the scanner. We will use padding 
+around your (insert body part) to help keep it in place. 
+We may place a bar in your mouth to help keep your head still. 
+If MRI will be done combined with PET scanning 
+Describe both the MRI and PET procedures and add the statement: 
+The MRI and PET scans may be done on a combined MRI-PET scanner during the same session.  
+Investigational use of MRI (machine, sequences coils, and/or imaging software) 
+If your protocol is using MRI in an investigational manner (using research (i.e. not FDA-cleared) 
+pulse sequences, research coils, research imaging reconstruction and analysis software, and/or 
+an unapproved MRI scanner), use this language as applicable and see 501.Guideline for Device 
+Classification for Protocols Using MRI:  
+We will use the MRI in this study for research purposes. This means that the way the MRI is 
+making the images may be different than what is normally done in a routine clinical scan.  
+Revise and include ONLY the detail that is applicable to your specific study: 
+We plan to use [insert correct choice(s): research pulse sequences, research coils (antennae), and 
+research imaging reconstruction and analysis software] . These are the parts of the machine that 
+help make or analyze the image. These MRI research tools have not been cleared by the FDA and 
+are considered investigational. If applicable: [The MRI machine that we will use is also considered 
+investigational (not yet cleared by the FDA)]. However, all MRI scans done under this protocol 
+will be done within the stated FDA safety parameters and meet all relevant safety guidelines. 
+Risks for MRI, fMRI, MRS: 
+You might be at risk for injury from the MRI magnet if you have certain kinds of metal in your 
+body. It may be unsafe for you to have an MRI scan if you have: 
+• Pacemakers or other implanted electrical devices 
+• Brain stimulators 
+• Some types of dental implants 
+• Aneurysm clips (metal clips on the wall of a large artery) 
+• Metal prostheses (including metal pins and rods, heart valves, and cochlear implants) 
+• Permanent eyeliner 
+• Tattoos 
+• An implanted delivery pump 
+• Shrapnel fragments (pieces of metal from injuries) 
+• Small metal fragments in the eye (common for welders and metal workers) 
+You will be screened for these conditions before having any MRI scan. If you have a question 
+about metal in your body, you should tell us. You will be asked to fill out an MRI screening form 
+before each MRI scan you have. 
+In addition, all magnetic objects (like watches, coins, jewelry, and credit cards) must be removed 
+before you enter the MRI scan room. 
+
+23 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+If you are afraid of confined (small, cramped) spaces, you may get anxious during an MRI. If you 
+have back problems, you may have back pain or discomfort from lying in the scanner. 
+The noise from the scanner is loud enough to damage your hearing, especially if you already have 
+hearing loss. We will give you hearing protection. If the hearing protection comes loose during the 
+scan, you should let us know right away. 
+There are no known long-term risks of MRI scans. 
+Additional language for gadolinium enhanced MRI 
+Procedure: During part of the MRI we will give you  gadolinium, a contrast agent, through an 
+intravenous (IV) catheter (small tube). It will be done for (Use the applicable wording: research 
+OR both research and medical) uses.  
+Only use this language if pregnancy risks are not discussed elsewhere in the consent:  We do not 
+know if MRI with contrast is completely safe for a developing fetus. Therefore, all women who 
+could become pregnant will have a pregnancy test done no more than 24 hours before each MRI 
+scan with contrast. We will not do the scan if your pregnancy test is positive.  
+Risks: Gadolinium-based contrast agents (GBCAs) used in MRIs are generally safe, but there are 
+some risks to consider:  
+• Side effects 
+Common side effects include headache, nausea, dizziness, and a cold feeling at the injection 
+site. Less common side effects include itchy skin rash and severe allergic reactions.  
+• Gadolinium retention 
+Most of the gadolinium contrast will leave your body in the urine. However, small amounts of 
+gadolinium can remain in the body for months or years, and can be detected in the brain, skin, 
+kidney, bone, and lymph nodes. When you get the scan, we will give you additional information 
+called a “Medication Guide”. If you ask, we will give you individual information about any 
+remaining gadolinium we see on your scans. 
+• Nephrogenic systemic fibrosis (NSF) 
+People with kidney disease are at risk for a serious reaction to gadolinium contrast called 
+“nephrogenic systemic fibrosis (NSF).” NSF can cause skin contractures and internal organ 
+damage. The risk of NSF is believed to be low for patients with less severe kidney disease, but 
+it can still occur.   
+Additional language for 7T scanner 
+Risks: In this study, we are using an MRI scanner that has a strong 7 Tesla magnet. Because of the 
+strong magnetic field, some people briefly experience: 
+• Muscle twitching 
+• Eye discomfort 
+• Dizziness 
+• Mild nausea 
+• Headache 
+
+24 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+• A metallic taste in their mouth 
+• A sensation of flashing lights 
+Many of these effects are caused by moving too quickly in the magnetic field, so you will be asked 
+to walk slowly to the MRI table. Once you lie down, we will move the table slowly into the scanner. 
+You can ask us to stop the scan at any time if you feel t oo uncomfortable. There is no evidence 
+that scanning using a high magnetic field is dangerous. However, we do not know if there are any 
+long-term effects. 
+Language regarding incidental MRI findings 
+Note: If you use this language, this paragraph should be placed in the consent section in the 
+return of results to participants 
+A credentialed radiologist (or neuroradiologist)  will read your MRI scan. They might find 
+unexpected findings on your MRI scan or from other tests we perform. We may not know the 
+significance or importance of some findings, which could make you anxious. We will only inform 
+you about any findings that require further evaluation or care. We are not able to evaluate or treat 
+these conditions at NIH. If needed, we will refer you to a healthcare provider. 
+NASAL WASH 
+Procedure:  We will do a nasal wash at study visits [specify which visits ].  To do this, a small 
+amount of salt water will be put into each side of your nose and then suctioned out. 
+Risks:  The nasal wash may cause sneezing and minor irritation of your nose and throat. 
+OPTICAL COHERENCE TOMOGRAPHY(OCT) 
+Procedure: A machine will measure the thickness of your retina by taking pictures of your eyes. 
+[If applicable: OCT will be repeated during the study to see whether retinal thickening is getting 
+worse, getting better, or staying the same.] 
+Risks: There are no known medical risks to measuring retinal thickness using OCT or having 
+pictures taken of the eye. 
+ORAL GLUCOSE TOLERANCE TEST 
+Procedure: An Oral Glucose Tolerance Test (OGTT) will be done during visits [X and Y]  to 
+measure the levels of glucose (sugar) and insulin in your blood. We will give you specific 
+instructions for your diet the day before the testing. The instructions will be tailored to you. 
+Generally, the test will include the following procedures: 
+• Drink only water. Have no other foods or liquids after 10 pm the night before the test and 
+on the morning of the test. This is called "fasting." 
+• We will insert an intravenous (IV) needle and thin tube in your arm so that we can take 
+blood multiple times without having to "stick" you each time. The needle will stay in your 
+arm for the entire test. 
+• We will ask you to drink [specify what they will drink]. 
+• We will take some blood about every ½ hour from the IV over 4 hours. 
+Risks: Fasting before the OGTT may make you feel light-headed or dizzy. You may also feel weak, 
+
+25 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+hungry, nervous, or restless towards the end of the test because your blood glucose levels may 
+drop. The risks of putting an IV in your arm may include temporary pain, bleeding, or bruising 
+where the IV enters your skin. There is a small chance of fluid leaking into the tissue near the IV. 
+There is a small chance the IV might get infected.  We will give you antibiotics if you get an 
+infection. Rarely, the IV may need to be removed, and we will have to insert a second one. 
+PAYMENT 
+If your study provides payment to participants, required language for your consent is found in 
+the relevant consent template.  Below is the language in Spanish that must be included if 
+payment to an individual could equal or exceed $2000 (not including reimbursement for parking, 
+meals, etc. based on receipts) in a calendar year.  
+La compensación del estudio puede considerarse ingreso gravable y debe declararse al Servicio 
+de Impuestos Internos (IRS).  Se le enviará un formulario “Form 1099-Other Income” si el total 
+de los pagos que recibe por participar en la investigación supera el límite que debe declararse 
+como ingreso gravable en el año calendario en el que participó. Si tiene preguntas, comuníquese 
+con el Programa de voluntarios de investigaciones clínicas escribiendo a CC-
+PRPLRVSSupport@cc.nih.gov.  
+PET SCAN 
+Procedure: You will have a PET (Positron Emission Tomography) scan at visits [Y and Z]. The 
+PET scanner is a donut -shaped machine that uses X -rays combined with a dose of radioactive 
+material (tracer) to make computer pictures showing the inside of your body. 
+Before the scan, we will give you an injection (shot) of radioactive material into a vein in your 
+arm. After the shot, you will need to wait for about 1 -2 hours for the material to be absorbed by 
+your body. After this time, you'll lie on a narrow, padded table. We will position your body for the 
+scan. The scan itself is painless and won't make noise. During the scan, you will need to lie very 
+still. The scan will take about another 30 minutes to complete. 
+Risks:  See “ RADIATION” below and “ CONTRAST AGENT ” & “ IV (INTRAVENOUS 
+CATHETER)” above.  
+PLACEBO 
+Procedure:  A placebo looks like the study drug but doesn’t include any medicine. 
+RESEARCH-RELATED INJURIES—PREP ACT 
+Required Informed Consent Language if applicable 
+If your study uses a COVID-19 covered countermeasure, substitute the following language in the 
+research injury section of the informed consent document.  For NIH studies that are conducted at 
+NIH sites other than the Clinical Center, please adapt the first  paragraph to be consistent with 
+your site-specific language already approved by OHSRP. 
+The NIH Clinical Center will give you short-term medical care for any injury resulting from your 
+participation in research here . In general, no long -term medical care will be given to you by the 
+NIH, the NIH Clinical Center, or the Federal Government. 
+
+26 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+A Declaration under the Public Readiness and Emergency Preparedness (PREP) Act was issued 
+by the Secretary of the United States Department of Health and Human Services on March 10, 
+2020.  This Declaration limits the legal rights of a subject participating in clinical studies using 
+COVID-19 countermeasures.  Because this study is covered by the PREP Act Declaration, covered 
+persons, such as t he manufacturers, study sponsor, researchers, healthcare providers and others 
+have liability immunity (that is, they c annot be sued by you or your family under the laws of the 
+United States). 
+If you believe that you may have been harmed because of this research study, certain claims for 
+serious injury or death caused by the countermeasure may be eligible for compensation through 
+the Countermeasures Injury Compensation Program. This is a program set up by the United States 
+Government. Information ab out this program can be found at 
+https://www.hrsa.gov/cicp/about/index.html  or by calling 1-855-266-2427. 
+ 
+PRIVACY LANGUAGE FOR STUDIES CONDUCTED OUTSIDE OF THE CLINICAL 
+CENTER 
+Required Informed Consent Language if applicable 
+Situations arise in which subjects are enrolled into an NIH protocol, but they do not receive the 
+usual Certificate of Confidentiality and Privacy Act notifications.  This may occur in the following 
+situations: 
+1. The research is approved for an oral consent process with a waiver of documentation 
+of consent (also known as a waiver of signature); 
+2. The research utilizes an online consent process with an IRB waiver of documentation 
+of consent; 
+3. The research is approved with a standard written consent process, but the subject is 
+not ever registered with the Clinical Center (CC) and therefore the standard CC 
+consent privacy language is not appropriate, and there is not alternative approved 
+language included. 
+In these cases, if any identifiable private information will be collected and stored, the prospective 
+subject must receive a privacy notice and be informed of the NIH Certificate of Confidentiality 
+policy.  The language below should be used as follows to meet this requirement. 
+1. Adding the language below to a written statement mailed to an off -site subject when 
+not a CC-registered subject; or 
+2. Reading the language below to a subject if the consent process is entirely oral (by 
+phone or otherwise), In this case, the person obtaining consent must offer to send a 
+written copy of the privacy statement below to the subject via mail or electronic 
+means.   Note this option should only be used if the subject will not be registered with 
+the CC and there is n o plan to mail or otherwise provide a written consent document 
+to the subject.  
+3. Adding the language below to a written statement online for online research when not 
+a CC-registered subject; 
+
+27 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+4. Including the language below in the informed consent document provided to a subject 
+that will not ever be registered at the CC, unless alternative approved Privacy Act 
+notice language is already included in the consent. 
+Certificate of Confidentiality  
+To help us protect your privacy, NIH has a Certificate of Confidentiality (Certificate). With this 
+Certificate, researchers may not release or use information about you except in certain cases.   
+NIH researchers must not share information that may identify you in any legal proceedings, such 
+as if a court requests it with a subpoena.   
+The Certificate does not protect your information when it:   
+1. is shared with people connected with the research. For example, information may be used 
+for internal reviews by NIH; or  
+2. is required by law to be disclosed.  For example, information may be shared with the FDA 
+or with public health agencies. 
+3. is for other research if allowed by other regulations; 
+4. is shared with your consent.  
+Researchers may provide your information when you say it is okay. The Certificate does not keep 
+you from sharing your own information.  
+The Certificate will not prevent telling authorities about harm to yourself or others. Examples are 
+child abuse and neglect.  
+Privacy Act 
+The Privacy Act helps keep your NIH research information confidential.   In some cases, it is 
+different from the Certificate. Under 42 U.S.C. § 282, NIH is authorized to collect the data for this 
+study. This data is covered by an NIH Privacy Act System of Records Notice : 09-25-0200, 
+Clinical, Basic and Population-based Research Studies of the National Institutes of Health (NIH).  
+Sometimes the Privacy Act allows sharing your information without your permission. An example 
+is if Congress requests it.  
+Information may also be shared for some research. It can be given to some federal and state 
+agencies. It can be used for HIV partner notification, or for infectious disease, abuse, or neglect 
+reports.  It may be shared with tumor registries, or for quality  or medical reviews.  It may also be 
+shared if NIH is involved in a lawsuit or event of a suspected or confirmed breach.  However, NIH 
+will only release information about you if allowed by both the Certificate and the Privacy Act.  If 
+you do not want to share your information with us, then you cannot participate in this study. 
+Privacy Act (in Spanish) 
+La Ley de Privacidad ayuda a mantener la confidencialidad de la información de investigación 
+que los NIH tienen sobre usted.  En algunos casos, difiere del Certificado. En virtud del código 
+42 U.S.C., sección 282, los NIH pueden reunir datos para este estudio. Estos datos están 
+cubiertos por un Aviso del Sistema de Registros conforme a la Ley de Privacidad de los NIH: 
+09-25-0200, Estudios de investigación clínica, básica y basada en poblaciones de los Institutos 
+Nacionales de la Salud (NIH).  A veces, la Ley de Privacidad permite divulgar su información 
+sin su autorización, por ejemplo, si el Congreso la solicita.  
+
+28 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+La información también se puede divulgar para algunas investigaciones. Se puede entregar a 
+algunas agencias federales y estatales. Se puede usar para informar a las parejas sexuales en caso 
+de infección por el VIH o para notificar enfermedades infecciosas, abuso o negligencia.  Se 
+puede comunicar a registros de tumores, o para control de calidad o revisiones 
+médicas.  También se puede transmitir si los NIH están involucrados en alguna demanda o 
+incidente de violación de seguridad sospechada o confirmada.  No obstante, los NIH solo 
+divulgarán información suya si lo permiten tanto el Certificado como la Ley de Privacidad.  Si 
+no desea entregarnos su información, no puede participar en este estudio. 
+PRIVACY LANGUAGE FOR STUDIES CONDUCTED AT THE CLINICAL CENTER 
+(SPANISH) 
+If you are conducting your study at the NIH Clinical Center, or using Clinical Center resources 
+in any way (e.g. iMed), then you are required to use the version of the Privacy Act language that 
+is found in the relevant consent templates.  Below is the translation of that content into Spanish.  
+La Ley de Privacidad ayuda a mantener la confidencialidad de la información médica que los 
+NIH tienen sobre usted.  En algunos casos, difiere del Certificado. En virtud del código 42 
+U.S.C., sección 282, los NIH pueden reunir datos para este estudio. Estos datos están cubiertos 
+por Avisos del Sistema de Registros conforme a la Ley de Privacidad de los NIH: 09-25-0200, 
+Estudios de investigación clínica, básica y basada en poblaciones de los Institutos Nacionales de 
+la Salud y 09-25-0099, Investigación clínica: expedientes médicos de pacientes. A veces, la Ley 
+de Privacidad permite divulgar su información sin su autorización, por ejemplo, si el Congreso la 
+solicita.  
+La información también se puede divulgar para algunas investigaciones. Se puede entregar a 
+algunas agencias federales y estatales. Se puede usar para informar a las parejas sexuales en caso 
+de infección por el VIH o para notificar enfermedades infecciosas, abuso o negligencia.  Se 
+puede comunicar a registros de tumores, para control de calidad y revisiones médicas.  También 
+se puede transmitir si los NIH están involucrados en alguna demanda o incidente de violación de 
+seguridad sospechada o confirmada.  No obstante, los NIH solo divulgarán la información de los 
+expedientes médicos si lo permiten tanto el Certificado como la Ley de Privacidad. 
+ 
+PREGNANCY 
+Note that the NIH IRB requires each of these elements in the ICF rather than specific language.  
+If the sponsor ’s suggested ICF language contains all these required elements, addition of NIH 
+sample language is not required, although sponsor language may be revised/edited during the IRB 
+review process.  
+Required Elements 
+• Description of rationale for preventing pregnancy during study, and which subgroups are 
+excluded  
+• Description of pregnancy testing requirements (women able to become pregnant only) 
+• Description of duration and type of contraception required 
+• Description of actions taken in event of pregnancy 
+
+29 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+• Description of any potential risks to future fertility if noted in protocol 
+Description of rationale for preventing pregnancy during study, and which subgroups are 
+excluded 
+Women: Example Language 
+• Known human teratogen: [Study drug] is known to increase the risk of birth defects and 
+miscarriage when taken during pregnancy. There may also be risks for breastfed children. 
+To reduce the risk of harms , women who are pregnant, planning a pregnancy, or 
+breastfeeding cannot be in studies using [study drug]. 
+• Teratogen in animal studies, human effects unknown : In animal studies, [study drug] 
+increased the risk of some birth defects. We do not know whether these harms could also 
+happen in humans. To reduce the risk of any harms, women who are pregnant, planning a 
+pregnancy, or breastfeeding cannot be in studies with [study drug]. 
+• Unknown risks: The effects of [study drug] on a developing pregnancy or breastfeeding 
+infant are unknown. To reduce the risk of harms, women who are pregnant, planning a 
+pregnancy, or breastfeeding cannot be in studies using [study drug]. 
+• No risks: Although [study drug] is generally considered safe to use during pregnancy, the 
+changes your body goes through during pregnancy may affect some of the things we are 
+measuring in this study. Therefore, women who are pregnant or planning a pregnancy 
+cannot be in this study. 
+Men: Example Language 
+• Known risk with paternal exposure: A higher risk of certain birth defects has been seen in 
+pregnancies where the father was taking [study drug]  at the time the pregnancy began. 
+Therefore, men who are trying to become fathers cannot be in studies using [study drug]. 
+• Unknown risk, no concern about seminal transmission:  We do not know whether 
+pregnancies that began while the father was taking [study drug] are at higher risk for birth 
+defects, miscarriages, or other bad outcomes. To reduce the risk of any harms, men who 
+are trying to become fathers cannot be in studies of this drug. 
+• Unknown risk, concern about seminal transmission:  We do not know whether 
+pregnancies that began while the father was taking [study drug] are at higher risk for birth 
+defects, miscarriages, or other bad outcomes. In addition, [study drug] may be present in 
+semen and a partner may be exposed to the study drug during sexual activity. To reduce 
+the risk of any harm, men who are trying to become fathers cannot be in this study. 
+Description of Pregnancy Testing Requirements (women who can become pregnant only) 
+Description should include: 
+• Who is required to be tested? 
+• If blood test required, risk of false positive/indeterminate blood test 
+• If additional testing required, description of type, frequency, and consequences of positive 
+result 
+Example Language 
+If you could possibly become pregnant (you have not completed menopause or haven't had surgery 
+that makes it impossible for you to become pregnant) and if you have a partner who is able to 
+
+30 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+father children, a [blood/urine] pregnancy test will be done. The pregnancy test must be negative 
+for you to stay in the study. 
+If serum pregnancy test used:  In women [insert age ] and older, blood pregnancy tests may 
+sometimes give a false positive or "indeterminate" (unsure) result. If that happens, we may need 
+to do additional tests to make sure you can still be in the study. 
+If additional tests required: You will also have additional [blood/urine] tests at some study visits, 
+as described above. The additional tests must also be negative for you to stay in the study. 
+Description of Duration and Type of Required Contraceptive Methods 
+Description should include: 
+• Statement that complete abstinence from sex (vaginal intercourse) for the study-specified 
+duration of contraception is acceptable. 
+• Duration of need for abstinence or contraception, including starting time and ending time  
+• Specific methods which (a) meet the protocol -specified level of effectiveness and (b) are 
+compatible with the study population (for example, combination oral contraceptives are 
+contraindicated in many populations because of increased risk of venous thrombo tic 
+events). 
+• Statement that the study team will assist with any required changes to contraceptive 
+methods. 
+• Statement of possibility of pregnancy even with highly effective methods and need to notify 
+study team.  
+• For males,  
+o If specified by protocol and appropriate for clinical population, statement that 
+donation of sperm is prohibited for same duration as contraception requirement. 
+o If concern is seminal transmission, a statement that condoms are required for all 
+types of sex if partner is currently pregnant or breastfeeding. 
+• “Highly effective methods” (<1% failure rate) 
+o “Typical use” 
+▪ Partner vasectomy 
+▪ Bilateral tubal ligation 
+▪ IUDs 
+▪ Progestin implants (Implanon) 
+o “Perfect use” (acceptable with some sponsors, FDA, ICH/EU guidance) 
+▪ Other hormonal methods (OCPs, injections, patches, rings) 
+• “Effective Methods” 
+o Any of the above, or 
+o Barrier (condom, diaphragm, cervical cap) plus spermicide 
+• If protocol specifies dual methods, specific combinations (e.g., barrier method plus other 
+method) must be specified.   A list of all methods and statement that two must be used is 
+not acceptable.  
+ 
+
+31 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Women: Example Language 
+You and your partner must agree to one of the following for the entire study, and for [X time] after 
+your last dose of the study drug: 
+• Stop having sex (vaginal intercourse), or 
+• Use a highly effective method of contraception (birth control). These methods include: 
+o Partner vasectomy (making sterile) 
+o Bilateral tubal ligation 
+o Intrauterine devices (IUDs) 
+o Hormonal implants (such as Implanon) 
+o Other hormonal methods (birth control pills, injections, patches, vaginal rings) 
+If you and your partner are not currently using one of these methods, your study doctor will discuss 
+options with you, given your medical condition, your personal preferences, and the level of 
+effectiveness needed for this study. Because no birth control method is 100% effective, you should 
+tell your study doctor immediately if you think there is any chance you could be pregnant. 
+If protocol requires ongoing pregnancy testing: You should tell your study doctor right away if 
+you think there is any chance you could be pregnant, even if you have had a recent negative 
+pregnancy test.  
+Men, No Concern about Seminal Transmission: Example Language 
+If you have a partner who could possibly become pregnant (has not completed menopause, or 
+hasn't had surgery that makes it impossible for them to become pregnant), you and your partner 
+must agree to one of the following for the entire study, and for [X time] after your last dose of the 
+study drug: 
+• Stop having sex (vaginal intercourse), or 
+• Use a highly effective method of contraception (birth control). These methods include: 
+o Vasectomy 
+o Bilateral tubal ligation 
+o Intrauterine devices (IUDs) 
+o Hormonal implants (such as Implanon) 
+o Other hormonal methods (birth control pills, injections, patches, vaginal rings) 
+If you and your partner are not currently using one of these methods, your study doctor will discuss 
+options with you, given your medical condition, your personal preferences, and the level of 
+effectiveness needed for this study. Because no birth control method is 100% effective, you should 
+tell your study doctor immediately if you think there is any chance your partner could be pregnant. 
+ 
+You should not donate sperm during the study and for [X time] after your last dose of study drug. 
+Men, Concern about Seminal Transmission, Pregnancy Risk Only: Example Language 
+If you are able to father children and your partner could possibly become pregnant (has not 
+completed menopause, or hasn't had surgery that makes it impossible for them to become 
+pregnant), you must agree to either abstain completely from vaginal intercour se for the duration 
+of the study and for [X time] after your last dose of the study drug, or use a condom every time 
+you have vaginal intercourse, even if you have had a vasectomy (because vasectomy does not 
+
+32 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+prevent transmission of the drug in semen). Because no birth control method is 100% effective, 
+you should tell your study doctor immediately if you think there is any chance your partner could 
+be pregnant. 
+If your partner is currently pregnant, breastfeeding, or becomes pregnant during the study, you 
+must use a condom for all types of intercourse to prevent transmission. 
+You should not donate sperm for the duration of the study and for [X time] after your last dose of 
+the study drug. 
+Men, Concern about Seminal Transmission to Partner: Example Language 
+During sex, your partner could be exposed to the study drug, which could possibly have harmful 
+effects. Therefore, you must agree to use a condom every time you have any type of sex, even if 
+you have had a vasectomy (because the study drug could still be p resent in your semen). If your 
+partner cannot possibly become pregnant, you must still use a condom to ensure the study drug 
+does not affect your partner or a breastfed baby. 
+You should not donate sperm during the study and for [X time] after your last dose of the study 
+drug. 
+Description of Actions Taken in Event of Pregnancy 
+Description should include: 
+• Specific actions (stopping drug, study withdrawal, etc.) 
+• Any follow-up of pregnancy in either subject or subjects’ partner 
+Women, Example Language 
+If you do become pregnant during the study, your study doctor will stop the study drug and notify 
+the sponsor.  You will be followed for the entire pregnancy so we can learn about the study drug’s 
+potential effects on pregnancy outcomes.  
+Men, Example Language 
+You should notify your partner about being in this study and the potential risks to pregnancies that 
+begin while you are taking the study drug. If your partner does become pregnant during the study, 
+you should tell your study doctor, and your partner should notify their doctor. We will ask for your 
+partner's permission to collect information about the pregnancy so we can learn about the study 
+drug's potential effects on pregnancy outcomes. 
+Description of Any Known or Suspected Potential Risks to Future Fertility (if appropriate) 
+Description should include: 
+• Whether risks are known or unknown 
+• Discussion of options for fertility preservation, if available 
+Women, Example Language  
+The study drugs used in this study may affect your ability to become pregnant in the future.  There 
+may be fertility preservation options available, which your study doctor will discuss with you.  
+Men, Example Language 
+
+33 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+The study drug used in this study may affect your ability to father children in the future.  There 
+may be fertility preservation options available, which your study doctor will discuss with you.  
+Reproductive Risks 
+Women, Example Language 
+We do not know the effect of [study drug] on the risk of birth defects, miscarriage, or other bad 
+outcomes when taken during pregnancy or while breastfeeding. To reduce the risk of any harmful 
+effects, women who are pregnant, trying to become pregnant, or breastfeeding cannot be in studies 
+using [study drug]. 
+If you could possibly become pregnant (you have not completed menopause or haven't had surgery 
+that makes it impossible for you to become pregnant) and if you have a partner who is able to 
+father children, we will do a blood pregnancy test. The pregnancy test must be negative for you to 
+stay in the study. In people [insert age] and older, blood pregnancy tests may sometimes give a 
+false positive or "indeterminate" (unsure) result. If that happens, we may need to do additional 
+tests to make sure you can stil l be in the study. You will also have additional pregnancy tests at 
+some study visits, as described above, and they also must be negative for you to stay in the study. 
+You and your partner must agree to one of the following for the entire study, and for 30 days after 
+your last dose of the study drug: 
+• Stop having sex (vaginal intercourse), or 
+• Use a highly effective method of contraception (birth control). These methods include: 
+o Partner vasectomy 
+o Bilateral tubal ligation 
+o Intrauterine devices (IUDs) 
+o Hormonal implants (such as Implanon) 
+o Other hormonal methods (birth control pills, injections, patches, vaginal rings) 
+If you and your partner are not currently using one of these methods, your study doctor will discuss 
+options with you, given your medical condition, your personal preferences, and the level of 
+effectiveness needed for this study. Because no birth control method is 100% effective, you should 
+tell your study doctor right away if you think there is any chance you could be pregnant, even if 
+you have had a recent negative pregnancy test. 
+If you do become pregnant during the study, your study doctor will stop the study drug and notify 
+the sponsor. You will be followed for the entire pregnancy so we can learn about the study drug's 
+potential effects on pregnancy outcomes. 
+Men, Example Language 
+We do not know whether pregnancies that began while the father was taking the study drug are at 
+higher risk for birth defects, miscarriages, or other bad outcomes. To reduce the risk of any harms, 
+men who are trying to become fathers cannot be in studies using the study drug. 
+If you can father children and your partner could possibly become pregnant (has not completed 
+menopause, or hasn't had surgery that makes it impossible for them to become pregnant), you and 
+your partner must agree to one of the following for the entire study, and for 90 days after your last 
+dose of the study drug: 
+
+34 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+• Stop having sex (vaginal intercourse), or 
+• Use a highly effective method of contraception for the same length of time. Highly 
+effective methods include: 
+o Vasectomy 
+o Bilateral tubal ligation 
+o Intrauterine devices (IUDs) 
+o Hormonal implants (such as Implanon) 
+o Other hormonal methods (birth control pills, injections, patches, vaginal rings) 
+If you and your partner are not currently using one of these methods, your study doctor will discuss 
+options with you, given your medical condition, your personal preferences, and the level of 
+effectiveness needed for this study. Because no birth control method is 100% effective, you should 
+tell your study doctor immediately if you think there is any chance your partner could be pregnant. 
+You should not donate sperm for the entire study and for 90 days after your last dose of the study 
+drug. 
+Written assent example language   
+We will give you a pregnancy test if you can become pregnant.  
+You cannot be part of the study if you are pregnant. If you think you might be pregnant, tell us 
+right away. 
+We will tell you the results of your pregnancy test in private. If your life is in danger or if we think 
+you might have been hurt, we might need to tell your parent(s) or guardian(s). But otherwise, we 
+will not tell them unless you say it's okay. 
+Even if we do not tell your parent(s) or guardian(s), they might guess you are pregnant. We would 
+have to tell them you cannot be in the study. If you think you are pregnant and do not want your 
+parent(s) or guardian(s) to know, you might not want to join the study. 
+When appropriate: You must use birth control or not have sex during the study. 
+QUESTIONNAIRES 
+Procedure:  We will ask you to answer [specify number] questionnaires that will take about 
+[specify duration of time ] to complete.  The questionnaires will ask you about [Add relevant 
+information here. For ex: the symptoms you’re experiencing, your ability to complete everyday 
+activities and will test your memory and concentration.] 
+Risks:  Some  of the questions in the questionnaire may be upsetting or make you feel 
+uncomfortable.  You can skip any of the questions you do not want to answer .  You can stop at 
+any time. 
+Also see “INVASION OF PRIVACY/BREACH IN CONFIDENTIALITY” below. 
+RADIATION 
+Non-Therapeutic Radiation  
+Investigators: Please note, this language below is required, not suggested, language if this is 
+applicable to your protocol.  Please do not alter it in any way.  
+
+35 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Scans, tests, and procedures that involve radiation that are specified in the protocol are considered 
+by the IRB to be research.  If the scan, test, or procedure is dictated solely by the clinical needs of 
+the participant, then this is considered clinical and should not be included in the protocol or the 
+consent.  The IRB has no regulatory authority over the practice of medicine and can only review 
+proposed research and associated risks. 
+Note that for pediatric participants (<18 years old), RSC review is required if these participants 
+are healthy volunteers or if the annual effective dose will be > 0.5 rem.  
+Use the appropriate reproductive risk language under the “PREGNANCY” section.  
+A. Consent language required when the Effective Dose (ED) is < 0.3 rem (non -therapeutic 
+radiation) 
+During this research study, you may be exposed to radiation from [list all sources of radiation that 
+are required by the protocol ] each year . This is considered a low exposure. The risk of this 
+exposure is too low to be reliably measured. [For pediatric participants add the following here: 
+The amount of radiation you will get is less than the NIH Radiation Guidelines of 0.5 rem per year 
+for children.] 
+Every day, people are exposed to low levels of radiation that come from the sun and the 
+environment around them.  This type of radiation is called “background radiation.”  No one knows 
+for sure whether exposure to these low amounts of radiation is harmful to your body.  The radiation 
+you will get by being in this study is less than the average yearly background radiation in the 
+United States. 
+B. Consent language required when the Effective Dose (ED) is > 0.3 rem and < 5 (non -
+therapeutic radiation) 
+During this research study, you may be exposed to radiation from [list all sources of radiation that 
+are required by the protocol] each year.  The amount of radiation exposure from these procedures 
+is equal to about [insert effective dose (ED) value, in rem ]. A rem is a unit of radiation  absorbed 
+by the body.  [For pediatric participants1 add the following here:  This amount of radiation is [less 
+than/the same as/greater than] (select appropriate language based on the ED ) the NIH Radiation 
+Guidelines of 0.5 rem per year for children.] 
+Every day, people are exposed to low levels of radiation that come from the sun and the 
+environment around them.  The average person in the United States receives a radiation exposure 
+of 0.3 rem per year from these sources.  This type of radiation is calle d “background radiation.”  
+No one knows for sure whether exposure to these low amounts of radiation is harmful to your 
+body.  
+The [insert type of scan, e.g., PET, CT ] that you get in this study will expose you to roughly the 
+same amount of radiation as [insert estimate in years based on background radiation dose of 
+0.3rem /year. e.g. for total dose of 0.6 rem, insert “2 years’ worth” here] of background radiation.  
+Most of the time, this amount of extra radiation is not harmful to you.  However, scientists believe 
+that being exposed to too much radiation can cause harmful side effects.  This could include getting 
+a new cancer.  We estimate that this could happen in about 1 out of every 1000 people who get a 
+ 
+1 Pediatric participants (<18 years of age) who are healthy volunteers or who will receive an ED of at least 0.5 rem 
+will be reviewed by the RSC. 
+
+36 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+very large amount of extra radiation. 
+C. Consent language required when the Effective Dose (ED) is > 5 rems (non -therapeutic 
+radiation) 
+During this research study, you may be exposed to radiation from [list all sources of radiation that 
+are required by the protocol] each year.  The amount of radiation exposure from these procedures 
+is equal to about [insert effective dose value, in rem]. A rem is a unit of radiation absorbed by the 
+body.  
+Every day, people are exposed to low levels of radiation that come from the sun and the 
+environment around them.  The average person in the United States gets a radiation exposure of 
+0.3 rem per year from these sources.  This type of radiation is called “background radiation.”  This 
+study will expose you to more radiation than you get from everyday background radiation. No one 
+knows for sure whether exposure to these low amounts of radiation is harmful to your body.  
+The [insert type of scan, e.g., PET, CT ] that you get in this study will expose you to roughly the 
+same amount of radiation as [insert estimate in years based on background radiation dose of 
+0.3rem /year. e.g. for total dose of 6 rem, insert “20 years’ worth” here] of background radiation. 
+Being exposed to too much radiation can cause harmful side effects such as an increase in the risk 
+of cancer.  The risk depends on how much radiation you are exposed to. Please be aware that about 
+40 out of 100 people (40%) will get cancer during their lifetime, and 20 out of 100 (20%) will die 
+from cancer. The risk of getting cancer from the radiation exposure in this study is X out of 100 
+(Y%) [Calculate X based on 0.1% per rem. e.g. for total dose of 6 rem, “insert 0.6 out of 10 0 
+(0.6%)”] and of getting a fatal cancer is A out of 100 (B%) [The PI should calculate A based on 
+.05% per rem. e.g. for total dose of 6 rem, “insert 0.3 out of 100 (0.3%)]. 
+Therapeutic Radiation  
+For assistance drafting risk language specific to a therapy, researchers should contact: 
+• Radioactive therapy drugs (I -131, Lu -177, etc .): the Clinical Authorized User (CAU) 
+signing off on the protocol.  A CAU is required for all clinical administrations of 
+radioactive materials. 
+• Radiation Oncology therapies (TBI, SBRT, HDR): Kevin Camphausen or Freddy Escorcia 
+• Additional guidance may be found at 
+https://drs.ors.od.nih.gov/rsc/Pages/forms_index.aspx  
+Risks and side effects related to radiation therapy include: 
+• Likely: [List of risks and side effects] 
+• Less likely: [List of risks and side effects] 
+• Rare, but serious: [List of risks and side effects] 
+Overall radiation risk:  
+During a year in this research study, [choose most appropriate : you, your tumor, your ‘target 
+organ’] you may be exposed to [insert therapeutic radiation dose in Gy or rad] of radiation from 
+[indicate radiation therapy source -TBI, SBRT, the radioactive drug, I -131, etc.].  You will also 
+get a much smaller amount of radiation from scans used to plan your treatment and measure your 
+progress.  [Optional statement: Additionally, tumor biopsies may be done by a specialist using a 
+
+37 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+CT scanner to guide the biopsy needle into the tumor to ensure accuracy.] The total scans include 
+[insert list of scans and procedures] . The amount of radiation from these scans adds minimal 
+additional risk to the higher radiation doses you would get during treatment.  [If applicable include 
+the following: This radiation has been reviewed by the NIH Radiation Safety Committee and 
+deemed appropriate for this study.]  
+Radiation reviewed by the RDRC 
+During your participation in this radioactive drug research study, you may be exposed to radiation 
+from [list all sources of radiation that are required by the protocol ] each year.  The amount of 
+radiation exposure from these procedures is equal to about [insert effective dose (ED) value, in 
+rem]. A rem is a unit of radiation  absorbed by the body.  The US Food and Drug Administration 
+(FDA) has set an annual radiation limit of 5 rem for participants for this type of research. The dose 
+you will get in this study is below the limit and is not expected to be harmful. 
+Every day, people are exposed to low levels of radiation that come from the sun and the 
+environment around them.  The average person in the United States receives a radiation exposure 
+of 0.3 rem per year from these sources.  This type of radiation is calle d “background radiation.”  
+No one knows for sure whether exposure to these low amounts of radiation is harmful to your 
+body.  
+The [insert type of scan, e.g., PET, CT ] that you get in this study will expose you to roughly the 
+same amount of radiation as [insert estimate in years based on background radiation dose of 
+0.3rem /year. e.g. for total dose of 0.6 rem, insert “2 years’ worth” here] of background radiation.  
+Most of the time, this amount of extra radiation is not harmful to you.  However, scientists believe 
+that being exposed to too much radiation can cause harmful side effects.  This could include getting 
+a new cancer.  We estimate that this could happen in about 1 out of every 1000 people who get a 
+very large amount of extra radiation. 
+RANDOMIZATION 
+Procedure: If you join this study, you will be assigned by chance (like flipping a coin) to one of 
+two- groups. Group 1 will get [X] and Group 2 will get [Y]. There is an equal chance that you will 
+be assigned to either group. [ If applicable, include: Neither you nor your doctor will be able to 
+choose or to know which group you are assigned to.] 
+You will be randomized into one of [specify number] study groups. Randomization means that 
+you are assigned by chance (like pulling a number from a hat) into one of the groups described 
+below. [If applicable, include: Neither you nor your doctor will be able to choose or to know which 
+group you are assigned to.] 
+If you are in Group 1, you will… 
+If you are in Group 2, you will… 
+If you are in Group 3, you will… 
+SALIVA SAMPLE 
+Procedure: We will give you a saliva collection tube with a mini cotton swab that you will swirl 
+around the inside of your mouth and put the cotton swab back in the collection tube. 
+
+38 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+SKIN BIOPSY 
+Procedure: We will numb an area of your skin with a shot of local anesthetic, which might cause 
+a little burning discomfort. Then, we will remove a small piece of skin about the size of a pencil 
+eraser using a special tool. Skin biopsies are generally safe procedure s. Bleeding usually stops 
+quickly, and the risk of infection is very small. You will get a scar at the biopsy site, but it usually 
+heals well and stays flat. Up to XX skin biopsies may be done at one time, with a maximum of XX 
+skin biopsies allowed per XX months. 
+Risks: You will be given a local anesthetic for this procedure. There might be a small burning 
+feeling from the shot of anesthetic. You could have some bruising where the needle went in. There 
+might be minor bleeding or redness near the biopsy site. A skin biopsy  will leave a scar, and we 
+can't say for sure what the scar will look like.  
+There is a very small chance that a scar could become raised and hard, called a "keloid." If this 
+happens, we might be able to treat it to make it softer and flatter. Very rarely, the biopsy site might 
+get infected. If it does, you might need to use an ant ibiotic ointment or take antibiotic pills for a 
+few days. You must watch the site and let us, or your regular doctor, know if it looks infected. 
+STEM CELL TRANSPLANT 
+Procedure: Doctors collect stem cells from people with healthy immune systems (donors) and give 
+the cells to people with weak immune systems (recipients). Stem cells are special cells found in 
+the blood and in bone marrow inside bones. Stem cells make all the differ ent cells in the blood, 
+including the blood cells that fight infection and make up the immune system. After a stem cell 
+transplant, if the new healthy stem cells survive and grow inside the recipient, the stem cells could 
+fix the recipient's immune system. 
+Stem cell transplants can be challenging: 
+• One challenge is finding a donor. Recipients need a donor who is a good "match" with 
+them to have the best chance of a successful transplant. The donor could be a sibling or 
+family member or someone unrelated. If there is not a donor available who is a good match, 
+the stem cell transplant could have higher risks. 
+• Another challenge is that stem cell transplants can have serious complications. For 
+example, the recipient's own immune system could fight or "reject" the donor's cells, or the 
+donor's cells could attack the recipient's body. These complications can be life-threatening. 
+Because of these challenges, some people are not eligible to have a stem cell transplant, or they 
+choose not to have it because the risks are too high, even though it could cure them. 
+STOOL SAMPLE 
+Procedure: We will give you a stool sample collection kit and instructions to collect the stool .  
+You will give your sample to the study team for testing and storage.   
+TRANSCRANIAL MAGNETIC STIMULATION (TMS) 
+Procedure: Transcranial Magnetic Stimulation (TMS) uses a brief, pulsed magnetic field to affect 
+brain activity. During the TMS session(s), a device called a "coil" will be placed on your head. A 
+brief electrical current will then pass through the coil and create a magnetic field. You will hear a 
+
+39 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+click, and you may feel a tapping or pulling sensation on your skin under the coil. You may feel a 
+twitch in your face, neck, arm, or leg muscles. You will be given hearing protection that must be 
+worn during TMS because the clicking noise can be loud enough to damage your hearing. We may 
+ask you to tense certain muscles or do simple actions or tasks during TMS. 
+Electromyography (EMG), Electroencephalography (EEG), or Magnetic Resonance Imaging 
+(MRI) may be used with TMS to measure the effects of TMS on your brain and body. The TMS 
+session will take about [insert time in minutes/hours] . This study involves [insert number]  
+sessions. You will always be able to talk with the study staff  during the TMS session. You may 
+ask to stop the session at any time. 
+Single Pulse or Paired Pulse TMS:  When TMS pulses are given one or two at a time, several 
+seconds apart, this is called "Single Pulse" or "Paired Pulse" TMS. These types of TMS let us study 
+your brain's reaction to the pulses. It can also tell us about the role of a brain region in certai n 
+behaviors or how the brain is connected. During the TMS session(s) you will get about [insert 
+number] [pulses/pairs of pulses]. 
+Repetitive TMS (rTMS): A series of repeated TMS pulses can lead to brain and behavior changes 
+even after you stop getting TMS. This type of TMS is called "repetitive TMS" or "rTMS" and can 
+be used to study the brain or as a treatment. During the rTMS session(s) you will get [ins ert 
+number] pulses of rTMS. The pulses will be given [insert number] times every second for a total 
+of [insert number of pulses] over [seconds/minutes]. 
+Sham TMS: Sham (fake) TMS is a type of TMS that looks, sounds, and feels like active TMS but 
+doesn't include any active pulses. 
+Double Blinded Study: Neither you nor the study team will know whether you are getting active 
+or sham (fake) TMS. If there is an emergency and it is important for your care, the study team will 
+find out quickly whether you got active or sham TMS. 
+ 
+Risks: 
+It may not be safe for you to get TMS if you have certain kinds of metal in your body including: 
+• Metal staples or screws in the head or neck 
+• Pacemakers or other implanted electrical devices 
+• Brain stimulators 
+• Aneurysm clips (metal clips on the wall of a large artery) 
+• Cochlear implants 
+• An implanted delivery pump 
+• Shrapnel fragments. Welders and metal workers may have small metal fragments in the 
+eye. 
+It may also not be safe for you to get TMS if you have a history of certain medical conditions or if 
+you are taking certain drugs. You will be asked to complete a screening form before you get TMS. 
+This screening form will be updated at each session. If yo u have questions about metal in your 
+body or other potential risks mentioned on the screening form, you should let us know. 
+TMS may give you a headache. The TMS pulse may also activate nerves or muscles in your head 
+
+40 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+and neck that may cause pain or discomfort in or around your head or neck. If you have any pain 
+during or after TMS, you can take medicine to make it feel better. 
+The clicking noise that the machine makes is loud enough to damage hearing, especially if you 
+already have hearing loss. We will give you hearing protection. If your hearing protection comes 
+loose during the session, tell us right away. 
+Very rarely, TMS has led to seizures (abnormal activity in the brain that can cause muscle spasms 
+and can happen with or without losing consciousness). [If rTMS is applied, include the following:] 
+Also rarely, rTMS may lead to a short-term change in your ability to remember, your ability to pay 
+attention, or your mood. If these effects happen, they do not usually last long and will go away 
+without treatment. [Add additional specific patient-related rTMS risks as applicable (e.g., suicidal 
+ideation, mania, worsening of clinical symptom severity, etc.)]. 
+Safety Plan: A safety plan is in place, and a licensed clinician will be available during each TMS 
+session in case you have a seizure or other side effect. There may be other risks that we don't 
+currently know about. There are no known long-term risks of TMS. 
+Only include this content if pregnancy risks  are not addressed elsewhere in the consent:  The 
+effects of TMS on a developing fetus are not known. You will not be able to have TMS if you are 
+pregnant. Women who can get pregnant will have a pregnancy test before their TMS sessions. 
+Investigational Use of TMS: We will be using the TMS System and the coil for research purposes. 
+This means that we are using it to study brain function, not to treat patients. However, all sessions 
+done under this protocol will follow safety guidelines. There is no increased risk in the use of these 
+research techniques compared with clinical uses. The use of the TMS system and coil for research 
+has not been approved by the FDA and is considered investigational. 
+WITNESS SIGNATURE 
+If your protocol includes potential enrollment of non-English speaking subjects, blind and/or 
+illiterate subjects, your consent document must include a block for a witness signature.  There is 
+a mandatory note that is below the witness signature line in the consent template.  Below is the 
+“note” content in Spanish that can be used in Spanish translations of the consent document.  
+NOTA: El testigo debe dominar con fluidez el idioma del participante y el del investigador.    El 
+intérprete también puede ser el testigo; sin embargo, el investigador que obtiene el 
+consentimiento no puede ser el testigo.   Debe documentarse el uso de un intérprete en el 
+expediente médico o de investigación.  Consulte la Política 301 para ver más detalles. 
+WASHOUT PERIODS/WITHDRAWING CURRENT MEDICATION 
+Procedure: You will need to stop taking the medication you normally take for your condition about 
+[specify # of days] before you can start taking the study drug. You will not be able to start taking 
+your normal medication again until after you have completed or left the study. [if applicable: Based 
+on your randomization assignment, you may get no active medication (placebo) or] the study drug 
+may not be a dose that will help your condition. As a result, you may have an increase in symptoms, 
+including [specify symptoms]. If your symptoms worsen or make you uncomfortable, talk to the 
+study doctor about leaving the study. 
+
+41 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+X-RAY 
+Procedure:  As part of your regular care, you will have x-rays of your [specify body part] taken at 
+[specify visits/timeframes for x-rays] after your [insert procedure].  For this study, we will ask you 
+to have additional x-rays done at [specify visits/timeframes for x-rays]. 
+Risks:  See “RADIATION” above. 
+ 
+ 
+PROCEDURE TABLE 
+Procedure Name Procedure Description 
+  
+Chart Review 
+Write short, simple  (6-8th grade reading level ) 
+description here.  
+  
+Medical History Review 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Physical Exam 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Eye Exam  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+42 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+Eye Exam 
+ 
+Vital Signs 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Blood Draws 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Blood Draw 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+HIV Testing 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Saliva (Spit) Samples 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+43 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+ 
+Cheek Swab 
+  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Hair Sample 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Urine Sample 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Stool Sample 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Pregnancy Testing 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Photographs 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+44 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+ 
+Pictures of your face and body 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Radiologic Imaging  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+MRI 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+MRI with Gadolinium Contrast 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Electrocardiogram (ECG) 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Electrocardiogram (ECG) & 
+ECG Monitoring 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+45 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+ 
+Bike Stress Test 
+ 
+Stress Echocardiogram ( after 
+bike) 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Treadmill  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Echocardiography 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Six Minute Walk Test 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Liver Biopsy 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+46 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+ 
+Percutaneous Liver Biopsy  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Skin biopsy 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Study Drug 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Study Drug Diary 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+   
+Medication Safety 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Dose Escalation  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+47 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+   
+Inpatient Admission  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Injections 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Ultrasound 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Stomach Ultrasound 
+ 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Lumbar Puncture 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Questionnaire 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Questionnaire 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+48 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+ 
+ Surveys/Tests 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Lifestyle Changes 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Follow-Up Visits 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+  
+Safety Follow-up 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Fibroscan® 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Adrenal Insufficiency  (AI) 
+Teaching 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+49 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+  
+Pulmonary Function Test 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+   
+Cardiopulmonary Exercise Test  
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+Ankle Brachial Index and Digit 
+Measurement 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Brachial Vein Endothelial 
+Sampling 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Pulse Wave Velocity – 
+SphygmoCor 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+Skin Biomechanical 
+Measurements – DermaLab 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+
+
+50 
+Consent Language Library 
+Version 18 02.05.2026 
+ 
+Procedure Name Procedure Description 
+Suction Cup Probe 
+Non-invasive 
+tissue oxygenation using Near -
+Infrared Tissue Spectroscopy 
+(NIRS) 
+Write short, simple  (6-8th grade reading level ) 
+description here. 
+ 
+** Please do not use this image if you are using a NIRS 
+head cap. 
+ 
+OHSRP thanks our colleagues at NIDDK and NHLBI for sharing these images for use across the 
+IRP.  
+ 
+ 
