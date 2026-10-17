@@ -29,6 +29,9 @@ independent review that must not be self-certified.
       `npm audit` reports zero vulnerabilities on 2026-08-10.
 - [x] Updated pypdf to 6.16.1 and re-ran the CI dependency audit command locally on 2026-09-20;
       no unexcepted advisories remain. Chroma server-only exceptions are reviewed below.
+- [x] Updated pypdf to 6.19.0 on 2026-10-16 (PYSEC-2026-4153 to -4160); made the PDF
+      extraction mode a property of the extracted text rather than of the pypdf release,
+      rebuilt the store (8,053 chunks) and re-ran the benchmark with identical gate figures.
 - [x] Version and user/developer/demo documentation updated for `0.1.0`.
 
 ## Intentionally pending
@@ -52,7 +55,8 @@ No commit, tag, push, merge, or release publication is performed by this checkli
 
 ## Dependency advisory applicability (2026-09-20)
 
-`pypdf==6.16.1` fixes PYSEC-2026-3910, PYSEC-2026-3911 and PYSEC-2026-3913.
+`pypdf==6.19.0` fixes PYSEC-2026-4153 to PYSEC-2026-4160 on top of the 6.16.1 fixes
+(PYSEC-2026-3910, PYSEC-2026-3911, PYSEC-2026-3913).
 The [XForm text-extraction advisory](https://github.com/py-pdf/pypdf/security/advisories/GHSA-763m-79hh-57f2)
 is relevant to uploaded PDF processing, so it is fixed rather than excepted.
 

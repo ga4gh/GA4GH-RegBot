@@ -13,12 +13,49 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml \
 ```
 
 > **Status:** the gold set was drafted by the contributor and is **not yet mentor-reviewed**.
-> The current 85-document run is an engineering regression baseline, not an independently
-> validated benchmark or a legal-quality claim. Independent review remains pending.
+> The current 85-document / 8,053-chunk run is an engineering regression baseline, not an
+> independently validated benchmark or a legal-quality claim. Independent review remains pending.
 
 ---
 
-## 0. Current deployment-aligned engineering baseline (2026-09-20)
+## 0. Current deployment-aligned engineering baseline (2026-10-16)
+
+pypdf **6.19.0** (eight advisories against 6.16.1, PYSEC-2026-4153 to -4160) changed plain
+text extraction for eleven corpus PDFs. Three GA4GH policies (COVID-19 responsible sharing,
+genomic newborn screening, diversity in datasets) came out one word per line, after which
+the running-header stripper would have deleted every common word recurring on most pages;
+the Singapore statutes came out with collapsed word spacing (`Anorganisationmustnottransfer…`),
+the failure previously seen only in the Health Information Act under 6.16.1, which made two
+gold anchors unresolvable. The loader now decides the extraction mode from the text itself —
+a document whose plain extraction is at least 60% single-token lines, or at least 5 per
+thousand alphabetic tokens of 24+ letters, is re-extracted in layout mode — so the decision
+no longer depends on the installed pypdf release. Layout-mode output for the affected files
+is identical between 6.16.1 and 6.19.0. The running-header stripper also no longer treats a
+lone lower- or title-case word as furniture.
+
+A clean rebuild then ingested **85 documents / 8,053 chunks** (6,503 primary, 1,540
+translation, 10 summary) with no missing files or errors; 7,349 chunk ids are unchanged from
+the 8,078-chunk store, the differences being the eleven re-extracted PDFs (the diversity
+policy, whose 6.16.1 plain text had collapsed spacing in 16% of its tokens, is now clean).
+Gold v0.9 resolved **56/56 anchors**; all **41 queries** scored. Every metric at every k is
+identical to the 2026-09-20 run except chunk recall@3 (0.6440 → 0.6318) and the k = 1/3
+provision-recall figures, which return to the poster baseline's values. Per-query results,
+input hashes and installed versions: [`benchmarks/2026-10-16.json`](benchmarks/2026-10-16.json).
+
+| k | Provision recall | Chunk recall | Precision@returned | MRR | Hit rate |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 0.5028 | 0.3246 | 0.4390 | 0.4390 | 0.4390 |
+| 3 | 0.7671 | 0.6318 | 0.2927 | 0.5813 | 0.7561 |
+| 5 | 0.8301 | 0.6602 | 0.1951 | 0.5911 | 0.8049 |
+| 8 | 0.9102 | 0.7110 | 0.1433 | 0.5992 | 0.8537 |
+
+Two independent benchmark processes returned identical JSON; the `0.90` floor passed and
+the negative control `0.911` failed as expected. The gold set is unchanged. This remains a
+contributor-labelled engineering baseline, not independent relevance validation.
+
+---
+
+## 0a. Previous 8,078-chunk baseline (2026-09-20, pypdf 6.16.1)
 
 A clean rebuild with pypdf **6.16.1** and the current application requirements ingested
 **85 documents / 8,078 chunks** (6,528 primary, 1,540 translation, 10 summary), with no
@@ -59,7 +96,7 @@ revision and requirements; the recorded local run used Python 3.12.12 on macOS, 
 
 ---
 
-## 0a. Historical 8,081-chunk poster baseline
+## 0b. Historical 8,081-chunk poster baseline
 
 Run on 2026-08-10 against manifest v0.6 and gold v0.9:
 

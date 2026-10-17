@@ -64,6 +64,11 @@ def _running_lines(pages: List[str], *, min_pages: int = 3, ratio: float = 0.5) 
             # Long lines are body text even if a page repeats one; short ones are furniture.
             if not line or len(line) > 70 or line in seen:
                 continue
+            # A lone lower- or title-case word ("the", "The") is body text that happens to
+            # sit on its own line, never a header; stripping it would delete the word from
+            # every page of a document extracted one word per line.
+            if " " not in line and line.isalpha() and not line.isupper():
+                continue
             seen.add(line)
             counts[line] = counts.get(line, 0) + 1
     threshold = max(min_pages, int(len(pages) * ratio))
@@ -143,6 +148,53 @@ def _repair_pdf_text(text: str) -> str:
     return text
 
 
+_LONG_TOKEN_RE = re.compile(r"[A-Za-z]{24,}")
+
+
+def _single_token_line_share(pages: List[str]) -> float:
+    """Share of non-empty lines that hold a single token — one word per line."""
+    lines = [ln for page in pages for ln in page.split("\n") if ln.strip()]
+    if not lines:
+        return 0.0
+    return sum(1 for ln in lines if len(ln.split()) == 1) / len(lines)
+
+
+def _collapsed_spacing_per_mille(pages: List[str]) -> float:
+    """Alphabetic tokens of 24+ letters per thousand — words run together without spaces."""
+    tokens = [t for page in pages for t in re.findall(r"[A-Za-z]+", page)]
+    if not tokens:
+        return 0.0
+    return 1000.0 * sum(1 for t in tokens if len(t) >= 24) / len(tokens)
+
+
+def _layout_extraction_reason(pages: List[str]) -> Optional[str]:
+    """
+    Why plain extraction of this PDF cannot be trusted, or ``None`` if it can.
+
+    pypdf's plain extractor fails in version-dependent ways on some of the corpus PDFs.
+    Two failure shapes are recognised from the text itself, so the decision does not
+    depend on which pypdf release happens to be installed:
+
+    - *one word per line*: every token on its own line (the GA4GH COVID, newborn
+      screening and diversity policies under pypdf 6.19). Left in, the running-header
+      stripper would remove every common word that recurs on most pages.
+    - *collapsed word spacing*: words concatenated without spaces (the Singapore
+      statutes under pypdf 6.19, the Health Information Act under 6.16), which turns
+      operative phrases into unsearchable tokens.
+
+    Layout-mode extraction of the same files is clean and identical across releases,
+    so either shape switches the document to it. Thresholds sit well clear of the rest
+    of the corpus (next highest: 0.43 single-token share, 0.5 per mille long tokens).
+    """
+    if _needs_statutory_layout(pages):
+        return "collapsed statutory opening"
+    if _single_token_line_share(pages) >= 0.6:
+        return "one word per line"
+    if _collapsed_spacing_per_mille(pages) >= 5.0:
+        return "collapsed word spacing"
+    return None
+
+
 def _needs_statutory_layout(pages: List[str]) -> bool:
     """Recognize the audited plain-extraction failure without inferring word breaks."""
     arrangement = next(
@@ -212,10 +264,9 @@ def _clean_statutory_layout(text: str) -> str:
 def _load_pdf(path: str) -> List[Tuple[str, int]]:
     reader = PdfReader(path)
     raw_pages = [_repair_pdf_text(page.extract_text() or "") for page in reader.pages]
-    if _needs_statutory_layout(raw_pages):
-        logging.getLogger(__name__).info(
-            "Using layout extraction for collapsed statutory word spacing in %s", path
-        )
+    reason = _layout_extraction_reason(raw_pages)
+    if reason:
+        logging.getLogger(__name__).info("Using layout extraction (%s) for %s", reason, path)
         raw_pages = [
             _repair_pdf_text(
                 _clean_statutory_layout(

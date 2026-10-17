@@ -5,12 +5,13 @@
 RegBot is an open-source tool for the Global Alliance for Genomics and Health [Regulatory and Ethics Work Stream (REWS)](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/) and cross-border genomic data sharing. It complements the Alliance’s Regulatory & Ethics Toolkit by retrieving GA4GH and related policy provisions against researcher-supplied consent / data-use text and returning citation-grounded JSON for DPO, IRB, and DAC review—not compliance rulings or legal advice.
 
 **Release status:** `0.1.0` release candidate. Implementation, corpus rebuild, the
-41-query contributor-labelled benchmark on the full 85-document corpus, API/UI checks, and
+41-query contributor-labelled benchmark on the full 85-document corpus (8,053 chunks), API/UI checks, and
 local Ollama validation are complete. The scheduled benchmark now enforces the engineering
 regression floor `provision_recall@8 >= 0.90`. Independent mentor review of the gold set is
 still pending, so the measured baseline is not an independently validated performance claim.
-Python dependencies were re-audited on 2026-09-20, including the pypdf 6.16.1 security
-update. Chroma HTTP-server advisories are explicitly excepted for the embedded-client
+Python dependencies were re-audited on 2026-10-16 with pypdf 6.19.0; PDF extraction mode
+is now chosen from the extracted text, so the store no longer depends on the pypdf release
+(`docs/eval_results.md` §0). Chroma HTTP-server advisories are explicitly excepted for the embedded-client
 architecture; applicability and prior frontend checks are recorded in
 `docs/RELEASE_CHECKLIST.md`.
 
