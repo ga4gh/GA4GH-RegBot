@@ -1,0 +1,27 @@
+version: 2
+
+# Security updates only. open-pull-requests-limit: 0 turns off routine version bumps
+# (it does not limit security updates), and each group folds an ecosystem's security
+# fixes into a single pull request instead of one per transitive package.
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      python-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: npm
+    directory: "/frontend"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      frontend-security:
+        applies-to: security-updates
+        patterns:
+          - "*"

@@ -4,7 +4,7 @@ chromadb==1.5.9
 pydantic-settings>=2.0.0,<3.0.0
 openai==1.7.0
 httpx>=0.25.0,<0.28.0
-streamlit==1.61.1
+streamlit==1.66.1
 fastapi>=0.109.0,<1.0.0
 uvicorn[standard]>=0.27.0,<1.0.0
 python-multipart>=0.0.6,<1.0.0
@@ -15,11 +15,11 @@ sentence-transformers==5.7.0
 transformers==5.14.1
 huggingface_hub==1.27.0
 # NumPy 2.3+ publishes type stubs that require Python 3.12 syntax, while RegBot supports
-# Python 3.10. Keep the newest compatible 2.2 release until the minimum Python moves.
+# Python 3.11. Keep the newest compatible 2.2 release until the minimum Python moves.
 numpy==2.2.6
 # Streamlit and Chroma permit vulnerable older transitive releases. Keep explicit floors
 # so a fresh resolver cannot silently reintroduce them.
-pillow==12.3.0
+pillow==13.0.0
 protobuf==6.33.6
 rank-bm25==0.2.2
 PyYAML>=6.0.1,<7
