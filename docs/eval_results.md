@@ -18,7 +18,57 @@ python -m src.main benchmark --gold examples/eval/gold_ga4gh.yaml \
 
 ---
 
-## 0. Current deployment-aligned engineering baseline (2026-10-16)
+## 0. Current deployment-aligned engineering baseline (2026-10-29)
+
+pypdf **6.21.4** closes the eleven advisories published against 6.19.0 (fixed between 6.20.0
+and 6.21.2). From 6.20.0, layout mode measures the gap between two text runs against a space
+width scaled into page space (py-pdf/pypdf#4128). The Singapore statutes set their text in
+composite Identity-H fonts that have no space glyph, and pypdf takes such a font's space width
+from whatever glyph has code 0x20 (a 722-unit "V" in the Human Biomedical Research Act), so
+ordinary word gaps rounded to no space: the Act fell from 23,061 to 10,993 words and the PDPA
+from 31,059 to 13,671. Under 6.19.0 the same wrong width was compared with an unscaled gap and
+over-spaced, which the layout cleanup collapsed back to single spaces; reverting #4128's one
+line in 6.21.4 restores 6.19.0's output for all five statutes. The loader now gives these fonts
+pypdf's 250-unit default space width in layout mode, so a gap of 0.125 em or more becomes a
+space. Across the five statutes, gaps between glyphs of one word stay below 0.09 em and gaps
+between words start at 0.18 em.
+
+The loader's output for all 38 corpus PDFs was hashed under both releases: 29 are
+byte-identical, and the corpus holds 39 run-on tokens of 20+ letters under each. The four
+statutes that differ (the Health Information Act, the Human Biomedical Research Act, the PDPA
+and the tissue-banking regulations) differ only where 6.19.0 was wrong: possessives after a
+final "r" are rejoined (`donor ’s` → `donor’s`), page numbers split as `10 0` come out whole,
+and the Health Information Act loses 85 margin line numbers that 6.19.0's widened layout
+columns had hidden from the line-number cleanup. The restricted-research regulations are
+byte-identical. The other five differences come from pypdf: the Japanese research-ethics
+guidance, also extracted in layout mode, gains a space between kanji and half-width numerals
+(`第 18`; reverting #4128 alone restores the 6.19.0 text), and four plain-mode files pick up
+pypdf's own fixes (`Implementat ion` and `3– 5` rejoined, glyph names such as `/uni2713`
+decoded to ✓, some wrapped lines joined with a space). The Human Biomedical Research
+Regulations 2017 keep 24 run-on section headings (`Declarationofcompliance`) under both
+releases, because their plain extraction stays below the 5-per-mille trigger.
+
+A clean rebuild ingested **85 documents / 8,053 chunks** (6,503 primary, 1,540 translation,
+10 summary) with no missing files or errors. Every chunk id matches the 2026-10-16 store; 156
+chunk texts changed, all in the eight ingested documents above (the corpus ingests the privacy
+policy's text export, not its PDF). Gold v0.9 resolved **56/56 anchors**; all **41 queries**
+scored. Every metric at every k is identical to 2026-10-16, and only q11 and q19 reorder
+ranks 6–8 among the same chunks. Per-query results, input hashes and installed versions:
+[`benchmarks/2026-10-29.json`](benchmarks/2026-10-29.json), recorded on Python 3.11.14, the
+CI version (the 2026-10-16 run used 3.12.15).
+
+| k | Provision recall | Chunk recall | Precision@returned | MRR | Hit rate |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 0.5028 | 0.3246 | 0.4390 | 0.4390 | 0.4390 |
+| 3 | 0.7671 | 0.6318 | 0.2927 | 0.5813 | 0.7561 |
+| 5 | 0.8301 | 0.6602 | 0.1951 | 0.5911 | 0.8049 |
+| 8 | 0.9102 | 0.7110 | 0.1433 | 0.5992 | 0.8537 |
+
+Two independent benchmark processes returned identical JSON; the `0.90` floor passed and
+the negative control `0.911` failed as expected. The gold set is unchanged. This remains a
+contributor-labelled engineering baseline, not independent relevance validation.
+
+### Previous rebuild (2026-10-16, pypdf 6.19.0)
 
 pypdf **6.19.0** (eight advisories against 6.16.1, PYSEC-2026-4153 to -4160) changed plain
 text extraction for eleven corpus PDFs. Three GA4GH policies (COVID-19 responsible sharing,
@@ -33,25 +83,14 @@ no longer depends on the installed pypdf release. Layout-mode output for the aff
 is identical between 6.16.1 and 6.19.0. The running-header stripper also no longer treats a
 lone lower- or title-case word as furniture.
 
-A clean rebuild then ingested **85 documents / 8,053 chunks** (6,503 primary, 1,540
-translation, 10 summary) with no missing files or errors; 7,349 chunk ids are unchanged from
-the 8,078-chunk store, the differences being the eleven re-extracted PDFs (the diversity
-policy, whose 6.16.1 plain text had collapsed spacing in 16% of its tokens, is now clean).
-Gold v0.9 resolved **56/56 anchors**; all **41 queries** scored. Every metric at every k is
-identical to the 2026-09-20 run except chunk recall@3 (0.6440 → 0.6318) and the k = 1/3
-provision-recall figures, which return to the poster baseline's values. Per-query results,
-input hashes and installed versions: [`benchmarks/2026-10-16.json`](benchmarks/2026-10-16.json).
-
-| k | Provision recall | Chunk recall | Precision@returned | MRR | Hit rate |
-|---:|---:|---:|---:|---:|---:|
-| 1 | 0.5028 | 0.3246 | 0.4390 | 0.4390 | 0.4390 |
-| 3 | 0.7671 | 0.6318 | 0.2927 | 0.5813 | 0.7561 |
-| 5 | 0.8301 | 0.6602 | 0.1951 | 0.5911 | 0.8049 |
-| 8 | 0.9102 | 0.7110 | 0.1433 | 0.5992 | 0.8537 |
-
-Two independent benchmark processes returned identical JSON; the `0.90` floor passed and
-the negative control `0.911` failed as expected. The gold set is unchanged. This remains a
-contributor-labelled engineering baseline, not independent relevance validation.
+That rebuild ingested the same **85 documents / 8,053 chunks**; 7,349 chunk ids were
+unchanged from the 8,078-chunk store, the differences being the eleven re-extracted PDFs (the
+diversity policy, whose 6.16.1 plain text had collapsed spacing in 16% of its tokens, became
+clean). Gold v0.9 resolved 56/56 anchors, and every metric at every k matched the 2026-09-20
+run except chunk recall@3 (0.6440 → 0.6318) and the k = 1/3 provision-recall figures, which
+returned to the poster baseline's values; the table above is unchanged from that run. Per-query
+results, input hashes and installed versions:
+[`benchmarks/2026-10-16.json`](benchmarks/2026-10-16.json).
 
 ---
 
