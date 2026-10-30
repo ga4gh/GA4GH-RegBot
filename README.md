@@ -9,11 +9,11 @@ RegBot is an open-source tool for the Global Alliance for Genomics and Health [R
 local Ollama validation are complete. The scheduled benchmark now enforces the engineering
 regression floor `provision_recall@8 >= 0.90`. Independent mentor review of the gold set is
 still pending, so the measured baseline is not an independently validated performance claim.
-Dependencies were re-audited on 2026-10-28 (Pillow 13.0.0, Next.js 16.4.3). PDF extraction
-mode is chosen from the extracted text rather than the pypdf release (`docs/eval_results.md`
-§0), but pypdf 6.20+ collapses word spacing in the Singapore statutes in both modes, so 6.19.0
-is held and its later advisories are excepted for administrator-only PDF input. Those
-and the Chroma HTTP-server exceptions for the embedded-client architecture are reviewed, with
+Dependencies were re-audited on 2026-10-28 (Pillow 13.0.0, Next.js 16.4.3), and pypdf is at
+6.21.4 with no audit exceptions. PDF extraction mode is chosen from the extracted text rather
+than the pypdf release, and layout mode corrects the space width of fonts that have no space
+glyph, which pypdf 6.20+ otherwise collapses in the Singapore statutes (`docs/eval_results.md`
+§0). The Chroma HTTP-server exceptions for the embedded-client architecture are reviewed, with
 prior frontend checks, in `docs/RELEASE_CHECKLIST.md`.
 
 ## Documentation
