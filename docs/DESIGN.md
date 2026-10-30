@@ -81,7 +81,7 @@ Low-confidence cases **escalate upward** in the diagram: weak retrieval or faile
 
 | Layer | Choice | Notes |
 |-------|--------|--------|
-| Runtime | Python 3.10–3.13 (CI: 3.11) | See README for venv / deps |
+| Runtime | Python 3.11–3.13 (CI: 3.11) | See README for venv / deps |
 | Embeddings | `all-MiniLM-L6-v2` (configurable) | HF download on first ingest |
 | Vector store | Chroma (local persistent) | Persistence only — see below |
 | Dense search | Exact cosine over in-memory embeddings | Chroma's HNSW is approximate and was not reproducible across processes |

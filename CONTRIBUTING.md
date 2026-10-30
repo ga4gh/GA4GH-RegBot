@@ -2,7 +2,7 @@
 
 ## Environment
 
-- Use **Python 3.10–3.13** (the range `pyproject.toml` accepts; 3.11 matches CI). Avoid 3.14 for the full ML/Chroma stack until wheels catch up.
+- Use **Python 3.11–3.13** (the range `pyproject.toml` accepts; 3.11 matches CI). Avoid 3.14 for the full ML/Chroma stack until wheels catch up.
 - Working on `frontend/` also needs **Node 20.9+** (CI uses 22).
 - Create a venv and install runtime deps:
 

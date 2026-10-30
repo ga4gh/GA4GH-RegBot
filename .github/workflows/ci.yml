@@ -27,13 +27,27 @@ jobs:
         run: |
           pip install pip-audit==2.10.1
           # These Chroma advisories require its separately exposed HTTP server.
-          # RegBot only uses PersistentClient with precomputed embeddings; see the
-          # per-advisory applicability review in docs/RELEASE_CHECKLIST.md.
+          # RegBot only uses PersistentClient with precomputed embeddings.
+          # The GHSA entries are pypdf crafted-PDF advisories fixed in 6.20.0-6.21.2. Only
+          # administrators can submit a PDF, and pypdf 6.20+ collapses word spacing in the
+          # Singapore statutes, so 6.19.0 is held until the loader handles that.
+          # Per-advisory applicability review: docs/RELEASE_CHECKLIST.md.
           pip-audit -r requirements.txt --progress-spinner=off \
             --ignore-vuln PYSEC-2026-311 \
             --ignore-vuln PYSEC-2026-3813 \
             --ignore-vuln PYSEC-2026-3814 \
-            --ignore-vuln PYSEC-2026-3815
+            --ignore-vuln PYSEC-2026-3815 \
+            --ignore-vuln GHSA-39mj-jf6j-2qj3 \
+            --ignore-vuln GHSA-7mh2-4gg2-979f \
+            --ignore-vuln GHSA-qfv9-64jg-mh7p \
+            --ignore-vuln GHSA-9mx8-4j7g-633p \
+            --ignore-vuln GHSA-cgf9-327m-v77c \
+            --ignore-vuln GHSA-f54x-cmq8-qg57 \
+            --ignore-vuln GHSA-6vvc-x485-93v7 \
+            --ignore-vuln GHSA-5hx5-vpf9-5wcv \
+            --ignore-vuln GHSA-6c7f-9265-g8fw \
+            --ignore-vuln GHSA-jr96-gvgh-j3r4 \
+            --ignore-vuln GHSA-gmh7-3g9r-mjh5
 
       - name: Run unit tests
         run: |
