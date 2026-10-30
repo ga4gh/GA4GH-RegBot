@@ -29,6 +29,18 @@ independent review that must not be self-certified.
       `npm audit` reports zero vulnerabilities on 2026-08-10.
 - [x] Updated pypdf to 6.16.1 and re-ran the CI dependency audit command locally on 2026-09-20;
       no unexcepted advisories remain. Chroma server-only exceptions are reviewed below.
+- [x] Updated pypdf to 6.19.0 on 2026-10-16 (PYSEC-2026-4153 to -4160); made the PDF
+      extraction mode a property of the extracted text rather than of the pypdf release,
+      rebuilt the store (8,053 chunks) and re-ran the benchmark with identical gate figures.
+- [x] Re-audited dependencies on 2026-10-28: Pillow 13.0.0 (37 advisories against 12.3.0),
+      which needs Streamlit 1.66.1 and therefore Python >= 3.11; Next.js 16.4.3 and
+      `npm audit fix` for the frontend, leaving three low-severity `deepmerge` findings inside
+      the shadcn CLI. pypdf was held at 6.19.0 under eleven temporary advisory exceptions.
+- [x] Updated pypdf to 6.21.4 on 2026-10-29 and removed its eleven CI audit exceptions; layout
+      extraction now corrects the space width of fonts without a space glyph, which pypdf
+      6.20+ otherwise collapses in the Singapore statutes. Compared the loader's output for all
+      38 corpus PDFs under both releases, rebuilt the store (8,053 chunks, chunk ids unchanged)
+      and re-ran the benchmark with identical gate figures.
 - [x] Version and user/developer/demo documentation updated for `0.1.0`.
 
 ## Intentionally pending
@@ -50,9 +62,11 @@ independent review that must not be self-certified.
 
 No commit, tag, push, merge, or release publication is performed by this checklist.
 
-## Dependency advisory applicability (2026-09-20)
+## Dependency advisory applicability (2026-10-29)
 
-`pypdf==6.16.1` fixes PYSEC-2026-3910, PYSEC-2026-3911 and PYSEC-2026-3913.
+`pypdf==6.21.4` fixes the eleven advisories published against 6.19.0 (fixed between 6.20.0
+and 6.21.2), on top of PYSEC-2026-4153 to PYSEC-2026-4160 (6.19.0) and the 6.16.1 fixes
+(PYSEC-2026-3910, PYSEC-2026-3911, PYSEC-2026-3913). CI excepts no pypdf advisory.
 The [XForm text-extraction advisory](https://github.com/py-pdf/pypdf/security/advisories/GHSA-763m-79hh-57f2)
 is relevant to uploaded PDF processing, so it is fixed rather than excepted.
 
