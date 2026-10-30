@@ -1,0 +1,251 @@
+# Governance-aspect taxonomy for the consent → provision task (DRAFT v0.1)
+#
+# An *aspect* is a governance topic a genomic-research consent form may address and that
+# law or policy regulates. The benchmark's gold standard is a crosswalk
+# C[aspect][jurisdiction] = {provisions}; a consent document then needs only clause-level
+# aspect labels for its gold provisions to be derived under any jurisdiction scope.
+#
+# Grounding: GA4GH Consent Policy v2.0 best practices (Transparency; Accountability;
+# Privacy, Data Protection and Confidentiality; Retrospective Data Sharing), the
+# "Consent Elements" column of the GA4GH Consent Toolkit clause sets, and DUO data-use
+# categories. Every aspect must be (a) something a consent form can state or omit and
+# (b) regulated in at least two jurisdictions of the corpus.
+#
+# Fields
+#   consent_cues       participant-facing phrasing (the register a consent form uses);
+#                      seeds for zero-shot clause → aspect classification
+#   normative_queries  the same topic in the register of statute / policy text; used to
+#                      pool crosswalk candidates and as the "bridge" query at run time.
+#                      Jurisdiction-neutral on purpose: the jurisdiction is a filter.
+#
+# STATUS: contributor draft. Needs review by the annotator(s) before labels are collected;
+# changing an aspect's scope after labelling invalidates its crosswalk cells.
+
+version: '0.1'
+jurisdictions: [GA4GH, INTL, EU, SG, HK, TW, KR, JP, CN]
+
+aspects:
+  - id: A01
+    key: purpose_scope
+    label: Research purpose and scope of use
+    definition: >-
+      What the data and samples will be used for, and any limitation of use to a stated
+      purpose, disease area or research type.
+    grounding: [GA4GH Consent Policy — Transparency, DUO (GRU / HMB / DS), "Consent Toolkit — What is the purpose of the study?"]
+    consent_cues:
+      - The study aims to understand genetic contributors to disease.
+      - Your data will only be used for research on heart disease.
+    normative_queries:
+      - personal data shall be collected for specified, explicit and legitimate purposes and not further processed in a manner incompatible with those purposes
+      - informing research participants of the purpose and scope of use of their samples and data
+
+  - id: A02
+    key: broad_future_use
+    label: Broad consent, future and secondary use
+    definition: >-
+      Use of data or samples for future research not fully specified at collection,
+      secondary use of existing data, and conditions for re-consent.
+    grounding: [GA4GH Consent Policy — Retrospective Data Sharing, GDPR Recital 33]
+    consent_cues:
+      - We may use leftover samples for future research that is not yet specified.
+      - Your data may be used in other studies approved by an ethics committee.
+    normative_queries:
+      - consent to areas of scientific research where the purpose of processing cannot be fully specified at the time of collection
+      - secondary use of previously collected human biological material or data for a new research purpose and the requirement for new consent
+
+  - id: A03
+    key: sharing_access
+    label: Data sharing and access model
+    definition: >-
+      With whom data are shared and under which access model (open, registered,
+      controlled), including data access committees and access agreements.
+    grounding: [GA4GH Consent Policy — Transparency, GA4GH DACReS, GA4GH Model DAA Clauses]
+    consent_cues:
+      - De-identified data may be shared with approved researchers at other institutions.
+      - Researchers must apply to a data access committee to use your data.
+    normative_queries:
+      - provision of data to third parties for research subject to review and approval by a data access committee
+      - conditions under which genomic data may be disclosed to or accessed by other researchers and institutions
+
+  - id: A04
+    key: cross_border_transfer
+    label: Cross-border transfer
+    definition: >-
+      Transfer of data or samples outside the jurisdiction, and the safeguards or
+      approvals required for it.
+    grounding: [GA4GH Consent Policy — Principle iv, GDPR Chapter V]
+    consent_cues:
+      - Some analysis may occur on servers located in other countries.
+      - Your samples may be sent to laboratories overseas.
+    normative_queries:
+      - transfer of personal data to a third country or international organisation and appropriate safeguards
+      - export of human genetic resources or personal information outside the country requires security assessment, approval or standard contract
+
+  - id: A05
+    key: commercial_benefit
+    label: Commercial use and benefit sharing
+    definition: >-
+      Use by or transfer to commercial entities, sale of data or samples, intellectual
+      property, and sharing of benefits with participants or communities.
+    grounding: [GA4GH Consent Policy — Transparency (commercial purposes), UNESCO Declaration on Human Genetic Data]
+    consent_cues:
+      - Commercial partners may receive aggregated results.
+      - You will not receive payment if products are developed from this research.
+    normative_queries:
+      - prohibition on financial gain from the human body and its parts and commercial use of biological samples
+      - benefits resulting from the use of human genetic data should be shared with society and participants
+
+  - id: A06
+    key: identifiability
+    label: Identifiability, pseudonymisation and re-identification
+    definition: >-
+      Coding, pseudonymisation or anonymisation of data, residual re-identification risk,
+      and prohibitions on attempting re-identification.
+    grounding: [GA4GH Consent Policy — Privacy, GA4GH Framework for Responsible Sharing, GA4GH Privacy and Security Policy]
+    consent_cues:
+      - Your name will be stored separately and your data will be coded.
+      - Absolute anonymity cannot be guaranteed for genomic data.
+    normative_queries:
+      - pseudonymisation of personal data so that it can no longer be attributed to a specific data subject without additional information kept separately
+      - prohibition on attempting to re-identify individuals from anonymised or de-identified data
+
+  - id: A07
+    key: security_storage
+    label: Data security and storage
+    definition: >-
+      Technical and organisational security measures, storage location and processors,
+      and breach notification.
+    grounding: [GA4GH Consent Policy — Privacy, GA4GH Data Security Infrastructure Policy]
+    consent_cues:
+      - Data will be stored on secure servers with restricted access.
+      - We use certified cloud services with breach notification procedures.
+    normative_queries:
+      - appropriate technical and organisational measures to ensure a level of security appropriate to the risk
+      - notification of a personal data breach to the supervisory authority and to the data subject
+
+  - id: A08
+    key: withdrawal
+    label: Withdrawal and its consequences
+    definition: >-
+      The participant's right to withdraw, how to do so, and what happens to samples and
+      data already collected or shared (destruction, retention, continued use).
+    grounding: [GA4GH Consent Policy — Accountability, GA4GH Framework (withdrawal processes)]
+    consent_cues:
+      - You may withdraw from the study at any time.
+      - Data already shared with other researchers cannot be retrieved after withdrawal.
+    normative_queries:
+      - the right to withdraw consent at any time without detriment and the effect of withdrawal on the lawfulness of prior processing
+      - upon withdrawal of a participant the biological specimens and data shall be destroyed or their further use discontinued
+
+  - id: A09
+    key: return_of_results
+    label: Return of results, incidental findings and recontact
+    definition: >-
+      Whether individual results or incidental findings are returned, the right not to
+      know, and recontacting participants.
+    grounding: [GA4GH Policy on Clinically Actionable Genomic Research Results, Consent Toolkit]
+    consent_cues:
+      - We may contact you if we discover findings important for your health.
+      - You can choose whether to receive individual genetic results.
+    normative_queries:
+      - communication of clinically actionable individual research results and incidental findings to participants
+      - the right of a person to be informed or not to be informed of the results of genetic examination
+
+  - id: A10
+    key: minors_familial_vulnerable
+    label: Minors, relatives and vulnerable participants
+    definition: >-
+      Consent by or for children and adults lacking capacity, re-consent at majority, and
+      implications of genomic data for relatives.
+    grounding: [Consent Toolkit — pediatric and familial clause sets, Oviedo Convention]
+    consent_cues:
+      - If your child takes part, we will ask for their agreement when they are old enough.
+      - Genetic results may also reveal information about your family members.
+    normative_queries:
+      - research on a person who does not have the capacity to consent requires authorisation of a legal representative
+      - protection of minors and persons lacking capacity in biomedical research and genetic testing
+
+  - id: A11
+    key: retention_biobank
+    label: Retention period and biobank governance
+    definition: >-
+      How long samples and data are kept, storage in a biobank, and destruction at the end
+      of the retention period or on closure.
+    grounding: [Consent Toolkit — sample storage elements, OECD Biobank Recommendation]
+    consent_cues:
+      - Your samples will be stored in the biobank for up to 20 years.
+      - Samples will be destroyed at the end of the study.
+    normative_queries:
+      - storage limitation and retention of personal data no longer than necessary for the purposes of processing
+      - biobank storage, management, retention period and destruction of human biological specimens
+
+  - id: A12
+    key: ethics_oversight
+    label: Ethics review and oversight
+    definition: >-
+      Review and approval by a research ethics committee or IRB, recognition of reviews
+      across institutions or borders, and ongoing oversight.
+    grounding: [GA4GH Consent Policy — Principle iii, GA4GH Ethics Review Recognition Policy]
+    consent_cues:
+      - This study has been approved by the research ethics committee.
+      - Future studies using your data will be reviewed by an ethics board.
+    normative_queries:
+      - research involving human subjects shall be reviewed and approved by an institutional review board or ethics committee
+      - recognition of ethics review conducted by another institution for multi-site or international research
+
+  - id: A13
+    key: participant_rights
+    label: Participant rights and contact
+    definition: >-
+      Rights of access, rectification, erasure and complaint, and whom to contact with
+      questions or concerns.
+    grounding: [GA4GH Consent Policy — Accountability (complaints), GDPR Chapter III]
+    consent_cues:
+      - You can ask to see the information we hold about you.
+      - Questions may be directed to the study coordinator.
+    normative_queries:
+      - the right of the data subject to access, rectify and erase personal data concerning him or her
+      - the right to lodge a complaint and the contact details of the controller or data protection officer
+
+  - id: A14
+    key: lawful_basis_sensitive
+    label: Lawful basis and sensitive (genetic) data
+    definition: >-
+      The legal basis for processing, special-category or sensitive status of genetic and
+      health data, and the conditions that apply to it. Frequently absent from consent forms.
+    grounding: [GDPR Art. 6 and 9, GA4GH Consent Policy — Purpose (lawful bases)]
+    consent_cues:
+      - We process your genetic information because you have given consent.
+      - Your health data is collected under the research exemption of the law.
+    normative_queries:
+      - processing of genetic data and data concerning health is prohibited unless an exception such as explicit consent or scientific research applies
+      - sensitive personal information may be processed only with a specific purpose, necessity and separate consent
+
+  - id: A15
+    key: voluntariness
+    label: Voluntary participation and freely given consent
+    definition: >-
+      That participation is voluntary and consent freely given without coercion or undue
+      inducement, that refusal or non-participation carries no penalty or loss of benefits,
+      and that consent is documented (written, dated, a signed copy provided).
+    grounding: [GA4GH Consent Policy — Principles i and ii, GDPR Art. 4(11) and 7(4), Oviedo Convention Art. 5, Declaration of Helsinki]
+    consent_cues:
+      - Taking part is voluntary. You can say no, and it will not affect your medical care.
+      - We will give you a signed copy of this consent form.
+    normative_queries:
+      - consent shall be freely given, specific, informed and unambiguous, and refusal to consent shall not cause any detriment or loss of benefits
+      - participation in research requires free, express and documented informed consent, and a person may refuse without disadvantage or discrimination
+
+  - id: A16
+    key: genetic_discrimination
+    label: Genetic discrimination and insurance or employment protections
+    definition: >-
+      Protection against discrimination on the basis of genetic information or test
+      results, in particular by insurers and employers, and the limits of that protection.
+    grounding: [GA4GH Position Statement on Genetic Discrimination, Oviedo Convention Art. 11, UNESCO Declaration on Human Genetic Data Art. 7, Korea Bioethics and Safety Act, Japan Genomic Medicine Promotion Act]
+    consent_cues:
+      - A federal law makes it illegal for health insurers and employers to discriminate against you based on your genetic information.
+      - Your genetic information could be used to make it harder for you to get or keep insurance or a job.
+    normative_queries:
+      - no one shall be subjected to discrimination on grounds of genetic characteristics or genetic information, including in employment and insurance
+      - prohibition on the use of genetic test results to discriminate against a person by employers, insurers or educational institutions

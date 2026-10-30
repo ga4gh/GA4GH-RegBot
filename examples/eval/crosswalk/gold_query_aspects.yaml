@@ -1,0 +1,45 @@
+# Governance aspect of each query in examples/eval/gold_ga4gh.yaml, so that its human-labelled
+# provisions can seed the crosswalk pool (tools/experiments/seed_pool.py). A query without an
+# aspect raises none in the taxonomy (q38, engagement) or is deliberately left out.
+version: '0.1'
+aspects:
+  q01-withdrawal-ga4gh: A08
+  q02-withdrawal-tw-biobank: A08
+  q03-transfer-safeguards-gdpr: A04
+  q04-cn-hgr-approval: A04
+  q05-hk-section-33: A04
+  q06-jp-transfer-mechanisms: A04
+  q07-kr-separate-consent: A14
+  q08-sg-transfer-limitation: A04
+  q09-dpia-trigger: A07
+  q10-broad-consent-validity: A02
+  q11-reidentification: A06
+  q12-duo-consent-codes: A03
+  q13-ga4gh-access-control: A07
+  q14-ga4gh-audit-logs: A07
+  q15-ga4gh-data-breach: A07
+  q16-dac-transparent-application: A03
+  q17-ethics-review-recognition: A12
+  q18-pediatric-assent: A10
+  q19-familial-contact: A10
+  q20-sg-hbra-consent: A15
+  q21-sg-health-access-restriction: A13
+  q22-cn-sensitive-separate-consent: A14
+  q23-cn-crossborder-security-assessment: A04
+  q24-cn-important-data-risk-assessment: A07
+  q25-tw-crossborder-restrictions: A04
+  q26-tw-biobank-ethics-committee: A12
+  q27-kr-human-research-written-consent: A15
+  q28-kr-pseudonymized-research: A02
+  q29-jp-opportunity-to-refuse: A15
+  q30-hk-model-clause-security: A07
+  q31-ehds-secondary-use: A02
+  q32-tw-overseas-research-materials: A04
+  q33-sg-tissue-export: A04
+  q34-jp-appi-foreign-transfer: A04
+  q35-cn-crossborder-exemptions: A04
+  q36-cn-important-data-export: A04
+  q37-ga4gh-actionable-results-protocol: A09
+  q39-ga4gh-controlled-access-definition: A03
+  q40-ga4gh-daa-external-collaborator: A03
+  q41-ga4gh-genetic-discrimination: A16

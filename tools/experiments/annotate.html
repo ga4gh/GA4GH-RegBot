@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crosswalk Annotator</title>
+<!--
+  Local relevance-judgment tool for the RegBot crosswalk pool. Open this file in a browser,
+  load a pool produced by `pool_candidates.py pool --aspects ...`, judge, and export.
+  Nothing leaves the machine: labels autosave to this browser's localStorage and are
+  exported as a JSON file that `pool_candidates.py anchors --pool <file>` accepts.
+
+  Or serve the folder holding both files and open annotate.html?pool=<pool.json>:
+      python -m http.server 8765   →   http://localhost:8765/annotate.html?pool=crosswalk_pool_v0.1.json
+
+  Keys: 2 / 1 / 0 label · j / k next / previous candidate · n next unlabelled
+        ] / [ next / previous cell · e mark cell "no provision in corpus" · / focus note
+-->
+<style>
+  :root {
+    --bg: #fbfbfa; --panel: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e4e4e7;
+    --accent: #2f5bd3; --l2: #1f8a4c; --l1: #b7791f; --l0: #8e8e93; --sel: #eef2ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151517; --panel: #1e1e21; --ink: #ececef; --muted: #9a9aa2; --line: #2e2e33;
+            --accent: #7c9cff; --l2: #45c27c; --l1: #e0a84a; --l0: #77777f; --sel: #232a44; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; }
+  header { display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+           padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel);
+           position: sticky; top: 0; z-index: 2; }
+  header h1 { font-size: 15px; margin: 0 8px 0 0; }
+  button, select, input[type=number] { font: inherit; color: var(--ink); background: var(--bg);
+           border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+  button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .muted { color: var(--muted); }
+  main { display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 52px); }
+  aside { border-right: 1px solid var(--line); padding: 12px; overflow: auto; max-height: calc(100vh - 52px);
+          position: sticky; top: 52px; }
+  .grid { display: grid; gap: 3px; font-size: 11px; }
+  .grid .h { color: var(--muted); text-align: center; }
+  .cellbtn { height: 26px; border-radius: 4px; border: 1px solid var(--line); padding: 0;
+             font-size: 10px; position: relative; overflow: hidden; background: var(--panel); }
+  .cellbtn .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--l2); opacity: .35; }
+  .cellbtn.cur { outline: 2px solid var(--accent); }
+  .cellbtn.empty { background: repeating-linear-gradient(45deg, var(--panel), var(--panel) 4px, var(--line) 4px, var(--line) 8px); }
+  .cellbtn span { position: relative; }
+  section { padding: 16px 20px; max-width: 980px; }
+  .cellhead { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+  .cellhead h2 { margin: 0 0 4px; font-size: 16px; }
+  .q { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--muted); margin: 2px 0; }
+  .cand { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+  .cand.cur { border-color: var(--accent); background: var(--sel); }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .tag { border: 1px solid var(--line); border-radius: 10px; padding: 0 7px; }
+  .tag.law { color: var(--l2); } .tag.policy { color: var(--accent); }
+  .text { white-space: pre-wrap; font-size: 13.5px; }
+  .labels { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
+  .labels button.on[data-v="2"] { background: var(--l2); color: #fff; border-color: var(--l2); }
+  .labels button.on[data-v="1"] { background: var(--l1); color: #fff; border-color: var(--l1); }
+  .labels button.on[data-v="0"] { background: var(--l0); color: #fff; border-color: var(--l0); }
+  .labels input { flex: 1; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; }
+  .llm { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  #drop { margin: 60px auto; max-width: 560px; text-align: center; border: 2px dashed var(--line); border-radius: 12px; padding: 40px; }
+  @media (max-width: 760px) { main { grid-template-columns: 1fr; } aside { position: static; max-height: none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Crosswalk Annotator</h1>
+  <input type="file" id="file" accept=".json">
+  <label class="muted">depth ≤ <input type="number" id="depth" min="1" max="50" value="10" style="width:60px"></label>
+  <label class="muted"><input type="checkbox" id="blind" checked> blind (hide pre-labels)</label>
+  <label class="muted" title="Hide candidates that every pre-labelling model marked 0. Validate the rule on a sample of fully judged cells before relying on it."><input type="checkbox" id="screen"> screen (hide unanimous 0s)</label>
+  <span id="progress" class="muted"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export labels</button>
+</header>
+<div id="drop">Load a pool JSON produced by <code>pool_candidates.py pool --aspects …</code>.<br>
+  <span class="muted">Labels autosave in this browser. Export to hand them to <code>pool_candidates.py anchors</code>.</span></div>
+<main id="app" hidden>
+  <aside><div id="grid" class="grid"></div>
+    <p class="muted" style="font-size:12px">Green fill = share judged. Hatched = marked "no provision in corpus".<br>
+    Keys: 2/1/0 label · j/k move · n next unlabelled · ]/[ cell · e empty cell · / note</p>
+  </aside>
+  <section id="cell"></section>
+</main>
+<script>
+"use strict";
+let pool = null, key = "", ci = 0, ki = 0;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function store() { try { localStorage.setItem(key, JSON.stringify(state())); } catch (e) {} }
+function state() {
+  return pool.queries.map((q) => ({ id: q.query_id, empty: !!q.empty_cell,
+    l: q.candidates.map((c) => [c.label, c.note || ""]) }));
+}
+function restore() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(key) || "null"); } catch (e) {}
+  if (!saved) return;
+  const byId = Object.fromEntries(saved.map((s) => [s.id, s]));
+  for (const q of pool.queries) {
+    const s = byId[q.query_id]; if (!s) continue;
+    q.empty_cell = s.empty;
+    q.candidates.forEach((c, i) => { if (s.l[i]) { c.label = s.l[i][0]; c.note = s.l[i][1]; } });
+  }
+}
+const depth = () => +$("depth").value || 10;
+const bestRank = (c) => Math.min(...Object.values(c.found_by || {99: 99}));
+const screened = (c) => {
+  const labels = Object.values(c.llm_labels || {}).map((v) => v.label).filter((v) => v != null);
+  return labels.length >= 2 && labels.every((v) => v === 0);
+};
+const visible = (q) => q.candidates.filter((c) => bestRank(c) <= depth() && !($("screen").checked && screened(c) && c.label == null));
+
+function render() {
+  const q = pool.queries[ci], cands = visible(q);
+  ki = Math.max(0, Math.min(ki, cands.length - 1));
+  const blind = $("blind").checked;
+  $("cell").innerHTML = `
+    <div class="cellhead"><h2>${esc(q.aspect)} · ${esc(q.aspect_label || q.query_id)} — ${esc((q.jurisdiction||[]).join(", "))}</h2>
+      <div>${esc(q.definition || q.query || "")}</div>
+      ${(q.queries || []).map((t) => `<div class="q">› ${esc(t)}</div>`).join("")}
+      <label class="muted" style="display:block;margin-top:6px"><input type="checkbox" id="emptycell" ${q.empty_cell ? "checked" : ""}>
+        No provision in the corpus addresses this aspect for this jurisdiction (e)</label></div>
+    ${cands.map((c, i) => `
+      <div class="cand ${i === ki ? "cur" : ""}" data-i="${i}">
+        <div class="meta"><b>${esc(c.provision)}</b><span class="tag ${esc(c.role)}">${esc(c.role)}</span>
+          <span>best rank ${bestRank(c)}</span><span>${Object.keys(c.found_by || {}).length} systems</span></div>
+        <div class="text">${esc(c.text)}</div>
+        <div class="labels">
+          ${[2,1,0].map((v) => `<button data-v="${v}" class="${c.label === v ? "on" : ""}">${v} ${["no","related","operative"][v]}</button>`).join("")}
+          <input placeholder="note" value="${esc(c.note || "")}" data-note="${i}">
+        </div>
+        ${!blind && c.llm_labels ? `<div class="llm">` + Object.entries(c.llm_labels).map(([m, v]) =>
+          `<div><b>${esc(m)}</b>: ${v.label == null ? "?" : v.label}${v.reason ? " — " + esc(v.reason) : ""}</div>`).join("") + `</div>` : ""}
+        </div>`).join("")}`;
+  $("cell").querySelectorAll(".cand").forEach((el) => {
+    const i = +el.dataset.i;
+    el.querySelectorAll("button").forEach((b) => b.onclick = () => { ki = i; setLabel(+b.dataset.v, false); });
+    el.querySelector("input").oninput = (e) => { cands[i].note = e.target.value; store(); };
+  });
+  $("emptycell").onchange = (e) => { q.empty_cell = e.target.checked; store(); renderGrid(); };
+  const cur = $("cell").querySelector(".cand.cur"); if (cur) cur.scrollIntoView({ block: "nearest" });
+  renderGrid();
+}
+
+function renderGrid() {
+  const js = [...new Set(pool.queries.map((q) => (q.jurisdiction || ["—"])[0]))];
+  const as = [...new Set(pool.queries.map((q) => q.aspect))];
+  $("grid").style.gridTemplateColumns = `34px repeat(${js.length}, 1fr)`;
+  let html = `<div></div>` + js.map((j) => `<div class="h">${esc(j)}</div>`).join("");
+  let done = 0, total = 0;
+  for (const a of as) {
+    html += `<div class="h" style="text-align:left">${esc(a)}</div>`;
+    for (const j of js) {
+      const idx = pool.queries.findIndex((q) => q.aspect === a && (q.jurisdiction || ["—"])[0] === j);
+      if (idx < 0) { html += `<div></div>`; continue; }
+      const q = pool.queries[idx], v = visible(q), n = v.filter((c) => c.label != null).length;
+      done += n; total += v.length;
+      const frac = v.length ? n / v.length : 1;
+      html += `<button class="cellbtn ${idx === ci ? "cur" : ""} ${q.empty_cell ? "empty" : ""}" data-idx="${idx}" title="${esc(q.query_id)}: ${n}/${v.length}">
+        <div class="fill" style="width:${frac * 100}%"></div><span>${n}/${v.length}</span></button>`;
+    }
+  }
+  $("grid").innerHTML = html;
+  $("grid").querySelectorAll(".cellbtn").forEach((b) => b.onclick = () => { ci = +b.dataset.idx; ki = 0; render(); });
+  $("progress").textContent = `${done} / ${total} judged at depth ≤ ${depth()}`;
+}
+
+function setLabel(v, advance = true) {
+  const c = visible(pool.queries[ci])[ki]; if (!c) return;
+  c.label = v; store();
+  if (advance) ki = Math.min(ki + 1, visible(pool.queries[ci]).length - 1);
+  render();
+}
+function nextUnlabelled() {
+  for (let step = 0; step < pool.queries.length; step++) {
+    const qi = (ci + step) % pool.queries.length, v = visible(pool.queries[qi]);
+    const start = step === 0 ? ki : 0;
+    for (let i = start; i < v.length; i++) if (v[i].label == null) { ci = qi; ki = i; render(); return; }
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!pool || e.target.tagName === "INPUT" && e.target.type !== "checkbox") {
+    if (e.key === "Escape") e.target.blur(); return;
+  }
+  const n = visible(pool.queries[ci]).length;
+  if (["0","1","2"].includes(e.key)) setLabel(+e.key);
+  else if (e.key === "j") { ki = Math.min(ki + 1, n - 1); render(); }
+  else if (e.key === "k") { ki = Math.max(ki - 1, 0); render(); }
+  else if (e.key === "n") nextUnlabelled();
+  else if (e.key === "]") { ci = Math.min(ci + 1, pool.queries.length - 1); ki = 0; render(); }
+  else if (e.key === "[") { ci = Math.max(ci - 1, 0); ki = 0; render(); }
+  else if (e.key === "e") { const q = pool.queries[ci]; q.empty_cell = !q.empty_cell; store(); render(); }
+  else if (e.key === "/") { e.preventDefault(); const el = $("cell").querySelector(".cand.cur input"); if (el) el.focus(); }
+  else return;
+  e.preventDefault();
+});
+
+function load(name, text) {
+  pool = JSON.parse(text);
+  for (const q of pool.queries) for (const c of q.candidates) if (c.label === undefined) c.label = null;
+  key = "crosswalk:" + name + ":" + pool.queries.length + ":" + pool.queries.reduce((s, q) => s + q.candidates.length, 0);
+  restore(); ci = 0; ki = 0;
+  $("drop").hidden = true; $("app").hidden = false; render();
+}
+$("file").onchange = async (e) => {
+  const f = e.target.files[0]; if (f) load(f.name, await f.text());
+};
+// Optional: ?pool=<relative URL> when the folder is served locally (python -m http.server).
+const src = new URLSearchParams(location.search).get("pool");
+if (src) fetch(src).then((r) => r.text()).then((t) => load(src.split("/").pop(), t))
+  .catch((err) => { $("drop").textContent = "Could not load " + src + ": " + err; });
+$("depth").onchange = () => pool && render();
+$("blind").onchange = () => pool && render();
+$("screen").onchange = () => pool && render();
+$("export").onclick = () => {
+  if (!pool) return;
+  const out = { ...pool, annotated_at: new Date().toISOString(), annotation_depth: depth(), screened_unanimous_zero: $("screen").checked };
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "crosswalk_labels.json"; a.click();
+};
+</script>
+</body>
+</html>
