@@ -5,14 +5,16 @@
 RegBot is an open-source tool for the Global Alliance for Genomics and Health [Regulatory and Ethics Work Stream (REWS)](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/) and cross-border genomic data sharing. It complements the Alliance’s Regulatory & Ethics Toolkit by retrieving GA4GH and related policy provisions against researcher-supplied consent / data-use text and returning citation-grounded JSON for DPO, IRB, and DAC review—not compliance rulings or legal advice.
 
 **Release status:** `0.1.0` release candidate. Implementation, corpus rebuild, the
-41-query contributor-labelled benchmark on the full 85-document corpus, API/UI checks, and
+41-query contributor-labelled benchmark on the full 85-document corpus (8,053 chunks), API/UI checks, and
 local Ollama validation are complete. The scheduled benchmark now enforces the engineering
 regression floor `provision_recall@8 >= 0.90`. Independent mentor review of the gold set is
 still pending, so the measured baseline is not an independently validated performance claim.
-Python dependencies were re-audited on 2026-09-20, including the pypdf 6.16.1 security
-update. Chroma HTTP-server advisories are explicitly excepted for the embedded-client
-architecture; applicability and prior frontend checks are recorded in
-`docs/RELEASE_CHECKLIST.md`.
+Dependencies were re-audited on 2026-10-28 (Pillow 13.0.0, Next.js 16.4.3), and pypdf is at
+6.21.4 with no audit exceptions. PDF extraction mode is chosen from the extracted text rather
+than the pypdf release, and layout mode corrects the space width of fonts that have no space
+glyph, which pypdf 6.20+ otherwise collapses in the Singapore statutes (`docs/eval_results.md`
+§0). The Chroma HTTP-server exceptions for the embedded-client architecture are reviewed, with
+prior frontend checks, in `docs/RELEASE_CHECKLIST.md`.
 
 ## Documentation
 
@@ -41,10 +43,10 @@ architecture; applicability and prior frontend checks are recorded in
 
 ## Quickstart (development)
 
-- Prerequisites: **Python 3.10–3.13** (the range `pyproject.toml` accepts; CI runs 3.11, which is the tested one). Python 3.14 is not supported yet for the full stack (native wheels for parts of the ML/Chroma toolchain often lag). Running the web UI also needs **Node 20.9+** for `frontend/` (CI uses Node 22).
+- Prerequisites: **Python 3.11–3.13** (the range `pyproject.toml` accepts; CI runs 3.11, which is the tested one). Python 3.14 is not supported yet for the full stack (native wheels for parts of the ML/Chroma toolchain often lag). Running the web UI also needs **Node 20.9+** for `frontend/` (CI uses Node 22).
 - Confirm that the interpreter used to create the environment is in the supported range,
   then create the environment and install dependencies. The example names Python 3.11 to
-  match CI; `python3.10`, `python3.12`, or `python3.13` are also valid:
+  match CI; `python3.12` or `python3.13` are also valid:
 
 ```bash
 python3.11 --version

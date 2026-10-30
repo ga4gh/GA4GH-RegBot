@@ -3,6 +3,7 @@
 import os
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import Mock, call, patch
 
 
@@ -252,6 +253,8 @@ class TestStatutoryLayoutFallback(unittest.TestCase):
         from src.regbot.ingestion import _load_pdf
 
         cover, body = Mock(), Mock()
+        for page in (cover, body):
+            page._layout_mode_fonts.return_value = {}
         cover.extract_text.side_effect = ["ARRANGEMENT OF SECTIONS", "ARRANGEMENT OF SECTIONS"]
         body.extract_text.side_effect = [
             "AnActtoprovideforhealthinformation",
@@ -281,6 +284,59 @@ class TestStatutoryLayoutFallback(unittest.TestCase):
         self.assertEqual(result, [("", 1), (body.extract_text.return_value, 2)])
         cover.extract_text.assert_called_once_with()
         body.extract_text.assert_called_once_with()
+
+
+class TestLayoutSpaceWidth(unittest.TestCase):
+    """Composite fonts without a space glyph still yield word gaps in layout mode."""
+
+    @staticmethod
+    def _font(sub_type: str, character_map: dict, code_0x20_width: int) -> SimpleNamespace:
+        widths = {"default": 778}
+        if code_0x20_width:
+            widths[" "] = code_0x20_width
+        return SimpleNamespace(
+            sub_type=sub_type,
+            character_map=character_map,
+            character_widths=widths,
+            space_char=" ",
+            space_width=code_0x20_width or 389,
+        )
+
+    def test_only_fonts_measuring_a_letter_as_the_space_are_corrected(self) -> None:
+        from src.regbot.ingestion import _layout_fonts_with_word_gaps
+
+        fonts = {
+            "letter": self._font("Type0", {" ": "V"}, 722),
+            "mapped": self._font("Type0", {"\x03": " ", " ": "V"}, 722),
+            "no_glyph": self._font("Type0", {"!": "e"}, 0),
+            "simple": self._font("TrueType", {}, 250),
+        }
+        page = Mock()
+        page._layout_mode_fonts.return_value = fonts
+        self.assertIs(_layout_fonts_with_word_gaps(page), fonts)
+
+        self.assertEqual(fonts["letter"].space_width, 250)
+        self.assertNotEqual(fonts["letter"].space_char, " ")
+        self.assertEqual(fonts["letter"].character_widths[" "], 722)
+        for name, width in (("mapped", 722), ("no_glyph", 389), ("simple", 250)):
+            with self.subTest(font=name):
+                self.assertEqual(fonts[name].space_char, " ")
+                self.assertEqual(fonts[name].space_width, width)
+
+    def test_singapore_statute_keeps_word_spacing(self) -> None:
+        # Runs the installed pypdf on a corpus PDF, so a release that changes layout-mode
+        # spacing or the font hook fails here rather than in the rebuilt store.
+        from pypdf import PdfReader
+        from src.regbot.ingestion import _clean_statutory_layout, _extract_layout_text
+
+        path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "data/corpus/P2/SG/human-biomedical-research-act-2015.pdf",
+        )
+        text = _clean_statutory_layout(_extract_layout_text(PdfReader(path).pages[8]))
+        self.assertIn("“minor” means a person who is below 21 years of age and who", text)
+        self.assertIn("psychological examinations or tests;", text)
+        self.assertNotRegex(text, r"[A-Za-z]{24,}")
 
 
 class TestCitableContent(unittest.TestCase):
@@ -327,3 +383,57 @@ class TestCitableContent(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestLayoutExtractionTriggers(unittest.TestCase):
+    """Version-dependent pypdf failures are recognised from the text, not the release."""
+
+    WORD_PER_LINE = "Introduction\n \nIn\n \nthe\n \nmidst\n \nof\n \na\n \nglobal\n \npandemic,\n"
+    COLLAPSED = "26.—(1) Anorganisationmustnottransferanypersonaldatatoa country outside"
+    NORMAL = "An organisation must not transfer any personal data to a country outside."
+
+    def test_one_word_per_line_triggers_layout_mode(self) -> None:
+        from src.regbot.ingestion import _layout_extraction_reason, _single_token_line_share
+
+        pages = [self.WORD_PER_LINE] * 3
+        self.assertGreaterEqual(_single_token_line_share(pages), 0.6)
+        self.assertEqual(_layout_extraction_reason(pages), "one word per line")
+
+    def test_collapsed_word_spacing_triggers_layout_mode(self) -> None:
+        from src.regbot.ingestion import _collapsed_spacing_per_mille, _layout_extraction_reason
+
+        pages = [self.COLLAPSED + "\n" + self.NORMAL] * 3
+        self.assertGreaterEqual(_collapsed_spacing_per_mille(pages), 5.0)
+        self.assertEqual(_layout_extraction_reason(pages), "collapsed word spacing")
+
+    def test_normal_text_keeps_plain_mode(self) -> None:
+        from src.regbot.ingestion import _layout_extraction_reason
+
+        pages = [self.NORMAL + "\nSecond line of ordinary body text here.\n"] * 3
+        self.assertIsNone(_layout_extraction_reason(pages))
+
+    def test_word_per_line_pdf_is_re_extracted_in_layout_mode(self) -> None:
+        from src.regbot.ingestion import _load_pdf
+
+        page = Mock()
+        page._layout_mode_fonts.return_value = {}
+        page.extract_text.side_effect = [
+            self.WORD_PER_LINE,
+            "Introduction\n\nIn the midst of a global pandemic, we need collaboration.",
+        ]
+        with patch("src.regbot.ingestion.PdfReader", return_value=Mock(pages=[page])):
+            result = _load_pdf("stub.pdf")
+        self.assertEqual(result[0][1], 1)
+        self.assertIn("In the midst of a global pandemic", result[0][0])
+        self.assertEqual(
+            page.extract_text.call_args_list,
+            [call(), call(extraction_mode="layout", layout_mode_space_vertically=False)],
+        )
+
+    def test_running_line_stripper_keeps_lone_lower_case_words(self) -> None:
+        from src.regbot.ingestion import _running_lines
+
+        pages = ["the\nCONSENT POLICY\nbody text about the study\n"] * 4
+        running = _running_lines(pages)
+        self.assertIn("CONSENT POLICY", running)
+        self.assertNotIn("the", running)
