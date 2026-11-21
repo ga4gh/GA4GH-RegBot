@@ -12,6 +12,7 @@ embedding matrix directly, so no model download is needed in CI.
 """
 
 import unittest
+from unittest.mock import Mock, patch
 
 from src.regbot.fusion import reciprocal_rank_fusion
 from src.regbot.retrieval import HybridRetriever
@@ -118,18 +119,43 @@ class TestProvisionCap(unittest.TestCase):
         b = self._chunk("c2", "gdpr", "Article 36 — Prior consultation")
         self.assertNotEqual(provision_keys(a), provision_keys(b))
 
-    def test_cap_admits_at_most_n_fragments_per_provision(self) -> None:
-        # Simulates the selection loop: three fragments of one article, cap of two.
-        fragments = [self._chunk(f"c{i}", "gdpr", "Article 35 — DPIA") for i in range(3)]
-        cap, used, kept = 2, {}, []
-        for chunk in fragments:
-            keys = provision_keys(chunk)
-            if any(used.get(k, 0) >= cap for k in keys):
-                continue
-            for k in keys:
-                used[k] = used.get(k, 0) + 1
-            kept.append(chunk)
-        self.assertEqual(len(kept), 2)
+    def _crowded_retriever(self):
+        r = HybridRetriever("unused")
+        r._collection = object()
+        r._model = Mock()
+        r._model.encode.return_value.tolist.return_value = [[1.0, 0.0]]
+        dense_ids = [f"dense-{i:02}" for i in range(12)]
+        bm25_ids = [f"lexical-{i:02}" for i in range(48)]
+        r._by_id = {cid: self._chunk(cid, "policy", "Article 1") for cid in dense_ids + bm25_ids}
+        for i, cid in enumerate(bm25_ids[36:], start=2):
+            r._by_id[cid] = self._chunk(cid, "policy", f"Article {i}")
+        return r, dense_ids, bm25_ids
+
+    def test_cap_fills_top_k_after_many_fragments_of_one_provision(self) -> None:
+        # The default channel pools contain 48 fragments of one provision, then twelve
+        # distinct rules. Capping fragments must still allow those later rules through.
+        r, dense_ids, bm25_ids = self._crowded_retriever()
+        with (
+            patch.object(r, "_dense_candidates", return_value=dense_ids),
+            patch.object(r, "_bm25_candidates", return_value=bm25_ids),
+        ):
+            hits = r.retrieve("participant consent", top_k=8, max_per_provision=2)
+        self.assertEqual(
+            [hit["id"] for hit in hits],
+            ["dense-00", "lexical-00"] + bm25_ids[36:42],
+        )
+
+    def test_disabled_cap_keeps_fused_ranking(self) -> None:
+        r, dense_ids, bm25_ids = self._crowded_retriever()
+        with (
+            patch.object(r, "_dense_candidates", return_value=dense_ids),
+            patch.object(r, "_bm25_candidates", return_value=bm25_ids),
+        ):
+            hits = r.retrieve("participant consent", top_k=8, max_per_provision=0)
+        self.assertEqual(
+            [hit["id"] for hit in hits],
+            [cid for pair in zip(dense_ids[:4], bm25_ids[:4]) for cid in pair],
+        )
 
 
 class TestFusionDeterminism(unittest.TestCase):

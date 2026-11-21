@@ -268,8 +268,9 @@ class HybridRetriever:
         bm25_ids = self._bm25_candidates(query, bm25_candidates, allowed)
 
         cap = MAX_CHUNKS_PER_PROVISION if max_per_provision is None else int(max_per_provision)
-        headroom = 6 if cap > 0 else 3
-        fused = reciprocal_rank_fusion([sem_ids, bm25_ids], top_n=max(top_k * headroom, top_k))
+        # Any fused prefix can be dominated by fragments of one provision. Keep the
+        # bounded channel pools intact until the provision cap and final top-k selection.
+        fused = reciprocal_rank_fusion([sem_ids, bm25_ids], top_n=len(sem_ids) + len(bm25_ids))
 
         out: List[Dict[str, Any]] = []
         used: Dict[str, int] = {}
