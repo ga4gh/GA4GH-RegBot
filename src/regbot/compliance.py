@@ -92,6 +92,20 @@ def _format_evidence(chunks: List[Dict[str, Any]], max_chars: int = 12000) -> st
     return "\n".join(parts).strip()
 
 
+def _parse_report_json(raw: str) -> Dict[str, Any]:
+    """Parse a report object, retaining support for JSON wrapped in model prose."""
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        match = re.search(r"\{[\s\S]*\}", raw)
+        if match is None:
+            raise
+        data = json.loads(match.group(0))
+    if not isinstance(data, dict):
+        raise ValueError("Model output must contain a valid JSON object.")
+    return data
+
+
 def _fallback_report(
     consent: str,
     study_type: str,
@@ -369,12 +383,12 @@ def analyze_compliance(
                 error_code=error_code,
                 action=action,
             )
-        raw = resp.choices[0].message.content or "{}"
+        parse_issue = None
         try:
-            data = json.loads(raw)
-        except json.JSONDecodeError:
-            m = re.search(r"\{[\s\S]*\}", raw)
-            data = json.loads(m.group(0)) if m else {}
+            data = _parse_report_json(resp.choices[0].message.content or "")
+        except ValueError:
+            data = {}
+            parse_issue = "Model output must contain a valid JSON object."
 
         raw_coverage = data.get("coverage")
         if raw_coverage is None:
@@ -396,6 +410,9 @@ def analyze_compliance(
             require_evidence_per_recommendation=grounding_strict,
             validate_supplementary_citations=True,
         )
+        if parse_issue is not None:
+            audit["ok"] = False
+            audit["issues"].append(parse_issue)
 
         if not audit["ok"]:
             out["grounding"] = audit
