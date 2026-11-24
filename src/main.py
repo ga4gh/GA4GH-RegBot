@@ -98,6 +98,9 @@ class RegBot:
                 raise
             print(f"Ingest failed: {exc}", file=sys.stderr)
             return False
+        finally:
+            # A reset may delete the collection before ingestion fails.
+            self._retriever = None
 
     def ingest_from_manifest(
         self,
@@ -119,7 +122,11 @@ class RegBot:
         }
         if self.embedding_model:
             kwargs["embedding_model_name"] = self.embedding_model
-        return ingest_from_corpus_manifest(**kwargs)
+        try:
+            return ingest_from_corpus_manifest(**kwargs)
+        finally:
+            if not dry_run:
+                self._retriever = None
 
     def store_status(self) -> Dict[str, Any]:
         """Report portable corpus contents separately from vector-index readiness."""
