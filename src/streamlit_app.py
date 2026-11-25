@@ -433,6 +433,7 @@ if tab_ingest is not None:
                     reset=reset,
                     category=category.strip() or None,
                     jurisdiction=ingest_jurisdiction,
+                    source_name=uploaded.name,
                 )
                 st.success(
                     f"Ingest finished ({ingest_jurisdiction})."

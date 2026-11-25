@@ -79,6 +79,7 @@ class RegBot:
         jurisdiction: Optional[str] = None,
         document_id: Optional[str] = None,
         framework: Optional[str] = None,
+        source_name: Optional[str] = None,
         raise_on_error: bool = False,
     ) -> bool:
         try:
@@ -90,6 +91,7 @@ class RegBot:
                 jurisdiction=jurisdiction,
                 document_id=document_id,
                 framework=framework,
+                source_name=source_name,
                 reset=reset,
             )
             return n >= 0
