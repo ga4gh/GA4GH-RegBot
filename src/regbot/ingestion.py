@@ -30,8 +30,20 @@ MIN_CITABLE_WORDS = 10
 MIN_CITABLE_CJK_CHARS = 20
 
 
-def _stable_source_id(path: str) -> str:
-    base = os.path.basename(path)
+def _source_display_name(file_path: str, source_name: Optional[str]) -> str:
+    """
+    Name recorded for a document's chunks. Uploads are ingested from a temporary copy, so
+    callers pass the original filename; any client-side directory part is dropped.
+    """
+    if source_name:
+        name = os.path.basename(source_name.replace("\\", "/")).strip()
+        if name:
+            return name
+    return os.path.basename(file_path)
+
+
+def _stable_source_id(path: str, name: Optional[str] = None) -> str:
+    base = name or os.path.basename(path)
     digest = hashlib.sha256()
     with open(path, "rb") as f:
         for block in iter(lambda: f.read(1024 * 1024), b""):
@@ -392,11 +404,16 @@ def ingest_policy_file(
     document_id: Optional[str] = None,
     framework: Optional[str] = None,
     content_type: Optional[str] = None,
+    source_name: Optional[str] = None,
     reset: bool = False,
 ) -> int:
     """
     Load a policy PDF or text file, chunk, embed, and persist to Chroma + manifest.
     Returns number of chunks written.
+
+    ``source_name`` is the document's original filename when ``file_path`` is a temporary
+    copy (UI uploads). Citations, chunk ids and the default category use it, so they name
+    the uploaded document rather than the temporary file.
     """
     if not os.path.isfile(file_path):
         raise FileNotFoundError(file_path)
@@ -416,8 +433,9 @@ def ingest_policy_file(
             os.remove(_manifest_path(store_dir))
 
     existing = read_manifest(store_dir) if not reset else []
-    source_tag = _stable_source_id(file_path)
-    base_category = category or os.path.splitext(os.path.basename(file_path))[0]
+    display_name = _source_display_name(file_path, source_name)
+    source_tag = _stable_source_id(file_path, display_name)
+    base_category = category or os.path.splitext(display_name)[0]
     jurisdiction_tag = (
         normalize_jurisdiction(jurisdiction) if jurisdiction and str(jurisdiction).strip() else None
     )
@@ -434,7 +452,7 @@ def ingest_policy_file(
             cid = f"{source_tag}_p{page_num}_c{chunk_idx}"
             chunk_idx += 1
             meta: Dict[str, Any] = {
-                "source": os.path.basename(file_path),
+                "source": display_name,
                 "page": int(page_num),
                 "category": base_category,
             }
@@ -465,7 +483,7 @@ def ingest_policy_file(
             )
 
     if not new_records:
-        name = os.path.basename(file_path)
+        name = display_name
         total_chars = sum(len((t or "").strip()) for t, _ in pages)
         if total_chars == 0:
             if ext == ".pdf":

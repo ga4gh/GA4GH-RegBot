@@ -23,6 +23,19 @@ class TestPortableManifest(unittest.TestCase):
                 f.write("A revised authoritative policy text.")
             self.assertNotEqual(_stable_source_id(first_path), _stable_source_id(second_path))
 
+    def test_temporary_copy_gets_the_source_id_of_its_original_name(self) -> None:
+        from src.regbot.ingestion import _stable_source_id
+
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            temporary_copy = os.path.join(first, "tmpab12cd34.txt")
+            original = os.path.join(second, "policy.txt")
+            for path in (temporary_copy, original):
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write("The same authoritative policy text.")
+            self.assertEqual(
+                _stable_source_id(temporary_copy, "policy.txt"), _stable_source_id(original)
+            )
+
     def test_write_manifest_strips_legacy_source_path(self) -> None:
         from src.regbot.ingestion import read_manifest, write_manifest
 
@@ -37,6 +50,49 @@ class TestPortableManifest(unittest.TestCase):
             write_manifest(store, chunks)
             metadata = read_manifest(store)[0]["metadata"]
         self.assertNotIn("source_path", metadata)
+
+
+class TestUploadedSourceName(unittest.TestCase):
+    """UI uploads are ingested from a temporary copy; chunks must name the uploaded file."""
+
+    POLICY = (
+        "Researchers must obtain consent before sharing genomic data with international "
+        "collaborators, and must honour any later withdrawal request."
+    )
+
+    def _ingest_temporary_copy(self, source_name: str | None) -> list[dict]:
+        from src.regbot.ingestion import ingest_policy_file, read_manifest
+
+        model = Mock()
+        model.encode.return_value.tolist.return_value = [[0.0]]
+        with tempfile.TemporaryDirectory() as store:
+            path = os.path.join(store, "tmpab12cd34.txt")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(self.POLICY)
+            # Chroma is mocked: these tests are about the names written to the manifest.
+            with (
+                patch("chromadb.PersistentClient"),
+                patch("src.regbot.ingestion.load_sentence_transformer", return_value=model),
+            ):
+                written = ingest_policy_file(path, store, source_name=source_name)
+            chunks = read_manifest(store)
+        self.assertGreater(written, 0)
+        self.assertEqual(len(chunks), written)
+        return chunks
+
+    def test_chunks_are_recorded_under_the_uploaded_filename(self) -> None:
+        for chunk in self._ingest_temporary_copy("ga4gh-consent-policy.txt"):
+            self.assertEqual(chunk["metadata"]["source"], "ga4gh-consent-policy.txt")
+            self.assertEqual(chunk["metadata"]["category"], "ga4gh-consent-policy")
+            self.assertTrue(chunk["id"].startswith("ga4gh-consent-policy.txt_"))
+
+    def test_client_side_directory_is_dropped_from_the_name(self) -> None:
+        chunks = self._ingest_temporary_copy("C:\\fakepath\\ga4gh-consent-policy.txt")
+        self.assertEqual(chunks[0]["metadata"]["source"], "ga4gh-consent-policy.txt")
+
+    def test_file_name_is_used_without_a_source_name(self) -> None:
+        chunks = self._ingest_temporary_copy(None)
+        self.assertEqual(chunks[0]["metadata"]["source"], "tmpab12cd34.txt")
 
 
 class TestIngestionPdf(unittest.TestCase):

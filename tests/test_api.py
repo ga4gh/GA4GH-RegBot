@@ -293,6 +293,16 @@ class TestIngestEndpoint(unittest.TestCase):
         self.assertEqual(detail["code"], "DOCUMENT_NOT_CITABLE")
         self.assertIn("OCR", detail["action"])
 
+    def test_upload_is_ingested_under_its_original_filename(self) -> None:
+        with mock.patch("src.main.RegBot.ingest_policy_documents", return_value=True) as ingest:
+            r = client.post(
+                "/api/ingest",
+                files={"file": ("ga4gh-consent-policy.txt", b"Policy text", "text/plain")},
+                data={"jurisdiction": "GA4GH"},
+            )
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(ingest.call_args.kwargs["source_name"], "ga4gh-consent-policy.txt")
+
 
 class TestCheckEndpoint(unittest.TestCase):
     def test_rejects_empty_consent_text(self) -> None:

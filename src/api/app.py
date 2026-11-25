@@ -374,6 +374,7 @@ async def ingest_policy(
             reset=reset,
             category=category.strip() or None,
             jurisdiction=jurisdiction.upper(),
+            source_name=file.filename,
             raise_on_error=True,
         )
         if ok:
