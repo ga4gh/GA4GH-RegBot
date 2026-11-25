@@ -139,6 +139,8 @@ def ingest_from_corpus_manifest(
     selected.sort(key=_tier_sort_key)
 
     results: List[Dict[str, Any]] = []
+    # The reset is applied by the first document that is actually ingested. Entries skipped
+    # below (missing file, dry run) must not use it up, or the store is never cleared.
     first = True
     now_iso = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
@@ -171,13 +173,11 @@ def ingest_from_corpus_manifest(
         if not os.path.isfile(resolved):
             row["status"] = "missing_file"
             results.append(row)
-            first = False
             continue
 
         if dry_run:
             row["status"] = "dry_run"
             results.append(row)
-            first = False
             continue
 
         use_reset = reset and first

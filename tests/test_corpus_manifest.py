@@ -174,6 +174,43 @@ class TestCorpusManifest(unittest.TestCase):
             self.assertEqual(summary["ingested"], 1)
             self.assertGreater(len(read_manifest(store_dir)), 0)
 
+    @patch("src.regbot.corpus_manifest.ingest_policy_file", return_value=1)
+    def test_reset_is_not_used_up_by_a_missing_first_file(self, mock_ingest) -> None:
+        """A selected entry whose file is missing must not consume the reset."""
+        names = ("a-missing", "b-present", "c-present")
+        with tempfile.TemporaryDirectory() as root:
+            docs_dir = os.path.join(root, "docs")
+            corpus_dir = os.path.join(root, "data", "corpus", "P0")
+            os.makedirs(docs_dir)
+            os.makedirs(corpus_dir)
+            for name in names[1:]:
+                with open(os.path.join(corpus_dir, f"{name}.txt"), "w", encoding="utf-8") as f:
+                    f.write("Policy text.")
+            manifest_path = os.path.join(docs_dir, "corpus_manifest.yaml")
+            with open(manifest_path, "w", encoding="utf-8") as f:
+                yaml.safe_dump(
+                    {
+                        "documents": [
+                            {
+                                "document_id": name,
+                                "tier": "P0",
+                                "ingest_path": f"data/corpus/P0/{name}.txt",
+                            }
+                            for name in names
+                        ]
+                    },
+                    f,
+                )
+
+            summary = ingest_from_corpus_manifest(
+                manifest_path, os.path.join(root, "store"), reset=True
+            )
+
+        statuses = [row["status"] for row in summary["results"]]
+        self.assertEqual(statuses, ["missing_file", "ok", "ok"])
+        resets = [c.kwargs["reset"] for c in mock_ingest.call_args_list]
+        self.assertEqual(resets, [True, False])
+
     def test_incremental_dry_run_uses_active_store_not_global_timestamp(self) -> None:
         with tempfile.TemporaryDirectory() as root:
             docs_dir = os.path.join(root, "docs")
