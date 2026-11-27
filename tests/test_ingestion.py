@@ -100,6 +100,29 @@ class TestRunningHeaderRemoval(unittest.TestCase):
         self.assertNotIn("CONSENT POLICY", _strip_running_lines(pages[0], running))
         self.assertIn("body of page 0", _strip_running_lines(pages[0], running))
 
+    def test_frequency_threshold_does_not_round_down(self) -> None:
+        from src.regbot.ingestion import _running_lines, _strip_running_lines
+
+        line = "Consent must be obtained before collecting samples."
+        for count, total, ratio in [(3, 7, 0.5), (3, 5, 0.75)]:
+            with self.subTest(count=count, total=total, ratio=ratio):
+                pages = [f"{line}\nPage {i} body" for i in range(count)] + [
+                    f"Other page {i} body" for i in range(total - count)
+                ]
+                running = _running_lines(pages, ratio=ratio)
+                self.assertNotIn(line, running)
+                self.assertIn(line, _strip_running_lines(pages[0], running))
+
+    def test_frequency_at_or_above_threshold_is_stripped(self) -> None:
+        from src.regbot.ingestion import _running_lines
+
+        for count, total, ratio in [(4, 7, 0.5), (3, 6, 0.5), (4, 5, 0.75)]:
+            with self.subTest(count=count, total=total, ratio=ratio):
+                pages = ["CONSENT POLICY" for _ in range(count)] + [
+                    f"Other page {i} body" for i in range(total - count)
+                ]
+                self.assertIn("CONSENT POLICY", _running_lines(pages, ratio=ratio))
+
     def test_long_repeated_line_is_kept(self) -> None:
         # Body text can legitimately repeat; only short lines are treated as furniture.
         from src.regbot.ingestion import _running_lines
