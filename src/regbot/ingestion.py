@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import math
 import os
 import re
 from typing import Any, Dict, List, Optional, Tuple
@@ -71,7 +72,7 @@ def _running_lines(pages: List[str], *, min_pages: int = 3, ratio: float = 0.5) 
                 continue
             seen.add(line)
             counts[line] = counts.get(line, 0) + 1
-    threshold = max(min_pages, int(len(pages) * ratio))
+    threshold = max(min_pages, math.ceil(len(pages) * ratio))
     return {line for line, n in counts.items() if n >= threshold}
 
 
